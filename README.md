@@ -32,6 +32,11 @@ cd 03-nanpossible
 # Add your setup commands here
 ```
 
+### Stripe setup notes
+- Set `STRIPE_SECRET_KEY`, `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY`, and `STRIPE_WEBHOOK_SECRET` in your local `.env`.
+- Point your Stripe webhook to `POST /api/webhook` so completed checkout sessions are written to the local transaction store.
+- After payment, users can download a receipt from the success page, and the admin history is available at `/admin`.
+
 
 ## Checklist for the final submission
 ### 0/Judging Criteria
