@@ -50,11 +50,16 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "babel-plugin-react-compiler": "1.0.0",
+    "esbuild": "^0.28.1",
     "eslint": "^9",
     "eslint-config-next": "^15.5.14",
     "tailwindcss": "^4",
-    "tsx": "^4.20.6",
+    "tsx": "^4.22.4",
     "typescript": "^5",
-    "vitest": "^3.2.4"
+    "vite": "^6.4.3",
+    "vitest": "^3.2.6"
+  },
+  "overrides": {
+    "postcss": "8.5.16"
   }
 }
