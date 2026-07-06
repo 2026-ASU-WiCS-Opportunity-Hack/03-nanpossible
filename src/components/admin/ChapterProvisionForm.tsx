@@ -2,6 +2,7 @@
 
 import { useMemo, useState, useTransition } from "react";
 import { chapterLanguages, chapterRegions } from "@/lib/chapter-options";
+import { PhoneInputField } from "@/components/phone-input-field";
 
 function slugify(value: string) {
   return value
@@ -60,7 +61,8 @@ export function ChapterProvisionForm() {
               language: formData.get("language"),
               lead_email: formData.get("leadEmail"),
               contact_email: formData.get("contactEmail"),
-              contact_phone: formData.get("contactPhone"),
+              contact_phone: formData.get("phone"),
+              contact_phone_country_code: formData.get("phone_country_code"),
               description: formData.get("description"),
             }),
           });
@@ -151,9 +153,9 @@ export function ChapterProvisionForm() {
           <input className="field-input" name="contactEmail" required type="email" />
         </label>
 
-        <label className="field-shell">
+       <label className="field-shell">
           <span className="field-label">Contact phone</span>
-          <input className="field-input" name="contactPhone" type="text" />
+          <PhoneInputField defaultPhone={null} defaultCountryCode={null} />
         </label>
       </div>
 
