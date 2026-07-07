@@ -3,6 +3,7 @@ import { AccountPageShell } from "@/components/account-page-shell";
 import { requireAccountViewer } from "@/lib/auth";
 import { listChapters } from "@/lib/tenant";
 import { assignContentCreatorAction, deleteChapterAction } from "./actions";
+import { DeleteChapterButton } from "@/components/admin/DeleteChapterButton";
 
 type GlobalChaptersPageProps = {
   searchParams: Promise<{
@@ -110,12 +111,7 @@ export default async function GlobalChaptersPage({
                   ) : (
                     <form action={deleteChapterAction}>
                       <input name="chapterId" type="hidden" value={chapter.id} />
-                      <button
-                        className="inline-flex items-center justify-center rounded-full border border-[rgba(209,0,52,0.22)] px-4 py-2 text-sm font-semibold text-[var(--teal)] transition hover:border-[rgba(209,0,52,0.4)] hover:bg-[rgba(209,0,52,0.05)]"
-                        type="submit"
-                      >
-                        Delete chapter
-                      </button>
+                      <DeleteChapterButton />
                     </form>
                   )}
                 </div>
