@@ -1103,6 +1103,13 @@ html.cursor-large * {
   color: rgba(23, 53, 51, 0.6);
 }
 
+.field-shell:has(input:required) > .field-label::after,
+.field-shell:has(select:required) > .field-label::after,
+.field-shell:has(textarea:required) > .field-label::after {
+  content: " *";
+  color: #b30738;
+}
+
 .field-input,
 .field-textarea {
   width: 100%;
