@@ -104,7 +104,7 @@ export default async function RegisterPage({
                 <input name="next" type="hidden" value={nextPath} />
 
                 <label className="field-shell">
-                  <span className="field-label text-slate-300/72">Display name</span>
+                  <span className="field-label">Display name</span>
                   <input
                     className="field-input"
                     defaultValue=""
@@ -117,7 +117,7 @@ export default async function RegisterPage({
                 </label>
 
                 <label className="field-shell">
-                  <span className="field-label text-slate-300/72">Username</span>
+                  <span className="field-label">Username</span>
                   <input
                     autoComplete="username"
                     className="field-input"
@@ -131,7 +131,7 @@ export default async function RegisterPage({
                 </label>
 
                 <label className="field-shell">
-                  <span className="field-label text-slate-300/72">Password</span>
+                  <span className="field-label">Password</span>
                   <input
                     autoComplete="new-password"
                     className="field-input"
@@ -145,9 +145,7 @@ export default async function RegisterPage({
                 </label>
 
                 <label className="field-shell">
-                  <span className="field-label text-slate-300/72">
-                    Confirm password
-                  </span>
+                  <span className="field-label">Confirm password</span>
                   <input
                     autoComplete="new-password"
                     className="field-input"
