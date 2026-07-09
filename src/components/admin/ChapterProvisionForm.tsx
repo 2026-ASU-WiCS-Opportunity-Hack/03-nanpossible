@@ -26,6 +26,7 @@ function getProvisionNotice(url: string, warning?: string | null) {
 export function ChapterProvisionForm() {
   const [name, setName] = useState("");
   const [subdomain, setSubdomain] = useState("");
+  const [subdomainTouched, setSubdomainTouched] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
   const [isPending, startTransition] = useTransition();
@@ -94,21 +95,28 @@ export function ChapterProvisionForm() {
           <input
             className="field-input"
             name="name"
-            onChange={(event) => setName(event.target.value)}
+            onChange={(event) => {
+      const val = event.target.value;
+      setName(val);
+      if (!subdomainTouched) setSubdomain(slugify(val)); 
+        }}
             required
             type="text"
           />
         </label>
-
         <label className="field-shell">
           <span className="field-label">Subdomain</span>
           <input
-            className="field-input"
-            name="subdomain"
-            onChange={(event) => setSubdomain(event.target.value)}
-            required
-            type="text"
-          />
+      className="field-input"
+      name="subdomain"
+        value={subdomain}
+        onChange={(event) => {
+    setSubdomainTouched(true);
+    setSubdomain(event.target.value);
+  }}
+  required
+  type="text"
+/>
           <span className="text-xs font-semibold uppercase tracking-[0.16em] text-foreground/45">
             Preview: {slugPreview}.{process.env.NEXT_PUBLIC_SITE_DOMAIN ?? "localhost:3000"}
           </span>
