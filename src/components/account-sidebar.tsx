@@ -274,14 +274,9 @@ function SidebarSection({
       <nav className="account-sidebar-links">
         {items.map((item) => {
           const isActive = pathname === item.href;
-
-          return (
-            <Link
-              className={`account-sidebar-link ${isActive ? "is-active" : ""}`}
-              href={item.href}
-              key={item.href}
-              onClick={onNavigate}
-            >
+          const linkClassName = `account-sidebar-link ${isActive ? "is-active" : ""}`;
+          const linkContent = (
+            <>
               <span className="account-sidebar-icon">
                 <SidebarIcon name={getIconName(item.href)} />
               </span>
@@ -289,6 +284,34 @@ function SidebarSection({
               <span className="account-sidebar-link-arrow">
                 <ChevronIcon />
               </span>
+            </>
+          );
+
+          if (item.href === "/guide") {
+            return (
+              <Link
+                className={linkClassName}
+                href="/guide/index.html"
+                key={item.href}
+                onClick={(event) => {
+                  event.preventDefault();
+                  onNavigate?.();
+                  window.location.assign("/guide/index.html");
+                }}
+              >
+                {linkContent}
+              </Link>
+            );
+          }
+
+          return (
+            <Link
+              className={linkClassName}
+              href={item.href}
+              key={item.href}
+              onClick={onNavigate}
+            >
+              {linkContent}
             </Link>
           );
         })}

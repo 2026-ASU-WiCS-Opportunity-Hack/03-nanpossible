@@ -35,12 +35,34 @@ function DrawerLink({
   label: string;
   onClick: () => void;
 }) {
-  return (
-    <Link className="account-sidebar-link" href={href} onClick={onClick}>
+  const linkContent = (
+    <>
       <span className="account-sidebar-icon">
         <span className="block h-2.5 w-2.5 rounded-full bg-white/70" />
       </span>
       <span className="truncate">{label}</span>
+    </>
+  );
+
+  if (href === "/guide") {
+    return (
+      <Link
+        className="account-sidebar-link"
+        href="/guide/index.html"
+        onClick={(event) => {
+          event.preventDefault();
+          onClick();
+          window.location.assign("/guide/index.html");
+        }}
+      >
+        {linkContent}
+      </Link>
+    );
+  }
+
+  return (
+    <Link className="account-sidebar-link" href={href} onClick={onClick}>
+      {linkContent}
     </Link>
   );
 }
