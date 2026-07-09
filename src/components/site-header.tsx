@@ -13,21 +13,17 @@ type SiteHeaderProps = {
 
 export function SiteHeader({ siteContext, viewer }: SiteHeaderProps) {
   const chapterLabel = siteContext.tenant?.name ?? null;
-  const accountLink = viewer
-    ? {
-        href: "/account",
-        label: "Open account",
-      }
-    : {
-        href: "/login",
-        label: "Sign in",
-      };
+
   const voiceNavigationRoutes = [
     { href: "/", label: "Home" },
     ...navigationItems,
     ...(viewer ? getAccountNavItems(viewer.role) : []),
-    accountLink,
-    ...(!viewer ? [{ href: "/register", label: "Register" }] : []),
+    ...(!viewer
+      ? [
+          { href: "/login", label: "Sign in" },
+          { href: "/register", label: "Register" },
+        ]
+      : []),
   ];
 
   return (
@@ -73,19 +69,33 @@ export function SiteHeader({ siteContext, viewer }: SiteHeaderProps) {
               navigationRoutes={voiceNavigationRoutes}
               variant="desktop"
             />
-            <Link
-              className="button-link secondary hidden min-w-[8.75rem] px-4 py-2.5 text-sm sm:inline-flex sm:min-w-[9.5rem]"
-              href={accountLink.href}
-            >
-              {accountLink.label}
-            </Link>
+            {viewer ? (
+              <form
+                action="/auth/sign-out"
+                method="post"
+                className="hidden sm:block"
+              >
+                <button
+                  type="submit"
+                  className="button-link secondary px-4 py-2.5 text-sm"
+                >
+                  Logout
+                </button>
+              </form>
+            ) : (
+              <Link
+                href="/login"
+                className="button-link secondary hidden min-w-[8.75rem] px-4 py-2.5 text-sm sm:inline-flex sm:min-w-[9.5rem]"
+              >
+                Sign in
+              </Link>
+            )}
             <div className="flex items-center gap-2 lg:hidden">
               <AccessibilityPreferencesWidget
                 navigationRoutes={voiceNavigationRoutes}
                 variant="mobile"
               />
               <MobileNav
-                accountLink={accountLink}
                 chapterLabel={chapterLabel}
                 items={navigationItems}
                 viewer={viewer}
