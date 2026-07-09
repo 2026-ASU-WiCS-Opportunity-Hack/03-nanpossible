@@ -6,42 +6,65 @@
   <title>WIAL Platform Guide</title>
   <style>
     :root {
-      --teal: #205c59;
-      --teal-light: #e8f0ef;
-      --copper: #c8642f;
-      --cream: #fffaf2;
-      --ink: #1a1a1a;
-      --muted: #555;
-      --border: #e0ddd8;
-      --radius: 0.75rem;
-      --shadow: 0 1px 3px rgba(0,0,0,0.08);
+      --burgundy: #a80030;
+      --burgundy-dark: #8f0029;
+      --olive: #9a9b00;
+      --cream: #fffaf4;
+      --surface: #fffefb;
+      --surface-soft: #fff8f5;
+      --ink: #2a2624;
+      --muted: #67605d;
+      --border: #eadfda;
+      --radius: 1.4rem;
+      --shadow: 0 18px 44px rgba(47, 37, 31, 0.08);
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       color: var(--ink);
-      background: var(--cream);
+      background:
+        radial-gradient(circle at 0 0, rgba(168, 0, 48, 0.045), transparent 26rem),
+        linear-gradient(180deg, #fffefb 0%, var(--cream) 42rem, #fffefb 100%);
       line-height: 1.65;
       -webkit-font-smoothing: antialiased;
     }
-    a { color: var(--teal); text-decoration: none; }
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 0.75rem;
+      background: var(--burgundy-dark);
+      z-index: 200;
+    }
+    a { color: var(--burgundy); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
     /* Layout */
-    .page { display: flex; min-height: 100vh; }
+    .page {
+      display: flex;
+      gap: 1.75rem;
+      max-width: 1320px;
+      min-height: 100vh;
+      margin: 0 auto;
+      padding: 3rem 2rem 4rem;
+    }
     .sidebar {
-      width: 280px; flex-shrink: 0; background: #fff; border-right: 1px solid var(--border);
-      padding: 2rem 0; position: sticky; top: 0; height: 100vh; overflow-y: auto;
+      width: 300px; flex-shrink: 0; background: rgba(255, 254, 251, 0.96);
+      border: 1px solid var(--border); border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 1.6rem 0; position: sticky; top: 2rem; height: calc(100vh - 4rem); overflow-y: auto;
     }
     .sidebar-brand { padding: 0 1.5rem 1.5rem; border-bottom: 1px solid var(--border); margin-bottom: 1rem; }
-    .sidebar-brand h2 { font-size: 1.1rem; color: var(--teal); }
+    .sidebar-brand h2 { font-size: 1.1rem; color: var(--burgundy); }
     .sidebar-brand p { font-size: 0.8rem; color: var(--muted); margin-top: 0.25rem; }
     .sidebar nav { padding: 0 0.75rem; }
     .sidebar nav ul { list-style: none; }
     .sidebar nav > ul > li { margin-bottom: 0.25rem; }
     .nav-section {
       font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
-      color: var(--muted); padding: 1rem 0.75rem 0.5rem; border-top: 1px solid var(--border);
+      color: rgba(42, 38, 36, 0.5); padding: 1rem 0.75rem 0.5rem; border-top: 1px solid var(--border);
       margin-top: 0.5rem;
     }
     .nav-section:first-child { border-top: none; margin-top: 0; }
@@ -49,18 +72,37 @@
       display: block; padding: 0.4rem 0.75rem; border-radius: 0.5rem;
       font-size: 0.88rem; color: var(--ink); transition: background 0.15s;
     }
-    .sidebar nav a:hover { background: var(--teal-light); text-decoration: none; }
-    .sidebar nav a.active { background: var(--teal); color: #fff; }
+    .sidebar nav a:hover { background: rgba(168, 0, 48, 0.07); text-decoration: none; color: var(--burgundy); }
+    .sidebar nav a.active { background: var(--burgundy); color: #fff; }
 
     .main { flex: 1; min-width: 0; }
     .hero {
-      background: var(--teal); color: #fff; padding: 4rem 3rem 3rem;
+      background: rgba(255, 254, 251, 0.96);
+      color: var(--ink);
+      padding: 3rem 3.25rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin-bottom: 1.75rem;
     }
-    .hero h1 { font-size: 2.4rem; font-weight: 700; line-height: 1.2; }
-    .hero p { font-size: 1.15rem; margin-top: 1rem; opacity: 0.88; max-width: 640px; }
-    .content { max-width: 800px; padding: 2.5rem 3rem 5rem; }
+    .hero h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(3rem, 7vw, 5.4rem);
+      font-weight: 500;
+      line-height: 0.95;
+      color: var(--burgundy);
+    }
+    .hero p { font-size: 1.12rem; margin-top: 1.25rem; color: var(--muted); max-width: 680px; }
+    .content {
+      max-width: none;
+      padding: 2.5rem 3rem 5rem;
+      background: rgba(255, 254, 251, 0.9);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
     .content h2 {
-      font-size: 1.6rem; font-weight: 700; color: var(--teal);
+      font-size: 1.6rem; font-weight: 700; color: var(--burgundy);
       margin-top: 3rem; margin-bottom: 0.75rem; padding-top: 1.5rem;
       border-top: 1px solid var(--border);
     }
@@ -74,7 +116,7 @@
     .content ul, .content ol { padding-left: 1.5rem; margin-bottom: 1rem; }
     .content li { margin-bottom: 0.35rem; }
     .content code {
-      background: var(--teal-light); padding: 0.15em 0.4em; border-radius: 4px;
+      background: rgba(168, 0, 48, 0.07); padding: 0.15em 0.4em; border-radius: 4px;
       font-size: 0.88em; font-family: "SF Mono", Menlo, monospace;
     }
     .content pre {
@@ -86,19 +128,19 @@
     /* Cards */
     .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; margin: 1rem 0 1.5rem; }
     .card {
-      background: #fff; border: 1px solid var(--border); border-radius: var(--radius);
+      background: var(--surface); border: 1px solid var(--border); border-radius: 1rem;
       padding: 1.25rem; box-shadow: var(--shadow);
     }
-    .card h4 { font-size: 0.95rem; font-weight: 600; color: var(--teal); margin-bottom: 0.35rem; }
+    .card h4 { font-size: 0.95rem; font-weight: 600; color: var(--burgundy); margin-bottom: 0.35rem; }
     .card p { font-size: 0.85rem; color: var(--muted); margin: 0; }
 
     /* Callouts */
     .callout {
-      border-left: 4px solid var(--copper); background: #fff8f0;
+      border-left: 4px solid var(--olive); background: var(--surface-soft);
       padding: 1rem 1.25rem; border-radius: 0 var(--radius) var(--radius) 0;
       margin: 1rem 0 1.5rem;
     }
-    .callout.info { border-left-color: var(--teal); background: var(--teal-light); }
+    .callout.info { border-left-color: var(--burgundy); background: rgba(168, 0, 48, 0.055); }
     .callout strong { display: block; font-size: 0.85rem; margin-bottom: 0.25rem; }
     .callout p { font-size: 0.88rem; margin: 0; }
 
@@ -108,22 +150,24 @@
       text-align: left; padding: 0.6rem 0.75rem; border-bottom: 1px solid var(--border);
       font-size: 0.88rem;
     }
-    .content th { font-weight: 600; color: var(--teal); background: var(--teal-light); }
+    .content th { font-weight: 600; color: var(--burgundy); background: rgba(168, 0, 48, 0.06); }
 
     /* Responsive */
     .mobile-nav { display: none; }
     @media (max-width: 860px) {
+      .page { display: block; padding: 1.75rem 1rem 3rem; }
       .sidebar { display: none; }
       .mobile-nav {
-        display: block; background: var(--teal); padding: 0.75rem 1.5rem;
-        position: sticky; top: 0; z-index: 100;
+        display: block; background: var(--burgundy); padding: 0.75rem 1.5rem;
+        position: sticky; top: 0.75rem; z-index: 100; border-radius: 1rem;
+        box-shadow: var(--shadow);
       }
       .mobile-nav summary { color: #fff; font-weight: 600; cursor: pointer; font-size: 0.95rem; }
       .mobile-nav nav { background: #fff; margin-top: 0.5rem; border-radius: var(--radius); padding: 0.5rem; }
       .mobile-nav a { display: block; padding: 0.5rem 0.75rem; color: var(--ink); font-size: 0.9rem; }
-      .hero { padding: 2.5rem 1.5rem 2rem; }
-      .hero h1 { font-size: 1.8rem; }
-      .content { padding: 1.5rem 1.5rem 3rem; }
+      .hero { padding: 2rem 1.5rem; margin-top: 1rem; }
+      .hero h1 { font-size: 2.5rem; }
+      .content { padding: 1.5rem 1.5rem 3rem; margin-top: 1rem; }
     }
   </style>
 </head>
