@@ -16,7 +16,6 @@ export async function updateProfileAction(formData: FormData) {
   await requireAccountViewer("/account/profile");
 
   const name = String(formData.get("name") ?? "").trim();
-  const email = String(formData.get("email") ?? "").trim().toLowerCase();
   const phone = String(formData.get("phone") ?? "").trim();
   const location = String(formData.get("location") ?? "").trim();
   const bio = String(formData.get("bio") ?? "").trim();
@@ -24,10 +23,6 @@ export async function updateProfileAction(formData: FormData) {
 
   if (!name) {
     redirect(buildProfilePath("error", "name-required"));
-  }
-
-  if (!email || !email.includes("@")) {
-    redirect(buildProfilePath("error", "email-invalid"));
   }
 
   if (photoUrl) {
@@ -65,19 +60,8 @@ export async function updateProfileAction(formData: FormData) {
   });
 
   if (profileError) {
+    console.error("update_my_profile failed:", profileError); // TEMP
     redirect(buildProfilePath("error", "save-failed"));
-  }
-
-  if (email !== (user.email ?? "").toLowerCase()) {
-    const { error: emailError } = await supabase.auth.updateUser({
-      email,
-    });
-
-    if (emailError) {
-      redirect(buildProfilePath("error", "email-update-failed"));
-    }
-
-    redirect(buildProfilePath("notice", "email-pending"));
   }
 
   redirect(buildProfilePath("notice", "saved"));

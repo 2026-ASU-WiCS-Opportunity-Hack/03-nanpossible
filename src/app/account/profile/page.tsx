@@ -14,8 +14,6 @@ function getProfileNotice(notice?: string) {
   switch (notice) {
     case "saved":
       return "Your account details were updated.";
-    case "email-pending":
-      return "Your profile was saved. Confirm the email change from your inbox to finish updating your address.";
     default:
       return null;
   }
@@ -25,14 +23,10 @@ function getProfileError(error?: string) {
   switch (error) {
     case "name-required":
       return "Display name is required.";
-    case "email-invalid":
-      return "Enter a valid email address.";
     case "photo-invalid":
       return "Photo URL must be a full URL.";
     case "missing-config":
       return "Supabase auth is not configured in this environment.";
-    case "email-update-failed":
-      return "WIAL could not begin the email-change flow. Try again later.";
     case "save-failed":
       return "WIAL could not save the profile details. Try again.";
     default:
@@ -51,7 +45,7 @@ export default async function ProfilePage({ searchParams }: ProfilePageProps) {
   return (
     <AccountPageShell
       badge="Live profile editor"
-      description="Manage the self-service profile fields that travel with your WIAL account while keeping role and chapter membership read-only."
+      description="Manage the self-service profile fields that travel with your WIAL account while keeping role, chapter membership, and email read-only."
       eyebrow="Account settings"
       title="Update account details"
     >
@@ -73,16 +67,10 @@ export default async function ProfilePage({ searchParams }: ProfilePageProps) {
                 />
               </label>
 
-              <label className="field-shell">
+              <div className="field-shell is-readonly">
                 <span className="field-label">Email</span>
-                <input
-                  className="field-input"
-                  defaultValue={viewer.email}
-                  name="email"
-                  required
-                  type="email"
-                />
-              </label>
+                <p className="field-static">{viewer.email}</p>
+              </div>
 
               <label className="field-shell">
                 <span className="field-label">Phone</span>
@@ -144,9 +132,8 @@ export default async function ProfilePage({ searchParams }: ProfilePageProps) {
                 Save account details
               </button>
               <p className="text-sm leading-6 text-foreground/60">
-                Email changes go through Supabase confirmation. Role upgrades
-                happen through the dedicated workspace routes, while chapter
-                assignment itself remains admin-managed.
+                Email, role, and chapter assignment are admin-managed and
+                cannot be changed from this page.
               </p>
             </div>
           </form>
