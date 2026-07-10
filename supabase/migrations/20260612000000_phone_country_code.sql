@@ -1,3 +1,7 @@
+-- Add contact_phone_country_code to chapters table
+alter table public.chapters
+  add column if not exists contact_phone_country_code text;
+
 -- Add phone_country_code to coaches table
 alter table public.coaches
   add column if not exists phone_country_code text;
@@ -102,7 +106,6 @@ as $$
     c.email,
     c.phone,
     c.phone_country_code,
-    c.contact_phone_country_code
     c.photo_url,
     c.cert_level,
     c.location_city,
