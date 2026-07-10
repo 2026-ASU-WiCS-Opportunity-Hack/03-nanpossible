@@ -120,6 +120,14 @@ export async function middleware(request: NextRequest) {
 
   requestHeaders.set("x-wial-host", hostname);
 
+  if (pathname.startsWith("/guide")) {
+    return NextResponse.next({
+      request: {
+        headers: requestHeaders,
+      },
+    });
+  }
+
   const chapter = tenantCandidate
     ? await getCachedChapter(tenantCandidate)
     : null;
@@ -152,7 +160,6 @@ export async function middleware(request: NextRequest) {
     pathname.startsWith("/api") ||
     shouldBypassTenantRewrite(pathname) ||
     pathname.startsWith("/sites") ||
-    pathname.startsWith("/guide") ||
     pathname === "/favicon.ico" ||
     pathname === "/robots.txt" ||
     pathname === "/sitemap.xml" ||
