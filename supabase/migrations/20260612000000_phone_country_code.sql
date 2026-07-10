@@ -50,8 +50,8 @@ begin
 end;
 $$;
 
--- Revoke old signature, grant new one
-revoke all on function public.update_my_profile(text, text, text, text, text) from public;
+-- Drop old signature, grant new one
+drop function if exists public.update_my_profile(text, text, text, text, text);
 grant execute on function public.update_my_profile(text, text, text, text, text, text) to authenticated;
 
 -- Update search_coaches RPC to return phone_country_code
