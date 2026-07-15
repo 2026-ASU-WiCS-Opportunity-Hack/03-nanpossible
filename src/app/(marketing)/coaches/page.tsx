@@ -61,7 +61,7 @@ export default async function CoachesDirectoryPage() {
         {directoryIsEmpty ? (
           <section className="site-panel rounded-[2rem] px-6 py-12 text-center md:px-10 md:py-16">
             <span className="eyebrow">The coach directory is growing</span>
-            <h2 className="mx-auto mt-4 max-w-2xl font-display text-[clamp(2rem,2vw,3git rem)] leading-[1.05] tracking-[-0.05em] text-teal-deep">
+            <h2 className="mx-auto mt-4 max-w-2xl font-display text-[clamp(2rem,2vw,3rem)] leading-[1.05] tracking-[-0.05em] text-teal-deep">
               No coaches have been approved yet.
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-base leading-7 text-foreground/72">
