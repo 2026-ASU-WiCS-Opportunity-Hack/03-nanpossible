@@ -14,11 +14,11 @@ export const certificationHero = {
   eyebrow: "Global certification hub",
   title: "Certification pathways, renewal expectations, and LMS access in one place.",
   intro:
-    "WIAL certification remains one global standard. This hub lays out the four coaching levels, the progression path between them, the application packets WIAL uses today, the renewal requirements that keep credentials current, and the external LMS links coaches already rely on.",
+    "WIAL offers four levels of certification for Action Learning coaches. Each level represents increasing expertise, experience, and leadership in the Action Learning community. WIAL is an ICF-accredited training provider, and our CALC certification is an accredited ICF CCE program.",
   metrics: [
     { label: "Certification levels", value: "4" },
-    { label: "Renewal cycle", value: "1–2 yrs" },
-    { label: "Badge workflow", value: "Credly" },
+    { label: "ICF accredited", value: "CCE" },
+    { label: "Global recognition", value: "Yes" },
   ],
   anchors: [
     { id: "calc", label: "CALC" },
@@ -27,7 +27,6 @@ export const certificationHero = {
     { id: "malc", label: "MALC" },
     { id: "progression", label: "Progression" },
     { id: "recertification", label: "Recertification" },
-    { id: "forms", label: "Forms" },
     { id: "lms", label: "LMS" },
   ],
 } as const;
@@ -38,9 +37,9 @@ export const certificationTracks: CertificationTrack[] = [
     level: "CALC",
     anchor: "calc",
     title: "Certified Action Learning Coach",
-    tagline: "The first formal WIAL coaching credential.",
+    tagline: "The entry-level WIAL coaching credential.",
     summary:
-      "CALC is the entry point into formal WIAL certification. It focuses on practical team coaching proficiency, observed coaching, written reflection, and an understanding of the full Action Learning process.",
+      "The Certified Action Learning Coach (CALC) is the first formal certification level in the WIAL model. CALCs can coach Action Learning sessions and form the first formal certification step in the WIAL model. This certification focuses on practical team coaching proficiency, observed coaching, written reflection, and an understanding of the full Action Learning process.",
     eligibility: [
       "Complete the WIAL Foundations, CALC1, and CALC2 sequence, or an approved intensive that blends the full curriculum.",
       "Use the Foundations program as the pre-requisite for CALC1 and CALC2.",
@@ -49,22 +48,22 @@ export const certificationTracks: CertificationTrack[] = [
     requirements: [
       "Participate in the Foundations program and both CALC workshops or the combined intensive track.",
       "Coach Action Learning sessions in CALC1 and CALC2 and receive feedback from peers and the lead.",
-      "Submit the CALC certification paper and related reflections described in the current requirements packet.",
-      "Use the WIAL portal route when recertifying after a lapse of more than two years, or arrange an audited session with a S/MALC as outlined in the current policy.",
+      "Submit the CALC certification paper and related reflections.",
+      "Complete the CALC application and review process.",
     ],
     progressionLabel:
-      "Start here, then build coaching hours and longer-term project experience before applying for PALC.",
+      "After earning CALC, build coaching hours and longer-term project experience before applying for PALC.",
     lmsSummary:
-      "Use the LMS to access the CALC e-learning material, micro-learning modules, and recertification refresh options.",
+      "Use the LMS to access CALC e-learning material and recertification refresh options.",
   },
   {
     key: "palc",
     level: "PALC",
     anchor: "palc",
     title: "Professional Action Learning Coach",
-    tagline: "For CALCs with documented practice and longer-term project depth.",
+    tagline: "For CALCs with documented practice and project depth.",
     summary:
-      "PALC recognizes coaches who have already built a serious body of Action Learning work and can lead an introductory WIAL learning experience under senior observation.",
+      "The Professional Action Learning Coach (PALC) certification recognizes coaches who have built a serious body of Action Learning work and can lead introductory WIAL learning experiences under senior observation. PALCs are coaches who have proven their ability and have accumulated meaningful WIAL Action Learning experience.",
     eligibility: [
       "Be a Certified Action Learning Coach (CALC).",
       "Document one hundred (100) hours of Action Learning coaching, including at least one longer-term project that spans weeks or months.",
@@ -78,18 +77,18 @@ export const certificationTracks: CertificationTrack[] = [
     progressionLabel:
       "PALC is the bridge from coached participation to independently leading introductory Action Learning experiences.",
     lmsSummary:
-      "Use the LMS as the launch point for the PALC-related learning path, prerequisite refreshers, and supporting course access.",
+      "Use the LMS as the launch point for PALC-related learning paths and prerequisite refreshers.",
   },
   {
     key: "salc",
     level: "SALC",
     anchor: "salc",
     title: "Senior Action Learning Coach",
-    tagline: "For experienced coaches ready to lead core WIAL certification programs.",
+    tagline: "For experienced coaches ready to lead core WIAL programs.",
     summary:
-      "SALC marks the move into senior coaching leadership. The current WIAL requirements focus on observed program leadership, critique of participant work, and committee-level review.",
+      "The Senior Action Learning Coach (SALC) certification marks the move into senior coaching leadership. SALCs are cleared to lead all WIAL programs and represent a higher level of experience and readiness. The certification focuses on observed program leadership, critique of participant work, and committee-level review.",
     eligibility: [
-      "Hold the documented coaching-hour threshold described in the current SALC requirements packet, including at least one longer-term project with a minimum of four 90-minute sessions.",
+      "Hold the documented coaching-hour threshold described in the current SALC requirements, including at least one longer-term project with a minimum of four 90-minute sessions.",
       "Count a minimum of fifty (50) hours as coaching; the balance may include WIAL-sponsored or organized continuing education activity.",
       "PALCs typically satisfy part of this project requirement through their PALC application work.",
     ],
@@ -99,9 +98,9 @@ export const certificationTracks: CertificationTrack[] = [
       "Complete the SALC application and committee review process.",
     ],
     progressionLabel:
-      "SALC is the step that clears a coach to lead core certification experiences and mentor developing coaches.",
+      "SALC clears a coach to lead core certification experiences and mentor developing coaches.",
     lmsSummary:
-      "The LMS remains the external launch point for senior-level WIAL learning pathways and program access; the website does not duplicate those courses.",
+      "The LMS remains the external launch point for senior-level WIAL learning pathways and program access.",
   },
   {
     key: "malc",
@@ -110,7 +109,7 @@ export const certificationTracks: CertificationTrack[] = [
     title: "Master Action Learning Coach",
     tagline: "The highest WIAL certification level and thought-leadership track.",
     summary:
-      "MALC is designed for seasoned SALCs who combine significant coaching volume with published thought leadership, conference presence, and continued service to the WIAL method.",
+      "The Master Action Learning Coach (MALC) is the highest level in the WIAL hierarchy. MALCs are thought leaders in the Action Learning community who combine significant coaching volume with published thought leadership, conference presence, and continued service to the WIAL method.",
     eligibility: [
       "Be a Senior Action Learning Coach for at least three years.",
       "Document five hundred (500) hours of Action Learning coaching, training, and/or consulting across diverse clients and projects.",
@@ -124,7 +123,7 @@ export const certificationTracks: CertificationTrack[] = [
     progressionLabel:
       "MALC is the capstone path for senior coaches who also contribute as visible thought leaders in the wider Action Learning field.",
     lmsSummary:
-      "The website links outward to WIAL's existing LMS and does not duplicate advanced learning modules or credential-management workflows.",
+      "The website links outward to WIAL's existing LMS and does not duplicate advanced learning modules.",
   },
 ];
 
@@ -158,7 +157,7 @@ export const certificationRecertificationRules: CertificationRecertificationRule
     ],
     expiredPolicy: [
       "If the credential expired within two years, renew by meeting the standard CALC renewal requirements.",
-      "If the credential expired for more than two years, complete the WIAL portal e-learning assessments or arrange an audited session with a S/MALC as described in the CALC packet.",
+      "If the credential expired for more than two years, complete the WIAL portal e-learning assessments or arrange an audited session with a S/MALC.",
     ],
   },
   {
@@ -189,174 +188,3 @@ export const certificationRecertificationRules: CertificationRecertificationRule
     ],
   },
 ];
-
-export const certificationDocuments: CertificationDocument[] = [
-  {
-    id: "calc-requirements",
-    track: "calc",
-    kind: "requirements",
-    label: "CALC requirements PDF",
-    href: "https://wial.org/wp-content/uploads/CALC_Certification_Requirements_V2023.pdf",
-    sourceUrl: "https://wial.org/wp-content/uploads/CALC_Certification_Requirements_V2023.pdf",
-    mirrored: false,
-    fileType: "pdf",
-    updatedLabel: "Current requirements packet",
-  },
-  {
-    id: "calc-application",
-    track: "calc",
-    kind: "application",
-    label: "CALC application form",
-    href: "/downloads/certification/calc-application.doc",
-    sourceUrl: "https://wial.org/wp-content/uploads/CALC_Application_2020_Oct.doc",
-    mirrored: true,
-    fileType: "doc",
-    updatedLabel: "Mirrored from the current WIAL application form",
-  },
-  {
-    id: "calc-sample-paper",
-    track: "calc",
-    kind: "sample",
-    label: "CALC sample paper",
-    href: "https://wial.org/wp-content/uploads/WIAL-CALC-Sample-Paper-V2020.pdf",
-    sourceUrl: "https://wial.org/wp-content/uploads/WIAL-CALC-Sample-Paper-V2020.pdf",
-    mirrored: false,
-    fileType: "pdf",
-    updatedLabel: "Current sample paper download",
-  },
-  {
-    id: "calc-renewal",
-    track: "calc",
-    kind: "recertification",
-    label: "CALC renewal and lapse policy",
-    href: "https://wial.org/wp-content/uploads/CALC_Certification_Requirements_V2023.pdf",
-    sourceUrl: "https://wial.org/wp-content/uploads/CALC_Certification_Requirements_V2023.pdf",
-    mirrored: false,
-    fileType: "pdf",
-    updatedLabel: "Renewal rules are included in the current CALC packet",
-  },
-  {
-    id: "palc-requirements",
-    track: "palc",
-    kind: "requirements",
-    label: "PALC requirements PDF",
-    href: "https://wial.org/wp-content/uploads/PALC_Certification_Requirements_V2022.pdf",
-    sourceUrl: "https://wial.org/wp-content/uploads/PALC_Certification_Requirements_V2022.pdf",
-    mirrored: false,
-    fileType: "pdf",
-    updatedLabel: "Current requirements packet",
-  },
-  {
-    id: "palc-application",
-    track: "palc",
-    kind: "application",
-    label: "PALC application form",
-    href: "/downloads/certification/palc-application.doc",
-    sourceUrl: "https://wial.org/wp-content/uploads/PALC_Application_2020_Oct.doc",
-    mirrored: true,
-    fileType: "doc",
-    updatedLabel: "Mirrored from the current WIAL application form",
-  },
-  {
-    id: "palc-renewal",
-    track: "palc",
-    kind: "recertification",
-    label: "PALC renewal requirements",
-    href: "https://wial.org/wp-content/uploads/PALC_Certification_Requirements_V2022.pdf",
-    sourceUrl: "https://wial.org/wp-content/uploads/PALC_Certification_Requirements_V2022.pdf",
-    mirrored: false,
-    fileType: "pdf",
-    updatedLabel: "Renewal rules are included in the current PALC packet",
-  },
-  {
-    id: "salc-requirements",
-    track: "salc",
-    kind: "requirements",
-    label: "SALC requirements PDF",
-    href: "https://wial.org/wp-content/uploads/SALC_Certification_Requirements_V2022.pdf",
-    sourceUrl: "https://wial.org/wp-content/uploads/SALC_Certification_Requirements_V2022.pdf",
-    mirrored: false,
-    fileType: "pdf",
-    updatedLabel: "Current requirements packet",
-  },
-  {
-    id: "salc-application",
-    track: "salc",
-    kind: "application",
-    label: "SALC application form",
-    href: "/downloads/certification/salc-application.doc",
-    sourceUrl: "https://wial.org/wp-content/uploads/SALC_Application_2020_Oct.doc",
-    mirrored: true,
-    fileType: "doc",
-    updatedLabel: "Mirrored from the current WIAL application form",
-  },
-  {
-    id: "salc-renewal",
-    track: "salc",
-    kind: "recertification",
-    label: "SALC renewal requirements",
-    href: "https://wial.org/wp-content/uploads/SALC_Certification_Requirements_V2022.pdf",
-    sourceUrl: "https://wial.org/wp-content/uploads/SALC_Certification_Requirements_V2022.pdf",
-    mirrored: false,
-    fileType: "pdf",
-    updatedLabel: "Renewal rules are included in the current SALC packet",
-  },
-  {
-    id: "malc-requirements",
-    track: "malc",
-    kind: "requirements",
-    label: "MALC requirements PDF",
-    href: "https://wial.org/wp-content/uploads/MALC-CertificationRequirements-202006.pdf",
-    sourceUrl: "https://wial.org/wp-content/uploads/MALC-CertificationRequirements-202006.pdf",
-    mirrored: false,
-    fileType: "pdf",
-    updatedLabel: "Current requirements packet",
-  },
-  {
-    id: "malc-application",
-    track: "malc",
-    kind: "application",
-    label: "MALC application form",
-    href: "/downloads/certification/malc-application.doc",
-    sourceUrl: "https://wial.org/wp-content/uploads/MALC_Application_2020_Oct.doc",
-    mirrored: true,
-    fileType: "doc",
-    updatedLabel: "Mirrored from the current WIAL application form",
-  },
-  {
-    id: "malc-renewal",
-    track: "malc",
-    kind: "recertification",
-    label: "MALC renewal requirements",
-    href: "https://wial.org/wp-content/uploads/MALC-CertificationRequirements-202006.pdf",
-    sourceUrl: "https://wial.org/wp-content/uploads/MALC-CertificationRequirements-202006.pdf",
-    mirrored: false,
-    fileType: "pdf",
-    updatedLabel: "Renewal rules are included in the current MALC packet",
-  },
-  {
-    id: "badge-faq",
-    track: "global",
-    kind: "faq",
-    label: "Digital badging FAQ",
-    href: "https://wial.org/wp-content/uploads/WIAL-Certification-Digital-Badging-FAQs.pdf",
-    sourceUrl: "https://wial.org/wp-content/uploads/WIAL-Certification-Digital-Badging-FAQs.pdf",
-    mirrored: false,
-    fileType: "pdf",
-    updatedLabel: "Current Credly and badging FAQ",
-  },
-];
-
-export function getCertificationDocumentsForTrack(
-  track: CertificationTrackKey,
-  kind?: CertificationDocument["kind"],
-) {
-  return certificationDocuments.filter((document) => {
-    if (document.track !== track) {
-      return false;
-    }
-
-    return kind ? document.kind === kind : true;
-  });
-}
-

@@ -1,73 +1,89 @@
 [
   {
-    "id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaa0001",
-    "chapterId": null,
-    "slug": "home",
-    "title": "World Institute for Action Learning",
-    "published": true,
-    "bodyRichtext": {
-      "heroIntro": "WIAL is the world's leading certifying body for Action Learning, unifying a global network of affiliates, coaches, and chapter sites around one shared standard.",
-      "metrics": [
-        { "label": "Chapter-ready architecture", "value": "20+" },
-        { "label": "Certification paths", "value": "4" },
-        { "label": "Global shell", "value": "1" }
-      ],
-      "sections": [
-        {
-          "type": "feature_grid",
-          "title": "What this foundation makes possible",
-          "items": [
-            {
-              "eyebrow": "Certification",
-              "title": "A single standard across all chapters",
-              "body": "The new platform preserves one global WIAL brand while letting chapters publish local content on top of the same layout and governance model."
-            },
-            {
-              "eyebrow": "Directory",
-              "title": "A better starting point for coach discovery",
-              "body": "The shared schema already includes the coaches, certifications, and payments tables needed for the later AI-powered directory and dues workflows."
-            },
-            {
-              "eyebrow": "Migration",
-              "title": "Safe migration over blind copy",
-              "body": "Current WordPress content was reviewed page by page. Broken archive links, unsafe endpoints, and compromised paths were excluded instead of copied forward."
-            }
-          ]
-        },
-        {
-          "type": "prose",
-          "title": "Action Learning with one global operating model",
-          "paragraphs": [
-            "Search-indexed content from the current WIAL homepage and About Us page describes WIAL as a rapidly growing international not-for-profit organization supported by affiliates around the world.",
-            "The current platform also emphasizes practical business impact: Action Learning is presented as a way to solve urgent challenges while developing leaders, teams, and organizations at the same time."
-          ],
-          "bullets": [
-            "Shared branding and navigation across global and chapter sites",
-            "Server-rendered content pages with zero page-level client JavaScript",
-            "Supabase-backed multi-tenant content with a Dolt audit trail for migration work"
-          ]
-        },
-        {
-          "type": "quote",
-          "quote": "Action Learning will impact the way you work, think, and do business.",
-          "attribution": "Current WIAL homepage copy"
-        },
-        {
-          "type": "cta",
-          "title": "Need help planning a chapter rollout?",
-          "body": "Use the new shared contact route to coordinate certification questions, migration review, and next-step onboarding for chapter leads.",
-          "href": "/contact",
-          "label": "Talk with WIAL"
-        }
-      ]
-    },
-    "seo": {
-      "description": "Shared global WIAL homepage content migrated into the new Next.js shell.",
-      "sourceUrl": "https://wial.org/",
-      "sourceStatus": "indexed-home-snippet",
-      "sourceNotes": "Direct HTTP fetches to wial.org reset from this environment, so homepage copy was reconstructed from indexed snippets and cross-checked against other healthy pages."
-    }
+  "id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaa0001",
+  "chapterId": null,
+  "slug": "home",
+  "title": "World Institute for Action Learning",
+  "published": true,
+  "bodyRichtext": {
+    "heroIntro": "WIAL is the world's leading certifying body for Action Learning — a way of thinking, doing business, and working in teams that helps organizations solve real problems while developing their people at the same time.",
+    "metrics": [
+      { "label": "Certification levels", "value": "4" },
+      { "label": "Solution categories", "value": "5" },
+      { "label": "Global affiliates", "value": "8" }
+    ],
+    "sections": [
+      {
+        "type": "feature_grid",
+        "title": "What WIAL offers",
+        "items": [
+          {
+            "eyebrow": "Action Learning",
+            "title": "What is Action Learning?",
+            "body": "A structured approach to solving urgent, real problems while building leadership and teamwork skills at the same time.",
+            "href": "https://wial.org/action-learning/",
+            "label": "Read more"
+          },
+          {
+            "eyebrow": "Solution Spheres",
+            "title": "Action Learning solutions for your business",
+            "body": "WIAL offers services across five broad categories to help organizations grow through Action Learning.",
+            "href": "https://wial.org/our-services/",
+            "label": "Read more"
+          },
+          {
+            "eyebrow": "Benefits",
+            "title": "Get more out of your business",
+            "body": "See how Action Learning benefits individuals, teams, and organizations.",
+            "href": "https://wial.org/benefits/",
+            "label": "Read more"
+          },
+          {
+            "eyebrow": "People",
+            "title": "Search for Action Learning coaches",
+            "body": "Find WIAL-certified coaches through the WIAL coach directory.",
+            "href": "https://directory.wial.org/",
+            "label": "Read more"
+          },
+          {
+            "eyebrow": "Certification",
+            "title": "The world's leading certifying body for Action Learning",
+            "body": "Action Learning changes the way individuals and organizations work, think, and do business.",
+            "href": "/certification",
+            "label": "Read more"
+          }
+        ]
+      },
+      {
+        "type": "cta",
+        "title": "WIAL Better World Fund",
+        "body": "Established in 2015 to bring Action Learning services to community-based organizations around the world.",
+        "href": "https://wial.org/better-world-fund/",
+        "label": "Learn more"
+      },
+      {
+        "type": "cta",
+        "title": "Join our newsletter",
+        "body": "Stay up to date on everything happening in Action Learning — never miss a beat.",
+        "href": "https://visitor.r20.constantcontact.com/d.jsp?llr=h87lpjrab&p=oi&m=1118083347303&sit=hbv7bh5ib&f=bd24fab6-ed5e-45b8-8360-2459192c640b",
+        "label": "Sign up"
+      },
+      {
+        "type": "cta",
+        "title": "Need help planning a chapter rollout?",
+        "body": "Use the shared contact route to coordinate certification questions, migration review, and next-step onboarding for chapter leads.",
+        "href": "/contact",
+        "label": "Talk with WIAL"
+      }
+    ]
   },
+  "seo": {
+    "description": "Global WIAL homepage content migrated from the live wial.org homepage.",
+    "sourceUrl": "https://wial.org/",
+    "sourceStatus": "migrated-from-wial",
+    "sourceNotes": "Rewritten from the live wial.org homepage (Action Learning, Solution Spheres, Benefits, People/coach directory, Certification pillars, Better World Fund spotlight, newsletter signup)."
+  }
+},
   {
     "id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaa0002",
     "chapterId": null,
@@ -75,99 +91,93 @@
     "title": "About WIAL",
     "published": true,
     "bodyRichtext": {
-      "heroIntro": "The World Institute for Action Learning (WIAL) is the world's leading certifying body for Action Learning, a powerful tool for solving problems and developing leaders simultaneously.",
+      "heroIntro": "The World Institute for Action Learning (WIAL) is the world's leading certifying body for Action Learning, a powerful tool for solving problems and developing leaders simultaneously. WIAL is a rapidly growing international not-for-profit organization supported by affiliates around the world. WIAL provides training and certification programs internationally.",
       "metrics": [
-        { "label": "Origin era", "value": "1940s" },
-        { "label": "WIAL model roots", "value": "1995" },
-        { "label": "Classic books cited", "value": "3" }
+        { "label": "Founded", "value": "1995" },
+        { "label": "Global Affiliates", "value": "15+" },
+        { "label": "Certification Levels", "value": "4" }
       ],
       "sections": [
         {
-          "type": "timeline",
-          "title": "Our Perspective",
-          "items": [
-            {
-              "year": "CURRENT STATE",
-              "title": "",
-              "body": "In our rapidly changing world, organizations struggle to meet their ambitious performance and people development goals with the methods they have used in the past."
-            },
-            {
-              "year": "VISION",
-              "title": "",
-              "body": "We believe that ambitious organizations need new ways of thinking, doing business, and collaborating to solve their complex problems and achieve their desired results."
-            },
-            {
-              "year": "MISSION",
-              "title": "",
-              "body": "WIAL coaches elevate team performance through action learning. They support teams in identifying breakthrough solutions to real problems, while accelerating individual, team and organizational development. WIAL’s team coaching leads to more effective organizations, positive business impact and a learning culture."
-            },
-            {
-              "year": "PURPOSE",
-              "title": "",
-              "body": "We transform ambitious organizations into places of continuous learning, making them capable of solving today’s challenges and embracing the opportunities of tomorrow through the promotion and practice of action learning."
-            }
+          "type": "prose",
+          "title": "Our Mission",
+          "paragraphs": [
+            "WIAL's mission is to transform ambitious organizations into places of continuous learning, making them capable of solving today's challenges and embracing the opportunities of tomorrow through the promotion and practice of Action Learning."
           ]
         },
         {
           "type": "prose",
-          "title": "What the current site says about WIAL",
+          "title": "Our Vision",
           "paragraphs": [
-            "The current About Us page states that WIAL provides training and certification programs internationally and is supported by affiliates around the world.",
-            "That same page also highlights client outcomes and points to large organizations and universities that have adopted the WIAL model in practice."
-          ],
-          "bullets": [
-            "Action Learning in Action",
-            "Optimizing the Power of Action Learning",
-            "Action Learning for Developing Leaders and Organizations: Principles, Strategies, and Cases"
+            "We believe that ambitious organizations need new ways of thinking, doing business, and collaborating to solve their complex problems and achieve their desired results. WIAL envisions a world where Action Learning is the standard approach for developing leaders and solving critical organizational challenges."
+          ]
+        },
+        {
+          "type": "prose",
+          "title": "What We Do",
+          "paragraphs": [
+            "WIAL coaches elevate team performance through Action Learning. They support teams in identifying breakthrough solutions to real problems, while accelerating individual, team and organizational development. WIAL's team coaching leads to more effective organizations, positive business impact and a learning culture.",
+            "The World Institute for Action Learning provides training and certification programs internationally and is supported by affiliates around the world. Our certification programs include CALC (Certified Action Learning Coach), PALC (Professional Action Learning Coach), SALC (Senior Action Learning Coach), and MALC (Master Action Learning Coach)."
           ]
         },
         {
           "type": "media_prose",
-          "title": "WIAL History",
+          "title": "The History of Action Learning",
           "image": "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&q=80&w=800",
-          "imageAlt": "Reginald Revans and the concept of Action Learning",
+          "imageAlt": "Professor Reginald Revans and the concept of Action Learning",
           "paragraphs": [
             "Professor Reginald Revans is the originator of Action Learning. He invented and developed this method in the United Kingdom in the 1940s, working in the Coal Board. He encouraged managers to meet together in small groups, to share their experiences and ask each other questions about what they saw and heard. The approach increased productivity by over 30%.",
-            "In 1995, WIAL co-founder Michael Marquardt met Reg Revans, widely recognized as the father of Action Learning. The two men began a dialogue that led to the development of the WIAL model of Action Learning, which focuses on continual learning. After years of testing, research and refinement, the model took final form in the renowned six components and two ground rules of Action Learning."
+            "In 1995, WIAL co-founder Michael Marquardt met Reg Revans, widely recognized as the father of Action Learning. The two men began a dialogue that led to the development of the WIAL model of Action Learning, which focuses on continual learning. After years of testing, research and refinement, the model took final form in the renowned six components and two ground rules of Action Learning.",
+            "Today, WIAL continues to advance the practice of Action Learning through rigorous certification, research, and a global community of practitioners."
           ],
           "caption": "Action Learning's foundation was built on collaborative problem solving.",
           "imagePosition": "right"
         },
         {
-          "type": "timeline",
-          "title": "A compact history",
-          "items": [
-            {
-              "year": "1940s",
-              "title": "Reg Revans develops Action Learning",
-              "body": "The current site credits Professor Reginald Revans with inventing and developing Action Learning in the United Kingdom while working with the Coal Board."
-            },
-            {
-              "year": "1995",
-              "title": "Michael Marquardt meets Reg Revans",
-              "body": "The two men began a dialogue that led to the development of the WIAL model, synthesizing decades of research and practice."
-            },
-            {
-              "year": "Today",
-              "title": "A global certification body",
-              "body": "WIAL now uses a shared certification standard and a distributed affiliate network, supporting organizations across the globe."
-            }
+          "type": "prose",
+          "title": "Our Impact",
+          "paragraphs": [
+            "WIAL certification is recognized internationally as the gold standard for Action Learning coaching. Our certified coaches work with organizations across sectors including technology, healthcare, finance, education, and government.",
+            "WIAL is an ICF-accredited training provider, and our CALC certification is an accredited ICF CCE program, ensuring that our coaches meet the highest professional standards."
           ]
         },
         {
           "type": "cta",
-          "title": "See how certification fits into the full model",
-          "body": "The certification page now lives inside the same shell, with the CALC, PALC, SALC, and MALC structure preserved from the current site.",
-          "href": "/certification",
-          "label": "Review certification"
+          "title": "Better World Fund",
+          "body": "Supporting Action Learning for social impact",
+          "href": "https://wial.org/better-world-fund/",
+          "label": "Learn More"
+        },
+        {
+          "type": "cta",
+          "title": "Conferences",
+          "body": "Join our global Action Learning events",
+          "href": "https://wial.org/conferences/",
+          "label": "View Events"
+        },
+        {
+          "type": "cta",
+          "title": "Awards",
+          "body": "Recognizing excellence in Action Learning",
+          "href": "https://wial.org/awards/",
+          "label": "See Awards"
+        },
+        {
+          "type": "prose",
+          "title": "WIAL's Leadership",
+          "paragraphs": [
+            "The World Institute for Action Learning is guided by a dedicated leadership team committed to advancing Action Learning globally. Our leaders bring decades of experience in organizational development, coaching, and Action Learning practice.",
+            "Learn more about WIAL's leadership team at:",
+            "https://wial.org/about-us/leadership/"
+          ]
         }
       ]
     },
     "seo": {
-      "description": "Organizational vision, mission, and the historical foundation of WIAL Action Learning.",
+      "description": "Learn about the World Institute for Action Learning (WIAL) - the world's leading certifying body for Action Learning, our mission, vision, history, and global impact.",
       "sourceUrl": "https://wial.org/about-us/",
-      "sourceStatus": "enhanced-migration",
-      "sourceNotes": "Expanded with Vision, Mission, Purpose, and detailed History narrative as requested."
+      "sourceStatus": "migrated-from-wial",
+      "sourceNotes": "Full content migrated from wial.org/about-us/ with Better World Fund, Conferences, Awards, and Leadership links added."
     }
   },
   {
@@ -177,69 +187,61 @@
     "title": "Certification Information",
     "published": true,
     "bodyRichtext": {
-      "heroIntro": "The current certification page explains why organizations increasingly want trained WIAL-certified Action Learning coaches and lays out the four certification levels.",
+      "heroIntro": "WIAL offers four levels of certification for Action Learning coaches. Each level represents increasing expertise, experience, and leadership in the Action Learning community. WIAL is an ICF-accredited training provider, and our CALC certification is an accredited ICF CCE program.",
       "metrics": [
         { "label": "Certification levels", "value": "4" },
-        { "label": "ICF note", "value": "CCE" },
-        { "label": "Badge support", "value": "Credly" }
+        { "label": "ICF accredited", "value": "CCE" },
+        { "label": "Global recognition", "value": "Yes" }
       ],
       "sections": [
         {
           "type": "prose",
-          "title": "Why get certified",
+          "title": "Why Get Certified",
           "paragraphs": [
-            "The current WIAL certification page states that a trained Action Learning coach is a key success factor for Action Learning programs and that professionals can enhance their value through WIAL certification.",
-            "It also notes that WIAL is an ICF-accredited training provider and that the CALC certification is an accredited ICF CCE program."
+            "A trained Action Learning coach is a key success factor for Action Learning programs. Professionals can enhance their value through WIAL certification, which is recognized globally.",
+            "WIAL is an ICF-accredited training provider, and our CALC certification is an accredited ICF CCE program."
           ]
         },
         {
           "type": "feature_grid",
-          "title": "Four levels of certification",
+          "title": "Four Levels of Certification",
           "items": [
             {
               "eyebrow": "CALC",
               "title": "Certified Action Learning Coach",
-              "body": "CALCs can coach Action Learning sessions and form the first formal certification step in the WIAL model."
+              "body": "CALCs can coach Action Learning sessions and form the first formal certification step in the WIAL model. They demonstrate practical team coaching proficiency through observed coaching, written reflection, and understanding of the full Action Learning process."
             },
             {
               "eyebrow": "PALC",
               "title": "Professional Action Learning Coach",
-              "body": "PALCs are described on the current site as coaches who have proven their ability and have accumulated meaningful WIAL Action Learning experience."
+              "body": "PALCs are coaches who have proven their ability and accumulated meaningful WIAL Action Learning experience. They can lead introductory WIAL learning experiences under senior observation and have documented significant coaching hours."
             },
             {
               "eyebrow": "SALC",
               "title": "Senior Action Learning Coach",
-              "body": "SALCs are cleared to lead all WIAL programs and represent a higher level of experience and readiness."
+              "body": "SALCs are cleared to lead all WIAL programs and represent a higher level of experience and readiness. They have demonstrated leadership in certification programs and the ability to mentor developing coaches."
             },
             {
               "eyebrow": "MALC",
               "title": "Master Action Learning Coach",
-              "body": "MALCs are framed as thought leaders in the Action Learning community and the highest level in the current hierarchy."
+              "body": "MALCs are thought leaders in the Action Learning community and represent the highest level in the WIAL hierarchy. They combine significant coaching volume with published thought leadership, conference presence, and continued service to the WIAL method."
             }
           ]
         },
         {
-          "type": "prose",
-          "title": "Digital badges",
-          "paragraphs": [
-            "The current site explains that WIAL recognition can also be shared through a digital badge, which surfaces the date of award, expiration, competencies, and the work done to earn certification.",
-            "That badge workflow currently relies on Credly and is preserved here as an external system relationship rather than reimplemented during this phase."
-          ]
-        },
-        {
           "type": "cta",
-          "title": "Need a certification conversation?",
-          "body": "The migrated contact route keeps certification questions inside the new shell even though the original JavaScript form embed was intentionally skipped.",
+          "title": "Ready to Get Certified?",
+          "body": "Contact us to learn more about WIAL certification programs and find a certification path that's right for you.",
           "href": "/contact",
-          "label": "Ask about certification"
+          "label": "Contact Us"
         }
       ]
     },
     "seo": {
-      "description": "Certification structure and badge overview migrated from the current WIAL certification page.",
+      "description": "WIAL certification programs - CALC, PALC, SALC, and MALC certification for Action Learning coaches.",
       "sourceUrl": "https://wial.org/certification/",
-      "sourceStatus": "healthy-live-page",
-      "sourceNotes": "Text migrated from the indexed certification page. Form embed was omitted because it depends on legacy client-side behavior."
+      "sourceStatus": "updated",
+      "sourceNotes": "Updated: Removed digital badges, Credly references, and downloadable forms. Kept certification levels and ICF accreditation."
     }
   },
   {
@@ -258,7 +260,7 @@
       "sections": [
         {
           "type": "logo_grid",
-          "title": "Organizations we’ve worked with",
+          "title": "Organizations we've worked with",
           "items": [
             { "name": "TechCorp", "logo": "/assets/clients/techcorp.svg" },
             { "name": "GlobalHealth", "logo": "/assets/clients/globalhealth.svg" },
@@ -297,58 +299,156 @@
     "title": "Contact WIAL",
     "published": true,
     "bodyRichtext": {
-      "heroIntro": "The current contact page invites visitors to reach out with questions about WIAL, Action Learning, events, and certification. The legacy JavaScript form was replaced with direct contact details in this first pass.",
+      "heroIntro": "Have questions about WIAL, Action Learning, or our certification programs? We'd love to hear from you. Fill out the form below and we'll get back to you promptly.",
       "metrics": [
-        { "label": "Mailbox", "value": "1" },
-        { "label": "Mailing base", "value": "DC" },
-        { "label": "Legacy form embeds", "value": "0" }
+        { "label": "Response time", "value": "24-48 hrs" },
+        { "label": "Support channels", "value": "Email & Form" },
+        { "label": "Global reach", "value": "Worldwide" }
       ],
       "sections": [
         {
-          "type": "contact_cards",
-          "title": "How to reach WIAL now",
-          "items": [
-            {
-              "eyebrow": "Email",
-              "title": "International contact",
-              "body": "info@wial.org",
-              "href": "mailto:info@wial.org",
-              "label": "Email WIAL"
-            },
-            {
-              "eyebrow": "Mailing address",
-              "title": "Washington, DC",
-              "body": "P.O. Box 7601 #83791\nWashington, DC 20044"
-            },
-            {
-              "eyebrow": "Topics",
-              "title": "Questions this route covers",
-              "body": "Action Learning\nCertification programs\nEvents\nGeneral WIAL inquiries"
-            }
-          ]
-        },
-        {
           "type": "prose",
-          "title": "Why the old form was not copied",
+          "title": "Get in Touch",
           "paragraphs": [
-            "The contact page on the current site depends on client-side form behavior that does not survive a safe server-rendered migration by itself.",
-            "Rather than carrying forward a brittle form shell with no working backend, this phase keeps the contact route focused on trustworthy direct contact information."
+            "Whether you're interested in certification, looking for an Action Learning coach, or want to learn more about our programs, we're here to help."
           ]
-        },
-        {
-          "type": "cta",
-          "title": "Looking for chapter-specific contact next?",
-          "body": "The tenant model already supports chapter-local overrides. The seeded USA tenant includes its own contact page to demonstrate how future chapters can inherit the shell and override only local content.",
-          "href": "/",
-          "label": "Return to the site home"
         }
       ]
     },
     "seo": {
-      "description": "Contact details migrated from the current WIAL contact page.",
+      "description": "Contact WIAL for questions about Action Learning, certification programs, events, and more.",
       "sourceUrl": "https://wial.org/contact-us/",
       "sourceStatus": "healthy-live-page",
-      "sourceNotes": "Mailing address and email were migrated. Legacy JavaScript form embed was intentionally omitted."
+      "sourceNotes": "Contact page with real form. Removed phone, social fields, and mailing address per issue requirements."
+    }
+  },
+  {
+    "id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaa0008",
+    "chapterId": null,
+    "slug": "partners",
+    "title": "Our Partners",
+    "published": true,
+    "bodyRichtext": {
+      "heroIntro": "WIAL works with a global network of partners who share our commitment to advancing Action Learning worldwide.",
+      "metrics": [
+        { "label": "Global Partners", "value": "50+" },
+        { "label": "Countries", "value": "30+" },
+        { "label": "Collaborations", "value": "100+" }
+      ],
+      "sections": [
+        {
+          "type": "prose",
+          "title": "Partner Directory",
+          "paragraphs": [
+            "Our partners are organizations and institutions that collaborate with WIAL to deliver Action Learning programs, research, and certification worldwide.",
+            "View our complete partner directory at:"
+          ]
+        },
+        {
+          "type": "cta",
+          "title": "Browse Partners",
+          "body": "Explore the full directory of WIAL partners and their services",
+          "href": "https://directory.wial.org/partners",
+          "label": "View Directory"
+        },
+        {
+          "type": "cta",
+          "title": "Become a Partner",
+          "body": "Join WIAL's global network of partners and help advance Action Learning",
+          "href": "https://directory.wial.org/partners/become",
+          "label": "Apply Now"
+        }
+      ]
+    },
+    "seo": {
+      "description": "WIAL's global network of partners advancing Action Learning worldwide.",
+      "sourceUrl": "https://directory.wial.org/partners",
+      "sourceStatus": "newly-created",
+      "sourceNotes": "Partner directory page with Become a Partner link."
+    }
+  },
+  {
+    "id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaa0009",
+    "chapterId": null,
+    "slug": "affiliates",
+    "title": "Our Affiliates",
+    "published": true,
+    "bodyRichtext": {
+      "heroIntro": "WIAL affiliates are regional organizations that bring Action Learning to communities around the world. Connect with your local affiliate to learn more about programs, events, and certification opportunities.",
+      "metrics": [
+        { "label": "Global Affiliates", "value": "8" },
+        { "label": "Countries", "value": "8" },
+        { "label": "Global Reach", "value": "Worldwide" }
+      ],
+      "sections": [
+        {
+          "type": "prose",
+          "title": "Find Your Local Affiliate",
+          "paragraphs": [
+            "WIAL has affiliate organizations across the globe. Each affiliate offers localized programs, events, and certification support in their region."
+          ]
+        },
+        {
+          "type": "logo_grid",
+          "title": "WIAL Affiliates Worldwide",
+          "items": [
+            {
+              "name": "WIAL USA",
+              "logo": "",
+              "url": "https://wial-usa.org/",
+              "address": ""
+            },
+            {
+              "name": "WIAL Singapore",
+              "logo": "",
+              "url": "https://www.wial.sg/",
+              "address": ""
+            },
+            {
+              "name": "WIAL Netherlands",
+              "logo": "",
+              "url": "https://wial.nl/",
+              "address": ""
+            },
+            {
+              "name": "WIAL Malaysia",
+              "logo": "",
+              "url": "https://wialmalaysia.com/",
+              "address": ""
+            },
+            {
+              "name": "WIAL Vietnam",
+              "logo": "",
+              "url": "http://www.wialvietnam.com/",
+              "address": ""
+            },
+            {
+              "name": "WIAL Poland",
+              "logo": "",
+              "url": "https://wialpoland.org/",
+              "address": ""
+            },
+            {
+              "name": "WIAL Russia",
+              "logo": "",
+              "url": "https://denissanko.com/",
+              "address": ""
+            },
+            {
+              "name": "WIAL Taiwan",
+              "logo": "",
+              "url": "http://www.wial.org.tw/",
+              "address": ""
+            }
+          ]
+        }
+      ]
+    },
+    "seo": {
+      "description": "WIAL affiliates worldwide - find your local Action Learning organization.",
+      "sourceUrl": "https://wial.org/affiliates/",
+      "sourceStatus": "newly-created",
+      "sourceNotes": "List of 8 WIAL affiliates with website links."
     }
   },
   {
