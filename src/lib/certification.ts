@@ -75,3 +75,13 @@ export function getAllRecertificationRules() {
 export function getCertificationProgression() {
   return certificationProgression;
 }
+
+export function getTrackDocuments(track: CertificationTrackKey) {
+  // Since documents have been removed, return empty arrays
+  return {
+    requirements: null,
+    application: null,
+    recertification: null,
+    extras: [],
+  };
+}
