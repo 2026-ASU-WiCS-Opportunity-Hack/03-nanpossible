@@ -60,7 +60,6 @@ export async function updateProfileAction(formData: FormData) {
   });
 
   if (profileError) {
-    console.error("update_my_profile failed:", profileError); // TEMP
     redirect(buildProfilePath("error", "save-failed"));
   }
 
