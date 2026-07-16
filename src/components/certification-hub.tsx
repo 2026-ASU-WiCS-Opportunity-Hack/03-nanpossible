@@ -177,7 +177,7 @@ function LmsSection() {
     <div id="lms" className="scroll-mt-20">
       <h2 className="text-2xl font-bold">LMS Access</h2>
       <p className="mt-1 text-sm text-foreground/70">
-        WIAL\'s Learning Management System provides course materials, recertification
+        WIAL Learning Management System provides course materials, recertification
         resources, and continuing education.
       </p>
       <div className="mt-4 rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
@@ -283,7 +283,7 @@ export function CertificationHubSections() {
         <h3 className="text-lg font-semibold">Ready to Get Certified?</h3>
         <p className="mt-1 text-sm text-foreground/70">
           Contact us to learn more about WIAL certification programs and find a
-          certification path that's right for you.
+          certification path that is right for you.
         </p>
         <Link
           href="/contact"

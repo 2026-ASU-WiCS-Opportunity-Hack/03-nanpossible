@@ -2,7 +2,6 @@ import pages from "@/content/pages.json";
 import {
   getCertificationHubContent,
   getCertificationLmsUrl,
-  getTrackDocuments,
 } from "@/lib/certification";
 import type {
   CertificationLevel,

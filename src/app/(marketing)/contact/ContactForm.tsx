@@ -102,7 +102,7 @@ export function ContactForm() {
         {/* Result Messages */}
         {result?.success && (
           <div className="rounded-md bg-green-50 p-4 text-sm text-green-700">
-            Your message was sent successfully! We'll get back to you soon.
+            Your message was sent successfully! We will get back to you soon.
           </div>
         )}
         {result?.error && (
