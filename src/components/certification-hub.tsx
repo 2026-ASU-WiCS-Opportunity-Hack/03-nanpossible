@@ -11,6 +11,8 @@ import {
 import { getLmsLinkConfig } from "@/lib/certification";
 import type { CertificationTrackKey } from "@/lib/types";
 
+const DEFAULT_LMS_URL = "https://wialportal.org/";
+
 function AnchorLink({ id, label }: { id: string; label: string }) {
   return (
     <a
@@ -32,7 +34,7 @@ function TrackSection({
   onToggle: () => void;
 }) {
   const lmsConfig = getLmsLinkConfig();
-  const lmsUrl = lmsConfig.levelUrls[track.key] || lmsConfig.globalUrl;
+  const lmsUrl = lmsConfig.levelUrls[track.key] || lmsConfig.globalUrl || DEFAULT_LMS_URL;
 
   return (
     <div
@@ -169,12 +171,13 @@ function RecertificationSection() {
 
 function LmsSection() {
   const lmsConfig = getLmsLinkConfig();
+  const globalUrl = lmsConfig.globalUrl || DEFAULT_LMS_URL;
 
   return (
     <div id="lms" className="scroll-mt-20">
       <h2 className="text-2xl font-bold">LMS Access</h2>
       <p className="mt-1 text-sm text-foreground/70">
-        WIAL's Learning Management System provides course materials, recertification
+        WIAL\'s Learning Management System provides course materials, recertification
         resources, and continuing education.
       </p>
       <div className="mt-4 rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
@@ -184,7 +187,7 @@ function LmsSection() {
               Global
             </span>
             <a
-              href={lmsConfig.globalUrl}
+              href={globalUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="block text-sm font-medium text-blue-600 hover:underline"
@@ -194,13 +197,14 @@ function LmsSection() {
           </div>
           {Object.entries(lmsConfig.levelUrls).map(([key, url]) => {
             const track = certificationTracks.find((t) => t.key === key);
+            const resolvedUrl = url || globalUrl;
             return (
               <div key={key}>
                 <span className="text-xs font-semibold uppercase tracking-wider text-foreground/40">
                   {track?.level || key.toUpperCase()}
                 </span>
                 <a
-                  href={url}
+                  href={resolvedUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block text-sm font-medium text-blue-600 hover:underline"
@@ -287,6 +291,30 @@ export function CertificationHubSections() {
         >
           Contact Us
         </Link>
+      </div>
+    </div>
+  );
+}
+
+export function AccountCertificationHub() {
+  return (
+    <div className="space-y-6">
+      <h2 className="text-2xl font-bold">My Certifications</h2>
+      <p className="text-foreground/70">
+        View and manage your WIAL certifications here.
+      </p>
+      <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
+        <p className="text-sm text-foreground/60">
+          Your certifications will appear here once you complete a certification program.
+        </p>
+        <div className="mt-4">
+          <Link
+            href="/certification"
+            className="inline-block rounded-md bg-teal-deep px-4 py-2 text-sm font-semibold text-white transition hover:bg-teal-deep/90"
+          >
+            Explore Certification Programs
+          </Link>
+        </div>
       </div>
     </div>
   );
