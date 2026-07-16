@@ -97,7 +97,7 @@ export function UserRoleManager({
 
   return (
     <section className="overflow-hidden rounded-[1.35rem] border border-line/70 bg-white/85">
-      <div className="grid gap-3 border-b border-line/70 bg-[rgba(23,23,20,0.92)] p-3 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(0,1fr)]">
+      <div className="grid gap-3 border-b border-line/70 bg-[rgba(255,250,242,0.62)] p-3 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(0,1fr)]">
         <label className="sr-only" htmlFor="user-search">
           Search users
         </label>
@@ -237,7 +237,10 @@ function UserRoleRow({
     {user.name}
   </p>
 </div>
-<p className="truncate text-xs text-foreground/55">
+<p
+  className="truncate text-xs text-foreground/55"
+  title={formatAccessSummary({ assignedChapters, chapterId, chapters, role })}
+>
   {formatAccessSummary({ assignedChapters, chapterId, chapters, role })}
 </p>
 </div>
