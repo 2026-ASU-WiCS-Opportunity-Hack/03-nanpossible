@@ -76,8 +76,19 @@ export function getCertificationProgression() {
   return certificationProgression;
 }
 
-export function getTrackDocuments(track: CertificationTrackKey) {
-  // Since documents have been removed, return empty arrays
+// ============================================================
+// FIXED: Add explicit return type
+// ============================================================
+type TrackDocuments = {
+  requirements: { href: string } | null;
+  application: { href: string } | null;
+  recertification: { href: string } | null;
+  extras: Array<{ href: string }>;
+};
+
+export function getTrackDocuments(track: CertificationTrackKey): TrackDocuments {
+  // Documents have been removed per issue requirements
+  // Return null for document fields
   return {
     requirements: null,
     application: null,
