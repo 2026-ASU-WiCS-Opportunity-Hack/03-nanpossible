@@ -91,7 +91,7 @@
     "title": "About WIAL",
     "published": true,
     "bodyRichtext": {
-      "heroIntro": "The World Institute for Action Learning (WIAL) is the world's leading certifying body for Action Learning, a powerful tool for solving problems and developing leaders simultaneously. WIAL is a rapidly growing international not-for-profit organization supported by affiliates around the world. WIAL provides training and certification programs internationally.",
+      "heroIntro": "The World Institute for Action Learning (WIAL) is the world’s leading certifying body for Action Learning, providing various training & certification programs internationally. It is a rapidly growing international not-for-profit organization supported by WIAL Affiliates around the world. WIAL is a highly capable global organization helping clients rapidly solve urgent and important business challenges. Our clients frequently achieve a substantial Return on Investment (ROI) on their organization, leadership, and team development projects.",
       "metrics": [
         { "label": "Founded", "value": "1995" },
         { "label": "Global Affiliates", "value": "15+" },
@@ -100,14 +100,14 @@
       "sections": [
         {
           "type": "prose",
-          "title": "Our Mission",
+          "title": "Mission",
           "paragraphs": [
-            "WIAL's mission is to transform ambitious organizations into places of continuous learning, making them capable of solving today's challenges and embracing the opportunities of tomorrow through the promotion and practice of Action Learning."
+            "WIA coaches elevate team performance through action learing. They support teams in indentifying breakithrough solutions to real problems, while accelerating individual, team and origanization development. WIAL's team coaching leads to more effective organizations, positive business impact and a learning culture."
           ]
         },
         {
           "type": "prose",
-          "title": "Our Vision",
+          "title": "Vision",
           "paragraphs": [
             "We believe that ambitious organizations need new ways of thinking, doing business, and collaborating to solve their complex problems and achieve their desired results. WIAL envisions a world where Action Learning is the standard approach for developing leaders and solving critical organizational challenges."
           ]
@@ -135,7 +135,7 @@
         },
         {
           "type": "prose",
-          "title": "Our Impact",
+          "title": "Impact",
           "paragraphs": [
             "WIAL certification is recognized internationally as the gold standard for Action Learning coaching. Our certified coaches work with organizations across sectors including technology, healthcare, finance, education, and government.",
             "WIAL is an ICF-accredited training provider, and our CALC certification is an accredited ICF CCE program, ensuring that our coaches meet the highest professional standards."
@@ -244,54 +244,63 @@
       "sourceNotes": "Updated: Removed digital badges, Credly references, and downloadable forms. Kept certification levels and ICF accreditation."
     }
   },
-  {
-    "id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaa0004",
-    "chapterId": null,
-    "slug": "clients",
-    "title": "Our Clients",
-    "published": true,
-    "bodyRichtext": {
-      "heroIntro": "These are some of the organizations that have worked with us to advance Action Learning across industries and communities worldwide.",
-      "metrics": [
-        { "label": "Sectors served", "value": "15+" },
-        { "label": "Global partners", "value": "120+" },
-        { "label": "Success stories", "value": "500+" }
-      ],
-      "sections": [
-        {
-          "type": "logo_grid",
-          "title": "Organizations we've worked with",
-          "items": [
-            { "name": "TechCorp", "logo": "/assets/clients/techcorp.svg" },
-            { "name": "GlobalHealth", "logo": "/assets/clients/globalhealth.svg" },
-            { "name": "EcoSolutions", "logo": "/assets/clients/ecosolutions.svg" },
-            { "name": "FinStream", "logo": "/assets/clients/finstream.svg" },
-            { "name": "EduVantage", "logo": "/assets/clients/eduvantage.svg" },
-            { "name": "LogiRoute", "logo": "/assets/clients/logiroute.svg" },
-            { "name": "SkyPeak", "logo": "/assets/clients/skypeak.svg" },
-            { "name": "ZenithSys", "logo": "/assets/clients/zenithsys.svg" },
-            { "name": "MediFlow", "logo": "/assets/clients/mediflow.svg" },
-            { "name": "AquaPure", "logo": "/assets/clients/aquapure.svg" },
-            { "name": "TerraForm", "logo": "/assets/clients/terraform.svg" },
-            { "name": "NovaNova", "logo": "/assets/clients/novanova.svg" }
-          ]
-        },
-        {
-          "type": "cta",
-          "title": "Ready to bring Action Learning to your organization?",
-          "body": "Use the shared contact route to coordinate a tailored Action Learning program for your team or organization.",
-          "href": "/contact",
-          "label": "Talk with WIAL"
-        }
-      ]
-    },
-    "seo": {
-      "description": "Organizations and communities that have advanced Action Learning with WIAL worldwide.",
-      "sourceUrl": "https://wial.org/clients/",
-      "sourceStatus": "newly-created",
-      "sourceNotes": "Replaced the previous Resources & Library page with a dedicated Clients showcase."
-    }
+  
+   {
+  "id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaa0004",
+  "chapterId": null,
+  "slug": "clients",
+  "title": "Our Clients",
+  "published": true,
+  "bodyRichtext": {
+    "heroIntro": "These are just some of the organizations that have worked with or continue to work with WIAL to advance the use of Action Learning in the corporate world. Want to see your business on this list? Contact us to find out how you can get involved in the Action Learning community.",
+    "metrics": [
+      { "label": "Client organizations", "value": "25+" },
+      { "label": "Industries served", "value": "10+" },
+      { "label": "Years of client work", "value": "25+" }
+    ],
+    "sections": [
+      {
+        "type": "prose",
+        "title": "Organizations we've worked with",
+        "paragraphs": [
+          "WIAL has partnered with a wide range of global organizations across industry, government, and non-profit sectors to bring Action Learning into their leadership and problem-solving work."
+        ],
+        "bullets": [
+          "Asian Paints", "Boeing", "Caterpillar", "DuPont", "Emerging World",
+          "Ernst & Young", "Fuji Xerox", "NASA", "NEC", "Microsoft",
+          "Samsung", "Siemens", "SIM", "Toyota", "Takeda", "Google", "BNP Paribas"
+        ]
+      },
+      {
+        "type": "cta",
+        "title": "Client testimonials",
+        "body": "Hear directly from organizations about their experience working with WIAL.",
+        "href": "https://wial.org/client-testimonials/",
+        "label": "Read testimonials"
+      },
+      {
+        "type": "cta",
+        "title": "Share your success story",
+        "body": "Worked with WIAL and had a great result? Tell us about it.",
+        "href": "https://wial.org/share-your-success-story/",
+        "label": "Share your story"
+      },
+      {
+        "type": "cta",
+        "title": "Ready to bring Action Learning to your organization?",
+        "body": "Use the shared contact route to coordinate a tailored Action Learning program for your team or organization.",
+        "href": "/contact",
+        "label": "Talk with WIAL"
+      }
+    ]
   },
+  "seo": {
+    "description": "Organizations that have worked with WIAL to advance Action Learning worldwide.",
+    "sourceUrl": "https://wial.org/our-clients/",
+    "sourceStatus": "migrated-from-wial",
+    "sourceNotes": "Rewritten from the live wial.org Our Clients page. Switched from logo_grid (no real logo assets available, avoided hotlinking WIAL's images) to a text list of real client names. Added Testimonials and Share Your Success Story links per issue rows 31-33."
+  }
+},
   {
     "id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaa0005",
     "chapterId": null,
@@ -323,134 +332,105 @@
     }
   },
   {
-    "id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaa0008",
-    "chapterId": null,
-    "slug": "partners",
-    "title": "Our Partners",
-    "published": true,
-    "bodyRichtext": {
-      "heroIntro": "WIAL works with a global network of partners who share our commitment to advancing Action Learning worldwide.",
-      "metrics": [
-        { "label": "Global Partners", "value": "50+" },
-        { "label": "Countries", "value": "30+" },
-        { "label": "Collaborations", "value": "100+" }
-      ],
-      "sections": [
-        {
-          "type": "prose",
-          "title": "Partner Directory",
-          "paragraphs": [
-            "Our partners are organizations and institutions that collaborate with WIAL to deliver Action Learning programs, research, and certification worldwide.",
-            "View our complete partner directory at:"
-          ]
-        },
-        {
-          "type": "cta",
-          "title": "Browse Partners",
-          "body": "Explore the full directory of WIAL partners and their services",
-          "href": "https://directory.wial.org/partners",
-          "label": "View Directory"
-        },
-        {
-          "type": "cta",
-          "title": "Become a Partner",
-          "body": "Join WIAL's global network of partners and help advance Action Learning",
-          "href": "https://directory.wial.org/partners/become",
-          "label": "Apply Now"
-        }
-      ]
-    },
-    "seo": {
-      "description": "WIAL's global network of partners advancing Action Learning worldwide.",
-      "sourceUrl": "https://directory.wial.org/partners",
-      "sourceStatus": "newly-created",
-      "sourceNotes": "Partner directory page with Become a Partner link."
-    }
+  "id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaa0008",
+  "chapterId": null,
+  "slug": "partners",
+  "title": "Our Partners",
+  "published": true,
+  "bodyRichtext": {
+    "heroIntro": "Partners work directly with WIAL Global — organizations, for-profit or non-profit, that support the use of the WIAL methodology to solve problems, develop leaders, build teams, and transform organizations. Partners are distinct from affiliates.",
+    "metrics": [
+      { "label": "Partner tiers", "value": "2" },
+      { "label": "Pricing bands", "value": "7" },
+      { "label": "Global reach", "value": "Worldwide" }
+    ],
+    "sections": [
+      {
+        "type": "feature_grid",
+        "title": "Why organizations partner with WIAL",
+        "items": [
+          { "eyebrow": "Standing", "title": "Global recognition", "body": "Connect with the prestige and reach of WIAL, the global leader in Action Learning." },
+          { "eyebrow": "Revenue", "title": "New revenue streams", "body": "Generate additional resources and revenue for your organization." },
+          { "eyebrow": "Network", "title": "Global professional network", "body": "Expand your professional networks and outreach to every corner of the globe." },
+          { "eyebrow": "Support", "title": "Priority support", "body": "Get priority assistance applying the WIAL Action Learning methodology to your programs." },
+          { "eyebrow": "Research", "title": "Research and best practices", "body": "Access WIAL publications, newsletters, and cutting-edge Action Learning research." },
+          { "eyebrow": "Pricing", "title": "Reduced program fees", "body": "Get reduced fees for WIAL programs and conferences, plus co-branding opportunities." }
+        ]
+      },
+      {
+        "type": "prose",
+        "title": "Partner directory",
+        "paragraphs": [
+          "Browse the full WIAL partner directory to see current organizations partnering with WIAL worldwide."
+        ]
+      },
+      {
+        "type": "cta",
+        "title": "Browse partners",
+        "body": "Explore the full directory of WIAL partners and their services.",
+        "href": "http://directory.wial.org/partners",
+        "label": "View directory"
+      },
+      {
+        "type": "cta",
+        "title": "Become a partner",
+        "body": "Join WIAL's global network of partners and help advance Action Learning.",
+        "href": "https://wial.org/become-a-partner/",
+        "label": "Apply now"
+      }
+    ]
   },
-  {
-    "id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaa0009",
-    "chapterId": null,
-    "slug": "affiliates",
-    "title": "Our Affiliates",
-    "published": true,
-    "bodyRichtext": {
-      "heroIntro": "WIAL affiliates are regional organizations that bring Action Learning to communities around the world. Connect with your local affiliate to learn more about programs, events, and certification opportunities.",
-      "metrics": [
-        { "label": "Global Affiliates", "value": "8" },
-        { "label": "Countries", "value": "8" },
-        { "label": "Global Reach", "value": "Worldwide" }
-      ],
-      "sections": [
-        {
-          "type": "prose",
-          "title": "Find Your Local Affiliate",
-          "paragraphs": [
-            "WIAL has affiliate organizations across the globe. Each affiliate offers localized programs, events, and certification support in their region."
-          ]
-        },
-        {
-          "type": "logo_grid",
-          "title": "WIAL Affiliates Worldwide",
-          "items": [
-            {
-              "name": "WIAL USA",
-              "logo": "",
-              "url": "https://wial-usa.org/",
-              "address": ""
-            },
-            {
-              "name": "WIAL Singapore",
-              "logo": "",
-              "url": "https://www.wial.sg/",
-              "address": ""
-            },
-            {
-              "name": "WIAL Netherlands",
-              "logo": "",
-              "url": "https://wial.nl/",
-              "address": ""
-            },
-            {
-              "name": "WIAL Malaysia",
-              "logo": "",
-              "url": "https://wialmalaysia.com/",
-              "address": ""
-            },
-            {
-              "name": "WIAL Vietnam",
-              "logo": "",
-              "url": "http://www.wialvietnam.com/",
-              "address": ""
-            },
-            {
-              "name": "WIAL Poland",
-              "logo": "",
-              "url": "https://wialpoland.org/",
-              "address": ""
-            },
-            {
-              "name": "WIAL Russia",
-              "logo": "",
-              "url": "https://denissanko.com/",
-              "address": ""
-            },
-            {
-              "name": "WIAL Taiwan",
-              "logo": "",
-              "url": "http://www.wial.org.tw/",
-              "address": ""
-            }
-          ]
-        }
-      ]
-    },
-    "seo": {
-      "description": "WIAL affiliates worldwide - find your local Action Learning organization.",
-      "sourceUrl": "https://wial.org/affiliates/",
-      "sourceStatus": "newly-created",
-      "sourceNotes": "List of 8 WIAL affiliates with website links."
-    }
+  "seo": {
+    "description": "WIAL's global network of partners advancing Action Learning worldwide.",
+    "sourceUrl": "https://wial.org/become-a-partner/",
+    "sourceStatus": "migrated-from-wial",
+    "sourceNotes": "Rewritten from the live Become a Partner page. Corrected the Become a Partner link, which pointed to a non-existent directory.wial.org path in the previous draft."
+  }
+},
+{
+  "id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaa0009",
+  "chapterId": null,
+  "slug": "affiliates",
+  "title": "Our Affiliates",
+  "published": true,
+  "bodyRichtext": {
+    "heroIntro": "WIAL affiliates are regional organizations that bring Action Learning to communities around the world. Connect with your local affiliate to learn more about programs, events, and certification opportunities.",
+    "metrics": [
+      { "label": "Global affiliates", "value": "8" },
+      { "label": "Countries", "value": "8" },
+      { "label": "Global reach", "value": "Worldwide" }
+    ],
+    "sections": [
+      {
+        "type": "prose",
+        "title": "Find your local affiliate",
+        "paragraphs": [
+          "WIAL has affiliate organizations across the globe. Each affiliate offers localized programs, events, and certification support in their region."
+        ]
+      },
+      {
+        "type": "contact_cards",
+        "title": "WIAL affiliates worldwide",
+        "items": [
+          { "eyebrow": "USA", "title": "WIAL USA", "body": "Address not yet provided", "href": "https://wial-usa.org/", "label": "Visit website" },
+          { "eyebrow": "Singapore", "title": "WIAL Singapore", "body": "Address not yet provided", "href": "https://www.wial.sg/", "label": "Visit website" },
+          { "eyebrow": "Netherlands", "title": "WIAL Netherlands", "body": "Address not yet provided", "href": "https://wial.nl/", "label": "Visit website" },
+          { "eyebrow": "Malaysia", "title": "WIAL Malaysia", "body": "Address not yet provided", "href": "https://wialmalaysia.com/", "label": "Visit website" },
+          { "eyebrow": "Vietnam", "title": "WIAL Vietnam", "body": "Address not yet provided", "href": "http://www.wialvietnam.com/", "label": "Visit website" },
+          { "eyebrow": "Poland", "title": "WIAL Poland", "body": "Address not yet provided", "href": "https://wialpoland.org/", "label": "Visit website" },
+          { "eyebrow": "Russia", "title": "WIAL Russia", "body": "Address not yet provided", "href": "https://denissanko.com/", "label": "Visit website" },
+          { "eyebrow": "Taiwan", "title": "WIAL Taiwan", "body": "Address not yet provided", "href": "http://www.wial.org.tw/", "label": "Visit website" }
+        ]
+      }
+    ]
   },
+  "seo": {
+    "description": "WIAL affiliates worldwide - find your local Action Learning organization.",
+    "sourceUrl": "https://wial.org/affiliates/",
+    "sourceStatus": "newly-created",
+    "sourceNotes": "Switched section type from logo_grid to contact_cards — logo_grid only supports {name, logo} in this schema, so url/address fields were silently dropped before. contact_cards supports href/label/body, so the website links now actually render."
+  }
+},
   {
     "id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaa0006",
     "chapterId": "22222222-2222-4222-8222-222222222222",

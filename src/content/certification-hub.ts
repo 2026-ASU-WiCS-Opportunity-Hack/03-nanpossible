@@ -39,17 +39,15 @@ export const certificationTracks: CertificationTrack[] = [
     title: "Certified Action Learning Coach",
     tagline: "The entry-level WIAL coaching credential.",
     summary:
-      "The Certified Action Learning Coach (CALC) is the first formal certification level in the WIAL model. CALCs can coach Action Learning sessions and form the first formal certification step in the WIAL model. This certification focuses on practical team coaching proficiency, observed coaching, written reflection, and an understanding of the full Action Learning process.",
+      "The Certified Action Learning Coach (CALC) is the first formal certification level in the WIAL model, open to graduates of WIAL programs who have completed all requirements. CALCs can be internal or external to an organization and are authorized to coach Action Learning on behalf of WIAL.",
     eligibility: [
-      "Complete the WIAL Foundations, CALC1, and CALC2 sequence, or an approved intensive that blends the full curriculum.",
-      "Use the Foundations program as the pre-requisite for CALC1 and CALC2.",
-      "Train with a SALC or MALC lead while progressively increasing coaching proficiency.",
+      "Complete WIAL Foundations and/or the Foundations e-learning course.",
+      "Participate in the CALC Workshop.",
+      "Complete a minimum of 5 WIAL Talk scenarios.",
     ],
     requirements: [
-      "Participate in the Foundations program and both CALC workshops or the combined intensive track.",
-      "Coach Action Learning sessions in CALC1 and CALC2 and receive feedback from peers and the lead.",
-      "Submit the CALC certification paper and related reflections.",
-      "Complete the CALC application and review process.",
+      "Lead or take part in a minimum of two 90-minute Action Learning sessions, with at least one reaching a solution.",
+      "Meet the full CALC requirement checklist reviewed by WIAL's certification committee.",
     ],
     progressionLabel:
       "After earning CALC, build coaching hours and longer-term project experience before applying for PALC.",
@@ -63,16 +61,15 @@ export const certificationTracks: CertificationTrack[] = [
     title: "Professional Action Learning Coach",
     tagline: "For CALCs with documented practice and project depth.",
     summary:
-      "The Professional Action Learning Coach (PALC) certification recognizes coaches who have built a serious body of Action Learning work and can lead introductory WIAL learning experiences under senior observation. PALCs are coaches who have proven their ability and have accumulated meaningful WIAL Action Learning experience.",
+      "The Professional Action Learning Coach (PALC) certification recognizes CALCs who have built at least 100 hours of WIAL coaching experience and have led an Intro to Action Learning or Leading with Questions (LWQ) workshop observed by a SALC or MALC. PALCs have a stronger desire to coach Action Learning teams than to train other coaches.",
     eligibility: [
-      "Be a Certified Action Learning Coach (CALC).",
-      "Document one hundred (100) hours of Action Learning coaching, including at least one longer-term project that spans weeks or months.",
-      "Count at least fifty (50) hours as WIAL Action Learning coaching; the remaining hours may include WIAL continuing education or volunteer participation.",
+      "Complete WIAL Foundations and/or the Foundations e-learning course, and the CALC Workshop.",
+      "Document a minimum of 100 hours of Action Learning experience, at least 50 of which are coaching hours.",
+      "Complete one long-term project spanning a minimum of 4 sessions over several weeks.",
     ],
     requirements: [
-      "Submit an engagement list and a report documenting the challenges and learnings from the longer-term Action Learning project.",
-      "Lead a Leading with Questions or Introduction to Action Learning session observed by a SALC or MALC.",
-      "Complete the PALC application packet and committee review process.",
+      "Lead a Leading with Questions or Introduction to Action Learning session, observed as part of the certification process.",
+      "Complete the PALC requirements and application review.",
     ],
     progressionLabel:
       "PALC is the bridge from coached participation to independently leading introductory Action Learning experiences.",
@@ -86,16 +83,15 @@ export const certificationTracks: CertificationTrack[] = [
     title: "Senior Action Learning Coach",
     tagline: "For experienced coaches ready to lead core WIAL programs.",
     summary:
-      "The Senior Action Learning Coach (SALC) certification marks the move into senior coaching leadership. SALCs are cleared to lead all WIAL programs and represent a higher level of experience and readiness. The certification focuses on observed program leadership, critique of participant work, and committee-level review.",
+      "The Senior Action Learning Coach (SALC) certification is for CALCs or PALCs with at least 100 hours of WIAL coaching experience who have been cleared to teach all WIAL certification programs. SALCs frequently go on to develop an affiliate or chapter in their region. A PALC advancing to SALC does not need to complete a second long-term project.",
     eligibility: [
-      "Hold the documented coaching-hour threshold described in the current SALC requirements, including at least one longer-term project with a minimum of four 90-minute sessions.",
-      "Count a minimum of fifty (50) hours as coaching; the balance may include WIAL-sponsored or organized continuing education activity.",
-      "PALCs typically satisfy part of this project requirement through their PALC application work.",
+      "Complete WIAL Foundations and/or the Foundations e-learning course, and the CALC Workshop.",
+      "Document a minimum of 100 hours of Action Learning experience, at least 50 of which are coaching hours, including one long-term project of at least 4 sessions.",
+      "Lead a Leading with Questions or Introduction to Action Learning session.",
     ],
     requirements: [
-      "Secure sponsorship from a MALC who has recently observed the candidate's CALC-level coaching ability.",
-      "Lead certification coursework while observed and submit the required critique of written participant reports.",
-      "Complete the SALC application and committee review process.",
+      "Lead a Foundations program.",
+      "Lead an Intensive CALC program.",
     ],
     progressionLabel:
       "SALC clears a coach to lead core certification experiences and mentor developing coaches.",
@@ -109,16 +105,15 @@ export const certificationTracks: CertificationTrack[] = [
     title: "Master Action Learning Coach",
     tagline: "The highest WIAL certification level and thought-leadership track.",
     summary:
-      "The Master Action Learning Coach (MALC) is the highest level in the WIAL hierarchy. MALCs are thought leaders in the Action Learning community who combine significant coaching volume with published thought leadership, conference presence, and continued service to the WIAL method.",
+      "The Master Action Learning Coach (MALC) is the highest level in the WIAL hierarchy, open to SALCs with at least 500 hours of coaching experience who are published, have presented at regional or higher-level WIAL and non-WIAL forums, and are regular contributors to WIAL social media or newsletters.",
     eligibility: [
-      "Be a Senior Action Learning Coach for at least three years.",
-      "Document five hundred (500) hours of Action Learning coaching, training, and/or consulting across diverse clients and projects.",
-      "Demonstrate thought leadership through conference presentation, external publication, and steady contribution to the WIAL community.",
+      "Complete WIAL Foundations and/or the Foundations e-learning course, and the CALC Workshop.",
+      "Document a minimum of 500 hours of Action Learning experience.",
+      "Be published and actively presenting as a recognized Action Learning expert.",
     ],
     requirements: [
-      "Secure sponsorship from a MALC and complete the MALC review process.",
-      "Provide evidence of publishing, presenting, and broader contribution to Action Learning outside routine delivery work.",
-      "Submit the MALC application packet used by WIAL today.",
+      "Lead a Leading with Questions or Introduction to Action Learning session, a Foundations program, and an Intensive CALC program.",
+      "Demonstrate ongoing publishing and presenting as part of the certification review.",
     ],
     progressionLabel:
       "MALC is the capstone path for senior coaches who also contribute as visible thought leaders in the wider Action Learning field.",
@@ -130,19 +125,19 @@ export const certificationTracks: CertificationTrack[] = [
 export const certificationProgression: CertificationProgressionStep[] = [
   {
     title: "CALC",
-    body: "Build core Action Learning coaching proficiency through Foundations, CALC1, CALC2, and written reflection.",
+    body: "Build core Action Learning coaching proficiency through Foundations, the CALC Workshop, WIAL Talk scenarios, and observed coaching sessions.",
   },
   {
     title: "PALC",
-    body: "Add documented coaching hours, a longer-term project, and observed delivery of an introductory WIAL learning experience.",
+    body: "Add at least 100 hours of documented coaching experience, a long-term project, and observed delivery of an introductory WIAL learning experience.",
   },
   {
     title: "SALC",
-    body: "Lead certification experiences under MALC sponsorship, critique participant work, and demonstrate readiness for senior program leadership.",
+    body: "Get cleared to teach all WIAL certification programs, lead Foundations and Intensive CALC sessions, and mentor developing coaches.",
   },
   {
     title: "MALC",
-    body: "Combine senior-level experience with publication, presenting, mentoring, and broad contribution to the WIAL method.",
+    body: "Combine 500+ hours of senior-level experience with publication, presenting, mentoring, and broad contribution to the WIAL method.",
   },
 ];
 
@@ -151,40 +146,45 @@ export const certificationRecertificationRules: CertificationRecertificationRule
     track: "calc",
     validity: "2 years",
     annualRequirements: [
-      "Document at least 5 hours of Action Learning coaching during the prior two years.",
-      "Submit a short project write-up or testimonial to the Director of Certification.",
-      "Complete at least one WIAL volunteer or continuing education activity from the current renewal categories.",
-    ],
-    expiredPolicy: [
-      "If the credential expired within two years, renew by meeting the standard CALC renewal requirements.",
-      "If the credential expired for more than two years, complete the WIAL portal e-learning assessments or arrange an audited session with a S/MALC.",
+      "Submit proof of Action Learning coaching hours.",
+      "Participate in one WIAL activity.",
+      "Renew through WIAL's online renewal form.",
     ],
   },
   {
     track: "palc",
     validity: "2 years",
     annualRequirements: [
-      "Document at least 10 hours of Action Learning coaching during the prior two years.",
-      "Submit a brief project description that may be used in WIAL newsletter, website, or social content.",
-      "Complete at least two WIAL volunteer or continuing education activities from the current renewal categories.",
+      "Submit proof of Action Learning coaching hours.",
+      "Participate in two WIAL activities.",
+      "Lead at least one Foundations, CALC, or Intensive program.",
+      "Renew through WIAL's online renewal form.",
     ],
   },
   {
     track: "salc",
     validity: "2 years",
     annualRequirements: [
-      "Document at least 10 hours of WIAL Action Learning during the prior two years.",
-      "Complete at least three WIAL volunteer and/or continuing education activities.",
-      "Lead at least one program, mentor two qualified CALCs or certify one CALC candidate successfully, and review certification papers when requested.",
+      "Submit proof of Action Learning coaching hours.",
+      "Participate in three WIAL activities.",
+      "Lead at least one Foundations, CALC, or Intensive program.",
+      "Mentor two qualified CALCs, or successfully certify one CALC candidate.",
+      "Review certification papers as requested.",
+      "Renew through WIAL's online renewal form.",
     ],
   },
   {
     track: "malc",
-    validity: "1 year",
+    validity: "2 years",
     annualRequirements: [
-      "Document at least 10 hours of WIAL Action Learning during the prior two years.",
-      "Participate in an annual WIAL conference or other sanctioned event, or actively volunteer with a local affiliate or WIAL committee.",
-      "Lead at least one WIAL program, help certify a CALC candidate, publish and present, contribute a newsletter article, and review certification papers in a timely manner.",
+      "Submit proof of Action Learning coaching hours.",
+      "Participate in four WIAL activities.",
+      "Submit a success story or publish content on social media.",
+      "Lead at least one Foundations, CALC, or Intensive program.",
+      "Mentor two qualified CALCs, or successfully certify one CALC candidate.",
+      "Publish or present, and write at least one article for the WIAL newsletter.",
+      "Review certification papers as requested.",
+      "Renew through WIAL's online renewal form.",
     ],
   },
 ];
