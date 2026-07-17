@@ -36,7 +36,7 @@ export default async function CoachesDirectoryPage() {
           <div className="coach-hero-grid">
             <div className="space-y-5">
               <span className="eyebrow">Coach directory</span>
-              <h1 className="font-display text-[clamp(3.1rem,7vw,5.8rem)] leading-[0.94] tracking-[-0.07em] text-teal-deep">
+              <h1 className="font-display text-[clamp(2rem,3vw,3rem)] leading-[0.94] tracking-[-0.07em] text-teal-deep">
                 Find a WIAL-certified coach for your next high-stakes team
                 challenge.
               </h1>
@@ -61,7 +61,7 @@ export default async function CoachesDirectoryPage() {
         {directoryIsEmpty ? (
           <section className="site-panel rounded-[2rem] px-6 py-12 text-center md:px-10 md:py-16">
             <span className="eyebrow">The coach directory is growing</span>
-            <h2 className="mx-auto mt-4 max-w-2xl font-display text-[clamp(2.2rem,4vw,3.4rem)] leading-[1.05] tracking-[-0.05em] text-teal-deep">
+            <h2 className="mx-auto mt-4 max-w-2xl font-display text-[clamp(2rem,2vw,3rem)] leading-[1.05] tracking-[-0.05em] text-teal-deep">
               No coaches have been approved yet.
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-base leading-7 text-foreground/72">
