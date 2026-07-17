@@ -31,6 +31,7 @@ export async function getLayoutSiteContext(
         leadUserId: null,
         contactEmail: null,
         contactPhone: null,
+        contactPhoneCountryCode: null,
         description: null,
         logoUrl: null,
         stripeAccountId: null,

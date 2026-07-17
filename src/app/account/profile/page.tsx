@@ -2,6 +2,7 @@ import { AccountPageShell } from "@/components/account-page-shell";
 import { requireAccountViewer } from "@/lib/auth";
 import { getRoleLabel } from "@/lib/account";
 import { updateProfileAction } from "./actions";
+import { PhoneInputField } from "@/components/phone-input-field";
 
 type ProfilePageProps = {
   searchParams: Promise<{
@@ -39,6 +40,15 @@ export default async function ProfilePage({ searchParams }: ProfilePageProps) {
     requireAccountViewer("/account/profile"),
     searchParams,
   ]);
+
+  const safeViewer = {
+    ...viewer,
+    phoneCountryCode: viewer.phoneCountryCode ?? null,
+    location: viewer.location ?? "",
+    photoUrl: viewer.photoUrl ?? "",
+    bio: viewer.bio ?? "",
+  };
+
   const notice = getProfileNotice(params.notice);
   const error = getProfileError(params.error);
 
@@ -60,7 +70,7 @@ export default async function ProfilePage({ searchParams }: ProfilePageProps) {
                 <span className="field-label">Display name</span>
                 <input
                   className="field-input"
-                  defaultValue={viewer.name}
+                  defaultValue={safeViewer.name}
                   name="name"
                   required
                   type="text"
@@ -69,16 +79,14 @@ export default async function ProfilePage({ searchParams }: ProfilePageProps) {
 
               <div className="field-shell is-readonly">
                 <span className="field-label">Email</span>
-                <p className="field-static">{viewer.email}</p>
+                <p className="field-static">{safeViewer.email}</p>
               </div>
 
               <label className="field-shell">
                 <span className="field-label">Phone</span>
-                <input
-                  className="field-input"
-                  defaultValue={viewer.phone ?? ""}
-                  name="phone"
-                  type="tel"
+                <PhoneInputField
+                  defaultPhone={safeViewer.phone}
+                  defaultCountryCode={safeViewer.phoneCountryCode}
                 />
               </label>
 
@@ -86,7 +94,7 @@ export default async function ProfilePage({ searchParams }: ProfilePageProps) {
                 <span className="field-label">Location</span>
                 <input
                   className="field-input"
-                  defaultValue={viewer.location ?? ""}
+                  defaultValue={safeViewer.location}
                   name="location"
                   type="text"
                 />
@@ -97,7 +105,7 @@ export default async function ProfilePage({ searchParams }: ProfilePageProps) {
               <span className="field-label">Profile photo URL</span>
               <input
                 className="field-input"
-                defaultValue={viewer.photoUrl ?? ""}
+                defaultValue={safeViewer.photoUrl}
                 name="photoUrl"
                 placeholder="https://..."
                 type="url"
@@ -108,7 +116,7 @@ export default async function ProfilePage({ searchParams }: ProfilePageProps) {
               <span className="field-label">Bio</span>
               <textarea
                 className="field-textarea"
-                defaultValue={viewer.bio ?? ""}
+                defaultValue={safeViewer.bio}
                 name="bio"
                 rows={6}
               />
@@ -117,12 +125,13 @@ export default async function ProfilePage({ searchParams }: ProfilePageProps) {
             <div className="grid gap-4 md:grid-cols-2">
               <div className="field-shell is-readonly">
                 <span className="field-label">Role</span>
-                <p className="field-static">{getRoleLabel(viewer.role)}</p>
+                <p className="field-static">{getRoleLabel(safeViewer.role)}</p>
               </div>
+
               <div className="field-shell is-readonly">
                 <span className="field-label">Chapter</span>
                 <p className="field-static">
-                  {viewer.chapterId ? "Assigned by WIAL admin" : "Global account"}
+                  {safeViewer.chapterId ? "Assigned by WIAL admin" : "Global account"}
                 </p>
               </div>
             </div>
@@ -143,15 +152,18 @@ export default async function ProfilePage({ searchParams }: ProfilePageProps) {
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-foreground/45">
             Profile summary
           </p>
+
           <div className="mt-5 rounded-[1.65rem] border border-line bg-white/60 p-5">
             <div className="account-avatar">
-              <span>{viewer.name.slice(0, 1).toUpperCase() || "W"}</span>
+              <span>
+                {safeViewer.name?.slice(0, 1).toUpperCase() || "W"}
+              </span>
             </div>
             <h2 className="mt-4 font-display text-3xl leading-none tracking-[-0.04em] text-teal-deep">
-              {viewer.name || "WIAL Member"}
+              {safeViewer.name || "WIAL Member"}
             </h2>
             <p className="mt-2 text-sm font-semibold uppercase tracking-[0.16em] text-accent">
-              {getRoleLabel(viewer.role)}
+              {getRoleLabel(safeViewer.role)}
             </p>
             <p className="mt-4 text-sm leading-7 text-foreground/72">
               Keep your core contact details current so future certification,

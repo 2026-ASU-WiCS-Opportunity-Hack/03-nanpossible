@@ -17,6 +17,7 @@ export async function updateProfileAction(formData: FormData) {
 
   const name = String(formData.get("name") ?? "").trim();
   const phone = String(formData.get("phone") ?? "").trim();
+  const phoneCountryCode = String(formData.get("phone_country_code") ?? "").trim();
   const location = String(formData.get("location") ?? "").trim();
   const bio = String(formData.get("bio") ?? "").trim();
   const photoUrl = String(formData.get("photoUrl") ?? "").trim();
@@ -54,6 +55,7 @@ export async function updateProfileAction(formData: FormData) {
   const { error: profileError } = await supabase.rpc("update_my_profile", {
     profile_name: name,
     profile_phone: phone || null,
+    profile_phone_country_code: phoneCountryCode || null,
     profile_location: location || null,
     profile_bio: bio || null,
     profile_photo_url: photoUrl || null,
