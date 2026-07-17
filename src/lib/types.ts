@@ -38,7 +38,7 @@ export type CertificationDocument = {
 };
 
 export type CertificationTrack = {
-  key: CertificationTrackKey;
+  key: CertificationTrackKey;   
   level: CertificationLevel;
   anchor: string;
   title: string;
@@ -92,6 +92,7 @@ export type UserProfile = {
   chapterId: string | null;
   assignedChapters: string[];
   phone: string | null;
+  phoneCountryCode?: string | null;
   location: string | null;
   bio: string | null;
   photoUrl: string | null;
@@ -123,6 +124,7 @@ export type CoachRecord = {
   name: string;
   email: string | null;
   phone: string | null;
+  phoneCountryCode: string | null;
   photoUrl: string | null;
   certLevel: CertificationLevel | null;
   locationCity: string | null;
@@ -191,6 +193,7 @@ export type ChapterRecord = {
   leadUserId: string | null;
   contactEmail: string | null;
   contactPhone: string | null;
+  contactPhoneCountryCode: string | null
   description: string | null;
   logoUrl: string | null;
   stripeAccountId: string | null;

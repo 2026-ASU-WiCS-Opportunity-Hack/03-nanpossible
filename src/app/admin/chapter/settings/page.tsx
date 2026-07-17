@@ -3,6 +3,7 @@ import { requireAccountViewer } from "@/lib/auth";
 import { resolveWorkspaceChapter } from "@/lib/chapter-workspace";
 import { chapterLanguages, chapterRegions } from "@/lib/chapter-options";
 import { saveChapterSettingsAction } from "./actions";
+import { PhoneInputField } from "@/components/phone-input-field";
 
 const languageOptions = [
   { code: "en", label: chapterLanguages[0] },
@@ -118,14 +119,12 @@ export default async function ChapterSettingsPage({
           </label>
 
           <label className="field-shell">
-            <span className="field-label">Contact phone</span>
-            <input
-              className="field-input"
-              defaultValue={chapter.contactPhone ?? ""}
-              name="contactPhone"
-              type="text"
-            />
-          </label>
+  <span className="field-label">Contact phone</span>
+  <PhoneInputField
+    defaultPhone={chapter.contactPhone}
+    defaultCountryCode={chapter.contactPhoneCountryCode}
+  />
+</label>
 
           <label className="field-shell md:col-span-2">
             <span className="field-label">Description</span>
