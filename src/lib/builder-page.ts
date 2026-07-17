@@ -607,6 +607,7 @@ export function parseChapterBuilderChromeState(
     chapterName: string;
     contactEmail?: string | null;
     contactPhone?: string | null;
+     contactPhoneCountryCode?: string | null;
   },
 ): ChapterBuilderChromeStateV1 | null {
   const root =

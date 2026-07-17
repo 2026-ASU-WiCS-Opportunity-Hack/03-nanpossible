@@ -16,6 +16,7 @@ type ChapterDbRow = {
   lead_user_id: string | null;
   contact_email: string | null;
   contact_phone: string | null;
+  contact_phone_country_code: string | null;
   description: string | null;
   logo_url: string | null;
   stripe_account_id: string | null;
@@ -31,6 +32,8 @@ function mapChapterRow(row: ChapterDbRow): ChapterRecord {
     chapterName: row.name,
     contactEmail: row.contact_email,
     contactPhone: row.contact_phone,
+    contactPhoneCountryCode: row.contact_phone_country_code,
+    
   });
 
   return {
@@ -43,6 +46,7 @@ function mapChapterRow(row: ChapterDbRow): ChapterRecord {
     leadUserId: row.lead_user_id,
     contactEmail: row.contact_email,
     contactPhone: row.contact_phone,
+    contactPhoneCountryCode: row.contact_phone_country_code,
     description: row.description ?? row.tagline ?? null,
     logoUrl: row.logo_url,
     stripeAccountId: row.stripe_account_id,
@@ -83,6 +87,9 @@ function mapFixture(record: Record<string, unknown>): ChapterRecord {
     chapterName: name,
     contactEmail,
     contactPhone,
+
+
+
   });
 
   return {
@@ -100,6 +107,7 @@ function mapFixture(record: Record<string, unknown>): ChapterRecord {
     leadUserId: typeof record.leadUserId === "string" ? record.leadUserId : null,
     contactEmail,
     contactPhone,
+    contactPhoneCountryCode: null,
     description:
       typeof record.description === "string"
         ? record.description
