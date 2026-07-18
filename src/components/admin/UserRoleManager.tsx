@@ -18,7 +18,6 @@ const roleOptions: Array<{ value: AppRole; label: string }> = [
   { value: "public_visitor", label: "Public visitor" },
 ];
 
-const pageSize = 12;
 
 function getRoleLabel(role: AppRole) {
   return roleOptions.find((option) => option.value === role)?.label ?? role;
@@ -66,7 +65,6 @@ export function UserRoleManager({
   const [roleFilter, setRoleFilter] = useState<"all" | AppRole>("all");
   const [accessFilter, setAccessFilter] = useState<"all" | "global" | "chapter" | "assigned">("all");
   const [searchTerm, setSearchTerm] = useState("");
-  const [page, setPage] = useState(1);
 
   const filteredUsers = useMemo(() => {
     const normalizedSearch = searchTerm.trim().toLowerCase();
@@ -83,9 +81,6 @@ export function UserRoleManager({
       return matchesSearch && matchesRole && matchesAccess;
     });
   }, [accessFilter, roleFilter, searchTerm, users]);
-
-  const totalPages = Math.max(1, Math.ceil(filteredUsers.length / pageSize));
-  const visibleUsers = filteredUsers.slice((page - 1) * pageSize, page * pageSize);
 
   if (!users.length) {
     return (
@@ -106,7 +101,6 @@ export function UserRoleManager({
           id="user-search"
           onChange={(event) => {
             setSearchTerm(event.target.value);
-            setPage(1);
           }}
           placeholder="Search users"
           value={searchTerm}
@@ -120,7 +114,6 @@ export function UserRoleManager({
           id="role-filter"
           onChange={(event) => {
             setRoleFilter(event.target.value as "all" | AppRole);
-            setPage(1);
           }}
           value={roleFilter}
         >
@@ -140,7 +133,6 @@ export function UserRoleManager({
           id="access-filter"
           onChange={(event) => {
             setAccessFilter(event.target.value as "all" | "global" | "chapter" | "assigned");
-            setPage(1);
           }}
           value={accessFilter}
         >
@@ -155,7 +147,7 @@ export function UserRoleManager({
         {users.length} users&nbsp;&nbsp;&nbsp; {filteredUsers.length} shown
       </div>
 
-      <div className="grid grid-cols-[minmax(0,1.25fr)_minmax(0,1.15fr)_minmax(6.5rem,0.9fr)_minmax(7.5rem,0.9fr)] gap-3 border-b border-line/70 bg-[rgba(255,250,242,0.58)] px-4 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-foreground/50">
+      <div className="grid grid-cols-[minmax(0,1.75fr)_minmax(0,0.95fr)_minmax(7rem,0.85fr)_minmax(7rem,0.85fr)] gap-3 border-b border-line/70 bg-[rgba(255,250,242,0.58)] px-4 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-foreground/50">
         <span>Name</span>
         <span>Email</span>
         <span>Role</span>
@@ -163,7 +155,7 @@ export function UserRoleManager({
       </div>
 
       <div className="divide-y divide-line/70">
-        {visibleUsers.map((user) => (
+        {filteredUsers.map((user) => (
           <UserRoleRow
             action={action}
             chapters={chapters}
@@ -173,32 +165,6 @@ export function UserRoleManager({
           />
         ))}
       </div>
-
-      {totalPages > 1 ? (
-        <div className="flex items-center justify-between border-t border-line/70 px-4 py-3 text-sm font-semibold text-foreground/60">
-          <span>
-            Page {page} of {totalPages}
-          </span>
-          <div className="flex gap-2">
-            <button
-              className="button-link secondary px-3 py-2 text-sm"
-              disabled={page === 1}
-              onClick={() => setPage((value) => Math.max(1, value - 1))}
-              type="button"
-            >
-              Previous
-            </button>
-            <button
-              className="button-link secondary px-3 py-2 text-sm"
-              disabled={page === totalPages}
-              onClick={() => setPage((value) => Math.min(totalPages, value + 1))}
-              type="button"
-            >
-              Next
-            </button>
-          </div>
-        </div>
-      ) : null}
     </section>
   );
 }
@@ -226,11 +192,11 @@ function UserRoleRow({
     <form action={action}>
       <input name="userId" type="hidden" value={user.id} />
 
-      <div className="grid grid-cols-[minmax(0,1.25fr)_minmax(0,1.15fr)_minmax(6.5rem,0.9fr)_minmax(7.5rem,0.9fr)] items-center gap-3 px-4 py-3">
+      <div className="grid grid-cols-[minmax(0,1.75fr)_minmax(0,0.95fr)_minmax(7rem,0.85fr)_minmax(7rem,0.85fr)] items-center gap-3 px-4 py-3">
 
         <div className="min-w-0">
 <div className="flex min-w-0 items-center gap-2">
-  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-accent-soft text-xs font-semibold text-teal-deep">
+  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-accent-soft text-[0.68rem] font-semibold text-teal-deep">
     {user.name.slice(0, 2).toUpperCase()}
   </span>
   <p className="truncate font-semibold text-teal-deep" title={user.name}>
@@ -238,7 +204,7 @@ function UserRoleRow({
   </p>
 </div>
 <p
-  className="truncate text-xs text-foreground/55"
+  className="truncate text-[0.68rem] leading-tight text-foreground/45"
   title={formatAccessSummary({ assignedChapters, chapterId, chapters, role })}
 >
   {formatAccessSummary({ assignedChapters, chapterId, chapters, role })}
@@ -248,7 +214,7 @@ function UserRoleRow({
         <p className="truncate text-sm text-foreground/70" title={user.email}>
           {user.email}
         </p>
-        <span className="w-fit rounded-full bg-[rgba(23,53,51,0.06)] px-2 py-0.5 text-[0.72rem] font-semibold text-teal-deep">
+        <span className="inline-flex w-fit max-w-full items-center whitespace-nowrap rounded-full bg-[rgba(23,53,51,0.06)] px-2 py-0.5 text-[0.7rem] font-semibold leading-none text-teal-deep">
           {getRoleLabel(role)}
         </span>
 

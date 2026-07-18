@@ -92,7 +92,7 @@ export default async function GlobalUsersPage({
         <div className="account-flash is-error">{getError(loadError ?? params.error)}</div>
       ) : null}
 
-      <div className="grid gap-5 xl:grid-cols-[minmax(0,1.6fr)_340px]">
+      <div className="grid gap-5 xl:grid-cols-[minmax(0,1fr)_250px]">
         <section className="site-panel rounded-[2rem] p-6 md:p-8">
           <div className="mb-6 flex flex-wrap items-start justify-between gap-4">
             <div>
@@ -116,22 +116,22 @@ export default async function GlobalUsersPage({
           )}
         </section>
 
-        <aside className="site-panel rounded-[2rem] p-6">
+        <aside className="site-panel rounded-[2rem] p-5">
           <p className="eyebrow">Access summary</p>
           <div className="mt-4 grid gap-3">
-            <article className="feature-card rounded-[1.35rem]">
+            <article className="feature-card rounded-[1.1rem] p-4">
               <p className="text-xs font-semibold uppercase tracking-[0.16em] text-accent">
                 Platform admins
               </p>
               <p className="mt-3 font-display text-4xl text-teal-deep">{platformAdminCount}</p>
             </article>
-            <article className="feature-card rounded-[1.35rem]">
+            <article className="feature-card rounded-[1.1rem] p-4">
               <p className="text-xs font-semibold uppercase tracking-[0.16em] text-accent">
                 Chapter heads
               </p>
               <p className="mt-3 font-display text-4xl text-teal-deep">{chapterAdminCount}</p>
             </article>
-            <article className="feature-card rounded-[1.35rem]">
+            <article className="feature-card rounded-[1.1rem] p-4">
               <p className="text-xs font-semibold uppercase tracking-[0.16em] text-accent">
                 Content creators
               </p>
