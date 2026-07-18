@@ -102,7 +102,7 @@ export default async function GlobalUsersPage({
               </h2>
             </div>
             <p className="max-w-md text-sm leading-7 text-foreground/68">
-              Each user keeps one primary role. Primary chapter access applies to chapter heads and coaches. Assigned chapters apply only to content creators.
+              Each user keeps one primary role. Primary chapter access applies to chapter heads and coaches. Assigned chapters apply only to content creators and coaches.
             </p>
           </div>
 
@@ -140,7 +140,6 @@ export default async function GlobalUsersPage({
           </div>
 
           <div className="mt-6 space-y-3 text-sm leading-7 text-foreground/70">
-            <p>Role changes clear chapter fields that no longer apply to the selected role.</p>
             <p>Content creators can span multiple chapters, but every user still has only one primary role.</p>
             <p>The final platform-admin account cannot be demoted from this interface.</p>
           </div>
