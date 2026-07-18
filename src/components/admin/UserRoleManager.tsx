@@ -23,6 +23,22 @@ function getRoleLabel(role: AppRole) {
   return roleOptions.find((option) => option.value === role)?.label ?? role;
 }
 
+function getRolePillClass(role: AppRole) {
+  switch (role) {
+    case "platform_admin":
+      return "bg-[#fdecec] text-[#9f3a33]";
+    case "chapter_admin":
+      return "bg-[rgba(70,111,176,0.12)] text-[#466fb0]";
+    case "coach":
+      return "bg-[rgba(80,143,96,0.12)] text-[#508f60]";
+    case "content_creator":
+      return "bg-[rgba(176,139,38,0.12)] text-[#8f711f]";
+    case "public_visitor":
+    default:
+      return "bg-[#f2f0ec] text-[#716b62]";
+  }
+}
+
 function formatAccessSummary(options: {
   assignedChapters: string[];
   chapterId: string;
@@ -214,7 +230,9 @@ function UserRoleRow({
         <p className="truncate text-sm text-foreground/70" title={user.email}>
           {user.email}
         </p>
-        <span className="inline-flex w-fit max-w-full items-center whitespace-nowrap rounded-full bg-[rgba(23,53,51,0.06)] px-2 py-0.5 text-[0.7rem] font-semibold leading-none text-teal-deep">
+        <span
+          className={`inline-flex w-fit max-w-full items-center whitespace-nowrap rounded-full px-2 py-0.5 text-[0.7rem] font-semibold leading-none ${getRolePillClass(role)}`}
+        >
           {getRoleLabel(role)}
         </span>
 
@@ -225,7 +243,15 @@ function UserRoleRow({
         ) : (
           <button
             className="justify-self-start whitespace-nowrap rounded-full border border-line/70 bg-white/80 px-2 py-0.5 text-[0.62rem] font-semibold uppercase tracking-[0.12em] text-teal-deep transition hover:border-accent/30 hover:text-accent"
-            onClick={() => setIsEditing((value) => !value)}
+            onClick={() => {
+              if (isEditing) {
+                setRole(user.role);
+                setChapterId(user.chapterId ?? "");
+                setAssignedChapters(user.assignedChapters);
+              }
+
+              setIsEditing((value) => !value);
+            }}
             type="button"
           >
             {isEditing ? "Close" : "Edit"}

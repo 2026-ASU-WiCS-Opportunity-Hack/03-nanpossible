@@ -92,9 +92,9 @@ export default async function GlobalUsersPage({
         <div className="account-flash is-error">{getError(loadError ?? params.error)}</div>
       ) : null}
 
-      <div className="grid gap-5 xl:grid-cols-[minmax(0,1fr)_250px]">
-        <section className="site-panel rounded-[2rem] p-6 md:p-8">
-          <div className="mb-6 flex flex-wrap items-start justify-between gap-4">
+      <div className="grid gap-5 xl:grid-cols-[minmax(0,1fr)_255px]">
+        <section className="site-panel rounded-[2rem] p-6 md:px-8 md:pb-8 md:pt-5">
+          <div className="mb-3 flex flex-wrap items-start justify-between gap-4">
             <div>
               <p className="eyebrow">Directory</p>
               <h2 className="mt-3 font-display text-3xl text-teal-deep">
