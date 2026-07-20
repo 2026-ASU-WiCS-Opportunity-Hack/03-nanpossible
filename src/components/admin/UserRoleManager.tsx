@@ -163,7 +163,7 @@ export function UserRoleManager({
         {users.length} users&nbsp;&nbsp;&nbsp; {filteredUsers.length} shown
       </div>
 
-      <div className="grid grid-cols-[minmax(0,1.7fr)_minmax(0,1fr)_minmax(7rem,0.8fr)_minmax(8.5rem,0.9fr)] gap-3 border-b border-line/70 bg-[rgba(255,250,242,0.58)] px-4 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-foreground/50">
+      <div className="grid grid-cols-[minmax(0,2.35fr)_minmax(0,1.35fr)_minmax(6.5rem,0.65fr)_minmax(7.5rem,0.65fr)] gap-3 border-b border-line/70 bg-[rgba(255,250,242,0.58)] px-4 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-foreground/50">
         <span>Name</span>
         <span>Email</span>
         <span>Role</span>
@@ -208,7 +208,7 @@ function UserRoleRow({
     <form action={action}>
       <input name="userId" type="hidden" value={user.id} />
 
-      <div className="grid grid-cols-[minmax(0,1.65fr)_minmax(0,1.05fr)_minmax(6.5rem,0.65fr)_minmax(8rem,0.9fr)] items-center gap-3 px-4 py-3">
+      <div className="grid grid-cols-[minmax(0,2.35fr)_minmax(0,1.35fr)_minmax(6.5rem,0.65fr)_minmax(7.5rem,0.65fr)] items-center gap-3 px-4 py-3">
 
         <div className="min-w-0">
 <div className="flex min-w-0 items-center gap-2">
