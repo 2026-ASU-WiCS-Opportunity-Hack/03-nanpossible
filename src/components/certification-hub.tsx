@@ -1,386 +1,296 @@
-import Link from "next/link";
-import { AccountPageShell } from "@/components/account-page-shell";
-import {
-  getCertificationHubContent,
-  getCertificationLmsUrl,
-  getDocumentTargetProps,
-  getGlobalCertificationDocuments,
-  getTrackDocuments,
-} from "@/lib/certification";
-import type { CertificationDocument, CertificationTrack } from "@/lib/types";
+"use client";
 
-function DocumentCard({
-  document,
-  accent,
-}: {
-  document: CertificationDocument;
-  accent?: string;
-}) {
+import { useState } from "react";
+import Link from "next/link";
+import {
+  certificationHero,
+  certificationProgression,
+  certificationRecertificationRules,
+  certificationTracks,
+} from "@/content/certification-hub";
+import { getLmsLinkConfig } from "@/lib/certification";
+import type { CertificationTrackKey } from "@/lib/types";
+
+const DEFAULT_LMS_URL = "https://wialportal.org/";
+
+function AnchorLink({ id, label }: { id: string; label: string }) {
   return (
-    <article className="feature-card rounded-[1.4rem]">
-      <p className="text-xs font-semibold uppercase tracking-[0.16em] text-accent">
-        {document.kind.replace("_", " ")} · {document.fileType.toUpperCase()}
-      </p>
-      <h3 className="mt-3 text-xl leading-tight text-teal-deep">{document.label}</h3>
-      <p className="mt-3 text-sm leading-6 text-foreground/70">{document.updatedLabel}</p>
-      <div className="mt-5 flex flex-wrap gap-3">
-        <Link
-          className={`button-link ${accent ?? "secondary"}`}
-          href={document.href}
-          {...getDocumentTargetProps(document)}
-        >
-          Open download
-        </Link>
-        {document.sourceUrl ? (
-          <Link
-            className="inline-flex items-center text-sm font-semibold text-teal transition hover:text-accent"
-            href={document.sourceUrl}
-            rel="noreferrer"
-            target="_blank"
-          >
-            Source file
-          </Link>
-        ) : null}
-      </div>
-    </article>
+    <a
+      href={`#${id}`}
+      className="inline-block rounded-full px-4 py-1.5 text-sm font-medium text-teal-deep transition hover:bg-accent-soft"
+    >
+      {label}
+    </a>
   );
 }
 
-function TrackSection({ track }: { track: CertificationTrack }) {
-  const documents = getTrackDocuments(track.key);
-  const lmsUrl = getCertificationLmsUrl(track.level);
+function TrackSection({
+  track,
+  isActive,
+  onToggle,
+}: {
+  track: (typeof certificationTracks)[0];
+  isActive: boolean;
+  onToggle: () => void;
+}) {
+  const lmsConfig = getLmsLinkConfig();
+  const lmsUrl = lmsConfig.levelUrls[track.key] || lmsConfig.globalUrl || DEFAULT_LMS_URL;
 
   return (
-    <section className="site-panel rounded-[2rem] p-6 md:p-8" id={track.anchor}>
-      <div className="grid gap-6 xl:grid-cols-[minmax(0,1.4fr)_340px]">
-        <div className="space-y-6">
-          <div className="space-y-3">
-            <span className="eyebrow">{track.level}</span>
-            <div className="space-y-3">
-              <h2 className="section-title text-teal-deep">{track.title}</h2>
-              <p className="text-base font-semibold uppercase tracking-[0.16em] text-foreground/52">
-                {track.tagline}
-              </p>
-              <p className="max-w-4xl text-lg leading-8 text-foreground/76">
-                {track.summary}
-              </p>
-            </div>
+    <div
+      id={track.anchor}
+      className="rounded-lg border border-gray-200 bg-white shadow-sm transition"
+    >
+      <button
+        onClick={onToggle}
+        className="flex w-full items-center justify-between px-6 py-4 text-left hover:bg-gray-50"
+      >
+        <div>
+          <span className="inline-block rounded-full bg-teal-deep/10 px-2.5 py-0.5 text-xs font-semibold text-teal-deep">
+            {track.level}
+          </span>
+          <h3 className="mt-1 text-lg font-semibold">{track.title}</h3>
+          <p className="text-sm text-foreground/70">{track.tagline}</p>
+        </div>
+        <span className="text-2xl text-foreground/40">{isActive ? "−" : "+"}</span>
+      </button>
+
+      {isActive && (
+        <div className="border-t border-gray-100 px-6 py-4 space-y-4">
+          <p className="text-sm leading-relaxed text-foreground/80">
+            {track.summary}
+          </p>
+
+          <div>
+            <h4 className="text-sm font-semibold">Eligibility</h4>
+            <ul className="mt-1 list-disc pl-5 text-sm text-foreground/70 space-y-0.5">
+              {track.eligibility.map((item, idx) => (
+                <li key={idx}>{item}</li>
+              ))}
+            </ul>
           </div>
 
-          <div className="grid gap-5 lg:grid-cols-2">
-            <article className="feature-card rounded-[1.55rem]">
-              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-accent">
-                Eligibility
-              </p>
-              <ul className="mt-4 space-y-3 text-sm leading-7 text-foreground/78">
-                {track.eligibility.map((item) => (
-                  <li key={item} className="flex gap-3">
-                    <span className="mt-2 h-2.5 w-2.5 shrink-0 rounded-full bg-accent" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </article>
-
-            <article className="feature-card rounded-[1.55rem]">
-              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-accent">
-                What the application expects
-              </p>
-              <ul className="mt-4 space-y-3 text-sm leading-7 text-foreground/78">
-                {track.requirements.map((item) => (
-                  <li key={item} className="flex gap-3">
-                    <span className="mt-2 h-2.5 w-2.5 shrink-0 rounded-full bg-teal" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </article>
+          <div>
+            <h4 className="text-sm font-semibold">Requirements</h4>
+            <ul className="mt-1 list-disc pl-5 text-sm text-foreground/70 space-y-0.5">
+              {track.requirements.map((item, idx) => (
+                <li key={idx}>{item}</li>
+              ))}
+            </ul>
           </div>
 
-          <article className="rounded-[1.55rem] border border-line/70 bg-[linear-gradient(135deg,rgba(32,92,89,0.08),rgba(184,143,69,0.08))] p-5">
-            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-accent">
-              Progression note
-            </p>
-            <p className="mt-3 text-base leading-7 text-foreground/76">
+          {track.progressionLabel && (
+            <p className="text-sm italic text-foreground/60">
               {track.progressionLabel}
             </p>
-          </article>
-        </div>
+          )}
 
-        <aside className="space-y-4">
-          {documents.requirements ? (
-            <DocumentCard document={documents.requirements} accent="primary" />
-          ) : null}
-          {documents.application ? (
-            <DocumentCard document={documents.application} accent="secondary" />
-          ) : null}
-          {documents.recertification ? (
-            <DocumentCard document={documents.recertification} accent="secondary" />
-          ) : null}
-
-          <section className="site-panel rounded-[1.6rem] border border-line/60 bg-white/55 p-5">
-            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-accent">
-              External LMS
-            </p>
-            <p className="mt-3 text-sm leading-7 text-foreground/74">{track.lmsSummary}</p>
-            {lmsUrl ? (
-              <Link
-                className="button-link secondary mt-5"
+          {track.lmsSummary && (
+            <div className="rounded-md bg-blue-50 px-4 py-3 text-sm text-blue-800">
+              <span className="font-medium">LMS access:</span> {track.lmsSummary}{" "}
+              <a
                 href={lmsUrl}
-                rel="noreferrer"
                 target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-blue-600 hover:underline"
               >
-                Open {track.level} in LMS
-              </Link>
-            ) : null}
-          </section>
-        </aside>
-      </div>
-    </section>
-  );
-}
-
-function CertificationHubSections({
-  mode,
-}: {
-  mode: "marketing" | "account";
-}) {
-  const content = getCertificationHubContent();
-  const globalDocuments = getGlobalCertificationDocuments();
-
-  return (
-    <div className="space-y-6">
-      {mode === "marketing" ? (
-        <section className="site-panel overflow-hidden rounded-[2.4rem] p-6 md:p-10">
-          <div className="grid gap-6 xl:grid-cols-[minmax(0,1.45fr)_320px]">
-            <div className="space-y-5">
-              <span className="eyebrow">{content.hero.eyebrow}</span>
-              <div className="space-y-4">
-                <h1 className="max-w-5xl font-display text-[clamp(2rem,2vw,2.5rem)] leading-[0.94] tracking-[-0.07em] text-teal-deep">
-                  {content.hero.title}
-                </h1>
-                <p className="max-w-4xl text-lg leading-8 text-foreground/78">
-                  {content.hero.intro}
-                </p>
-              </div>
+                Go to LMS →
+              </a>
             </div>
-
-            <aside className="grid gap-3">
-              {content.hero.metrics.map((metric) => (
-                <article className="metric-card rounded-[1.3rem]" key={metric.label}>
-                  <p className="metric-value text-teal-deep">{metric.value}</p>
-                  <p className="mt-2 text-sm font-semibold uppercase tracking-[0.14em] text-foreground/58">
-                    {metric.label}
-                  </p>
-                </article>
-              ))}
-            </aside>
-          </div>
-
-          <nav className="mt-8 overflow-x-auto">
-            <div className="flex min-w-max gap-3">
-              {content.hero.anchors.map((anchor) => (
-                <Link
-                  className="rounded-full border border-line bg-white/60 px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-teal transition hover:border-accent hover:text-accent"
-                  href={`#${anchor.id}`}
-                  key={anchor.id}
-                >
-                  {anchor.label}
-                </Link>
-              ))}
-            </div>
-          </nav>
-        </section>
-      ) : (
-        <section className="site-panel rounded-[2rem] p-5 md:p-6">
-          <div className="space-y-4">
-            <p className="max-w-4xl text-base leading-7 text-foreground/74">
-              Use this page to review certification requirements, renewal rules, application
-              packets, and the current LMS launch points without leaving the shared account
-              shell.
-            </p>
-            <nav className="overflow-x-auto">
-              <div className="flex min-w-max gap-3">
-                {content.hero.anchors.map((anchor) => (
-                  <Link
-                    className="rounded-full border border-line bg-white/60 px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-teal transition hover:border-accent hover:text-accent"
-                    href={`#${anchor.id}`}
-                    key={anchor.id}
-                  >
-                    {anchor.label}
-                  </Link>
-                ))}
-              </div>
-            </nav>
-          </div>
-        </section>
+          )}
+        </div>
       )}
-
-      <section className="site-panel rounded-[2rem] p-6 md:p-8" id="progression">
-        <div className="space-y-4">
-          <span className="eyebrow">Progression</span>
-          <h2 className="section-title text-teal-deep">
-            One structured path from foundational coaching to master-level leadership.
-          </h2>
-          <p className="max-w-4xl text-lg leading-8 text-foreground/76">
-            WIAL progression is cumulative. Each level adds new coaching scope, more
-            documented experience, stronger observation requirements, and a higher bar for
-            contribution to the Action Learning community.
-          </p>
-        </div>
-
-        <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-          {content.progression.map((step, index) => (
-            <article className="feature-card rounded-[1.55rem]" key={step.title}>
-              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-accent">
-                Step {index + 1}
-              </p>
-              <h3 className="mt-3 text-2xl leading-none text-teal-deep">{step.title}</h3>
-              <p className="mt-4 text-sm leading-7 text-foreground/74">{step.body}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      {content.tracks.map((track) => (
-        <TrackSection key={track.key} track={track} />
-      ))}
-
-      <section className="site-panel rounded-[2rem] p-6 md:p-8" id="recertification">
-        <div className="space-y-4">
-          <span className="eyebrow">Recertification</span>
-          <h2 className="section-title text-teal-deep">
-            Renewal requirements are clear, level-specific, and tied to current WIAL packets.
-          </h2>
-          <p className="max-w-4xl text-lg leading-8 text-foreground/76">
-            Renewal expectations differ by certification level. The cards below summarize the
-            current requirements and link back to the official packet that carries the detailed
-            renewal rules.
-          </p>
-        </div>
-
-        <div className="mt-6 grid gap-4 xl:grid-cols-2">
-          {content.recertification.map((rule) => {
-            const track = content.tracks.find((entry) => entry.key === rule.track);
-            const recertDocument = getTrackDocuments(rule.track).recertification;
-
-            return (
-              <article className="feature-card rounded-[1.65rem]" key={rule.track}>
-                <div className="flex flex-wrap items-start justify-between gap-3">
-                  <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-accent">
-                      {track?.level} renewal
-                    </p>
-                    <h3 className="mt-2 text-2xl leading-none text-teal-deep">
-                      Valid for {rule.validity}
-                    </h3>
-                  </div>
-                  {recertDocument ? (
-                    <Link
-                      className="button-link secondary"
-                      href={recertDocument.href}
-                      {...getDocumentTargetProps(recertDocument)}
-                    >
-                      Renewal packet
-                    </Link>
-                  ) : null}
-                </div>
-
-                <ul className="mt-5 space-y-3 text-sm leading-7 text-foreground/76">
-                  {rule.annualRequirements.map((item) => (
-                    <li key={item} className="flex gap-3">
-                      <span className="mt-2 h-2.5 w-2.5 shrink-0 rounded-full bg-teal" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                {rule.expiredPolicy?.length ? (
-                  <div className="mt-5 rounded-[1.25rem] border border-line/70 bg-white/55 p-4">
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-accent">
-                      Expired credential policy
-                    </p>
-                    <ul className="mt-3 space-y-3 text-sm leading-7 text-foreground/74">
-                      {rule.expiredPolicy.map((item) => (
-                        <li key={item}>{item}</li>
-                      ))}
-                    </ul>
-                  </div>
-                ) : null}
-              </article>
-            );
-          })}
-        </div>
-      </section>
-
-      <section className="site-panel rounded-[2rem] p-6 md:p-8" id="forms">
-        <div className="space-y-4">
-          <span className="eyebrow">Forms and downloads</span>
-          <h2 className="section-title text-teal-deep">
-            Current application packets, requirement guides, and reference files.
-          </h2>
-          <p className="max-w-4xl text-lg leading-8 text-foreground/76">
-            WIAL still uses a mix of PDFs and legacy Word application forms. The mirrored
-            downloads below preserve the current application packets while avoiding brittle
-            third-party or unstable source links.
-          </p>
-        </div>
-
-        <div className="mt-6 grid gap-4 lg:grid-cols-2 xl:grid-cols-3">
-          {content.documents.map((document) => (
-            <DocumentCard document={document} key={document.id} />
-          ))}
-        </div>
-      </section>
-
-      <section className="site-panel rounded-[2rem] p-6 md:p-8" id="lms">
-        <div className="grid gap-5 xl:grid-cols-[minmax(0,1.2fr)_360px]">
-          <div className="space-y-4">
-            <span className="eyebrow">External LMS</span>
-            <h2 className="section-title text-teal-deep">
-              WIAL keeps the current LMS and the website acts as the guide rail, not the course host.
-            </h2>
-            <p className="max-w-4xl text-lg leading-8 text-foreground/76">
-              The LMS remains the canonical home for e-learning, course progress, and
-              credential refresh workflows. This website explains the path, points coaches to
-              the right entry point, and stays aligned with the current external system instead
-              of duplicating it.
-            </p>
-          </div>
-
-          <div className="grid gap-4">
-            {content.tracks.map((track) => (
-              <article className="feature-card rounded-[1.45rem]" key={track.key}>
-                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-accent">
-                  {track.level}
-                </p>
-                <h3 className="mt-3 text-xl text-teal-deep">{track.title}</h3>
-                <p className="mt-3 text-sm leading-7 text-foreground/74">{track.lmsSummary}</p>
-                <Link
-                  className="button-link secondary mt-5"
-                  href={getCertificationLmsUrl(track.level) ?? "https://wialportal.org/"}
-                  rel="noreferrer"
-                  target="_blank"
-                >
-                  Open LMS
-                </Link>
-              </article>
-            ))}
-            {globalDocuments.map((document) => (
-              <DocumentCard document={document} key={document.id} />
-            ))}
-          </div>
-        </div>
-      </section>
     </div>
   );
 }
 
-export function MarketingCertificationHub() {
+function ProgressionSection() {
   return (
-    <div className="page-frame">
-      <div className="site-shell">
-        <CertificationHubSections mode="marketing" />
+    <div id="progression" className="scroll-mt-20">
+      <h2 className="text-2xl font-bold">Progression Path</h2>
+      <p className="mt-1 text-sm text-foreground/70">
+        The certification journey builds step by step, from CALC through MALC.
+      </p>
+      <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {certificationProgression.map((step, idx) => (
+          <div
+            key={idx}
+            className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm"
+          >
+            <div className="text-sm font-semibold text-teal-deep">{step.title}</div>
+            <p className="mt-1 text-sm text-foreground/70">{step.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function RecertificationSection() {
+  return (
+    <div id="recertification" className="scroll-mt-20">
+      <h2 className="text-2xl font-bold">Recertification</h2>
+      <p className="mt-1 text-sm text-foreground/70">
+        Keep your credential current by meeting the renewal requirements for your
+        level.
+      </p>
+      <div className="mt-4 grid gap-4 md:grid-cols-2">
+        {certificationRecertificationRules.map((rule, idx) => {
+          const track = certificationTracks.find((t) => t.key === rule.track);
+          return (
+            <div
+              key={idx}
+              className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm"
+            >
+              <div className="flex items-center justify-between">
+                <span className="text-sm font-semibold text-teal-deep">
+                  {track?.level || rule.track.toUpperCase()}
+                </span>
+                <span className="text-xs text-foreground/50">
+                  Valid {rule.validity}
+                </span>
+              </div>
+              <ul className="mt-2 list-disc pl-5 text-sm text-foreground/70 space-y-0.5">
+                {rule.annualRequirements.map((item, idx2) => (
+                  <li key={idx2}>{item}</li>
+                ))}
+              </ul>
+              {rule.expiredPolicy && (
+                <div className="mt-2 rounded-md bg-amber-50 px-3 py-2 text-xs text-amber-800">
+                  <span className="font-medium">Expired:</span>{" "}
+                  {rule.expiredPolicy.join(" ")}
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+function LmsSection() {
+  const lmsConfig = getLmsLinkConfig();
+  const globalUrl = lmsConfig.globalUrl || DEFAULT_LMS_URL;
+
+  return (
+    <div id="lms" className="scroll-mt-20">
+      <h2 className="text-2xl font-bold">LMS Access</h2>
+      <p className="mt-1 text-sm text-foreground/70">
+        WIAL Learning Management System provides course materials, recertification
+        resources, and continuing education.
+      </p>
+      <div className="mt-4 rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div>
+            <span className="text-xs font-semibold uppercase tracking-wider text-foreground/40">
+              Global
+            </span>
+            <a
+              href={globalUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block text-sm font-medium text-blue-600 hover:underline"
+            >
+              WIAL Portal →
+            </a>
+          </div>
+          {Object.entries(lmsConfig.levelUrls).map(([key, url]) => {
+            const track = certificationTracks.find((t) => t.key === key);
+            const resolvedUrl = url || globalUrl;
+            return (
+              <div key={key}>
+                <span className="text-xs font-semibold uppercase tracking-wider text-foreground/40">
+                  {track?.level || key.toUpperCase()}
+                </span>
+                <a
+                  href={resolvedUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block text-sm font-medium text-blue-600 hover:underline"
+                >
+                  Access →
+                </a>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export function CertificationHubSections() {
+  const [activeTrack, setActiveTrack] = useState<CertificationTrackKey | null>(
+    null
+  );
+
+  const handleToggle = (key: CertificationTrackKey) => {
+    setActiveTrack(activeTrack === key ? null : key);
+  };
+
+  return (
+    <div className="space-y-8">
+      {/* Hero Section */}
+      <div className="rounded-lg bg-gradient-to-r from-teal-deep/5 to-blue-deep/5 p-6">
+        <span className="text-sm font-semibold uppercase tracking-wider text-teal-deep">
+          {certificationHero.eyebrow}
+        </span>
+        <h1 className="mt-1 text-2xl font-bold">{certificationHero.title}</h1>
+        <p className="mt-2 max-w-2xl text-sm text-foreground/70">
+          {certificationHero.intro}
+        </p>
+        <div className="mt-4 flex flex-wrap gap-4">
+          {certificationHero.metrics.map((metric, idx) => (
+            <div key={idx} className="flex items-center gap-1">
+              <span className="text-sm font-semibold">{metric.value}</span>
+              <span className="text-sm text-foreground/50">{metric.label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Anchor Navigation */}
+      <div className="flex flex-wrap gap-1 border-b border-gray-200 pb-3">
+        {certificationHero.anchors.map((anchor) => (
+          <AnchorLink key={anchor.id} id={anchor.id} label={anchor.label} />
+        ))}
+      </div>
+
+      {/* Tracks */}
+      <div className="space-y-3">
+        {certificationTracks.map((track) => (
+          <TrackSection
+            key={track.key}
+            track={track}
+            isActive={activeTrack === track.key}
+            onToggle={() => handleToggle(track.key)}
+          />
+        ))}
+      </div>
+
+      {/* Progression */}
+      <ProgressionSection />
+
+      {/* Recertification */}
+      <RecertificationSection />
+
+      {/* LMS */}
+      <LmsSection />
+
+      {/* Contact CTA */}
+      <div className="mt-8 rounded-lg border border-gray-200 bg-gray-50 p-6 text-center">
+        <h3 className="text-lg font-semibold">Ready to Get Certified?</h3>
+        <p className="mt-1 text-sm text-foreground/70">
+          Contact us to learn more about WIAL certification programs and find a
+          certification path that is right for you.
+        </p>
+        <Link
+          href="/contact"
+          className="mt-4 inline-block rounded-md bg-teal-deep px-6 py-2.5 text-sm font-semibold text-white transition hover:bg-teal-deep/90"
+        >
+          Contact Us
+        </Link>
       </div>
     </div>
   );
@@ -388,13 +298,24 @@ export function MarketingCertificationHub() {
 
 export function AccountCertificationHub() {
   return (
-    <AccountPageShell
-      badge="Coach learning map"
-      description="Use the same global certification standard, renewal guidance, application packets, and LMS links that power the public certification hub."
-      eyebrow="Coach workspace"
-      title="Certification courses"
-    >
-      <CertificationHubSections mode="account" />
-    </AccountPageShell>
+    <div className="space-y-6">
+      <h2 className="text-2xl font-bold">My Certifications</h2>
+      <p className="text-foreground/70">
+        View and manage your WIAL certifications here.
+      </p>
+      <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
+        <p className="text-sm text-foreground/60">
+          Your certifications will appear here once you complete a certification program.
+        </p>
+        <div className="mt-4">
+          <Link
+            href="/certification"
+            className="inline-block rounded-md bg-teal-deep px-4 py-2 text-sm font-semibold text-white transition hover:bg-teal-deep/90"
+          >
+            Explore Certification Programs
+          </Link>
+        </div>
+      </div>
+    </div>
   );
 }

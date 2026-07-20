@@ -1,12 +1,20 @@
-import type { Metadata } from "next";
-import { MarketingCertificationHub } from "@/components/certification-hub";
+import { Metadata } from "next";
+import { CertificationHubSections } from "@/components/certification-hub";
+import {
+  certificationHero,
+  certificationTracks,
+} from "@/content/certification-hub";
 
 export const metadata: Metadata = {
-  title: "WIAL Certification Hub",
+  title: "Certification | WIAL",
   description:
-    "Review CALC, PALC, SALC, and MALC requirements, progression paths, renewal rules, application forms, and WIAL LMS access.",
+    "WIAL certification programs - CALC, PALC, SALC, and MALC certification for Action Learning coaches.",
 };
 
 export default async function CertificationHubPage() {
-  return <MarketingCertificationHub />;
+  return (
+    <main className="container mx-auto px-4 py-8 max-w-5xl">
+      <CertificationHubSections />
+    </main>
+  );
 }

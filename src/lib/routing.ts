@@ -1,11 +1,12 @@
 import type { CanonicalPageSlug, NavigationItem } from "@/lib/types";
 
 export const navigationItems: NavigationItem[] = [
-  { href: "/coaches", label: "Find a Coach" },
   { href: "/about", label: "About WIAL" },
   { href: "/certification", label: "Certification" },
   { href: "/clients", label: "Our Clients" },
-  { href: "/contact", label: "Contact" },
+  { href: "/partners", label: "Our Partners" },
+  { href: "/affiliates", label: "Our Affiliates" },
+  { href: "/contact", label: "Contact Us" },
 ];
 
 const aliasMap = new Map<string, string>([
@@ -20,6 +21,8 @@ const canonicalMap = new Map<string, CanonicalPageSlug>([
   ["certification", "certification"],
   ["clients", "clients"],
   ["contact", "contact"],
+  ["partners", "partners"],
+  ["affiliates", "affiliates"],
 ]);
 
 export const reservedSubdomains = new Set([
