@@ -163,11 +163,12 @@ export function UserRoleManager({
         {users.length} users&nbsp;&nbsp;&nbsp; {filteredUsers.length} shown
       </div>
 
-      <div className="grid grid-cols-[minmax(0,2.35fr)_minmax(0,1.35fr)_minmax(6.5rem,0.65fr)_minmax(7.5rem,0.65fr)] gap-3 border-b border-line/70 bg-[rgba(255,250,242,0.58)] px-4 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-foreground/50">
+      <div className="grid grid-cols-[minmax(0,2.05fr)_minmax(0,1.6fr)_minmax(5rem,0.5fr)_minmax(4rem,0.4fr)] gap-2 border-b border-line/70 bg-[rgba(255,250,242,0.58)] px-4 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-foreground/50">
         <span>Name</span>
         <span>Email</span>
         <span>Role</span>
         <span>Action</span>
+        
       </div>
 
       <div className="divide-y divide-line/70">
@@ -208,7 +209,7 @@ function UserRoleRow({
     <form action={action}>
       <input name="userId" type="hidden" value={user.id} />
 
-      <div className="grid grid-cols-[minmax(0,2.35fr)_minmax(0,1.35fr)_minmax(6.5rem,0.65fr)_minmax(7.5rem,0.65fr)] items-center gap-3 px-4 py-3">
+      <div className="grid grid-cols-[minmax(0,2.05fr)_minmax(0,1.6fr)_minmax(5rem,0.5fr)_minmax(4rem,0.4fr)] items-center gap-2 px-4 py-3">
 
         <div className="min-w-0">
 <div className="flex min-w-0 items-center gap-2">
@@ -231,18 +232,18 @@ function UserRoleRow({
           {user.email}
         </p>
         <span
-          className={`inline-flex w-fit max-w-full items-center justify-center whitespace-nowrap rounded-full border border-transparent px-2.5 py-0.5 text-[0.7rem] font-semibold leading-none ${getRolePillClass(role)}`}
+          className={`inline-flex w-[3.9rem] items-center justify-center justify-self-start whitespace-normal rounded-full border border-transparent px-1.5 py-1 text-center text-[0.66rem] font-semibold leading-tight ${getRolePillClass(role)}`}
         >
           {getRoleLabel(role)}
         </span>
 
         {isSelf ? (
-          <span className="inline-flex items-center justify-center justify-self-start whitespace-nowrap rounded-full border border-line/80 bg-[rgba(255,250,242,0.9)] px-2.5 py-0.5 text-[0.7rem] font-semibold uppercase leading-none tracking-[0.12em] text-accent">
-            Your account
+          <span className="inline-flex w-[3.5rem] items-center justify-center justify-self-start whitespace-nowrap rounded-full border border-line/80 bg-[rgba(255,250,242,0.9)] px-1.5 py-0.5 text-center text-[0.66rem] font-semibold uppercase leading-tight tracking-[0.08em] text-accent">
+            You
           </span>
         ) : (
           <button
-            className="inline-flex items-center justify-center justify-self-start whitespace-nowrap rounded-full border border-line/80 bg-[rgba(255,250,242,0.9)] px-2.5 py-0.5 text-[0.7rem] font-semibold uppercase leading-none tracking-[0.12em] text-teal-deep transition hover:border-[rgba(209,0,52,0.28)] hover:bg-[rgba(209,0,52,0.04)]"
+            className="inline-flex w-[3.5rem] items-center justify-center justify-self-start whitespace-nowrap rounded-full border border-line/80 bg-[rgba(255,250,242,0.9)] px-1.5 py-0.5 text-center text-[0.66rem] font-semibold uppercase leading-tight tracking-[0.08em] text-teal-deep transition hover:border-[rgba(209,0,52,0.28)] hover:bg-[rgba(209,0,52,0.04)]"
             onClick={() => {
               if (isEditing) {
                 setRole(user.role);
