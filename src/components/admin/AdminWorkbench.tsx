@@ -51,7 +51,7 @@ export function AdminWorkbench({
 }: AdminWorkbenchProps) {
   return (
     <section className="site-panel overflow-hidden rounded-[2rem]">
-      <div className="sticky top-[5.75rem] z-20 border-b border-line/80 bg-[rgba(255,252,248,0.97)] px-5 py-4 backdrop-blur-xl md:px-7">
+      <div className="border-b border-line/80 bg-[rgba(255,252,248,0.97)] px-5 py-4 md:px-7">
         <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-3">
           <div className="flex min-w-0 flex-wrap items-center gap-x-3 gap-y-2">
             <h2 className="min-w-0 max-w-full truncate font-display text-2xl tracking-[-0.04em] text-teal-deep">
