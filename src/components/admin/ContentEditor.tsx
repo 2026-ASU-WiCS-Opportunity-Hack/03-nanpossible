@@ -960,34 +960,22 @@ export function ContentEditor({
             </div>
           </div>
         }
-        eyebrow="Page workbench"
         liveHref={buildChapterPageHref(chapterSubdomain, pageSlug)}
+        previewHint="Updates as you type, using the same page layout as the live chapter site."
         previewLabel="Live preview"
         previewPane={
-          <div className="space-y-4">
-            <div className="rounded-[1.5rem] border border-line/80 bg-white/62 px-4 py-4">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-foreground/42">
-                Preview behavior
-              </p>
-              <p className="mt-2 text-sm leading-7 text-foreground/64">
-                This panel uses the same chapter page shell as the public tenant route and updates from the editor in real time.
-              </p>
-            </div>
-
-            <div className="overflow-hidden rounded-[1.8rem] border border-line/70 bg-[rgba(255,252,248,0.9)] shadow-[inset_0_1px_0_rgba(255,255,255,0.65)]">
-              <ChapterHtmlPage
-                chapterName={chapterName}
-                embedded
-                html={deferredPreviewHtml || "<p></p>"}
-                title={pageTitle}
-              />
-            </div>
+          <div className="overflow-hidden rounded-[1.8rem] border border-line/70 bg-[rgba(255,252,248,0.9)] shadow-[inset_0_1px_0_rgba(255,255,255,0.65)]">
+            <ChapterHtmlPage
+              chapterName={chapterName}
+              embedded
+              html={deferredPreviewHtml || "<p></p>"}
+              title={pageTitle}
+            />
           </div>
         }
         saveStatus={workbenchStatus}
-        stageLabel={isPublished ? "Published page" : "Draft page"}
+        stageLabel={isPublished ? "Published" : "Draft"}
         stageTone={isPublished ? "success" : "warning"}
-        subtitle="Write, preview, reorder, and stage content updates before publishing them to the live chapter site."
         title={pageTitle}
       />
 
