@@ -50,6 +50,7 @@ OpenRouter (LLM gateway), Cohere (embeddings), Stripe (payments), ElevenLabs (TT
 ## Key Conventions
 
 - Path alias: `@/*` maps to `src/*`
+- Admin editors (events, page content) share `AdminWorkbench`: compact sticky toolbar, optional left rail, edit pane with preview stacked below
 - Node 22 (`.nvmrc`), strict TypeScript
 - Tailwind CSS v4
 - Tests co-located with source as `.test.ts` files in `src/lib/`

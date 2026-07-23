@@ -31,7 +31,7 @@ export default async function ChapterEventsPage({
   return (
     <AccountPageShell
       badge="Events admin"
-      description="Manage the events that appear on the chapter homepage and feed the chapter-in-a-box generator."
+      description="Create events and publish them to your chapter homepage."
       eyebrow="Chapter workspace"
       title="Events"
     >
