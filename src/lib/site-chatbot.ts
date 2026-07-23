@@ -126,7 +126,7 @@ export function buildFallbackAssistantReply(query: string) {
     const renewal = certification.recertification.find((entry) => entry.track === trackKey);
 
     if (!track || !renewal) {
-      return "I couldn’t load that certification track right now. Try the public hub at `/certification` or contact `info@wial.org`.";
+      return "I couldn't load that certification track right now. Try the public hub at `/certification` or contact `info@wial.org`.";
     }
 
     if (
@@ -134,11 +134,12 @@ export function buildFallbackAssistantReply(query: string) {
       normalized.includes("recert") ||
       normalized.includes("expire")
     ) {
+      const renewalPacket = docs.recertification?.href;
       return [
         `${track.level} is valid for ${renewal.validity}.`,
         `Current renewal requirements: ${renewal.annualRequirements.join(" ")}`,
-        docs.recertification
-          ? `Renewal packet: ${docs.recertification.href}`
+        renewalPacket
+          ? `Renewal packet: ${renewalPacket}`
           : "Renewal details are in the current certification packet.",
         renewal.expiredPolicy?.length
           ? `Expired credential policy: ${renewal.expiredPolicy.join(" ")}`
@@ -154,23 +155,27 @@ export function buildFallbackAssistantReply(query: string) {
       normalized.includes("form") ||
       normalized.includes("requirements")
     ) {
+      const applicationForm = docs.application?.href;
+      const requirementsPacket = docs.requirements?.href;
       return [
         `${track.level} overview: ${track.summary}`,
         `Eligibility: ${track.eligibility.join(" ")}`,
         `Application expectations: ${track.requirements.join(" ")}`,
-        docs.application ? `Application form: ${docs.application.href}` : "",
-        docs.requirements ? `Requirements packet: ${docs.requirements.href}` : "",
+        applicationForm ? `Application form: ${applicationForm}` : "",
+        requirementsPacket ? `Requirements packet: ${requirementsPacket}` : "",
         `More detail: /certification#${track.anchor}`,
       ]
         .filter(Boolean)
         .join("\n\n");
     }
 
+    const requirementsPacket = docs.requirements?.href;
+    const applicationForm = docs.application?.href;
     return [
       `${track.level}: ${track.summary}`,
       `Next step: ${track.progressionLabel}`,
-      docs.requirements ? `Requirements packet: ${docs.requirements.href}` : "",
-      docs.application ? `Application form: ${docs.application.href}` : "",
+      requirementsPacket ? `Requirements packet: ${requirementsPacket}` : "",
+      applicationForm ? `Application form: ${applicationForm}` : "",
       `Certification hub section: /certification#${track.anchor}`,
     ]
       .filter(Boolean)
@@ -194,8 +199,7 @@ export function buildFallbackAssistantReply(query: string) {
 
   return [
     "I can help with CALC, PALC, SALC, MALC, recertification, application forms, LMS links, Credly badges, and general WIAL certification questions.",
-    "Start with `/certification` for the full hub, or ask something specific like “How do I renew PALC?” or “Where is the CALC application form?”",
+    "Start with `/certification` for the full hub, or ask something specific like \"How do I renew PALC?\" or \"Where is the CALC application form?\"",
     "If you need direct help, contact `info@wial.org`.",
   ].join("\n\n");
 }
-

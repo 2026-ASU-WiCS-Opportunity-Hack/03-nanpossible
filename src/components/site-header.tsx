@@ -34,17 +34,17 @@ export function SiteHeader({ siteContext, viewer }: SiteHeaderProps) {
             <WialLogo chapterLabel={chapterLabel} />
           </div>
 
-          <nav className="hidden flex-1 items-center justify-center gap-1 lg:flex xl:gap-2">
-            {navigationItems.map((item) => (
-              <Link
-                className="whitespace-nowrap rounded-full px-3 py-2 text-sm font-semibold text-teal-deep transition hover:bg-accent-soft xl:px-4"
-                href={item.href}
-                key={item.href}
-              >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
+         <nav className="hidden flex-1 items-center justify-end gap-0 lg:flex">
+  {navigationItems.map((item) => (
+    <Link
+      className="whitespace-nowrap rounded-full px-2 py-1 text-[11px] font-medium text-teal-deep transition hover:bg-accent-soft lg:px-2.5"
+      href={item.href}
+      key={item.href}
+    >
+      {item.label}
+    </Link>
+  ))}
+</nav>
 
           <div className="ml-auto flex shrink-0 items-center gap-2 sm:gap-3">
             <div className="hidden text-right xl:block">

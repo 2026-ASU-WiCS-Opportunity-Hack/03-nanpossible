@@ -569,6 +569,7 @@ export async function updateChapterSettings(options: {
   language: string;
   contactEmail: string;
   contactPhone: string;
+   contactPhoneCountryCode: string;
   description: string;
   logoUrl: string;
 }) {
@@ -587,6 +588,7 @@ export async function updateChapterSettings(options: {
       language: mapLanguageLabelToCode(options.language),
       contact_email: options.contactEmail.trim() || null,
       contact_phone: options.contactPhone.trim() || null,
+      contact_phone_country_code: options.contactPhoneCountryCode.trim() || null,
       description: options.description.trim() || null,
       logo_url: options.logoUrl.trim() || null,
     })

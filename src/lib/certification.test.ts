@@ -17,19 +17,13 @@ describe("certification hub data", () => {
     ]);
   });
 
-  it("provides mirrored application downloads for every level", () => {
-    expect(getTrackDocuments("calc").application?.href).toBe(
-      "/downloads/certification/calc-application.doc",
-    );
-    expect(getTrackDocuments("palc").application?.href).toBe(
-      "/downloads/certification/palc-application.doc",
-    );
-    expect(getTrackDocuments("salc").application?.href).toBe(
-      "/downloads/certification/salc-application.doc",
-    );
-    expect(getTrackDocuments("malc").application?.href).toBe(
-      "/downloads/certification/malc-application.doc",
-    );
+  it("provides document placeholders (documents removed per issue requirements)", () => {
+    // Documents have been removed per issue requirements.
+    // The getTrackDocuments function returns null for all document fields.
+    expect(getTrackDocuments("calc").application).toBeNull();
+    expect(getTrackDocuments("palc").application).toBeNull();
+    expect(getTrackDocuments("salc").application).toBeNull();
+    expect(getTrackDocuments("malc").application).toBeNull();
   });
 
   it("falls back to the global LMS URL when a level-specific URL is not configured", () => {
@@ -39,4 +33,3 @@ describe("certification hub data", () => {
     expect(getCertificationLmsUrl("SALC")).toBe("https://wialportal.org/");
   });
 });
-

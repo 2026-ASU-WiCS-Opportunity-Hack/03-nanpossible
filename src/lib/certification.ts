@@ -1,13 +1,10 @@
 import {
-  certificationDocuments,
   certificationHero,
   certificationProgression,
   certificationRecertificationRules,
   certificationTracks,
-  getCertificationDocumentsForTrack,
 } from "@/content/certification-hub";
 import type {
-  CertificationDocument,
   CertificationLevel,
   CertificationTrack,
   CertificationTrackKey,
@@ -29,7 +26,6 @@ export function getCertificationHubContent() {
     progression: certificationProgression,
     tracks: certificationTracks,
     recertification: certificationRecertificationRules,
-    documents: certificationDocuments,
   };
 }
 
@@ -52,23 +48,6 @@ export function getCertificationLmsUrl(level: CertificationLevel) {
   return config.levelUrls[levelKeyMap[level]] ?? config.globalUrl;
 }
 
-export function getTrackDocuments(track: CertificationTrackKey) {
-  return {
-    requirements:
-      getCertificationDocumentsForTrack(track, "requirements")[0] ?? null,
-    application:
-      getCertificationDocumentsForTrack(track, "application")[0] ?? null,
-    recertification:
-      getCertificationDocumentsForTrack(track, "recertification")[0] ?? null,
-    extras: getCertificationDocumentsForTrack(track).filter(
-      (document) =>
-        document.kind !== "requirements" &&
-        document.kind !== "application" &&
-        document.kind !== "recertification",
-    ),
-  };
-}
-
 export function getCertificationTrack(track: CertificationTrackKey): CertificationTrack {
   const match = certificationTracks.find((entry) => entry.key === track);
 
@@ -79,18 +58,41 @@ export function getCertificationTrack(track: CertificationTrackKey): Certificati
   return match;
 }
 
-export function getGlobalCertificationDocuments() {
-  return certificationDocuments.filter((document) => document.track === "global");
+export function getAllCertificationTracks() {
+  return certificationTracks;
 }
 
-export function getDocumentTargetProps(document: CertificationDocument) {
-  if (document.href.startsWith("/")) {
-    return {};
-  }
+export function getRecertificationRulesForTrack(trackKey: string) {
+  return certificationRecertificationRules.find(
+    (rule) => rule.track === trackKey
+  ) || null;
+}
 
+export function getAllRecertificationRules() {
+  return certificationRecertificationRules;
+}
+
+export function getCertificationProgression() {
+  return certificationProgression;
+}
+
+// ============================================================
+// FIXED: Add explicit return type
+// ============================================================
+type TrackDocuments = {
+  requirements: { href: string } | null;
+  application: { href: string } | null;
+  recertification: { href: string } | null;
+  extras: Array<{ href: string }>;
+};
+
+export function getTrackDocuments(track: CertificationTrackKey): TrackDocuments {
+  // Documents have been removed per issue requirements
+  // Return null for document fields
   return {
-    rel: "noreferrer",
-    target: "_blank",
+    requirements: null,
+    application: null,
+    recertification: null,
+    extras: [],
   };
 }
-

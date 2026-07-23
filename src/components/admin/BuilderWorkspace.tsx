@@ -2,6 +2,7 @@
 
 import React from "react";
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import {
   BuilderNodeView,
@@ -255,6 +256,7 @@ export function BuilderWorkspace({
   const workbenchStatus = getWorkbenchStatusCopy(saveState, {
     lastSavedAt,
   });
+  const hasUnsavedChanges = saveState === "dirty" || saveState === "error";
 
   const draft = builderState.draft;
   const chromeDraft = builderChromeState.draft;
@@ -369,6 +371,24 @@ export function BuilderWorkspace({
       setSaveState("error");
       return false;
     }
+  });
+
+  // Persist pending edits before navigating away; only ask to discard when
+  // the save itself fails.
+  const confirmLeaveBuilder = useEventCallback(async () => {
+    if (!hasUnsavedChanges) {
+      return true;
+    }
+
+    const saved = await saveDraft();
+
+    if (saved) {
+      return true;
+    }
+
+    return window.confirm(
+      "Your latest edits could not be saved and will be lost. Leave the builder anyway?",
+    );
   });
 
   const publishPage = async () => {
@@ -659,6 +679,20 @@ export function BuilderWorkspace({
   }, [saveDraft]);
 
   useEffect(() => {
+    if (!hasUnsavedChanges) {
+      return;
+    }
+
+    const handleBeforeUnload = (event: BeforeUnloadEvent) => {
+      event.preventDefault();
+      event.returnValue = "";
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+    return () => window.removeEventListener("beforeunload", handleBeforeUnload);
+  }, [hasUnsavedChanges]);
+
+  useEffect(() => {
     if (!dragState) {
       return;
     }
@@ -815,6 +849,24 @@ export function BuilderWorkspace({
             </div>
 
             <div className="flex flex-wrap items-center gap-2">
+              <Link
+                className="button-link ghost"
+                href="/admin/chapter"
+                onClick={(event) => {
+                  if (!hasUnsavedChanges) {
+                    return;
+                  }
+
+                  event.preventDefault();
+                  void confirmLeaveBuilder().then((leave) => {
+                    if (leave) {
+                      router.push("/admin/chapter");
+                    }
+                  });
+                }}
+              >
+                Exit builder
+              </Link>
               <label className="inline-flex h-11 items-center gap-3 rounded-full border border-[color:var(--line)] bg-white/70 px-4 text-sm font-medium text-[color:var(--foreground)]/80">
                 <span className="text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-[color:var(--foreground)]/55">
                   Page
@@ -822,7 +874,12 @@ export function BuilderWorkspace({
                 <select
                   className="bg-transparent text-sm font-medium text-[color:var(--foreground)] outline-none"
                   onChange={(event) => {
-                    router.push(`/admin/chapter?page=${event.target.value}`);
+                    const nextPageId = event.target.value;
+                    void confirmLeaveBuilder().then((leave) => {
+                      if (leave) {
+                        router.push(`/admin/chapter?page=${nextPageId}`);
+                      }
+                    });
                   }}
                   value={pageId}
                 >

@@ -35,6 +35,7 @@ export async function saveChapterSettingsAction(formData: FormData) {
       language: String(formData.get("language") ?? ""),
       contactEmail: String(formData.get("contactEmail") ?? ""),
       contactPhone: String(formData.get("contactPhone") ?? ""),
+      contactPhoneCountryCode: String(formData.get("phone_country_code") ?? "").trim(),
       description: String(formData.get("description") ?? ""),
       logoUrl: String(formData.get("logoUrl") ?? ""),
     });

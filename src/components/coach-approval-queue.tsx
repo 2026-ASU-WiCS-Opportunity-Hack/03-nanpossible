@@ -33,10 +33,7 @@ export function CoachApprovalQueue({
   if (!coaches.length) {
     return (
       <section className="site-panel rounded-[2rem] px-6 py-12 text-center">
-        <h2 className="font-display text-3xl tracking-[-0.04em] text-teal-deep">
-          Queue is clear
-        </h2>
-        <p className="mx-auto mt-3 max-w-2xl text-base leading-7 text-foreground/72">
+        <p className="mx-auto max-w-2xl text-base leading-7 text-foreground/72">
           {emptyMessage}
         </p>
       </section>
