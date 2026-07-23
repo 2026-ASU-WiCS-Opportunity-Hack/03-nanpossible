@@ -2,6 +2,7 @@
 
 import React from "react";
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import {
   BuilderNodeView,
@@ -815,6 +816,9 @@ export function BuilderWorkspace({
             </div>
 
             <div className="flex flex-wrap items-center gap-2">
+              <Link className="button-link ghost" href="/admin/chapter">
+                Exit builder
+              </Link>
               <label className="inline-flex h-11 items-center gap-3 rounded-full border border-[color:var(--line)] bg-white/70 px-4 text-sm font-medium text-[color:var(--foreground)]/80">
                 <span className="text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-[color:var(--foreground)]/55">
                   Page

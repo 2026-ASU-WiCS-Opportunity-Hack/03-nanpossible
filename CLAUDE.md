@@ -54,3 +54,5 @@ OpenRouter (LLM gateway), Cohere (embeddings), Stripe (payments), ElevenLabs (TT
 - Tailwind CSS v4
 - Tests co-located with source as `.test.ts` files in `src/lib/`
 - Static content fixtures live in `src/content/` (JSON/TS)
+- Post-login landing per role comes from `defaultHref` in `src/content/account-navigation.json`
+- `/admin/chapter` opens the full-screen page builder (`BuilderWorkspace`, fixed overlay) only with an explicit `?page=` param; without it the workspace landing with admin nav renders
