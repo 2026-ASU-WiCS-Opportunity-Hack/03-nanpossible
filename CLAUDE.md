@@ -17,6 +17,8 @@ WIAL Platform — a multi-tenant SaaS for the World Institute for Action Learnin
 - `npm run seed:coaches` — seed sample coaches
 - `npm run manage:roles` — CLI for role management
 
+Vitest requires Node 22 (`nvm use 22`) — it fails with `ERR_REQUIRE_ESM` on Node 20, which may be the shell default.
+
 ## Architecture
 
 ### Multi-Tenancy (Middleware → URL Rewrite)
@@ -51,6 +53,9 @@ OpenRouter (LLM gateway), Cohere (embeddings), Stripe (payments), ElevenLabs (TT
 
 - Path alias: `@/*` maps to `src/*`
 - Admin editors (events, page content) share `AdminWorkbench`: compact sticky toolbar, optional left rail, edit pane with preview stacked below
+- Admin/account pages render inside `account-grid` (320px sidebar + stage capped at ~830px) — avoid side-by-side multi-pane layouts in the stage
+- Shared UI classes live in `src/app/globals.css` (`site-panel`, `eyebrow`, `field-*`, `button-link`, `account-flash`, `coach-checkbox`) — reuse them instead of ad-hoc styles; editor save-state chips come from `getWorkbenchStatusCopy` in `src/lib/workbench.ts`
+- UI copy is user-facing: plain language, no component names or storage/dev jargon in visible text
 - Node 22 (`.nvmrc`), strict TypeScript
 - Tailwind CSS v4
 - Tests co-located with source as `.test.ts` files in `src/lib/`
