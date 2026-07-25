@@ -286,9 +286,11 @@ export function CertificationHubSections() {
           certification path that is right for you.
         </p>
       <br/>
-      <p>
-        <a className="button-link primary" href="/contact">Contact Us</a>
-        </p>
+     <p>
+  <Link href="/contact" className="button-link primary">
+    Contact Us
+  </Link>
+</p>
       </div>
     </div>
   );
