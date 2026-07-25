@@ -475,8 +475,8 @@ html.cursor-large * {
 }
 
 .button-link.primary {
-  background: linear-gradient(135deg, var(--teal), var(--teal-deep));
-  color: white;
+  background: var(--teal-deep);
+  color: white !important;
   box-shadow: 0 6px 18px rgba(209, 0, 52, 0.22);
 }
 
