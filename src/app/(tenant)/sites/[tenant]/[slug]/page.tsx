@@ -1,4 +1,5 @@
 import { notFound, redirect } from "next/navigation";
+import type { Metadata } from "next";
 import { BuilderPageRenderer } from "@/components/chapter/BuilderPageRenderer";
 import { ChapterHtmlPage } from "@/components/chapter/ChapterHtmlPage";
 import { SiteChromeFrame } from "@/components/site-chrome-frame";
@@ -15,6 +16,27 @@ type TenantChapterPageProps = {
     slug: string;
   }>;
 };
+
+export async function generateMetadata({
+  params,
+}: TenantChapterPageProps): Promise<Metadata> {
+  const { tenant, slug } = await params;
+  const chapter = await getChapterBySubdomain(tenant);
+  if (!chapter) return {};
+
+  const route = normalizeChapterSlug(slug);
+  if (!route.slug) return {};
+
+  const page = await getContentPage({
+    slug: route.slug,
+    chapterId: chapter.id,
+    tenantSubdomain: chapter.subdomain,
+  });
+
+  if (!page) return {};
+
+  return { title: `${page.title} — ${chapter.name}` };
+}
 
 export default async function TenantChapterPage({
   params,
