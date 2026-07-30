@@ -2,9 +2,11 @@
 
 :root {
   --font-source-sans:
-    "Avenir Next", "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    var(--font-ubuntu), Ubuntu, "Segoe UI", "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
   --font-fraunces:
-    "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+    var(--font-ubuntu), Ubuntu, "Segoe UI", "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
   --background: #fbfaf8;
   --foreground: #18181b;
   --neutral: #6b6360;

@@ -56,6 +56,7 @@ OpenRouter (LLM gateway), Cohere (embeddings), Stripe (payments), ElevenLabs (TT
 - Admin/account pages render inside `account-grid` (320px sidebar + stage capped at ~830px) — avoid side-by-side multi-pane layouts in the stage
 - Shared UI classes live in `src/app/globals.css` (`site-panel`, `eyebrow`, `field-*`, `button-link`, `account-flash`, `coach-checkbox`) — reuse them instead of ad-hoc styles; editor save-state chips come from `getWorkbenchStatusCopy` in `src/lib/workbench.ts`
 - UI copy is user-facing: plain language, no component names or storage/dev jargon in visible text
+- Site font is Ubuntu (matches wial.org), loaded via `next/font/google` in `src/app/layout.tsx` as `--font-ubuntu`; font stacks are the root vars in `globals.css` (legacy names `--font-source-sans`/`--font-fraunces`)
 - Node 22 (`.nvmrc`), strict TypeScript
 - Tailwind CSS v4
 - Tests co-located with source as `.test.ts` files in `src/lib/`

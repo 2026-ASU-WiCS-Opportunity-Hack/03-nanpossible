@@ -1,5 +1,13 @@
 import type { Metadata } from "next";
+import { Ubuntu } from "next/font/google";
 import "./globals.css";
+
+const ubuntu = Ubuntu({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "700"],
+  variable: "--font-ubuntu",
+  display: "swap",
+});
 import { getAccessibilityBootScript } from "@/lib/accessibility-preferences";
 
 export const metadata: Metadata = {
@@ -32,7 +40,7 @@ export default async function RootLayout({
   return (
     <html
       lang="en"
-      className="h-full bg-background antialiased text-scale-default contrast-default line-height-default"
+      className={`${ubuntu.variable} h-full bg-background antialiased text-scale-default contrast-default line-height-default`}
       data-scroll-behavior="smooth"
       suppressHydrationWarning
     >
