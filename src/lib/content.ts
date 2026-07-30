@@ -330,3 +330,30 @@ export async function getContentPageByIdForAdmin(pageId: string) {
 
   return data ? mapPageRow(data as unknown as ContentPageRow) : null;
 }
+
+export async function getGlobalContentPageForAdmin(slug: string) {
+  const client = createServiceRoleSupabaseClient();
+
+  if (!client) {
+    return (
+      pageFixtures.find(
+        (page) => page.chapterId === null && page.slug === slug,
+      ) ?? null
+    );
+  }
+
+  const { data, error } = await client
+    .from("content_pages")
+    .select(contentPageColumns)
+    .is("chapter_id", null)
+    .eq("slug", slug)
+    .eq("is_global", true)
+    .maybeSingle();
+
+  if (error) {
+    console.error("Unable to load global content page", error);
+    return null;
+  }
+
+  return data ? mapPageRow(data as unknown as ContentPageRow) : null;
+}

@@ -60,6 +60,9 @@ export default async function GlobalAdminPage() {
             <Link className="button-link secondary" href="/admin/global/users">
               Manage users &amp; roles
             </Link>
+            <Link className="button-link secondary" href="/admin/global/footer">
+              Edit global footer
+            </Link>
             <Link className="button-link secondary" href="/admin/approvals">
               Review coach approvals
             </Link>
