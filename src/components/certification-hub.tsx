@@ -15,8 +15,8 @@ const DEFAULT_LMS_URL = "https://wialportal.org/";
 
 function AnchorLink({ id, label }: { id: string; label: string }) {
   return (
-    <a
-      href={`#${id}`}
+    
+      <a href={`#${id}`}
       className="inline-block rounded-full px-4 py-1.5 text-sm font-medium text-teal-deep transition hover:bg-accent-soft"
     >
       {label}
@@ -37,13 +37,10 @@ function TrackSection({
   const lmsUrl = lmsConfig.levelUrls[track.key] || lmsConfig.globalUrl || DEFAULT_LMS_URL;
 
   return (
-    <div
-      id={track.anchor}
-      className="rounded-lg border border-gray-200 bg-white shadow-sm transition"
-    >
+    <div id={track.anchor} className="site-panel rounded-lg transition">
       <button
         onClick={onToggle}
-        className="flex w-full items-center justify-between px-6 py-4 text-left hover:bg-gray-50"
+        className="flex w-full items-center justify-between px-6 py-4 text-left hover:bg-surface"
       >
         <div>
           <span className="inline-block rounded-full bg-teal-deep/10 px-2.5 py-0.5 text-xs font-semibold text-teal-deep">
@@ -56,7 +53,7 @@ function TrackSection({
       </button>
 
       {isActive && (
-        <div className="border-t border-gray-100 px-6 py-4 space-y-4">
+        <div className="border-t border-line px-6 py-4 space-y-4">
           <p className="text-sm leading-relaxed text-foreground/80">
             {track.summary}
           </p>
@@ -86,13 +83,13 @@ function TrackSection({
           )}
 
           {track.lmsSummary && (
-            <div className="rounded-md bg-blue-50 px-4 py-3 text-sm text-blue-800">
-              <span className="font-medium">LMS access:</span> {track.lmsSummary}{" "}
-              <a
-                href={lmsUrl}
+            <div className="rounded-md bg-accent-soft px-4 py-3 text-sm text-teal-deep">
+              <span className="font-semibold">LMS access:</span> {track.lmsSummary}{" "}
+              
+                <a href={lmsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-medium text-blue-600 hover:underline"
+                className="font-semibold text-teal-deep hover:underline"
               >
                 Go to LMS →
               </a>
@@ -113,10 +110,7 @@ function ProgressionSection() {
       </p>
       <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {certificationProgression.map((step, idx) => (
-          <div
-            key={idx}
-            className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm"
-          >
+          <div key={idx} className="feature-card rounded-lg">
             <div className="text-sm font-semibold text-teal-deep">{step.title}</div>
             <p className="mt-1 text-sm text-foreground/70">{step.body}</p>
           </div>
@@ -138,10 +132,7 @@ function RecertificationSection() {
         {certificationRecertificationRules.map((rule, idx) => {
           const track = certificationTracks.find((t) => t.key === rule.track);
           return (
-            <div
-              key={idx}
-              className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm"
-            >
+            <div key={idx} className="feature-card rounded-lg">
               <div className="flex items-center justify-between">
                 <span className="text-sm font-semibold text-teal-deep">
                   {track?.level || rule.track.toUpperCase()}
@@ -156,8 +147,8 @@ function RecertificationSection() {
                 ))}
               </ul>
               {rule.expiredPolicy && (
-                <div className="mt-2 rounded-md bg-amber-50 px-3 py-2 text-xs text-amber-800">
-                  <span className="font-medium">Expired:</span>{" "}
+                <div className="mt-2 rounded-md bg-accent-soft px-3 py-2 text-xs text-teal-deep">
+                  <span className="font-semibold">Expired:</span>{" "}
                   {rule.expiredPolicy.join(" ")}
                 </div>
               )}
@@ -180,17 +171,17 @@ function LmsSection() {
         WIAL Learning Management System provides course materials, recertification
         resources, and continuing education.
       </p>
-      <div className="mt-4 rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
+      <div className="site-panel mt-4 rounded-lg p-6">
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <div>
             <span className="text-xs font-semibold uppercase tracking-wider text-foreground/40">
               Global
             </span>
-            <a
-              href={globalUrl}
+            
+              <a href={globalUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="block text-sm font-medium text-blue-600 hover:underline"
+              className="block text-sm font-semibold text-teal-deep hover:underline"
             >
               WIAL Portal →
             </a>
@@ -203,11 +194,11 @@ function LmsSection() {
                 <span className="text-xs font-semibold uppercase tracking-wider text-foreground/40">
                   {track?.level || key.toUpperCase()}
                 </span>
-                <a
-                  href={resolvedUrl}
+                
+                  <a href={resolvedUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block text-sm font-medium text-blue-600 hover:underline"
+                  className="block text-sm font-semibold text-teal-deep hover:underline"
                 >
                   Access →
                 </a>
@@ -232,11 +223,9 @@ export function CertificationHubSections() {
   return (
     <div className="space-y-8">
       {/* Hero Section */}
-      <div className="rounded-lg bg-gradient-to-r from-teal-deep/5 to-blue-deep/5 p-6">
-        <span className="text-sm font-semibold uppercase tracking-wider text-teal-deep">
-          {certificationHero.eyebrow}
-        </span>
-        <h1 className="mt-1 text-2xl font-bold">{certificationHero.title}</h1>
+      <div className="rounded-lg bg-gradient-to-r from-teal-deep/5 to-gold/5 p-6">
+        <span className="eyebrow">{certificationHero.eyebrow}</span>
+        <h1 className="mt-3 text-2xl font-bold">{certificationHero.title}</h1>
         <p className="mt-2 max-w-2xl text-sm text-foreground/70">
           {certificationHero.intro}
         </p>
@@ -251,7 +240,7 @@ export function CertificationHubSections() {
       </div>
 
       {/* Anchor Navigation */}
-      <div className="flex flex-wrap gap-1 border-b border-gray-200 pb-3">
+      <div className="flex flex-wrap gap-1 border-b border-line pb-3">
         {certificationHero.anchors.map((anchor) => (
           <AnchorLink key={anchor.id} id={anchor.id} label={anchor.label} />
         ))}
@@ -279,16 +268,13 @@ export function CertificationHubSections() {
       <LmsSection />
 
       {/* Contact CTA */}
-      <div className="mt-8 rounded-lg border border-gray-200 bg-gray-50 p-6 text-center">
+      <div className="site-panel mt-8 rounded-lg p-6 text-center">
         <h3 className="text-lg font-semibold">Ready to Get Certified?</h3>
         <p className="mt-1 text-sm text-foreground/70">
           Contact us to learn more about WIAL certification programs and find a
           certification path that is right for you.
         </p>
-        <Link
-          href="/contact"
-          className="mt-4 inline-block rounded-md bg-teal-deep px-6 py-2.5 text-sm font-semibold text-white transition hover:bg-teal-deep/90"
-        >
+        <Link href="/contact" className="button-link primary mt-4">
           Contact Us
         </Link>
       </div>
@@ -303,15 +289,12 @@ export function AccountCertificationHub() {
       <p className="text-foreground/70">
         View and manage your WIAL certifications here.
       </p>
-      <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
+      <div className="site-panel rounded-lg p-6">
         <p className="text-sm text-foreground/60">
           Your certifications will appear here once you complete a certification program.
         </p>
         <div className="mt-4">
-          <Link
-            href="/certification"
-            className="inline-block rounded-md bg-teal-deep px-4 py-2 text-sm font-semibold text-white transition hover:bg-teal-deep/90"
-          >
+          <Link href="/certification" className="button-link primary">
             Explore Certification Programs
           </Link>
         </div>

@@ -4,6 +4,7 @@ export const navigationItems: NavigationItem[] = [
   { href: "/about", label: "About WIAL" },
   { href: "/certification", label: "Certification" },
   { href: "/clients", label: "Our Clients" },
+  { href: "/coaches", label: "Find a Coach" },
   { href: "/partners", label: "Our Partners" },
   { href: "/affiliates", label: "Our Affiliates" },
   { href: "/contact", label: "Contact Us" },
