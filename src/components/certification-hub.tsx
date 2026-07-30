@@ -285,12 +285,9 @@ export function CertificationHubSections() {
           Contact us to learn more about WIAL certification programs and find a
           certification path that is right for you.
         </p>
-      <br/>
-     <p>
-  <Link href="/contact" className="button-link primary">
-    Contact Us
-  </Link>
-</p>
+        <Link href="/contact" className="button-link primary mt-4">
+          Contact Us
+        </Link>
       </div>
     </div>
   );
