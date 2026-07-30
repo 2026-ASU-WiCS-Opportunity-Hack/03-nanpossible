@@ -3,9 +3,9 @@ import type { CanonicalPageSlug, NavigationItem } from "@/lib/types";
 export const navigationItems: NavigationItem[] = [
   { href: "/about", label: "About WIAL" },
   { href: "/certification", label: "Certification" },
-  { href: "/clients", label: "Our Clients" },
-  { href: "/partners", label: "Our Partners" },
-  { href: "/affiliates", label: "Our Affiliates" },
+  { href: "/clients", label: "Clients" },
+  { href: "/partners", label: "Partners" },
+  { href: "/affiliates", label: "Affiliates" },
   { href: "/contact", label: "Contact Us" },
 ];
 

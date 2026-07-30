@@ -36,7 +36,7 @@ export const defaultGlobalFooterContent: GlobalFooterContent = {
     { id: "home", label: "Home", href: "/" },
     { id: "about", label: "About WIAL", href: "/about" },
     { id: "certification", label: "Certification", href: "/certification" },
-    { id: "clients", label: "Our Clients", href: "/clients" },
+    { id: "clients", label: "Clients", href: "/clients" },
     { id: "contact", label: "Contact", href: "/contact" },
   ],
   leftLegal: "{siteName} on Next.js, Supabase, Vercel, and Dolt.",
