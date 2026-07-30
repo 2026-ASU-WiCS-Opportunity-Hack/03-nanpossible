@@ -344,8 +344,8 @@ function SidebarContent({
       : role === "coach"
         ? "Coaches manage their public directory profile in the new dashboard workspace, then use the account area for certification and dues."
         : role === "chapter_admin"
-          ? "Chapter-head access applies only to the chapter currently assigned to your account, including coach approvals and directory review."
-          : "Platform admins can oversee coach approvals, chapter assignments, and elevated access across the full WIAL network.";
+          ? "Affiliate-head access applies only to the affiliate currently assigned to your account, including coach approvals and directory review."
+          : "Platform admins can oversee coach approvals, affiliate assignments, and elevated access across the full WIAL network.";
 
   return (
     <div className="account-sidebar-inner">

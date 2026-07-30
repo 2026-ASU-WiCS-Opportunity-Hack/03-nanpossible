@@ -17,13 +17,13 @@ export default async function ChapterAdminLayout({
   if (!chapter) {
     return (
       <div className="site-panel rounded-[2rem] p-8">
-        <p className="eyebrow">Chapter admin</p>
+        <p className="eyebrow">Affiliate admin</p>
         <h1 className="mt-4 font-display text-4xl text-teal-deep">
-          No chapter workspace selected
+          No affiliate workspace selected
         </h1>
         <p className="mt-4 max-w-2xl text-lg leading-8 text-foreground/72">
-          Open this route on a chapter subdomain or ask a WIAL platform admin to
-          assign this account to a chapter workspace.
+          Open this route on an affiliate subdomain or ask a WIAL platform admin to
+          assign this account to an affiliate workspace.
         </p>
       </div>
     );

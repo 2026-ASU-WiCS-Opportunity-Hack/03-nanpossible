@@ -215,7 +215,7 @@ export function ContentPage({ page, siteContext }: ContentPageProps) {
           <section className="site-panel hero-panel-warm rounded-[2rem] p-7 md:p-10">
             <div className="space-y-5">
               <span className="eyebrow">
-                {siteContext.isGlobal ? "Global WIAL" : `${siteContext.tenant?.name} chapter`}
+                {siteContext.isGlobal ? "Global WIAL" : `${siteContext.tenant?.name} affiliate`}
               </span>
               <div className="space-y-4">
                 <h1 className="max-w-4xl font-display text-3xl leading-none tracking-[-0.05em] text-teal-deep md:text-5xl">

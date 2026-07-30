@@ -308,7 +308,7 @@ async function sendWelcomeEmail(email: string, chapterName: string, subdomain: s
   const result = await sendResendEmail({
     to: [email],
     subject: `Your ${chapterName} site is ready`,
-    text: `Your chapter workspace is ready.\n\nPublic URL: https://${subdomain}.${process.env.NEXT_PUBLIC_SITE_DOMAIN ?? "wial.org"}\nAdmin URL: https://${subdomain}.${process.env.NEXT_PUBLIC_SITE_DOMAIN ?? "wial.org"}/admin/chapter\n`,
+    text: `Your affiliate workspace is ready.\n\nPublic URL: https://${subdomain}.${process.env.NEXT_PUBLIC_SITE_DOMAIN ?? "wial.org"}\nAdmin URL: https://${subdomain}.${process.env.NEXT_PUBLIC_SITE_DOMAIN ?? "wial.org"}/admin/chapter\n`,
   });
 
   if (!result.delivered) {
@@ -624,7 +624,7 @@ export async function provisionChapter(input: ChapterProvisionInput): Promise<Pr
     return {
       ok: false,
       error: "invalid-name",
-      message: "Chapter name is required.",
+      message: "Affiliate name is required.",
     };
   }
 
@@ -714,7 +714,7 @@ export async function provisionChapter(input: ChapterProvisionInput): Promise<Pr
         return {
           ok: false,
           error: "lead-invite-failed",
-          message: `Could not create chapter lead: ${createResult.error.message}`,
+          message: `Could not create affiliate lead: ${createResult.error.message}`,
         };
       }
     } else if (createResult.data.user) {
@@ -751,7 +751,7 @@ export async function provisionChapter(input: ChapterProvisionInput): Promise<Pr
     return {
       ok: false,
       error: "chapter-create-failed",
-      message: `Could not create chapter record: ${chapterError?.message ?? "unknown error"}`,
+      message: `Could not create affiliate record: ${chapterError?.message ?? "unknown error"}`,
     };
   }
 
@@ -770,7 +770,7 @@ export async function provisionChapter(input: ChapterProvisionInput): Promise<Pr
     return {
       ok: false,
       error: "default-pages-failed",
-      message: `WIAL could not seed the default chapter pages: ${pagesError.message}`,
+      message: `WIAL could not seed the default affiliate pages: ${pagesError.message}`,
     };
   }
 
@@ -788,7 +788,7 @@ export async function provisionChapter(input: ChapterProvisionInput): Promise<Pr
     return {
       ok: false,
       error: "lead-sync-failed",
-      message: "The chapter was created, but WIAL could not sync the lead user role.",
+      message: "The affiliate was created, but WIAL could not sync the lead user role.",
     };
   }
 

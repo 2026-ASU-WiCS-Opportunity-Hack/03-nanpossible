@@ -7,12 +7,12 @@ export default async function ContentPage() {
   return (
     <AccountPlaceholder
       bullets={[
-        "Edit chapter-owned public pages within the enforced WIAL shell",
+        "Edit affiliate-owned public pages within the enforced WIAL shell",
         "Preview which sections override the global fallback content",
-        "Prepare future publishing and approval controls for chapter staff",
+        "Prepare future publishing and approval controls for affiliate staff",
       ]}
-      description="This chapter-head route will become the primary editor for local website content."
-      eyebrow="Chapter workspace"
+      description="This affiliate-head route will become the primary editor for local website content."
+      eyebrow="Affiliate workspace"
       focusLabel="Tenant content ownership"
       title="Change website content"
     />

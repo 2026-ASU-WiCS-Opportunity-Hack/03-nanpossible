@@ -191,7 +191,7 @@ describe("/api/events route", () => {
       );
       expect(response.status).toBe(400);
       const json = (await response.json()) as { error: string };
-      expect(json.error).toMatch(/chapter and event id/i);
+      expect(json.error).toMatch(/affiliate and event id/i);
     });
 
     it("returns 403 when the event belongs to a different chapter than the caller", async () => {

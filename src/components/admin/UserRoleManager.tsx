@@ -12,7 +12,7 @@ type UserRoleManagerProps = {
 
 const roleOptions: Array<{ value: AppRole; label: string }> = [
   { value: "platform_admin", label: "Platform admin" },
-  { value: "chapter_admin", label: "Chapter head" },
+  { value: "chapter_admin", label: "Affiliate head" },
   { value: "content_creator", label: "Content creator" },
   { value: "coach", label: "Coach" },
   { value: "public_visitor", label: "Public visitor" },
@@ -51,15 +51,15 @@ function formatAccessSummary(options: {
       .filter((value): value is string => Boolean(value));
 
     return assignedNames.length
-      ? `Assigned chapters: ${assignedNames.join(", ")}`
-      : "Assigned chapters: none";
+      ? `Assigned affiliates: ${assignedNames.join(", ")}`
+      : "Assigned affiliates: none";
   }
 
   if (options.chapterId) {
     const chapterName = options.chapters.find((chapter) => chapter.id === options.chapterId)?.name;
 
     if (chapterName) {
-      return `Primary chapter: ${chapterName}`;
+      return `Primary affiliate: ${chapterName}`;
     }
   }
 
@@ -154,8 +154,8 @@ export function UserRoleManager({
         >
           <option value="all">All access</option>
           <option value="global">Global access</option>
-          <option value="chapter">Primary chapter</option>
-          <option value="assigned">Assigned chapters</option>
+          <option value="chapter">Primary affiliate</option>
+          <option value="assigned">Assigned affiliates</option>
         </select>
       </div>
 
@@ -280,7 +280,7 @@ function UserRoleRow({
 
           {needsPrimaryChapter ? (
             <label className="field-shell">
-              <span className="field-label">Primary chapter</span>
+              <span className="field-label">Primary affiliate</span>
               <select
                 className="field-input"
                 name="chapterId"
@@ -288,7 +288,7 @@ function UserRoleRow({
                 required={role === "chapter_admin"}
                 value={chapterId}
               >
-                <option value="">No primary chapter</option>
+                <option value="">No primary affiliate</option>
                 {chapters.map((chapter) => (
                   <option key={chapter.id} value={chapter.id}>
                     {chapter.name}
@@ -301,7 +301,7 @@ function UserRoleRow({
 
           {needsAssignedChapters ? (
             <label className="field-shell md:col-span-2">
-              <span className="field-label">Assigned chapters</span>
+              <span className="field-label">Assigned affiliates</span>
               <select
                 className="field-input min-h-44"
                 multiple
@@ -322,14 +322,14 @@ function UserRoleRow({
                 ))}
               </select>
               <span className="text-xs font-semibold uppercase tracking-[0.16em] text-foreground/45">
-                Hold command or control to choose multiple chapters.
+                Hold command or control to choose multiple affiliates.
               </span>
             </label>
           ) : null}
 
           <div className="flex flex-wrap items-center justify-between gap-3 md:col-span-2">
             <p className="text-sm text-foreground/60">
-              Saving clears any chapter fields that do not apply to the selected role.
+              Saving clears any affiliate fields that do not apply to the selected role.
             </p>
             <button className="button-link primary" type="submit">
               Save role

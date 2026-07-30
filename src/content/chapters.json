@@ -11,7 +11,7 @@
       "surface": "#fffaf2",
       "tone": "global"
     },
-    "tagline": "The shared standard for Action Learning chapters worldwide."
+    "tagline": "The shared standard for Action Learning affiliates worldwide."
   },
   {
     "id": "22222222-2222-4222-8222-222222222222",
@@ -25,6 +25,6 @@
       "surface": "#fffaf2",
       "tone": "chapter"
     },
-    "tagline": "A seeded chapter record used to exercise tenant routing before DNS cutover."
+    "tagline": "A seeded affiliate record used to exercise tenant routing before DNS cutover."
   }
 ]

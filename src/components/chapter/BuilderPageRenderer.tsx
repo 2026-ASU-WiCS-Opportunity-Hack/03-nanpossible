@@ -388,7 +388,7 @@ function BuilderFooter({
   const content = getFooterContent(chrome);
   const shellPadding = embedded ? "px-5 py-8 md:px-7 md:py-10" : "px-6 py-10 md:px-10 md:py-14";
   const legal =
-    content.legal || `${chapter.name} chapter site on the shared WIAL platform.`;
+    content.legal || `${chapter.name} affiliate site on the shared WIAL platform.`;
 
   return (
     <section

@@ -29,9 +29,9 @@ export default async function ChapterCoachApprovalsPage({
 
   return (
     <AccountPageShell
-      badge="Chapter approvals"
-      description="Approve or reject coach directory changes for the active chapter workspace."
-      eyebrow="Chapter workspace"
+      badge="Affiliate approvals"
+      description="Approve or reject coach directory changes for the active affiliate workspace."
+      eyebrow="Affiliate workspace"
       title="Coach approvals"
     >
       {params.notice ? (
@@ -43,7 +43,7 @@ export default async function ChapterCoachApprovalsPage({
         approveAction={approveCoachAction}
         canReject={Boolean(process.env.RESEND_API_KEY)}
         coaches={coaches}
-        emptyMessage="No coach submissions are waiting in this chapter."
+        emptyMessage="No coach submissions are waiting in this affiliate."
         redirectTo="/admin/chapter/coaches"
         rejectAction={rejectCoachAction}
       />

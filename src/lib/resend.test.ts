@@ -22,7 +22,7 @@ describe("sendResendEmail", () => {
 
     const result = await sendResendEmail({
       to: ["lead@example.com"],
-      subject: "Chapter ready",
+      subject: "Affiliate ready",
       text: "Hello from local dev.",
     });
 
@@ -41,7 +41,7 @@ describe("sendResendEmail", () => {
     expect(entries).toHaveLength(1);
     expect(entries[0]).toMatchObject({
       reason: "missing-api-key",
-      subject: "Chapter ready",
+      subject: "Affiliate ready",
       to: ["lead@example.com"],
     });
 
@@ -61,7 +61,7 @@ describe("sendResendEmail", () => {
 
     const result = await sendResendEmail({
       to: ["lead@example.com"],
-      subject: "Chapter ready",
+      subject: "Affiliate ready",
       text: "Hello from local dev.",
     });
 
@@ -94,7 +94,7 @@ describe("sendResendEmail", () => {
 
     const result = await sendResendEmail({
       to: ["lead@example.com"],
-      subject: "Chapter ready",
+      subject: "Affiliate ready",
       text: "Hello from production.",
     });
 

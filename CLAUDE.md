@@ -63,3 +63,4 @@ OpenRouter (LLM gateway), Cohere (embeddings), Stripe (payments), ElevenLabs (TT
 - Static content fixtures live in `src/content/` (JSON/TS)
 - Post-login landing per role comes from `defaultHref` in `src/content/account-navigation.json`
 - `/admin/chapter` opens the full-screen page builder (`BuilderWorkspace`, fixed overlay) only with an explicit `?page=` param; without it the workspace landing with admin nav renders
+- User-facing copy says "affiliate" (not "chapter") — code identifiers, routes (`/admin/chapter`, `/api/chapters`), DB tables/columns (`chapters`, `chapter_id`), headers (`x-chapter-id`), and the `chapter_admin` role identifier still say "chapter"; only display text/labels were renamed

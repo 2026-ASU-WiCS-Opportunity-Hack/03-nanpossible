@@ -7,7 +7,7 @@ export default async function DashboardPage() {
   return (
     <AccountPlaceholder
       bullets={[
-        "Global metrics across chapters, coaches, and certifications",
+        "Global metrics across affiliates, coaches, and certifications",
         "At-a-glance platform adoption and operational health",
         "A launch point for future admin workflows and reporting",
       ]}

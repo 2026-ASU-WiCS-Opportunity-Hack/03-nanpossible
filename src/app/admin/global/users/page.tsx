@@ -37,12 +37,12 @@ function getError(error?: string) {
     case "user-not-found":
       return "That user record could not be found.";
     case "chapter-required":
-      return "Chapter heads must have a primary chapter.";
+      return "Affiliate heads must have a primary affiliate.";
     case "assigned-chapters-required":
-      return "Content creators must be assigned to at least one chapter.";
+      return "Content creators must be assigned to at least one affiliate.";
     case "invalid-chapter":
     case "invalid-chapters":
-      return "One or more selected chapters are no longer valid.";
+      return "One or more selected affiliates are no longer valid.";
     case "self-demotion-forbidden":
       return "You cannot remove your own platform-admin access from this screen.";
     case "last-platform-admin":
@@ -81,7 +81,7 @@ export default async function GlobalUsersPage({
   return (
     <AccountPageShell
       badge="Users & roles"
-      description="Review every account, set the single primary WIAL role, and control chapter scope for coaches, chapter heads, and content creators."
+      description="Review every account, set the single primary WIAL role, and control affiliate scope for coaches, affiliate heads, and content creators."
       eyebrow="Platform admin"
       title="Users & roles"
     >
@@ -102,7 +102,7 @@ export default async function GlobalUsersPage({
               </h2>
             </div>
             <p className="max-w-md text-sm leading-7 text-foreground/68">
-              Each user keeps one primary role. Primary chapter access applies to chapter heads and coaches. Assigned chapters apply only to content creators and coaches.
+              Each user keeps one primary role. Primary affiliate access applies to affiliate heads and coaches. Assigned affiliates apply only to content creators and coaches.
             </p>
           </div>
 
@@ -127,7 +127,7 @@ export default async function GlobalUsersPage({
             </article>
             <article className="feature-card rounded-[1.1rem] p-4">
               <p className="text-xs font-semibold uppercase tracking-[0.16em] text-accent">
-                Chapter heads
+                Affiliate heads
               </p>
               <p className="mt-3 font-display text-4xl text-teal-deep">{chapterAdminCount}</p>
             </article>
@@ -140,7 +140,7 @@ export default async function GlobalUsersPage({
           </div>
 
           <div className="mt-6 space-y-3 text-sm leading-7 text-foreground/70">
-            <p>Content creators can span multiple chapters, but every user still has only one primary role.</p>
+            <p>Content creators can span multiple affiliates, but every user still has only one primary role.</p>
             <p>The final platform-admin account cannot be demoted from this interface.</p>
           </div>
         </aside>

@@ -8,9 +8,9 @@ export default async function RevenuePage() {
   return (
     <AccountPageShell
       badge="Finance dashboard live"
-      description="Monitor chapter dues, paid totals, and payment trends in real-time."
-      eyebrow="Chapter workspace"
-      title="Chapter revenue dashboard"
+      description="Monitor affiliate dues, paid totals, and payment trends in real-time."
+      eyebrow="Affiliate workspace"
+      title="Affiliate revenue dashboard"
     >
       <RevenueClient />
     </AccountPageShell>

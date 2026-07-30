@@ -56,9 +56,9 @@ export default async function ChapterAdminPage({
 
   return (
     <AccountPageShell
-      badge="Chapter content"
-      description="Edit the live chapter pages, save drafts, and generate localized copy with the chapter-in-a-box flow."
-      eyebrow="Chapter workspace"
+      badge="Affiliate content"
+      description="Edit the live affiliate pages, save drafts, and generate localized copy with the affiliate-in-a-box flow."
+      eyebrow="Affiliate workspace"
       title={chapter.name}
     >
       <div className="space-y-5">
@@ -94,7 +94,7 @@ export default async function ChapterAdminPage({
         ) : (
           <section className="site-panel rounded-[2rem] p-8">
             <p className="text-lg leading-8 text-foreground/72">
-              No content pages are seeded for this chapter yet.
+              No content pages are seeded for this affiliate yet.
             </p>
           </section>
         )}

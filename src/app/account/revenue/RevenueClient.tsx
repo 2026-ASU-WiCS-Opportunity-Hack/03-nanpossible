@@ -93,7 +93,7 @@ export function RevenueClient() {
   {[
     { label: "Total Revenue", value: `$${totalRevenue.toFixed(2)}` },
     { label: "Total Payments", value: String(payments.length) },
-    { label: "Chapters", value: String(uniqueChapters) },
+    { label: "Affiliates", value: String(uniqueChapters) },
     { label: "This Month", value: `$${thisMonthRevenue.toFixed(2)}` },
   ].map(({ label, value }) => (
     <div key={label} className="site-panel rounded-[1.5rem] p-4 flex items-center gap-4">
@@ -123,7 +123,7 @@ export function RevenueClient() {
 
         {/* Pie Chart */}
         <div className="site-panel rounded-[2rem] p-6">
-          <h3 className="text-lg font-semibold mb-4">Revenue by Chapter</h3>
+          <h3 className="text-lg font-semibold mb-4">Revenue by Affiliate</h3>
           <ResponsiveContainer width="100%" height={300}>
             <PieChart>
               <Pie
@@ -155,7 +155,7 @@ export function RevenueClient() {
               <th className="text-left py-3 px-4 font-semibold">Date</th>
               <th className="text-left py-3 px-4 font-semibold">User</th>
               <th className="text-left py-3 px-4 font-semibold">Role</th>
-              <th className="text-left py-3 px-4 font-semibold">Chapter</th>
+              <th className="text-left py-3 px-4 font-semibold">Affiliate</th>
               <th className="text-left py-3 px-4 font-semibold">Reason</th>
               <th className="text-left py-3 px-4 font-semibold">Amount</th>
               <th className="text-left py-3 px-4 font-semibold">Status</th>

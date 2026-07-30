@@ -73,7 +73,7 @@ describe("POST /api/content/update", () => {
         brandHref: "/",
         brandLabel: "Mexico",
         navigationItems: [{ href: "/", label: "Home" }],
-        footerLegal: "Mexico chapter site",
+        footerLegal: "Mexico affiliate site",
         header: {
           minHeight: 132,
           background: {

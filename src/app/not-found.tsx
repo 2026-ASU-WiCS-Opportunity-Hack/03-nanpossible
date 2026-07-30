@@ -11,7 +11,7 @@ export default function NotFound() {
               This WIAL page is not available.
             </h1>
             <p className="max-w-xl text-lg leading-8 text-foreground/80">
-              The page may not have been migrated yet, the chapter subdomain may
+              The page may not have been migrated yet, the affiliate subdomain may
               be unknown, or the original WordPress source was not safe enough
               to import.
             </p>

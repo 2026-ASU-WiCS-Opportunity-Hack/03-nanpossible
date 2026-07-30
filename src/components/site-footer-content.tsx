@@ -13,7 +13,7 @@ export function SiteFooterContent({
 }: SiteFooterContentProps) {
   const siteName = siteContext.isGlobal
     ? "Global WIAL site shell"
-    : `${siteContext.tenant.name} chapter shell`;
+    : `${siteContext.tenant.name} affiliate shell`;
   const email = siteContext.tenant?.contactEmail ?? content.email;
 
   return (

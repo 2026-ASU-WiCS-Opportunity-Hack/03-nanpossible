@@ -67,10 +67,10 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
                   Username and password access for every WIAL role.
                 </h1>
                 <p className="auth-copy-dark">
-                  Admins, chapter heads, and coaches all enter through the same
+                  Admins, affiliate heads, and coaches all enter through the same
                   sign-in route. Public visitors register separately, then
                   promote their own account inside the WIAL workspace before
-                  coach and chapter-head tools unlock.
+                  coach and affiliate-head tools unlock.
                 </p>
               </div>
 
@@ -78,11 +78,11 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
                 {[
                   {
                     title: "Admin",
-                    body: "Platform dashboard, chapter oversight, and cross-network controls.",
+                    body: "Platform dashboard, affiliate oversight, and cross-network controls.",
                   },
                   {
-                    title: "Chapter Head",
-                    body: "Website content, coach management, and chapter revenue routes.",
+                    title: "Affiliate Head",
+                    body: "Website content, coach management, and affiliate revenue routes.",
                   },
                   {
                     title: "Coach",

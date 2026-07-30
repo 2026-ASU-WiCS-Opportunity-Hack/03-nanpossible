@@ -70,8 +70,8 @@
       },
       {
         "type": "cta",
-        "title": "Need help planning a chapter rollout?",
-        "body": "Use the shared contact route to coordinate certification questions, migration review, and next-step onboarding for chapter leads.",
+        "title": "Need help planning an affiliate rollout?",
+        "body": "Use the shared contact route to coordinate certification questions, migration review, and next-step onboarding for affiliate leads.",
         "href": "/contact",
         "label": "Talk with WIAL"
       }
@@ -436,7 +436,7 @@
     "title": "WIAL USA",
     "published": true,
     "bodyRichtext": {
-      "heroIntro": "This seeded tenant demonstrates how a chapter can inherit the global shell while publishing local content on its own subdomain.",
+      "heroIntro": "This seeded tenant demonstrates how an affiliate can inherit the global shell while publishing local content on its own subdomain.",
       "metrics": [
         { "label": "Tenant route", "value": "usa" },
         { "label": "Shell ownership", "value": "Global" },
@@ -450,12 +450,12 @@
             {
               "eyebrow": "Routing",
               "title": "Subdomain-aware rendering",
-              "body": "Requests for usa.wial.org are rewritten to a tenant-scoped internal route while the browser still sees clean chapter URLs."
+              "body": "Requests for usa.wial.org are rewritten to a tenant-scoped internal route while the browser still sees clean affiliate URLs."
             },
             {
               "eyebrow": "Fallbacks",
               "title": "Global content stays available",
-              "body": "Pages without a chapter override inherit the global version automatically, which reduces duplication during chapter rollout."
+              "body": "Pages without an affiliate override inherit the global version automatically, which reduces duplication during affiliate rollout."
             },
             {
               "eyebrow": "Isolation",
@@ -467,7 +467,7 @@
         {
           "type": "cta",
           "title": "Review the tenant contact page",
-          "body": "The seeded chapter also includes a local contact override to show how chapter-specific information can sit inside the shared WIAL shell.",
+          "body": "The seeded affiliate also includes a local contact override to show how affiliate-specific information can sit inside the shared WIAL shell.",
           "href": "/contact",
           "label": "Open USA contact"
         }
@@ -487,10 +487,10 @@
     "title": "Contact WIAL USA",
     "published": true,
     "bodyRichtext": {
-      "heroIntro": "Chapter-local contact information can override the global page without changing the shared layout, navigation, or footer enforcement.",
+      "heroIntro": "Affiliate-local contact information can override the global page without changing the shared layout, navigation, or footer enforcement.",
       "metrics": [
         { "label": "Contact pattern", "value": "Override" },
-        { "label": "Chapter email", "value": "1" },
+        { "label": "Affiliate email", "value": "1" },
         { "label": "Shared shell", "value": "Yes" }
       ],
       "sections": [
@@ -500,15 +500,15 @@
           "items": [
             {
               "eyebrow": "Email",
-              "title": "Chapter inbox",
+              "title": "Affiliate inbox",
               "body": "usa@wial.org",
               "href": "mailto:usa@wial.org",
               "label": "Email WIAL USA"
             },
             {
               "eyebrow": "Use case",
-              "title": "Pilot chapter support",
-              "body": "Seeded tenant content review\nSubdomain routing validation\nFuture chapter onboarding"
+              "title": "Pilot affiliate support",
+              "body": "Seeded tenant content review\nSubdomain routing validation\nFuture affiliate onboarding"
             }
           ]
         }

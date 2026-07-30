@@ -14,13 +14,13 @@ function getErrorMessage(error?: string) {
     case "migration-missing":
       return "The connected Supabase project is missing the public-visitor progression migration. Apply supabase/migrations/20260328233000_public_visitor_role_progression.sql, then try again.";
     case "chapter-required":
-      return "This coach account is not attached to a chapter yet, so chapter-head registration is blocked.";
+      return "This coach account is not attached to an affiliate yet, so affiliate-head registration is blocked.";
     case "missing-config":
       return "Supabase auth is not configured in this environment.";
     case "role-mismatch":
-      return "This account is no longer eligible for chapter-head registration from the coach route.";
+      return "This account is no longer eligible for affiliate-head registration from the coach route.";
     case "upgrade-failed":
-      return "WIAL could not promote this coach account to chapter head. Try again.";
+      return "WIAL could not promote this coach account to affiliate head. Try again.";
     default:
       return null;
   }
@@ -38,36 +38,36 @@ export default async function RegisterChapterHeadPage({
     : null;
   const error = getErrorMessage(params.error);
   const canRegister = viewer.chapterId !== null;
-  const chapterLabel = chapter?.name ?? (canRegister ? "Assigned chapter" : "No chapter assigned");
+  const chapterLabel = chapter?.name ?? (canRegister ? "Assigned affiliate" : "No affiliate assigned");
 
   return (
     <AccountPageShell
       badge="Immediate role upgrade"
-      description="Register this coach account as the chapter head for its currently assigned chapter. This flow never switches chapters."
+      description="Register this coach account as the affiliate head for its currently assigned affiliate. This flow never switches affiliates."
       eyebrow="Coach workspace"
-      title="Register as chapter head"
+      title="Register as affiliate head"
     >
       {error ? <div className="account-flash is-error">{error}</div> : null}
 
       <div className="grid gap-5 xl:grid-cols-[minmax(0,1.45fr)_320px]">
         <section className="site-panel rounded-[2rem] p-6 md:p-7">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">
-            Assigned chapter
+            Assigned affiliate
           </p>
           <h2 className="mt-3 font-display text-3xl leading-none tracking-[-0.04em] text-teal-deep">
             {chapterLabel}
           </h2>
           <p className="mt-4 text-base leading-7 text-foreground/75">
-            Chapter-head registration applies only to the chapter already tied
-            to this coach account. It does not create a new chapter or move the
-            account to a different chapter.
+            Affiliate-head registration applies only to the affiliate already tied
+            to this coach account. It does not create a new affiliate or move the
+            account to a different affiliate.
           </p>
 
           <div className="mt-6 grid gap-3">
             {[
-              "Your role changes from coach to chapter head immediately.",
-              "The chapter content and chapter revenue routes unlock after the upgrade.",
-              "The chapter assignment stays fixed to the current account record.",
+              "Your role changes from coach to affiliate head immediately.",
+              "The affiliate content and affiliate revenue routes unlock after the upgrade.",
+              "The affiliate assignment stays fixed to the current account record.",
             ].map((item) => (
               <article className="feature-card rounded-[1.35rem]" key={item}>
                 <p className="text-base font-semibold text-teal-deep">{item}</p>
@@ -78,13 +78,13 @@ export default async function RegisterChapterHeadPage({
           {canRegister ? (
             <form action={promoteToChapterHeadAction} className="mt-6">
               <button className="button-link primary" type="submit">
-                Register as chapter head
+                Register as affiliate head
               </button>
             </form>
           ) : (
             <div className="account-flash is-error mt-6">
-              A WIAL admin must attach this coach account to an existing chapter
-              before chapter-head registration can proceed.
+              A WIAL admin must attach this coach account to an existing affiliate
+              before affiliate-head registration can proceed.
             </div>
           )}
         </section>
@@ -97,12 +97,12 @@ export default async function RegisterChapterHeadPage({
             {viewer.name || "Coach account"}
           </h2>
           <p className="mt-2 text-sm font-semibold uppercase tracking-[0.16em] text-accent">
-            {canRegister ? "Coach with assigned chapter" : "Coach without chapter"}
+            {canRegister ? "Coach with assigned affiliate" : "Coach without affiliate"}
           </p>
           <p className="mt-4 text-sm leading-7 text-foreground/72">
             {canRegister
-              ? `This account is currently tied to ${chapterLabel.toLowerCase()} and can promote only within that chapter.`
-              : "This account can keep using coach routes, but chapter-head access remains blocked until a chapter is assigned."}
+              ? `This account is currently tied to ${chapterLabel.toLowerCase()} and can promote only within that affiliate.`
+              : "This account can keep using coach routes, but affiliate-head access remains blocked until an affiliate is assigned."}
           </p>
         </aside>
       </div>

@@ -14,16 +14,16 @@ export default async function GlobalAdminPage() {
   return (
     <AccountPageShell
       badge="Global control surface"
-      description="Provision chapters, manage user roles, and monitor the network from one admin workspace."
+      description="Provision affiliates, manage user roles, and monitor the network from one admin workspace."
       eyebrow="Platform admin"
-      title="Global chapter operations"
+      title="Global affiliate operations"
     >
       <div className="grid gap-5 xl:grid-cols-[minmax(0,1.4fr)_320px]">
         <section className="site-panel rounded-[2rem] p-6 md:p-8">
           <div className="grid gap-4 md:grid-cols-3">
             <article className="feature-card rounded-[1.4rem]">
               <p className="text-xs font-semibold uppercase tracking-[0.16em] text-accent">
-                Active chapters
+                Active affiliates
               </p>
               <p className="mt-4 font-display text-4xl text-teal-deep">
                 {chapters.filter((chapter) => chapter.status === "active").length}
@@ -31,7 +31,7 @@ export default async function GlobalAdminPage() {
             </article>
             <article className="feature-card rounded-[1.4rem]">
               <p className="text-xs font-semibold uppercase tracking-[0.16em] text-accent">
-                Total chapters
+                Total affiliates
               </p>
               <p className="mt-4 font-display text-4xl text-teal-deep">
                 {chapters.length}
@@ -52,10 +52,10 @@ export default async function GlobalAdminPage() {
           <p className="eyebrow">Actions</p>
           <div className="mt-4 flex flex-col gap-3">
             <Link className="button-link primary" href="/admin/global/chapters/new">
-              Provision new chapter
+              Provision new affiliate
             </Link>
             <Link className="button-link secondary" href="/admin/global/chapters">
-              View all chapters
+              View all affiliates
             </Link>
             <Link className="button-link secondary" href="/admin/global/users">
               Manage users &amp; roles

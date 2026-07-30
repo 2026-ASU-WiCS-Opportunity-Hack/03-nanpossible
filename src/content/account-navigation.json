@@ -13,7 +13,7 @@
       "defaultHref": "/admin/global",
       "items": [
         { "href": "/admin/global", "label": "Global admin" },
-        { "href": "/admin/global/chapters", "label": "Chapters" },
+        { "href": "/admin/global/chapters", "label": "Affiliates" },
         { "href": "/admin/global/users", "label": "Users & roles" },
         { "href": "/admin/approvals", "label": "Coach approvals" },
         { "href": "/guide", "label": "Platform guide" },
@@ -26,8 +26,8 @@
         { "href": "/admin/chapter", "label": "Change website content" },
         { "href": "/admin/chapter/coaches", "label": "Coach approvals" },
         { "href": "/admin/chapter/events", "label": "Events" },
-        { "href": "/admin/chapter/settings", "label": "Chapter settings" },
-        { "href": "/account/revenue", "label": "Chapter revenue dashboard" },
+        { "href": "/admin/chapter/settings", "label": "Affiliate settings" },
+        { "href": "/account/revenue", "label": "Affiliate revenue dashboard" },
         { "href": "/guide", "label": "Platform guide" },
         { "href": "/account/profile", "label": "Update account details" }
       ]
@@ -47,7 +47,7 @@
         { "href": "/dashboard/profile", "label": "Coach directory profile" },
         { "href": "/account/certifications", "label": "Certification courses" },
         { "href": "/account/dues", "label": "Payment dues" },
-        { "href": "/account/register-chapter-head", "label": "Register as chapter head" },
+        { "href": "/account/register-chapter-head", "label": "Register as affiliate head" },
         { "href": "/account/profile", "label": "Update account details" }
       ]
     }

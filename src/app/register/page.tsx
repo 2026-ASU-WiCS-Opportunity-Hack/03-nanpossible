@@ -65,7 +65,7 @@ export default async function RegisterPage({
                 This registration path is for public visitors who need a WIAL
                 account. New registrations start as public visitors, then
                 upgrade themselves to coach from inside the account area.
-                Chapter-head and admin permissions remain elevated roles.
+                Affiliate-head and admin permissions remain elevated roles.
               </p>
             </div>
 
@@ -73,7 +73,7 @@ export default async function RegisterPage({
               {[
                 "Profile updates remain self-service.",
                 "Coach access unlocks only after you register as a coach from inside the account area.",
-                "Chapter-head and admin permissions remain elevated roles.",
+                "Affiliate-head and admin permissions remain elevated roles.",
               ].map((item) => (
                 <article className="feature-card rounded-[1.35rem]" key={item}>
                   <p className="text-base font-semibold leading-7 text-teal-deep">

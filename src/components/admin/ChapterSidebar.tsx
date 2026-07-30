@@ -23,7 +23,7 @@ export function ChapterSidebar({ chapter }: ChapterSidebarProps) {
     <section className="site-panel rounded-[2rem] p-5 md:p-6">
       <div className="flex flex-col gap-5 xl:flex-row xl:items-end xl:justify-between">
         <div className="space-y-3">
-          <p className="eyebrow">Chapter admin</p>
+          <p className="eyebrow">Affiliate admin</p>
           <div>
             <h2 className="font-display text-4xl leading-none tracking-[-0.05em] text-teal-deep md:text-5xl">
               {chapter.name}

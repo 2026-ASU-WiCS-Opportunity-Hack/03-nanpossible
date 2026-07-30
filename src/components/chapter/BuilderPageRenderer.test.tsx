@@ -54,7 +54,7 @@ describe("BuilderPageRenderer", () => {
     });
 
     chrome = setFooterHeading(chrome, "Stay in touch");
-    chrome = setFooterBody(chrome, "Reach out to the chapter team for collaborations.");
+    chrome = setFooterBody(chrome, "Reach out to the affiliate team for collaborations.");
     chrome = setFooterCtaLabel(chrome, "Email us");
     chrome = setFooterCtaHref(chrome, "/contact-us");
     chrome = setFooterLegal(chrome, "All rights reserved WIAL Mexico.");
@@ -68,7 +68,7 @@ describe("BuilderPageRenderer", () => {
     );
 
     expect(html).toContain("Stay in touch");
-    expect(html).toContain("Reach out to the chapter team");
+    expect(html).toContain("Reach out to the affiliate team");
     expect(html).toContain("Email us");
     expect(html).toContain('href="/contact-us"');
     expect(html).toContain("All rights reserved WIAL Mexico.");

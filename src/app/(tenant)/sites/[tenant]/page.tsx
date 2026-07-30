@@ -63,25 +63,25 @@ export default async function TenantHomePage({ params }: TenantHomePageProps) {
 
             <div className="grid gap-5 xl:grid-cols-[minmax(0,1.35fr)_360px]">
               <section className="site-panel rounded-[2rem] p-6 md:p-8">
-                <p className="eyebrow">About this chapter</p>
+                <p className="eyebrow">About this affiliate</p>
                 <h2 className="mt-3 font-display text-3xl text-teal-deep">Regional focus</h2>
                 <p className="mt-4 max-w-3xl text-base leading-8 text-foreground/76">
                   {aboutPreview ||
                     chapter.description ||
-                    "This chapter is preparing its local story, leadership focus, and community programming details."}
+                    "This affiliate is preparing its local story, leadership focus, and community programming details."}
                 </p>
                 <div className="mt-5 flex flex-wrap gap-3">
                   <Link className="button-link secondary" href="/about">
-                    Read about the chapter
+                    Read about the affiliate
                   </Link>
                   <Link className="button-link secondary" href="/contact">
-                    Contact this chapter
+                    Contact this affiliate
                   </Link>
                 </div>
               </section>
 
               <section className="site-panel rounded-[2rem] p-6">
-                <p className="eyebrow">Chapter contact</p>
+                <p className="eyebrow">Affiliate contact</p>
                 <div className="mt-5 space-y-3 text-base leading-7 text-foreground/75">
                   {chapter.contactEmail ? <p>{chapter.contactEmail}</p> : null}
                   {chapter.contactPhone ? <p>{chapter.contactPhone}</p> : null}

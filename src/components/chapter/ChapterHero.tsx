@@ -4,7 +4,7 @@ import type { ChapterRecord } from "@/lib/types";
 export function ChapterHero({ chapter }: { chapter: ChapterRecord }) {
   return (
     <section className="site-panel rounded-[2rem] p-7 md:p-10">
-      <span className="eyebrow">WIAL chapter</span>
+      <span className="eyebrow">WIAL affiliate</span>
       <div className="mt-5 space-y-4">
         <h1 className="max-w-4xl font-display text-3xl leading-none tracking-[-0.05em] text-teal-deep md:text-5xl">
           {chapter.name}

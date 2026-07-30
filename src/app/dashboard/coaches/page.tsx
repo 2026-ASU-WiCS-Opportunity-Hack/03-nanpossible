@@ -31,7 +31,7 @@ function getError(error?: string) {
     case "coach-missing":
       return "Coach record could not be found.";
     case "scope-denied":
-      return "This coach is outside your chapter scope.";
+      return "This coach is outside your affiliate scope.";
     case "approve-failed":
       return "WIAL could not approve this coach.";
     case "reject-failed":
@@ -60,9 +60,9 @@ export default async function DashboardCoachesPage({
 
   return (
     <AccountPageShell
-      badge="Chapter-scoped queue"
-      description="Review pending coach directory submissions for your assigned chapter, publish them when they are ready, or reject them with revision notes."
-      eyebrow="Chapter workspace"
+      badge="Affiliate-scoped queue"
+      description="Review pending coach directory submissions for your assigned affiliate, publish them when they are ready, or reject them with revision notes."
+      eyebrow="Affiliate workspace"
       title="Coach approvals"
     >
       {getNotice(params.notice) ? (
@@ -82,7 +82,7 @@ export default async function DashboardCoachesPage({
         approveAction={approveCoachAction}
         canReject={Boolean(process.env.RESEND_API_KEY)}
         coaches={coaches}
-        emptyMessage="No chapter-local coach profiles are waiting for approval right now."
+        emptyMessage="No affiliate-local coach profiles are waiting for approval right now."
         redirectTo="/dashboard/coaches"
         rejectAction={rejectCoachAction}
       />
