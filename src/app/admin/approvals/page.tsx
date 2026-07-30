@@ -62,7 +62,7 @@ export default async function AdminApprovalsPage({
   return (
     <AccountPageShell
       badge="Global review queue"
-      description="Platform admins can review every pending coach profile across chapters, publish approved submissions, and trigger fresh embeddings for AI search."
+      description="Platform admins can review every pending coach profile across affiliates, publish approved submissions, and trigger fresh embeddings for AI search."
       eyebrow="Admin workspace"
       title="Coach approvals"
     >

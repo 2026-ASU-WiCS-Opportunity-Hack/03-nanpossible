@@ -50,8 +50,8 @@ export default async function CoachesDirectoryPage() {
             <div className="coach-callout">
               <p className="coach-callout-label">Why this directory matters</p>
               <p className="mt-3 text-base leading-7 text-foreground/72">
-                WIAL chapters can publish one vetted coach roster while still
-                supporting local markets, multilingual search, and chapter-level
+                WIAL affiliates can publish one vetted coach roster while still
+                supporting local markets, multilingual search, and affiliate-level
                 approvals.
               </p>
             </div>
@@ -66,7 +66,7 @@ export default async function CoachesDirectoryPage() {
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-base leading-7 text-foreground/72">
               New coach profiles appear here as soon as they&apos;re approved by
-              a chapter administrator. Check back soon — or register your own
+              an affiliate administrator. Check back soon — or register your own
               profile to be part of the launch roster.
             </p>
             <div className="mt-7 flex flex-wrap items-center justify-center gap-3">

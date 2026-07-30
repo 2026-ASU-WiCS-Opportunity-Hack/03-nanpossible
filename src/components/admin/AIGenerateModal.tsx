@@ -87,7 +87,7 @@ export function AIGenerateModal({
           <div className="relative">
             <div className="flex items-start justify-between gap-4">
               <div className="max-w-2xl">
-                <p className="eyebrow">Chapter-in-a-box</p>
+                <p className="eyebrow">Affiliate-in-a-box</p>
                 <p className="mt-5 text-xs font-semibold uppercase tracking-[0.22em] text-foreground/45">
                   Generate draft copy, review it, then insert or replace content inside the editor
                 </p>

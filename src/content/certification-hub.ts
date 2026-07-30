@@ -83,7 +83,7 @@ export const certificationTracks: CertificationTrack[] = [
     title: "Senior Action Learning Coach",
     tagline: "For experienced coaches ready to lead core WIAL programs.",
     summary:
-      "The Senior Action Learning Coach (SALC) certification is for CALCs or PALCs with at least 100 hours of WIAL coaching experience who have been cleared to teach all WIAL certification programs. SALCs frequently go on to develop an affiliate or chapter in their region. A PALC advancing to SALC does not need to complete a second long-term project.",
+      "The Senior Action Learning Coach (SALC) certification is for CALCs or PALCs with at least 100 hours of WIAL coaching experience who have been cleared to teach all WIAL certification programs. SALCs frequently go on to develop an affiliate in their region. A PALC advancing to SALC does not need to complete a second long-term project.",
     eligibility: [
       "Complete WIAL Foundations and/or the Foundations e-learning course, and the CALC Workshop.",
       "Document a minimum of 100 hours of Action Learning experience, at least 50 of which are coaching hours, including one long-term project of at least 4 sessions.",

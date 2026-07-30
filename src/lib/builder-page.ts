@@ -539,7 +539,7 @@ export function createDefaultChapterBuilderChrome(input: {
   contactPhone?: string | null;
 }): ChapterBuilderChromeV1 {
   const footerText = [
-    `${input.chapterName} chapter site`,
+    `${input.chapterName} affiliate site`,
     input.contactEmail ? `Email: ${input.contactEmail}` : "",
     input.contactPhone ? `Phone: ${input.contactPhone}` : "",
   ]
@@ -551,7 +551,7 @@ export function createDefaultChapterBuilderChrome(input: {
     brandLabel: input.chapterName,
     brandHref: "/",
     navigationItems: getDefaultNavigationItems(),
-    footerLegal: `${input.chapterName} chapter site on the shared WIAL platform.`,
+    footerLegal: `${input.chapterName} affiliate site on the shared WIAL platform.`,
     header: createDefaultSurface("canvas", 132),
     footer: createDefaultSurface("warm", 240, [
       {
@@ -567,7 +567,7 @@ export function createDefaultChapterBuilderChrome(input: {
         title: "Stay connected",
         body:
           footerText ||
-          "Add contact details, local chapter notes, chapter programs, or supporting footer content.",
+          "Add contact details, local affiliate notes, affiliate programs, or supporting footer content.",
         align: "left",
       },
       {
@@ -580,7 +580,7 @@ export function createDefaultChapterBuilderChrome(input: {
           height: 86,
           zIndex: 1,
         },
-        label: "Contact chapter",
+        label: "Contact affiliate",
         href: "/contact",
         tone: "primary",
         align: "center",

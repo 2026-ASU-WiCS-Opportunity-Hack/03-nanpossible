@@ -7,12 +7,12 @@ export default async function CoachesPage() {
   return (
     <AccountPlaceholder
       bullets={[
-        "Review coach roster and chapter-specific directory records",
+        "Review coach roster and affiliate-specific directory records",
         "Approve or update coach details before public publication",
         "Prepare future links to certifications and dues status",
       ]}
-      description="This route will grow into the chapter-head control surface for coach operations."
-      eyebrow="Chapter workspace"
+      description="This route will grow into the affiliate-head control surface for coach operations."
+      eyebrow="Affiliate workspace"
       focusLabel="Coach management"
       title="Coaches"
     />

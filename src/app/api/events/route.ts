@@ -42,14 +42,14 @@ export async function POST(request: Request) {
 
   if (!normalized.ok) {
     return NextResponse.json(
-      { error: "Title, chapter, and start date are required." },
+      { error: "Title, affiliate, and start date are required." },
       { status: 400 },
     );
   }
 
   if (!canEditChapter(viewer, normalized.payload.chapterId)) {
     return NextResponse.json(
-      { error: "This account cannot edit events for the active chapter." },
+      { error: "This account cannot edit events for the active affiliate." },
       { status: 403 },
     );
   }
@@ -64,7 +64,7 @@ export async function POST(request: Request) {
     }
     if (existing.chapterId !== normalized.payload.chapterId) {
       return NextResponse.json(
-        { error: "This event does not belong to the active chapter." },
+        { error: "This event does not belong to the active affiliate." },
         { status: 403 },
       );
     }
@@ -146,14 +146,14 @@ export async function DELETE(request: Request) {
 
   if (!chapterId || !eventId) {
     return NextResponse.json(
-      { error: "Chapter and event id are required." },
+      { error: "Affiliate and event id are required." },
       { status: 400 },
     );
   }
 
   if (!canEditChapter(viewer, chapterId)) {
     return NextResponse.json(
-      { error: "This account cannot edit events for the active chapter." },
+      { error: "This account cannot edit events for the active affiliate." },
       { status: 403 },
     );
   }
@@ -167,7 +167,7 @@ export async function DELETE(request: Request) {
   }
   if (existing.chapterId !== chapterId) {
     return NextResponse.json(
-      { error: "This event does not belong to the active chapter." },
+      { error: "This event does not belong to the active affiliate." },
       { status: 403 },
     );
   }

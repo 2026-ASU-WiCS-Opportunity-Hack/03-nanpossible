@@ -65,7 +65,7 @@ export function getRoleLabel(role: AppRole) {
     case "platform_admin":
       return "Admin";
     case "chapter_admin":
-      return "Chapter Head";
+      return "Affiliate Head";
     case "content_creator":
       return "Content Creator";
     case "coach":

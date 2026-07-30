@@ -221,7 +221,7 @@ export function MobileNav({
                       <p className="account-sidebar-note-body">
                         Registration creates a public visitor account. After
                         sign-in, public visitors can register as coaches and
-                        coaches assigned to a chapter can register as chapter
+                        coaches assigned to an affiliate can register as affiliate
                         heads.
                       </p>
                     </div>

@@ -353,12 +353,12 @@ export function EventWorkbench({
               }
               type="checkbox"
             />
-            <span>Show this event on the public chapter site</span>
+            <span>Show this event on the public affiliate site</span>
           </label>
         </div>
       }
       liveHref={`/sites/${chapterSubdomain}`}
-      previewHint="Shown exactly as visitors will see it on the chapter homepage."
+      previewHint="Shown exactly as visitors will see it on the affiliate homepage."
       previewLabel="Homepage preview"
       previewPane={
         <div className="overflow-hidden rounded-[1.7rem] border border-line/70 bg-[rgba(255,252,248,0.88)]">

@@ -22,7 +22,7 @@ type ChapterSettingsPageProps = {
 function getNotice(notice?: string) {
   switch (notice) {
     case "saved":
-      return "Chapter settings saved.";
+      return "Affiliate settings saved.";
     default:
       return null;
   }
@@ -31,9 +31,9 @@ function getNotice(notice?: string) {
 function getError(error?: string) {
   switch (error) {
     case "missing-chapter":
-      return "Chapter context is missing.";
+      return "Affiliate context is missing.";
     case "forbidden":
-      return "This account cannot edit chapter settings.";
+      return "This account cannot edit affiliate settings.";
     case "save-failed":
       return "WIAL could not save these settings.";
     default:
@@ -60,9 +60,9 @@ export default async function ChapterSettingsPage({
 
   return (
     <AccountPageShell
-      badge="Chapter settings"
-      description="Update the chapter profile that powers the homepage hero, contact details, and chapter-wide identity."
-      eyebrow="Chapter workspace"
+      badge="Affiliate settings"
+      description="Update the affiliate profile that powers the homepage hero, contact details, and affiliate-wide identity."
+      eyebrow="Affiliate workspace"
       title="Settings"
     >
       {getNotice(params.notice) ? (
@@ -77,7 +77,7 @@ export default async function ChapterSettingsPage({
           <input name="chapterId" type="hidden" value={chapter.id} />
 
           <label className="field-shell">
-            <span className="field-label">Chapter name</span>
+            <span className="field-label">Affiliate name</span>
             <input className="field-input" defaultValue={chapter.name} name="name" required type="text" />
           </label>
 

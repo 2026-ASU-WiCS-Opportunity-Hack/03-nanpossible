@@ -13,7 +13,7 @@ type CoachCardProps = {
 
 function truncateBio(text: string | null, limit = 150) {
   if (!text) {
-    return "WIAL-certified coach profile available for direct contact and chapter referral.";
+    return "WIAL-certified coach profile available for direct contact and affiliate referral.";
   }
 
   if (text.length <= limit) {

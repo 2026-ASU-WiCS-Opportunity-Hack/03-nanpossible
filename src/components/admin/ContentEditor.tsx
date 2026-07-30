@@ -961,7 +961,7 @@ export function ContentEditor({
           </div>
         }
         liveHref={buildChapterPageHref(chapterSubdomain, pageSlug)}
-        previewHint="Updates as you type, using the same page layout as the live chapter site."
+        previewHint="Updates as you type, using the same page layout as the live affiliate site."
         previewLabel="Live preview"
         previewPane={
           <div className="overflow-hidden rounded-[1.8rem] border border-line/70 bg-[rgba(255,252,248,0.9)] shadow-[inset_0_1px_0_rgba(255,255,255,0.65)]">

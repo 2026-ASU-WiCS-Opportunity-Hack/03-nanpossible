@@ -4,7 +4,7 @@ export function UpcomingEvents({ events }: { events: EventRecord[] }) {
   return (
     <section className="site-panel rounded-[2rem] p-6 md:p-8">
       <p className="eyebrow">Upcoming events</p>
-      <h2 className="mt-3 font-display text-3xl text-teal-deep">Chapter events</h2>
+      <h2 className="mt-3 font-display text-3xl text-teal-deep">Affiliate events</h2>
 
       <div className="mt-6 grid gap-3">
         {events.length ? (
@@ -27,7 +27,7 @@ export function UpcomingEvents({ events }: { events: EventRecord[] }) {
         ) : (
           <article className="feature-card rounded-[1.35rem]">
             <p className="text-base leading-7 text-foreground/72">
-              Upcoming chapter events will appear here once they are published.
+              Upcoming affiliate events will appear here once they are published.
             </p>
           </article>
         )}

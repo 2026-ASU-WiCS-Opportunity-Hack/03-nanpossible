@@ -16,11 +16,11 @@ function slugify(value: string) {
 function getProvisionNotice(url: string, warning?: string | null) {
   switch (warning) {
     case "welcome-email-skipped":
-      return `Chapter created at ${url}. Email delivery is not configured yet.`;
+      return `Affiliate created at ${url}. Email delivery is not configured yet.`;
     case "welcome-email-failed":
-      return `Chapter created at ${url}. Welcome email could not be sent. Check RESEND_API_KEY and sender-domain configuration.`;
+      return `Affiliate created at ${url}. Welcome email could not be sent. Check RESEND_API_KEY and sender-domain configuration.`;
     default:
-      return `Chapter created at ${url}.`;
+      return `Affiliate created at ${url}.`;
   }
 }
 
@@ -77,7 +77,7 @@ export function ChapterProvisionForm() {
           };
 
           if (!response.ok || !payload.success) {
-            setError(payload.message ?? "WIAL could not provision the chapter.");
+            setError(payload.message ?? "WIAL could not provision the affiliate.");
             return;
           }
 
@@ -93,7 +93,7 @@ export function ChapterProvisionForm() {
 
       <div className="grid gap-4 md:grid-cols-2">
         <label className="field-shell">
-          <span className="field-label">Chapter name</span>
+          <span className="field-label">Affiliate name</span>
           <input
             className="field-input"
             name="name"
@@ -152,7 +152,7 @@ export function ChapterProvisionForm() {
         </label>
 
         <label className="field-shell">
-          <span className="field-label">Chapter lead email</span>
+          <span className="field-label">Affiliate lead email</span>
           <input className="field-input" name="leadEmail" required type="email" />
         </label>
 
@@ -174,7 +174,7 @@ export function ChapterProvisionForm() {
 
       <div className="flex flex-wrap gap-3">
         <button className="button-link primary" disabled={isPending} type="submit">
-          {isPending ? "Creating chapter..." : "Create chapter"}
+          {isPending ? "Creating affiliate..." : "Create affiliate"}
         </button>
       </div>
     </form>

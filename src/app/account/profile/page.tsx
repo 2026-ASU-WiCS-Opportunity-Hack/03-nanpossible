@@ -55,7 +55,7 @@ export default async function ProfilePage({ searchParams }: ProfilePageProps) {
   return (
     <AccountPageShell
       badge="Live profile editor"
-      description="Manage the self-service profile fields that travel with your WIAL account while keeping role, chapter membership, and email read-only."
+      description="Manage the self-service profile fields that travel with your WIAL account while keeping role, affiliate membership, and email read-only."
       eyebrow="Account settings"
       title="Update account details"
     >
@@ -129,7 +129,7 @@ export default async function ProfilePage({ searchParams }: ProfilePageProps) {
               </div>
 
               <div className="field-shell is-readonly">
-                <span className="field-label">Chapter</span>
+                <span className="field-label">Affiliate</span>
                 <p className="field-static">
                   {safeViewer.chapterId ? "Assigned by WIAL admin" : "Global account"}
                 </p>
@@ -141,7 +141,7 @@ export default async function ProfilePage({ searchParams }: ProfilePageProps) {
                 Save account details
               </button>
               <p className="text-sm leading-6 text-foreground/60">
-                Email, role, and chapter assignment are admin-managed and
+                Email, role, and affiliate assignment are admin-managed and
                 cannot be changed from this page.
               </p>
             </div>
@@ -167,7 +167,7 @@ export default async function ProfilePage({ searchParams }: ProfilePageProps) {
             </p>
             <p className="mt-4 text-sm leading-7 text-foreground/72">
               Keep your core contact details current so future certification,
-              coaching, and chapter workflows start from a trustworthy profile.
+              coaching, and affiliate workflows start from a trustworthy profile.
             </p>
           </div>
         </aside>

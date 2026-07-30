@@ -25,7 +25,7 @@ describe("account navigation", () => {
     ]);
     expect(getAccountNavItems("platform_admin").map((item) => item.label)).toEqual([
       "Global admin",
-      "Chapters",
+      "Affiliates",
       "Users & roles",
       "Coach approvals",
       "Platform guide",
@@ -35,8 +35,8 @@ describe("account navigation", () => {
       "Change website content",
       "Coach approvals",
       "Events",
-      "Chapter settings",
-      "Chapter revenue dashboard",
+      "Affiliate settings",
+      "Affiliate revenue dashboard",
       "Platform guide",
       "Update account details",
     ]);
@@ -50,7 +50,7 @@ describe("account navigation", () => {
       "Coach directory profile",
       "Certification courses",
       "Payment dues",
-      "Register as chapter head",
+      "Register as affiliate head",
       "Update account details",
     ]);
   });

@@ -9,7 +9,7 @@ export function FeaturedCoaches({ coaches }: { coaches: CoachRecord[] }) {
         <div>
           <p className="eyebrow">Featured coaches</p>
           <h2 className="mt-3 font-display text-3xl text-teal-deep">
-            Chapter coach roster
+            Affiliate coach roster
           </h2>
         </div>
         <Link className="button-link secondary" href="/coaches">
@@ -23,7 +23,7 @@ export function FeaturedCoaches({ coaches }: { coaches: CoachRecord[] }) {
         ) : (
           <article className="feature-card rounded-[1.35rem]">
             <p className="text-base leading-7 text-foreground/72">
-              Approved coaches for this chapter will appear here once their directory profiles are live.
+              Approved coaches for this affiliate will appear here once their directory profiles are live.
             </p>
           </article>
         )}

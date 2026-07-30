@@ -23,11 +23,11 @@ export type GlobalFooterState = {
 };
 
 export const defaultGlobalFooterContent: GlobalFooterContent = {
-  eyebrow: "Shared Chapter Shell",
+  eyebrow: "Shared Affiliate Shell",
   heading:
-    "A single WIAL platform for consistent chapters, safer content, and faster deployment.",
+    "A single WIAL platform for consistent affiliates, safer content, and faster deployment.",
   description:
-    "This foundation enforces the global layout across chapter sites while leaving room for chapter-specific content and future admin workflows.",
+    "This foundation enforces the global layout across affiliate sites while leaving room for affiliate-specific content and future admin workflows.",
   contactHeading: "Reach WIAL",
   address: "P.O. Box 7601 #83791\nWashington, DC 20044",
   email: "info@wial.org",

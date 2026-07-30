@@ -54,7 +54,7 @@ function buildPrompt(options: {
   events: Awaited<ReturnType<typeof listUpcomingEvents>>;
 }) {
   const sharedContext = [
-    `Chapter: ${options.chapterName}`,
+    `Affiliate: ${options.chapterName}`,
     options.chapterCountry ? `Country: ${options.chapterCountry}` : "",
     options.chapterDescription ? `Description: ${options.chapterDescription}` : "",
     options.customContext ? `Additional context: ${options.customContext}` : "",
@@ -82,31 +82,31 @@ Use a ${options.tone} tone.
 Output clean HTML using only <h2>, <h3>, <p>, <ul>, <ol>, <li>, <strong>, <em>, <a>, <blockquote>.
 Do not emit <h1>, <div>, <span>, <style>, or <script>.
 Only reference facts present in the prompt. If data is missing, skip the section.
-Each section should be concise but complete for a chapter website draft.`;
+Each section should be concise but complete for an affiliate website draft.`;
 
   let user = `${sharedContext}\n\nPage title: ${options.pageTitle}\nPage slug: ${options.pageSlug}\n`;
 
   switch (options.pageSlug) {
     case "about":
-      user += `Write an About page for ${options.chapterName}. Include what WIAL is in 1-2 sentences, what this chapter does in ${options.chapterCountry ?? "its region"}, and how visitors can get involved.`;
+      user += `Write an About page for ${options.chapterName}. Include what WIAL is in 1-2 sentences, what this affiliate does in ${options.chapterCountry ?? "its region"}, and how visitors can get involved.`;
       break;
     case "team":
       user += `Write a Team page with a short intro and a section for each coach.\nCoaches:\n${coachLines || "- No approved coaches provided."}`;
       break;
     case "events":
-      user += `Write an Events page for the chapter.\nUpcoming events:\n${eventLines || "- No upcoming events provided. Describe the types of events the chapter hosts and invite visitors to check back."}`;
+      user += `Write an Events page for the affiliate.\nUpcoming events:\n${eventLines || "- No upcoming events provided. Describe the types of events the affiliate hosts and invite visitors to check back."}`;
       break;
     case "resources":
-      user += "Write a Resources page that explains what visitors can expect from this chapter's learning materials, downloads, and knowledge-sharing activities.";
+      user += "Write a Resources page that explains what visitors can expect from this affiliate's learning materials, downloads, and knowledge-sharing activities.";
       break;
     case "testimonials":
       user += `Write a Testimonials page using only the provided testimonials.\n${options.testimonials || "No testimonials were provided. Write a short invitation asking partners to share outcomes and stories."}`;
       break;
     case "contact":
-      user += "Write a Contact page that invites visitors to connect with the chapter team for programs, certification, and partnership inquiries.";
+      user += "Write a Contact page that invites visitors to connect with the affiliate team for programs, certification, and partnership inquiries.";
       break;
     default:
-      user += `Write a ${options.pageTitle} page for ${options.chapterName} using the available chapter context.`;
+      user += `Write a ${options.pageTitle} page for ${options.chapterName} using the available affiliate context.`;
       break;
   }
 

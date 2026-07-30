@@ -17,7 +17,7 @@ function getNotice(notice?: string) {
     case "assigned":
       return "Content creator assignment saved.";
     case "deleted":
-      return "Chapter deleted and related user access was updated.";
+      return "Affiliate deleted and related user access was updated.";
     default:
       return null;
   }
@@ -28,19 +28,19 @@ function getError(error?: string) {
     case "missing-config":
       return "The Supabase service-role configuration is missing.";
     case "missing-fields":
-      return "Choose a chapter and email before assigning.";
+      return "Choose an affiliate and email before assigning.";
     case "user-not-found":
       return "That email does not belong to an existing WIAL user yet.";
     case "invalid-service-key":
       return "The Supabase service-role key in this environment is invalid. Update `SUPABASE_SERVICE_ROLE_KEY` and restart the dev server.";
     case "chapter-not-found":
-      return "That chapter record no longer exists.";
+      return "That affiliate record no longer exists.";
     case "protected-chapter":
       return "The global WIAL record cannot be deleted from this screen.";
     case "assign-failed":
       return "WIAL could not update the content creator assignment.";
     case "delete-failed":
-      return "WIAL could not delete that chapter.";
+      return "WIAL could not delete that affiliate.";
     default:
       return null;
   }
@@ -54,10 +54,10 @@ export default async function GlobalChaptersPage({
 
   return (
     <AccountPageShell
-      badge="Chapter provisioning"
-      description="Track chapter readiness, provision new chapter sites, and assign content creators to specific chapter workspaces."
+      badge="Affiliate provisioning"
+      description="Track affiliate readiness, provision new affiliate sites, and assign content creators to specific affiliate workspaces."
       eyebrow="Global admin"
-      title="Chapters"
+      title="Affiliates"
     >
       {getNotice(params.notice) ? (
         <div className="account-flash is-success">{getNotice(params.notice)}</div>
@@ -70,13 +70,13 @@ export default async function GlobalChaptersPage({
         <section className="site-panel rounded-[2rem] p-6 md:p-8">
           <div className="mb-5 flex items-center justify-between gap-4">
             <div>
-              <p className="eyebrow">Network chapters</p>
+              <p className="eyebrow">Network affiliates</p>
               <h2 className="mt-3 font-display text-3xl text-teal-deep">
-                {chapters.length} chapter records
+                {chapters.length} affiliate records
               </h2>
             </div>
             <Link className="button-link primary" href="/admin/global/chapters/new">
-              New chapter
+              New affiliate
             </Link>
           </div>
 
@@ -101,7 +101,7 @@ export default async function GlobalChaptersPage({
 
                 <div className="mt-4 flex flex-wrap items-center justify-between gap-3 border-t border-line/70 pt-4">
                   <p className="max-w-xl text-sm leading-6 text-foreground/62">
-                    Deleting a chapter removes its local pages and events and clears related user access for chapter heads, coaches, and content creators.
+                    Deleting an affiliate removes its local pages and events and clears related user access for affiliate heads, coaches, and content creators.
                   </p>
 
                   {chapter.subdomain === "global" ? (
@@ -123,7 +123,7 @@ export default async function GlobalChaptersPage({
         <aside className="site-panel rounded-[2rem] p-6">
           <p className="eyebrow">Assign content creator</p>
           <p className="mt-3 text-sm leading-7 text-foreground/72">
-            This grants content editing and events access without coach approvals or chapter settings control.
+            This grants content editing and events access without coach approvals or affiliate settings control.
           </p>
 
           <form action={assignContentCreatorAction} className="mt-5 space-y-4">
@@ -133,9 +133,9 @@ export default async function GlobalChaptersPage({
             </label>
 
             <label className="field-shell">
-              <span className="field-label">Chapter</span>
+              <span className="field-label">Affiliate</span>
               <select className="field-input" name="chapterId" required>
-                <option value="">Select chapter</option>
+                <option value="">Select affiliate</option>
                 {chapters.map((chapter) => (
                   <option key={chapter.id} value={chapter.id}>
                     {chapter.name}

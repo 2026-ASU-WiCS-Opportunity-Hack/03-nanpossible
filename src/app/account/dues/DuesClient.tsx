@@ -199,7 +199,7 @@ export function DuesClient({ userName }: DuesClientProps) {
               <th className="text-left py-3 px-4 font-semibold">Description</th>
               <th className="text-left py-3 px-4 font-semibold">Amount</th>
               <th className="text-left py-3 px-4 font-semibold">Reason</th>
-              <th className="text-left py-3 px-4 font-semibold">Chapter</th>
+              <th className="text-left py-3 px-4 font-semibold">Affiliate</th>
               <th className="text-left py-3 px-4 font-semibold">Due Date</th>
               <th className="text-left py-3 px-4 font-semibold">Status</th>
               <th className="text-left py-3 px-4 font-semibold">Action</th>
