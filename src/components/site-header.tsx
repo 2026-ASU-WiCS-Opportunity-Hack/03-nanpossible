@@ -47,28 +47,6 @@ export function SiteHeader({ siteContext, viewer }: SiteHeaderProps) {
 </nav>
 
           <div className="ml-auto flex shrink-0 items-center gap-2 sm:gap-3">
-            <div className="hidden text-right xl:block">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-foreground/50">
-                Platform
-              </p>
-              <p className="text-sm font-semibold text-teal-deep">
-                {siteContext.isGlobal
-                  ? "Global WIAL"
-                  : `${siteContext.tenant?.subdomain}.wial.org`}
-              </p>
-            </div>
-            {!viewer ? (
-              <Link
-                className="hidden text-sm font-semibold text-teal-deep/78 transition hover:text-teal-deep xl:inline-flex"
-                href="/register"
-              >
-                Register
-              </Link>
-            ) : null}
-            <AccessibilityPreferencesWidget
-              navigationRoutes={voiceNavigationRoutes}
-              variant="desktop"
-            />
             {viewer ? (
               <form
                 action="/auth/sign-out"
@@ -83,13 +61,25 @@ export function SiteHeader({ siteContext, viewer }: SiteHeaderProps) {
                 </button>
               </form>
             ) : (
-              <Link
-                href="/login"
-                className="button-link secondary hidden min-w-[8.75rem] px-4 py-2.5 text-sm sm:inline-flex sm:min-w-[9.5rem]"
-              >
-                Sign in
-              </Link>
+              <>
+                <Link
+                  href="/login"
+                  className="hidden whitespace-nowrap text-sm font-semibold text-teal-deep/78 transition hover:text-teal-deep sm:inline-flex"
+                >
+                  Sign in
+                </Link>
+                <Link
+                  href="/register"
+                  className="button-link primary hidden px-4 py-2.5 text-sm sm:inline-flex"
+                >
+                  Register
+                </Link>
+              </>
             )}
+            <AccessibilityPreferencesWidget
+              navigationRoutes={voiceNavigationRoutes}
+              variant="desktop"
+            />
             <div className="flex items-center gap-2 lg:hidden">
               <AccessibilityPreferencesWidget
                 navigationRoutes={voiceNavigationRoutes}
