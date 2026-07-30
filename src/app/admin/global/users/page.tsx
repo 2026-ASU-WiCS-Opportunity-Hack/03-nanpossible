@@ -92,9 +92,9 @@ export default async function GlobalUsersPage({
         <div className="account-flash is-error">{getError(loadError ?? params.error)}</div>
       ) : null}
 
-      <div className="grid gap-5 xl:grid-cols-[minmax(0,1.6fr)_340px]">
-        <section className="site-panel rounded-[2rem] p-6 md:p-8">
-          <div className="mb-6 flex flex-wrap items-start justify-between gap-4">
+      <div className="grid gap-5 xl:grid-cols-[minmax(0,1fr)_255px]">
+        <section className="site-panel rounded-[2rem] p-6 md:px-8 md:pb-8 md:pt-5">
+          <div className="mb-3 flex flex-wrap items-start justify-between gap-4">
             <div>
               <p className="eyebrow">Directory</p>
               <h2 className="mt-3 font-display text-3xl text-teal-deep">
@@ -102,7 +102,7 @@ export default async function GlobalUsersPage({
               </h2>
             </div>
             <p className="max-w-md text-sm leading-7 text-foreground/68">
-              Each user keeps one primary role. Primary chapter access applies to chapter heads and coaches. Assigned chapters apply only to content creators.
+              Each user keeps one primary role. Primary chapter access applies to chapter heads and coaches. Assigned chapters apply only to content creators and coaches.
             </p>
           </div>
 
@@ -116,22 +116,22 @@ export default async function GlobalUsersPage({
           )}
         </section>
 
-        <aside className="site-panel rounded-[2rem] p-6">
+        <aside className="site-panel rounded-[2rem] p-5">
           <p className="eyebrow">Access summary</p>
           <div className="mt-4 grid gap-3">
-            <article className="feature-card rounded-[1.35rem]">
+            <article className="feature-card rounded-[1.1rem] p-4">
               <p className="text-xs font-semibold uppercase tracking-[0.16em] text-accent">
                 Platform admins
               </p>
               <p className="mt-3 font-display text-4xl text-teal-deep">{platformAdminCount}</p>
             </article>
-            <article className="feature-card rounded-[1.35rem]">
+            <article className="feature-card rounded-[1.1rem] p-4">
               <p className="text-xs font-semibold uppercase tracking-[0.16em] text-accent">
                 Chapter heads
               </p>
               <p className="mt-3 font-display text-4xl text-teal-deep">{chapterAdminCount}</p>
             </article>
-            <article className="feature-card rounded-[1.35rem]">
+            <article className="feature-card rounded-[1.1rem] p-4">
               <p className="text-xs font-semibold uppercase tracking-[0.16em] text-accent">
                 Content creators
               </p>
@@ -140,7 +140,6 @@ export default async function GlobalUsersPage({
           </div>
 
           <div className="mt-6 space-y-3 text-sm leading-7 text-foreground/70">
-            <p>Role changes clear chapter fields that no longer apply to the selected role.</p>
             <p>Content creators can span multiple chapters, but every user still has only one primary role.</p>
             <p>The final platform-admin account cannot be demoted from this interface.</p>
           </div>

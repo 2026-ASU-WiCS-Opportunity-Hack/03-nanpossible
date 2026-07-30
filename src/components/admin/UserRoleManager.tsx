@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import type { AdminUserRecord, AppRole, ChapterRecord } from "@/lib/types";
 
 type UserRoleManagerProps = {
@@ -15,214 +15,328 @@ const roleOptions: Array<{ value: AppRole; label: string }> = [
   { value: "chapter_admin", label: "Chapter head" },
   { value: "content_creator", label: "Content creator" },
   { value: "coach", label: "Coach" },
-  { value: "public_visitor", label: "Visitor" },
+  { value: "public_visitor", label: "Public visitor" },
 ];
 
+
 function getRoleLabel(role: AppRole) {
-  return roleOptions.find((o) => o.value === role)?.label ?? role;
+  return roleOptions.find((option) => option.value === role)?.label ?? role;
 }
 
-export function UserRoleManager({ action, chapters, currentUserId, users }: UserRoleManagerProps) {
-  const [editingId, setEditingId] = useState<string | null>(null);
+function getRolePillClass(role: AppRole) {
+  switch (role) {
+    case "platform_admin":
+      return "bg-[#fdecec] text-[#9f3a33]";
+    case "chapter_admin":
+      return "bg-[rgba(70,111,176,0.12)] text-[#466fb0]";
+    case "coach":
+      return "bg-[rgba(80,143,96,0.12)] text-[#508f60]";
+    case "content_creator":
+      return "bg-[rgba(176,139,38,0.12)] text-[#8f711f]";
+    case "public_visitor":
+    default:
+      return "bg-[#f2f0ec] text-[#716b62]";
+  }
+}
+
+function formatAccessSummary(options: {
+  assignedChapters: string[];
+  chapterId: string;
+  chapters: UserRoleManagerProps["chapters"];
+  role: AppRole;
+}) {
+  if (options.role === "content_creator") {
+    const assignedNames = options.assignedChapters
+      .map((chapterId) => options.chapters.find((chapter) => chapter.id === chapterId)?.name)
+      .filter((value): value is string => Boolean(value));
+
+    return assignedNames.length
+      ? `Assigned chapters: ${assignedNames.join(", ")}`
+      : "Assigned chapters: none";
+  }
+
+  if (options.chapterId) {
+    const chapterName = options.chapters.find((chapter) => chapter.id === options.chapterId)?.name;
+
+    if (chapterName) {
+      return `Primary chapter: ${chapterName}`;
+    }
+  }
+
+  return "Global access only";
+}
+
+function getAccessType(user: AdminUserRecord) {
+  if (user.assignedChapters.length) return "assigned";
+  if (user.chapterId) return "chapter";
+  return "global";
+}
+
+export function UserRoleManager({
+  action,
+  chapters,
+  currentUserId,
+  users,
+}: UserRoleManagerProps) {
+  const [roleFilter, setRoleFilter] = useState<"all" | AppRole>("all");
+  const [accessFilter, setAccessFilter] = useState<"all" | "global" | "chapter" | "assigned">("all");
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const filteredUsers = useMemo(() => {
+    const normalizedSearch = searchTerm.trim().toLowerCase();
+
+    return users.filter((user) => {
+      const matchesSearch =
+        !normalizedSearch ||
+        user.name.toLowerCase().includes(normalizedSearch) ||
+        user.email.toLowerCase().includes(normalizedSearch);
+
+      const matchesRole = roleFilter === "all" || user.role === roleFilter;
+      const matchesAccess = accessFilter === "all" || getAccessType(user) === accessFilter;
+
+      return matchesSearch && matchesRole && matchesAccess;
+    });
+  }, [accessFilter, roleFilter, searchTerm, users]);
 
   if (!users.length) {
     return (
-      <p className="py-8 text-center text-sm text-foreground/58">No users yet.</p>
+      <section className="site-panel rounded-[2rem] px-6 py-12 text-center">
+        <p className="text-lg font-semibold text-teal-deep">No users are available to manage yet.</p>
+      </section>
     );
   }
 
   return (
-    <div className="overflow-hidden rounded-[1.25rem] border border-line/60">
-      {/* Header row */}
-      <div className="grid grid-cols-[minmax(0,2fr)_minmax(0,1.2fr)_minmax(0,1.5fr)_auto] gap-3 border-b border-line/60 bg-surface px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-foreground/45">
-        <span>User</span>
-        <span>Role</span>
-        <span>Chapter scope</span>
-        <span />
+    <section className="overflow-hidden rounded-[1.35rem] border border-line/70 bg-white/85">
+      <div className="grid gap-3 border-b border-line/70 bg-[rgba(255,250,242,0.62)] p-3 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(0,1fr)]">
+        <label className="sr-only" htmlFor="user-search">
+          Search users
+        </label>
+        <input
+          className="h-12 rounded-xl border border-white/10 bg-white px-4 py-3 text-sm font-semibold text-foreground outline-none placeholder:text-foreground placeholder:opacity-100"          
+          id="user-search"
+          onChange={(event) => {
+            setSearchTerm(event.target.value);
+          }}
+          placeholder="Search users"
+          value={searchTerm}
+        />
+
+        <label className="sr-only" htmlFor="role-filter">
+          Filter by role
+        </label>
+        <select
+          className="rounded-xl border border-white/10 bg-white px-4 py-3 text-sm font-semibold text-foreground outline-none"
+          id="role-filter"
+          onChange={(event) => {
+            setRoleFilter(event.target.value as "all" | AppRole);
+          }}
+          value={roleFilter}
+        >
+          <option value="all">All roles</option>
+          {roleOptions.map((option) => (
+            <option key={option.value} value={option.value}>
+              {option.label}
+            </option>
+          ))}
+        </select>
+
+        <label className="sr-only" htmlFor="access-filter">
+          Filter by access
+        </label>
+        <select
+          className="rounded-xl border border-white/10 bg-white px-4 py-3 text-sm font-semibold text-foreground outline-none"
+          id="access-filter"
+          onChange={(event) => {
+            setAccessFilter(event.target.value as "all" | "global" | "chapter" | "assigned");
+          }}
+          value={accessFilter}
+        >
+          <option value="all">All access</option>
+          <option value="global">Global access</option>
+          <option value="chapter">Primary chapter</option>
+          <option value="assigned">Assigned chapters</option>
+        </select>
       </div>
 
-      {users.map((user) =>
-        editingId === user.id ? (
-          <UserEditRow
+      <div className="border-b border-line/70 px-4 py-3 text-sm font-semibold text-foreground/60">
+        {users.length} users&nbsp;&nbsp;&nbsp; {filteredUsers.length} shown
+      </div>
+
+      <div className="grid grid-cols-[minmax(0,2.05fr)_minmax(0,1.6fr)_minmax(5rem,0.5fr)_minmax(4rem,0.4fr)] gap-2 border-b border-line/70 bg-[rgba(255,250,242,0.58)] px-4 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-foreground/50">
+        <span>Name</span>
+        <span>Email</span>
+        <span>Role</span>
+        <span>Action</span>
+        
+      </div>
+
+      <div className="divide-y divide-line/70">
+        {filteredUsers.map((user) => (
+          <UserRoleRow
             action={action}
             chapters={chapters}
             currentUserId={currentUserId}
             key={user.id}
-            onDone={() => setEditingId(null)}
             user={user}
           />
-        ) : (
-          <UserDisplayRow
-            currentUserId={currentUserId}
-            key={user.id}
-            onEdit={() => setEditingId(user.id)}
-            user={user}
-            chapters={chapters}
-          />
-        ),
-      )}
-    </div>
-  );
-}
-
-function UserDisplayRow({
-  chapters,
-  currentUserId,
-  onEdit,
-  user,
-}: {
-  chapters: UserRoleManagerProps["chapters"];
-  currentUserId: string;
-  onEdit: () => void;
-  user: AdminUserRecord;
-}) {
-  const isSelf = user.id === currentUserId;
-
-  const chapterScope = (() => {
-    if (user.role === "content_creator" && user.assignedChapters.length) {
-      return user.assignedChapters
-        .map((id) => chapters.find((c) => c.id === id)?.name)
-        .filter(Boolean)
-        .join(", ");
-    }
-    if (user.chapterId) {
-      return chapters.find((c) => c.id === user.chapterId)?.name ?? "—";
-    }
-    return "Global";
-  })();
-
-  return (
-    <div className="grid grid-cols-[minmax(0,2fr)_minmax(0,1.2fr)_minmax(0,1.5fr)_auto] items-center gap-3 border-b border-line/40 px-4 py-2.5 text-sm last:border-b-0 hover:bg-surface/60">
-      <div className="min-w-0">
-        <p className="truncate font-semibold text-teal-deep">
-          {user.name}
-          {isSelf && (
-            <span className="ml-2 text-xs font-bold uppercase tracking-[0.12em] text-accent">
-              You
-            </span>
-          )}
-        </p>
-        <p className="truncate text-xs text-foreground/55">{user.email}</p>
+        ))}
       </div>
-      <span className="inline-flex w-fit rounded-full border border-line/70 bg-white/70 px-2.5 py-0.5 text-xs font-semibold uppercase tracking-[0.12em] text-foreground/60">
-        {getRoleLabel(user.role)}
-      </span>
-      <span className="truncate text-xs text-foreground/55">{chapterScope}</span>
-      <button
-        className="button-link secondary text-xs"
-        onClick={onEdit}
-        type="button"
-      >
-        Edit
-      </button>
-    </div>
+    </section>
   );
 }
 
-function UserEditRow({
+function UserRoleRow({
   action,
   chapters,
   currentUserId,
-  onDone,
   user,
 }: {
   action: UserRoleManagerProps["action"];
   chapters: UserRoleManagerProps["chapters"];
   currentUserId: string;
-  onDone: () => void;
   user: AdminUserRecord;
 }) {
   const [role, setRole] = useState<AppRole>(user.role);
   const [chapterId, setChapterId] = useState(user.chapterId ?? "");
   const [assignedChapters, setAssignedChapters] = useState<string[]>(user.assignedChapters);
+  const [isEditing, setIsEditing] = useState(false);
   const isSelf = user.id === currentUserId;
   const needsPrimaryChapter = role === "chapter_admin" || role === "coach";
   const needsAssignedChapters = role === "content_creator";
 
   return (
-    <div className="border-b border-line/60 bg-accent-soft/30 px-4 py-3 last:border-b-0">
-      <form
-        action={async (fd) => {
-          await action(fd);
-          onDone();
-        }}
-        className="grid gap-3 sm:grid-cols-2 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_auto]"
-      >
-        <input name="userId" type="hidden" value={user.id} />
+    <form action={action}>
+      <input name="userId" type="hidden" value={user.id} />
 
-        {/* Email (read-only display) */}
-        <div className="lg:col-span-3 text-sm font-semibold text-teal-deep">
-          {user.name} — <span className="font-normal text-foreground/60">{user.email}</span>
-        </div>
+      <div className="grid grid-cols-[minmax(0,2.05fr)_minmax(0,1.6fr)_minmax(5rem,0.5fr)_minmax(4rem,0.4fr)] items-center gap-2 px-4 py-3">
 
-        <label className="field-shell">
-          <span className="field-label">Role</span>
-          <select
-            className="field-input"
-            disabled={isSelf}
-            name="role"
-            onChange={(e) => setRole(e.target.value as AppRole)}
-            value={role}
+        <div className="min-w-0">
+<div className="flex min-w-0 items-center gap-2">
+  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-accent-soft text-[0.68rem] font-semibold text-teal-deep">
+    {user.name.slice(0, 2).toUpperCase()}
+  </span>
+  <p className="truncate font-semibold text-teal-deep" title={user.name}>
+    {user.name}
+  </p>
+</div>
+<p
+  className="truncate text-[0.68rem] leading-tight text-foreground/45"
+  title={formatAccessSummary({ assignedChapters, chapterId, chapters, role })}
+>
+  {formatAccessSummary({ assignedChapters, chapterId, chapters, role })}
+</p>
+</div>
+
+        <p className="truncate text-sm text-foreground/70" title={user.email}>
+          {user.email}
+        </p>
+        <span
+          className={`inline-flex w-[3.9rem] items-center justify-center justify-self-start whitespace-normal rounded-full border border-transparent px-1.5 py-1 text-center text-[0.66rem] font-semibold leading-tight ${getRolePillClass(role)}`}
+        >
+          {getRoleLabel(role)}
+        </span>
+
+        {isSelf ? (
+          <span className="inline-flex w-[3.5rem] items-center justify-center justify-self-start whitespace-nowrap rounded-full border border-line/80 bg-[rgba(255,250,242,0.9)] px-1.5 py-0.5 text-center text-[0.66rem] font-semibold uppercase leading-tight tracking-[0.08em] text-accent">
+            You
+          </span>
+        ) : (
+          <button
+            className="inline-flex w-[3.5rem] items-center justify-center justify-self-start whitespace-nowrap rounded-full border border-line/80 bg-[rgba(255,250,242,0.9)] px-1.5 py-0.5 text-center text-[0.66rem] font-semibold uppercase leading-tight tracking-[0.08em] text-teal-deep transition hover:border-[rgba(209,0,52,0.28)] hover:bg-[rgba(209,0,52,0.04)]"
+            onClick={() => {
+              if (isEditing) {
+                setRole(user.role);
+                setChapterId(user.chapterId ?? "");
+                setAssignedChapters(user.assignedChapters);
+              }
+
+              setIsEditing((value) => !value);
+            }}
+            type="button"
           >
-            {roleOptions.map((o) => (
-              <option key={o.value} value={o.value}>{o.label}</option>
-            ))}
-          </select>
-        </label>
+            {isEditing ? "Close" : "Edit"}
+          </button>
+        )}
+      </div>
 
-        {needsPrimaryChapter && (
+      {isEditing ? (
+        <div className="grid gap-4 border-t border-line/70 bg-[rgba(255,250,242,0.45)] px-4 py-4 md:grid-cols-2">
           <label className="field-shell">
-            <span className="field-label">Primary chapter</span>
+            <span className="field-label">Role</span>
             <select
               className="field-input"
-              disabled={isSelf}
-              name="chapterId"
-              onChange={(e) => setChapterId(e.target.value)}
-              required={role === "chapter_admin"}
-              value={chapterId}
+              name="role"
+              onChange={(event) => setRole(event.target.value as AppRole)}
+              value={role}
             >
-              <option value="">No primary chapter</option>
-              {chapters.map((c) => (
-                <option key={c.id} value={c.id}>
-                  {c.name}{c.status !== "active" ? ` (${c.status})` : ""}
+              {roleOptions.map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
                 </option>
               ))}
             </select>
           </label>
-        )}
 
-        {needsAssignedChapters && (
-          <label className="field-shell sm:col-span-2">
-            <span className="field-label">Assigned chapters</span>
-            <select
-              className="field-input min-h-32"
-              disabled={isSelf}
-              multiple
-              name="assignedChapters"
-              onChange={(e) =>
-                setAssignedChapters(Array.from(e.target.selectedOptions, (o) => o.value))
-              }
-              required
-              value={assignedChapters}
-            >
-              {chapters.map((c) => (
-                <option key={c.id} value={c.id}>
-                  {c.name}{c.status !== "active" ? ` (${c.status})` : ""}
-                </option>
-              ))}
-            </select>
-          </label>
-        )}
+          {needsPrimaryChapter ? (
+            <label className="field-shell">
+              <span className="field-label">Primary chapter</span>
+              <select
+                className="field-input"
+                name="chapterId"
+                onChange={(event) => setChapterId(event.target.value)}
+                required={role === "chapter_admin"}
+                value={chapterId}
+              >
+                <option value="">No primary chapter</option>
+                {chapters.map((chapter) => (
+                  <option key={chapter.id} value={chapter.id}>
+                    {chapter.name}
+                    {chapter.status !== "active" ? ` (${chapter.status})` : ""}
+                  </option>
+                ))}
+              </select>
+            </label>
+          ) : null}
 
-        <div className="flex items-end gap-2 sm:col-span-2 lg:col-span-1">
-          <button className="button-link primary" disabled={isSelf} type="submit">
-            Save
-          </button>
-          <button className="button-link secondary" onClick={onDone} type="button">
-            Cancel
-          </button>
+          {needsAssignedChapters ? (
+            <label className="field-shell md:col-span-2">
+              <span className="field-label">Assigned chapters</span>
+              <select
+                className="field-input min-h-44"
+                multiple
+                name="assignedChapters"
+                onChange={(event) =>
+                  setAssignedChapters(
+                    Array.from(event.target.selectedOptions, (option) => option.value),
+                  )
+                }
+                required
+                value={assignedChapters}
+              >
+                {chapters.map((chapter) => (
+                  <option key={chapter.id} value={chapter.id}>
+                    {chapter.name}
+                    {chapter.status !== "active" ? ` (${chapter.status})` : ""}
+                  </option>
+                ))}
+              </select>
+              <span className="text-xs font-semibold uppercase tracking-[0.16em] text-foreground/45">
+                Hold command or control to choose multiple chapters.
+              </span>
+            </label>
+          ) : null}
+
+          <div className="flex flex-wrap items-center justify-between gap-3 md:col-span-2">
+            <p className="text-sm text-foreground/60">
+              Saving clears any chapter fields that do not apply to the selected role.
+            </p>
+            <button className="button-link primary" type="submit">
+              Save role
+            </button>
+          </div>
         </div>
-      </form>
-    </div>
+      ) : null}
+    </form>
   );
 }
