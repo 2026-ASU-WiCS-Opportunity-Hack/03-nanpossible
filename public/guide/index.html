@@ -467,9 +467,6 @@
           <p>AI generation is limited to <strong>10 generations per hour per chapter</strong> to manage costs. Text is automatically capped at 5,000 characters.</p>
         </div>
 
-        <h3>Audio narration</h3>
-        <p>Pages can also have auto-generated audio narration (powered by ElevenLabs). When enabled, a play button appears on the public page so visitors can listen to the content. Audio is generated in the chapter&rsquo;s configured language.</p>
-
         <h2 id="managing-events">Managing Events</h2>
         <p>Chapter admins and content creators can manage events at <code>/admin/chapter/events</code>.</p>
         <ul>
@@ -634,7 +631,6 @@
           <tr><td><strong>OpenRouter</strong></td><td><code>OPENROUTER_API_KEY</code></td><td>AI content generation and chatbot. Disables AI features if not set.</td></tr>
           <tr><td><strong>Cohere</strong></td><td><code>COHERE_API_KEY</code></td><td>Vector embeddings for semantic coach search. Falls back to keyword search.</td></tr>
           <tr><td><strong>Stripe</strong></td><td><code>STRIPE_SECRET_KEY</code></td><td>Payment processing for coach dues. Disables payments if not set.</td></tr>
-          <tr><td><strong>ElevenLabs</strong></td><td><code>ELEVENLABS_API_KEY</code></td><td>Text-to-speech audio narration for pages. Disables audio if not set.</td></tr>
           <tr><td><strong>Resend</strong></td><td><code>RESEND_API_KEY</code></td><td>Email notifications (welcome emails, rejection notices). Emails skipped if not set.</td></tr>
         </table>
 
@@ -687,9 +683,6 @@
 
         <h3>Email notifications not sending</h3>
         <p>Configure the <code>RESEND_API_KEY</code> environment variable. Without it, the platform skips email notifications for coach approvals, rejections, and welcome messages.</p>
-
-        <h3>Audio narration missing</h3>
-        <p>Audio generation requires the <code>ELEVENLABS_API_KEY</code> environment variable. Page content is also capped at 5,000 characters for audio generation.</p>
 
         <p style="margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.85rem;">
           &copy; World Institute for Action Learning. This guide was generated for the WIAL platform. For technical support, contact <a href="mailto:info@wial.org">info@wial.org</a>.

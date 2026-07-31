@@ -140,8 +140,6 @@ export type CoachRecord = {
   credlyBadgeImageUrl?: string | null;
   credlyBadgeTitle?: string | null;
   credlyBadgeSyncedAt?: string | null;
-  audioIntroUrl?: string | null;
-  audioIntroSource?: "ai" | "uploaded" | null;
   approved: boolean;
   createdAt: string;
   updatedAt: string;
@@ -486,9 +484,6 @@ export type ContentPageRecord = {
   builderDraft?: BuilderPageDocV2 | null;
   builderPublished?: BuilderPageDocV2 | null;
   seo: SeoRecord;
-  audioUrl?: string;
-  audioDurationSeconds?: number | null;
-  audioGeneratedAt?: string | null;
 };
 
 export type ChapterContextValue = {
