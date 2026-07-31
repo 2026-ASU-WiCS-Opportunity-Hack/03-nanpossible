@@ -1,6 +1,5 @@
 import { headers } from "next/headers";
 import { AccountSidebar } from "@/components/account-sidebar";
-import { SiteChromeFrame } from "@/components/site-chrome-frame";
 import { getCurrentViewer, requireAccountViewer } from "@/lib/auth";
 import { getAccountNavItems, getRoleLabel } from "@/lib/account";
 import { getLayoutSiteContext } from "@/lib/site-context";
@@ -28,20 +27,18 @@ export default async function AdminLayout({
     : siteContext.tenant.name;
 
   return (
-    <SiteChromeFrame siteContext={siteContext} viewer={viewer}>
-      <div className="page-frame">
-        <div className="site-shell">
-          <div className="account-grid">
-            <AccountSidebar
-              items={getAccountNavItems(viewer.role)}
-              platformLabel={platformLabel}
-              role={viewer.role}
-              roleLabel={getRoleLabel(viewer.role)}
-            />
-            <div className="account-stage">{children}</div>
-          </div>
+    <div className="page-frame">
+      <div className="site-shell">
+        <div className="account-grid">
+          <AccountSidebar
+            items={getAccountNavItems(viewer.role)}
+            platformLabel={platformLabel}
+            role={viewer.role}
+            roleLabel={getRoleLabel(viewer.role)}
+          />
+          <div className="account-stage">{children}</div>
         </div>
       </div>
-    </SiteChromeFrame>
+    </div>
   );
 }

@@ -44,22 +44,6 @@ function DrawerLink({
     </>
   );
 
-  if (href === "/guide") {
-    return (
-      <Link
-        className="account-sidebar-link"
-        href="/guide/index.html"
-        onClick={(event) => {
-          event.preventDefault();
-          onClick();
-          window.location.assign("/guide/index.html");
-        }}
-      >
-        {linkContent}
-      </Link>
-    );
-  }
-
   return (
     <Link className="account-sidebar-link" href={href} onClick={onClick}>
       {linkContent}
