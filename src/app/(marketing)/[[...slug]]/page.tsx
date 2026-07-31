@@ -1,3 +1,4 @@
+import { cache } from "react";
 import { headers } from "next/headers";
 import type { Metadata } from "next";
 import { notFound, redirect } from "next/navigation";
@@ -20,6 +21,18 @@ async function resolveSiteContextForSlug(slug: string) {
   return getLayoutSiteContext(headerStore);
 }
 
+// Deduped across generateMetadata and the page render for a given request —
+// cache() keys on the primitive slug argument, so both call sites share the
+// one site-context + content-page fetch instead of doubling DB round-trips.
+const loadMarketingPage = cache(async (slug: string) => {
+  const siteContext = await resolveSiteContextForSlug(slug);
+  const page = await getContentPage({
+    slug,
+    chapterId: siteContext.tenant?.id ?? null,
+  });
+  return { siteContext, page };
+});
+
 export async function generateMetadata({
   params,
 }: MarketingPageProps): Promise<Metadata> {
@@ -27,11 +40,7 @@ export async function generateMetadata({
   const route = normalizeSegments(slug);
   if (!route?.slug) return {};
 
-  const siteContext = await resolveSiteContextForSlug(route.slug);
-  const page = await getContentPage({
-    slug: route.slug,
-    chapterId: siteContext.tenant?.id ?? null,
-  });
+  const { siteContext, page } = await loadMarketingPage(route.slug);
 
   if (!page) return {};
 
@@ -58,11 +67,7 @@ export default async function MarketingPage({ params }: MarketingPageProps) {
     notFound();
   }
 
-  const siteContext = await resolveSiteContextForSlug(route.slug);
-  const page = await getContentPage({
-    slug: route.slug,
-    chapterId: siteContext.tenant?.id ?? null,
-  });
+  const { siteContext, page } = await loadMarketingPage(route.slug);
 
   if (!page) {
     notFound();
