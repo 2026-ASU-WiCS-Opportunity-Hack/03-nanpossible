@@ -26,6 +26,17 @@ describe("normalizeSegments", () => {
       slug: null,
       redirectTo: "/clients",
     });
+    expect(normalizeSegments(["action-learning", "benefits"])).toEqual({
+      slug: null,
+      redirectTo: "/benefits",
+    });
+  });
+
+  it("resolves the benefits page slug", () => {
+    expect(normalizeSegments(["benefits"])).toEqual({
+      slug: "benefits",
+      redirectTo: null,
+    });
   });
 
   it("rejects unsupported paths", () => {
