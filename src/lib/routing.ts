@@ -14,6 +14,7 @@ const aliasMap = new Map<string, string>([
   ["about-wial", "/about"],
   ["contact-us", "/contact"],
   ["library", "/clients"],
+  ["action-learning/benefits", "/benefits"],
 ]);
 
 const canonicalMap = new Map<string, CanonicalPageSlug>([
@@ -24,6 +25,7 @@ const canonicalMap = new Map<string, CanonicalPageSlug>([
   ["contact", "contact"],
   ["partners", "partners"],
   ["affiliates", "affiliates"],
+  ["benefits", "benefits"],
 ]);
 
 export const reservedSubdomains = new Set([

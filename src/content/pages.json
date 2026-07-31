@@ -35,7 +35,7 @@
             "eyebrow": "Benefits",
             "title": "Get more out of your business",
             "body": "See how Action Learning benefits individuals, teams, and organizations.",
-            "href": "https://wial.org/benefits/",
+            "href": "/benefits",
             "label": "Read more"
           },
           {
@@ -427,6 +427,101 @@
     "sourceUrl": "https://wial.org/affiliates/",
     "sourceStatus": "newly-created",
     "sourceNotes": "Switched section type from logo_grid to contact_cards — logo_grid only supports {name, logo} in this schema, so url/address fields were silently dropped before. contact_cards supports href/label/body, so the website links now actually render."
+  }
+},
+{
+  "id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaa0010",
+  "chapterId": null,
+  "slug": "benefits",
+  "title": "Action Learning Benefits",
+  "published": true,
+  "bodyRichtext": {
+    "heroIntro": "Action Learning helps organizations solve urgent problems, build high-performing teams, and develop leaders — all at the same time. See how individuals, teams, and organizations get more out of their business with WIAL.",
+    "metrics": [
+      { "label": "Benefit areas", "value": "5" },
+      { "label": "Learning Organization systems", "value": "5" },
+      { "label": "Global reach", "value": "Worldwide" }
+    ],
+    "sections": [
+      {
+        "type": "prose",
+        "title": "Breakthrough problem solving",
+        "paragraphs": [
+          "We help organizations boost business performance, achieve a substantial return on investment, and improve capability. Action Learning helps teams identify the core issue behind a problem, explore solutions they may not have considered, and move forward when decisions have stalled — so they arrive at the best possible resolution."
+        ]
+      },
+      {
+        "type": "prose",
+        "title": "Becoming a learning organization",
+        "paragraphs": [
+          "In a competitive environment, organizations must continually learn and improve. WIAL developed a Learning Organization model built on five interlocking systems — Learning, Organization, People, Knowledge, and Technology — along with an assessment instrument to measure where your organization stands.",
+          "The model has been successfully implemented at organizations including Boeing, Accenture, Samsung, Federal Express, and Alcoa."
+        ]
+      },
+      {
+        "type": "prose",
+        "title": "High-performing teams",
+        "paragraphs": [
+          "Action Learning develops powerful work teams that get up to speed quickly, with strong norms and cohesiveness. Teams improve their problem-solving capability with every session, build shared commitment to results, and encourage breakthrough thinking. Companies such as Microsoft, Samsung, and Siemens use Action Learning to build their teams."
+        ]
+      },
+      {
+        "type": "prose",
+        "title": "Leadership development",
+        "paragraphs": [
+          "WIAL integrates Action Learning into your existing leadership development programs with minimal restructuring. The process builds your team's capacity to resolve complex challenges while developing the management skills leaders need for the 21st century."
+        ]
+      },
+      {
+        "type": "prose",
+        "title": "Community impact",
+        "paragraphs": [
+          "WIAL helps create a better world by supporting organizations that make a positive social impact — providing pro-bono coaching and grant funding for nonprofits and social enterprises."
+        ]
+      },
+      {
+        "type": "prose",
+        "title": "Challenging the status quo",
+        "paragraphs": [
+          "Across all of these areas, the Action Learning process delivers:"
+        ],
+        "bullets": [
+          "Lasting behavior change",
+          "Essential leadership skills",
+          "High-performance teams",
+          "Capability development at every level of the organization",
+          "A closed gap between knowing and doing",
+          "Stronger learning and problem-solving skills"
+        ]
+      },
+      {
+        "type": "cta",
+        "title": "Become an Action Learning Coach",
+        "body": "Explore WIAL certification and start your journey as an Action Learning coach.",
+        "href": "/certification",
+        "label": "Explore certification"
+      },
+      {
+        "type": "cta",
+        "title": "Hire an Action Learning Coach",
+        "body": "Find a WIAL-certified coach to bring Action Learning to your organization.",
+        "href": "/coaches",
+        "label": "Find a coach"
+      },
+      {
+        "type": "cta",
+        "title": "Ready to see these benefits in your organization?",
+        "body": "Use the shared contact route to coordinate a tailored Action Learning program for your team or organization.",
+        "href": "/contact",
+        "label": "Talk with WIAL"
+      }
+    ]
+  },
+  "seo": {
+    "description": "How Action Learning benefits individuals, teams, and organizations — problem solving, learning organizations, high-performing teams, leadership development, and community impact.",
+    "sourceUrl": "https://wial.org/action-learning/benefits/",
+    "sourceStatus": "migrated-from-wial",
+    "sourceNotes": "Rewritten from the live wial.org Action Learning Benefits page (breakthrough problem solving, learning organization, high-performing teams, leadership development, community impact, challenging the status quo). External wial.org CTAs replaced with internal /certification, /coaches, and /contact routes."
   }
 },
   {
