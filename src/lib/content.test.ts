@@ -39,9 +39,6 @@ describe("getContentPage", () => {
       body_html: "<p>Legacy html</p>",
       body_richtext: null,
       seo: null,
-      audio_url: null,
-      audio_duration_seconds: null,
-      audio_generated_at: null,
     });
 
     expect(page.editorKind).toBe("builder");
@@ -71,9 +68,6 @@ describe("getContentPage", () => {
       body_html: "<main>semantic</main>",
       body_richtext: null,
       seo: null,
-      audio_url: null,
-      audio_duration_seconds: null,
-      audio_generated_at: null,
     });
 
     expect(page.publishedEditorKind).toBe("builder");

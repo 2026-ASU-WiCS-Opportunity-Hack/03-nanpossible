@@ -23,7 +23,6 @@ Our solution: a multi-tenant, AI-enhanced platform that unifies WIAL's operation
 - **Certification Lifecycle Management** — Full tracking of CALC, PALC, SALC, and MALC certification levels with documents, LMS links, and Credly badge integration
 - **AI Certification Chatbot** — Site-wide assistant answering WIAL certification and coaching methodology questions using GPT-4o-mini
 - **Coach Registration & Approval Workflow** — Coaches self-register, chapter/platform admins review and approve, embeddings auto-update for search
-- **AI-Generated Audio Narration** — ElevenLabs TTS for content pages and coach introductions, enabling accessibility and engagement
 - **Payment Integration** — Stripe-powered dues collection and certification enrollment with payment history and webhook handling
 - **Role-Based Access Control** — Five-tier permission system (platform admin, chapter admin, content creator, coach, visitor) enforced at database and middleware layers
 - **Rich Content Management** — Chapter admins author pages and events with a TipTap-based rich text editor
@@ -51,7 +50,6 @@ Our solution: a multi-tenant, AI-enhanced platform that unifies WIAL's operation
 - **OpenRouter** — LLM API gateway (chatbot: GPT-4o-mini; query parsing: Claude 3.5 Haiku)
 - **Cohere** — Embedding generation for semantic coach search
 - **Stripe** — Payment processing for dues and enrollment
-- **ElevenLabs** — Text-to-speech for audio narration
 - **Credly** — Badge metadata and display
 - **Resend** — Transactional email for admin notifications
 
@@ -87,7 +85,6 @@ SUPABASE_SERVICE_ROLE_KEY=<local-service-role-key-from-supabase-status>
 OPENROUTER_API_KEY=
 COHERE_API_KEY=
 STRIPE_SECRET_KEY=
-ELEVENLABS_API_KEY=
 RESEND_API_KEY=
 
 # Optional: WIAL LMS (defaults to https://wialportal.org/)
@@ -175,7 +172,6 @@ Optional integrations for hosted/local use:
 OPENROUTER_API_KEY=<openrouter-api-key>
 COHERE_API_KEY=<cohere-api-key>
 STRIPE_SECRET_KEY=<stripe-secret-key>
-ELEVENLABS_API_KEY=<elevenlabs-api-key>
 RESEND_API_KEY=<resend-api-key>
 NEXT_PUBLIC_WIAL_LMS_URL=https://wialportal.org/
 ```
@@ -193,7 +189,6 @@ NEXT_PUBLIC_WIAL_LMS_URL=https://wialportal.org/
 | `npm run seed:coaches` | Seed sample coach data |
 | `npm run content:sync` | Sync content artifacts |
 | `npm run backfill:credly` | Sync Credly badge metadata |
-| `npm run backfill:page-audio` | Generate audio for content pages |
 | `npm run manage:roles` | CLI for user role management |
 | `npm run dolt:setup` | Initialize Dolt migration tracking |
 

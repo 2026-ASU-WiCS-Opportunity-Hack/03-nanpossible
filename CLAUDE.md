@@ -47,7 +47,7 @@ Roles: `platform_admin`, `chapter_admin`, `content_creator`, `coach`, `public_vi
 PostgreSQL via Supabase with pgvector extension. Migrations in `supabase/migrations/`. Falls back to JSON fixtures in `src/content/` if DB is unavailable.
 
 ### Integrations
-OpenRouter (LLM gateway), Cohere (embeddings), Stripe (payments), ElevenLabs (TTS), Credly (badges), Resend (email).
+OpenRouter (LLM gateway), Cohere (embeddings), Stripe (payments), Credly (badges), Resend (email).
 
 ## Key Conventions
 
