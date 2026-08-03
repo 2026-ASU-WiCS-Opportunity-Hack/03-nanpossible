@@ -1,3 +1,4 @@
+import { cache } from "react";
 import chapters from "@/content/chapters.json";
 import { parseChapterBuilderChromeState } from "@/lib/builder-page";
 import { createServiceRoleSupabaseClient } from "@/lib/supabase-admin";
@@ -159,7 +160,7 @@ const publicChapterColumns = [
   "tagline",
 ].join(", ");
 
-export async function getChapterBySubdomain(subdomain: string) {
+export const getChapterBySubdomain = cache(async (subdomain: string) => {
   const client = createSupabaseContentClient({ tenantSubdomain: subdomain });
 
   if (client) {
@@ -185,7 +186,7 @@ export async function getChapterBySubdomain(subdomain: string) {
   );
 
   return fallback ? mapFixture(fallback) : null;
-}
+});
 
 export async function getChapterById(id: string) {
   const client = createSupabaseContentClient();
