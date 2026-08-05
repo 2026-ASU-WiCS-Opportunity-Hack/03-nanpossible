@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WIAL Platform Guide</title>
   <style>
-    :root {
+    :scope {
       --burgundy: #a80030;
       --burgundy-dark: #8f0029;
       --olive: #9a9b00;
@@ -18,8 +18,10 @@
       --radius: 1.4rem;
       --shadow: 0 18px 44px rgba(47, 37, 31, 0.08);
     }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
+    :scope, :scope *, :scope *::before, :scope *::after {
+      box-sizing: border-box;
+    }
+    :scope {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       color: var(--ink);
       background:
@@ -28,18 +30,8 @@
       line-height: 1.65;
       -webkit-font-smoothing: antialiased;
     }
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 0.75rem;
-      background: var(--burgundy-dark);
-      z-index: 200;
-    }
-    a { color: var(--burgundy); text-decoration: none; }
-    a:hover { text-decoration: underline; }
+    :scope a { color: var(--burgundy); text-decoration: none; }
+    :scope a:hover { text-decoration: underline; }
 
     /* Layout */
     .page {

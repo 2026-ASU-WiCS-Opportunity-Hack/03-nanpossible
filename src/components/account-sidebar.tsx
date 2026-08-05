@@ -287,23 +287,6 @@ function SidebarSection({
             </>
           );
 
-          if (item.href === "/guide") {
-            return (
-              <Link
-                className={linkClassName}
-                href="/guide/index.html"
-                key={item.href}
-                onClick={(event) => {
-                  event.preventDefault();
-                  onNavigate?.();
-                  window.location.assign("/guide/index.html");
-                }}
-              >
-                {linkContent}
-              </Link>
-            );
-          }
-
           return (
             <Link
               className={linkClassName}

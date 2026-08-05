@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 import { Ubuntu } from "next/font/google";
 import "./globals.css";
+import { SiteChromeFrame } from "@/components/site-chrome-frame";
 
 const ubuntu = Ubuntu({
   subsets: ["latin"],
@@ -9,6 +11,8 @@ const ubuntu = Ubuntu({
   display: "swap",
 });
 import { getAccessibilityBootScript } from "@/lib/accessibility-preferences";
+import { getCurrentViewer } from "@/lib/auth";
+import { getLayoutSiteContext } from "@/lib/site-context";
 
 export const metadata: Metadata = {
   metadataBase: new URL(
@@ -37,6 +41,12 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const headerStore = await headers();
+  const [siteContext, viewer] = await Promise.all([
+    getLayoutSiteContext(headerStore),
+    getCurrentViewer(),
+  ]);
+
   return (
     <html
       lang="en"
@@ -51,7 +61,11 @@ export default async function RootLayout({
           }}
         />
       </head>
-      <body className="min-h-full bg-background text-foreground">{children}</body>
+      <body className="min-h-full bg-background text-foreground">
+        <SiteChromeFrame siteContext={siteContext} viewer={viewer}>
+          {children}
+        </SiteChromeFrame>
+      </body>
     </html>
   );
 }

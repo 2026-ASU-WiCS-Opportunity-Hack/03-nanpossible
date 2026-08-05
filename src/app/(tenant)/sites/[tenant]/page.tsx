@@ -3,8 +3,6 @@ import { notFound } from "next/navigation";
 import { ChapterHero } from "@/components/chapter/ChapterHero";
 import { FeaturedCoaches } from "@/components/chapter/FeaturedCoaches";
 import { UpcomingEvents } from "@/components/chapter/UpcomingEvents";
-import { SiteChromeFrame } from "@/components/site-chrome-frame";
-import { getCurrentViewer } from "@/lib/auth";
 import { getContentPage } from "@/lib/content";
 import { listUpcomingEvents } from "@/lib/events";
 import { listApprovedCoaches } from "@/lib/coaches";
@@ -47,18 +45,10 @@ export default async function TenantHomePage({ params }: TenantHomePageProps) {
   ]);
 
   const aboutPreview = aboutPage?.bodyHtml ? stripHtml(aboutPage.bodyHtml).slice(0, 220) : "";
-  const viewer = await getCurrentViewer();
-  const siteContext = {
-    isGlobal: false as const,
-    tenant: chapter,
-    host: `${chapter.subdomain}.${process.env.NEXT_PUBLIC_SITE_DOMAIN ?? "wial.org"}`,
-  };
-
   return (
-    <SiteChromeFrame siteContext={siteContext} viewer={viewer}>
-      <div className="page-frame">
-        <div className="site-shell">
-          <div className="grid gap-6">
+    <div className="page-frame">
+      <div className="site-shell">
+        <div className="grid gap-6">
             <ChapterHero chapter={chapter} />
 
             <div className="grid gap-5 xl:grid-cols-[minmax(0,1.35fr)_360px]">
@@ -102,9 +92,8 @@ export default async function TenantHomePage({ params }: TenantHomePageProps) {
                 />
               </section>
             ) : null}
-          </div>
         </div>
       </div>
-    </SiteChromeFrame>
+    </div>
   );
 }
