@@ -140,18 +140,34 @@ function renderSection(section: ContentSection) {
         <section className="section-stack" key={section.title}>
           <h2 className="section-title text-teal-deep">{section.title}</h2>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {section.items.map((item) => (
-              <article
-                className="feature-card flex aspect-[4/3] items-center justify-center rounded-[1.5rem] p-8 transition-transform duration-200 hover:scale-[1.03]"
-                key={item.name}
-              >
+            {section.items.map((item) => {
+              const tileClassName =
+                "feature-card flex aspect-[4/3] items-center justify-center rounded-[1.5rem] p-8 transition-transform duration-200 hover:scale-[1.03]";
+              const logo = (
                 <img
                   alt={`${item.name} logo`}
                   className="max-h-full max-w-full object-contain filter grayscale hover:grayscale-0 transition-all"
                   src={item.logo}
                 />
-              </article>
-            ))}
+              );
+
+              return item.href ? (
+                <a
+                  className={tileClassName}
+                  href={item.href}
+                  key={item.name}
+                  rel="noreferrer"
+                  target="_blank"
+                  title={`Visit ${item.name}`}
+                >
+                  {logo}
+                </a>
+              ) : (
+                <article className={tileClassName} key={item.name}>
+                  {logo}
+                </article>
+              );
+            })}
           </div>
         </section>
       );
@@ -228,12 +244,16 @@ export function ContentPage({ page, siteContext }: ContentPageProps) {
                 ) : null}
               </div>
               <div className="flex flex-wrap gap-3">
-                <Link className="button-link primary" href="/contact">
-                  Contact WIAL
-                </Link>
-                <Link className="button-link secondary" href="/clients">
-                  View our clients
-                </Link>
+                {page.slug !== "contact" ? (
+                  <Link className="button-link primary" href="/contact">
+                    Contact WIAL
+                  </Link>
+                ) : null}
+                {page.slug !== "clients" ? (
+                  <Link className="button-link secondary" href="/clients">
+                    View our clients
+                  </Link>
+                ) : null}
               </div>
             </div>
           </section>

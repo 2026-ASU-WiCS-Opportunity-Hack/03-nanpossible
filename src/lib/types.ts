@@ -257,7 +257,7 @@ export type ContentSection =
   | {
       type: "logo_grid";
       title: string;
-      items: { name: string; logo: string }[];
+      items: { name: string; logo: string; href?: string }[];
     }
   | {
       type: "media_prose";
