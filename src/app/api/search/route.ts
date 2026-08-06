@@ -2,14 +2,13 @@ import { NextResponse } from "next/server";
 import {
   assertRateLimit,
   buildSearchCacheKey,
-  fallbackKeywordSearch,
   getCachedSearch,
   isComplexCoachQuery,
+  keywordSearchCoaches,
   mergeCoachSearchResults,
   parseCoachQuery,
   searchCoachesByName,
   setCachedSearch,
-  vectorSearchCoaches,
 } from "@/lib/coach-search";
 import { listApprovedCoaches } from "@/lib/coaches";
 import type {
@@ -131,29 +130,19 @@ export async function POST(request: Request) {
 
   try {
     const semanticQuery = parsedQuery?.semantic_query || query;
-    const [vectorMatches, nameMatches, keywordMatches] = await Promise.all([
-      vectorSearchCoaches({
-        query: semanticQuery,
-        filters: activeFilters,
-        offset,
-      }),
+    const [nameMatches, keywordMatches] = await Promise.all([
       searchCoachesByName(query, activeFilters, offset),
-      fallbackKeywordSearch(semanticQuery, activeFilters, offset),
+      keywordSearchCoaches(semanticQuery, activeFilters, offset),
     ]);
 
-    const coaches = mergeCoachSearchResults(
-      vectorMatches,
-      mergeCoachSearchResults(nameMatches, keywordMatches),
-    ).slice(0, 20);
+    const coaches = mergeCoachSearchResults(nameMatches, keywordMatches).slice(
+      0,
+      20,
+    );
     const payload: CoachSearchResponse = {
       coaches,
       parsedQuery,
-      mode:
-        vectorMatches.length && (nameMatches.length || keywordMatches.length)
-          ? "hybrid"
-          : vectorMatches.length
-            ? "semantic"
-            : "name_fallback",
+      mode: keywordMatches.length ? "hybrid" : "name_fallback",
       total: coaches.length,
       nextOffset: coaches.length === 20 ? offset + 20 : null,
     };
@@ -161,7 +150,7 @@ export async function POST(request: Request) {
     setCachedSearch(cacheKey, payload);
     return NextResponse.json(payload);
   } catch {
-    const coaches = await fallbackKeywordSearch(
+    const coaches = await keywordSearchCoaches(
       parsedQuery?.semantic_query || query,
       activeFilters,
       offset,

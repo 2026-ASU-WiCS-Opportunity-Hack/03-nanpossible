@@ -14,9 +14,7 @@ type DashboardCoachesPageProps = {
 function getNotice(notice?: string) {
   switch (notice) {
     case "approved":
-      return "Coach approved, embedding regenerated, and public pages revalidated.";
-    case "approved-no-embedding":
-      return "Coach approved, but embedding regeneration failed. The profile is live without a fresh vector.";
+      return "Coach approved and published to the coach directory.";
     case "rejected":
       return "Coach changes rejected and notification sent.";
     default:
@@ -74,7 +72,9 @@ export default async function DashboardCoachesPage({
 
       {!process.env.RESEND_API_KEY ? (
         <div className="account-flash is-error">
-          Rejection email is disabled until <code>RESEND_API_KEY</code> is configured.
+          Rejection email is disabled until <code>RESEND_API_KEY</code> is
+          configured. Coach applications still arrive and can be approved as
+          usual.
         </div>
       ) : null}
 
