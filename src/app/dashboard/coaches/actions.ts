@@ -93,9 +93,21 @@ export async function approveCoachAction(formData: FormData) {
     // Badge enrichment is best-effort and should not block approval.
   }
 
+  if (!process.env.COHERE_API_KEY) {
+    revalidatePath("/coaches");
+    revalidatePath(`/coaches/${coachId}`);
+    revalidatePath("/dashboard/coaches");
+    revalidatePath("/admin/approvals");
+    redirect(buildReturnPath(redirectTo, { notice: "approved-search-off" }));
+  }
+
   try {
     await embedCoachById(coachId);
-  } catch {
+  } catch (embeddingError) {
+    console.error(
+      `Coach ${coachId} approved but embedding regeneration failed:`,
+      embeddingError,
+    );
     revalidatePath("/coaches");
     revalidatePath(`/coaches/${coachId}`);
     revalidatePath("/dashboard/coaches");

@@ -17,9 +17,11 @@ type AdminApprovalsPageProps = {
 function getNotice(notice?: string) {
   switch (notice) {
     case "approved":
-      return "Coach approved, embedding regenerated, and public pages revalidated.";
+      return "Coach approved, AI search index refreshed, and public pages updated.";
+    case "approved-search-off":
+      return "Coach approved and live in the directory. AI search indexing is turned off right now, so the profile will appear once it is enabled.";
     case "approved-no-embedding":
-      return "Coach approved, but embedding regeneration failed. The profile is live without a fresh vector.";
+      return "Coach approved and live in the directory, but the AI search index could not be refreshed. Searches may not surface this profile until it is re-indexed.";
     case "rejected":
       return "Coach changes rejected and notification sent.";
     default:
@@ -75,7 +77,17 @@ export default async function AdminApprovalsPage({
 
       {!process.env.RESEND_API_KEY ? (
         <div className="account-flash is-error">
-          Rejection email is disabled until <code>RESEND_API_KEY</code> is configured.
+          Rejection email is disabled until <code>RESEND_API_KEY</code> is
+          configured. Coach applications still arrive and can be approved as
+          usual.
+        </div>
+      ) : null}
+
+      {!process.env.COHERE_API_KEY ? (
+        <div className="account-flash is-error">
+          AI search indexing is disabled until <code>COHERE_API_KEY</code> is
+          configured. Approved coaches still publish to the directory, but
+          they will not appear in AI-powered search until indexing is enabled.
         </div>
       ) : null}
 
