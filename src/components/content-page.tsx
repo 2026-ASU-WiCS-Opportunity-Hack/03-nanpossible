@@ -228,12 +228,16 @@ export function ContentPage({ page, siteContext }: ContentPageProps) {
                 ) : null}
               </div>
               <div className="flex flex-wrap gap-3">
-                <Link className="button-link primary" href="/contact">
-                  Contact WIAL
-                </Link>
-                <Link className="button-link secondary" href="/clients">
-                  View our clients
-                </Link>
+                {page.slug !== "contact" ? (
+                  <Link className="button-link primary" href="/contact">
+                    Contact WIAL
+                  </Link>
+                ) : null}
+                {page.slug !== "clients" ? (
+                  <Link className="button-link secondary" href="/clients">
+                    View our clients
+                  </Link>
+                ) : null}
               </div>
             </div>
           </section>

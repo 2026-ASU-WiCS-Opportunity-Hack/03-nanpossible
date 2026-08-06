@@ -252,21 +252,51 @@
   "bodyRichtext": {
     "heroIntro": "These are just some of the organizations that have worked with or continue to work with WIAL to advance the use of Action Learning in the corporate world. Want to see your business on this list? Contact us to find out how you can get involved in the Action Learning community.",
     "metrics": [
-      { "label": "Client organizations", "value": "25+" },
+      { "label": "Client organizations", "value": "35+" },
       { "label": "Industries served", "value": "10+" },
       { "label": "Years of client work", "value": "25+" }
     ],
     "sections": [
       {
-        "type": "prose",
+        "type": "logo_grid",
         "title": "Organizations we've worked with",
-        "paragraphs": [
-          "WIAL has partnered with a wide range of global organizations across industry, government, and non-profit sectors to bring Action Learning into their leadership and problem-solving work."
-        ],
-        "bullets": [
-          "Asian Paints", "Boeing", "Caterpillar", "DuPont", "Emerging World",
-          "Ernst & Young", "Fuji Xerox", "NASA", "NEC", "Microsoft",
-          "Samsung", "Siemens", "SIM", "Toyota", "Takeda", "Google", "BNP Paribas"
+        "items": [
+          { "name": "Asian Paints", "logo": "/clients/asian-paints.png" },
+          { "name": "Boeing", "logo": "/clients/boeing.png" },
+          { "name": "Caterpillar", "logo": "/clients/caterpillar.png" },
+          { "name": "DuPont", "logo": "/clients/dupont.png" },
+          { "name": "Emerging World", "logo": "/clients/emerging-world.png" },
+          { "name": "Ernst & Young", "logo": "/clients/ernst-young.png" },
+          { "name": "Fuji Xerox", "logo": "/clients/fuji-xerox.png" },
+          { "name": "Ministry of Education", "logo": "/clients/ministry-of-education.png" },
+          { "name": "NASA", "logo": "/clients/nasa.png" },
+          { "name": "NEC", "logo": "/clients/nec.png" },
+          { "name": "Microsoft", "logo": "/clients/microsoft.png" },
+          { "name": "Samsung", "logo": "/clients/samsung.png" },
+          { "name": "Siemens", "logo": "/clients/siemens.png" },
+          { "name": "SIM", "logo": "/clients/sim.png" },
+          { "name": "Toyota", "logo": "/clients/toyota.png" },
+          { "name": "Workplace Stars", "logo": "/clients/workplace-stars.png" },
+          { "name": "Grenada Red Cross", "logo": "/clients/grenada-red-cross.png" },
+          { "name": "IFRC", "logo": "/clients/ifrc.png" },
+          { "name": "Lyreco", "logo": "/clients/lyreco.png" },
+          { "name": "Satellite Applications Catapult", "logo": "/clients/satellite-applications-catapult.png" },
+          { "name": "Pathfinders Preschool", "logo": "/clients/pathfinders-preschool.jpg" },
+          { "name": "Takeda", "logo": "/clients/takeda.jpg" },
+          { "name": "HR Friday", "logo": "/clients/hr-friday.png" },
+          { "name": "Google", "logo": "/clients/google.png" },
+          { "name": "ThoughtWorks", "logo": "/clients/thoughtworks.png" },
+          { "name": "Aquaecology", "logo": "/clients/aquaecology.png" },
+          { "name": "Thermo Scientific", "logo": "/clients/thermo-scientific.png" },
+          { "name": "FOTIC", "logo": "/clients/fotic.png" },
+          { "name": "Eastern Caribbean Central Bank", "logo": "/clients/eastern-caribbean-central-bank.png" },
+          { "name": "Robinsons Land Corporation", "logo": "/clients/robinsons-land.png" },
+          { "name": "Auchan Retail", "logo": "/clients/auchan-retail.png" },
+          { "name": "MOH Holdings", "logo": "/clients/moh-holdings.png" },
+          { "name": "AirAsia", "logo": "/clients/airasia.png" },
+          { "name": "US Department of Justice", "logo": "/clients/us-department-of-justice.png" },
+          { "name": "Helmgras", "logo": "/clients/helmgras.png" },
+          { "name": "BNP Paribas", "logo": "/clients/bnp-paribas.jpg" }
         ]
       },
       {
@@ -296,7 +326,7 @@
     "description": "Organizations that have worked with WIAL to advance Action Learning worldwide.",
     "sourceUrl": "https://wial.org/our-clients/",
     "sourceStatus": "migrated-from-wial",
-    "sourceNotes": "Rewritten from the live wial.org Our Clients page. Switched from logo_grid (no real logo assets available, avoided hotlinking WIAL's images) to a text list of real client names. Added Testimonials and Share Your Success Story links per issue rows 31-33."
+    "sourceNotes": "Rewritten from the live wial.org Our Clients page. Client logos vendored locally under public/clients/ (no hotlinking) and rendered as a logo_grid matching the legacy page. Testimonials and Share Your Success Story links kept per issue rows 31-33."
   }
 },
   {
