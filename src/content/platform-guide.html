@@ -379,7 +379,7 @@
         <h2 id="coach-approvals-global">Coach Approvals (Global)</h2>
         <p>At <code>/admin/approvals</code>, you see every pending coach submission across the entire network. For each coach you can:</p>
         <ul>
-          <li><strong>Approve</strong> &mdash; the coach profile is published to the directory, search embeddings are regenerated, and the coach directory is re-indexed.</li>
+          <li><strong>Approve</strong> &mdash; the coach profile is published to the directory and becomes searchable immediately.</li>
           <li><strong>Reject</strong> &mdash; enter an optional reason. The coach receives a rejection notification email and their profile remains unpublished.</li>
         </ul>
 
@@ -471,7 +471,7 @@
         <h2 id="chapter-coaches">Chapter Coach Approvals</h2>
         <p>Chapter admins can review coaches who have submitted their profile for their chapter at <code>/admin/chapter/coaches</code>. The workflow is the same as global approvals:</p>
         <ul>
-          <li><strong>Approve</strong> &mdash; publishes the coach to the directory and regenerates search embeddings.</li>
+          <li><strong>Approve</strong> &mdash; publishes the coach to the directory, where they become searchable immediately.</li>
           <li><strong>Reject</strong> &mdash; with an optional reason sent by email notification.</li>
         </ul>
 
@@ -566,10 +566,9 @@
           <li><strong>Filters</strong> &mdash; narrow results by certification level, country, city, language, and specializations</li>
           <li><strong>AI-powered parsing</strong> &mdash; complex queries are parsed by an LLM to extract structured filters automatically</li>
         </ul>
-        <p>The search combines four strategies behind the scenes:</p>
+        <p>The search combines three strategies behind the scenes:</p>
         <ol>
-          <li><strong>Vector search</strong> &mdash; semantic similarity using Cohere embeddings &amp; pgvector</li>
-          <li><strong>Keyword search</strong> &mdash; PostgreSQL full-text search</li>
+          <li><strong>Keyword search</strong> &mdash; PostgreSQL full-text search with fuzzy matching for typos and accented names</li>
           <li><strong>LLM query parsing</strong> &mdash; extracts structured filters from natural language</li>
           <li><strong>Name fallback</strong> &mdash; direct name matching</li>
         </ol>
@@ -621,7 +620,6 @@
           <tr><th>Service</th><th>Environment Variable</th><th>Purpose</th></tr>
           <tr><td><strong>Supabase</strong></td><td><code>NEXT_PUBLIC_SUPABASE_URL</code><br><code>NEXT_PUBLIC_SUPABASE_ANON_KEY</code><br><code>SUPABASE_SERVICE_ROLE_KEY</code></td><td><strong>Required.</strong> Database, auth, and storage.</td></tr>
           <tr><td><strong>OpenRouter</strong></td><td><code>OPENROUTER_API_KEY</code></td><td>AI content generation and chatbot. Disables AI features if not set.</td></tr>
-          <tr><td><strong>Cohere</strong></td><td><code>COHERE_API_KEY</code></td><td>Vector embeddings for semantic coach search. Falls back to keyword search.</td></tr>
           <tr><td><strong>Stripe</strong></td><td><code>STRIPE_SECRET_KEY</code></td><td>Payment processing for coach dues. Disables payments if not set.</td></tr>
           <tr><td><strong>Resend</strong></td><td><code>RESEND_API_KEY</code></td><td>Email notifications (welcome emails, rejection notices). Emails skipped if not set.</td></tr>
         </table>

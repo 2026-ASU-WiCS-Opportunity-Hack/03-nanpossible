@@ -42,68 +42,6 @@ async function readSeedData() {
   return JSON.parse(file) as SeedCoachRecord[];
 }
 
-function buildEmbeddingText(coach: SeedCoachRecord) {
-  return [
-    coach.name,
-    coach.certLevel,
-    [coach.locationCity, coach.locationCountry].filter(Boolean).join(", "),
-    coach.specializations.join(", "),
-    coach.languages.join(", "),
-    coach.bio ?? "",
-  ]
-    .filter(Boolean)
-    .join(" | ");
-}
-
-async function generateEmbedding(
-  text: string,
-  inputType: "search_document" | "search_query",
-) {
-  const apiKey = process.env.COHERE_API_KEY;
-
-  if (!apiKey) {
-    throw new Error("COHERE_API_KEY is not configured");
-  }
-
-  const response = await fetch("https://api.cohere.ai/v1/embed", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${apiKey}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      model: "embed-multilingual-v3.0",
-      texts: [text],
-      input_type: inputType,
-      embedding_types: ["float"],
-    }),
-  });
-
-  const payload = (await response.json()) as {
-    embeddings?: { float?: number[][] } | number[][];
-    message?: string;
-  };
-
-  if (!response.ok) {
-    throw new Error(payload.message ?? "Cohere request failed");
-  }
-
-  const embedding =
-    Array.isArray(payload.embeddings) && Array.isArray(payload.embeddings[0])
-      ? payload.embeddings[0]
-      : payload.embeddings &&
-          !Array.isArray(payload.embeddings) &&
-          Array.isArray(payload.embeddings.float?.[0])
-        ? payload.embeddings.float[0]
-        : null;
-
-  if (!embedding || embedding.length !== 1024) {
-    throw new Error("Unexpected embedding dimension returned by Cohere");
-  }
-
-  return embedding;
-}
-
 async function main() {
   loadEnvFiles();
 
@@ -157,21 +95,7 @@ async function main() {
       throw new Error(`Failed to upsert ${coach.name}: ${upsertError.message}`);
     }
 
-    const embedding = await generateEmbedding(
-      buildEmbeddingText(coach),
-      "search_document",
-    );
-    const embeddingLiteral = `[${embedding.join(",")}]`;
-    const { error: embedError } = await supabase.rpc("set_coach_embedding", {
-      target_coach_id: coach.id,
-      embedding_literal: embeddingLiteral,
-    });
-
-    if (embedError) {
-      throw new Error(`Failed to store embedding for ${coach.name}: ${embedError.message}`);
-    }
-
-    console.log(`Embedded coach ${index + 1}/${seedData.length}: ${coach.name}`);
+    console.log(`Seeded coach ${index + 1}/${seedData.length}: ${coach.name}`);
   }
 }
 

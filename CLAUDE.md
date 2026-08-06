@@ -32,7 +32,7 @@ Vitest requires Node 22 (`nvm use 22`) — it fails with `ERR_REQUIRE_ESM` on No
 - `src/app/api/` — API routes (search, chatbot, embed, audio, payments, content, chapters)
 
 ### Hybrid Coach Search (`src/lib/coach-search.ts`)
-Combines four strategies: Cohere vector embeddings (pgvector), PostgreSQL full-text keyword search, LLM-powered query parsing (Claude Haiku via OpenRouter), and name fallback. Results cached in-memory (5-min TTL).
+Combines three strategies: Postgres-native keyword search (weighted tsvector FTS + pg_trgm fuzzy matching via the `search_coaches_keyword` RPC, with an in-memory scan fallback when the RPC is unavailable), LLM-powered query parsing (Claude Haiku via OpenRouter), and name fallback. Results cached in-memory (5-min TTL). Search columns (`search_text`, `search_vector`) are maintained by a DB trigger on `coaches`. Legacy pgvector artifacts (`embedding` column, `search_coaches`, `set_coach_embedding`) remain in the DB but are unused by the app.
 
 ### RBAC (5-tier)
 Roles: `platform_admin`, `chapter_admin`, `content_creator`, `coach`, `public_visitor`. Enforced at three layers: Supabase RLS policies, middleware (protected routes), and application logic (`src/lib/auth.ts`).
@@ -47,7 +47,7 @@ Roles: `platform_admin`, `chapter_admin`, `content_creator`, `coach`, `public_vi
 PostgreSQL via Supabase with pgvector extension. Migrations in `supabase/migrations/`. Falls back to JSON fixtures in `src/content/` if DB is unavailable.
 
 ### Integrations
-OpenRouter (LLM gateway), Cohere (embeddings), Stripe (payments), Credly (badges), Resend (email).
+OpenRouter (LLM gateway), Stripe (payments), Credly (badges), Resend (email).
 
 ## Key Conventions
 

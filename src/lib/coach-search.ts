@@ -5,7 +5,6 @@ import type {
   CoachSearchResponse,
   ParsedCoachQuery,
 } from "@/lib/types";
-import { generateEmbedding } from "@/lib/embeddings";
 import { chatCompletion } from "@/lib/openrouter";
 import { createServiceRoleSupabaseClient } from "@/lib/supabase-admin";
 import { searchApprovedCoachesByKeyword } from "@/lib/coaches";
@@ -348,7 +347,7 @@ export async function searchCoachesByName(
   }));
 }
 
-export async function fallbackKeywordSearch(
+export async function keywordSearchCoaches(
   query: string,
   filters: CoachSearchFilters,
   offset = 0,
@@ -359,83 +358,4 @@ export async function fallbackKeywordSearch(
     offset,
     limit: SEARCH_LIMIT,
   });
-}
-
-export async function vectorSearchCoaches(options: {
-  query: string;
-  filters: CoachSearchFilters;
-  offset?: number;
-}) {
-  const client = createServiceRoleSupabaseClient();
-
-  if (!client || !process.env.COHERE_API_KEY) {
-    return [] satisfies CoachRecord[];
-  }
-
-  const embedding = await generateEmbedding(options.query, "search_query");
-  const vectorLiteral = `[${embedding.join(",")}]`;
-
-  const { data, error } = await client.rpc("search_coaches", {
-    query_embedding: vectorLiteral,
-    filter_cert_level: options.filters.certLevel ?? null,
-    filter_country: options.filters.country ?? null,
-    filter_city: options.filters.city ?? null,
-    filter_language: options.filters.language ?? null,
-    filter_specializations: options.filters.specializations ?? null,
-    match_count: SEARCH_LIMIT,
-    match_offset: options.offset ?? 0,
-  });
-
-  if (error) {
-    throw error;
-  }
-
-  const rows = (data ?? []) as Array<Record<string, unknown>>;
-
-  return rows.map((row) => ({
-    id: String(row.id),
-    userId: null,
-    chapterId: null,
-    name: String(row.name),
-    email: typeof row.email === "string" ? row.email : null,
-    phone: typeof row.phone === "string" ? row.phone : null,
-    phoneCountryCode: typeof row.phone_country_code === "string" ? row.phone_country_code : null,
-    photoUrl: typeof row.photo_url === "string" ? row.photo_url : null,
-    certLevel: toCertificationLevel(row.cert_level),
-    locationCity: typeof row.location_city === "string" ? row.location_city : null,
-    locationCountry:
-      typeof row.location_country === "string" ? row.location_country : null,
-    locationLat:
-      typeof row.location_lat === "number" ? row.location_lat : null,
-    locationLng:
-      typeof row.location_lng === "number" ? row.location_lng : null,
-    bio: typeof row.bio === "string" ? row.bio : null,
-    specializations: Array.isArray(row.specializations)
-      ? row.specializations.map(String)
-      : [],
-    languages: Array.isArray(row.languages) ? row.languages.map(String) : [],
-    website: typeof row.website === "string" ? row.website : null,
-    linkedin: typeof row.linkedin === "string" ? row.linkedin : null,
-    credlyBadgeUrl:
-      typeof row.credly_badge_url === "string" ? row.credly_badge_url : null,
-    credlyBadgeImageUrl:
-      typeof row.credly_badge_image_url === "string"
-        ? row.credly_badge_image_url
-        : null,
-    credlyBadgeTitle:
-      typeof row.credly_badge_title === "string" ? row.credly_badge_title : null,
-    credlyBadgeSyncedAt:
-      typeof row.credly_badge_synced_at === "string"
-        ? row.credly_badge_synced_at
-        : null,
-    approved: true,
-    createdAt: typeof row.created_at === "string" ? row.created_at : "",
-    updatedAt: typeof row.updated_at === "string" ? row.updated_at : "",
-    lastApprovedAt:
-      typeof row.last_approved_at === "string" ? row.last_approved_at : null,
-    rejectionReason: null,
-    rejectedAt: null,
-    similarity:
-      typeof row.similarity === "number" ? row.similarity : Number(row.similarity ?? 0),
-  }));
 }

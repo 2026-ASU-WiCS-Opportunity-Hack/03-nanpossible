@@ -19,10 +19,10 @@ Our solution: a multi-tenant, AI-enhanced platform that unifies WIAL's operation
 ## Key Features
 
 - **Multi-Tenant Chapter Microsites** — Each WIAL chapter gets its own branded subdomain (e.g., `usa.wial.org`, `emea.wial.org`) powered by a single codebase
-- **AI-Powered Coach Directory** — Hybrid search combining vector embeddings, keyword search, and LLM-powered query understanding to help organizations find the right certified coaches
+- **Searchable Coach Directory** — Postgres-native hybrid search combining full-text search, fuzzy matching, and LLM-powered query understanding to help organizations find the right certified coaches
 - **Certification Lifecycle Management** — Full tracking of CALC, PALC, SALC, and MALC certification levels with documents, LMS links, and Credly badge integration
 - **AI Certification Chatbot** — Site-wide assistant answering WIAL certification and coaching methodology questions using GPT-4o-mini
-- **Coach Registration & Approval Workflow** — Coaches self-register, chapter/platform admins review and approve, embeddings auto-update for search
+- **Coach Registration & Approval Workflow** — Coaches self-register, chapter/platform admins review and approve, and profiles become searchable immediately
 - **Payment Integration** — Stripe-powered dues collection and certification enrollment with payment history and webhook handling
 - **Role-Based Access Control** — Five-tier permission system (platform admin, chapter admin, content creator, coach, visitor) enforced at database and middleware layers
 - **Rich Content Management** — Chapter admins author pages and events with a TipTap-based rich text editor
@@ -48,7 +48,6 @@ Our solution: a multi-tenant, AI-enhanced platform that unifies WIAL's operation
 
 **Integrations**
 - **OpenRouter** — LLM API gateway (chatbot: GPT-4o-mini; query parsing: Claude 3.5 Haiku)
-- **Cohere** — Embedding generation for semantic coach search
 - **Stripe** — Payment processing for dues and enrollment
 - **Credly** — Badge metadata and display
 - **Resend** — Transactional email for admin notifications
@@ -83,7 +82,6 @@ SUPABASE_SERVICE_ROLE_KEY=<local-service-role-key-from-supabase-status>
 
 # Optional integrations (leave blank to disable)
 OPENROUTER_API_KEY=
-COHERE_API_KEY=
 STRIPE_SECRET_KEY=
 RESEND_API_KEY=
 
@@ -170,7 +168,6 @@ Optional integrations for hosted/local use:
 
 ```bash
 OPENROUTER_API_KEY=<openrouter-api-key>
-COHERE_API_KEY=<cohere-api-key>
 STRIPE_SECRET_KEY=<stripe-secret-key>
 RESEND_API_KEY=<resend-api-key>
 NEXT_PUBLIC_WIAL_LMS_URL=https://wialportal.org/
@@ -215,16 +212,16 @@ scripts/                      # Dev & deployment scripts
 ### Multi-Tenancy
 Chapters are identified by subdomain (via middleware rewrite to `/sites/[tenant]`). Chapter-specific data is enforced through Supabase Row-Level Security policies. A fallback mode uses local JSON fixtures if the database is unavailable.
 
-### AI Search
+### Coach Search
 Coaches are searchable by:
-- **Vector similarity** (Cohere embeddings + pgvector)
-- **Keyword search** (PostgreSQL full-text search)
+- **Keyword search** (weighted PostgreSQL full-text search with trigram fuzzy matching, via the `search_coaches_keyword` RPC)
 - **LLM-powered queries** (Claude parses natural language intent via OpenRouter)
+- **Name matching** (direct substring lookup)
 
 Results are cached in-memory to avoid rate limits.
 
 ### Certification Hub
-Static data (certification levels, requirements, documents) lives in `src/content/`. Dynamic elements like Credly badges and LMS links are fetched and cached. Coaches see badges once their registration is approved and embeddings are regenerated.
+Static data (certification levels, requirements, documents) lives in `src/content/`. Dynamic elements like Credly badges and LMS links are fetched and cached. Coaches see badges once their registration is approved.
 
 ### Security
 - Row-Level Security enforced at the database level

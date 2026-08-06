@@ -351,6 +351,47 @@ export const listApprovedCoachIds = cache(async () => {
   }
 });
 
+async function searchCoachesByKeywordRpc({
+  query,
+  filters = {},
+  limit = 20,
+  offset = 0,
+}: KeywordSearchOptions) {
+  const client = createSupabaseContentClient();
+
+  if (!client) {
+    return null;
+  }
+
+  const searchTerms = extractSearchTerms(query);
+
+  try {
+    const { data, error } = await client.rpc("search_coaches_keyword", {
+      search_query: query.trim(),
+      or_query: searchTerms.length ? searchTerms.join(" | ") : null,
+      filter_cert_level: filters.certLevel ?? null,
+      filter_country: filters.country ?? null,
+      filter_city: filters.city ?? null,
+      filter_language: filters.language ?? null,
+      filter_specializations: filters.specializations ?? null,
+      match_count: limit,
+      match_offset: offset,
+    });
+
+    if (error) {
+      console.error("search_coaches_keyword RPC failed", error);
+      return null;
+    }
+
+    return ((data ?? []) as unknown as CoachDbRow[]).map((row) =>
+      mapCoachRecord(row),
+    );
+  } catch (error) {
+    console.error("search_coaches_keyword RPC threw", error);
+    return null;
+  }
+}
+
 export async function searchApprovedCoachesByKeyword({
   query,
   filters = {},
@@ -362,6 +403,22 @@ export async function searchApprovedCoachesByKeyword({
 
   if (!normalizedQuery) {
     return [] satisfies CoachRecord[];
+  }
+
+  const rpcCoaches = await searchCoachesByKeywordRpc({
+    query,
+    filters,
+    limit,
+    offset,
+  });
+
+  if (rpcCoaches) {
+    return rpcCoaches
+      .map((coach) => ({
+        ...coach,
+        similarity: getKeywordSimilarity(coach, normalizedQuery, searchTerms),
+      }))
+      .sort((left, right) => (right.similarity ?? 0) - (left.similarity ?? 0));
   }
 
   const dbBackedCoaches = await listApprovedCoaches({
@@ -544,28 +601,6 @@ export async function listPendingCoaches(options: {
   return ((data ?? []) as unknown as CoachDbRow[]).map((row) =>
     mapCoachRecord(row),
   );
-}
-
-export function buildCoachEmbeddingText(coach: Pick<
-  CoachRecord,
-  | "name"
-  | "certLevel"
-  | "locationCity"
-  | "locationCountry"
-  | "specializations"
-  | "languages"
-  | "bio"
->) {
-  return [
-    coach.name,
-    coach.certLevel,
-    [coach.locationCity, coach.locationCountry].filter(Boolean).join(", "),
-    coach.specializations.join(", "),
-    coach.languages.join(", "),
-    coach.bio ?? "",
-  ]
-    .filter(Boolean)
-    .join(" | ");
 }
 
 export { formatCoachLocation, getCertificationBadgeTone, getCoachInitials };
