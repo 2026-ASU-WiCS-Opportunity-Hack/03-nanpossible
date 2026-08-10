@@ -440,14 +440,14 @@
         "type": "contact_cards",
         "title": "WIAL affiliates worldwide",
         "items": [
-          { "eyebrow": "USA", "title": "WIAL USA", "body": "Address not yet provided", "href": "https://wial-usa.org/", "label": "Visit website" },
-          { "eyebrow": "Singapore", "title": "WIAL Singapore", "body": "Address not yet provided", "href": "https://www.wial.sg/", "label": "Visit website" },
-          { "eyebrow": "Netherlands", "title": "WIAL Netherlands", "body": "Address not yet provided", "href": "https://wial.nl/", "label": "Visit website" },
-          { "eyebrow": "Malaysia", "title": "WIAL Malaysia", "body": "Address not yet provided", "href": "https://wialmalaysia.com/", "label": "Visit website" },
-          { "eyebrow": "Vietnam", "title": "WIAL Vietnam", "body": "Address not yet provided", "href": "http://www.wialvietnam.com/", "label": "Visit website" },
-          { "eyebrow": "Poland", "title": "WIAL Poland", "body": "Address not yet provided", "href": "https://wialpoland.org/", "label": "Visit website" },
-          { "eyebrow": "Russia", "title": "WIAL Russia", "body": "Address not yet provided", "href": "https://denissanko.com/", "label": "Visit website" },
-          { "eyebrow": "Taiwan", "title": "WIAL Taiwan", "body": "Address not yet provided", "href": "http://www.wial.org.tw/", "label": "Visit website" }
+          { "eyebrow": "USA", "title": "WIAL USA", "body": "Action Learning programs, events, and coach certification across the United States.", "href": "https://wial-usa.org/", "label": "Visit website", "image": "/flags/us.svg", "imageAlt": "Flag of the United States" },
+          { "eyebrow": "Singapore", "title": "WIAL Singapore", "body": "Action Learning programs, events, and coach certification in Singapore.", "href": "https://www.wial.sg/", "label": "Visit website", "image": "/flags/sg.svg", "imageAlt": "Flag of Singapore" },
+          { "eyebrow": "Netherlands", "title": "WIAL Netherlands", "body": "Action Learning programs, events, and coach certification in the Netherlands.", "href": "https://wial.nl/", "label": "Visit website", "image": "/flags/nl.svg", "imageAlt": "Flag of the Netherlands" },
+          { "eyebrow": "Malaysia", "title": "WIAL Malaysia", "body": "Action Learning programs, events, and coach certification in Malaysia.", "href": "https://wialmalaysia.com/", "label": "Visit website", "image": "/flags/my.svg", "imageAlt": "Flag of Malaysia" },
+          { "eyebrow": "Vietnam", "title": "WIAL Vietnam", "body": "Action Learning programs, events, and coach certification in Vietnam.", "href": "http://www.wialvietnam.com/", "label": "Visit website", "image": "/flags/vn.svg", "imageAlt": "Flag of Vietnam" },
+          { "eyebrow": "Poland", "title": "WIAL Poland", "body": "Action Learning programs, events, and coach certification in Poland.", "href": "https://wialpoland.org/", "label": "Visit website", "image": "/flags/pl.svg", "imageAlt": "Flag of Poland" },
+          { "eyebrow": "Russia", "title": "WIAL Russia", "body": "Action Learning programs, events, and coach certification in Russia.", "href": "https://denissanko.com/", "label": "Visit website", "image": "/flags/ru.svg", "imageAlt": "Flag of Russia" },
+          { "eyebrow": "Taiwan", "title": "WIAL Taiwan", "body": "Action Learning programs, events, and coach certification in Taiwan.", "href": "http://www.wial.org.tw/", "label": "Visit website", "image": "/flags/tw.svg", "imageAlt": "Flag of Taiwan" }
         ]
       }
     ]
@@ -456,7 +456,7 @@
     "description": "WIAL affiliates worldwide - find your local Action Learning organization.",
     "sourceUrl": "https://wial.org/affiliates/",
     "sourceStatus": "newly-created",
-    "sourceNotes": "Switched section type from logo_grid to contact_cards — logo_grid only supports {name, logo} in this schema, so url/address fields were silently dropped before. contact_cards supports href/label/body, so the website links now actually render."
+    "sourceNotes": "Each affiliate card shows its country flag (SVG vendored under public/flags/, from the MIT-licensed flag-icons set) and links to the affiliate website listed in issue #64. New affiliates should be added here with the website URL captured during affiliate creation."
   }
 },
 {
