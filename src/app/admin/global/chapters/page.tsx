@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { AccountPageShell } from "@/components/account-page-shell";
+import { affiliateSiteUrl } from "@/lib/affiliates";
 import { requireAccountViewer } from "@/lib/auth";
 import { listChapters } from "@/lib/tenant";
 import { assignContentCreatorAction, deleteChapterAction } from "./actions";
@@ -92,6 +93,19 @@ export default async function GlobalChaptersPage({
                     <p className="text-sm text-foreground/65">
                       {chapter.subdomain}.{process.env.NEXT_PUBLIC_SITE_DOMAIN ?? "localhost:3000"}
                     </p>
+                    {chapter.subdomain !== "global" ? (
+                      <p className="text-sm text-foreground/65">
+                        Directory link:{" "}
+                        <span className="font-semibold text-teal">
+                          {chapter.websiteUrl ??
+                            affiliateSiteUrl(
+                              chapter,
+                              process.env.NEXT_PUBLIC_SITE_DOMAIN ?? "localhost:3000",
+                            )}
+                        </span>
+                        {chapter.websiteUrl ? " (own website)" : " (hosted here)"}
+                      </p>
+                    ) : null}
                   </div>
                   <div className="flex flex-wrap gap-2 text-sm text-foreground/65">
                     {chapter.country ? <span>{chapter.country}</span> : null}
@@ -109,10 +123,18 @@ export default async function GlobalChaptersPage({
                       Protected record
                     </span>
                   ) : (
-                    <form action={deleteChapterAction}>
-                      <input name="chapterId" type="hidden" value={chapter.id} />
-                      <DeleteChapterButton />
-                    </form>
+                    <div className="flex flex-wrap items-center gap-3">
+                      <Link
+                        className="button-link secondary"
+                        href={`/admin/global/chapters/${chapter.id}`}
+                      >
+                        Edit
+                      </Link>
+                      <form action={deleteChapterAction}>
+                        <input name="chapterId" type="hidden" value={chapter.id} />
+                        <DeleteChapterButton />
+                      </form>
+                    </div>
                   )}
                 </div>
               </article>

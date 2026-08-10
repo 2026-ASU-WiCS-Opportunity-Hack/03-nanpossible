@@ -195,6 +195,7 @@ export type ChapterRecord = {
   contactPhoneCountryCode: string | null
   description: string | null;
   logoUrl: string | null;
+  websiteUrl: string | null;
   stripeAccountId: string | null;
   config: Record<string, unknown>;
   status: "active" | "draft" | "inactive";
@@ -519,6 +520,7 @@ export type ChapterProvisionInput = {
   contactEmail: string;
   contactPhone: string;
   description: string;
+  websiteUrl: string;
 };
 
 export type GenerationTone = "professional" | "warm" | "academic";

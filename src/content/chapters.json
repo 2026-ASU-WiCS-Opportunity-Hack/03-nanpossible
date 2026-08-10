@@ -20,11 +20,98 @@
     "locale": "en-US",
     "status": "active",
     "contactEmail": "usa@wial.org",
+    "region": "North America",
+    "country": "United States",
+    "websiteUrl": "https://wial-usa.org/",
     "themeJson": {
       "accent": "#205c59",
       "surface": "#fffaf2",
       "tone": "chapter"
     },
-    "tagline": "A seeded affiliate record used to exercise tenant routing before DNS cutover."
+    "tagline": "Action Learning programs, events, and coach certification across the United States."
+  },
+  {
+    "id": "44444444-4444-4444-8444-444444444401",
+    "name": "WIAL Singapore",
+    "subdomain": "singapore",
+    "locale": "en",
+    "status": "active",
+    "contactEmail": "info@wial.org",
+    "region": "Asia Pacific",
+    "country": "Singapore",
+    "websiteUrl": "https://www.wial.sg/",
+    "tagline": "Action Learning programs, events, and coach certification in Singapore."
+  },
+  {
+    "id": "44444444-4444-4444-8444-444444444402",
+    "name": "WIAL Netherlands",
+    "subdomain": "netherlands",
+    "locale": "en",
+    "status": "active",
+    "contactEmail": "info@wial.org",
+    "region": "Europe",
+    "country": "Netherlands",
+    "websiteUrl": "https://wial.nl/",
+    "tagline": "Action Learning programs, events, and coach certification in the Netherlands."
+  },
+  {
+    "id": "44444444-4444-4444-8444-444444444403",
+    "name": "WIAL Malaysia",
+    "subdomain": "malaysia",
+    "locale": "en",
+    "status": "active",
+    "contactEmail": "info@wial.org",
+    "region": "Asia Pacific",
+    "country": "Malaysia",
+    "websiteUrl": "https://wialmalaysia.com/",
+    "tagline": "Action Learning programs, events, and coach certification in Malaysia."
+  },
+  {
+    "id": "44444444-4444-4444-8444-444444444404",
+    "name": "WIAL Vietnam",
+    "subdomain": "vietnam",
+    "locale": "en",
+    "status": "active",
+    "contactEmail": "info@wial.org",
+    "region": "Asia Pacific",
+    "country": "Vietnam",
+    "websiteUrl": "http://www.wialvietnam.com/",
+    "tagline": "Action Learning programs, events, and coach certification in Vietnam."
+  },
+  {
+    "id": "44444444-4444-4444-8444-444444444405",
+    "name": "WIAL Poland",
+    "subdomain": "poland",
+    "locale": "en",
+    "status": "active",
+    "contactEmail": "info@wial.org",
+    "region": "Europe",
+    "country": "Poland",
+    "websiteUrl": "https://wialpoland.org/",
+    "tagline": "Action Learning programs, events, and coach certification in Poland."
+  },
+  {
+    "id": "44444444-4444-4444-8444-444444444406",
+    "name": "WIAL Russia",
+    "subdomain": "russia",
+    "locale": "en",
+    "status": "active",
+    "contactEmail": "info@wial.org",
+    "region": "Europe",
+    "country": "Russia",
+    "websiteUrl": "https://denissanko.com/",
+    "tagline": "Action Learning programs, events, and coach certification in Russia."
+  },
+  {
+    "id": "44444444-4444-4444-8444-444444444407",
+    "name": "WIAL Taiwan",
+    "subdomain": "taiwan",
+    "locale": "en",
+    "status": "active",
+    "contactEmail": "info@wial.org",
+    "region": "Asia Pacific",
+    "country": "Taiwan",
+    "websiteUrl": "http://www.wial.org.tw/",
+    "tagline": "Action Learning programs, events, and coach certification in Taiwan."
   }
 ]

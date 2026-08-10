@@ -2,6 +2,7 @@
 
 import { useMemo, useState, useTransition } from "react";
 import { chapterLanguages, chapterRegions } from "@/lib/chapter-options";
+import { CountryInputField } from "@/components/country-input-field";
 import { PhoneInputField } from "@/components/phone-input-field";
 
 function slugify(value: string) {
@@ -65,6 +66,7 @@ export function ChapterProvisionForm() {
               contact_phone: formData.get("phone"),
               contact_phone_country_code: formData.get("phone_country_code"),
               description: formData.get("description"),
+              website_url: formData.get("websiteUrl"),
             }),
           });
 
@@ -148,7 +150,10 @@ export function ChapterProvisionForm() {
 
         <label className="field-shell">
           <span className="field-label">Country</span>
-          <input className="field-input" name="country" required type="text" />
+          <CountryInputField required />
+          <span className="text-xs font-semibold uppercase tracking-[0.16em] text-foreground/45">
+            Pick a suggested name to show the affiliate&apos;s flag on the directory
+          </span>
         </label>
 
         <label className="field-shell">
@@ -164,6 +169,20 @@ export function ChapterProvisionForm() {
        <label className="field-shell">
           <span className="field-label">Contact phone</span>
           <PhoneInputField defaultPhone={null} defaultCountryCode={null} />
+        </label>
+
+        <label className="field-shell md:col-span-2">
+          <span className="field-label">Affiliate website (optional)</span>
+          <input
+            className="field-input"
+            name="websiteUrl"
+            placeholder="https://www.wial.sg"
+            type="text"
+          />
+          <span className="text-xs font-semibold uppercase tracking-[0.16em] text-foreground/45">
+            If the affiliate keeps its own website, the directory links there. Leave blank to use
+            the hosted site at {slugPreview}.{process.env.NEXT_PUBLIC_SITE_DOMAIN ?? "localhost:3000"}
+          </span>
         </label>
       </div>
 

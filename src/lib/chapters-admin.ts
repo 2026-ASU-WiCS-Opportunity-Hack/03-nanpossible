@@ -39,6 +39,7 @@ type ProvisionResult =
         | "reserved-subdomain"
         | "duplicate-subdomain"
         | "invalid-email"
+        | "invalid-website"
         | "lead-invite-failed"
         | "chapter-create-failed"
         | "default-pages-failed"
@@ -134,6 +135,28 @@ function normalizeSubdomain(value: string) {
 
 function isValidEmail(value: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim());
+}
+
+// Empty means "hosted on this platform"; otherwise require an absolute
+// http(s) URL so directory links never point at relative paths.
+export function normalizeWebsiteUrl(value: string): string | null | false {
+  const trimmed = value.trim();
+
+  if (!trimmed) {
+    return null;
+  }
+
+  try {
+    const url = new URL(trimmed.includes("://") ? trimmed : `https://${trimmed}`);
+
+    if (url.protocol !== "http:" && url.protocol !== "https:") {
+      return false;
+    }
+
+    return url.toString();
+  } catch {
+    return false;
+  }
 }
 
 function buildContactHtml(contactEmail: string, contactPhone: string) {
@@ -553,6 +576,7 @@ export async function deleteChapter(chapterId: string) {
   }
 
   revalidatePath("/");
+  revalidatePath("/affiliates");
   revalidatePath("/admin/global");
   revalidatePath("/admin/global/chapters");
   revalidatePath("/admin/global/users");
@@ -572,11 +596,18 @@ export async function updateChapterSettings(options: {
    contactPhoneCountryCode: string;
   description: string;
   logoUrl: string;
+  websiteUrl: string;
 }) {
   const client = createServiceRoleSupabaseClient();
 
   if (!client) {
     throw new Error("missing-config");
+  }
+
+  const websiteUrl = normalizeWebsiteUrl(options.websiteUrl);
+
+  if (websiteUrl === false) {
+    throw new Error("invalid-website");
   }
 
   const { error } = await client
@@ -591,6 +622,7 @@ export async function updateChapterSettings(options: {
       contact_phone_country_code: options.contactPhoneCountryCode.trim() || null,
       description: options.description.trim() || null,
       logo_url: options.logoUrl.trim() || null,
+      website_url: websiteUrl,
     })
     .eq("id", options.chapterId);
 
@@ -619,6 +651,15 @@ export async function provisionChapter(input: ChapterProvisionInput): Promise<Pr
   const country = input.country.trim();
   const description = input.description.trim();
   const language = mapLanguageLabelToCode(input.language);
+  const websiteUrl = normalizeWebsiteUrl(input.websiteUrl);
+
+  if (websiteUrl === false) {
+    return {
+      ok: false,
+      error: "invalid-website",
+      message: "Enter a full website address (https://...) or leave it blank to host the affiliate here.",
+    };
+  }
 
   if (!name) {
     return {
@@ -740,6 +781,7 @@ export async function provisionChapter(input: ChapterProvisionInput): Promise<Pr
       contact_phone: contactPhone || null,
       description: description || null,
       tagline: description || "",
+      website_url: websiteUrl,
       config: {},
       status: "active",
     })
@@ -793,6 +835,7 @@ export async function provisionChapter(input: ChapterProvisionInput): Promise<Pr
   }
 
   revalidatePath("/");
+  revalidatePath("/affiliates");
 
   const emailResult = await sendWelcomeEmail(leadEmail, name, subdomain);
 

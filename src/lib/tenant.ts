@@ -20,6 +20,7 @@ type ChapterDbRow = {
   contact_phone_country_code: string | null;
   description: string | null;
   logo_url: string | null;
+  website_url?: string | null;
   stripe_account_id: string | null;
   config: Record<string, unknown> | null;
   status: ChapterRecord["status"];
@@ -50,6 +51,7 @@ function mapChapterRow(row: ChapterDbRow): ChapterRecord {
     contactPhoneCountryCode: row.contact_phone_country_code,
     description: row.description ?? row.tagline ?? null,
     logoUrl: row.logo_url,
+    websiteUrl: row.website_url ?? null,
     stripeAccountId: row.stripe_account_id,
     config: row.config ?? row.theme_json ?? {},
     status: row.status,
@@ -120,6 +122,12 @@ function mapFixture(record: Record<string, unknown>): ChapterRecord {
         ? record.logoUrl
         : typeof record.logo_url === "string"
           ? record.logo_url
+          : null,
+    websiteUrl:
+      typeof record.websiteUrl === "string"
+        ? record.websiteUrl
+        : typeof record.website_url === "string"
+          ? record.website_url
           : null,
     stripeAccountId:
       typeof record.stripeAccountId === "string"
@@ -217,7 +225,7 @@ export async function listChapters() {
   if (client) {
     const { data } = await client
       .from("chapters")
-      .select(publicChapterColumns)
+      .select("*")
       .order("name", { ascending: true });
 
     if (data) {
@@ -228,4 +236,41 @@ export async function listChapters() {
   return chapterFixtures.map(mapFixture).sort((left, right) =>
     left.name.localeCompare(right.name),
   );
+}
+
+const directoryChapterColumns = `${publicChapterColumns}, region, country, description, website_url`;
+
+function fixtureAffiliateDirectory() {
+  return chapterFixtures
+    .map(mapFixture)
+    .filter((chapter) => chapter.status === "active" && chapter.subdomain !== "global")
+    .sort((left, right) => left.name.localeCompare(right.name));
+}
+
+/**
+ * Public list of active affiliates for the /affiliates directory. Reads with
+ * the anon content client; falls back to fixtures when the database (or the
+ * website_url column, pre-migration) is unavailable.
+ */
+export async function listAffiliateDirectory() {
+  const client = createSupabaseContentClient();
+
+  if (client) {
+    try {
+      const { data, error } = await client
+        .from("chapters")
+        .select(directoryChapterColumns)
+        .eq("status", "active")
+        .neq("subdomain", "global")
+        .order("name", { ascending: true });
+
+      if (!error && data?.length) {
+        return (data as unknown as ChapterDbRow[]).map(mapChapterRow);
+      }
+    } catch {
+      // fall through to fixtures
+    }
+  }
+
+  return fixtureAffiliateDirectory();
 }

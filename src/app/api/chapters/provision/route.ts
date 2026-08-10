@@ -24,6 +24,7 @@ export async function POST(request: Request) {
     contactEmail: String(body.contact_email ?? body.contactEmail ?? ""),
     contactPhone: String(body.contact_phone ?? body.contactPhone ?? ""),
     description: String(body.description ?? ""),
+    websiteUrl: String(body.website_url ?? body.websiteUrl ?? ""),
   });
 
   if (!result.ok) {
