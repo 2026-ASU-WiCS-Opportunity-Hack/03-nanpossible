@@ -219,6 +219,8 @@ export type FeatureItem = {
   label?: string;
   kind?: string;
   year?: string;
+  image?: string;
+  imageAlt?: string;
 };
 
 export type ContentSection =

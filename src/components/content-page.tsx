@@ -120,13 +120,26 @@ function renderSection(section: ContentSection) {
           <div className="grid gap-4 md:grid-cols-3">
             {section.items.map((item) => (
               <article className="feature-card rounded-[1.5rem]" key={item.title}>
-                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-green">
-                  {item.eyebrow}
-                </p>
+                <div className="flex items-center gap-3">
+                  {item.image ? (
+                    <img
+                      alt={item.imageAlt ?? ""}
+                      className="h-6 w-8 rounded-[0.3rem] border border-line object-cover"
+                      src={item.image}
+                    />
+                  ) : null}
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-green">
+                    {item.eyebrow}
+                  </p>
+                </div>
                 <h3 className="mt-3">{item.title}</h3>
                 <p className="mt-3 whitespace-pre-line">{item.body}</p>
                 {item.href && item.label ? (
-                  <Link className="mt-5 inline-flex font-semibold text-teal" href={item.href}>
+                  <Link
+                    className="mt-5 inline-flex font-semibold text-teal"
+                    href={item.href}
+                    {...(item.href.startsWith("http") ? { rel: "noreferrer", target: "_blank" } : {})}
+                  >
                     {item.label}
                   </Link>
                 ) : null}
