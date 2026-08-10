@@ -14,9 +14,8 @@ export function ContactForm() {
     try {
       const response = await submitContactForm(formData);
       setResult(response);
-      
+
       if (response.success) {
-        // Reset form on success
         const form = document.getElementById('contact-form') as HTMLFormElement;
         if (form) form.reset();
       }
@@ -58,6 +57,46 @@ export function ContactForm() {
             className="mt-1 block w-full rounded-md border border-gray-300 px-4 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
             placeholder="you@example.com"
           />
+        </div>
+
+        {/* Country Field */}
+        <div>
+          <label htmlFor="country" className="block text-sm font-medium text-gray-700">
+            Country <span className="text-red-500">*</span>
+          </label>
+          <input
+            type="text"
+            id="country"
+            name="country"
+            required
+            className="mt-1 block w-full rounded-md border border-gray-300 px-4 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+            placeholder="Your country"
+          />
+        </div>
+
+        {/* About Field */}
+        <div>
+          <label htmlFor="about" className="block text-sm font-medium text-gray-700">
+            About <span className="text-red-500">*</span>
+          </label>
+          <select
+            id="about"
+            name="about"
+            required
+            defaultValue=""
+            className="mt-1 block w-full rounded-md border border-gray-300 px-4 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+          >
+            <option value="" disabled>
+              Choose
+            </option>
+            <option value="Action Learning">Action Learning</option>
+            <option value="Certification">Certification</option>
+            <option value="Programs">Programs</option>
+            <option value="Solution Spheres">Solution Spheres</option>
+            <option value="Events">Events</option>
+            <option value="WIAL">WIAL</option>
+            <option value="Other">Other</option>
+          </select>
         </div>
 
         {/* Message Field */}
