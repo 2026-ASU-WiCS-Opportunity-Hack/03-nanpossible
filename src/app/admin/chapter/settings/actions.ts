@@ -38,9 +38,17 @@ export async function saveChapterSettingsAction(formData: FormData) {
       contactPhoneCountryCode: String(formData.get("phone_country_code") ?? "").trim(),
       description: String(formData.get("description") ?? ""),
       logoUrl: String(formData.get("logoUrl") ?? ""),
+      websiteUrl: String(formData.get("websiteUrl") ?? ""),
     });
-  } catch {
-    redirect(buildReturnPath({ error: "save-failed" }));
+  } catch (error) {
+    redirect(
+      buildReturnPath({
+        error:
+          error instanceof Error && error.message === "invalid-website"
+            ? "invalid-website"
+            : "save-failed",
+      }),
+    );
   }
 
   const chapter = await getChapterById(chapterId);
@@ -50,5 +58,6 @@ export async function saveChapterSettingsAction(formData: FormData) {
     revalidatePath(`/sites/${chapter.subdomain}/contact`);
   }
 
+  revalidatePath("/affiliates");
   redirect(buildReturnPath({ notice: "saved" }));
 }

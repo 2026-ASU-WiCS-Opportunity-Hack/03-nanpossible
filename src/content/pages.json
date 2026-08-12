@@ -456,7 +456,7 @@
     "description": "WIAL affiliates worldwide - find your local Action Learning organization.",
     "sourceUrl": "https://wial.org/affiliates/",
     "sourceStatus": "newly-created",
-    "sourceNotes": "Each affiliate card shows its country flag (SVG vendored under public/flags/, from the MIT-licensed flag-icons set) and links to the affiliate website listed in issue #64. New affiliates should be added here with the website URL captured during affiliate creation."
+    "sourceNotes": "The live /affiliates page replaces the contact_cards section below with cards generated from active chapter records (managed in the global admin), including country flags and each affiliate's website or hosted site. This static list is only a fallback for when no affiliate records are available."
   }
 },
 {
