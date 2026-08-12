@@ -6,6 +6,8 @@ import { revalidatePath } from 'next/cache';
 export async function submitContactForm(formData: FormData) {
   const name = formData.get('name') as string;
   const email = formData.get('email') as string;
+  const country = formData.get('country') as string;
+  const about = formData.get('about') as string;
   const message = formData.get('message') as string;
   const subscribedToNewsletter = formData.get('newsletter') === 'on';
 
@@ -16,6 +18,14 @@ export async function submitContactForm(formData: FormData) {
 
   if (!email || !email.includes('@')) {
     return { error: 'Valid email is required' };
+  }
+
+  if (!country || country.trim().length === 0) {
+    return { error: 'Country is required' };
+  }
+
+  if (!about || about.trim().length === 0) {
+    return { error: 'Please select what this is about' };
   }
 
   if (!message || message.trim().length === 0) {
@@ -30,6 +40,8 @@ export async function submitContactForm(formData: FormData) {
       .insert({
         name: name.trim(),
         email: email.trim(),
+        country: country.trim(),
+        about: about.trim(),
         message: message.trim(),
         subscribed_to_newsletter: subscribedToNewsletter,
       });
