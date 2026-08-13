@@ -2,8 +2,10 @@
 
 import { useEffect, useState, useTransition } from "react";
 import { CoachGrid } from "./CoachGrid";
+import { CoachMap } from "./CoachMap";
 import type {
   CoachFacetOptions,
+  CoachMapPoint,
   CoachRecord,
   CoachSearchFilters,
   CoachSearchMode,
@@ -13,6 +15,7 @@ import type {
 type CoachSearchProps = {
   initialCoaches: CoachRecord[];
   facets: CoachFacetOptions;
+  mapPoints: CoachMapPoint[];
 };
 
 type SearchPayload = {
@@ -82,7 +85,7 @@ function hasFilters(filters: CoachSearchFilters) {
   );
 }
 
-export function CoachSearch({ initialCoaches, facets }: CoachSearchProps) {
+export function CoachSearch({ initialCoaches, facets, mapPoints }: CoachSearchProps) {
   const [query, setQuery] = useState("");
   const [filters, setFilters] = useState<CoachSearchFilters>({
     certLevel: null,
@@ -141,8 +144,37 @@ export function CoachSearch({ initialCoaches, facets }: CoachSearchProps) {
     Boolean(query.trim()) &&
     (displayMode === "semantic" || displayMode === "hybrid");
 
+  const mapCountries = new Set(
+    mapPoints.map((point) => point.country).filter(Boolean),
+  );
+  const mappedCoachCount = mapPoints.reduce((sum, point) => sum + point.count, 0);
+
   return (
     <div className="space-y-5">
+      {mapPoints.length > 0 ? (
+        <section className="site-panel rounded-[2rem] p-6 md:p-8">
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <div className="space-y-2">
+              <span className="eyebrow">Global network</span>
+              <h2 className="font-display text-[clamp(1.4rem,2vw,1.9rem)] leading-[1.05] tracking-[-0.04em] text-teal-deep">
+                Coaches on the ground in {mapCountries.size} countries
+              </h2>
+            </div>
+            <div className="flex flex-wrap items-center gap-3">
+              <span className="coach-result-chip">{mappedCoachCount} coaches mapped</span>
+              <span className="coach-result-chip">{mapCountries.size} countries</span>
+            </div>
+          </div>
+          <CoachMap
+            activeCountry={filters.country ?? null}
+            onCountrySelect={(country) =>
+              setFilters((current) => ({ ...current, country }))
+            }
+            points={mapPoints}
+          />
+        </section>
+      ) : null}
+
       <section className="site-panel rounded-[2rem] p-6 md:p-8">
         <div className="grid gap-5 xl:grid-cols-[minmax(0,2fr)_repeat(3,minmax(0,180px))]">
           <label className="field-shell">

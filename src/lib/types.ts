@@ -155,6 +155,15 @@ export type CoachFacetOptions = {
   languages: string[];
 };
 
+/** One dot on the /coaches world map: approved coaches aggregated by place. */
+export type CoachMapPoint = {
+  city: string | null;
+  country: string | null;
+  lat: number;
+  lng: number;
+  count: number;
+};
+
 export type CoachSearchFilters = {
   certLevel?: CertificationLevel | null;
   country?: string | null;

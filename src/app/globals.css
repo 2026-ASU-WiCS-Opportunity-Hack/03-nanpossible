@@ -1201,6 +1201,140 @@ html.cursor-large * {
 }
 
 .coach-pill,
+.coach-map-figure {
+  position: relative;
+  margin-top: 1.5rem;
+}
+
+.coach-map-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.coach-map-land {
+  fill: var(--line);
+}
+
+.coach-map-hit {
+  fill: transparent;
+  cursor: pointer;
+  outline-offset: 2px;
+}
+
+.coach-map-hit:focus-visible {
+  outline: 2px solid var(--teal);
+  border-radius: 999px;
+}
+
+.coach-map-dot {
+  fill: var(--teal);
+  stroke: var(--surface-strong);
+  stroke-width: 1.5;
+  pointer-events: none;
+  transition: fill var(--duration-fast) var(--ease-standard),
+    opacity var(--duration-fast) var(--ease-standard);
+}
+
+.coach-map-marker.is-dimmed .coach-map-dot {
+  opacity: 0.28;
+}
+
+.coach-map-marker.is-active .coach-map-dot,
+.coach-map-marker:hover .coach-map-dot {
+  fill: var(--teal-deep);
+}
+
+.coach-map-marker.is-dimmed:hover .coach-map-dot {
+  opacity: 1;
+}
+
+.coach-map-dot-label {
+  fill: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  dominant-baseline: central;
+  pointer-events: none;
+}
+
+.coach-map-marker.is-dimmed .coach-map-dot-label {
+  opacity: 0.28;
+}
+
+.coach-map-tooltip {
+  position: absolute;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  transform: translate(-50%, calc(-100% - 14px));
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  background: var(--surface-strong);
+  box-shadow: var(--shadow);
+  padding: 0.5rem 0.75rem;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.coach-map-tooltip strong {
+  color: var(--foreground);
+  font-size: 0.85rem;
+}
+
+.coach-map-tooltip span {
+  color: var(--neutral);
+  font-size: 0.78rem;
+}
+
+.coach-map-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.coach-map-legend {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--neutral);
+  font-size: 0.78rem;
+}
+
+.coach-map-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.coach-map-legend-caption {
+  margin-left: 0.2rem;
+}
+
+.coach-map-hint {
+  color: var(--neutral);
+  font-size: 0.78rem;
+}
+
+.coach-map-clear {
+  border: 1px solid rgba(209, 0, 52, 0.25);
+  border-radius: 999px;
+  background: rgba(209, 0, 52, 0.08);
+  padding: 0.4rem 0.85rem;
+  color: var(--teal-deep);
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background var(--duration-fast) var(--ease-standard);
+}
+
+.coach-map-clear:hover {
+  background: rgba(209, 0, 52, 0.16);
+}
+
 .coach-result-chip {
   display: inline-flex;
   align-items: center;

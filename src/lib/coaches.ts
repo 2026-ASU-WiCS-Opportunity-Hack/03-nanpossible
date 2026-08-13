@@ -9,6 +9,7 @@ import { createSupabaseContentClient } from "@/lib/supabase";
 import type {
   CertificationLevel,
   CoachFacetOptions,
+  CoachMapPoint,
   CoachRecord,
   CoachSearchFilters,
 } from "@/lib/types";
@@ -492,6 +493,60 @@ export const getCoachFacetOptions = cache(async (): Promise<CoachFacetOptions> =
   } catch (error) {
     console.error("getCoachFacetOptions threw", error);
     return empty;
+  }
+});
+
+export const listCoachMapPoints = cache(async (): Promise<CoachMapPoint[]> => {
+  const client = createSupabaseContentClient();
+
+  if (!client) {
+    return [];
+  }
+
+  try {
+    const { data, error } = await client
+      .from("coaches")
+      .select("location_city, location_country, location_lat, location_lng")
+      .eq("approved", true)
+      .not("location_lat", "is", null)
+      .not("location_lng", "is", null)
+      .limit(2000);
+
+    if (error) {
+      console.error("listCoachMapPoints query failed", error);
+      return [];
+    }
+
+    const groups = new Map<string, CoachMapPoint>();
+
+    for (const row of data ?? []) {
+      const lat = typeof row.location_lat === "number" ? row.location_lat : null;
+      const lng = typeof row.location_lng === "number" ? row.location_lng : null;
+
+      if (lat === null || lng === null || (lat === 0 && lng === 0)) {
+        continue;
+      }
+
+      const city = toText(row.location_city);
+      const country = toText(row.location_country);
+      // Coaches without a city share country-level geocodes — group those by
+      // rounded coordinates so each distinct place stays one dot.
+      const key = `${country ?? ""}|${city ?? `${lat.toFixed(1)},${lng.toFixed(1)}`}`;
+      const group = groups.get(key);
+
+      if (group) {
+        group.lat = (group.lat * group.count + lat) / (group.count + 1);
+        group.lng = (group.lng * group.count + lng) / (group.count + 1);
+        group.count += 1;
+      } else {
+        groups.set(key, { city, country, lat, lng, count: 1 });
+      }
+    }
+
+    return [...groups.values()].sort((left, right) => right.count - left.count);
+  } catch (error) {
+    console.error("listCoachMapPoints threw", error);
+    return [];
   }
 });
 

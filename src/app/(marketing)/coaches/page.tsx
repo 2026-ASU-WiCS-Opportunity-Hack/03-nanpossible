@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CoachSearch } from "./CoachSearch";
-import { getCoachFacetOptions, listApprovedCoaches } from "@/lib/coaches";
+import {
+  getCoachFacetOptions,
+  listApprovedCoaches,
+  listCoachMapPoints,
+} from "@/lib/coaches";
 import { getCurrentViewer } from "@/lib/auth";
 
 export const metadata: Metadata = {
@@ -13,9 +17,10 @@ export const metadata: Metadata = {
 export const revalidate = 300;
 
 export default async function CoachesDirectoryPage() {
-  const [initialCoaches, facets, viewer] = await Promise.all([
+  const [initialCoaches, facets, mapPoints, viewer] = await Promise.all([
     listApprovedCoaches({ limit: 20 }),
     getCoachFacetOptions(),
+    listCoachMapPoints(),
     getCurrentViewer(),
   ]);
 
@@ -79,7 +84,11 @@ export default async function CoachesDirectoryPage() {
             </div>
           </section>
         ) : (
-          <CoachSearch facets={facets} initialCoaches={initialCoaches} />
+          <CoachSearch
+            facets={facets}
+            initialCoaches={initialCoaches}
+            mapPoints={mapPoints}
+          />
         )}
       </div>
     </div>
