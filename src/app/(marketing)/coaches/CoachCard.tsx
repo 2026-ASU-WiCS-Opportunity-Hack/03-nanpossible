@@ -127,7 +127,7 @@ export function CoachCard({ coach }: CoachCardProps) {
         </div>
         <Link
           className="inline-flex items-center gap-2 text-sm font-semibold text-teal transition group-hover:text-accent"
-          href={`/coaches/${coach.id}`}
+          href={`/coaches/${encodeURIComponent(coach.slug ?? coach.id)}`}
         >
           View profile
           <span aria-hidden="true">→</span>

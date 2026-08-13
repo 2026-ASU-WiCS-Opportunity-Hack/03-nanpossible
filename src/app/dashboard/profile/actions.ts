@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 import { requireAccountViewer } from "@/lib/auth";
 import { getClaimableCoachByEmail, getCoachByUserId } from "@/lib/coaches";
 import { syncCoachCredlyBadgeFields } from "@/lib/credly";
+import { ensureUniqueCoachSlug } from "@/lib/slug";
 import { createServiceRoleSupabaseClient } from "@/lib/supabase-admin";
 
 const allowedPhotoTypes = new Set(["image/jpeg", "image/png", "image/webp"]);
@@ -158,7 +159,7 @@ export async function saveCoachProfileAction(formData: FormData) {
   } else {
     const { data, error } = await client
       .from("coaches")
-      .insert(payload)
+      .insert({ ...payload, slug: await ensureUniqueCoachSlug(client, name) })
       .select("id")
       .single();
 

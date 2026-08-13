@@ -150,6 +150,33 @@ function parseFieldBlocks(html: string): Map<string, { text: string; href: strin
   return fields;
 }
 
+/**
+ * The credentials block nests other widgets (Affiliate, Certification Expires
+ * Date, Upload CV) before its own "Credentials" label, so the generic block
+ * parser only sees the affiliate value. Slice the raw block and keep what
+ * follows the label line instead.
+ */
+function parseCredentials(html: string): string | null {
+  const start = html.indexOf("table-display-credentials");
+  if (start < 0) {
+    return null;
+  }
+  const rest = html.slice(start);
+  const endMatch = rest.search(/class="table-view-group clearfix table-display-awards|<h2\b/);
+  const block = stripTags(endMatch > 0 ? rest.slice(0, endMatch) : rest.slice(0, 8000));
+  const lines = block.split("\n").map((line) => line.trim());
+  const labelIndex = lines.findIndex((line) => line === "Credentials");
+  if (labelIndex < 0) {
+    return null;
+  }
+  const credentials = lines
+    .slice(labelIndex + 1)
+    .filter(Boolean)
+    .join("\n")
+    .trim();
+  return credentials ? credentials : null;
+}
+
 function parseNumber(value: string | undefined): number | null {
   if (!value) {
     return null;
@@ -205,7 +232,7 @@ function parseProfile(html: string, profilePath: string): DirectoryCoach {
     facebook: href("facebook"),
     linkedin: href("linkedin"),
     aboutMe: text("about_me"),
-    credentials: text("credentials"),
+    credentials: parseCredentials(html),
     awards: text("awards"),
     cvUrl: href("cv"),
     photoUrl,

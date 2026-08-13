@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
-const supabaseHost = process.env.NEXT_PUBLIC_SUPABASE_URL
-  ? new URL(process.env.NEXT_PUBLIC_SUPABASE_URL).hostname
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+  ? new URL(process.env.NEXT_PUBLIC_SUPABASE_URL)
   : null;
 
 const nextConfig: NextConfig = {
@@ -24,11 +24,14 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "images.credly.com",
       },
-      ...(supabaseHost
+      // Derive protocol/port too: the local Supabase stack serves storage
+      // over plain http on a custom port.
+      ...(supabaseUrl
         ? [
             {
-              protocol: "https" as const,
-              hostname: supabaseHost,
+              protocol: supabaseUrl.protocol.replace(":", "") as "http" | "https",
+              hostname: supabaseUrl.hostname,
+              ...(supabaseUrl.port ? { port: supabaseUrl.port } : {}),
             },
           ]
         : []),

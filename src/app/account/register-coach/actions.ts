@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { requireAccountViewer } from "@/lib/auth";
 import { getCoachByUserId } from "@/lib/coaches";
+import { ensureUniqueCoachSlug } from "@/lib/slug";
 import { createServiceRoleSupabaseClient } from "@/lib/supabase-admin";
 import {
   createServerSupabaseAuthClient,
@@ -117,6 +118,7 @@ export async function registerCoachProfileAction(formData: FormData) {
   const { error: insertError } = await admin.from("coaches").insert({
     user_id: viewer.id,
     chapter_id: chapterId,
+    slug: await ensureUniqueCoachSlug(admin, name),
     name,
     email,
     phone,
