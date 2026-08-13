@@ -16,6 +16,8 @@
     "test:smoke:tenant": "node scripts/smoke-tenant-routes.mjs",
     "content:sync": "node scripts/sync-content-artifacts.mjs",
     "seed:coaches": "tsx scripts/seed-coaches.ts",
+    "crawl:coaches": "tsx scripts/crawl-wial-directory.ts",
+    "import:coaches": "tsx scripts/import-directory-coaches.ts",
     "backfill:credly": "tsx scripts/backfill-credly-badges.ts",
     "manage:roles": "tsx scripts/manage-roles.ts",
     "list:users": "tsx scripts/list-user-details.ts",
