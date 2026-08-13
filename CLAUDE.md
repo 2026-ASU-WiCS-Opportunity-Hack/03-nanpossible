@@ -46,7 +46,7 @@ Roles: `platform_admin`, `chapter_admin`, `content_creator`, `coach`, `public_vi
 - `createBrowserSupabaseClient()` — client-side
 
 ### Database
-PostgreSQL via Supabase with pgvector extension. Migrations in `supabase/migrations/`. Falls back to JSON fixtures in `src/content/` if DB is unavailable.
+PostgreSQL via Supabase with pgvector extension. Migrations in `supabase/migrations/`. Falls back to JSON fixtures in `src/content/` if DB is unavailable. The hosted project receives migrations via `npx supabase db push` (linked; the remote migration history was repaired 2026-08-12 after two legacy files were renamed — `supabase migration repair` with `--status applied`/`reverted` is the fix if histories diverge again).
 
 ### Integrations
 OpenRouter (LLM gateway), Stripe (payments), Credly (badges), Resend (email).
