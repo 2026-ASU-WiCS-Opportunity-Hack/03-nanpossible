@@ -25,21 +25,33 @@ type SearchRow = {
   id: string;
   user_id: string | null;
   chapter_id: string | null;
+  slug: string | null;
   name: string;
+  title: string | null;
+  organization: string | null;
   email: string | null;
   phone: string | null;
   phone_country_code: string | null;
   photo_url: string | null;
   cert_level: CertificationLevel | null;
+  cert_valid_until: string | null;
   location_city: string | null;
+  location_state: string | null;
   location_country: string | null;
   location_lat: number | null;
   location_lng: number | null;
   bio: string | null;
+  credentials: string | null;
+  awards: string | null;
+  cv_url: string | null;
   specializations: string[] | null;
   languages: string[] | null;
   website: string | null;
   linkedin: string | null;
+  blog_url: string | null;
+  youtube_url: string | null;
+  twitter_url: string | null;
+  facebook_url: string | null;
   credly_badge_url: string | null;
   credly_badge_image_url: string | null;
   credly_badge_title: string | null;
@@ -259,21 +271,33 @@ export async function searchCoachesByName(
         "id",
         "user_id",
         "chapter_id",
+        "slug",
         "name",
+        "title",
+        "organization",
         "email",
         "phone",
         "phone_country_code",
         "photo_url",
         "cert_level",
+        "cert_valid_until",
         "location_city",
+        "location_state",
         "location_country",
         "location_lat",
         "location_lng",
         "bio",
+        "credentials",
+        "awards",
+        "cv_url",
         "specializations",
         "languages",
         "website",
         "linkedin",
+        "blog_url",
+        "youtube_url",
+        "twitter_url",
+        "facebook_url",
         "credly_badge_url",
         "credly_badge_image_url",
         "credly_badge_title",
@@ -318,21 +342,33 @@ export async function searchCoachesByName(
     id: row.id,
     userId: row.user_id,
     chapterId: row.chapter_id,
+    slug: row.slug,
     name: row.name,
+    title: row.title,
+    organization: row.organization,
     email: row.email,
     phone: row.phone,
     phoneCountryCode: row.phone_country_code,
     photoUrl: row.photo_url,
     certLevel: row.cert_level,
+    certValidUntil: row.cert_valid_until,
     locationCity: row.location_city,
+    locationState: row.location_state,
     locationCountry: row.location_country,
     locationLat: row.location_lat,
     locationLng: row.location_lng,
     bio: row.bio,
+    credentials: row.credentials,
+    awards: row.awards,
+    cvUrl: row.cv_url,
     specializations: row.specializations ?? [],
     languages: row.languages ?? [],
     website: row.website,
     linkedin: row.linkedin,
+    blogUrl: row.blog_url,
+    youtubeUrl: row.youtube_url,
+    twitterUrl: row.twitter_url,
+    facebookUrl: row.facebook_url,
     credlyBadgeUrl: row.credly_badge_url,
     credlyBadgeImageUrl: row.credly_badge_image_url,
     credlyBadgeTitle: row.credly_badge_title,

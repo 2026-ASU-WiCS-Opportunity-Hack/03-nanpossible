@@ -12,6 +12,21 @@ export function formatCoachLocation(
   return [coach.locationCity, coach.locationCountry].filter(Boolean).join(", ");
 }
 
+export function getCertificationLevelName(level: CertificationLevel | null) {
+  switch (level) {
+    case "CALC":
+      return "Certified Action Learning Coach";
+    case "PALC":
+      return "Professional Action Learning Coach";
+    case "SALC":
+      return "Senior Action Learning Coach";
+    case "MALC":
+      return "Master Action Learning Coach";
+    default:
+      return null;
+  }
+}
+
 export function getCertificationBadgeTone(level: CertificationLevel | null) {
   switch (level) {
     case "CALC":

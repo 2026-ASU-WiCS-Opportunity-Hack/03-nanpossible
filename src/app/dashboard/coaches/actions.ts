@@ -94,6 +94,9 @@ export async function approveCoachAction(formData: FormData) {
 
   revalidatePath("/coaches");
   revalidatePath(`/coaches/${coachId}`);
+  if (coach.slug) {
+    revalidatePath(`/coaches/${encodeURIComponent(coach.slug)}`);
+  }
   revalidatePath("/dashboard/coaches");
   revalidatePath("/admin/approvals");
   redirect(buildReturnPath(redirectTo, { notice: "approved" }));
