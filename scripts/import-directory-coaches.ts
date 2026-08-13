@@ -155,12 +155,31 @@ function toRow(
   };
 }
 
+async function ensurePublicBucket(
+  supabase: SupabaseClient,
+  bucket: string,
+): Promise<boolean> {
+  const { data: buckets } = await supabase.storage.listBuckets();
+  if (buckets?.some((existing) => existing.name === bucket)) {
+    return true;
+  }
+  const { error } = await supabase.storage.createBucket(bucket, { public: true });
+  if (error) {
+    console.warn(`Cannot create ${bucket} bucket: ${error.message}`);
+    return false;
+  }
+  return true;
+}
+
 async function uploadPhotos(
   supabase: SupabaseClient,
   coaches: DirectoryCoach[],
 ): Promise<Map<string, string>> {
   const photoUrls = new Map<string, string>();
   const withPhotos = coaches.filter((coach) => coach.photoUrl);
+  if (withPhotos.length === 0 || !(await ensurePublicBucket(supabase, PHOTO_BUCKET))) {
+    return photoUrls;
+  }
   console.log(`Re-hosting ${withPhotos.length} photos into ${PHOTO_BUCKET}/${PHOTO_PREFIX}/…`);
   for (const coach of withPhotos) {
     try {
@@ -193,17 +212,8 @@ async function uploadCvs(
 ): Promise<Map<string, string>> {
   const cvUrls = new Map<string, string>();
   const withCvs = coaches.filter((coach) => coach.cvUrl);
-  if (withCvs.length === 0) {
+  if (withCvs.length === 0 || !(await ensurePublicBucket(supabase, FILE_BUCKET))) {
     return cvUrls;
-  }
-
-  const { data: buckets } = await supabase.storage.listBuckets();
-  if (!buckets?.some((bucket) => bucket.name === FILE_BUCKET)) {
-    const { error } = await supabase.storage.createBucket(FILE_BUCKET, { public: true });
-    if (error) {
-      console.warn(`Cannot create ${FILE_BUCKET} bucket (${error.message}); skipping CVs.`);
-      return cvUrls;
-    }
   }
 
   console.log(`Re-hosting ${withCvs.length} CVs into ${FILE_BUCKET}/${CV_PREFIX}/…`);

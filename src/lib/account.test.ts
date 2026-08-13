@@ -26,6 +26,7 @@ describe("account navigation", () => {
     expect(getAccountNavItems("platform_admin").map((item) => item.label)).toEqual([
       "Global admin",
       "Affiliates",
+      "Coaches",
       "Users & roles",
       "Coach approvals",
       "Platform guide",
