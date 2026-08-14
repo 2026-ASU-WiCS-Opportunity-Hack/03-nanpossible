@@ -273,7 +273,7 @@ export function ContentPage({ page, siteContext }: ContentPageProps) {
 
           <aside className="site-panel rounded-[2rem] p-6">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-foreground/55">
-              Page context
+              At a glance
             </p>
             <div className="mt-4 grid gap-3">
               {body.metrics.map((metric) => (

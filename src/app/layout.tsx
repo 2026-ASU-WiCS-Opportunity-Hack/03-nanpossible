@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     template: "%s | WIAL",
   },
   description:
-    "A multi-tenant WIAL platform built with Next.js, Supabase, Vercel, and Dolt-backed migration tracking.",
+    "The World Institute for Action Learning (WIAL) certifies Action Learning coaches and supports a global network of affiliates helping organizations solve real problems while developing leaders and teams.",
   icons: {
     icon: [
       { url: "/assets/logo.webp", sizes: "16x16", type: "image/webp" },
