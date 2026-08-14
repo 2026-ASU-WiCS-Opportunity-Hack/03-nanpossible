@@ -4,9 +4,10 @@ export type CanonicalPageSlug =
   | "certification"
   | "clients"
   | "contact"
-   | "partners"
-   | "affiliates"
-   | "benefits";
+  | "partners"
+  | "affiliates"
+  | "benefits"
+  | "better-world";
 
 export type AppRole =
   | "platform_admin"
