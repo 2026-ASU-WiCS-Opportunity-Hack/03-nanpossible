@@ -39,6 +39,36 @@ describe("normalizeSegments", () => {
     });
   });
 
+  it("resolves the better-world page slug", () => {
+    expect(normalizeSegments(["better-world"])).toEqual({
+      slug: "better-world",
+      redirectTo: null,
+    });
+  });
+
+  it("redirects legacy better world paths", () => {
+    expect(normalizeSegments(["better-world-fund"])).toEqual({
+      slug: null,
+      redirectTo: "/better-world",
+    });
+    expect(normalizeSegments(["better-world-fund-2"])).toEqual({
+      slug: null,
+      redirectTo: "/better-world",
+    });
+    expect(normalizeSegments(["wial-gives-back"])).toEqual({
+      slug: null,
+      redirectTo: "/better-world",
+    });
+    expect(normalizeSegments(["projects"])).toEqual({
+      slug: null,
+      redirectTo: "/better-world",
+    });
+    expect(normalizeSegments(["share-your-better-world-story"])).toEqual({
+      slug: null,
+      redirectTo: "/contact",
+    });
+  });
+
   it("rejects unsupported paths", () => {
     expect(normalizeSegments(["blog"])).toBeNull();
   });

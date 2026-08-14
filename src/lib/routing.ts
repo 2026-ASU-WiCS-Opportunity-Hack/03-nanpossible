@@ -15,6 +15,11 @@ const aliasMap = new Map<string, string>([
   ["contact-us", "/contact"],
   ["library", "/clients"],
   ["action-learning/benefits", "/benefits"],
+  ["better-world-fund", "/better-world"],
+  ["better-world-fund-2", "/better-world"],
+  ["wial-gives-back", "/better-world"],
+  ["projects", "/better-world"],
+  ["share-your-better-world-story", "/contact"],
 ]);
 
 const canonicalMap = new Map<string, CanonicalPageSlug>([
@@ -26,6 +31,7 @@ const canonicalMap = new Map<string, CanonicalPageSlug>([
   ["partners", "partners"],
   ["affiliates", "affiliates"],
   ["benefits", "benefits"],
+  ["better-world", "better-world"],
 ]);
 
 export const reservedSubdomains = new Set([
