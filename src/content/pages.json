@@ -70,8 +70,8 @@
       },
       {
         "type": "cta",
-        "title": "Need help planning an affiliate rollout?",
-        "body": "Use the shared contact route to coordinate certification questions, migration review, and next-step onboarding for affiliate leads.",
+        "title": "Questions about WIAL or Action Learning?",
+        "body": "Contact us with certification questions or to learn how to get involved with a WIAL affiliate near you.",
         "href": "/contact",
         "label": "Talk with WIAL"
       }
@@ -316,7 +316,7 @@
       {
         "type": "cta",
         "title": "Ready to bring Action Learning to your organization?",
-        "body": "Use the shared contact route to coordinate a tailored Action Learning program for your team or organization.",
+        "body": "Contact us to plan a tailored Action Learning program for your team or organization.",
         "href": "/contact",
         "label": "Talk with WIAL"
       }
@@ -541,7 +541,7 @@
       {
         "type": "cta",
         "title": "Ready to see these benefits in your organization?",
-        "body": "Use the shared contact route to coordinate a tailored Action Learning program for your team or organization.",
+        "body": "Contact us to plan a tailored Action Learning program for your team or organization.",
         "href": "/contact",
         "label": "Talk with WIAL"
       }
@@ -561,48 +561,48 @@
     "title": "WIAL USA",
     "published": true,
     "bodyRichtext": {
-      "heroIntro": "This seeded tenant demonstrates how an affiliate can inherit the global shell while publishing local content on its own subdomain.",
+      "heroIntro": "WIAL USA brings Action Learning to organizations across the United States as part of the global WIAL network.",
       "metrics": [
-        { "label": "Tenant route", "value": "usa" },
-        { "label": "Shell ownership", "value": "Global" },
-        { "label": "Editable zones", "value": "Local" }
+        { "label": "Affiliate", "value": "USA" },
+        { "label": "Certification levels", "value": "4" },
+        { "label": "Network", "value": "Global" }
       ],
       "sections": [
         {
           "type": "feature_grid",
-          "title": "What the USA tenant proves",
+          "title": "What WIAL USA offers",
           "items": [
             {
-              "eyebrow": "Routing",
-              "title": "Subdomain-aware rendering",
-              "body": "Requests for usa.wial.org are rewritten to a tenant-scoped internal route while the browser still sees clean affiliate URLs."
+              "eyebrow": "Action Learning",
+              "title": "Solve real problems",
+              "body": "Action Learning helps organizations tackle urgent, real challenges while developing leaders and teams at the same time."
             },
             {
-              "eyebrow": "Fallbacks",
-              "title": "Global content stays available",
-              "body": "Pages without an affiliate override inherit the global version automatically, which reduces duplication during affiliate rollout."
+              "eyebrow": "Certification",
+              "title": "Globally recognized certification",
+              "body": "WIAL USA follows the same coach certification standards as WIAL affiliates around the world."
             },
             {
-              "eyebrow": "Isolation",
-              "title": "Tenant-bound data model",
-              "body": "Supabase tables, RLS policies, and public content queries all treat chapter_id as the isolation key."
+              "eyebrow": "Coaches",
+              "title": "Certified coaches in the USA",
+              "body": "Connect with WIAL-certified Action Learning coaches based in the United States."
             }
           ]
         },
         {
           "type": "cta",
-          "title": "Review the tenant contact page",
-          "body": "The seeded affiliate also includes a local contact override to show how affiliate-specific information can sit inside the shared WIAL shell.",
+          "title": "Work with WIAL USA",
+          "body": "Reach the WIAL USA team with questions about Action Learning programs, certification, or coaching.",
           "href": "/contact",
-          "label": "Open USA contact"
+          "label": "Contact WIAL USA"
         }
       ]
     },
     "seo": {
-      "description": "Seeded tenant homepage for WIAL USA used to demonstrate subdomain routing before DNS cutover.",
+      "description": "WIAL USA brings Action Learning programs, coach certification, and certified coaches to organizations across the United States.",
       "sourceUrl": "seed://tenant/usa/home",
       "sourceStatus": "seeded-demo-tenant",
-      "sourceNotes": "This page is intentionally synthetic so the platform can demonstrate multi-tenancy even before chapter migration begins."
+      "sourceNotes": "Sample affiliate homepage content for the WIAL USA tenant."
     }
   },
   {
@@ -612,38 +612,38 @@
     "title": "Contact WIAL USA",
     "published": true,
     "bodyRichtext": {
-      "heroIntro": "Affiliate-local contact information can override the global page without changing the shared layout, navigation, or footer enforcement.",
+      "heroIntro": "Get in touch with the WIAL USA team about Action Learning programs, certification, and coaching in the United States.",
       "metrics": [
-        { "label": "Contact pattern", "value": "Override" },
-        { "label": "Affiliate email", "value": "1" },
-        { "label": "Shared shell", "value": "Yes" }
+        { "label": "Affiliate", "value": "WIAL USA" },
+        { "label": "Region", "value": "United States" },
+        { "label": "Network", "value": "Global WIAL" }
       ],
       "sections": [
         {
           "type": "contact_cards",
-          "title": "USA tenant contact details",
+          "title": "Contact WIAL USA",
           "items": [
             {
               "eyebrow": "Email",
-              "title": "Affiliate inbox",
+              "title": "WIAL USA inbox",
               "body": "usa@wial.org",
               "href": "mailto:usa@wial.org",
               "label": "Email WIAL USA"
             },
             {
-              "eyebrow": "Use case",
-              "title": "Pilot affiliate support",
-              "body": "Seeded tenant content review\nSubdomain routing validation\nFuture affiliate onboarding"
+              "eyebrow": "How we can help",
+              "title": "Programs and certification",
+              "body": "Action Learning programs\nCoach certification\nTeam coaching"
             }
           ]
         }
       ]
     },
     "seo": {
-      "description": "Seeded chapter contact override for the WIAL USA tenant.",
+      "description": "Contact WIAL USA about Action Learning programs, coach certification, and team coaching.",
       "sourceUrl": "seed://tenant/usa/contact",
       "sourceStatus": "seeded-demo-tenant",
-      "sourceNotes": "Created to exercise tenant-scoped content lookup and fallback behavior."
+      "sourceNotes": "Sample affiliate contact content for the WIAL USA tenant."
     }
   }
 ]

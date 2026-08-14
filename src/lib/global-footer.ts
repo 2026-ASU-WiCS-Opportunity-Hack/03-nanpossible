@@ -23,15 +23,14 @@ export type GlobalFooterState = {
 };
 
 export const defaultGlobalFooterContent: GlobalFooterContent = {
-  eyebrow: "Shared Affiliate Shell",
-  heading:
-    "A single WIAL platform for consistent affiliates, safer content, and faster deployment.",
+  eyebrow: "World Institute for Action Learning",
+  heading: "Solving real problems while developing leaders and teams.",
   description:
-    "This foundation enforces the global layout across affiliate sites while leaving room for affiliate-specific content and future admin workflows.",
+    "WIAL is the global certifying body for Action Learning, supported by a network of affiliates and certified coaches around the world.",
   contactHeading: "Reach WIAL",
   address: "P.O. Box 7601 #83791\nWashington, DC 20044",
   email: "info@wial.org",
-  linksHeading: "Canonical Pages",
+  linksHeading: "Explore",
   links: [
     { id: "home", label: "Home", href: "/" },
     { id: "about", label: "About WIAL", href: "/about" },
@@ -39,9 +38,9 @@ export const defaultGlobalFooterContent: GlobalFooterContent = {
     { id: "clients", label: "Clients", href: "/clients" },
     { id: "contact", label: "Contact", href: "/contact" },
   ],
-  leftLegal: "{siteName} on Next.js, Supabase, Vercel, and Dolt.",
+  leftLegal: "© World Institute for Action Learning. All rights reserved.",
   rightLegal:
-    "Broken archive links and unsafe legacy pages were intentionally excluded.",
+    "Action Learning will impact the way you work, think, and do business.",
 };
 
 function text(value: unknown, fallback: string, maxLength: number) {

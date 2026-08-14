@@ -11,9 +11,7 @@ export function SiteFooterContent({
   content,
   siteContext,
 }: SiteFooterContentProps) {
-  const siteName = siteContext.isGlobal
-    ? "Global WIAL site shell"
-    : `${siteContext.tenant.name} affiliate shell`;
+  const siteName = siteContext.isGlobal ? "WIAL" : siteContext.tenant.name;
   const email = siteContext.tenant?.contactEmail ?? content.email;
 
   return (
