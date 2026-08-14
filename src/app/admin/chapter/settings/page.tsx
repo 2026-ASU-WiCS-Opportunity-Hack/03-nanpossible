@@ -2,6 +2,7 @@ import { AccountPageShell } from "@/components/account-page-shell";
 import { ChapterSettingsForm } from "@/components/admin/ChapterSettingsForm";
 import { requireAccountViewer } from "@/lib/auth";
 import { resolveWorkspaceChapter } from "@/lib/chapter-workspace";
+import { listTakenCountries } from "@/lib/tenant";
 import { saveChapterSettingsAction } from "./actions";
 
 type ChapterSettingsPageProps = {
@@ -49,6 +50,8 @@ export default async function ChapterSettingsPage({
     return null;
   }
 
+  const takenCountries = await listTakenCountries(chapter.id);
+
   return (
     <AccountPageShell
       badge="Affiliate settings"
@@ -64,7 +67,11 @@ export default async function ChapterSettingsPage({
       ) : null}
 
       <section className="site-panel rounded-[2rem] p-6 md:p-8">
-        <ChapterSettingsForm action={saveChapterSettingsAction} chapter={chapter} />
+        <ChapterSettingsForm
+          action={saveChapterSettingsAction}
+          chapter={chapter}
+          takenCountries={takenCountries}
+        />
       </section>
     </AccountPageShell>
   );

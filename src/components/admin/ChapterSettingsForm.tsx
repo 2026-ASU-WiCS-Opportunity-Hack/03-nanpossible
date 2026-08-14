@@ -1,4 +1,4 @@
-import { CountryInputField } from "@/components/country-input-field";
+import { CountrySelectField } from "@/components/country-select-field";
 import { PhoneInputField } from "@/components/phone-input-field";
 import { chapterLanguages, chapterRegions } from "@/lib/chapter-options";
 import type { ChapterRecord } from "@/lib/types";
@@ -13,9 +13,10 @@ const languageOptions = [
 type ChapterSettingsFormProps = {
   chapter: ChapterRecord;
   action: (formData: FormData) => Promise<void>;
+  takenCountries?: string[];
 };
 
-export function ChapterSettingsForm({ chapter, action }: ChapterSettingsFormProps) {
+export function ChapterSettingsForm({ chapter, action, takenCountries }: ChapterSettingsFormProps) {
   const siteDomain = process.env.NEXT_PUBLIC_SITE_DOMAIN ?? "localhost:3000";
   const selectedLanguage =
     languageOptions.find((option) => option.code === chapter.language)?.label ??
@@ -43,9 +44,9 @@ export function ChapterSettingsForm({ chapter, action }: ChapterSettingsFormProp
 
       <label className="field-shell">
         <span className="field-label">Country</span>
-        <CountryInputField defaultValue={chapter.country} />
+        <CountrySelectField defaultValue={chapter.country} takenCountries={takenCountries} />
         <span className="text-xs font-semibold uppercase tracking-[0.16em] text-foreground/45">
-          Pick a suggested name to show this affiliate&apos;s flag on the directory
+          Countries that already have an affiliate are not listed
         </span>
       </label>
 

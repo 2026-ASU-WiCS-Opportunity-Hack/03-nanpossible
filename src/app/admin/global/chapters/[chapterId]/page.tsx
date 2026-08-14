@@ -4,7 +4,7 @@ import { AccountPageShell } from "@/components/account-page-shell";
 import { ChapterSettingsForm } from "@/components/admin/ChapterSettingsForm";
 import { affiliateSiteUrl } from "@/lib/affiliates";
 import { requireAccountViewer } from "@/lib/auth";
-import { getChapterById } from "@/lib/tenant";
+import { getChapterById, listTakenCountries } from "@/lib/tenant";
 import { saveChapterAction } from "./actions";
 
 type EditChapterPageProps = {
@@ -47,6 +47,7 @@ export default async function EditChapterPage({
     notFound();
   }
 
+  const takenCountries = await listTakenCountries(chapter.id);
   const siteDomain = process.env.NEXT_PUBLIC_SITE_DOMAIN ?? "localhost:3000";
 
   return (
@@ -81,7 +82,11 @@ export default async function EditChapterPage({
           </Link>
         </div>
 
-        <ChapterSettingsForm action={saveChapterAction} chapter={chapter} />
+        <ChapterSettingsForm
+          action={saveChapterAction}
+          chapter={chapter}
+          takenCountries={takenCountries}
+        />
       </section>
     </AccountPageShell>
   );
