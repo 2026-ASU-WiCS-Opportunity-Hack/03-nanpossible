@@ -2,7 +2,7 @@
 
 import { useMemo, useState, useTransition } from "react";
 import { chapterLanguages, chapterRegions } from "@/lib/chapter-options";
-import { CountryInputField } from "@/components/country-input-field";
+import { CountrySelectField } from "@/components/country-select-field";
 import { PhoneInputField } from "@/components/phone-input-field";
 
 function slugify(value: string) {
@@ -25,7 +25,11 @@ function getProvisionNotice(url: string, warning?: string | null) {
   }
 }
 
-export function ChapterProvisionForm() {
+type ChapterProvisionFormProps = {
+  takenCountries: string[];
+};
+
+export function ChapterProvisionForm({ takenCountries }: ChapterProvisionFormProps) {
   const [name, setName] = useState("");
   const [subdomain, setSubdomain] = useState("");
   const [subdomainTouched, setSubdomainTouched] = useState(false);
@@ -150,9 +154,9 @@ export function ChapterProvisionForm() {
 
         <label className="field-shell">
           <span className="field-label">Country</span>
-          <CountryInputField required />
+          <CountrySelectField required takenCountries={takenCountries} />
           <span className="text-xs font-semibold uppercase tracking-[0.16em] text-foreground/45">
-            Pick a suggested name to show the affiliate&apos;s flag on the directory
+            Countries that already have an affiliate are not listed
           </span>
         </label>
 

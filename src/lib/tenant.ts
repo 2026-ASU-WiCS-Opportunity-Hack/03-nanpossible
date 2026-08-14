@@ -238,6 +238,19 @@ export async function listChapters() {
   );
 }
 
+/**
+ * Country names already claimed by an affiliate, used to filter the admin
+ * country dropdown so duplicate affiliate sites cannot be created. Pass the
+ * chapter being edited so its own country stays selectable.
+ */
+export async function listTakenCountries(excludeChapterId?: string) {
+  const allChapters = await listChapters();
+  return allChapters
+    .filter((chapter) => chapter.id !== excludeChapterId)
+    .map((chapter) => chapter.country?.trim())
+    .filter((country): country is string => Boolean(country));
+}
+
 const directoryChapterColumns = `${publicChapterColumns}, region, country, description, website_url`;
 
 function fixtureAffiliateDirectory() {

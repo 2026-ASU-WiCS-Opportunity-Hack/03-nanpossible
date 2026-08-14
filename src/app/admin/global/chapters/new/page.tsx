@@ -2,9 +2,11 @@ import Link from "next/link";
 import { AccountPageShell } from "@/components/account-page-shell";
 import { ChapterProvisionForm } from "@/components/admin/ChapterProvisionForm";
 import { requireAccountViewer } from "@/lib/auth";
+import { listTakenCountries } from "@/lib/tenant";
 
 export default async function NewChapterPage() {
   await requireAccountViewer("/admin/global/chapters/new", ["platform_admin"]);
+  const takenCountries = await listTakenCountries();
 
   return (
     <AccountPageShell
@@ -15,7 +17,7 @@ export default async function NewChapterPage() {
     >
       <div className="grid gap-5 xl:grid-cols-[minmax(0,1.5fr)_320px]">
         <section className="site-panel rounded-[2rem] p-6 md:p-8">
-          <ChapterProvisionForm />
+          <ChapterProvisionForm takenCountries={takenCountries} />
         </section>
 
         <aside className="site-panel rounded-[2rem] p-6">
