@@ -12,7 +12,7 @@ type CertificationProgressionStep = {
 
 export const certificationHero = {
   eyebrow: "Global certification hub",
-  title: "Certification pathways, renewal expectations, and LMS access in one place.",
+  title: "Certification pathways and renewal expectations in one place.",
   intro:
     "WIAL offers four levels of certification for Action Learning coaches. Each level represents increasing expertise, experience, and leadership in the Action Learning community. WIAL is an ICF-accredited training provider, and our CALC certification is an accredited ICF CCE program.",
   metrics: [
@@ -27,7 +27,6 @@ export const certificationHero = {
     { id: "malc", label: "MALC" },
     { id: "progression", label: "Progression" },
     { id: "recertification", label: "Recertification" },
-    { id: "lms", label: "LMS" },
   ],
 } as const;
 
@@ -51,8 +50,6 @@ export const certificationTracks: CertificationTrack[] = [
     ],
     progressionLabel:
       "After earning CALC, build coaching hours and longer-term project experience before applying for PALC.",
-    lmsSummary:
-      "Use the LMS to access CALC e-learning material and recertification refresh options.",
   },
   {
     key: "palc",
@@ -73,8 +70,6 @@ export const certificationTracks: CertificationTrack[] = [
     ],
     progressionLabel:
       "PALC is the bridge from coached participation to independently leading introductory Action Learning experiences.",
-    lmsSummary:
-      "Use the LMS as the launch point for PALC-related learning paths and prerequisite refreshers.",
   },
   {
     key: "salc",
@@ -95,8 +90,6 @@ export const certificationTracks: CertificationTrack[] = [
     ],
     progressionLabel:
       "SALC clears a coach to lead core certification experiences and mentor developing coaches.",
-    lmsSummary:
-      "The LMS remains the external launch point for senior-level WIAL learning pathways and program access.",
   },
   {
     key: "malc",
@@ -117,8 +110,6 @@ export const certificationTracks: CertificationTrack[] = [
     ],
     progressionLabel:
       "MALC is the capstone path for senior coaches who also contribute as visible thought leaders in the wider Action Learning field.",
-    lmsSummary:
-      "The website links outward to WIAL's existing LMS and does not duplicate advanced learning modules.",
   },
 ];
 
