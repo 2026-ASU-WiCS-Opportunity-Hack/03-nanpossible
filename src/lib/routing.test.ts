@@ -76,6 +76,37 @@ describe("normalizeSegments", () => {
     });
   });
 
+  it("resolves the awards page slug and redirects legacy award paths", () => {
+    expect(normalizeSegments(["awards"])).toEqual({
+      slug: "awards",
+      redirectTo: null,
+    });
+    expect(normalizeSegments(["award-nomination"])).toEqual({
+      slug: null,
+      redirectTo: "/awards/nomination",
+    });
+    expect(normalizeSegments(["previous-wial-award-winners"])).toEqual({
+      slug: null,
+      redirectTo: "/awards",
+    });
+  });
+
+  it("redirects legacy leadership paths to the about page", () => {
+    for (const path of [
+      ["about-us"],
+      ["about-us", "leadership"],
+      ["board-of-directors"],
+      ["executive-committee"],
+      ["directors-emeritus"],
+      ["advisory-board"],
+    ]) {
+      expect(normalizeSegments(path)).toEqual({
+        slug: null,
+        redirectTo: "/about",
+      });
+    }
+  });
+
   it("rejects unsupported paths", () => {
     expect(normalizeSegments(["blog"])).toBeNull();
   });

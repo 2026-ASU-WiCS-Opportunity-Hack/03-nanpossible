@@ -8,7 +8,8 @@ export type CanonicalPageSlug =
   | "affiliates"
   | "benefits"
   | "better-world"
-  | "action-learning";
+  | "action-learning"
+  | "awards";
 
 export type AppRole =
   | "platform_admin"
@@ -299,6 +300,29 @@ export type ContentSection =
       body: string;
       href: string;
       label: string;
+    }
+  | {
+      type: "gallery_grid";
+      title: string;
+      description?: string;
+      items: {
+        title: string;
+        subtitle?: string;
+        image?: string;
+        imageAlt?: string;
+      }[];
+    }
+  | {
+      type: "people_grid";
+      title: string;
+      description?: string;
+      items: {
+        name: string;
+        role: string;
+        image?: string;
+        imageAlt?: string;
+        eyebrow?: string;
+      }[];
     };
 
 export type ContentBody = {

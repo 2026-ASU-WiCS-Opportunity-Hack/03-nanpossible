@@ -213,6 +213,74 @@ function renderSection(section: ContentSection) {
           </div>
         </section>
       );
+    case "gallery_grid":
+      return (
+        <section className="section-stack" key={section.title}>
+          <div className="space-y-4">
+            <h2 className="section-title text-teal-deep">{section.title}</h2>
+            {section.description ? (
+              <p className="max-w-3xl text-base leading-7 text-foreground/75">
+                {section.description}
+              </p>
+            ) : null}
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {section.items.map((item, index) => (
+              <article
+                className="feature-card flex flex-col rounded-[1.5rem]"
+                key={`${item.title}-${index}`}
+              >
+                {item.image ? (
+                  <div className="flex h-56 items-center justify-center overflow-hidden rounded-[1rem] border border-line bg-white p-3">
+                    <img
+                      alt={item.imageAlt ?? item.title}
+                      className="max-h-full max-w-full object-contain"
+                      src={item.image}
+                    />
+                  </div>
+                ) : null}
+                <h3 className="mt-4">{item.title}</h3>
+                {item.subtitle ? (
+                  <p className="mt-1 text-sm text-foreground/70">{item.subtitle}</p>
+                ) : null}
+              </article>
+            ))}
+          </div>
+        </section>
+      );
+    case "people_grid":
+      return (
+        <section className="section-stack" key={section.title}>
+          <div className="space-y-4">
+            <h2 className="section-title text-teal-deep">{section.title}</h2>
+            {section.description ? (
+              <p className="max-w-3xl text-base leading-7 text-foreground/75">
+                {section.description}
+              </p>
+            ) : null}
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {section.items.map((person) => (
+              <article className="feature-card rounded-[1.5rem]" key={person.name}>
+                {person.image ? (
+                  <img
+                    alt={person.imageAlt ?? `Portrait of ${person.name}`}
+                    className="h-24 w-24 rounded-full border border-line object-cover"
+                    src={person.image}
+                  />
+                ) : null}
+                {person.eyebrow ? (
+                  <p className="mt-4 text-xs font-semibold uppercase tracking-[0.16em] text-green">
+                    {person.eyebrow}
+                  </p>
+                ) : null}
+                <h3 className={person.eyebrow ? "mt-2" : "mt-4"}>{person.name}</h3>
+                <p className="mt-1 text-sm text-foreground/70">{person.role}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+      );
     case "cta":
       return (
         <section

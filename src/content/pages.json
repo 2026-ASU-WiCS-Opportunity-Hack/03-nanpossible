@@ -100,6 +100,14 @@
       "sections": [
         {
           "type": "prose",
+          "title": "Purpose",
+          "paragraphs": [
+            "In our rapidly changing world, organizations struggle to meet their ambitious performance and people development goals with the methods they have used in the past.",
+            "We transform ambitious organizations into places of continuous learning, making them capable of solving today's challenges and embracing the opportunities of tomorrow through the promotion and practice of action learning."
+          ]
+        },
+        {
+          "type": "prose",
           "title": "Mission",
           "paragraphs": [
           "WIAL coaches elevate team performance through action learning. They support teams in identifying breakthrough solutions to real problems, while accelerating individual, team and organization development. WIAL's team coaching leads to more effective organizations, positive business impact and a learning culture."
@@ -113,8 +121,11 @@
           ]
         },
         {
-          "type": "prose",
+          "type": "media_prose",
           "title": "What We Do",
+          "image": "/about/action-learning-team.jpg",
+          "imageAlt": "A team working through real business problems around the table at a WIAL Action Learning session",
+          "imagePosition": "left",
           "paragraphs": [
             "WIAL coaches elevate team performance through Action Learning. They support teams in identifying breakthrough solutions to real problems, while accelerating individual, team and organizational development. WIAL's team coaching leads to more effective organizations, positive business impact and a learning culture.",
             "The World Institute for Action Learning provides training and certification programs internationally and is supported by affiliates around the world. Our certification programs include CALC (Certified Action Learning Coach), PALC (Professional Action Learning Coach), SALC (Senior Action Learning Coach), and MALC (Master Action Learning Coach)."
@@ -123,8 +134,8 @@
         {
           "type": "media_prose",
           "title": "The History of Action Learning",
-          "image": "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&q=80&w=800",
-          "imageAlt": "Professor Reginald Revans and the concept of Action Learning",
+          "image": "/about/action-learning-session.jpg",
+          "imageAlt": "A WIAL Action Learning coach leading a team session",
           "paragraphs": [
             "Professor Reginald Revans is the originator of Action Learning. He invented and developed this method in the United Kingdom in the 1940s, working in the Coal Board. He encouraged managers to meet together in small groups, to share their experiences and ask each other questions about what they saw and heard. The approach increased productivity by over 30%.",
             "In 1995, WIAL co-founder Michael Marquardt met Reg Revans, widely recognized as the father of Action Learning. The two men began a dialogue that led to the development of the WIAL model of Action Learning, which focuses on continual learning. After years of testing, research and refinement, the model took final form in the renowned six components and two ground rules of Action Learning.",
@@ -134,11 +145,67 @@
           "imagePosition": "right"
         },
         {
+          "type": "quote",
+          "quote": "Action Learning is a problem-solving and leadership development process that involves a small group working on a real problem, taking action, and learning as individuals, as a team, and as an organization while doing so.",
+          "attribution": "Dr. Michael Marquardt, WIAL co-founder"
+        },
+        {
           "type": "prose",
           "title": "Impact",
           "paragraphs": [
             "WIAL certification is recognized internationally as the gold standard for Action Learning coaching. Our certified coaches work with organizations across sectors including technology, healthcare, finance, education, and government.",
             "WIAL is an ICF-accredited training provider, and our CALC certification is an accredited ICF CCE program, ensuring that our coaches meet the highest professional standards."
+          ]
+        },
+        {
+          "type": "people_grid",
+          "title": "Board of Directors",
+          "description": "WIAL is governed by a volunteer Board of Directors drawn from the global Action Learning community. The President, Vice President, and Treasurer together form the Executive Committee, and the board is supported by WIAL's Executive Director.",
+          "items": [
+            { "name": "Isa Jamaluddin", "role": "President", "eyebrow": "Executive Committee", "image": "/leadership/isa-jamaluddin.jpg" },
+            { "name": "Lynda White", "role": "Vice President", "eyebrow": "Executive Committee", "image": "/leadership/lynda-white.jpg" },
+            { "name": "Jonathan Kenger", "role": "Treasurer", "eyebrow": "Executive Committee", "image": "/leadership/jonathan-kenger.jpg" },
+            { "name": "Els Van de Water", "role": "Director, Better World Fund", "image": "/leadership/els-van-de-water.jpg" },
+            { "name": "Ana Maria Maia Gonçalves", "role": "Director, Certification", "image": "/leadership/ana-maria-maia-goncalves.jpg" },
+            { "name": "Marie Tseng", "role": "Director, Affiliates", "image": "/leadership/marie-tseng.jpg" },
+            { "name": "Tomasz Janiak", "role": "Director, Marketing", "image": "/leadership/tomasz-janiak.jpg" },
+            { "name": "Phuong Dao", "role": "Director, Education & Research", "image": "/leadership/phuong-dao.jpg" },
+            { "name": "Sumaia Thomas", "role": "Director, Coaches", "image": "/leadership/sumaia-thomas.jpg" },
+            { "name": "Mark Relova, Ph.D.", "role": "Executive Director", "eyebrow": "Supported by", "image": "/leadership/mark-relova.jpg" }
+          ]
+        },
+        {
+          "type": "people_grid",
+          "title": "Directors Emeritus",
+          "description": "WIAL honors the past board members whose leadership and long service shaped the institute, including co-founder Dr. Michael Marquardt.",
+          "items": [
+            { "name": "Dr. Skip Leonard", "role": "Director Emeritus", "image": "/leadership/skip-leonard.jpg" },
+            { "name": "Dr. Michael Marquardt", "role": "Director Emeritus", "image": "/leadership/michael-marquardt.jpg" },
+            { "name": "Dr. Bea Carson", "role": "Director Emeritus", "image": "/leadership/bea-carson.jpg" },
+            { "name": "Dr. Chuck Appleby", "role": "Director Emeritus", "image": "/leadership/chuck-appleby.jpg" },
+            { "name": "Dr. Peter Loan", "role": "Director Emeritus", "image": "/leadership/peter-loan.jpg" },
+            { "name": "Dr. Ng Choon Seng", "role": "Director Emeritus", "image": "/leadership/ng-choon-seng.jpg" },
+            { "name": "Dr. Arthur M. Freedman", "role": "Director Emeritus", "image": "/leadership/arthur-freedman.jpg" },
+            { "name": "Peter Cauwelier, PhD", "role": "Director Emeritus", "image": "/leadership/peter-cauwelier.jpg" }
+          ]
+        },
+        {
+          "type": "people_grid",
+          "title": "Advisory Board",
+          "description": "Members of the WIAL Advisory Board include internationally recognized thought leaders and proponents of Action Learning.",
+          "items": [
+            { "name": "Nick Hixson", "role": "United Kingdom", "eyebrow": "Chair", "image": "/leadership/nick-hixson.jpg" },
+            { "name": "Agata Dulnik", "role": "Poland", "image": "/leadership/agata-dulnik.jpg" },
+            { "name": "Bob Hoffman", "role": "USA", "image": "/leadership/bob-hoffman.jpg" },
+            { "name": "Jane McConnell", "role": "France & USA", "image": "/leadership/jane-mcconnell.jpg" },
+            { "name": "Kimo Kippen", "role": "USA", "image": "/leadership/kimo-kippen.jpg" },
+            { "name": "Luciana Rabay", "role": "Brazil", "image": "/leadership/luciana-rabay.jpg" },
+            { "name": "M. Ian Blanchard", "role": "Caribbean", "image": "/leadership/ian-blanchard.jpg" },
+            { "name": "Magdalene Mook", "role": "Poland & USA", "image": "/leadership/magdalene-mook.jpg" },
+            { "name": "Mary Kay Vona", "role": "USA", "image": "/leadership/mary-kay-vona.jpg" },
+            { "name": "Rita Meyerson", "role": "USA", "image": "/leadership/rita-meyerson.jpg" },
+            { "name": "Shannon Banks", "role": "United Kingdom", "image": "/leadership/shannon-banks.jpg" },
+            { "name": "V. Ganesh Varatharajoo", "role": "Malaysia", "image": "/leadership/ganesh-varatharajoo.jpg" }
           ]
         },
         {
@@ -159,23 +226,16 @@
           "type": "cta",
           "title": "Awards",
           "body": "Recognizing excellence in Action Learning",
-          "href": "https://wial.org/awards/",
+          "href": "/awards",
           "label": "See Awards"
-        },
-        {
-  "type": "cta",
-  "title": "WIAL's Leadership",
-  "body": "The World Institute for Action Learning is guided by a dedicated leadership team committed to advancing Action Learning globally. Our leaders bring decades of experience in organizational development, coaching, and Action Learning practice.",
-  "href": "https://wial.org/about-us/leadership/",
-  "label": "Leadership"
-}
+        }
       ]
     },
     "seo": {
       "description": "Learn about the World Institute for Action Learning (WIAL) - the world's leading certifying body for Action Learning, our mission, vision, history, and global impact.",
       "sourceUrl": "https://wial.org/about-us/",
       "sourceStatus": "migrated-from-wial",
-      "sourceNotes": "Full content migrated from wial.org/about-us/ with Better World Fund, Conferences, Awards, and Leadership links added."
+      "sourceNotes": "Full content migrated from wial.org/about-us/ with Better World Fund, Conferences, and Awards links added (Awards now internal at /awards). Leadership consolidated from wial.org board-of-directors, executive-committee (subset of the board, flagged inline), directors-emeritus, and advisory-board pages; photos vendored under public/leadership/ (no hotlinking). Purpose section text extracted from the Purpose-Vision-Mission one-pager image; the Marquardt quote graphic (Quote2.jpg) is rendered as a native quote block; session photos (IMG_3408 banner thumb, IMG_5388) vendored under public/about/."
     }
   },
   {
@@ -722,6 +782,770 @@
     "sourceNotes": "Rewritten from the live wial.org Action Learning page (definition, six components, ground rules). External CTAs replaced with internal /certification, /coaches, and /benefits routes; Solution Spheres blurb omitted until the services page is migrated."
   }
 },
+  {
+    "id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaa0013",
+    "chapterId": null,
+    "slug": "awards",
+    "title": "WIAL Awards",
+    "published": true,
+    "bodyRichtext": {
+      "heroIntro": "Every year WIAL presents awards to spectacular individuals and organizations who demonstrate Action Learning in their work. From applications in education and research to companies achieving results through Action Learning, the awards are prestigious and a true sign of achievement.",
+      "metrics": [
+        { "label": "Award categories", "value": "5" },
+        { "label": "Years of winners", "value": "10+" },
+        { "label": "Marquardt research prize", "value": "$500" }
+      ],
+      "sections": [
+        {
+          "type": "media_prose",
+          "title": "Recognition across the community",
+          "image": "/awards/wial-awards.jpg",
+          "imageAlt": "An Affiliate of the Year award being presented with a handshake at a WIAL global conference",
+          "imagePosition": "right",
+          "paragraphs": [
+            "WIAL award winners span the full breadth of the Action Learning community — coaches whose teams and clients vouch for their impact, researchers advancing the method, organizations applying Action Learning at scale, and volunteers bringing it to communities that could not otherwise afford it.",
+            "Awards are presented each year at WIAL's global conference or virtual Action Learning week, and winners join an honor roll that reaches back more than a decade."
+          ]
+        },
+        {
+          "type": "feature_grid",
+          "title": "Award categories",
+          "items": [
+            { "title": "Application Award", "body": "Recognizes high-impact applications of WIAL Action Learning, measured by the scale of programs run, the impact of the projects addressed, the use of certified coaches, and the visibility the work has earned." },
+            { "title": "Innovation Award", "body": "Celebrates organizations and individuals who created a unique solution using WIAL Action Learning, with an emphasis on creative ways of integrating the methodology." },
+            { "title": "Coaching Excellence Award", "body": "Recognizes superior coaching, demonstrated through endorsements and praise from team members and clients." },
+            { "title": "Marquardt Research Award", "body": "Honors published work that contributes to the body of Action Learning knowledge. Named for WIAL co-founder Dr. Michael Marquardt, the award includes a $500 prize." },
+            { "title": "Pro Bono Coaching Award", "body": "Recognizes coaches whose volunteer Action Learning work delivers meaningful social impact." }
+          ]
+        },
+        {
+          "type": "prose",
+          "title": "Nomination and eligibility rules",
+          "paragraphs": [
+            "You can nominate a third party or put your own work forward — both routes use the same form, and every submission is acknowledged as soon as it arrives."
+          ],
+          "bullets": [
+            "Past winners may not resubmit a previously awarded project or program.",
+            "Third-party nominees must consent to the nomination.",
+            "Individual awardees must hold a current WIAL coach certification.",
+            "Winners are asked to support WIAL's publicity around the awards.",
+            "Decisions of the WIAL Awards Committee are final."
+          ]
+        },
+        {
+          "type": "gallery_grid",
+          "title": "2024 award winners",
+          "description": "Presented at the WIAL Global Conference in Ho Chi Minh City, Vietnam.",
+          "items": [
+            {
+              "title": "Jeff Gold and Ollie Jones",
+              "subtitle": "Marquardt Research Award · Winner",
+              "image": "/awards/winners/2024-jeff-gold-ollie-jones.jpg",
+              "imageAlt": "Jeff Gold and Ollie Jones — Marquardt Research Award · Winner"
+            },
+            {
+              "title": "Athitkorn N. and Sumate Noklang, Srinakharinwirot University",
+              "subtitle": "Marquardt Research Award · Runner-up",
+              "image": "/awards/winners/2024-athitkorn-sumate-noklang.jpg",
+              "imageAlt": "Athitkorn N. and Sumate Noklang, Srinakharinwirot University — Marquardt Research Award · Runner-up"
+            },
+            {
+              "title": "Magali Lopes",
+              "subtitle": "Marquardt Research Award · Runner-up",
+              "image": "/awards/winners/2024-magali-lopes.jpg",
+              "imageAlt": "Magali Lopes — Marquardt Research Award · Runner-up"
+            },
+            {
+              "title": "Melbourne Business School, University of Melbourne",
+              "subtitle": "Innovation Award · Winner",
+              "image": "/awards/winners/2024-melbourne-business-school.jpg",
+              "imageAlt": "Melbourne Business School, University of Melbourne — Innovation Award · Winner"
+            },
+            {
+              "title": "Sumiko Watanabe, Tokyo Keizai University",
+              "subtitle": "Innovation Award · Runner-up",
+              "image": "/awards/winners/2024-sumiko-watanabe.jpg",
+              "imageAlt": "Sumiko Watanabe, Tokyo Keizai University — Innovation Award · Runner-up"
+            },
+            {
+              "title": "May Han",
+              "subtitle": "Coaching Excellence Award · Winner",
+              "image": "/awards/winners/2024-may-han.jpg",
+              "imageAlt": "May Han — Coaching Excellence Award · Winner"
+            },
+            {
+              "title": "Shannon Banks, Be Leadership (UK)",
+              "subtitle": "Coaching Excellence Award · Runner-up",
+              "image": "/awards/winners/2024-shannon-banks.jpg",
+              "imageAlt": "Shannon Banks, Be Leadership (UK) — Coaching Excellence Award · Runner-up"
+            },
+            {
+              "title": "Peter Cauwelier and Peerawan Wattanametavong",
+              "subtitle": "Coaching Excellence Award · Runner-up",
+              "image": "/awards/winners/2024-peter-cauwelier-peerawan.jpg",
+              "imageAlt": "Peter Cauwelier and Peerawan Wattanametavong — Coaching Excellence Award · Runner-up"
+            },
+            {
+              "title": "Philips",
+              "subtitle": "Application Award · Winner",
+              "image": "/awards/winners/2024-philips.jpg",
+              "imageAlt": "Philips — Application Award · Winner"
+            },
+            {
+              "title": "Executive Breakthrough",
+              "subtitle": "Application Award · Runner-up",
+              "image": "/awards/winners/2024-executive-breakthrough.jpg",
+              "imageAlt": "Executive Breakthrough — Application Award · Runner-up"
+            },
+            {
+              "title": "Craig Filipkowski",
+              "subtitle": "Pro Bono Coaching Award · Winner",
+              "image": "/awards/winners/2024-craig-filipkowski.jpg",
+              "imageAlt": "Craig Filipkowski — Pro Bono Coaching Award · Winner"
+            }
+          ]
+        },
+        {
+          "type": "gallery_grid",
+          "title": "2023 award winners",
+          "description": "Presented during the virtual WIAL Global Action Learning Week.",
+          "items": [
+            {
+              "title": "Peerawan Wattanametavong (Thailand)",
+              "subtitle": "Coaching Excellence Award · Winner",
+              "image": "/awards/winners/2023-peerawan-wattanametavong.webp",
+              "imageAlt": "Peerawan Wattanametavong (Thailand) — Coaching Excellence Award · Winner"
+            },
+            {
+              "title": "Nguyen Duy Minh (Vietnam)",
+              "subtitle": "Coaching Excellence Award · Runner-up",
+              "image": "/awards/winners/2023-nguyen-duy-minh.webp",
+              "imageAlt": "Nguyen Duy Minh (Vietnam) — Coaching Excellence Award · Runner-up"
+            },
+            {
+              "title": "Mikinari Higano (Japan)",
+              "subtitle": "Coaching Excellence Award · Runner-up",
+              "image": "/awards/winners/2023-mikinari-higano.webp",
+              "imageAlt": "Mikinari Higano (Japan) — Coaching Excellence Award · Runner-up"
+            },
+            {
+              "title": "Entrepreneurship Club (Thailand)",
+              "subtitle": "Innovation Award · Winner",
+              "image": "/awards/winners/2023-entrepreneurship-club.webp",
+              "imageAlt": "Entrepreneurship Club (Thailand) — Innovation Award · Winner"
+            },
+            {
+              "title": "Chunghwa Telecom Training Institute (Taiwan)",
+              "subtitle": "Innovation Award · Runner-up",
+              "image": "/awards/winners/2023-chunghwa-telecom.webp",
+              "imageAlt": "Chunghwa Telecom Training Institute (Taiwan) — Innovation Award · Runner-up"
+            },
+            {
+              "title": "DEK Technologies (Vietnam)",
+              "subtitle": "Application Award · Winner",
+              "image": "/awards/winners/2023-dek-technologies.webp",
+              "imageAlt": "DEK Technologies (Vietnam) — Application Award · Winner"
+            },
+            {
+              "title": "Wenshan Community College, Taipei (Taiwan)",
+              "subtitle": "Application Award · Runner-up",
+              "image": "/awards/winners/2023-wenshan-community-college.webp",
+              "imageAlt": "Wenshan Community College, Taipei (Taiwan) — Application Award · Runner-up"
+            }
+          ]
+        },
+        {
+          "type": "gallery_grid",
+          "title": "2022 award winners",
+          "description": "Presented during the virtual WIAL Global Action Learning Week.",
+          "items": [
+            {
+              "title": "Entrepreneurship Club and Bean Sprout Team (Thailand)",
+              "subtitle": "Pro Bono Coaching Award · Winner",
+              "image": "/awards/winners/2022-entrepreneurship-club-bean-sprout.webp",
+              "imageAlt": "Entrepreneurship Club and Bean Sprout Team (Thailand) — Pro Bono Coaching Award · Winner"
+            },
+            {
+              "title": "Shaohua Hou and Zhu Yongquan (China)",
+              "subtitle": "Application Award · Winners",
+              "image": "/awards/winners/2022-shaohua-hou-zhu-yongquan.webp",
+              "imageAlt": "Shaohua Hou and Zhu Yongquan (China) — Application Award · Winners"
+            },
+            {
+              "title": "Maura Muller (USA)",
+              "subtitle": "Application Award · Runner-up",
+              "image": "/awards/winners/2022-maura-muller.webp",
+              "imageAlt": "Maura Muller (USA) — Application Award · Runner-up"
+            },
+            {
+              "title": "Yayoi Hirose (Japan)",
+              "subtitle": "Marquardt Research Award · Winner",
+              "image": "/awards/winners/2022-yayoi-hirose.webp",
+              "imageAlt": "Yayoi Hirose (Japan) — Marquardt Research Award · Winner"
+            },
+            {
+              "title": "William Teo (Malaysia)",
+              "subtitle": "Coaching Excellence Award · Winner",
+              "image": "/awards/winners/2022-william-teo.webp",
+              "imageAlt": "William Teo (Malaysia) — Coaching Excellence Award · Winner"
+            },
+            {
+              "title": "Craig Filipkowski",
+              "image": "/awards/winners/2022-craig-filipkowski.webp",
+              "imageAlt": "Craig Filipkowski — WIAL award winner"
+            },
+            {
+              "title": "WIAL Vietnam",
+              "subtitle": "Affiliate of the Year · Winner",
+              "image": "/awards/winners/2022-wial-vietnam.webp",
+              "imageAlt": "WIAL Vietnam — Affiliate of the Year · Winner"
+            }
+          ]
+        },
+        {
+          "type": "gallery_grid",
+          "title": "2021 award winners",
+          "description": "Presented at the WIAL Global Virtual Conference.",
+          "items": [
+            {
+              "title": "Seung-Hee Park, Dr. Yoojoo Cho, and Dr. Hyeon-Cheol Bong",
+              "subtitle": "Marquardt Research Award · Winners",
+              "image": "/awards/winners/2021-park-cho-bong.webp",
+              "imageAlt": "Seung-Hee Park, Dr. Yoojoo Cho, and Dr. Hyeon-Cheol Bong — Marquardt Research Award · Winners"
+            },
+            {
+              "title": "Magali Lopes",
+              "subtitle": "Marquardt Research Award · Runner-up",
+              "image": "/awards/winners/2021-magali-lopes.webp",
+              "imageAlt": "Magali Lopes — Marquardt Research Award · Runner-up"
+            },
+            {
+              "title": "Hawar Amin",
+              "subtitle": "Coaching Excellence Award · Winner",
+              "image": "/awards/winners/2021-hawar-amin.webp",
+              "imageAlt": "Hawar Amin — Coaching Excellence Award · Winner"
+            },
+            {
+              "title": "Maria Angela Passador and Sumaia Thomas",
+              "subtitle": "Pro Bono Coaching Award · Winners",
+              "image": "/awards/winners/2021-passador-thomas.webp",
+              "imageAlt": "Maria Angela Passador and Sumaia Thomas — Pro Bono Coaching Award · Winners"
+            },
+            {
+              "title": "Kok Hua Phoon",
+              "subtitle": "Pro Bono Coaching Award · Runner-up",
+              "image": "/awards/winners/2021-kok-hua-phoon.webp",
+              "imageAlt": "Kok Hua Phoon — Pro Bono Coaching Award · Runner-up"
+            },
+            {
+              "title": "Emerging World",
+              "subtitle": "Innovation Award · Winner",
+              "image": "/awards/winners/2021-emerging-world.webp",
+              "imageAlt": "Emerging World — Innovation Award · Winner"
+            },
+            {
+              "title": "Takeda",
+              "subtitle": "Innovation Award · Runner-up",
+              "image": "/awards/winners/2021-takeda.webp",
+              "imageAlt": "Takeda — Innovation Award · Runner-up"
+            },
+            {
+              "title": "JSR BST Elastomer Co., Ltd.",
+              "subtitle": "Application Award · Winner",
+              "image": "/awards/winners/2021-jsr-bst-elastomer.webp",
+              "imageAlt": "JSR BST Elastomer Co., Ltd. — Application Award · Winner"
+            },
+            {
+              "title": "TNP Group",
+              "subtitle": "Application Award · Runner-up",
+              "image": "/awards/winners/2021-tnp-group.webp",
+              "imageAlt": "TNP Group — Application Award · Runner-up"
+            },
+            {
+              "title": "WIAL Singapore",
+              "subtitle": "Affiliate of the Year · Winner",
+              "image": "/awards/winners/2021-wial-singapore.webp",
+              "imageAlt": "WIAL Singapore — Affiliate of the Year · Winner"
+            }
+          ]
+        },
+        {
+          "type": "gallery_grid",
+          "title": "2019 award winners",
+          "description": "Presented at the WIAL Global Conference in São Paulo, Brazil.",
+          "items": [
+            {
+              "title": "Yanfeng Automotive Interiors",
+              "subtitle": "Innovation Award",
+              "image": "/awards/winners/2019-yanfeng.webp",
+              "imageAlt": "Yanfeng Automotive Interiors — Innovation Award"
+            },
+            {
+              "title": "Satellite Applications Catapult (UK)",
+              "subtitle": "Application Award",
+              "image": "/awards/winners/2019-catapult.png",
+              "imageAlt": "Satellite Applications Catapult (UK) — Application Award"
+            },
+            {
+              "title": "BNP Paribas",
+              "subtitle": "Application Award",
+              "image": "/awards/winners/2019-bnp-paribas.webp",
+              "imageAlt": "BNP Paribas — Application Award"
+            },
+            {
+              "title": "ThoughtWorks",
+              "subtitle": "Application Award",
+              "image": "/awards/winners/2019-thoughtworks.webp",
+              "imageAlt": "ThoughtWorks — Application Award"
+            },
+            {
+              "title": "Haier",
+              "subtitle": "Application Award",
+              "image": "/awards/winners/2019-haier.png",
+              "imageAlt": "Haier — Application Award"
+            },
+            {
+              "title": "Lyreco",
+              "subtitle": "Application Award",
+              "image": "/awards/winners/2019-lyreco.webp",
+              "imageAlt": "Lyreco — Application Award"
+            },
+            {
+              "title": "Magali Lopes",
+              "subtitle": "Coaching Excellence Award",
+              "image": "/awards/winners/2019-magali-lopes.jpg",
+              "imageAlt": "Magali Lopes — Coaching Excellence Award"
+            },
+            {
+              "title": "Bill Thimmesch",
+              "subtitle": "Coaching Excellence Award",
+              "image": "/awards/winners/2019-bill-thimmesch.jpg",
+              "imageAlt": "Bill Thimmesch — Coaching Excellence Award"
+            },
+            {
+              "title": "Dr. Peter Cauwelier",
+              "subtitle": "Marquardt Research Award",
+              "image": "/awards/winners/2019-peter-cauwelier.jpg",
+              "imageAlt": "Dr. Peter Cauwelier — Marquardt Research Award"
+            },
+            {
+              "title": "WIAL USA",
+              "subtitle": "Affiliate of the Year"
+            }
+          ]
+        },
+        {
+          "type": "gallery_grid",
+          "title": "2018 award winners",
+          "description": "Presented at the WIAL Global Conference in Amersfoort, The Netherlands.",
+          "items": [
+            {
+              "title": "Thermo Fisher Scientific",
+              "subtitle": "Best Application Award",
+              "image": "/awards/winners/2018-thermo-fisher.webp",
+              "imageAlt": "Thermo Fisher Scientific — Best Application Award"
+            },
+            {
+              "title": "Takeda",
+              "subtitle": "Best Application Award",
+              "image": "/awards/winners/2018-takeda.jpg",
+              "imageAlt": "Takeda — Best Application Award"
+            },
+            {
+              "title": "The New York Public Library",
+              "subtitle": "Innovation Award",
+              "image": "/awards/winners/2018-nypl.png",
+              "imageAlt": "The New York Public Library — Innovation Award"
+            },
+            {
+              "title": "Tabor College d'Ampte",
+              "subtitle": "Best Application Award",
+              "image": "/awards/winners/2018-tabor-college.jpg",
+              "imageAlt": "Tabor College d'Ampte — Best Application Award"
+            },
+            {
+              "title": "China Foreign Economy and Trade Trust (FOTIC)",
+              "subtitle": "Best Application Award",
+              "image": "/awards/winners/2018-fotic.png",
+              "imageAlt": "China Foreign Economy and Trade Trust (FOTIC) — Best Application Award"
+            },
+            {
+              "title": "WIAL Brasil",
+              "subtitle": "Pro Bono Award",
+              "image": "/awards/winners/2018-wial-brasil-pro-bono.jpg",
+              "imageAlt": "WIAL Brasil — Pro Bono Award"
+            },
+            {
+              "title": "Mies de Koning",
+              "subtitle": "Coaching Excellence Award",
+              "image": "/awards/winners/2018-mies-de-koning.png",
+              "imageAlt": "Mies de Koning — Coaching Excellence Award"
+            },
+            {
+              "title": "Sridar Ramachandran",
+              "subtitle": "Coaching Excellence Award",
+              "image": "/awards/winners/2018-sridar-ramachandran.png",
+              "imageAlt": "Sridar Ramachandran — Coaching Excellence Award"
+            },
+            {
+              "title": "WIAL Netherlands",
+              "subtitle": "Affiliate of the Year"
+            },
+            {
+              "title": "WIAL Brasil",
+              "subtitle": "Affiliate of the Year"
+            }
+          ]
+        },
+        {
+          "type": "gallery_grid",
+          "title": "2017 award winners",
+          "description": "Presented at the WIAL Global Conference in Shanghai, China.",
+          "items": [
+            {
+              "title": "Hitachi Information & Telecommunication",
+              "subtitle": "Best Application Award",
+              "image": "/awards/winners/2017-hitachi.png",
+              "imageAlt": "Hitachi Information & Telecommunication — Best Application Award"
+            },
+            {
+              "title": "Panyapiwat Institute of Management",
+              "subtitle": "Best Application Award",
+              "image": "/awards/winners/2017-panyapiwat.png",
+              "imageAlt": "Panyapiwat Institute of Management — Best Application Award"
+            },
+            {
+              "title": "Primary School Helmgras",
+              "subtitle": "Best Application Award",
+              "image": "/awards/winners/2017-helmgras.jpg",
+              "imageAlt": "Primary School Helmgras — Best Application Award"
+            },
+            {
+              "title": "The Chopras",
+              "subtitle": "Best Application Award",
+              "image": "/awards/winners/2017-the-chopras.png",
+              "imageAlt": "The Chopras — Best Application Award"
+            },
+            {
+              "title": "The New York Public Library",
+              "subtitle": "Best Application Award"
+            },
+            {
+              "title": "Eastern Caribbean Central Bank",
+              "subtitle": "Best Application Award",
+              "image": "/awards/winners/2017-eccb.png",
+              "imageAlt": "Eastern Caribbean Central Bank — Best Application Award"
+            },
+            {
+              "title": "AVIVA-COFCO Life Insurance",
+              "subtitle": "Best Application Award",
+              "image": "/awards/winners/2017-aviva-cofco.jpg",
+              "imageAlt": "AVIVA-COFCO Life Insurance — Best Application Award"
+            },
+            {
+              "title": "Changan Ford",
+              "subtitle": "Best Application Award",
+              "image": "/awards/winners/2017-changan-ford.png",
+              "imageAlt": "Changan Ford — Best Application Award"
+            },
+            {
+              "title": "Robinsons Land Corporation",
+              "subtitle": "Best Application Award",
+              "image": "/awards/winners/2017-robinsons-land.png",
+              "imageAlt": "Robinsons Land Corporation — Best Application Award"
+            },
+            {
+              "title": "Marina Mazi",
+              "subtitle": "Coaching Excellence Award",
+              "image": "/awards/winners/2017-marina-mazi.png",
+              "imageAlt": "Marina Mazi — Coaching Excellence Award"
+            },
+            {
+              "title": "Tiffany Maurycy",
+              "subtitle": "Pro Bono Award"
+            },
+            {
+              "title": "Ed Williams",
+              "subtitle": "Pro Bono Award",
+              "image": "/awards/winners/2017-ed-williams.png",
+              "imageAlt": "Ed Williams — Pro Bono Award"
+            },
+            {
+              "title": "WIAL Malaysia",
+              "subtitle": "Affiliate of the Year"
+            }
+          ]
+        },
+        {
+          "type": "gallery_grid",
+          "title": "2016 award winners",
+          "description": "Presented at the WIAL Global Conference in Warsaw, Poland.",
+          "items": [
+            {
+              "title": "Matthew Farmer",
+              "subtitle": "Coaching Excellence Award",
+              "image": "/awards/winners/2016-matthew-farmer.png",
+              "imageAlt": "Matthew Farmer — Coaching Excellence Award"
+            },
+            {
+              "title": "Tomasz Janiak",
+              "subtitle": "Coaching Excellence Award",
+              "image": "/awards/winners/2016-tomasz-janiak.jpg",
+              "imageAlt": "Tomasz Janiak — Coaching Excellence Award"
+            },
+            {
+              "title": "Twan Paes",
+              "subtitle": "Coaching Excellence Award",
+              "image": "/awards/winners/2016-twan-paes.png",
+              "imageAlt": "Twan Paes — Coaching Excellence Award"
+            },
+            {
+              "title": "Ming Yen Yang",
+              "subtitle": "Coaching Excellence Award"
+            },
+            {
+              "title": "Christopher Tan",
+              "subtitle": "Leadership Excellence Award",
+              "image": "/awards/winners/2016-christopher-tan.png",
+              "imageAlt": "Christopher Tan — Leadership Excellence Award"
+            },
+            {
+              "title": "Louis Baron",
+              "subtitle": "Research Excellence Award",
+              "image": "/awards/winners/2016-louis-baron.jpg",
+              "imageAlt": "Louis Baron — Research Excellence Award"
+            },
+            {
+              "title": "Simon Reese",
+              "subtitle": "Research Excellence Award",
+              "image": "/awards/winners/2016-simon-reese.jpg",
+              "imageAlt": "Simon Reese — Research Excellence Award"
+            },
+            {
+              "title": "Mary Volz-Peacock, Bea Carson, and Michael Marquardt",
+              "subtitle": "Research Excellence Award",
+              "image": "/awards/winners/2016-volz-peacock-carson-marquardt.jpg",
+              "imageAlt": "Mary Volz-Peacock, Bea Carson, and Michael Marquardt — Research Excellence Award"
+            },
+            {
+              "title": "MSI",
+              "subtitle": "Best Application in Business"
+            },
+            {
+              "title": "China Southern Airlines",
+              "subtitle": "Best Application in Business"
+            },
+            {
+              "title": "WIAL Caribbean",
+              "subtitle": "Affiliate of the Year"
+            },
+            {
+              "title": "WIAL Poland",
+              "subtitle": "Affiliate of the Year"
+            }
+          ]
+        },
+        {
+          "type": "gallery_grid",
+          "title": "2015 award winners",
+          "description": "Organization and individual honors across the global Action Learning community.",
+          "items": [
+            {
+              "title": "Ross School of Business, University of Michigan",
+              "subtitle": "Action Learning Excellence · Academic Institute",
+              "image": "/awards/winners/2015-michigan-ross.png",
+              "imageAlt": "Ross School of Business, University of Michigan — Action Learning Excellence · Academic Institute"
+            },
+            {
+              "title": "Transition Optical Philippines",
+              "subtitle": "Action Learning Excellence · Small-Medium Organization",
+              "image": "/awards/winners/2015-transition-optical.png",
+              "imageAlt": "Transition Optical Philippines — Action Learning Excellence · Small-Medium Organization"
+            },
+            {
+              "title": "Canon",
+              "subtitle": "Action Learning Excellence · Small-Medium Organization",
+              "image": "/awards/winners/2015-canon.png",
+              "imageAlt": "Canon — Action Learning Excellence · Small-Medium Organization"
+            },
+            {
+              "title": "Air Asia",
+              "subtitle": "Action Learning Excellence · Large Organization",
+              "image": "/awards/winners/2015-air-asia.png",
+              "imageAlt": "Air Asia — Action Learning Excellence · Large Organization"
+            },
+            {
+              "title": "Nanshan Group",
+              "subtitle": "Action Learning Excellence · Conglomerate",
+              "image": "/awards/winners/2015-nanshan-group.png",
+              "imageAlt": "Nanshan Group — Action Learning Excellence · Conglomerate"
+            },
+            {
+              "title": "Caribbean Leadership Program",
+              "subtitle": "Action Learning Excellence · Government",
+              "image": "/awards/winners/2015-caribbean-leadership.png",
+              "imageAlt": "Caribbean Leadership Program — Action Learning Excellence · Government"
+            },
+            {
+              "title": "Association for Talent Development",
+              "subtitle": "Action Learning Excellence · Association",
+              "image": "/awards/winners/2015-atd.png",
+              "imageAlt": "Association for Talent Development — Action Learning Excellence · Association"
+            },
+            {
+              "title": "Emergenetics International Asia Pacific",
+              "subtitle": "Action Learning Innovation Award",
+              "image": "/awards/winners/2015-emergenetics.png",
+              "imageAlt": "Emergenetics International Asia Pacific — Action Learning Innovation Award"
+            },
+            {
+              "title": "Ming Yen Yang",
+              "subtitle": "Global Leader in Action Learning"
+            },
+            {
+              "title": "Manish Jain",
+              "subtitle": "Leadership Excellence Award",
+              "image": "/awards/winners/2015-manish-jain.jpg",
+              "imageAlt": "Manish Jain — Leadership Excellence Award"
+            },
+            {
+              "title": "Joe CM Lee",
+              "subtitle": "Research Excellence Award"
+            },
+            {
+              "title": "Skip Leonard",
+              "subtitle": "Research Excellence Award",
+              "image": "/awards/winners/2015-skip-leonard.jpg",
+              "imageAlt": "Skip Leonard — Research Excellence Award"
+            },
+            {
+              "title": "Arthur Freedman",
+              "subtitle": "Research Excellence Award",
+              "image": "/awards/winners/2015-arthur-freedman.png",
+              "imageAlt": "Arthur Freedman — Research Excellence Award"
+            },
+            {
+              "title": "Phoon Kok Hwa",
+              "subtitle": "Coaching Excellence Award",
+              "image": "/awards/winners/2015-phoon-kok-hwa.png",
+              "imageAlt": "Phoon Kok Hwa — Coaching Excellence Award"
+            },
+            {
+              "title": "Emily Rogers",
+              "subtitle": "Coaching Excellence Award",
+              "image": "/awards/winners/2015-emily-rogers.png",
+              "imageAlt": "Emily Rogers — Coaching Excellence Award"
+            },
+            {
+              "title": "Faz Kamariddin",
+              "subtitle": "Coaching Excellence Award",
+              "image": "/awards/winners/2015-faz-kamariddin.png",
+              "imageAlt": "Faz Kamariddin — Coaching Excellence Award"
+            },
+            {
+              "title": "WIAL Singapore",
+              "subtitle": "Affiliate of the Year"
+            }
+          ]
+        },
+        {
+          "type": "logo_grid",
+          "title": "Earlier organization award winners",
+          "items": [
+            {
+              "name": "Microsoft",
+              "logo": "/awards/winners/legacy-microsoft.png"
+            },
+            {
+              "name": "Sony",
+              "logo": "/awards/winners/legacy-sony.png"
+            },
+            {
+              "name": "Panasonic",
+              "logo": "/awards/winners/legacy-panasonic.png"
+            },
+            {
+              "name": "NEC",
+              "logo": "/awards/winners/legacy-nec.png"
+            },
+            {
+              "name": "Nomura",
+              "logo": "/awards/winners/legacy-nomura.png"
+            },
+            {
+              "name": "Kirin",
+              "logo": "/awards/winners/legacy-kirin.png"
+            },
+            {
+              "name": "Lexus",
+              "logo": "/awards/winners/legacy-lexus.png"
+            },
+            {
+              "name": "Target",
+              "logo": "/awards/winners/legacy-target.png"
+            },
+            {
+              "name": "Wells Fargo",
+              "logo": "/awards/winners/legacy-wells-fargo.png"
+            },
+            {
+              "name": "Constellation Energy",
+              "logo": "/awards/winners/legacy-constellation.png"
+            },
+            {
+              "name": "Boehringer Ingelheim",
+              "logo": "/awards/winners/legacy-boehringer.png"
+            },
+            {
+              "name": "Fuji Xerox",
+              "logo": "/awards/winners/legacy-fuji-xerox.png"
+            },
+            {
+              "name": "Goodwill",
+              "logo": "/awards/winners/legacy-goodwill.png"
+            },
+            {
+              "name": "Infinitus",
+              "logo": "/awards/winners/legacy-infinitus.png"
+            },
+            {
+              "name": "Rohde & Schwarz",
+              "logo": "/awards/winners/legacy-rohde-schwarz.png"
+            },
+            {
+              "name": "Federal Aviation Administration",
+              "logo": "/awards/winners/legacy-faa.png"
+            },
+            {
+              "name": "AXA",
+              "logo": "/awards/winners/legacy-axa.png"
+            },
+            {
+              "name": "Rikkyo University",
+              "logo": "/awards/winners/legacy-rikkyo.png"
+            },
+            {
+              "name": "American University",
+              "logo": "/awards/winners/legacy-american-university.png"
+            }
+          ]
+        },
+        {
+          "type": "cta",
+          "title": "Apply or nominate today",
+          "body": "Nominate an organization or individual whose Action Learning work deserves recognition — or put your own work forward. Every submission is acknowledged as soon as it arrives.",
+          "href": "/awards/nomination",
+          "label": "Open the nomination form"
+        }
+      ]
+    },
+    "seo": {
+      "description": "WIAL's annual awards recognize individuals and organizations demonstrating excellence in Action Learning — five award categories, past winners since 2015, and how to nominate.",
+      "sourceUrl": "https://wial.org/awards/",
+      "sourceStatus": "migrated-from-wial",
+      "sourceNotes": "Consolidates wial.org/awards, /award-nomination (criteria and eligibility kept; the nomination form itself is migrated to the internal /awards/nomination route, stored in award_nominations), and /previous-wial-award-winners (per-year gallery_grid sections with winner slides, photos, and logos vendored under public/awards/winners/; 2021-2024 names and awards transcribed from the slide images themselves since the source captions were garbled; generic WIAL-logo placeholder images and two mismatched logos from the source were dropped rather than republished). Ceremony photo vendored under public/awards/."
+    }
+  },
   {
     "id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaa0006",
     "chapterId": "22222222-2222-4222-8222-222222222222",
