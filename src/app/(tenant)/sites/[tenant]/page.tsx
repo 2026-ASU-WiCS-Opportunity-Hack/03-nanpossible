@@ -18,6 +18,14 @@ function stripHtml(value: string) {
   return value.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
 }
 
+function websiteHost(url: string) {
+  try {
+    return new URL(url).hostname;
+  } catch {
+    return url;
+  }
+}
+
 export default async function TenantHomePage({ params }: TenantHomePageProps) {
   const { tenant } = await params;
   const chapter = await getChapterBySubdomain(tenant);
@@ -38,10 +46,12 @@ export default async function TenantHomePage({ params }: TenantHomePageProps) {
       tenantSubdomain: chapter.subdomain,
     }),
     listApprovedCoaches({ chapterId: chapter.id, limit: 4 }),
-    listUpcomingEvents(chapter.id, {
-      limit: 3,
-      tenantSubdomain: chapter.subdomain,
-    }),
+    chapter.websiteUrl
+      ? Promise.resolve([])
+      : listUpcomingEvents(chapter.id, {
+          limit: 3,
+          tenantSubdomain: chapter.subdomain,
+        }),
   ]);
 
   const aboutPreview = aboutPage?.bodyHtml ? stripHtml(aboutPage.bodyHtml).slice(0, 220) : "";
@@ -49,6 +59,26 @@ export default async function TenantHomePage({ params }: TenantHomePageProps) {
     <div className="page-frame">
       <div className="site-shell">
         <div className="grid gap-6">
+            {chapter.websiteUrl ? (
+              <section className="site-panel flex flex-wrap items-center justify-between gap-3 rounded-[2rem] px-6 py-4">
+                <p className="text-base leading-7 text-foreground/80">
+                  {chapter.name}&rsquo;s official website is{" "}
+                  <span className="font-semibold text-teal-deep">
+                    {websiteHost(chapter.websiteUrl)}
+                  </span>
+                  .
+                </p>
+                <a
+                  className="button-link primary"
+                  href={chapter.websiteUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Visit the official website
+                </a>
+              </section>
+            ) : null}
+
             <ChapterHero chapter={chapter} />
 
             <div className="grid gap-5 xl:grid-cols-[minmax(0,1.35fr)_360px]">
@@ -60,14 +90,16 @@ export default async function TenantHomePage({ params }: TenantHomePageProps) {
                     chapter.description ||
                     "This affiliate is preparing its local story, leadership focus, and community programming details."}
                 </p>
-                <div className="mt-5 flex flex-wrap gap-3">
-                  <Link className="button-link secondary" href="/about">
-                    Read about the affiliate
-                  </Link>
-                  <Link className="button-link secondary" href="/contact">
-                    Contact this affiliate
-                  </Link>
-                </div>
+                {!chapter.websiteUrl ? (
+                  <div className="mt-5 flex flex-wrap gap-3">
+                    <Link className="button-link secondary" href="/about">
+                      Read about the affiliate
+                    </Link>
+                    <Link className="button-link secondary" href="/contact">
+                      Contact this affiliate
+                    </Link>
+                  </div>
+                ) : null}
               </section>
 
               <section className="site-panel rounded-[2rem] p-6">
@@ -81,7 +113,7 @@ export default async function TenantHomePage({ params }: TenantHomePageProps) {
             </div>
 
             <FeaturedCoaches coaches={coaches} />
-            <UpcomingEvents events={events} />
+            {!chapter.websiteUrl ? <UpcomingEvents events={events} /> : null}
 
             {testimonialsPage?.bodyHtml ? (
               <section className="site-panel rounded-[2rem] p-6 md:p-8">
