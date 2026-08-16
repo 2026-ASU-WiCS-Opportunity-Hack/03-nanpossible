@@ -21,7 +21,7 @@
             "eyebrow": "Action Learning",
             "title": "What is Action Learning?",
             "body": "A structured approach to solving urgent, real problems while building leadership and teamwork skills at the same time.",
-            "href": "https://wial.org/action-learning/",
+            "href": "/action-learning",
             "label": "Read more"
           },
           {
@@ -42,7 +42,7 @@
             "eyebrow": "People",
             "title": "Search for Action Learning coaches",
             "body": "Find WIAL-certified coaches through the WIAL coach directory.",
-            "href": "https://directory.wial.org/",
+            "href": "/coaches",
             "label": "Read more"
           },
           {
@@ -645,6 +645,81 @@
     "sourceUrl": "https://wial.org/better-world-fund/",
     "sourceStatus": "migrated-from-wial",
     "sourceNotes": "Consolidated from wial.org better-world-fund, wial-gives-back, and projects (story summaries) per the crawler sheet's 'links on the About page' instruction. Donate and Nominate CTAs intentionally still point to the live wial.org forms; individual story pages are not migrated and link to the originals."
+  }
+},
+{
+  "id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaa0012",
+  "chapterId": null,
+  "slug": "action-learning",
+  "title": "What is Action Learning?",
+  "published": true,
+  "bodyRichtext": {
+    "heroIntro": "Action Learning is a process that involves a small group working on real problems, taking action, and learning as individuals, as a team, and as an organization. It solves problems and develops leaders simultaneously because its simple rules force participants to think critically and work collaboratively.",
+    "metrics": [
+      { "label": "Team size", "value": "4-8" },
+      { "label": "Components", "value": "6" },
+      { "label": "Ground rules", "value": "2" }
+    ],
+    "sections": [
+      {
+        "type": "prose",
+        "title": "Solving problems while developing leaders",
+        "paragraphs": [
+          "Action Learning is particularly effective for solving complex problems that may appear unsolvable. It elevates the norms, the collaboration, the creativity, and the courage of groups — while each member builds their own leadership, coaching, and problem-solving skills.",
+          "The WIAL model of Action Learning took final form in the renowned six components and two ground rules below, refined through years of testing, research, and practice around the world."
+        ]
+      },
+      {
+        "type": "feature_grid",
+        "title": "The six components of Action Learning",
+        "items": [
+          { "eyebrow": "Component 1", "title": "A problem", "body": "The problem should be urgent, significant, and the responsibility of the team to resolve." },
+          { "eyebrow": "Component 2", "title": "An Action Learning group or team", "body": "The team is ideally composed of 4-8 people, ideally with diverse backgrounds and experiences." },
+          { "eyebrow": "Component 3", "title": "Insightful questioning and reflective listening", "body": "Action Learning tackles problems by first asking questions to clarify the exact nature of the problem, reflecting and identifying possible solutions, and only then taking action." },
+          { "eyebrow": "Component 4", "title": "Action taken on the problem", "body": "The group must be able to take action on the problem it is working on — members implement the strategies they develop rather than only making recommendations." },
+          { "eyebrow": "Component 5", "title": "A commitment to learning", "body": "Solving the problem brings immediate benefits, but the greater, longer-term value is the learning gained by each member and the team — and how it is applied across the organization." },
+          { "eyebrow": "Component 6", "title": "An Action Learning coach", "body": "The coach helps the team reflect on both what they are learning and how they are solving problems." }
+        ]
+      },
+      {
+        "type": "prose",
+        "title": "The two ground rules",
+        "paragraphs": [
+          "Two simple ground rules keep every Action Learning session focused on inquiry and learning:"
+        ],
+        "bullets": [
+          "Statements can only be made in response to questions — and anyone can ask questions of anyone.",
+          "The Action Learning coach has the authority to intervene whenever they see an opportunity for the team to learn."
+        ]
+      },
+      {
+        "type": "cta",
+        "title": "Become a certified Action Learning coach",
+        "body": "WIAL is the world's leading certifying body for Action Learning. Explore the certification path that fits you.",
+        "href": "/certification",
+        "label": "Explore certification"
+      },
+      {
+        "type": "cta",
+        "title": "Find an Action Learning coach",
+        "body": "Search our directory of certified Action Learning coaches around the world.",
+        "href": "/coaches",
+        "label": "Find a coach"
+      },
+      {
+        "type": "cta",
+        "title": "See what Action Learning can do for you",
+        "body": "Explore how Action Learning benefits individuals, teams, and organizations.",
+        "href": "/benefits",
+        "label": "See the benefits"
+      }
+    ]
+  },
+  "seo": {
+    "description": "Action Learning is a process where a small group works on real problems, takes action, and learns as individuals, a team, and an organization — built on six components and two ground rules.",
+    "sourceUrl": "https://wial.org/action-learning/",
+    "sourceStatus": "migrated-from-wial",
+    "sourceNotes": "Rewritten from the live wial.org Action Learning page (definition, six components, ground rules). External CTAs replaced with internal /certification, /coaches, and /benefits routes; Solution Spheres blurb omitted until the services page is migrated."
   }
 },
   {

@@ -7,7 +7,8 @@ export type CanonicalPageSlug =
   | "partners"
   | "affiliates"
   | "benefits"
-  | "better-world";
+  | "better-world"
+  | "action-learning";
 
 export type AppRole =
   | "platform_admin"

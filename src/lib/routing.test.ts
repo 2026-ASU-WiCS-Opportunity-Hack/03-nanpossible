@@ -39,6 +39,13 @@ describe("normalizeSegments", () => {
     });
   });
 
+  it("resolves the action-learning page slug", () => {
+    expect(normalizeSegments(["action-learning"])).toEqual({
+      slug: "action-learning",
+      redirectTo: null,
+    });
+  });
+
   it("resolves the better-world page slug", () => {
     expect(normalizeSegments(["better-world"])).toEqual({
       slug: "better-world",
