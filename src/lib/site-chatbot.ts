@@ -81,7 +81,7 @@ export function buildSiteAssistantContext() {
     `Resources page summary: ${resources?.bodyRichtext.heroIntro ?? ""}`,
     `Contact page summary: ${contact?.bodyRichtext.heroIntro ?? ""}`,
     "Direct contact: info@wial.org | P.O. Box 7601 #83791, Washington, DC 20044",
-    "Certification hub anchors: /certification#calc, #palc, #salc, #malc, #progression, #recertification, #forms, #lms",
+    "Certification hub anchors: /certification#calc, #palc, #salc, #malc, #progression, #recertification, #forms",
     trackSummaries,
   ].join("\n\n");
 }
@@ -109,14 +109,14 @@ export function buildFallbackAssistantReply(query: string) {
       return [
         `${level} uses WIAL's existing external LMS rather than a duplicated in-site course system.`,
         lmsUrl ? `Open LMS: ${lmsUrl}` : "The level-specific LMS link is not configured yet.",
-        "You can also review the public certification hub at `/certification#lms`.",
+        "You can also review the public certification hub at `/certification`.",
       ].join("\n\n");
     }
 
     return [
       "WIAL keeps the current LMS external. The website links to it but does not replace it.",
       `Open LMS: ${getCertificationLmsUrl("CALC") ?? "https://wialportal.org/"}`,
-      "For level-specific guidance, see `/certification#lms`.",
+      "For level-specific guidance, see `/certification`.",
     ].join("\n\n");
   }
 

@@ -50,7 +50,6 @@ export type CertificationTrack = {
   eligibility: string[];
   requirements: string[];
   progressionLabel: string;
-  lmsSummary: string;
 };
 
 export type CertificationRecertificationRule = {

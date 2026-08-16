@@ -8,10 +8,7 @@ import {
   certificationRecertificationRules,
   certificationTracks,
 } from "@/content/certification-hub";
-import { getLmsLinkConfig } from "@/lib/certification";
 import type { CertificationTrackKey } from "@/lib/types";
-
-const DEFAULT_LMS_URL = "https://wialportal.org/";
 
 function AnchorLink({ id, label }: { id: string; label: string }) {
   return (
@@ -33,9 +30,6 @@ function TrackSection({
   isActive: boolean;
   onToggle: () => void;
 }) {
-  const lmsConfig = getLmsLinkConfig();
-  const lmsUrl = lmsConfig.levelUrls[track.key] || lmsConfig.globalUrl || DEFAULT_LMS_URL;
-
   return (
     <div id={track.anchor} className="site-panel rounded-lg transition">
       <button
@@ -80,20 +74,6 @@ function TrackSection({
             <p className="text-sm italic text-foreground/60">
               {track.progressionLabel}
             </p>
-          )}
-
-          {track.lmsSummary && (
-            <div className="rounded-md bg-accent-soft px-4 py-3 text-sm text-teal-deep">
-              <span className="font-semibold">LMS access:</span> {track.lmsSummary}{" "}
-              
-                <a href={lmsUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-semibold text-teal-deep hover:underline"
-              >
-                Go to LMS →
-              </a>
-            </div>
           )}
         </div>
       )}
@@ -160,57 +140,6 @@ function RecertificationSection() {
   );
 }
 
-function LmsSection() {
-  const lmsConfig = getLmsLinkConfig();
-  const globalUrl = lmsConfig.globalUrl || DEFAULT_LMS_URL;
-
-  return (
-    <div id="lms" className="scroll-mt-20">
-      <h2 className="text-2xl font-bold">LMS Access</h2>
-      <p className="mt-1 text-sm text-foreground/70">
-        WIAL Learning Management System provides course materials, recertification
-        resources, and continuing education.
-      </p>
-      <div className="site-panel mt-4 rounded-lg p-6">
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          <div>
-            <span className="text-xs font-semibold uppercase tracking-wider text-foreground/40">
-              Global
-            </span>
-            
-              <a href={globalUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block text-sm font-semibold text-teal-deep hover:underline"
-            >
-              WIAL Portal →
-            </a>
-          </div>
-          {Object.entries(lmsConfig.levelUrls).map(([key, url]) => {
-            const track = certificationTracks.find((t) => t.key === key);
-            const resolvedUrl = url || globalUrl;
-            return (
-              <div key={key}>
-                <span className="text-xs font-semibold uppercase tracking-wider text-foreground/40">
-                  {track?.level || key.toUpperCase()}
-                </span>
-                
-                  <a href={resolvedUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block text-sm font-semibold text-teal-deep hover:underline"
-                >
-                  Access →
-                </a>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    </div>
-  );
-}
-
 export function CertificationHubSections() {
   const [activeTrack, setActiveTrack] = useState<CertificationTrackKey | null>(
     null
@@ -263,9 +192,6 @@ export function CertificationHubSections() {
 
       {/* Recertification */}
       <RecertificationSection />
-
-      {/* LMS */}
-      <LmsSection />
 
       {/* Contact CTA */}
       <div className="site-panel mt-8 rounded-lg p-6 text-center">
