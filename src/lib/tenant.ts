@@ -168,6 +168,11 @@ const publicChapterColumns = [
   "tagline",
 ].join(", ");
 
+// Everything the admin settings forms edit; publicChapterColumns alone would
+// render country/website/region/phone-code as blank (and a save would then
+// silently wipe them).
+const chapterSettingsColumns = `${publicChapterColumns}, region, language, country, description, website_url, contact_phone_country_code`;
+
 export const getChapterBySubdomain = cache(async (subdomain: string) => {
   const client = createSupabaseContentClient({ tenantSubdomain: subdomain });
 
@@ -203,7 +208,7 @@ export async function getChapterById(id: string) {
     try {
       const { data } = await client
         .from("chapters")
-        .select(publicChapterColumns)
+        .select(chapterSettingsColumns)
         .eq("id", id)
         .maybeSingle();
 

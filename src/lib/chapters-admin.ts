@@ -647,6 +647,7 @@ export async function provisionChapter(input: ChapterProvisionInput): Promise<Pr
   const leadEmail = input.leadEmail.trim().toLowerCase();
   const contactEmail = input.contactEmail.trim().toLowerCase();
   const contactPhone = input.contactPhone.trim();
+  const contactPhoneCountryCode = input.contactPhoneCountryCode.trim();
   const region = input.region.trim();
   const country = input.country.trim();
   const description = input.description.trim();
@@ -779,6 +780,7 @@ export async function provisionChapter(input: ChapterProvisionInput): Promise<Pr
       locale: language,
       contact_email: contactEmail,
       contact_phone: contactPhone || null,
+      contact_phone_country_code: contactPhoneCountryCode || null,
       description: description || null,
       tagline: description || "",
       website_url: websiteUrl,

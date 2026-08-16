@@ -23,6 +23,9 @@ export async function POST(request: Request) {
     leadEmail: String(body.lead_email ?? body.leadEmail ?? ""),
     contactEmail: String(body.contact_email ?? body.contactEmail ?? ""),
     contactPhone: String(body.contact_phone ?? body.contactPhone ?? ""),
+    contactPhoneCountryCode: String(
+      body.contact_phone_country_code ?? body.contactPhoneCountryCode ?? "",
+    ),
     description: String(body.description ?? ""),
     websiteUrl: String(body.website_url ?? body.websiteUrl ?? ""),
   });
