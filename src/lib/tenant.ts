@@ -166,7 +166,14 @@ const publicChapterColumns = [
   "logo_url",
   "theme_json",
   "tagline",
+  "country",
+  "website_url",
 ].join(", ");
+
+// Everything the admin settings forms edit; publicChapterColumns alone would
+// render region/phone-code as blank (and a save would then silently wipe
+// them).
+const chapterSettingsColumns = `${publicChapterColumns}, region, language, description, contact_phone_country_code`;
 
 export const getChapterBySubdomain = cache(async (subdomain: string) => {
   const client = createSupabaseContentClient({ tenantSubdomain: subdomain });
@@ -203,7 +210,7 @@ export async function getChapterById(id: string) {
     try {
       const { data } = await client
         .from("chapters")
-        .select(publicChapterColumns)
+        .select(chapterSettingsColumns)
         .eq("id", id)
         .maybeSingle();
 
@@ -251,7 +258,7 @@ export async function listTakenCountries(excludeChapterId?: string) {
     .filter((country): country is string => Boolean(country));
 }
 
-const directoryChapterColumns = `${publicChapterColumns}, region, country, description, website_url`;
+const directoryChapterColumns = `${publicChapterColumns}, region, description`;
 
 function fixtureAffiliateDirectory() {
   return chapterFixtures

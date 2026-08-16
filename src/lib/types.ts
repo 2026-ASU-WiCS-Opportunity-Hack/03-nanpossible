@@ -541,6 +541,7 @@ export type ChapterProvisionInput = {
   leadEmail: string;
   contactEmail: string;
   contactPhone: string;
+  contactPhoneCountryCode: string;
   description: string;
   websiteUrl: string;
 };
