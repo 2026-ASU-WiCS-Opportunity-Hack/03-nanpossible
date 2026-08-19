@@ -213,7 +213,7 @@ values (
         'heroIntro', 'WIAL is the world''s leading certifying body for Action Learning — a way of thinking, doing business, and working in teams that helps organizations solve real problems while developing their people at the same time.',
         'metrics', jsonb_build_array(
             jsonb_build_object('label', 'Certification levels', 'value', '4'),
-            jsonb_build_object('label', 'Solution categories', 'value', '5'),
+            jsonb_build_object('label', 'Solution categories', 'value', '4'),
             jsonb_build_object('label', 'Global affiliates', 'value', '8')
         ),
         'sections', jsonb_build_array(
