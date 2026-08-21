@@ -176,6 +176,12 @@ export type CoachAffiliateLink = {
   href: string;
 };
 
+export type AffiliateMapEntry = {
+  name: string;
+  country: string;
+  href: string;
+};
+
 export type CoachMapPoint = {
   city: string | null;
   country: string | null;

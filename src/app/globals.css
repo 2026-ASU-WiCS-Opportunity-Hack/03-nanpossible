@@ -1345,6 +1345,81 @@ html.cursor-large * {
   background: rgba(209, 0, 52, 0.16);
 }
 
+.coach-map-affiliate-ring {
+  fill: none;
+  stroke: var(--teal);
+  stroke-width: 1.5;
+  pointer-events: none;
+  transition: stroke var(--duration-fast) var(--ease-standard),
+    opacity var(--duration-fast) var(--ease-standard);
+}
+
+.coach-map-marker.is-dimmed .coach-map-affiliate-ring {
+  opacity: 0.28;
+}
+
+.coach-map-marker.is-active .coach-map-affiliate-ring,
+.coach-map-marker:hover .coach-map-affiliate-ring {
+  stroke: var(--teal-deep);
+}
+
+.coach-map-marker.is-dimmed:hover .coach-map-affiliate-ring {
+  opacity: 1;
+}
+
+.coach-map-tooltip-affiliate {
+  color: var(--teal-deep);
+  font-weight: 600;
+}
+
+.coach-affiliate-strip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.coach-map-figure + .coach-affiliate-strip {
+  margin-top: 1.1rem;
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--line);
+}
+
+.coach-affiliate-strip-label {
+  color: var(--neutral);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.coach-affiliate-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border: 1px solid rgba(23, 53, 51, 0.12);
+  border-radius: 999px;
+  background: rgba(255, 250, 242, 0.85);
+  padding: 0.4rem 0.8rem;
+  color: var(--teal-deep);
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: border-color var(--duration-fast) var(--ease-standard),
+    background var(--duration-fast) var(--ease-standard);
+}
+
+.coach-affiliate-chip:hover {
+  border-color: rgba(209, 0, 52, 0.35);
+  background: rgba(209, 0, 52, 0.07);
+}
+
+.coach-affiliate-chip img {
+  height: 12px;
+  width: 17px;
+  border-radius: 2px;
+  object-fit: cover;
+}
+
 .coach-result-chip {
   display: inline-flex;
   align-items: center;
@@ -1807,10 +1882,20 @@ html:is(.contrast-dark, .contrast-high) :where(
   .account-sidebar-pill,
   .account-sidebar-launcher-pill,
   .coach-pill,
-  .coach-result-chip
+  .coach-result-chip,
+  .coach-affiliate-chip
 ) {
   background: #ffffff !important;
   border-color: #000000 !important;
+}
+
+html:is(.contrast-dark, .contrast-high) :where(
+  .eyebrow,
+  .account-sidebar-pill,
+  .account-sidebar-launcher-pill,
+  .coach-pill,
+  .coach-result-chip
+) {
   color: #000000 !important;
 }
 
