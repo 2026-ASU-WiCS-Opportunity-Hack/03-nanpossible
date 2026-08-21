@@ -576,7 +576,7 @@ export async function deleteChapter(chapterId: string) {
   }
 
   revalidatePath("/");
-  revalidatePath("/affiliates");
+  revalidatePath("/coaches");
   revalidatePath("/admin/global");
   revalidatePath("/admin/global/chapters");
   revalidatePath("/admin/global/users");
@@ -837,7 +837,7 @@ export async function provisionChapter(input: ChapterProvisionInput): Promise<Pr
   }
 
   revalidatePath("/");
-  revalidatePath("/affiliates");
+  revalidatePath("/coaches");
 
   const emailResult = await sendWelcomeEmail(leadEmail, name, subdomain);
 

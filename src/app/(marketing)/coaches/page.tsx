@@ -1,12 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CoachSearch } from "./CoachSearch";
+import { affiliateSiteUrl } from "@/lib/affiliates";
 import {
   getCoachFacetOptions,
   listApprovedCoaches,
   listCoachMapPoints,
 } from "@/lib/coaches";
 import { getCurrentViewer } from "@/lib/auth";
+import { listAffiliateDirectory } from "@/lib/tenant";
+import type { CoachAffiliateLink } from "@/lib/types";
 
 export const metadata: Metadata = {
   title: "Find a WIAL Certified Coach",
@@ -17,12 +20,22 @@ export const metadata: Metadata = {
 export const revalidate = 300;
 
 export default async function CoachesDirectoryPage() {
-  const [initialCoaches, facets, mapPoints, viewer] = await Promise.all([
-    listApprovedCoaches({ limit: 20 }),
-    getCoachFacetOptions(),
-    listCoachMapPoints(),
-    getCurrentViewer(),
-  ]);
+  const [initialCoaches, facets, mapPoints, affiliates, viewer] =
+    await Promise.all([
+      listApprovedCoaches({ limit: 20 }),
+      getCoachFacetOptions(),
+      listCoachMapPoints(),
+      listAffiliateDirectory(),
+      getCurrentViewer(),
+    ]);
+
+  const siteDomain = process.env.NEXT_PUBLIC_SITE_DOMAIN ?? "localhost:3000";
+  const affiliateLinks: Record<string, CoachAffiliateLink> = Object.fromEntries(
+    affiliates.map((chapter) => [
+      chapter.id,
+      { name: chapter.name, href: affiliateSiteUrl(chapter, siteDomain) },
+    ]),
+  );
 
   const directoryIsEmpty =
     initialCoaches.length === 0 &&
@@ -85,6 +98,7 @@ export default async function CoachesDirectoryPage() {
           </section>
         ) : (
           <CoachSearch
+            affiliateLinks={affiliateLinks}
             facets={facets}
             initialCoaches={initialCoaches}
             mapPoints={mapPoints}

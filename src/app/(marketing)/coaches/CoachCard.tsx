@@ -5,10 +5,12 @@ import {
   getCertificationBadgeTone,
   getCoachInitials,
 } from "@/lib/coach-presenters";
-import type { CoachRecord } from "@/lib/types";
+import { countryFlagSrc } from "@/lib/countries";
+import type { CoachAffiliateLink, CoachRecord } from "@/lib/types";
 
 type CoachCardProps = {
   coach: CoachRecord;
+  affiliate?: CoachAffiliateLink | null;
 };
 
 function truncateBio(text: string | null, limit = 150) {
@@ -23,8 +25,9 @@ function truncateBio(text: string | null, limit = 150) {
   return `${text.slice(0, limit - 1).trimEnd()}…`;
 }
 
-export function CoachCard({ coach }: CoachCardProps) {
+export function CoachCard({ coach, affiliate }: CoachCardProps) {
   const location = formatCoachLocation(coach);
+  const flagSrc = countryFlagSrc(coach.locationCountry);
   const languages = coach.languages
     .map((language) => language.toUpperCase())
     .join(", ");
@@ -64,8 +67,19 @@ export function CoachCard({ coach }: CoachCardProps) {
                 {coach.name}
               </h3>
               {location ? (
-                <p className="mt-2 text-sm font-semibold uppercase tracking-[0.15em] text-foreground/55">
-                  {location}
+                <p className="mt-2 flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.15em] text-foreground/55">
+                  {flagSrc ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      alt=""
+                      className="h-3.5 w-5 shrink-0 rounded-[2px] border border-line object-cover"
+                      height={14}
+                      loading="lazy"
+                      src={flagSrc}
+                      width={20}
+                    />
+                  ) : null}
+                  <span className="min-w-0">{location}</span>
                 </p>
               ) : null}
             </div>
@@ -117,13 +131,24 @@ export function CoachCard({ coach }: CoachCardProps) {
               />
             </a>
           ) : null}
-          <span className="text-sm font-semibold text-foreground/58">
-            {coach.similarity != null
-              ? `Similarity ${(coach.similarity * 100).toFixed(0)}%`
-              : showCredlyBadgeImage
-                ? "Credly badge linked"
-                : "Approved WIAL coach"}
-          </span>
+          {coach.similarity != null ? (
+            <span className="text-sm font-semibold text-foreground/58">
+              Similarity {(coach.similarity * 100).toFixed(0)}%
+            </span>
+          ) : affiliate ? (
+            <a
+              className="min-w-0 truncate text-sm font-semibold text-teal transition hover:text-accent"
+              href={affiliate.href}
+              rel="noreferrer"
+              target="_blank"
+            >
+              {affiliate.name} <span aria-hidden="true">↗</span>
+            </a>
+          ) : (
+            <span className="text-sm font-semibold text-foreground/58">
+              {showCredlyBadgeImage ? "Credly badge linked" : "Approved WIAL coach"}
+            </span>
+          )}
         </div>
         <Link
           className="inline-flex items-center gap-2 text-sm font-semibold text-teal transition group-hover:text-accent"

@@ -1278,8 +1278,18 @@ html.cursor-large * {
 }
 
 .coach-map-tooltip strong {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
   color: var(--foreground);
   font-size: 0.85rem;
+}
+
+.coach-map-tooltip strong img {
+  height: 14px;
+  width: 20px;
+  border-radius: 2px;
+  object-fit: cover;
 }
 
 .coach-map-tooltip span {

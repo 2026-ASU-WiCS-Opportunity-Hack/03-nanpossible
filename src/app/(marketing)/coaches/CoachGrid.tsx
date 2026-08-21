@@ -1,14 +1,16 @@
 import { CoachCard } from "./CoachCard";
-import type { CoachRecord } from "@/lib/types";
+import type { CoachAffiliateLink, CoachRecord } from "@/lib/types";
 
 type CoachGridProps = {
   coaches: CoachRecord[];
+  affiliateLinks?: Record<string, CoachAffiliateLink>;
   emptyTitle?: string;
   emptyBody?: string;
 };
 
 export function CoachGrid({
   coaches,
+  affiliateLinks,
   emptyTitle = "No coaches found.",
   emptyBody = "Try a broader search or remove filters.",
 }: CoachGridProps) {
@@ -28,7 +30,13 @@ export function CoachGrid({
   return (
     <div className="grid gap-4 lg:grid-cols-2">
       {coaches.map((coach) => (
-        <CoachCard coach={coach} key={coach.id} />
+        <CoachCard
+          affiliate={
+            coach.chapterId ? (affiliateLinks?.[coach.chapterId] ?? null) : null
+          }
+          coach={coach}
+          key={coach.id}
+        />
       ))}
     </div>
   );

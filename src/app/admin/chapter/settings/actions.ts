@@ -58,6 +58,6 @@ export async function saveChapterSettingsAction(formData: FormData) {
     revalidatePath(`/sites/${chapter.subdomain}/contact`);
   }
 
-  revalidatePath("/affiliates");
+  revalidatePath("/coaches");
   redirect(buildReturnPath({ notice: "saved" }));
 }

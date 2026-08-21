@@ -278,6 +278,8 @@ const aliasEntries: [string, string][] = [
   ["swaziland", "sz"],
   ["east timor", "tl"],
   ["vatican city", "va"],
+  ["hong kong", "hk"],
+  ["syrian arab republic", "sy"],
 ];
 
 const codeByName = new Map<string, string>([
