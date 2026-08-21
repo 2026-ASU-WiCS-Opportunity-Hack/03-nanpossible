@@ -81,7 +81,7 @@ export function buildSiteAssistantContext() {
     `Resources page summary: ${resources?.bodyRichtext.heroIntro ?? ""}`,
     `Contact page summary: ${contact?.bodyRichtext.heroIntro ?? ""}`,
     "Direct contact: info@wial.org | P.O. Box 7601 #83791, Washington, DC 20044",
-    "Certification hub anchors: /certification#calc, #palc, #salc, #malc, #progression, #recertification, #forms",
+    "Certification hub anchors: /certification#calc, #palc, #salc, #malc, #progression",
     trackSummaries,
   ].join("\n\n");
 }

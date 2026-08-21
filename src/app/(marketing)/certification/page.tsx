@@ -1,9 +1,5 @@
 import { Metadata } from "next";
 import { CertificationHubSections } from "@/components/certification-hub";
-import {
-  certificationHero,
-  certificationTracks,
-} from "@/content/certification-hub";
 
 export const metadata: Metadata = {
   title: "Certification | WIAL",

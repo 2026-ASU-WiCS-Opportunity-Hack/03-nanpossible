@@ -1,8 +1,6 @@
 import type {
-  CertificationDocument,
   CertificationRecertificationRule,
   CertificationTrack,
-  CertificationTrackKey,
 } from "@/lib/types";
 
 type CertificationProgressionStep = {
@@ -12,21 +10,13 @@ type CertificationProgressionStep = {
 
 export const certificationHero = {
   eyebrow: "Global certification hub",
-  title: "Certification pathways and renewal expectations in one place.",
+  title: "The WIAL certification pathway, from CALC to MALC.",
   intro:
     "WIAL offers four levels of certification for Action Learning coaches. Each level represents increasing expertise, experience, and leadership in the Action Learning community. WIAL is an ICF-accredited training provider, and our CALC certification is an accredited ICF CCE program.",
   metrics: [
     { label: "Certification levels", value: "4" },
     { label: "ICF accredited", value: "CCE" },
     { label: "Global recognition", value: "Yes" },
-  ],
-  anchors: [
-    { id: "calc", label: "CALC" },
-    { id: "palc", label: "PALC" },
-    { id: "salc", label: "SALC" },
-    { id: "malc", label: "MALC" },
-    { id: "progression", label: "Progression" },
-    { id: "recertification", label: "Recertification" },
   ],
 } as const;
 
