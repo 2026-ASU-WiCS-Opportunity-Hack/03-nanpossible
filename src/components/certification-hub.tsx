@@ -1,146 +1,60 @@
 "use client";
 
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import Link from "next/link";
 import {
   certificationHero,
   certificationProgression,
-  certificationRecertificationRules,
   certificationTracks,
 } from "@/content/certification-hub";
-import type { CertificationTrackKey } from "@/lib/types";
+import type { CertificationTrack, CertificationTrackKey } from "@/lib/types";
 
-function AnchorLink({ id, label }: { id: string; label: string }) {
+function pathwaySummary(track: CertificationTrack) {
   return (
-    
-      <a href={`#${id}`}
-      className="inline-block rounded-full px-4 py-1.5 text-sm font-medium text-teal-deep transition hover:bg-accent-soft"
-    >
-      {label}
-    </a>
+    certificationProgression.find((step) => step.title === track.level)?.body ??
+    track.tagline
   );
 }
 
-function TrackSection({
-  track,
-  isActive,
-  onToggle,
-}: {
-  track: (typeof certificationTracks)[0];
-  isActive: boolean;
-  onToggle: () => void;
-}) {
+function TrackDetail({ track }: { track: CertificationTrack }) {
   return (
-    <div id={track.anchor} className="site-panel rounded-lg transition">
-      <button
-        onClick={onToggle}
-        className="flex w-full items-center justify-between px-6 py-4 text-left hover:bg-surface"
-      >
+    <div className="site-panel rounded-lg px-6 py-5">
+      <span className="inline-block rounded-full bg-teal-deep/10 px-2.5 py-0.5 text-xs font-semibold text-teal-deep">
+        {track.level}
+      </span>
+      <h3 className="mt-1 text-lg font-semibold">{track.title}</h3>
+      <p className="text-sm text-foreground/70">{track.tagline}</p>
+      <p className="mt-3 text-sm leading-relaxed text-foreground/80">
+        {track.summary}
+      </p>
+      <div className="mt-4 grid gap-4 md:grid-cols-2">
         <div>
-          <span className="inline-block rounded-full bg-teal-deep/10 px-2.5 py-0.5 text-xs font-semibold text-teal-deep">
-            {track.level}
-          </span>
-          <h3 className="mt-1 text-lg font-semibold">{track.title}</h3>
-          <p className="text-sm text-foreground/70">{track.tagline}</p>
+          <h4 className="text-sm font-semibold">Eligibility</h4>
+          <ul className="mt-1 list-disc pl-5 text-sm text-foreground/70 space-y-0.5">
+            {track.eligibility.map((item, idx) => (
+              <li key={idx}>{item}</li>
+            ))}
+          </ul>
         </div>
-        <span className="text-2xl text-foreground/40">{isActive ? "−" : "+"}</span>
-      </button>
-
-      {isActive && (
-        <div className="border-t border-line px-6 py-4 space-y-4">
-          <p className="text-sm leading-relaxed text-foreground/80">
-            {track.summary}
-          </p>
-
-          <div>
-            <h4 className="text-sm font-semibold">Eligibility</h4>
-            <ul className="mt-1 list-disc pl-5 text-sm text-foreground/70 space-y-0.5">
-              {track.eligibility.map((item, idx) => (
-                <li key={idx}>{item}</li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="text-sm font-semibold">Requirements</h4>
-            <ul className="mt-1 list-disc pl-5 text-sm text-foreground/70 space-y-0.5">
-              {track.requirements.map((item, idx) => (
-                <li key={idx}>{item}</li>
-              ))}
-            </ul>
-          </div>
-
-          {track.progressionLabel && (
-            <p className="text-sm italic text-foreground/60">
-              {track.progressionLabel}
-            </p>
-          )}
+        <div>
+          <h4 className="text-sm font-semibold">Requirements</h4>
+          <ul className="mt-1 list-disc pl-5 text-sm text-foreground/70 space-y-0.5">
+            {track.requirements.map((item, idx) => (
+              <li key={idx}>{item}</li>
+            ))}
+          </ul>
         </div>
+      </div>
+      {track.progressionLabel && (
+        <p className="mt-4 text-sm italic text-foreground/60">
+          {track.progressionLabel}
+        </p>
       )}
     </div>
   );
 }
 
-function ProgressionSection() {
-  return (
-    <div id="progression" className="scroll-mt-20">
-      <h2 className="text-2xl font-bold">Progression Path</h2>
-      <p className="mt-1 text-sm text-foreground/70">
-        The certification journey builds step by step, from CALC through MALC.
-      </p>
-      <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {certificationProgression.map((step, idx) => (
-          <div key={idx} className="feature-card rounded-lg">
-            <div className="text-sm font-semibold text-teal-deep">{step.title}</div>
-            <p className="mt-1 text-sm text-foreground/70">{step.body}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function RecertificationSection() {
-  return (
-    <div id="recertification" className="scroll-mt-20">
-      <h2 className="text-2xl font-bold">Recertification</h2>
-      <p className="mt-1 text-sm text-foreground/70">
-        Keep your credential current by meeting the renewal requirements for your
-        level.
-      </p>
-      <div className="mt-4 grid gap-4 md:grid-cols-2">
-        {certificationRecertificationRules.map((rule, idx) => {
-          const track = certificationTracks.find((t) => t.key === rule.track);
-          return (
-            <div key={idx} className="feature-card rounded-lg">
-              <div className="flex items-center justify-between">
-                <span className="text-sm font-semibold text-teal-deep">
-                  {track?.level || rule.track.toUpperCase()}
-                </span>
-                <span className="text-xs text-foreground/50">
-                  Valid {rule.validity}
-                </span>
-              </div>
-              <ul className="mt-2 list-disc pl-5 text-sm text-foreground/70 space-y-0.5">
-                {rule.annualRequirements.map((item, idx2) => (
-                  <li key={idx2}>{item}</li>
-                ))}
-              </ul>
-              {rule.expiredPolicy && (
-                <div className="mt-2 rounded-md bg-accent-soft px-3 py-2 text-xs text-teal-deep">
-                  <span className="font-semibold">Expired:</span>{" "}
-                  {rule.expiredPolicy.join(" ")}
-                </div>
-              )}
-            </div>
-          );
-        })}
-      </div>
-    </div>
-  );
-}
-
-export function CertificationHubSections() {
+function PathwaySection() {
   const [activeTrack, setActiveTrack] = useState<CertificationTrackKey | null>(
     null
   );
@@ -149,6 +63,68 @@ export function CertificationHubSections() {
     setActiveTrack(activeTrack === key ? null : key);
   };
 
+  const active = certificationTracks.find((track) => track.key === activeTrack);
+
+  return (
+    <div id="progression" className="scroll-mt-20">
+      <h2 className="text-2xl font-bold">Certification pathway</h2>
+      <p className="mt-1 text-sm text-foreground/70">
+        Four levels build step by step, from CALC through MALC. Select a level
+        to see its eligibility and requirements.
+      </p>
+      <div className="mt-4 flex flex-col gap-3 lg:flex-row lg:items-stretch">
+        {certificationTracks.map((track, idx) => {
+          const isActive = activeTrack === track.key;
+          return (
+            <Fragment key={track.key}>
+              <button
+                id={track.anchor}
+                onClick={() => handleToggle(track.key)}
+                aria-expanded={isActive}
+                className={`feature-card relative flex-1 scroll-mt-20 rounded-lg text-left ${
+                  isActive ? "border-teal-deep/50" : ""
+                }`}
+              >
+                <span
+                  aria-hidden="true"
+                  className="absolute right-4 top-4 text-xl leading-none text-teal-deep"
+                >
+                  {isActive ? "−" : "+"}
+                </span>
+                <div className="pr-6 text-sm font-semibold text-teal-deep">
+                  {track.level}
+                </div>
+                <p className="mt-1 text-sm text-foreground/70">
+                  {pathwaySummary(track)}
+                </p>
+              </button>
+              {isActive && (
+                <div className="lg:hidden">
+                  <TrackDetail track={track} />
+                </div>
+              )}
+              {idx < certificationTracks.length - 1 && (
+                <span
+                  aria-hidden="true"
+                  className="rotate-90 self-center text-2xl text-teal-deep/40 lg:rotate-0"
+                >
+                  →
+                </span>
+              )}
+            </Fragment>
+          );
+        })}
+      </div>
+      {active && (
+        <div className="mt-4 hidden lg:block">
+          <TrackDetail track={active} />
+        </div>
+      )}
+    </div>
+  );
+}
+
+export function CertificationHubSections() {
   return (
     <div className="space-y-8">
       {/* Hero Section */}
@@ -168,30 +144,8 @@ export function CertificationHubSections() {
         </div>
       </div>
 
-      {/* Anchor Navigation */}
-      <div className="flex flex-wrap gap-1 border-b border-line pb-3">
-        {certificationHero.anchors.map((anchor) => (
-          <AnchorLink key={anchor.id} id={anchor.id} label={anchor.label} />
-        ))}
-      </div>
-
-      {/* Tracks */}
-      <div className="space-y-3">
-        {certificationTracks.map((track) => (
-          <TrackSection
-            key={track.key}
-            track={track}
-            isActive={activeTrack === track.key}
-            onToggle={() => handleToggle(track.key)}
-          />
-        ))}
-      </div>
-
-      {/* Progression */}
-      <ProgressionSection />
-
-      {/* Recertification */}
-      <RecertificationSection />
+      {/* Pathway: progression cards with expandable level detail */}
+      <PathwaySection />
 
       {/* Contact CTA */}
       <div className="site-panel mt-8 rounded-lg p-6 text-center">
