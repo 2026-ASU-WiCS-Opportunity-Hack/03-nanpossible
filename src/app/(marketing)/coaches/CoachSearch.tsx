@@ -3,7 +3,9 @@
 import { useEffect, useState, useTransition } from "react";
 import { CoachGrid } from "./CoachGrid";
 import { CoachMap } from "./CoachMap";
+import { coachCountryKey } from "@/lib/world-map";
 import type {
+  CoachAffiliateLink,
   CoachFacetOptions,
   CoachMapPoint,
   CoachRecord,
@@ -16,6 +18,7 @@ type CoachSearchProps = {
   initialCoaches: CoachRecord[];
   facets: CoachFacetOptions;
   mapPoints: CoachMapPoint[];
+  affiliateLinks: Record<string, CoachAffiliateLink>;
 };
 
 type SearchPayload = {
@@ -85,7 +88,12 @@ function hasFilters(filters: CoachSearchFilters) {
   );
 }
 
-export function CoachSearch({ initialCoaches, facets, mapPoints }: CoachSearchProps) {
+export function CoachSearch({
+  initialCoaches,
+  facets,
+  mapPoints,
+  affiliateLinks,
+}: CoachSearchProps) {
   const [query, setQuery] = useState("");
   const [filters, setFilters] = useState<CoachSearchFilters>({
     certLevel: null,
@@ -144,10 +152,14 @@ export function CoachSearch({ initialCoaches, facets, mapPoints }: CoachSearchPr
     Boolean(query.trim()) &&
     (displayMode === "semantic" || displayMode === "hybrid");
 
+  const mappablePoints = mapPoints.filter((point) => point.country !== null);
   const mapCountries = new Set(
-    mapPoints.map((point) => point.country).filter(Boolean),
+    mappablePoints.map((point) => coachCountryKey(point.country)),
   );
-  const mappedCoachCount = mapPoints.reduce((sum, point) => sum + point.count, 0);
+  const mappedCoachCount = mappablePoints.reduce(
+    (sum, point) => sum + point.count,
+    0,
+  );
 
   return (
     <div className="space-y-5">
@@ -274,9 +286,9 @@ export function CoachSearch({ initialCoaches, facets, mapPoints }: CoachSearchPr
       {isPending && !displayResults.length ? <SearchSkeleton /> : null}
 
       {displayResults.length ? (
-        <CoachGrid coaches={displayResults} />
+        <CoachGrid affiliateLinks={affiliateLinks} coaches={displayResults} />
       ) : !isPending ? (
-        <CoachGrid coaches={[]} />
+        <CoachGrid affiliateLinks={affiliateLinks} coaches={[]} />
       ) : null}
 
       {displayNextOffset != null ? (

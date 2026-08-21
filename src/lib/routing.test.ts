@@ -26,6 +26,10 @@ describe("normalizeSegments", () => {
       slug: null,
       redirectTo: "/clients",
     });
+    expect(normalizeSegments(["affiliates"])).toEqual({
+      slug: null,
+      redirectTo: "/coaches",
+    });
     expect(normalizeSegments(["action-learning", "benefits"])).toEqual({
       slug: null,
       redirectTo: "/benefits",

@@ -1,3 +1,4 @@
+import { countryCodeFor } from "@/lib/countries";
 import type { CoachMapPoint } from "@/lib/types";
 
 /**
@@ -25,80 +26,115 @@ export type CoachMapMarker = {
   y: number;
   r: number;
   count: number;
-  country: string | null;
-  /** Human label, e.g. "Bangkok, Thailand" or "Poland · 4 cities". */
+  /** Most common stored country string in the group — feeds the ilike filter. */
+  country: string;
+  /** ISO alpha-2 code when the country name resolves, for flag lookup. */
+  countryCode: string | null;
+  /** Distinct cities aggregated into this marker. */
+  cityCount: number;
+  /** Human label, e.g. "Thailand". */
   label: string;
 };
 
-function markerRadius(count: number): number {
-  return Math.min(16, Math.max(4, 2.4 * Math.sqrt(count) + 1.6));
+export function markerRadius(count: number): number {
+  return Math.min(26, Math.max(6, 4 + 2.2 * Math.sqrt(count)));
 }
 
 /**
- * Turn city-level points into drawable markers, merging same-country points
- * that would collide at world scale so hover targets stay unambiguous.
- * Returned markers are sorted large-first so small dots paint on top.
+ * Canonical grouping key for a stored country string: ISO code when the name
+ * resolves, otherwise the trimmed lowercase text so unknown spellings still
+ * group deterministically.
+ */
+export function coachCountryKey(country: string | null): string | null {
+  if (!country) {
+    return null;
+  }
+  return countryCodeFor(country) ?? country.trim().toLowerCase();
+}
+
+/**
+ * Anchor overrides for countries whose coach-weighted centroid lands in open
+ * water (e.g. cities split across a strait). Keyed by ISO alpha-2 code.
+ */
+const COUNTRY_ANCHOR_OVERRIDES: Record<string, { lat: number; lng: number }> = {};
+
+/**
+ * Aggregate city-level points into one marker per country, positioned at the
+ * count-weighted centroid of that country's cities. Points without a country
+ * are dropped — they cannot drive the country filter. Returned markers are
+ * sorted large-first so small dots paint on top.
  */
 export function buildCoachMapMarkers(points: CoachMapPoint[]): CoachMapMarker[] {
-  type WorkingMarker = CoachMapMarker & { cities: Set<string> };
-  const markers: WorkingMarker[] = [];
-  const sorted = [...points].sort((a, b) => b.count - a.count);
+  type Group = {
+    x: number;
+    y: number;
+    count: number;
+    cities: Set<string>;
+    variants: Map<string, number>;
+  };
+  const groups = new Map<string, Group>();
 
-  for (const point of sorted) {
-    const { x, y } = projectToWorldMap(point.lat, point.lng);
-    const host = markers.find((marker) => {
-      if (marker.country !== point.country) {
-        return false;
-      }
-      const distance = Math.hypot(marker.x - x, marker.y - y);
-      return distance < marker.r + markerRadius(point.count) + 2;
-    });
-
-    if (host) {
-      // Weighted centroid keeps the merged marker anchored to the crowd.
-      const total = host.count + point.count;
-      host.x = (host.x * host.count + x * point.count) / total;
-      host.y = (host.y * host.count + y * point.count) / total;
-      host.count = total;
-      host.r = markerRadius(total);
-      if (point.city) {
-        host.cities.add(point.city);
-      }
+  for (const point of points) {
+    const key = coachCountryKey(point.country);
+    if (!key || !point.country) {
       continue;
     }
 
-    markers.push({
-      x,
-      y,
-      r: markerRadius(point.count),
-      count: point.count,
-      country: point.country,
-      label: "",
-      cities: new Set(point.city ? [point.city] : []),
-    });
+    const { x, y } = projectToWorldMap(point.lat, point.lng);
+    const group = groups.get(key) ?? {
+      x: 0,
+      y: 0,
+      count: 0,
+      cities: new Set<string>(),
+      variants: new Map<string, number>(),
+    };
+
+    // Weighted centroid keeps the marker anchored to the coach crowd.
+    const total = group.count + point.count;
+    group.x = (group.x * group.count + x * point.count) / total;
+    group.y = (group.y * group.count + y * point.count) / total;
+    group.count = total;
+    if (point.city) {
+      group.cities.add(point.city);
+    }
+    group.variants.set(
+      point.country,
+      (group.variants.get(point.country) ?? 0) + point.count,
+    );
+    groups.set(key, group);
   }
 
+  const markers = [...groups.values()].map((group) => {
+    const country = [...group.variants.entries()].sort((a, b) => b[1] - a[1])[0][0];
+    const countryCode = countryCodeFor(country);
+    const override = countryCode ? COUNTRY_ANCHOR_OVERRIDES[countryCode] : undefined;
+    const anchor = override ? projectToWorldMap(override.lat, override.lng) : group;
+
+    return {
+      x: anchor.x,
+      y: anchor.y,
+      r: markerRadius(group.count),
+      count: group.count,
+      country,
+      countryCode,
+      cityCount: group.cities.size,
+      label: country,
+    };
+  });
+
+  markers.sort((a, b) => b.count - a.count);
   relaxMarkerCollisions(markers);
 
-  return markers.map(({ cities, ...marker }) => {
-    const country = marker.country ?? "Location shared on request";
-    const label =
-      cities.size === 1
-        ? `${[...cities][0]}, ${country}`
-        : cities.size > 1
-          ? `${country} · ${cities.size} cities`
-          : country;
-    return { ...marker, label };
-  });
+  return markers;
 }
 
 /**
- * Nudge markers from different countries apart when they overlap (dense
- * regions like Southeast Asia), keeping every count label and hover target
- * legible. Displacement is capped so dots stay honest to their geography.
+ * Nudge overlapping country markers apart (dense regions like Southeast Asia
+ * and western Europe), keeping every count label and hover target legible.
+ * Displacement is capped so dots stay honest to their geography.
  */
 function relaxMarkerCollisions(markers: { x: number; y: number; r: number }[]): void {
-  const MAX_SHIFT = 10;
+  const MAX_SHIFT = 30;
   const origin = markers.map((marker) => ({ x: marker.x, y: marker.y }));
 
   for (let iteration = 0; iteration < 40; iteration += 1) {
@@ -110,7 +146,7 @@ function relaxMarkerCollisions(markers: { x: number; y: number; r: number }[]): 
         const dx = second.x - first.x;
         const dy = second.y - first.y;
         const distance = Math.hypot(dx, dy) || 0.001;
-        const minDistance = first.r + second.r + 1;
+        const minDistance = first.r + second.r + 2;
         if (distance >= minDistance) {
           continue;
         }

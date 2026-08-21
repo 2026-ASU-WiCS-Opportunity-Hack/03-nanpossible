@@ -5,7 +5,6 @@ export type CanonicalPageSlug =
   | "clients"
   | "contact"
   | "partners"
-  | "affiliates"
   | "benefits"
   | "better-world"
   | "action-learning"
@@ -171,6 +170,12 @@ export type CoachFacetOptions = {
 };
 
 /** One dot on the /coaches world map: approved coaches aggregated by place. */
+/** Affiliate link shown on coach cards, keyed by chapter id. */
+export type CoachAffiliateLink = {
+  name: string;
+  href: string;
+};
+
 export type CoachMapPoint = {
   city: string | null;
   country: string | null;

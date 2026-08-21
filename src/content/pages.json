@@ -476,50 +476,6 @@
   }
 },
 {
-  "id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaa0009",
-  "chapterId": null,
-  "slug": "affiliates",
-  "title": "Our Affiliates",
-  "published": true,
-  "bodyRichtext": {
-    "heroIntro": "WIAL affiliates are regional organizations that bring Action Learning to communities around the world. Connect with your local affiliate to learn more about programs, events, and certification opportunities.",
-    "metrics": [
-      { "label": "Global affiliates", "value": "8" },
-      { "label": "Countries", "value": "8" },
-      { "label": "Global reach", "value": "Worldwide" }
-    ],
-    "sections": [
-      {
-        "type": "prose",
-        "title": "Find your local affiliate",
-        "paragraphs": [
-          "WIAL has affiliate organizations across the globe. Each affiliate offers localized programs, events, and certification support in their region."
-        ]
-      },
-      {
-        "type": "contact_cards",
-        "title": "WIAL affiliates worldwide",
-        "items": [
-          { "eyebrow": "USA", "title": "WIAL USA", "body": "Action Learning programs, events, and coach certification across the United States.", "href": "https://wial-usa.org/", "label": "Visit website", "image": "/flags/us.svg", "imageAlt": "Flag of the United States" },
-          { "eyebrow": "Singapore", "title": "WIAL Singapore", "body": "Action Learning programs, events, and coach certification in Singapore.", "href": "https://www.wial.sg/", "label": "Visit website", "image": "/flags/sg.svg", "imageAlt": "Flag of Singapore" },
-          { "eyebrow": "Netherlands", "title": "WIAL Netherlands", "body": "Action Learning programs, events, and coach certification in the Netherlands.", "href": "https://wial.nl/", "label": "Visit website", "image": "/flags/nl.svg", "imageAlt": "Flag of the Netherlands" },
-          { "eyebrow": "Malaysia", "title": "WIAL Malaysia", "body": "Action Learning programs, events, and coach certification in Malaysia.", "href": "https://wialmalaysia.com/", "label": "Visit website", "image": "/flags/my.svg", "imageAlt": "Flag of Malaysia" },
-          { "eyebrow": "Vietnam", "title": "WIAL Vietnam", "body": "Action Learning programs, events, and coach certification in Vietnam.", "href": "http://www.wialvietnam.com/", "label": "Visit website", "image": "/flags/vn.svg", "imageAlt": "Flag of Vietnam" },
-          { "eyebrow": "Poland", "title": "WIAL Poland", "body": "Action Learning programs, events, and coach certification in Poland.", "href": "https://wialpoland.org/", "label": "Visit website", "image": "/flags/pl.svg", "imageAlt": "Flag of Poland" },
-          { "eyebrow": "Russia", "title": "WIAL Russia", "body": "Action Learning programs, events, and coach certification in Russia.", "href": "https://denissanko.com/", "label": "Visit website", "image": "/flags/ru.svg", "imageAlt": "Flag of Russia" },
-          { "eyebrow": "Taiwan", "title": "WIAL Taiwan", "body": "Action Learning programs, events, and coach certification in Taiwan.", "href": "http://www.wial.org.tw/", "label": "Visit website", "image": "/flags/tw.svg", "imageAlt": "Flag of Taiwan" }
-        ]
-      }
-    ]
-  },
-  "seo": {
-    "description": "WIAL affiliates worldwide - find your local Action Learning organization.",
-    "sourceUrl": "https://wial.org/affiliates/",
-    "sourceStatus": "newly-created",
-    "sourceNotes": "The live /affiliates page replaces the contact_cards section below with cards generated from active chapter records (managed in the global admin), including country flags and each affiliate's website or hosted site. This static list is only a fallback for when no affiliate records are available."
-  }
-},
-{
   "id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaa0010",
   "chapterId": null,
   "slug": "benefits",

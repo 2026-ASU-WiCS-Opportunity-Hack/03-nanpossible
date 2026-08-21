@@ -13,7 +13,9 @@ import {
   getCoachInitials,
   listApprovedCoachSlugs,
 } from "@/lib/coaches";
+import { affiliateSiteUrl } from "@/lib/affiliates";
 import { countryFlagSrc } from "@/lib/countries";
+import { listAffiliateDirectory } from "@/lib/tenant";
 
 type CoachDetailPageProps = {
   params: Promise<{
@@ -117,6 +119,12 @@ export default async function CoachDetailPage({ params }: CoachDetailPageProps) 
     .filter(Boolean)
     .join(", ");
   const flagSrc = countryFlagSrc(coach.locationCountry);
+  const affiliate = coach.chapterId
+    ? (await listAffiliateDirectory()).find(
+        (chapter) => chapter.id === coach.chapterId,
+      )
+    : undefined;
+  const siteDomain = process.env.NEXT_PUBLIC_SITE_DOMAIN ?? "localhost:3000";
   const validUntil = coach.certValidUntil ? formatValidUntil(coach.certValidUntil) : null;
   const credentialItems = toListItems(coach.credentials);
   const awardItems = toListItems(coach.awards);
@@ -373,6 +381,16 @@ export default async function CoachDetailPage({ params }: CoachDetailPageProps) 
                     {fullLocation || "Location not published"}
                   </p>
                 </div>
+                {affiliate ? (
+                  <a
+                    className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-teal transition hover:text-accent"
+                    href={affiliateSiteUrl(affiliate, siteDomain)}
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    {affiliate.name} <span aria-hidden="true">↗</span>
+                  </a>
+                ) : null}
               </section>
             </aside>
           </div>
