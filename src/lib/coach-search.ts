@@ -8,6 +8,7 @@ import type {
 import { chatCompletion } from "@/lib/openrouter";
 import { createServiceRoleSupabaseClient } from "@/lib/supabase-admin";
 import { searchApprovedCoachesByKeyword } from "@/lib/coaches";
+import { canonicalLanguageName } from "@/lib/languages";
 
 const RATE_LIMIT_WINDOW_MS = 60_000;
 const SEARCH_LIMIT = 20;
@@ -101,6 +102,16 @@ export function isComplexCoachQuery(query: string) {
     return false;
   }
 
+  // Unspaced/non-Latin scripts defeat the word-count and English cues below;
+  // route them to the LLM parser (skipped gracefully when no key is set).
+  if (
+    /[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Hangul}\p{Script=Thai}\p{Script=Arabic}\p{Script=Cyrillic}]/u.test(
+      normalized,
+    )
+  ) {
+    return true;
+  }
+
   const wordCount = normalized.split(/\s+/).length;
   const hasStructuredCue =
     /\b(need|near|works with|looking for|who speaks|government|manufacturing|leadership|healthcare)\b/i.test(
@@ -190,7 +201,7 @@ export async function parseCoachQuery(query: string): Promise<ParsedCoachQuery |
         {
           role: "system",
           content:
-            "You parse coach search queries for a global coaching directory. Return JSON only with cert_level, country, city, specializations, language, semantic_query. Use null when a field is not present.",
+            "You parse coach search queries for a global coaching directory. Queries may be in any language. Return JSON only with cert_level, country, city, specializations, language, semantic_query. Always answer in English: translate semantic_query to English and return country, city, and language as English names. Use null when a field is not present.",
         },
         {
           role: "user",
@@ -213,7 +224,9 @@ export async function parseCoachQuery(query: string): Promise<ParsedCoachQuery |
       country: toOptionalString(parsed.country),
       city: toOptionalString(parsed.city),
       specializations: toOptionalStringArray(parsed.specializations),
-      language: toOptionalString(parsed.language),
+      language:
+        canonicalLanguageName(toOptionalString(parsed.language)) ??
+        toOptionalString(parsed.language),
       semantic_query: toOptionalString(parsed.semantic_query) || query,
     };
   } catch {
@@ -328,7 +341,9 @@ export async function searchCoachesByName(
   }
 
   if (filters.language) {
-    request = request.contains("languages", [filters.language]);
+    request = request.contains("languages", [
+      canonicalLanguageName(filters.language) ?? filters.language,
+    ]);
   }
 
   if (filters.specializations?.length) {

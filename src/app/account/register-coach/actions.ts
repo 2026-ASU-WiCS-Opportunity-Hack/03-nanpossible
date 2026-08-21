@@ -1,6 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { canonicalLanguageName } from "@/lib/languages";
 import { redirect } from "next/navigation";
 import { requireAccountViewer } from "@/lib/auth";
 import { getCoachByUserId } from "@/lib/coaches";
@@ -96,7 +97,9 @@ export async function registerCoachProfileAction(formData: FormData) {
   const credlyBadgeUrl = readOptionalString(formData, "credlyBadgeUrl");
   const certLevel = parseCertLevel(readString(formData, "certLevel"));
   const specializations = readStringArray(formData, "specializations");
-  const languages = readStringArray(formData, "languages");
+  const languages = readStringArray(formData, "languages").map(
+    (value) => canonicalLanguageName(value) ?? value,
+  );
 
   for (const [field, value] of [
     ["photoUrl", photoUrl],

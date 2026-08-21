@@ -6,6 +6,7 @@ import {
   getCoachInitials,
 } from "@/lib/coach-presenters";
 import { createServiceRoleSupabaseClient } from "@/lib/supabase-admin";
+import { canonicalLanguageName, crossLingualExpansions } from "@/lib/languages";
 import { createSupabaseContentClient } from "@/lib/supabase";
 import type {
   CertificationLevel,
@@ -167,7 +168,7 @@ function normalizeSearchText(value: string) {
     .toLowerCase();
 }
 
-function extractSearchTerms(query: string) {
+export function extractSearchTerms(query: string) {
   const terms = normalizeSearchText(query)
     .split(/[^\p{L}\p{N}]+/u)
     .map((value) => value.trim())
@@ -175,7 +176,19 @@ function extractSearchTerms(query: string) {
     .filter((value) => value.length > 1)
     .filter((value) => !COACH_SEARCH_STOP_WORDS.has(value));
 
-  return [...new Set(terms)];
+  const expanded = new Set(terms);
+
+  for (const term of terms) {
+    for (const englishTerm of crossLingualExpansions(term)) {
+      for (const word of normalizeSearchText(englishTerm).split(/\s+/)) {
+        if (word.length > 1 && !COACH_SEARCH_STOP_WORDS.has(word)) {
+          expanded.add(word);
+        }
+      }
+    }
+  }
+
+  return [...expanded];
 }
 function mapCoachRecord(row: CoachDbRow): CoachRecord {
   return {
@@ -242,7 +255,9 @@ function applyCoachFilters<T extends CoachFilterQuery>(
   }
 
   if (filters.language) {
-    query.contains("languages", [filters.language]);
+    query.contains("languages", [
+      canonicalLanguageName(filters.language) ?? filters.language,
+    ]);
   }
 
   if (filters.specializations?.length) {
@@ -411,7 +426,9 @@ async function searchCoachesByKeywordRpc({
       filter_cert_level: filters.certLevel ?? null,
       filter_country: filters.country ?? null,
       filter_city: filters.city ?? null,
-      filter_language: filters.language ?? null,
+      filter_language: filters.language
+        ? canonicalLanguageName(filters.language) ?? filters.language
+        : null,
       filter_specializations: filters.specializations ?? null,
       match_count: limit,
       match_offset: offset,
