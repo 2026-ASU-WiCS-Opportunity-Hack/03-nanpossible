@@ -9,7 +9,7 @@
     "heroIntro": "WIAL is the world's leading certifying body for Action Learning — a way of thinking, doing business, and working in teams that helps organizations solve real problems while developing their people at the same time.",
     "metrics": [
       { "label": "Certification levels", "value": "4" },
-      { "label": "Solution categories", "value": "5" },
+      { "label": "Solution categories", "value": "4" },
       { "label": "Global affiliates", "value": "8" }
     ],
     "sections": [
@@ -27,8 +27,8 @@
           {
             "eyebrow": "Solution Spheres",
             "title": "Action Learning solutions for your business",
-            "body": "WIAL offers services across five broad categories to help organizations grow through Action Learning.",
-            "href": "https://wial.org/our-services/",
+            "body": "WIAL offers Action Learning solutions that help individuals, teams, and organizations grow.",
+            "href": "/our-services",
             "label": "Read more"
           },
           {
@@ -81,7 +81,7 @@
     "description": "Global WIAL homepage content migrated from the live wial.org homepage.",
     "sourceUrl": "https://wial.org/",
     "sourceStatus": "migrated-from-wial",
-    "sourceNotes": "Rewritten from the live wial.org homepage (Action Learning, Solution Spheres, Benefits, People/coach directory, Certification pillars, Better World Fund spotlight, newsletter signup)."
+    "sourceNotes": "Rewritten from the live wial.org homepage (Action Learning, Solution Spheres, Benefits, People/coach directory, Certification pillars, Better World Fund spotlight, newsletter signup). All five What WIAL offers cards link internally (/action-learning, /our-services, /benefits, /coaches, /certification)."
   }
 },
   {
@@ -768,6 +768,13 @@
       },
       {
         "type": "cta",
+        "title": "Explore WIAL Solution Spheres",
+        "body": "WIAL's Solution Spheres are how Action Learning creates results for individuals, teams, and organizations.",
+        "href": "/our-services",
+        "label": "See our services"
+      },
+      {
+        "type": "cta",
         "title": "See what Action Learning can do for you",
         "body": "Explore how Action Learning benefits individuals, teams, and organizations.",
         "href": "/benefits",
@@ -779,7 +786,7 @@
     "description": "Action Learning is a process where a small group works on real problems, takes action, and learns as individuals, a team, and an organization — built on six components and two ground rules.",
     "sourceUrl": "https://wial.org/action-learning/",
     "sourceStatus": "migrated-from-wial",
-    "sourceNotes": "Rewritten from the live wial.org Action Learning page (definition, six components, ground rules). External CTAs replaced with internal /certification, /coaches, and /benefits routes; Solution Spheres blurb omitted until the services page is migrated."
+    "sourceNotes": "Rewritten from the live wial.org Action Learning page (definition, six components, ground rules). External CTAs replaced with internal /certification, /coaches, /our-services, and /benefits routes."
   }
 },
   {
@@ -1546,6 +1553,123 @@
       "sourceNotes": "Consolidates wial.org/awards, /award-nomination (criteria and eligibility kept; the nomination form itself is migrated to the internal /awards/nomination route, stored in award_nominations), and /previous-wial-award-winners (per-year gallery_grid sections with winner slides, photos, and logos vendored under public/awards/winners/; 2021-2024 names and awards transcribed from the slide images themselves since the source captions were garbled; generic WIAL-logo placeholder images and two mismatched logos from the source were dropped rather than republished). Ceremony photo vendored under public/awards/."
     }
   },
+{
+  "id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaa0014",
+  "chapterId": null,
+  "slug": "our-services",
+  "title": "Action Learning Solutions",
+  "published": true,
+  "bodyRichtext": {
+    "heroIntro": "WIAL offers Action Learning solutions that help individuals, teams, and organizations solve real problems while developing people at the same time. Solution Spheres are how those results show up in your business.",
+    "metrics": [
+      { "label": "Audiences", "value": "3" },
+      { "label": "Solution Spheres", "value": "4" },
+      { "label": "Delivery", "value": "Worldwide" }
+    ],
+    "sections": [
+      {
+        "type": "prose",
+        "title": "WIAL Solution Spheres",
+        "paragraphs": [
+          "WIAL's Solution Spheres are the key to unlocking the full potential of Action Learning. Questions — not statements — are what make all four spheres possible in every session: they generate breakthrough ideas, build teams, practice leadership, and change how an organization learns."
+        ]
+      },
+      {
+        "type": "feature_grid",
+        "title": "Four ways Action Learning creates results",
+        "items": [
+          { "eyebrow": "Sphere 1", "title": "Solve urgent, complex problems", "body": "Questions open thinking that statements cannot. Teams clarify the real issue, generate options they had not considered, and leave with strategies they can act on." },
+          { "eyebrow": "Sphere 2", "title": "Build great teams", "body": "Shared inquiry builds dialogue, respect, and cohesiveness. Groups become faster at solving problems together and more committed to the results they own." },
+          { "eyebrow": "Sphere 3", "title": "Develop leadership skills", "body": "The core leadership skill in Action Learning is asking questions. Every session gives people live practice — listening, reframing, and helping others find their voice." },
+          { "eyebrow": "Sphere 4", "title": "Transform culture and capability", "body": "The learning does not stay in the room. Teams carry new habits of inquiry, decision-making, and collaboration back into the wider organization." }
+        ]
+      },
+      {
+        "type": "media_prose",
+        "title": "Action Learning helps individuals",
+        "image": "/our-services/individual.jpg",
+        "imageAlt": "An Action Learning participant reflecting during a session",
+        "imagePosition": "left",
+        "paragraphs": [
+          "Action Learning builds the personal skills people need to work, lead, and speak up with confidence."
+        ],
+        "bullets": [
+          "Enhance personal effectiveness and productivity",
+          "Reflect on and learn from individual experience",
+          "Enhance personal leadership and soft skills",
+          "Develop self-confidence and assertiveness",
+          "Improve awareness of how assumptions, beliefs, attitudes, and organizational interests influence thinking, decisions, and actions",
+          "Develop Emotional Intelligence (EI): self-awareness, awareness of others, and adaptability",
+          "Find the courage to speak up and encourage others to do the same"
+        ]
+      },
+      {
+        "type": "media_prose",
+        "title": "Action Learning helps teams",
+        "image": "/our-services/team.jpg",
+        "imageAlt": "A team working together in an Action Learning session",
+        "imagePosition": "right",
+        "paragraphs": [
+          "Action Learning turns groups of colleagues into high-performing teams that solve problems together."
+        ],
+        "bullets": [
+          "Dramatically enhance team performance",
+          "Develop positive, mutually respectful working relationships with co-workers at all organizational levels",
+          "Develop individual and team problem-solving and decision-making capability",
+          "Enhance capability to reflect on and learn from collective experience",
+          "Develop awareness in the context of multicultural, diverse teams",
+          "Continually monitor and enhance team functions"
+        ]
+      },
+      {
+        "type": "media_prose",
+        "title": "Action Learning helps organizations",
+        "image": "/our-services/organization.jpg",
+        "imageAlt": "Leaders collaborating on organizational challenges through Action Learning",
+        "imagePosition": "left",
+        "paragraphs": [
+          "Action Learning improves performance at every level — solving urgent challenges while building a culture of learning."
+        ],
+        "bullets": [
+          "Enhance business performance at all levels",
+          "Rapidly solve urgent and important business challenges",
+          "Achieve a substantial return on investment (ROI) on organization improvement projects",
+          "Develop a culture of staff engagement, involvement, and performance",
+          "Establish effective succession planning by developing highly qualified candidates for promotion to executive leadership positions",
+          "Become a learning organization",
+          "Become more strategic in goal setting"
+        ]
+      },
+      {
+        "type": "cta",
+        "title": "See the benefits in more depth",
+        "body": "Explore how Action Learning supports problem solving, high-performing teams, leadership development, and learning organizations.",
+        "href": "/benefits",
+        "label": "See the benefits"
+      },
+      {
+        "type": "cta",
+        "title": "Bring Action Learning to your organization",
+        "body": "Find a WIAL-certified coach to work with your team, or talk with us about a tailored program.",
+        "href": "/coaches",
+        "label": "Find a coach"
+      },
+      {
+        "type": "cta",
+        "title": "Want more information?",
+        "body": "Contact us with questions about Action Learning solutions for your business.",
+        "href": "/contact",
+        "label": "Talk with WIAL"
+      }
+    ]
+  },
+  "seo": {
+    "description": "WIAL Action Learning solutions for individuals, teams, and organizations — four Solution Spheres that solve problems, build teams, develop leaders, and transform culture.",
+    "sourceUrl": "https://wial.org/our-services/",
+    "sourceStatus": "migrated-from-wial",
+    "sourceNotes": "Rewritten from the live wial.org Our Services page (individuals, teams, organizations, with session photos vendored under public/our-services/). Solution Spheres framed as the four outcomes WIAL documents for Action Learning (problem solving, teams, leadership, culture). Homepage copy that promised five service categories was aligned to this live page. Source typos fixed (duplicate 'and'; EI punctuation). External contact CTA replaced with internal /benefits, /coaches, and /contact routes."
+  }
+},
   {
     "id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaa0006",
     "chapterId": "22222222-2222-4222-8222-222222222222",

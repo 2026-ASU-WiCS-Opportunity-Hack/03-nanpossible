@@ -208,6 +208,13 @@ function renderSection(section: ContentSection) {
                 {section.paragraphs.map((paragraph, i) => (
                   <p key={i}>{paragraph}</p>
                 ))}
+                {section.bullets?.length ? (
+                  <ul className="section-list list-disc">
+                    {section.bullets.map((bullet) => (
+                      <li key={bullet}>{bullet}</li>
+                    ))}
+                  </ul>
+                ) : null}
               </div>
             </div>
           </div>

@@ -1,6 +1,6 @@
 # WIAL content migration playbook
 
-How we move pages from the legacy WordPress site (wial.org) into this platform. Written after migrating `/about` (leadership consolidation), `/awards` (three pages merged), `/awards/nomination` (form), `/better-world`, `/action-learning`, `/benefits`, and `/clients`. Follow this for every remaining page.
+How we move pages from the legacy WordPress site (wial.org) into this platform. Written after migrating `/about` (leadership consolidation), `/awards` (three pages merged), `/awards/nomination` (form), `/better-world`, `/action-learning`, `/our-services`, `/benefits`, and `/clients`. Follow this for every remaining page.
 
 ## Goal
 
@@ -24,7 +24,7 @@ Conventions for the migration SQL: global pages use `chapter_id = null`, ids fol
 
 ## Section toolbox
 
-Compose pages from the `ContentSection` types (`src/lib/types.ts`, rendered in `src/components/content-page.tsx`): `prose` (with optional bullets), `feature_grid`, `timeline`, `quote`, `resource_list`, `contact_cards`, `logo_grid` (grayscale org logos), `media_prose` (photo + text), `cta`, `people_grid` (avatar cards: name/role/eyebrow — built for leadership), `gallery_grid` (contain-fit image cards with title/subtitle — built for award winners; items without an image render as text-only cards).
+Compose pages from the `ContentSection` types (`src/lib/types.ts`, rendered in `src/components/content-page.tsx`): `prose` (with optional bullets), `feature_grid`, `timeline`, `quote`, `resource_list`, `contact_cards`, `logo_grid` (grayscale org logos), `media_prose` (photo + text, optional bullets), `cta`, `people_grid` (avatar cards: name/role/eyebrow — built for leadership), `gallery_grid` (contain-fit image cards with title/subtitle — built for award winners; items without an image render as text-only cards).
 
 Add a new section type only when no existing one fits the content's shape — then add it to the `ContentSection` union, the renderer switch, and use it from the page entry. Don't force photos into `people_grid`'s circular crop (logos and slides need `gallery_grid`'s contain-fit) and don't put people in `logo_grid` (grayscale filter).
 
@@ -64,7 +64,6 @@ External links still in the content, in rough priority order:
 
 | wial.org page | Linked from | Notes |
 | --- | --- | --- |
-| `/our-services/` | home "solutions for your business" card | biggest unmigrated content page |
 | `/conferences/` | `/about` CTA | events content; may pair with an events section |
 | `/become-a-partner/` | `/partners` (twice) | likely a form → contact-form pattern |
 | `/share-your-success-story/` | `/clients` | form → contact-form pattern |

@@ -9,7 +9,8 @@ export type CanonicalPageSlug =
   | "benefits"
   | "better-world"
   | "action-learning"
-  | "awards";
+  | "awards"
+  | "our-services";
 
 export type AppRole =
   | "platform_admin"
@@ -291,6 +292,7 @@ export type ContentSection =
       image: string;
       imageAlt: string;
       paragraphs: string[];
+      bullets?: string[];
       caption?: string;
       imagePosition?: "left" | "right";
     }

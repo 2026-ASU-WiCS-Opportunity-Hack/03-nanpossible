@@ -42,6 +42,7 @@ const canonicalMap = new Map<string, CanonicalPageSlug>([
   ["better-world", "better-world"],
   ["action-learning", "action-learning"],
   ["awards", "awards"],
+  ["our-services", "our-services"],
 ]);
 
 export const reservedSubdomains = new Set([

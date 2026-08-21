@@ -91,6 +91,13 @@ describe("normalizeSegments", () => {
     });
   });
 
+  it("resolves the our-services page slug", () => {
+    expect(normalizeSegments(["our-services"])).toEqual({
+      slug: "our-services",
+      redirectTo: null,
+    });
+  });
+
   it("redirects legacy leadership paths to the about page", () => {
     for (const path of [
       ["about-us"],
