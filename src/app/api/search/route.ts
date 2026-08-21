@@ -11,6 +11,7 @@ import {
   setCachedSearch,
 } from "@/lib/coach-search";
 import { listApprovedCoaches } from "@/lib/coaches";
+import { canonicalLanguageName } from "@/lib/languages";
 import type {
   CoachSearchFilters,
   CoachSearchResponse,
@@ -51,7 +52,9 @@ function normalizeFilters(
         : null,
     country: filters?.country?.trim() || null,
     city: filters?.city?.trim() || null,
-    language: filters?.language?.trim() || null,
+    language: filters?.language?.trim()
+      ? canonicalLanguageName(filters.language) ?? filters.language.trim()
+      : null,
     specializations:
       filters?.specializations?.filter(Boolean).map((value) => value.trim()) ??
       null,

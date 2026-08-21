@@ -1,6 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { canonicalLanguageName } from "@/lib/languages";
 import { redirect } from "next/navigation";
 import { requireAccountViewer } from "@/lib/auth";
 import { getCoachByIdForAdmin } from "@/lib/coaches";
@@ -111,7 +112,9 @@ export async function saveCoachAction(formData: FormData) {
       credentials: readText(formData, "credentials"),
       awards: readText(formData, "awards"),
       specializations: readList(formData, "specializations"),
-      languages: readList(formData, "languages"),
+      languages: readList(formData, "languages").map(
+        (value) => canonicalLanguageName(value) ?? value,
+      ),
       approved: formData.get("approved") === "true",
       updated_at: new Date().toISOString(),
     })

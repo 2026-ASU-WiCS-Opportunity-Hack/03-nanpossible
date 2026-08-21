@@ -54,6 +54,14 @@ describe("coach search helpers", () => {
     ).toBe(true);
   });
 
+  it("flags non-Latin-script searches as complex", () => {
+    expect(isComplexCoachQuery("说中文的教练")).toBe(true);
+    expect(isComplexCoachQuery("リーダーシップ")).toBe(true);
+    expect(isComplexCoachQuery("مدرب في دبي")).toBe(true);
+    expect(isComplexCoachQuery("São Paulo")).toBe(false);
+    expect(isComplexCoachQuery("Małgorzata")).toBe(false);
+  });
+
   it("builds stable cache keys for normalized filters", () => {
     expect(
       buildSearchCacheKey(" Maria Santos ", {
