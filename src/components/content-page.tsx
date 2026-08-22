@@ -6,7 +6,7 @@ type ContentPageProps = {
   siteContext: SiteContext;
 };
 
-function renderSection(section: ContentSection) {
+export function renderSection(section: ContentSection) {
   switch (section.type) {
     case "prose":
       return (

@@ -34,6 +34,21 @@ describe("normalizeSegments", () => {
       slug: null,
       redirectTo: "/benefits",
     });
+    expect(normalizeSegments(["past-conferences"])).toEqual({
+      slug: null,
+      redirectTo: "/conferences",
+    });
+    expect(normalizeSegments(["2024-wial-global-conference"])).toEqual({
+      slug: null,
+      redirectTo: "/conferences",
+    });
+  });
+
+  it("resolves the conferences page slug", () => {
+    expect(normalizeSegments(["conferences"])).toEqual({
+      slug: "conferences",
+      redirectTo: null,
+    });
   });
 
   it("resolves the benefits page slug", () => {

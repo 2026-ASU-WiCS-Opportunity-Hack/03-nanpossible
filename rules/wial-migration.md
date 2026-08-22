@@ -1,6 +1,6 @@
 # WIAL content migration playbook
 
-How we move pages from the legacy WordPress site (wial.org) into this platform. Written after migrating `/about` (leadership consolidation), `/awards` (three pages merged), `/awards/nomination` (form), `/better-world`, `/action-learning`, `/our-services`, `/benefits`, and `/clients`. Follow this for every remaining page.
+How we move pages from the legacy WordPress site (wial.org) into this platform. Written after migrating `/about` (leadership consolidation), `/awards` (three pages merged), `/awards/nomination` (form), `/better-world`, `/action-learning`, `/our-services`, `/benefits`, `/clients`, and `/conferences` (three pages merged, incl. slide transcription). Follow this for every remaining page.
 
 ## Goal
 
@@ -64,7 +64,6 @@ External links still in the content, in rough priority order:
 
 | wial.org page | Linked from | Notes |
 | --- | --- | --- |
-| `/conferences/` | `/about` CTA | events content; may pair with an events section |
 | `/become-a-partner/` | `/partners` (twice) | likely a form → contact-form pattern |
 | `/share-your-success-story/` | `/clients` | form → contact-form pattern |
 | Better World donation + application forms | `/better-world` CTAs | intentionally live for now; migrate like `/awards/nomination` |
