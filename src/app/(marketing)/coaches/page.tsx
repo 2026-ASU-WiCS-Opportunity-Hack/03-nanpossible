@@ -9,7 +9,7 @@ import {
 } from "@/lib/coaches";
 import { getCurrentViewer } from "@/lib/auth";
 import { listAffiliateDirectory } from "@/lib/tenant";
-import type { CoachAffiliateLink } from "@/lib/types";
+import type { AffiliateMapEntry, CoachAffiliateLink } from "@/lib/types";
 
 export const metadata: Metadata = {
   title: "Find a WIAL Certified Coach",
@@ -36,6 +36,14 @@ export default async function CoachesDirectoryPage() {
       { name: chapter.name, href: affiliateSiteUrl(chapter, siteDomain) },
     ]),
   );
+
+  const affiliateEntries: AffiliateMapEntry[] = affiliates
+    .filter((chapter) => chapter.country)
+    .map((chapter) => ({
+      name: chapter.name,
+      country: chapter.country as string,
+      href: affiliateSiteUrl(chapter, siteDomain),
+    }));
 
   const directoryIsEmpty =
     initialCoaches.length === 0 &&
@@ -99,11 +107,36 @@ export default async function CoachesDirectoryPage() {
         ) : (
           <CoachSearch
             affiliateLinks={affiliateLinks}
+            affiliates={affiliateEntries}
             facets={facets}
             initialCoaches={initialCoaches}
             mapPoints={mapPoints}
           />
         )}
+
+        <section className="rounded-[1.9rem] border border-line bg-[linear-gradient(135deg,rgba(209,0,52,0.05),rgba(138,143,0,0.04))] p-6 md:p-8">
+          <div className="flex flex-wrap items-center justify-between gap-5">
+            <div className="max-w-2xl space-y-2">
+              <span className="eyebrow">Get involved</span>
+              <h2 className="font-display text-[clamp(1.4rem,2vw,1.9rem)] leading-[1.05] tracking-[-0.04em] text-teal-deep">
+                Become a coach — or bring WIAL to your country.
+              </h2>
+              <p className="text-base leading-7 text-foreground/72">
+                Interested in certifying as an Action Learning coach, or in
+                starting a WIAL affiliate where none exists yet? We&apos;d love
+                to hear from you.
+              </p>
+            </div>
+            <div className="flex flex-wrap items-center gap-3">
+              <Link className="button-link primary" href="/contact">
+                Contact us
+              </Link>
+              <Link className="button-link ghost" href="/certification">
+                Learn about certification
+              </Link>
+            </div>
+          </div>
+        </section>
       </div>
     </div>
   );

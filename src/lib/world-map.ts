@@ -1,5 +1,6 @@
 import { countryCodeFor } from "@/lib/countries";
-import type { CoachMapPoint } from "@/lib/types";
+import { COUNTRY_CENTROIDS } from "@/lib/country-centroids";
+import type { AffiliateMapEntry, CoachMapPoint } from "@/lib/types";
 
 /**
  * Equirectangular projection shared with the vendored basemap
@@ -25,6 +26,7 @@ export type CoachMapMarker = {
   x: number;
   y: number;
   r: number;
+  /** Coaches mapped in the country — 0 for affiliate-only markers. */
   count: number;
   /** Most common stored country string in the group — feeds the ilike filter. */
   country: string;
@@ -34,6 +36,8 @@ export type CoachMapMarker = {
   cityCount: number;
   /** Human label, e.g. "Thailand". */
   label: string;
+  /** Local WIAL affiliate headquartered in this country, when one exists. */
+  affiliate: { name: string } | null;
 };
 
 export function markerRadius(count: number): number {
@@ -54,17 +58,23 @@ export function coachCountryKey(country: string | null): string | null {
 
 /**
  * Anchor overrides for countries whose coach-weighted centroid lands in open
- * water (e.g. cities split across a strait). Keyed by ISO alpha-2 code.
+ * water (e.g. cities split across a strait). Keyed by lowercase ISO alpha-2 code.
  */
 const COUNTRY_ANCHOR_OVERRIDES: Record<string, { lat: number; lng: number }> = {};
 
 /**
  * Aggregate city-level points into one marker per country, positioned at the
  * count-weighted centroid of that country's cities. Points without a country
- * are dropped — they cannot drive the country filter. Returned markers are
- * sorted large-first so small dots paint on top.
+ * are dropped — they cannot drive the country filter. Affiliates annotate
+ * their country's marker; an affiliate country with no mapped coaches gets a
+ * zero-count marker at the vendored country anchor (skipped when the country
+ * name resolves to no ISO code). Returned markers are sorted large-first so
+ * small dots paint on top.
  */
-export function buildCoachMapMarkers(points: CoachMapPoint[]): CoachMapMarker[] {
+export function buildCoachMapMarkers(
+  points: CoachMapPoint[],
+  affiliates: AffiliateMapEntry[] = [],
+): CoachMapMarker[] {
   type Group = {
     x: number;
     y: number;
@@ -104,11 +114,20 @@ export function buildCoachMapMarkers(points: CoachMapPoint[]): CoachMapMarker[] 
     groups.set(key, group);
   }
 
-  const markers = [...groups.values()].map((group) => {
+  const affiliateByKey = new Map<string, AffiliateMapEntry>();
+  for (const affiliate of affiliates) {
+    const key = coachCountryKey(affiliate.country);
+    if (key && !affiliateByKey.has(key)) {
+      affiliateByKey.set(key, affiliate);
+    }
+  }
+
+  const markers = [...groups.entries()].map(([key, group]) => {
     const country = [...group.variants.entries()].sort((a, b) => b[1] - a[1])[0][0];
     const countryCode = countryCodeFor(country);
     const override = countryCode ? COUNTRY_ANCHOR_OVERRIDES[countryCode] : undefined;
     const anchor = override ? projectToWorldMap(override.lat, override.lng) : group;
+    const affiliate = affiliateByKey.get(key) ?? null;
 
     return {
       x: anchor.x,
@@ -119,8 +138,35 @@ export function buildCoachMapMarkers(points: CoachMapPoint[]): CoachMapMarker[] 
       countryCode,
       cityCount: group.cities.size,
       label: country,
+      affiliate: affiliate ? { name: affiliate.name } : null,
     };
   });
+
+  // Affiliates in countries with no mapped coaches still deserve a dot.
+  for (const [key, affiliate] of affiliateByKey) {
+    if (groups.has(key)) {
+      continue;
+    }
+    const countryCode = countryCodeFor(affiliate.country);
+    const home = countryCode
+      ? COUNTRY_ANCHOR_OVERRIDES[countryCode] ?? COUNTRY_CENTROIDS[countryCode]
+      : undefined;
+    if (!countryCode || !home) {
+      continue;
+    }
+    const anchor = projectToWorldMap(home.lat, home.lng);
+    markers.push({
+      x: anchor.x,
+      y: anchor.y,
+      r: markerRadius(0),
+      count: 0,
+      country: affiliate.country,
+      countryCode,
+      cityCount: 0,
+      label: affiliate.country,
+      affiliate: { name: affiliate.name },
+    });
+  }
 
   markers.sort((a, b) => b.count - a.count);
   relaxMarkerCollisions(markers);

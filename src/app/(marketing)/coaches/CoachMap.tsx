@@ -4,10 +4,11 @@ import { useMemo, useState } from "react";
 import { countryFlagSrc } from "@/lib/countries";
 import { WORLD_LAND_PATH } from "@/lib/world-land-path";
 import { buildCoachMapMarkers, markerRadius, WORLD_MAP } from "@/lib/world-map";
-import type { CoachMapPoint } from "@/lib/types";
+import type { AffiliateMapEntry, CoachMapPoint } from "@/lib/types";
 
 type CoachMapProps = {
   points: CoachMapPoint[];
+  affiliates: AffiliateMapEntry[];
   activeCountry: string | null;
   onCountrySelect: (country: string | null) => void;
 };
@@ -16,8 +17,11 @@ const LEGEND_COUNTS = [1, 10, 50];
 const LEGEND_SCALE = 0.6;
 const LEGEND_BOX = Math.ceil(2 * markerRadius(Math.max(...LEGEND_COUNTS)) * LEGEND_SCALE);
 
-export function CoachMap({ points, activeCountry, onCountrySelect }: CoachMapProps) {
-  const markers = useMemo(() => buildCoachMapMarkers(points), [points]);
+export function CoachMap({ points, affiliates, activeCountry, onCountrySelect }: CoachMapProps) {
+  const markers = useMemo(
+    () => buildCoachMapMarkers(points, affiliates),
+    [points, affiliates],
+  );
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   const hovered = hoveredIndex === null ? null : markers[hoveredIndex];
@@ -40,7 +44,13 @@ export function CoachMap({ points, activeCountry, onCountrySelect }: CoachMapPro
         {markers.map((marker, index) => {
           const isActive = activeCountry !== null && marker.country === activeCountry;
           const isDimmed = activeCountry !== null && !isActive;
-          const coachLabel = `${marker.count} ${marker.count === 1 ? "coach" : "coaches"}`;
+          const coachLabel =
+            marker.count === 0
+              ? "no coaches listed yet"
+              : `${marker.count} ${marker.count === 1 ? "coach" : "coaches"}`;
+          const affiliateLabel = marker.affiliate
+            ? ` Home of ${marker.affiliate.name}.`
+            : "";
           return (
             <g
               className={`coach-map-marker${isDimmed ? " is-dimmed" : ""}${isActive ? " is-active" : ""}`}
@@ -48,7 +58,7 @@ export function CoachMap({ points, activeCountry, onCountrySelect }: CoachMapPro
             >
               {/* generous invisible hit target around the visible dot */}
               <circle
-                aria-label={`${marker.label}: ${coachLabel}. ${
+                aria-label={`${marker.label}: ${coachLabel}.${affiliateLabel} ${
                   isActive ? "Clear the country filter." : "Filter the directory."
                 }`}
                 aria-pressed={isActive}
@@ -70,6 +80,14 @@ export function CoachMap({ points, activeCountry, onCountrySelect }: CoachMapPro
                 role="button"
                 tabIndex={0}
               />
+              {marker.affiliate ? (
+                <circle
+                  className="coach-map-affiliate-ring"
+                  cx={marker.x}
+                  cy={marker.y}
+                  r={marker.r + 3}
+                />
+              ) : null}
               <circle
                 className="coach-map-dot"
                 cx={marker.x}
@@ -108,9 +126,16 @@ export function CoachMap({ points, activeCountry, onCountrySelect }: CoachMapPro
             {hovered.label}
           </strong>
           <span>
-            {hovered.count} {hovered.count === 1 ? "coach" : "coaches"}
+            {hovered.count === 0
+              ? "No coaches listed yet"
+              : `${hovered.count} ${hovered.count === 1 ? "coach" : "coaches"}`}
             {hovered.cityCount > 1 ? ` · ${hovered.cityCount} cities` : ""}
           </span>
+          {hovered.affiliate ? (
+            <span className="coach-map-tooltip-affiliate">
+              Local affiliate: {hovered.affiliate.name}
+            </span>
+          ) : null}
           <span>
             {activeCountry === hovered.country ? "Click to clear" : "Click to filter"}
           </span>
@@ -137,6 +162,27 @@ export function CoachMap({ points, activeCountry, onCountrySelect }: CoachMapPro
             </span>
           ))}
           <span className="coach-map-legend-caption">coaches per country</span>
+          <span className="coach-map-legend-item">
+            <svg
+              height={LEGEND_BOX}
+              viewBox={`0 0 ${LEGEND_BOX} ${LEGEND_BOX}`}
+              width={LEGEND_BOX}
+            >
+              <circle
+                className="coach-map-affiliate-ring"
+                cx={LEGEND_BOX / 2}
+                cy={LEGEND_BOX / 2}
+                r={markerRadius(1) * LEGEND_SCALE + 3}
+              />
+              <circle
+                className="coach-map-dot"
+                cx={LEGEND_BOX / 2}
+                cy={LEGEND_BOX / 2}
+                r={markerRadius(1) * LEGEND_SCALE}
+              />
+            </svg>
+            WIAL affiliate
+          </span>
         </div>
         <div aria-live="polite">
           {activeCountry ? (

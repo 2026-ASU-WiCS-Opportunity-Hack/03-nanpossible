@@ -3,8 +3,10 @@
 import { useEffect, useState, useTransition } from "react";
 import { CoachGrid } from "./CoachGrid";
 import { CoachMap } from "./CoachMap";
+import { countryFlagSrc } from "@/lib/countries";
 import { coachCountryKey } from "@/lib/world-map";
 import type {
+  AffiliateMapEntry,
   CoachAffiliateLink,
   CoachFacetOptions,
   CoachMapPoint,
@@ -19,6 +21,7 @@ type CoachSearchProps = {
   facets: CoachFacetOptions;
   mapPoints: CoachMapPoint[];
   affiliateLinks: Record<string, CoachAffiliateLink>;
+  affiliates: AffiliateMapEntry[];
 };
 
 type SearchPayload = {
@@ -88,11 +91,41 @@ function hasFilters(filters: CoachSearchFilters) {
   );
 }
 
+function AffiliateStrip({ affiliates }: { affiliates: AffiliateMapEntry[] }) {
+  return (
+    <div className="coach-affiliate-strip">
+      <span className="coach-affiliate-strip-label">
+        WIAL affiliates — visit their local sites:
+      </span>
+      {affiliates.map((affiliate) => {
+        const flagSrc = countryFlagSrc(affiliate.country);
+        return (
+          <a
+            className="coach-affiliate-chip"
+            href={affiliate.href}
+            key={affiliate.href}
+            rel="noreferrer"
+            target="_blank"
+          >
+            {flagSrc ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img alt="" height={12} src={flagSrc} width={17} />
+            ) : null}
+            {affiliate.name}
+            <span aria-hidden="true">↗</span>
+          </a>
+        );
+      })}
+    </div>
+  );
+}
+
 export function CoachSearch({
   initialCoaches,
   facets,
   mapPoints,
   affiliateLinks,
+  affiliates,
 }: CoachSearchProps) {
   const [query, setQuery] = useState("");
   const [filters, setFilters] = useState<CoachSearchFilters>({
@@ -175,15 +208,27 @@ export function CoachSearch({
             <div className="flex flex-wrap items-center gap-3">
               <span className="coach-result-chip">{mappedCoachCount} coaches mapped</span>
               <span className="coach-result-chip">{mapCountries.size} countries</span>
+              {affiliates.length > 0 ? (
+                <span className="coach-result-chip">
+                  {affiliates.length}{" "}
+                  {affiliates.length === 1 ? "affiliate" : "affiliates"}
+                </span>
+              ) : null}
             </div>
           </div>
           <CoachMap
             activeCountry={filters.country ?? null}
+            affiliates={affiliates}
             onCountrySelect={(country) =>
               setFilters((current) => ({ ...current, country }))
             }
             points={mapPoints}
           />
+          {affiliates.length > 0 ? <AffiliateStrip affiliates={affiliates} /> : null}
+        </section>
+      ) : affiliates.length > 0 ? (
+        <section className="site-panel rounded-[2rem] p-6 md:p-8">
+          <AffiliateStrip affiliates={affiliates} />
         </section>
       ) : null}
 

@@ -136,4 +136,56 @@ describe("buildCoachMapMarkers", () => {
     expect(markers[0].count).toBe(62);
     expect(markers[1].count).toBe(1);
   });
+
+  it("attaches an affiliate to its country's coach marker", () => {
+    const markers = buildCoachMapMarkers(
+      [point({ country: "Viet Nam", city: "Hanoi", lat: 21.03, lng: 105.85, count: 12 })],
+      [{ name: "WIAL Vietnam", country: "Vietnam", href: "http://www.wialvietnam.com/" }],
+    );
+    expect(markers).toHaveLength(1);
+    expect(markers[0].affiliate).toEqual({ name: "WIAL Vietnam" });
+    expect(markers[0].count).toBe(12);
+  });
+
+  it("leaves affiliate null on countries without one", () => {
+    const markers = buildCoachMapMarkers(
+      [point({ country: "Belgium", city: "Antwerp", lat: 51.22, lng: 4.4, count: 3 })],
+      [{ name: "WIAL Vietnam", country: "Vietnam", href: "http://www.wialvietnam.com/" }],
+    );
+    expect(markers[0].affiliate).toBeNull();
+  });
+
+  it("adds a zero-count marker for an affiliate country with no coaches", () => {
+    const markers = buildCoachMapMarkers(
+      [],
+      [{ name: "WIAL Singapore", country: "Singapore", href: "https://www.wial.sg/" }],
+    );
+    expect(markers).toHaveLength(1);
+    expect(markers[0].count).toBe(0);
+    expect(markers[0].cityCount).toBe(0);
+    expect(markers[0].country).toBe("Singapore");
+    expect(markers[0].countryCode).toBe("sg");
+    expect(markers[0].affiliate).toEqual({ name: "WIAL Singapore" });
+    // Anchored near the vendored Singapore label point (1.37, 103.82).
+    const anchor = projectToWorldMap(1.37, 103.82);
+    expect(markers[0].x).toBeCloseTo(anchor.x, 0);
+    expect(markers[0].y).toBeCloseTo(anchor.y, 0);
+    expect(markers[0].r).toBe(markerRadius(0));
+  });
+
+  it("skips map markers for affiliates whose country has no ISO code", () => {
+    const markers = buildCoachMapMarkers(
+      [],
+      [{ name: "WIAL Atlantis", country: "Atlantis", href: "https://example.org/" }],
+    );
+    expect(markers).toHaveLength(0);
+  });
+
+  it("sorts affiliate-only markers after coach markers so they paint on top", () => {
+    const markers = buildCoachMapMarkers(
+      [point({ country: "Malaysia", city: "Kuala Lumpur", lat: 3.14, lng: 101.69, count: 20 })],
+      [{ name: "WIAL Singapore", country: "Singapore", href: "https://www.wial.sg/" }],
+    );
+    expect(markers.map((marker) => marker.count)).toEqual([20, 0]);
+  });
 });
