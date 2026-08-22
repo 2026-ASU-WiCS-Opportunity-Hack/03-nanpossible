@@ -9,7 +9,8 @@ export type CanonicalPageSlug =
   | "better-world"
   | "action-learning"
   | "awards"
-  | "our-services";
+  | "our-services"
+  | "conferences";
 
 export type AppRole =
   | "platform_admin"
