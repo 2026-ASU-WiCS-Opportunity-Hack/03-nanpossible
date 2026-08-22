@@ -78,6 +78,9 @@ export default async function GlobalCoachesPage({
           <button className="button-link primary" type="submit">
             Search
           </button>
+          <Link className="button-link secondary" href="/admin/global/coaches/emails">
+            Add emails in bulk
+          </Link>
         </form>
 
         <p className="mt-4 text-sm text-foreground/65">
