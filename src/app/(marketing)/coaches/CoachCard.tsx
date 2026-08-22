@@ -41,7 +41,7 @@ export function CoachCard({ coach, affiliate }: CoachCardProps) {
   );
 
   return (
-    <article className="site-panel group overflow-hidden rounded-[2rem] p-5 transition-transform duration-200 hover:-translate-y-1">
+    <article className="site-panel group relative overflow-hidden rounded-[2rem] p-5 transition-transform duration-200 hover:-translate-y-1">
       <div className="flex items-start gap-4">
         <div className="coach-avatar-frame">
           {coach.photoUrl ? (
@@ -116,7 +116,7 @@ export function CoachCard({ coach, affiliate }: CoachCardProps) {
         <div className="flex min-w-0 items-center gap-3">
           {showCredlyBadgeImage && credlyBadgeImage ? (
             <a
-              className="overflow-hidden rounded-[0.9rem] border border-line bg-white/80 p-1 transition hover:border-accent"
+              className="relative z-10 overflow-hidden rounded-[0.9rem] border border-line bg-white/80 p-1 transition hover:border-accent"
               href={coach.credlyBadgeUrl ?? credlyBadgeImage}
               rel="noreferrer"
               target="_blank"
@@ -137,7 +137,7 @@ export function CoachCard({ coach, affiliate }: CoachCardProps) {
             </span>
           ) : affiliate ? (
             <a
-              className="min-w-0 truncate text-sm font-semibold text-teal transition hover:text-accent"
+              className="relative z-10 min-w-0 truncate text-sm font-semibold text-teal transition hover:text-accent"
               href={affiliate.href}
               rel="noreferrer"
               target="_blank"
@@ -150,8 +150,9 @@ export function CoachCard({ coach, affiliate }: CoachCardProps) {
             </span>
           )}
         </div>
+        {/* stretched link: the whole card navigates to the profile */}
         <Link
-          className="inline-flex items-center gap-2 text-sm font-semibold text-teal transition group-hover:text-accent"
+          className="inline-flex items-center gap-2 text-sm font-semibold text-teal transition group-hover:text-accent after:absolute after:inset-0 after:content-['']"
           href={`/coaches/${encodeURIComponent(coach.slug ?? coach.id)}`}
         >
           View profile
