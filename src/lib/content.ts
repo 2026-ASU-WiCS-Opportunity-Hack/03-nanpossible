@@ -327,3 +327,53 @@ export async function getGlobalContentPageForAdmin(slug: string) {
 
   return data ? mapPageRow(data as unknown as ContentPageRow) : null;
 }
+
+/**
+ * Global (chapter_id null) marketing pages for the platform-admin page
+ * editor. Reads with the service role so unpublished pages stay listed;
+ * falls back to the pages.json fixtures when the DB is unavailable.
+ */
+export async function listGlobalPagesForAdmin(): Promise<ContentPageRecord[]> {
+  const client = createServiceRoleSupabaseClient();
+
+  if (client) {
+    try {
+      const { data } = await client
+        .from("content_pages")
+        .select(contentPageColumns)
+        .is("chapter_id", null)
+        .order("title", { ascending: true });
+
+      if (data) {
+        return (data as unknown as ContentPageRow[]).map(mapPageRow);
+      }
+    } catch {
+      // fall through to fixtures
+    }
+  }
+
+  return pageFixtures.filter((page) => page.chapterId === null).sort(sortPages);
+}
+
+export async function getGlobalPageBySlugForAdmin(slug: string) {
+  const client = createServiceRoleSupabaseClient();
+
+  if (client) {
+    try {
+      const { data } = await client
+        .from("content_pages")
+        .select(contentPageColumns)
+        .is("chapter_id", null)
+        .eq("slug", slug)
+        .maybeSingle();
+
+      if (data) {
+        return mapPageRow(data as unknown as ContentPageRow);
+      }
+    } catch {
+      // fall through to fixtures
+    }
+  }
+
+  return getFixturePage(slug, null);
+}
