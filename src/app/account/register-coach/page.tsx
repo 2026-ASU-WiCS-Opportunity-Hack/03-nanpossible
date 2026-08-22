@@ -46,6 +46,8 @@ function getNoticeMessage(notice?: string) {
   switch (notice) {
     case "submitted":
       return "Your coach profile was submitted. An affiliate admin will review it before it appears in the public directory.";
+    case "profile-linked":
+      return "We found your existing WIAL directory profile and connected it to this account.";
     default:
       return null;
   }

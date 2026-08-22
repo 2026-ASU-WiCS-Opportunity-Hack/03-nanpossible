@@ -4,7 +4,7 @@ import { revalidatePath } from "next/cache";
 import { canonicalLanguageName } from "@/lib/languages";
 import { redirect } from "next/navigation";
 import { requireAccountViewer } from "@/lib/auth";
-import { getCoachByUserId } from "@/lib/coaches";
+import { getCoachByUserId, linkCoachAccountByEmail } from "@/lib/coaches";
 import { ensureUniqueCoachSlug } from "@/lib/slug";
 import { createServiceRoleSupabaseClient } from "@/lib/supabase-admin";
 import {
@@ -64,6 +64,19 @@ export async function registerCoachProfileAction(formData: FormData) {
 
   if (existing) {
     redirect(buildRegisterCoachPath("already-registered"));
+  }
+
+  // An unclaimed directory profile matching this account's email (never the
+  // form email — that would let anyone claim any profile) gets linked instead
+  // of inserting a duplicate coach row.
+  if (viewer.email && (await linkCoachAccountByEmail(viewer.id, viewer.email))) {
+    if (hasSupabaseAuthConfig()) {
+      const supabase = await createServerSupabaseAuthClient();
+      await supabase?.auth.refreshSession();
+    }
+
+    revalidatePath("/account/register-coach");
+    redirect("/account/register-coach?notice=profile-linked");
   }
 
   const name = readString(formData, "name");

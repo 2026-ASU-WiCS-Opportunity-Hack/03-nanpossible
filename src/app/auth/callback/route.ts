@@ -1,6 +1,7 @@
 import type { EmailOtpType } from "@supabase/supabase-js";
 import { NextResponse } from "next/server";
 import { resolvePostAuthPath } from "@/lib/auth";
+import { linkCoachAccountByEmail } from "@/lib/coaches";
 import { createServerSupabaseAuthClient, hasSupabaseAuthConfig } from "@/lib/supabase-auth";
 
 export async function GET(request: Request) {
@@ -52,6 +53,24 @@ export async function GET(request: Request) {
 
   if (type === "recovery") {
     return NextResponse.redirect(new URL("/reset-password", requestUrl.origin));
+  }
+
+  // Reaching here means the email is confirmed, which is the requirement for
+  // linking an unclaimed coach directory profile to this account.
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (user?.email) {
+    try {
+      const linked = await linkCoachAccountByEmail(user.id, user.email);
+
+      if (linked) {
+        await supabase.auth.refreshSession();
+      }
+    } catch (error) {
+      console.error("auth callback coach link failed", error);
+    }
   }
 
   return NextResponse.redirect(new URL(nextPath, requestUrl.origin));

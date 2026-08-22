@@ -3,6 +3,7 @@
 import { redirect } from "next/navigation";
 import { getDefaultAccountHref } from "@/lib/account";
 import { resolvePostAuthPath } from "@/lib/auth";
+import { linkCoachAccountByEmail } from "@/lib/coaches";
 import { createServerSupabaseAuthClient, hasSupabaseAuthConfig } from "@/lib/supabase-auth";
 
 function buildRegisterPath(
@@ -58,6 +59,9 @@ export async function registerPublicVisitorAction(formData: FormData) {
     redirect(buildRegisterPath(nextPath, { error: "missing-config" }));
   }
 
+  const siteUrl =
+    process.env.NEXT_PUBLIC_SITE_URL ?? "https://03-nanpossible.vercel.app";
+
   const { data, error } = await supabase.auth.signUp({
     email: username,
     password,
@@ -65,6 +69,7 @@ export async function registerPublicVisitorAction(formData: FormData) {
       data: {
         name: displayName,
       },
+      emailRedirectTo: `${siteUrl}/auth/callback?type=signup&next=${encodeURIComponent(nextPath)}`,
     },
   });
 
@@ -80,10 +85,26 @@ export async function registerPublicVisitorAction(formData: FormData) {
   }
 
   if (data.session) {
-    redirect(getDefaultAccountHref("public_visitor"));
+    // Environments with email confirmation disabled issue a session right
+    // away, so the coach link that normally runs after confirmation runs here.
+    let linkedCoach = false;
+
+    if (data.user?.email) {
+      try {
+        linkedCoach = await linkCoachAccountByEmail(data.user.id, data.user.email);
+
+        if (linkedCoach) {
+          await supabase.auth.refreshSession();
+        }
+      } catch (linkError) {
+        console.error("registerPublicVisitorAction coach link failed", linkError);
+      }
+    }
+
+    redirect(getDefaultAccountHref(linkedCoach ? "coach" : "public_visitor"));
   }
 
   redirect(
-    `/login?notice=registration-success&next=${encodeURIComponent(nextPath)}`,
+    `/login?notice=confirm-email&next=${encodeURIComponent(nextPath)}`,
   );
 }
