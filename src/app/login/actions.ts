@@ -2,6 +2,7 @@
 
 import { redirect } from "next/navigation";
 import { resolvePostAuthPath } from "@/lib/auth";
+import { linkCoachAccountByEmail } from "@/lib/coaches";
 import { createServerSupabaseAuthClient, hasSupabaseAuthConfig } from "@/lib/supabase-auth";
 
 function buildLoginPath(
@@ -39,13 +40,28 @@ export async function signInWithPasswordAction(formData: FormData) {
     redirect(buildLoginPath(nextPath, { error: "missing-config" }));
   }
 
-  const { error } = await supabase.auth.signInWithPassword({
+  const { data, error } = await supabase.auth.signInWithPassword({
     email: username,
     password,
   });
 
   if (error) {
     redirect(buildLoginPath(nextPath, { error: "invalid-credentials" }));
+  }
+
+  // Signing in proves the email is confirmed, so an unclaimed coach directory
+  // profile with this address can safely link to the account. Never blocks
+  // the login itself.
+  if (data.user?.email) {
+    try {
+      const linked = await linkCoachAccountByEmail(data.user.id, data.user.email);
+
+      if (linked) {
+        await supabase.auth.refreshSession();
+      }
+    } catch (linkError) {
+      console.error("signInWithPasswordAction coach link failed", linkError);
+    }
   }
 
   redirect(nextPath);

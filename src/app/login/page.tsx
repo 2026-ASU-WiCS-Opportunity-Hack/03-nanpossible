@@ -20,6 +20,8 @@ function getNoticeMessage(notice?: string) {
       return "You have been signed out of the WIAL workspace.";
     case "registration-success":
       return "Registration completed. Sign in with the credentials you just created.";
+    case "confirm-email":
+      return "Almost done — confirm your email using the link we just sent, then sign in.";
     case "recovery-sent":
       return "If that email is registered, a password reset link has been sent.";
     default:

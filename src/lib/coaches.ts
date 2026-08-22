@@ -712,6 +712,50 @@ export async function getClaimableCoachByEmail(email: string) {
   return data ? mapCoachRecord(data as unknown as CoachDbRow) : null;
 }
 
+export async function linkCoachAccountByEmail(userId: string, email: string) {
+  const client = createServiceRoleSupabaseClient();
+
+  if (!client || !email) {
+    return false;
+  }
+
+  const claimable = await getClaimableCoachByEmail(email);
+
+  if (!claimable) {
+    return false;
+  }
+
+  const { data: linked, error: linkError } = await client
+    .from("coaches")
+    .update({ user_id: userId })
+    .eq("id", claimable.id)
+    .is("user_id", null)
+    .select("id")
+    .maybeSingle();
+
+  if (linkError || !linked) {
+    if (linkError) {
+      console.error("linkCoachAccountByEmail link failed", linkError);
+    }
+
+    return false;
+  }
+
+  // Only lifts public visitors — never touches elevated roles. The DB trigger
+  // on public.users syncs the new role into auth app_metadata.
+  const { error: roleError } = await client
+    .from("users")
+    .update({ role: "coach" })
+    .eq("id", userId)
+    .eq("role", "public_visitor");
+
+  if (roleError) {
+    console.error("linkCoachAccountByEmail role promotion failed", roleError);
+  }
+
+  return true;
+}
+
 export async function listPendingCoaches(options: {
   chapterId?: string | null;
   limit?: number;
