@@ -26,6 +26,14 @@ describe("certification hub data", () => {
     expect(getTrackDocuments("malc").application).toBeNull();
   });
 
+  it("exposes digital badging content with the Credly link", () => {
+    const content = getCertificationHubContent();
+
+    expect(content.badging.credlyUrl).toBe("https://www.credly.com");
+    expect(content.badging.shows.length).toBeGreaterThan(0);
+    expect(content.badging.claimNote).toContain("no fee");
+  });
+
   it("falls back to the global LMS URL when a level-specific URL is not configured", () => {
     process.env.NEXT_PUBLIC_WIAL_LMS_URL = "https://wialportal.org/";
     delete process.env.NEXT_PUBLIC_WIAL_LMS_SALC_URL;
