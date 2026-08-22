@@ -356,22 +356,156 @@
           { "name": "AirAsia", "logo": "/clients/airasia.png", "href": "https://www.airasia.com/" },
           { "name": "US Department of Justice", "logo": "/clients/us-department-of-justice.png", "href": "https://www.justice.gov/" },
           { "name": "Basisschool Helmgras", "logo": "/clients/helmgras.png", "href": "https://helmgras.tabijn.nl/" },
-          { "name": "BNP Paribas", "logo": "/clients/bnp-paribas.jpg", "href": "https://group.bnpparibas/" }
+          { "name": "BNP Paribas", "logo": "/clients/bnp-paribas.jpg", "href": "https://group.bnpparibas/" },
+          { "name": "Thai Union Group", "logo": "/clients/thai-union.png", "href": "https://www.thaiunion.com/" }
         ]
       },
       {
-        "type": "cta",
-        "title": "Client testimonials",
-        "body": "Hear directly from organizations about their experience working with WIAL.",
-        "href": "https://wial.org/client-testimonials/",
-        "label": "Read testimonials"
-      },
-      {
-        "type": "cta",
-        "title": "Share your success story",
-        "body": "Worked with WIAL and had a great result? Tell us about it.",
-        "href": "https://wial.org/share-your-success-story/",
-        "label": "Share your story"
+        "type": "testimonial_grid",
+        "title": "What clients say",
+        "description": "Organizations around the world use Action Learning to solve real problems while developing their people at the same time. Here is what their leaders say about working with WIAL.",
+        "items": [
+          {
+            "organization": "Lyreco Thailand",
+            "name": "David Record",
+            "role": "Managing Director",
+            "context": "David Record talks about the power of Action Learning in transforming teams and organizations.",
+            "quote": "I am confident that the benefits of Action Learning will continue to impact everyone who has been exposed to it, whether they remain at Lyreco or continue their career elsewhere.",
+            "logo": "/clients/lyreco.png",
+            "videoUrl": "https://www.youtube-nocookie.com/embed/2iPGxdR9Lo8",
+            "videoTitle": "Lyreco on the power of Action Learning"
+          },
+          {
+            "organization": "Satellite Applications Catapult",
+            "name": "Kathryn Jeacock",
+            "role": "Chief People Officer",
+            "context": "Kathryn Jeacock talks about how Action Learning embeds key leadership skills while teams work on urgent and complex problems.",
+            "logo": "/clients/satellite-applications-catapult.png",
+            "videoUrl": "https://www.youtube-nocookie.com/embed/XFvaYANdZWI",
+            "videoTitle": "Satellite Applications Catapult on Action Learning"
+          },
+          {
+            "organization": "Google",
+            "name": "Dr. Veronica Haight",
+            "role": "People Operations",
+            "quote": "WIAL Action Learning is attractive both in its structure and its results. Through the virtual session we experienced, we were able to bring Action Learning to our teams and integrate the methodology into our problem solving and decision making groups.",
+            "logo": "/clients/google.png"
+          },
+          {
+            "organization": "U.S. Department of Justice",
+            "name": "Bill Thimmesh",
+            "role": "Program Manager, Leadership and Executive Development",
+            "quote": "Action Learning has become a key leadership development component of the Department of Justice's 'Leadership Excellence and Achievement Program' (LEAP) for high potentials.",
+            "logo": "/clients/us-department-of-justice.png"
+          },
+          {
+            "organization": "Takeda Thailand",
+            "name": "Peter Streibl",
+            "role": "Country Manager",
+            "quote": "I was genuinely impressed with the impact the Action Learning approach had on our team dynamics.",
+            "logo": "/clients/takeda.jpg"
+          },
+          {
+            "organization": "Thermo Fisher Scientific",
+            "name": "David Loke",
+            "role": "Regional Sales Training & Development Manager",
+            "quote": "The Action Learning coaches created a safe environment for us to share about challenges and to learn. That leads to open and courageous communication among team members, and to both challenge and help others think through the issues they are facing.",
+            "logo": "/clients/thermo-scientific.png"
+          },
+          {
+            "organization": "ThoughtWorks China",
+            "name": "Song Zhang",
+            "role": "Managing Director",
+            "quote": "The more complex the problems are, the more significant improvement in trainee's leadership capability can be observed.",
+            "logo": "/clients/thoughtworks.png"
+          },
+          {
+            "organization": "AirAsia",
+            "name": "Faz Kamaruddin",
+            "role": "Group Head, Talent",
+            "quote": "Our internal Certified Action Learning coaches are excited to continue and expand Action Learning as the cornerstone of the top leadership development programs for Air Asia, from Kuala Lumpur to Manila to Bangkok and more.",
+            "logo": "/clients/airasia.png"
+          },
+          {
+            "organization": "Auchan Retail Ukraine",
+            "name": "Frédéric Henin",
+            "role": "Talent Development Director",
+            "quote": "The WIAL Action Learning methodology is 100% in line with our goal which is to move to collaborative behaviors and helps people to be more open minded, creative and innovative.",
+            "logo": "/clients/auchan-retail.png"
+          },
+          {
+            "organization": "Thai Union Group",
+            "name": "David Giang",
+            "role": "Head of Group Talent",
+            "quote": "We found Action Learning effective, as it helped the leaders discover solutions through a group coaching format, simultaneously leveraging off each of their experiences as they come from different functions and regions.",
+            "logo": "/clients/thai-union.png"
+          },
+          {
+            "organization": "International Federation of Red Cross and Red Crescent Societies",
+            "name": "Giorgio Ferrario",
+            "role": "Manager, National Society Development",
+            "context": "Many of the 192 Red Cross and Red Crescent National Societies have been facing complex organizational issues related to governance, sustainability, positioning and relationships with their national and local authorities.",
+            "quote": "WIAL Action Learning has made a big difference in supporting them to deal with issues that are extremely difficult to solve. It also implanted seeds on a different approach to work together.",
+            "logo": "/clients/ifrc.png"
+          },
+          {
+            "organization": "Grenada Red Cross",
+            "name": "Samantha Dickson",
+            "role": "President",
+            "quote": "Our National Society was struggling to complete some core activities for 10 years. After engaging in the WIAL Action Learning process, we were able to literally celebrate for having resolved some of those problems in just about 2 months.",
+            "logo": "/clients/grenada-red-cross.png"
+          },
+          {
+            "organization": "Eastern Caribbean Central Bank",
+            "name": "Danny Caine",
+            "role": "Chief of Security",
+            "quote": "The Action Learning group segment was vital as it created accountability and heightened the importance of active listening, working collectively and giving and receiving feedback.",
+            "logo": "/clients/eastern-caribbean-central-bank.png"
+          },
+          {
+            "organization": "MOH Holdings, Singapore",
+            "name": "Trevor Chua",
+            "role": "Assistant Director",
+            "context": "The Healthcare Leadership College under MOH Holdings used Action Learning as the foundation for its Activist for Change Programme.",
+            "quote": "Mr Ng and the team of WIAL Action Learning Coaches were definitely a valuable resource in the development and running of the Activist for Change Programme.",
+            "logo": "/clients/moh-holdings.png"
+          },
+          {
+            "organization": "China Foreign Economy and Trade Trust Co., Ltd.",
+            "name": "Teng Li",
+            "role": "Training Manager",
+            "quote": "Action Learning develops a systematic and deductive way of thinking and supplements participants' intrinsic mindset and subjective experience.",
+            "logo": "/clients/fotic.png"
+          },
+          {
+            "organization": "Robinsons Land Corporation",
+            "name": "Fatima Olaguer",
+            "role": "Associate HR Director",
+            "quote": "The General Manager was happily surprised at the outcome of the projects and in particular the really bright ideas she didn't expect.",
+            "logo": "/clients/robinsons-land.png"
+          },
+          {
+            "organization": "HR Friday",
+            "name": "Charles Lu",
+            "role": "Founder & CEO",
+            "quote": "We made great progress in delivering courses and sharing sessions to Taiwan's HR community. Four years after the start of the Action Learning program, we keep on using Action Learning in our talent development program and in our management meetings.",
+            "logo": "/clients/hr-friday.png"
+          },
+          {
+            "organization": "Aquaecology",
+            "name": "Vladimir Plasvsky",
+            "role": "Owner",
+            "quote": "Our meetings are now held in the manner of Action Learning, without interruptions, focusing on what was said and not on who said it.",
+            "logo": "/clients/aquaecology.png"
+          },
+          {
+            "organization": "Pathfinders Preschool, Mumbai",
+            "name": "Ashwini Timblo Gupta",
+            "role": "Owner",
+            "quote": "I saw that when the accountability becomes ours, the collaboration just happens. We also made our environment very safe and very stimulating. I believe that Action Learning has created a new purpose for our organization to help others.",
+            "logo": "/clients/pathfinders-preschool.jpg"
+          }
+        ]
       },
       {
         "type": "cta",
@@ -386,7 +520,7 @@
     "description": "Organizations that have worked with WIAL to advance Action Learning worldwide.",
     "sourceUrl": "https://wial.org/our-clients/",
     "sourceStatus": "migrated-from-wial",
-    "sourceNotes": "Rewritten from the live wial.org Our Clients page. Client logos vendored locally under public/clients/ (no hotlinking) and rendered as a logo_grid matching the legacy page. Testimonials and Share Your Success Story links kept per issue rows 31-33."
+    "sourceNotes": "Rewritten from the live wial.org Our Clients page. Client logos vendored locally under public/clients/ (no hotlinking) and rendered as a logo_grid matching the legacy page. Testimonials from wial.org/client-testimonials/ merged in as a testimonial_grid: quotes transcribed verbatim (light trims and source-typo fixes; Lyreco's video and long-form case study merged into one card), the two video testimonials embed via youtube-nocookie, source stock photos (benefitsheader, thumbs-up) and the tiny headshot skipped. Share Your Success Story removed per site-owner decision (unused on the old site); /client-testimonials and /share-your-success-story now redirect."
   }
 },
   {

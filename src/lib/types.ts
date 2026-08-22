@@ -337,6 +337,21 @@ export type ContentSection =
         imageAlt?: string;
         eyebrow?: string;
       }[];
+    }
+  | {
+      type: "testimonial_grid";
+      title: string;
+      description?: string;
+      items: {
+        organization: string;
+        name: string;
+        role?: string;
+        quote?: string;
+        context?: string;
+        logo?: string;
+        videoUrl?: string;
+        videoTitle?: string;
+      }[];
     };
 
 export type ContentBody = {
