@@ -3,6 +3,7 @@
 import { Fragment, useState } from "react";
 import Link from "next/link";
 import {
+  certificationBadging,
   certificationHero,
   certificationProgression,
   certificationTracks,
@@ -124,6 +125,62 @@ function PathwaySection() {
   );
 }
 
+function BadgesSection() {
+  const linkClass =
+    "font-semibold text-teal-deep underline decoration-gold/60 underline-offset-4";
+
+  return (
+    <div id="badges" className="scroll-mt-20">
+      <h2 className="text-2xl font-bold">{certificationBadging.title}</h2>
+      <p className="mt-1 max-w-3xl text-sm text-foreground/70">
+        {certificationBadging.intro.beforeCredly}
+        <a
+          href={certificationBadging.credlyUrl}
+          target="_blank"
+          rel="noreferrer"
+          className={linkClass}
+        >
+          {certificationBadging.intro.credlyLabel}
+        </a>
+        {certificationBadging.intro.afterCredly}
+      </p>
+      <div className="site-panel mt-4 rounded-lg px-6 py-5">
+        <div className="rounded-lg bg-white px-4 py-3">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={certificationBadging.image.src}
+            alt={certificationBadging.image.alt}
+            className="mx-auto w-full max-w-2xl"
+          />
+        </div>
+        <div className="mt-4 grid gap-4 md:grid-cols-2">
+          <div>
+            <h3 className="text-sm font-semibold">
+              {certificationBadging.showsTitle}
+            </h3>
+            <ul className="mt-1 list-disc pl-5 text-sm text-foreground/70 space-y-0.5">
+              {certificationBadging.shows.map((item, idx) => (
+                <li key={idx}>{item}</li>
+              ))}
+            </ul>
+          </div>
+          <div className="space-y-3 text-sm text-foreground/70">
+            <p>{certificationBadging.claimNote}</p>
+            <p>{certificationBadging.verificationNote}</p>
+            <p>
+              {certificationBadging.directoryNote}{" "}
+              <Link href="/coaches" className={linkClass}>
+                {certificationBadging.directoryLinkLabel}
+              </Link>
+              .
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export function CertificationHubSections() {
   return (
     <div className="space-y-8">
@@ -142,10 +199,19 @@ export function CertificationHubSections() {
             </div>
           ))}
         </div>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={certificationHero.image.src}
+          alt={certificationHero.image.alt}
+          className="mt-5 w-full rounded-lg object-cover"
+        />
       </div>
 
       {/* Pathway: progression cards with expandable level detail */}
       <PathwaySection />
+
+      {/* Digital badges */}
+      <BadgesSection />
 
       {/* Contact CTA */}
       <div className="site-panel mt-8 rounded-lg p-6 text-center">

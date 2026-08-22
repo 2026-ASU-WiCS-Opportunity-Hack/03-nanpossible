@@ -81,7 +81,13 @@ export function buildSiteAssistantContext() {
     `Resources page summary: ${resources?.bodyRichtext.heroIntro ?? ""}`,
     `Contact page summary: ${contact?.bodyRichtext.heroIntro ?? ""}`,
     "Direct contact: info@wial.org | P.O. Box 7601 #83791, Washington, DC 20044",
-    "Certification hub anchors: /certification#calc, #palc, #salc, #malc, #progression",
+    "Certification hub anchors: /certification#calc, #palc, #salc, #malc, #progression, #badges",
+    [
+      `Digital badges: ${certification.badging.intro.beforeCredly}${certification.badging.intro.credlyLabel} (${certification.badging.credlyUrl})${certification.badging.intro.afterCredly}`,
+      `A badge shows: ${certification.badging.shows.join(" | ")}`,
+      certification.badging.claimNote,
+      "Badge details: /certification#badges",
+    ].join("\n"),
     trackSummaries,
   ].join("\n\n");
 }
@@ -183,10 +189,11 @@ export function buildFallbackAssistantReply(query: string) {
   }
 
   if (normalized.includes("credly") || normalized.includes("badge")) {
+    const badging = certification.badging;
     return [
-      "WIAL uses public Credly badge links on coach profiles.",
-      "When a coach adds a public Credly badge URL, the platform tries to pull the public badge image for directory display and falls back to the Credly link if the image cannot be resolved.",
-      "You can review badge-related guidance from the certification hub at `/certification`.",
+      `${badging.intro.beforeCredly}${badging.intro.credlyLabel}${badging.intro.afterCredly}`,
+      badging.claimNote,
+      "Learn more at `/certification#badges`. Coaches who add their public Credly badge link also get the badge displayed on their profile in the coach directory at `/coaches`.",
     ].join("\n\n");
   }
 

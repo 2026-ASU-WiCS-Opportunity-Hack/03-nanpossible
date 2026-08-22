@@ -23,6 +23,14 @@ describe("site chatbot fallback", () => {
     expect(reply).toContain("Renewal details are in the current certification packet");
   });
 
+  it("returns Credly badge guidance for digital badge questions", () => {
+    const reply = buildFallbackAssistantReply("How do I get my digital badge?");
+
+    expect(reply).toContain("Credly");
+    expect(reply).toContain("/certification#badges");
+    expect(reply).toContain("/coaches");
+  });
+
   it("returns the LMS fallback link for LMS questions", () => {
     const reply = buildFallbackAssistantReply("Where is the LMS?");
 

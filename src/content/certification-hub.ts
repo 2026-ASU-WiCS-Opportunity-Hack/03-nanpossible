@@ -18,6 +18,41 @@ export const certificationHero = {
     { label: "ICF accredited", value: "CCE" },
     { label: "Global recognition", value: "Yes" },
   ],
+  image: {
+    src: "/certification/certification-hero.jpg",
+    alt: "Coaches and program participants gathered in front of WIAL banners at an Action Learning session",
+  },
+} as const;
+
+export const certificationBadging = {
+  id: "badges",
+  title: "Share your certification with a digital badge",
+  intro: {
+    beforeCredly:
+      "Every WIAL certification comes with a free digital badge issued through ",
+    credlyLabel: "Credly",
+    afterCredly:
+      ", so you can share your achievement on LinkedIn, in your email signature, or on your website in a way anyone can verify in real time.",
+  },
+  credlyUrl: "https://www.credly.com",
+  image: {
+    src: "/certification/digital-badges.jpg",
+    alt: "The four WIAL digital badges: CALC, PALC, SALC, and MALC",
+  },
+  showsTitle: "What your badge shows",
+  shows: [
+    "The date your certification was awarded and when it expires.",
+    "The competencies you demonstrated to earn it.",
+    "Each step you completed along the way.",
+    "The work you do to keep your certification current.",
+  ],
+  claimNote:
+    "After you complete a certification, Credly emails you an invitation to claim your badge. There is no fee, participation is optional, and you control what is shared publicly.",
+  verificationNote:
+    "Because a badge links back to verified data, your credential is far harder to misrepresent than a logo on a resume, and an expired badge is clearly marked when checked.",
+  directoryNote:
+    "Certified coaches can also display their badge on their profile in the",
+  directoryLinkLabel: "WIAL coach directory",
 } as const;
 
 export const certificationTracks: CertificationTrack[] = [

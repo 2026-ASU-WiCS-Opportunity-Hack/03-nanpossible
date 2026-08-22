@@ -299,7 +299,7 @@
       "description": "WIAL certification programs - CALC, PALC, SALC, and MALC certification for Action Learning coaches.",
       "sourceUrl": "https://wial.org/certification/",
       "sourceStatus": "updated",
-      "sourceNotes": "Updated: Removed digital badges, Credly references, and downloadable forms. Kept certification levels and ICF accreditation."
+      "sourceNotes": "Kept certification levels and ICF accreditation; downloadable forms removed. Digital badges re-added natively on the bespoke /certification route (this entry is shadowed by the static route and does not render): hero group photo and the four-badge Credly strip vendored under public/certification/; Credly learn-it infographic and the Digital Badging FAQ PDF extracted into native copy rather than vendored (the PDF is a stale 2021 rollout doc); small ICF CCE logo skipped since hero copy and metrics already state the accreditation."
     }
   },
   

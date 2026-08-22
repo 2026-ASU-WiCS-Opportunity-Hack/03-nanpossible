@@ -1,4 +1,5 @@
 import {
+  certificationBadging,
   certificationHero,
   certificationProgression,
   certificationRecertificationRules,
@@ -23,6 +24,7 @@ const levelKeyMap: Record<CertificationLevel, CertificationTrackKey> = {
 export function getCertificationHubContent() {
   return {
     hero: certificationHero,
+    badging: certificationBadging,
     progression: certificationProgression,
     tracks: certificationTracks,
     recertification: certificationRecertificationRules,
