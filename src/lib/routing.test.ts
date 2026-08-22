@@ -42,6 +42,14 @@ describe("normalizeSegments", () => {
       slug: null,
       redirectTo: "/conferences",
     });
+    expect(normalizeSegments(["client-testimonials"])).toEqual({
+      slug: null,
+      redirectTo: "/clients",
+    });
+    expect(normalizeSegments(["share-your-success-story"])).toEqual({
+      slug: null,
+      redirectTo: "/contact",
+    });
   });
 
   it("resolves the conferences page slug", () => {

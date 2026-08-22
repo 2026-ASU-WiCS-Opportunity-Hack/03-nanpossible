@@ -87,6 +87,21 @@ function renderSection(section) {
       ].join("");
     case "cta":
       return `<section><h2>${escapeHtml(section.title)}</h2><p>${escapeHtml(section.body)}</p><p><a href="${section.href}">${escapeHtml(section.label)}</a></p></section>`;
+    case "testimonial_grid":
+      return [
+        `<section><h2>${escapeHtml(section.title)}</h2><div>`,
+        ...section.items.map((item) =>
+          [
+            "<article>",
+            item.context ? `<p>${escapeHtml(item.context)}</p>` : "",
+            item.quote ? `<blockquote>${escapeHtml(item.quote)}</blockquote>` : "",
+            `<cite>${escapeHtml([item.name, item.role, item.organization].filter(Boolean).join(", "))}</cite>`,
+            item.videoUrl ? `<p><a href="${item.videoUrl}">Watch the video</a></p>` : "",
+            "</article>",
+          ].join(""),
+        ),
+        "</div></section>",
+      ].join("");
     default:
       return "";
   }
