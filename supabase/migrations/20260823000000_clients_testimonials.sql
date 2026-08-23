@@ -15,6 +15,9 @@
 --   up) and the tiny headshot skipped. Share Your Success Story
 --   removed per site-owner decision (unused on the old site);
 --   /client-testimonials and /share-your-success-story now redirect.
+--   Testimonials lead the page directly under the hero, and the logo
+--   wall renders via the logo_grid compact flag (dense small tiles)
+--   so it no longer pushes the stories below the fold.
 -- ============================================================
 
 insert into public.content_pages (
@@ -42,61 +45,6 @@ values (
             jsonb_build_object('label', 'Years of client work', 'value', '25+')
         ),
         'sections', jsonb_build_array(
-            jsonb_build_object(
-                'type', 'logo_grid',
-                'title', 'Organizations we''ve worked with',
-                'items', jsonb_build_array(
-                    jsonb_build_object('name', 'Asian Paints', 'logo', '/clients/asian-paints.png', 'href', 'https://www.asianpaints.com/'),
-                    jsonb_build_object('name', 'Boeing', 'logo', '/clients/boeing.png', 'href', 'https://www.boeing.com/'),
-                    jsonb_build_object('name', 'Caterpillar', 'logo', '/clients/caterpillar.png', 'href', 'https://www.caterpillar.com/'),
-                    jsonb_build_object('name', 'DuPont', 'logo', '/clients/dupont.png', 'href', 'https://www.dupont.com/'),
-                    jsonb_build_object('name', 'Emerging World', 'logo', '/clients/emerging-world.png', 'href', 'https://www.emergingworld.com/'),
-                    jsonb_build_object('name', 'Ernst & Young', 'logo', '/clients/ernst-young.png', 'href', 'https://www.ey.com/'),
-                    jsonb_build_object('name', 'Fuji Xerox', 'logo', '/clients/fuji-xerox.png', 'href', 'https://www.fujifilm.com/fb/en'),
-                    jsonb_build_object('name', 'Ministry of Education, Singapore', 'logo', '/clients/ministry-of-education.png', 'href', 'https://www.moe.gov.sg/'),
-                    jsonb_build_object('name', 'NASA', 'logo', '/clients/nasa.png', 'href', 'https://www.nasa.gov/'),
-                    jsonb_build_object('name', 'NEC', 'logo', '/clients/nec.png', 'href', 'https://www.nec.com/'),
-                    jsonb_build_object('name', 'Microsoft', 'logo', '/clients/microsoft.png', 'href', 'https://www.microsoft.com/'),
-                    jsonb_build_object('name', 'Samsung', 'logo', '/clients/samsung.png', 'href', 'https://www.samsung.com/'),
-                    jsonb_build_object('name', 'Siemens', 'logo', '/clients/siemens.png', 'href', 'https://www.siemens.com/'),
-                    jsonb_build_object('name', 'SIM', 'logo', '/clients/sim.png', 'href', 'https://www.sim.edu.sg/'),
-                    jsonb_build_object('name', 'Toyota', 'logo', '/clients/toyota.png', 'href', 'https://global.toyota/'),
-                    jsonb_build_object('name', 'Workplace Stars', 'logo', '/clients/workplace-stars.png', 'href', 'https://www.workplacestars.com/'),
-                    jsonb_build_object(
-                        'name', 'Grenada Red Cross',
-                        'logo', '/clients/grenada-red-cross.png',
-                        'href', 'https://www.ifrc.org/national-societies-directory/grenada-red-cross-society'
-                    ),
-                    jsonb_build_object('name', 'IFRC', 'logo', '/clients/ifrc.png', 'href', 'https://www.ifrc.org/'),
-                    jsonb_build_object('name', 'Lyreco', 'logo', '/clients/lyreco.png', 'href', 'https://www.lyreco.com/'),
-                    jsonb_build_object(
-                        'name', 'Satellite Applications Catapult',
-                        'logo', '/clients/satellite-applications-catapult.png',
-                        'href', 'https://sa.catapult.org.uk/'
-                    ),
-                    jsonb_build_object('name', 'Pathfinders Preschool', 'logo', '/clients/pathfinders-preschool.jpg'),
-                    jsonb_build_object('name', 'Takeda', 'logo', '/clients/takeda.jpg', 'href', 'https://www.takeda.com/'),
-                    jsonb_build_object('name', 'HR Friday', 'logo', '/clients/hr-friday.png'),
-                    jsonb_build_object('name', 'Google', 'logo', '/clients/google.png', 'href', 'https://www.google.com/'),
-                    jsonb_build_object('name', 'ThoughtWorks', 'logo', '/clients/thoughtworks.png', 'href', 'https://www.thoughtworks.com/'),
-                    jsonb_build_object('name', 'Aquaecology', 'logo', '/clients/aquaecology.png', 'href', 'https://www.aquaecology.group/'),
-                    jsonb_build_object('name', 'Thermo Scientific', 'logo', '/clients/thermo-scientific.png', 'href', 'https://www.thermofisher.com/'),
-                    jsonb_build_object('name', 'FOTIC', 'logo', '/clients/fotic.png', 'href', 'https://www.fotic.com.cn/'),
-                    jsonb_build_object(
-                        'name', 'Eastern Caribbean Central Bank',
-                        'logo', '/clients/eastern-caribbean-central-bank.png',
-                        'href', 'https://www.eccb-centralbank.org/'
-                    ),
-                    jsonb_build_object('name', 'Robinsons Land Corporation', 'logo', '/clients/robinsons-land.png', 'href', 'https://www.robinsonsland.com/'),
-                    jsonb_build_object('name', 'Auchan Retail', 'logo', '/clients/auchan-retail.png', 'href', 'https://www.auchan-retail.com/'),
-                    jsonb_build_object('name', 'MOH Holdings', 'logo', '/clients/moh-holdings.png', 'href', 'https://www.mohh.com.sg/'),
-                    jsonb_build_object('name', 'AirAsia', 'logo', '/clients/airasia.png', 'href', 'https://www.airasia.com/'),
-                    jsonb_build_object('name', 'US Department of Justice', 'logo', '/clients/us-department-of-justice.png', 'href', 'https://www.justice.gov/'),
-                    jsonb_build_object('name', 'Basisschool Helmgras', 'logo', '/clients/helmgras.png', 'href', 'https://helmgras.tabijn.nl/'),
-                    jsonb_build_object('name', 'BNP Paribas', 'logo', '/clients/bnp-paribas.jpg', 'href', 'https://group.bnpparibas/'),
-                    jsonb_build_object('name', 'Thai Union Group', 'logo', '/clients/thai-union.png', 'href', 'https://www.thaiunion.com/')
-                )
-            ),
             jsonb_build_object(
                 'type', 'testimonial_grid',
                 'title', 'What clients say',
@@ -245,6 +193,62 @@ values (
                 )
             ),
             jsonb_build_object(
+                'type', 'logo_grid',
+                'title', 'Organizations we''ve worked with',
+                'compact', true,
+                'items', jsonb_build_array(
+                    jsonb_build_object('name', 'Asian Paints', 'logo', '/clients/asian-paints.png', 'href', 'https://www.asianpaints.com/'),
+                    jsonb_build_object('name', 'Boeing', 'logo', '/clients/boeing.png', 'href', 'https://www.boeing.com/'),
+                    jsonb_build_object('name', 'Caterpillar', 'logo', '/clients/caterpillar.png', 'href', 'https://www.caterpillar.com/'),
+                    jsonb_build_object('name', 'DuPont', 'logo', '/clients/dupont.png', 'href', 'https://www.dupont.com/'),
+                    jsonb_build_object('name', 'Emerging World', 'logo', '/clients/emerging-world.png', 'href', 'https://www.emergingworld.com/'),
+                    jsonb_build_object('name', 'Ernst & Young', 'logo', '/clients/ernst-young.png', 'href', 'https://www.ey.com/'),
+                    jsonb_build_object('name', 'Fuji Xerox', 'logo', '/clients/fuji-xerox.png', 'href', 'https://www.fujifilm.com/fb/en'),
+                    jsonb_build_object('name', 'Ministry of Education, Singapore', 'logo', '/clients/ministry-of-education.png', 'href', 'https://www.moe.gov.sg/'),
+                    jsonb_build_object('name', 'NASA', 'logo', '/clients/nasa.png', 'href', 'https://www.nasa.gov/'),
+                    jsonb_build_object('name', 'NEC', 'logo', '/clients/nec.png', 'href', 'https://www.nec.com/'),
+                    jsonb_build_object('name', 'Microsoft', 'logo', '/clients/microsoft.png', 'href', 'https://www.microsoft.com/'),
+                    jsonb_build_object('name', 'Samsung', 'logo', '/clients/samsung.png', 'href', 'https://www.samsung.com/'),
+                    jsonb_build_object('name', 'Siemens', 'logo', '/clients/siemens.png', 'href', 'https://www.siemens.com/'),
+                    jsonb_build_object('name', 'SIM', 'logo', '/clients/sim.png', 'href', 'https://www.sim.edu.sg/'),
+                    jsonb_build_object('name', 'Toyota', 'logo', '/clients/toyota.png', 'href', 'https://global.toyota/'),
+                    jsonb_build_object('name', 'Workplace Stars', 'logo', '/clients/workplace-stars.png', 'href', 'https://www.workplacestars.com/'),
+                    jsonb_build_object(
+                        'name', 'Grenada Red Cross',
+                        'logo', '/clients/grenada-red-cross.png',
+                        'href', 'https://www.ifrc.org/national-societies-directory/grenada-red-cross-society'
+                    ),
+                    jsonb_build_object('name', 'IFRC', 'logo', '/clients/ifrc.png', 'href', 'https://www.ifrc.org/'),
+                    jsonb_build_object('name', 'Lyreco', 'logo', '/clients/lyreco.png', 'href', 'https://www.lyreco.com/'),
+                    jsonb_build_object(
+                        'name', 'Satellite Applications Catapult',
+                        'logo', '/clients/satellite-applications-catapult.png',
+                        'href', 'https://sa.catapult.org.uk/'
+                    ),
+                    jsonb_build_object('name', 'Pathfinders Preschool', 'logo', '/clients/pathfinders-preschool.jpg'),
+                    jsonb_build_object('name', 'Takeda', 'logo', '/clients/takeda.jpg', 'href', 'https://www.takeda.com/'),
+                    jsonb_build_object('name', 'HR Friday', 'logo', '/clients/hr-friday.png'),
+                    jsonb_build_object('name', 'Google', 'logo', '/clients/google.png', 'href', 'https://www.google.com/'),
+                    jsonb_build_object('name', 'ThoughtWorks', 'logo', '/clients/thoughtworks.png', 'href', 'https://www.thoughtworks.com/'),
+                    jsonb_build_object('name', 'Aquaecology', 'logo', '/clients/aquaecology.png', 'href', 'https://www.aquaecology.group/'),
+                    jsonb_build_object('name', 'Thermo Scientific', 'logo', '/clients/thermo-scientific.png', 'href', 'https://www.thermofisher.com/'),
+                    jsonb_build_object('name', 'FOTIC', 'logo', '/clients/fotic.png', 'href', 'https://www.fotic.com.cn/'),
+                    jsonb_build_object(
+                        'name', 'Eastern Caribbean Central Bank',
+                        'logo', '/clients/eastern-caribbean-central-bank.png',
+                        'href', 'https://www.eccb-centralbank.org/'
+                    ),
+                    jsonb_build_object('name', 'Robinsons Land Corporation', 'logo', '/clients/robinsons-land.png', 'href', 'https://www.robinsonsland.com/'),
+                    jsonb_build_object('name', 'Auchan Retail', 'logo', '/clients/auchan-retail.png', 'href', 'https://www.auchan-retail.com/'),
+                    jsonb_build_object('name', 'MOH Holdings', 'logo', '/clients/moh-holdings.png', 'href', 'https://www.mohh.com.sg/'),
+                    jsonb_build_object('name', 'AirAsia', 'logo', '/clients/airasia.png', 'href', 'https://www.airasia.com/'),
+                    jsonb_build_object('name', 'US Department of Justice', 'logo', '/clients/us-department-of-justice.png', 'href', 'https://www.justice.gov/'),
+                    jsonb_build_object('name', 'Basisschool Helmgras', 'logo', '/clients/helmgras.png', 'href', 'https://helmgras.tabijn.nl/'),
+                    jsonb_build_object('name', 'BNP Paribas', 'logo', '/clients/bnp-paribas.jpg', 'href', 'https://group.bnpparibas/'),
+                    jsonb_build_object('name', 'Thai Union Group', 'logo', '/clients/thai-union.png', 'href', 'https://www.thaiunion.com/')
+                )
+            ),
+            jsonb_build_object(
                 'type', 'cta',
                 'title', 'Ready to bring Action Learning to your organization?',
                 'body', 'Contact us to plan a tailored Action Learning program for your team or organization.',
@@ -257,7 +261,7 @@ values (
         'description', 'Organizations that have worked with WIAL to advance Action Learning worldwide.',
         'sourceUrl', 'https://wial.org/our-clients/',
         'sourceStatus', 'migrated-from-wial',
-        'sourceNotes', 'Rewritten from the live wial.org Our Clients page. Client logos vendored locally under public/clients/ (no hotlinking) and rendered as a logo_grid matching the legacy page. Testimonials from wial.org/client-testimonials/ merged in as a testimonial_grid: quotes transcribed verbatim (light trims and source-typo fixes; Lyreco''s video and long-form case study merged into one card), the two video testimonials embed via youtube-nocookie, source stock photos (benefitsheader, thumbs-up) and the tiny headshot skipped. Share Your Success Story removed per site-owner decision (unused on the old site); /client-testimonials and /share-your-success-story now redirect.'
+        'sourceNotes', 'Rewritten from the live wial.org Our Clients page. Client logos vendored locally under public/clients/ (no hotlinking) and rendered as a logo_grid matching the legacy page. Testimonials from wial.org/client-testimonials/ merged in as a testimonial_grid: quotes transcribed verbatim (light trims and source-typo fixes; Lyreco''s video and long-form case study merged into one card), the two video testimonials embed via youtube-nocookie, source stock photos (benefitsheader, thumbs-up) and the tiny headshot skipped. Share Your Success Story removed per site-owner decision (unused on the old site); /client-testimonials and /share-your-success-story now redirect. Testimonials lead the page directly under the hero, and the logo wall renders via the logo_grid compact flag (dense small tiles) so it no longer pushes the stories below the fold.'
     ),
     now(),
     now()
