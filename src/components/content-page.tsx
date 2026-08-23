@@ -152,10 +152,17 @@ export function renderSection(section: ContentSection) {
       return (
         <section className="section-stack" key={section.title}>
           <h2 className="section-title text-teal-deep">{section.title}</h2>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <div
+            className={
+              section.compact
+                ? "grid grid-cols-3 gap-3 sm:grid-cols-4 lg:grid-cols-6"
+                : "grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+            }
+          >
             {section.items.map((item) => {
-              const tileClassName =
-                "feature-card flex aspect-[4/3] items-center justify-center rounded-[1.5rem] p-8 transition-transform duration-200 hover:scale-[1.03]";
+              const tileClassName = section.compact
+                ? "feature-card flex aspect-[3/2] items-center justify-center rounded-[1rem] p-4 transition-transform duration-200 hover:scale-[1.03]"
+                : "feature-card flex aspect-[4/3] items-center justify-center rounded-[1.5rem] p-8 transition-transform duration-200 hover:scale-[1.03]";
               const logo = (
                 <img
                   alt={`${item.name} logo`}

@@ -296,6 +296,7 @@ export type ContentSection =
   | {
       type: "logo_grid";
       title: string;
+      compact?: boolean;
       items: { name: string; logo: string; href?: string }[];
     }
   | {
