@@ -79,6 +79,105 @@ export function ChapterSettingsForm({ chapter, action, takenCountries }: Chapter
         />
       </label>
 
+      <label className="field-shell">
+        <span className="field-label">Contact name</span>
+        <input
+          className="field-input"
+          defaultValue={chapter.contactName ?? ""}
+          name="contactName"
+          type="text"
+        />
+      </label>
+
+      <label className="field-shell">
+        <span className="field-label">Address line 1</span>
+        <input
+          className="field-input"
+          defaultValue={chapter.addressLine1 ?? ""}
+          name="addressLine1"
+          type="text"
+        />
+      </label>
+
+      <label className="field-shell">
+        <span className="field-label">Address line 2</span>
+        <input
+          className="field-input"
+          defaultValue={chapter.addressLine2 ?? ""}
+          name="addressLine2"
+          type="text"
+        />
+      </label>
+
+      <label className="field-shell">
+        <span className="field-label">City</span>
+        <input className="field-input" defaultValue={chapter.city ?? ""} name="city" type="text" />
+      </label>
+
+      <label className="field-shell">
+        <span className="field-label">State / province</span>
+        <input
+          className="field-input"
+          defaultValue={chapter.stateProvince ?? ""}
+          name="stateProvince"
+          type="text"
+        />
+      </label>
+
+      <label className="field-shell">
+        <span className="field-label">Postal code</span>
+        <input
+          className="field-input"
+          defaultValue={chapter.postalCode ?? ""}
+          name="postalCode"
+          type="text"
+        />
+      </label>
+
+      <label className="field-shell">
+        <span className="field-label">Facebook</span>
+        <input
+          className="field-input"
+          defaultValue={chapter.facebookUrl ?? ""}
+          name="facebookUrl"
+          placeholder="https://www.facebook.com/..."
+          type="text"
+        />
+      </label>
+
+      <label className="field-shell">
+        <span className="field-label">LinkedIn</span>
+        <input
+          className="field-input"
+          defaultValue={chapter.linkedinUrl ?? ""}
+          name="linkedinUrl"
+          placeholder="https://www.linkedin.com/company/..."
+          type="text"
+        />
+      </label>
+
+      <label className="field-shell">
+        <span className="field-label">YouTube</span>
+        <input
+          className="field-input"
+          defaultValue={chapter.youtubeUrl ?? ""}
+          name="youtubeUrl"
+          placeholder="https://www.youtube.com/..."
+          type="text"
+        />
+      </label>
+
+      <label className="field-shell">
+        <span className="field-label">Blog</span>
+        <input
+          className="field-input"
+          defaultValue={chapter.blogUrl ?? ""}
+          name="blogUrl"
+          placeholder="https://..."
+          type="text"
+        />
+      </label>
+
       <label className="field-shell md:col-span-2">
         <span className="field-label">Affiliate website</span>
         <input

@@ -233,6 +233,17 @@ export type ChapterRecord = {
   logoUrl: string | null;
   websiteUrl: string | null;
   stripeAccountId: string | null;
+  directorySlug?: string | null;
+  contactName?: string | null;
+  addressLine1?: string | null;
+  addressLine2?: string | null;
+  city?: string | null;
+  stateProvince?: string | null;
+  postalCode?: string | null;
+  facebookUrl?: string | null;
+  linkedinUrl?: string | null;
+  youtubeUrl?: string | null;
+  blogUrl?: string | null;
   config: Record<string, unknown>;
   status: "active" | "draft" | "inactive";
   locale?: string;

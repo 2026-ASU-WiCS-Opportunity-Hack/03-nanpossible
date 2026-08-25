@@ -594,9 +594,19 @@ export async function updateChapterSettings(options: {
   contactEmail: string;
   contactPhone: string;
    contactPhoneCountryCode: string;
+  contactName: string;
   description: string;
   logoUrl: string;
   websiteUrl: string;
+  addressLine1: string;
+  addressLine2: string;
+  city: string;
+  stateProvince: string;
+  postalCode: string;
+  facebookUrl: string;
+  linkedinUrl: string;
+  youtubeUrl: string;
+  blogUrl: string;
 }) {
   const client = createServiceRoleSupabaseClient();
 
@@ -605,8 +615,18 @@ export async function updateChapterSettings(options: {
   }
 
   const websiteUrl = normalizeWebsiteUrl(options.websiteUrl);
+  const facebookUrl = normalizeWebsiteUrl(options.facebookUrl);
+  const linkedinUrl = normalizeWebsiteUrl(options.linkedinUrl);
+  const youtubeUrl = normalizeWebsiteUrl(options.youtubeUrl);
+  const blogUrl = normalizeWebsiteUrl(options.blogUrl);
 
-  if (websiteUrl === false) {
+  if (
+    websiteUrl === false ||
+    facebookUrl === false ||
+    linkedinUrl === false ||
+    youtubeUrl === false ||
+    blogUrl === false
+  ) {
     throw new Error("invalid-website");
   }
 
@@ -620,9 +640,19 @@ export async function updateChapterSettings(options: {
       contact_email: options.contactEmail.trim() || null,
       contact_phone: options.contactPhone.trim() || null,
       contact_phone_country_code: options.contactPhoneCountryCode.trim() || null,
+      contact_name: options.contactName.trim() || null,
       description: options.description.trim() || null,
       logo_url: options.logoUrl.trim() || null,
       website_url: websiteUrl,
+      address_line1: options.addressLine1.trim() || null,
+      address_line2: options.addressLine2.trim() || null,
+      city: options.city.trim() || null,
+      state_province: options.stateProvince.trim() || null,
+      postal_code: options.postalCode.trim() || null,
+      facebook_url: facebookUrl,
+      linkedin_url: linkedinUrl,
+      youtube_url: youtubeUrl,
+      blog_url: blogUrl,
     })
     .eq("id", options.chapterId);
 

@@ -21,6 +21,17 @@ type ChapterDbRow = {
   description: string | null;
   logo_url: string | null;
   website_url?: string | null;
+  directory_slug?: string | null;
+  contact_name?: string | null;
+  address_line1?: string | null;
+  address_line2?: string | null;
+  city?: string | null;
+  state_province?: string | null;
+  postal_code?: string | null;
+  facebook_url?: string | null;
+  linkedin_url?: string | null;
+  youtube_url?: string | null;
+  blog_url?: string | null;
   stripe_account_id: string | null;
   config: Record<string, unknown> | null;
   status: ChapterRecord["status"];
@@ -52,6 +63,17 @@ function mapChapterRow(row: ChapterDbRow): ChapterRecord {
     description: row.description ?? row.tagline ?? null,
     logoUrl: row.logo_url,
     websiteUrl: row.website_url ?? null,
+    directorySlug: row.directory_slug ?? null,
+    contactName: row.contact_name ?? null,
+    addressLine1: row.address_line1 ?? null,
+    addressLine2: row.address_line2 ?? null,
+    city: row.city ?? null,
+    stateProvince: row.state_province ?? null,
+    postalCode: row.postal_code ?? null,
+    facebookUrl: row.facebook_url ?? null,
+    linkedinUrl: row.linkedin_url ?? null,
+    youtubeUrl: row.youtube_url ?? null,
+    blogUrl: row.blog_url ?? null,
     stripeAccountId: row.stripe_account_id,
     config: row.config ?? row.theme_json ?? {},
     status: row.status,
@@ -173,7 +195,7 @@ const publicChapterColumns = [
 // Everything the admin settings forms edit; publicChapterColumns alone would
 // render region/phone-code as blank (and a save would then silently wipe
 // them).
-const chapterSettingsColumns = `${publicChapterColumns}, region, language, description, contact_phone_country_code`;
+const chapterSettingsColumns = `${publicChapterColumns}, region, language, description, contact_phone_country_code, directory_slug, contact_name, address_line1, address_line2, city, state_province, postal_code, facebook_url, linkedin_url, youtube_url, blog_url`;
 
 export const getChapterBySubdomain = cache(async (subdomain: string) => {
   const client = createSupabaseContentClient({ tenantSubdomain: subdomain });
