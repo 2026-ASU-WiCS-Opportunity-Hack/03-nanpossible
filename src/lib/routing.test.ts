@@ -48,7 +48,7 @@ describe("normalizeSegments", () => {
     });
     expect(normalizeSegments(["share-your-success-story"])).toEqual({
       slug: null,
-      redirectTo: "/contact",
+      redirectTo: "/clients/success-story",
     });
   });
 
