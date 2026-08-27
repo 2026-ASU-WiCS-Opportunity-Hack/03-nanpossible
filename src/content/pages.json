@@ -510,6 +510,13 @@
       },
       {
         "type": "cta",
+        "title": "Share your success story",
+        "body": "Tell us how Action Learning has impacted you — an experience with a coach, a result you have noticed, or anything involving Action Learning. We want to hear what you have to say.",
+        "href": "/clients/success-story",
+        "label": "Share your story"
+      },
+      {
+        "type": "cta",
         "title": "Ready to bring Action Learning to your organization?",
         "body": "Contact us to plan a tailored Action Learning program for your team or organization.",
         "href": "/contact",
@@ -521,7 +528,7 @@
     "description": "Organizations that have worked with WIAL to advance Action Learning worldwide.",
     "sourceUrl": "https://wial.org/our-clients/",
     "sourceStatus": "migrated-from-wial",
-    "sourceNotes": "Rewritten from the live wial.org Our Clients page. Client logos vendored locally under public/clients/ (no hotlinking) and rendered as a logo_grid matching the legacy page. Testimonials from wial.org/client-testimonials/ merged in as a testimonial_grid: quotes transcribed verbatim (light trims and source-typo fixes; Lyreco's video and long-form case study merged into one card), the two video testimonials embed via youtube-nocookie, source stock photos (benefitsheader, thumbs-up) and the tiny headshot skipped. Share Your Success Story removed per site-owner decision (unused on the old site); /client-testimonials and /share-your-success-story now redirect. Testimonials lead the page directly under the hero, and the logo wall renders via the logo_grid compact flag (dense small tiles) so it no longer pushes the stories below the fold."
+    "sourceNotes": "Consolidates wial.org/our-clients, /client-testimonials, and /share-your-success-story. Client logos vendored locally under public/clients/ (no hotlinking) and rendered as a compact logo_grid. Testimonials merged in as a testimonial_grid: quotes transcribed verbatim (light trims and source-typo fixes; Lyreco's video and long-form case study merged into one card), the two video testimonials embed via youtube-nocookie, source stock photos (benefitsheader, thumbs-up) and the tiny headshot skipped. The Share Your Success Story form is migrated to the internal /clients/success-story route (contact-form pattern, stored in success_stories); the company-logo file upload became an optional URL field, and the unused mailing-address block from the Gravity Form was dropped. /client-testimonials redirects here; /share-your-success-story redirects to the form."
   }
 },
   {

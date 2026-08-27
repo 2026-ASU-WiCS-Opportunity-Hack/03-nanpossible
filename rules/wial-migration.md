@@ -65,6 +65,5 @@ External links still in the content, in rough priority order:
 | wial.org page | Linked from | Notes |
 | --- | --- | --- |
 | `/become-a-partner/` | `/partners` (twice) | likely a form → contact-form pattern |
-| `/share-your-success-story/` | `/clients` | form → contact-form pattern |
 | Better World donation + application forms | `/better-world` CTAs | intentionally live for now; migrate like `/awards/nomination` |
 | `/projects/...` story pages | `/better-world` story cards | long-tail; migrate as content pages or keep external deliberately |
