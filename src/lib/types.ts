@@ -12,7 +12,8 @@ export type CanonicalPageSlug =
   | "our-services"
   | "conferences"
   | "become-an-affiliate"
-  | "resources";
+  | "resources"
+  | "privacy";
 
 export type AppRole =
   | "platform_admin"

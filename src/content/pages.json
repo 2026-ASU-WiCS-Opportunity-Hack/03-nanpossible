@@ -158,6 +158,13 @@
           ]
         },
         {
+          "type": "prose",
+          "title": "Our Global Team",
+          "paragraphs": [
+            "WIAL is a global organization with members across six continents and dozens of countries. Our team spans every age, culture, nationality, language, and occupation, brought together by a shared passion for Action Learning — a diversity of perspective that makes the work better for everyone WIAL serves."
+          ]
+        },
+        {
           "type": "people_grid",
           "title": "Board of Directors",
           "description": "WIAL is governed by a volunteer Board of Directors drawn from the global Action Learning community. The President, Vice President, and Treasurer together form the Executive Committee, and the board is supported by WIAL's Executive Director.",
@@ -228,6 +235,27 @@
           "body": "Recognizing excellence in Action Learning",
           "href": "/awards",
           "label": "See Awards"
+        },
+        {
+          "type": "cta",
+          "title": "Certification",
+          "body": "Become a certified Action Learning coach",
+          "href": "/certification",
+          "label": "Get Certified"
+        },
+        {
+          "type": "cta",
+          "title": "Become an Affiliate",
+          "body": "Bring Action Learning to your region as a WIAL affiliate",
+          "href": "/become-an-affiliate",
+          "label": "Learn More"
+        },
+        {
+          "type": "cta",
+          "title": "Partners",
+          "body": "Join WIAL's global network of organizational partners",
+          "href": "/partners",
+          "label": "View Partners"
         }
       ]
     },
@@ -235,7 +263,7 @@
       "description": "Learn about the World Institute for Action Learning (WIAL) - the world's leading certifying body for Action Learning, our mission, vision, history, and global impact.",
       "sourceUrl": "https://wial.org/about-us/",
       "sourceStatus": "migrated-from-wial",
-      "sourceNotes": "Full content migrated from wial.org/about-us/ with Better World Fund, Conferences, and Awards links added (Awards now internal at /awards). Leadership consolidated from wial.org board-of-directors, executive-committee (subset of the board, flagged inline), directors-emeritus, and advisory-board pages; photos vendored under public/leadership/ (no hotlinking). Purpose section text extracted from the Purpose-Vision-Mission one-pager image; the Marquardt quote graphic (Quote2.jpg) is rendered as a native quote block; session photos (IMG_3408 banner thumb, IMG_5388) vendored under public/about/."
+      "sourceNotes": "Full content migrated from wial.org/about-us/ with Better World Fund, Conferences, and Awards links added (Awards now internal at /awards). Leadership consolidated from wial.org board-of-directors, executive-committee (subset of the board, flagged inline), directors-emeritus, and advisory-board pages; photos vendored under public/leadership/ (no hotlinking). Purpose section text extracted from the Purpose-Vision-Mission one-pager image; the Marquardt quote graphic (Quote2.jpg) is rendered as a native quote block; session photos (IMG_3408 banner thumb, IMG_5388) vendored under public/about/. wial.org/wials-team/ folded in (issue #119): as of its March 2026 revision that page no longer lists individual staff — it is a \"join our team\" recruiting page (banner + directory pointer + Become a Coach/Affiliate/Partner cards), so there was no staff roster to add to a people_grid. Its diversity intro paragraph became the \"Our Global Team\" prose section above the Board of Directors, and its three recruiting cards became internal CTAs (Certification, Become an Affiliate, Partners) rather than a people_grid — no photo/bio content existed to migrate. The page's banner image and the three Elementor grid thumbnails were generic stock/clip-art filler and were dropped, not vendored."
     }
   },
   {
@@ -584,7 +612,33 @@
           { "eyebrow": "Network", "title": "Global professional network", "body": "Expand your professional networks and outreach to every corner of the globe." },
           { "eyebrow": "Support", "title": "Priority support", "body": "Get priority assistance applying the WIAL Action Learning methodology to your programs." },
           { "eyebrow": "Research", "title": "Research and best practices", "body": "Access WIAL publications, newsletters, and cutting-edge Action Learning research." },
+          { "eyebrow": "Collaboration", "title": "Global collaboration", "body": "Collaborate with WIAL leaders, coaches, partners, and clients around the world." },
           { "eyebrow": "Pricing", "title": "Reduced program fees", "body": "Get reduced fees for WIAL programs and conferences, plus co-branding opportunities." }
+        ]
+      },
+      {
+        "type": "prose",
+        "title": "Not-for-profit pricing",
+        "paragraphs": [
+          "Annual partner fees for not-for-profit organizations are set by employee count:"
+        ],
+        "bullets": [
+          "Fewer than 50 employees — $250 a year",
+          "50–500 employees — $500 a year",
+          "More than 500 employees — $1,000 a year"
+        ]
+      },
+      {
+        "type": "prose",
+        "title": "For-profit pricing",
+        "paragraphs": [
+          "Annual partner fees for for-profit organizations are set by employee count:"
+        ],
+        "bullets": [
+          "1–9 employees — $500 a year",
+          "10–99 employees — $1,000 a year",
+          "100–499 employees — $2,000 a year",
+          "More than 500 employees — $3,000 a year"
         ]
       },
       {
@@ -605,7 +659,7 @@
         "type": "cta",
         "title": "Become a partner",
         "body": "Join WIAL's global network of partners and help advance Action Learning.",
-        "href": "https://wial.org/become-a-partner/",
+        "href": "/partners/apply",
         "label": "Apply now"
       }
     ]
@@ -614,7 +668,7 @@
     "description": "WIAL's global network of partners advancing Action Learning worldwide.",
     "sourceUrl": "https://wial.org/become-a-partner/",
     "sourceStatus": "migrated-from-wial",
-    "sourceNotes": "Rewritten from the live Become a Partner page. Corrected the Become a Partner link, which pointed to a non-existent directory.wial.org path in the previous draft."
+    "sourceNotes": "Rewritten from the live Become a Partner page (issue #117). Added the missing 8th-reason card (global collaboration) and two pricing sections (not-for-profit and for-profit tiers, matching the \"Partner tiers: 2\" / \"Pricing bands: 7\" metrics, which the previous draft did not actually show). Dropped four decorative stock photos (a client-header banner, a reasons-recap infographic whose text duplicates the feature grid, a Zoom-call photo, and a handshake CTA photo) — none showed partner-specific content. The legacy inline inquiry form and its dead link to an archived, richer \"WIAL Partner Application\" (business/contact name, address, org description, Action Learning experience, WIAL connections) were merged into one form at /partners/apply, dropping the WPForms honeypot and mailing-address fields. \"Browse partners\" intentionally still points to the live directory.wial.org/partners — a separate site we do not migrate."
   }
 },
 {
@@ -765,14 +819,14 @@
         "type": "feature_grid",
         "title": "Better World stories",
         "items": [
-          { "eyebrow": "Global", "title": "International Federation of Red Cross", "body": "WIAL and IFRC leaders share the stories, successes, and future hopes of their Action Learning partnership.", "href": "https://wial.org/projects/partnership-world-institute-action-learning-international-federation-red-cross/", "label": "Read the story" },
-          { "eyebrow": "Thailand", "title": "Hospital Administration Association", "body": "Hospital administrators used Action Learning to address complex problems in healthcare management.", "href": "https://wial.org/projects/wial-gives-back-thailand-hospital-administration-association/", "label": "Read the story" },
-          { "eyebrow": "Thailand", "title": "Entrepreneurship Club", "body": "Nearly 40 Thai entrepreneurs discovered Action Learning for problem-solving and leadership development.", "href": "https://wial.org/projects/wial-gives-back-supports-thailand-entrepreneurship-club/", "label": "Read the story" },
-          { "eyebrow": "Grenada", "title": "Grenada Red Cross", "body": "Red Cross teams created breakthrough solutions to complex problems through Action Learning.", "href": "https://wial.org/projects/grenada-red-cross-discovers-power-wial-action-learning/", "label": "Read the story" },
-          { "eyebrow": "Malaysia", "title": "We The Protector", "body": "Be My Protector Malaysia joined WIAL Gives Back to explore Action Learning on its toughest challenges.", "href": "https://wial.org/projects/wial-gives-back-protector/", "label": "Read the story" },
-          { "eyebrow": "Singapore", "title": "Centre for Non-Profit Leadership", "body": "Certified coaches supported nine nonprofits and more than 50 team members pro bono.", "href": "https://wial.org/projects/wial-gives-back-supports-singapores-centre-non-profit-leadership/", "label": "Read the story" },
-          { "eyebrow": "Singapore", "title": "Singapore Book Council", "body": "The independent literary arts charity's team benefited from learning WIAL's Action Learning process.", "href": "https://wial.org/projects/singapore-book-council-team-benefited-learning-wials-process/", "label": "Read the story" },
-          { "eyebrow": "Singapore", "title": "Singapore Association for the Deaf", "body": "Pro bono Action Learning coaching for the agency advocating equal opportunity for the deaf community.", "href": "https://wial.org/projects/wial-provides-action-learning-coaching-singapore-association-deaf/", "label": "Read the story" }
+          { "eyebrow": "Global", "title": "International Federation of Red Cross", "body": "WIAL and IFRC leaders share the stories, successes, and future hopes of their Action Learning partnership.", "href": "/better-world/ifrc-partnership", "label": "Read the story" },
+          { "eyebrow": "Thailand", "title": "Hospital Administration Association", "body": "Hospital administrators used Action Learning to address complex problems in healthcare management.", "href": "/better-world/thailand-hospital-administration", "label": "Read the story" },
+          { "eyebrow": "Thailand", "title": "Entrepreneurship Club", "body": "Nearly 40 Thai entrepreneurs discovered Action Learning for problem-solving and leadership development.", "href": "/better-world/thailand-entrepreneurship-club", "label": "Read the story" },
+          { "eyebrow": "Grenada", "title": "Grenada Red Cross", "body": "Red Cross teams created breakthrough solutions to complex problems through Action Learning.", "href": "/better-world/grenada-red-cross", "label": "Read the story" },
+          { "eyebrow": "Malaysia", "title": "We The Protector", "body": "Be My Protector Malaysia joined WIAL Gives Back to explore Action Learning on its toughest challenges.", "href": "/better-world/malaysia-we-the-protector", "label": "Read the story" },
+          { "eyebrow": "Singapore", "title": "Centre for Non-Profit Leadership", "body": "Certified coaches supported nine nonprofits and more than 50 team members pro bono.", "href": "/better-world/singapore-centre-for-non-profit-leadership", "label": "Read the story" },
+          { "eyebrow": "Singapore", "title": "Singapore Book Council", "body": "The independent literary arts charity's team benefited from learning WIAL's Action Learning process.", "href": "/better-world/singapore-book-council", "label": "Read the story" },
+          { "eyebrow": "Singapore", "title": "Singapore Association for the Deaf", "body": "Pro bono Action Learning coaching for the agency advocating equal opportunity for the deaf community.", "href": "/better-world/singapore-association-for-the-deaf", "label": "Read the story" }
         ]
       },
       {
@@ -785,8 +839,8 @@
       {
         "type": "cta",
         "title": "Nominate an organization",
-        "body": "Know a community organization that could benefit from Action Learning? Nominate it for Better World Fund support.",
-        "href": "https://wial.org/wial-better-world-fund-application/",
+        "body": "Know a community organization that could benefit from Action Learning? Apply for Better World Fund support.",
+        "href": "/better-world/nominate",
         "label": "Nominate"
       },
       {
@@ -802,7 +856,7 @@
     "description": "The WIAL Better World Fund provides Action Learning coaching and grant support to community-based organizations around the world.",
     "sourceUrl": "https://wial.org/better-world-fund/",
     "sourceStatus": "migrated-from-wial",
-    "sourceNotes": "Consolidated from wial.org better-world-fund, wial-gives-back, and projects (story summaries) per the crawler sheet's 'links on the About page' instruction. Donate and Nominate CTAs intentionally still point to the live wial.org forms; individual story pages are not migrated and link to the originals."
+    "sourceNotes": "Consolidated from wial.org better-world-fund, wial-gives-back, and projects (story summaries) per the crawler sheet's 'links on the About page' instruction. The Nominate CTA and all eight Better World story cards are now internal (#123): the application form is rebuilt at /better-world/nominate (better_world_applications table), and each story is its own content page at better-world/<slug> with photos vendored to public/better-world/stories/. The Donate CTA still points to the live wial.org donation form intentionally — a Stripe donation flow needs a variable, donor-entered amount that /pay's fixed-price cards don't support yet; tracked as a follow-up in issue #127."
   }
 },
 {
@@ -2662,6 +2716,632 @@
     "sourceUrl": "https://wial.org/future-action-learning-2/",
     "sourceStatus": "migrated-from-wial",
     "sourceNotes": "Migrated from the sibling 'blog' category (category/blog). The speech text is verbatim with light copy edits; the closing lines became a quote block. Both source images (a 1024x200 graduation collage strip and a 300x200 photo of the speaker) were dropped as too small or too wide for the article layout; the post has no image, so link previews are text-only."
+  }
+},
+{
+  "id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaa0023",
+  "chapterId": null,
+  "slug": "privacy",
+  "title": "Privacy Policy",
+  "published": true,
+  "bodyRichtext": {
+    "heroIntro": "How WIAL collects, uses, and shares the personal information of coaches, affiliates, and other website visitors, and how to reach us with privacy questions.",
+    "metrics": [
+      {
+        "label": "Effective date",
+        "value": "January 15, 2020"
+      }
+    ],
+    "sections": [
+      {
+        "type": "prose",
+        "title": "Overview",
+        "paragraphs": [
+          "The international World Institute for Action Learning (\"WIAL\") values its relationship with our coaches, affiliates, partners, clients and other website visitors (collectively, \"Users\" or \"you\") and respects our Users' privacy. We have developed this Privacy Policy to describe how WIAL collects personal information of Users, how that information may be used, with whom it may be shared, and your choices about such uses and disclosures.",
+          "We encourage our Users to read this Privacy Policy carefully when using our website, services or otherwise transacting business with us (collectively, the \"Services\"). By using our Services, you are accepting the practices described in this Privacy Policy.",
+          "WIAL partners with a number of independent organizations approved by WIAL to promote action learning and related services in a specific country or geographic region (each, a \"WIAL Affiliate\"). To the extent you maintain a direct relationship with a WIAL Affiliate, the personal information that you provide to that WIAL Affiliate may be subject to that organization's own privacy policy and terms.",
+          "If you have any questions about our privacy practices, please refer to the end of this Privacy Policy for information on how to contact us."
+        ]
+      },
+      {
+        "type": "prose",
+        "title": "1. Information we collect about you",
+        "paragraphs": [
+          "1.1. In General. We collect a few categories of information from and about you for the purposes described in this policy. Some of the information we collect may identify you and may not be publicly available. We may collect information directly from you or from others. When you provide personal information through our website, the information may be sent to servers located in the United States and other countries around the world.",
+          "Information you provide. We may collect and store personal information that you submit through our website or provide to us in some other manner. This includes identifying information, such as your name, address, e-mail address, and telephone number, and in addition, for Coaches, your photo, company, title, website address, curriculum vitae or brochure, affiliation, credentials, bio, and payment information. We may also request information about your interests and activities, gender, age, and other demographic information.",
+          "Information from WIAL Affiliates. We may also receive the information listed above from WIAL Affiliates, such as for posting information about Coaches on our WIAL Directory and other services to Coaches, partners, clients and other third parties.",
+          "Information from other sources. We may also receive personal information about you from other business partners, contractors, and other third parties. Examples of information that we may receive include (but are not limited to) updated delivery and address information, purchase history, and additional demographic information.",
+          "Information about others. We may also collect and store personal information about other individuals that you provide to us. If you use our website to send others (friends, relatives, colleagues, etc.) information, we may store your personal information and the personal information of each such recipient. If you provide us with information regarding another individual, you represent that you have that person's consent to give us that information and to permit us to use the information in accordance with this Privacy Policy.",
+          "1.2. Use of cookies and other technologies. When you visit our website, open an email that we send you, or interact with us through social media platforms, we may collect information about you or your activities on our Services by automated means. In some instances, we may also allow third party advertisers and service providers to collect information about you through automated means.",
+          "Information collected automatically. We automatically collect information from your browser when you visit our Services. This information can include your IP address, browser type, language, access times, the content of any undeleted cookies that your browser previously accepted from us (see below) and the referring website address.",
+          "When you visit our Services, we may assign your computer one or more cookies to facilitate access to our site and to personalize your online experience. Through the use of a cookie, we also may automatically collect information about your online activity on our Services, such as the web pages you visit, the links you click, and the searches you conduct. Most browsers automatically accept cookies, but you can usually modify your browser setting to decline cookies. If you choose to decline cookies, please note that you may not be able to sign in or use some of the interactive features offered on our website.",
+          "We may use other common internet technologies, such as web beacons (i.e., pixels) and other similar technologies to track your activity while using our Services. We may also include web beacons or the like in promotional or other e-mail messages or newsletters to determine whether messages have been opened and acted upon. The information we collect this way allows us to customize the services we offer to Users of our Services, deliver targeted advertisements, and to measure the overall effectiveness of our online advertising, content, programming or other activities. Please see the end of this Privacy Policy for more information about cookies and web beacons.",
+          "At this time, we do not monitor for \"do not track\" signals from any website browsers and handle all personal information pursuant to this Privacy Policy.",
+          "Information collected by third parties. We may allow third parties, including (but not limited to) our authorized service providers, advertising companies, and ad networks, to display advertisements through our Services. These companies may use tracking technologies, such as cookies, to collect information about users who view or interact with their advertisements. Our Services do not provide any personal information to these third parties, however, such website activity information could potentially be used by those vendors for their own purposes, some of whom may be able to associate such information with you based on other information they have collected independently (not from us). This information allows them to deliver targeted advertisements and gauge their effectiveness. Some of these third-party advertising companies may be advertising networks that are members of the Network Advertising Initiative, which offers a single location to opt-out of ad targeting from member companies (networkadvertising.org)."
+        ]
+      },
+      {
+        "type": "prose",
+        "title": "2. How we use the information we collect",
+        "paragraphs": [
+          "In General. We may use information that we collect about you to:"
+        ],
+        "bullets": [
+          "Deliver the products and services that you have requested, including management of your account and providing customer support;",
+          "Perform research and analysis about your use of, or interest in, our products, services, or content, or products, services or content offered by others;",
+          "Communicate with you through our Services including e-mail, postal mail, and telephone with information or newsletters about products or services that may be of interest to you either from us or other third parties;",
+          "Develop and display content and advertising tailored to your interests on our Services and other sites;",
+          "Perform background screening on Coaches, if applicable, including through third parties;",
+          "Operate and improve our business and operations, including internal administration, auditing and troubleshooting for our Services;",
+          "As we believe to be necessary or appropriate for certain essential purposes, such as to (i) comply with applicable law and legal process, (ii) detect, prevent, or investigate potential security or fraud events, (iii) enforce our Terms of Use, (iv) protect our operations or those of WIAL Affiliates, (v) protect our rights, privacy, safety or property, security and/or that of WIAL Affiliates, our business partners, you or others, and (vi) allow us to pursue available remedies or limit the damages that we may sustain; and",
+          "Perform functions as otherwise described to you at the time of collection."
+        ]
+      },
+      {
+        "type": "prose",
+        "title": "Financial information, job applicants and anonymized data",
+        "paragraphs": [
+          "2.2. Financial information. For Coaches and other partners, we may use financial information or payment method to process payments for any purchases made through our Services, enroll you in discount, rebate, and other programs in which you elect to participate, to pre-qualify Coaches to participate in our directory service, to protect against or identify possible fraudulent transactions, and otherwise as reasonably needed to provide the Services to you.",
+          "2.3. Job applicants. If your personal information is submitted through our Services when applying for a position with us, the information will be used solely in connection with considering and acting upon your application. We may retain your personal information for a period of time, but only for the purpose of considering your application for current or future available positions. This information may be shared with our other companies for the purpose of evaluating your qualifications for the particular position or other available positions, as well as with third-party service providers retained by us to collect, maintain and analyze candidate submissions for job postings.",
+          "2.4. Anonymized Information. We may also use or share your information in an anonymized manner that does not identify you (\"Anonymized Information\") for any purposes in our discretion, such as research, analysis, modeling, marketing, and advertising, as well as improvement of our Services. Our use of anonymized information is not subject to this Privacy Policy."
+        ]
+      },
+      {
+        "type": "prose",
+        "title": "3. With whom we share your information",
+        "paragraphs": [
+          "3.1. In General. We want you to understand when and with whom we may share the personal information we have collected. We do not share your personal information with others except as indicated here or when we otherwise notify you and give you an opportunity to opt-out of having your personal information shared. We may share personal information with:"
+        ],
+        "bullets": [
+          "Service providers. We may share your personal information with our service providers that perform certain services on our behalf. These services may include fulfilling orders, processing credit card payments, delivering products or services, providing customer service and marketing assistance, performing business and sales analysis, supporting our website functionality, and other features offered through our Services or performing background checks of Coaches. These service providers may have access to personal information as needed to perform their functions but are not permitted to share or use such information for any other purposes. We may also release information to collection and/or credit agencies for past due accounts of Coaches and other business partners.",
+          "Business partners. We may share personal information with businesses with which we partner to offer you certain products or services at your direction. For example, when you elect to engage in a particular business's offer or program, you authorize us to provide your email address and other information to that business.",
+          "Coaches and WIAL Affiliates. When requested, we try to match your information and service request with suitable Coaches or WIAL Affiliates. When you submit a request through our Services, you consent to our providing your personal information and request to the Coaches or WIAL Affiliates we match with your request. Sharing this information with Coaches or WIAL Affiliates allows them to contact you using the e-mail address or other contact information you provided. If using our Services pursuant to a membership with one of our partners, we may share your service request information with that partner.",
+          "Direct mail partners. From time to time we may share our postal mailing list with selected providers of goods and services that may be of interest to you. If you prefer not to have us share your postal mailing information with these selected providers, you can notify us at any time by emailing us at service@wial.org."
+        ]
+      },
+      {
+        "type": "prose",
+        "title": "Publicly sharing Coach and Affiliate information",
+        "paragraphs": [
+          "3.2. Publicly on our website and other outlets for Coach and WIAL Affiliate information. For Coaches, we may publicly share your business contact information, photo, company, title, website, curriculum vitae or brochure, affiliation, credentials, and bio through our Services online and offline so you can promote yourself as a Coach and member of the WIAL community. Likewise, we publicly share business contact information and related details of WIAL Affiliates and Partners as part of the WIAL community."
+        ]
+      },
+      {
+        "type": "prose",
+        "title": "Other situations where we may disclose your information",
+        "paragraphs": [
+          "3.3. Other Situations. We also may disclose your information in our discretion:"
+        ],
+        "bullets": [
+          "As legally necessary: (i) in response to a subpoena or similar investigative demand, court order, or request for cooperation from law enforcement or other government agency; (ii) to establish or exercise our legal rights; (iii) to defend against legal claims; or (iv) as otherwise required by law.",
+          "When we believe disclosure is appropriate: (i) in connection with efforts to investigate, prevent, or take other action regarding illegal activity, suspected fraud or other wrongdoing; (ii) to protect and defend the rights, property or safety of our company, our users, our employees, or others; or (iii) to enforce our website terms of use or other agreements or policies applicable to you.",
+          "In connection with a substantial corporate transaction, such as the sale of our business, a divestiture, merger, consolidation, or asset sale, or in the unlikely event of bankruptcy."
+        ]
+      },
+      {
+        "type": "prose",
+        "title": "Third-party policies and aggregated information",
+        "paragraphs": [
+          "3.4. Third-Party Policies. Any third parties to whom we may disclose personal information may have their own privacy policies which describe how they use and disclose personal information. Those policies will govern the use, handling and disclosure of your personal information once we have shared it with those third parties as described in this Privacy Policy. If you want to learn more about their privacy practices, we encourage you to visit the websites of those third parties. These entities or their servers may be located either inside or outside the United States.",
+          "3.5. Aggregated and non-personal information. As noted above, we may share Anonymized Information we collect under any circumstances in our discretion, including with advisors, investors, for the purpose of conducting general business analysis, or with advertisers to deliver targeted advertising through our Services or on the websites of third parties. We may combine Anonymized Information originating from your personal information with other Anonymized Information from other sources."
+        ]
+      },
+      {
+        "type": "prose",
+        "title": "4. Third-party websites",
+        "paragraphs": [
+          "There are a number of places on our website where you may click on a link to access other websites that do not operate under this Privacy Policy. For example, if you click on the link for a Coach, WIAL Affiliate, WIAL Partner, advertisement or a search result on our website, you may be taken to a website that we do not control. These third-party websites may independently solicit and collect information, including personal information, from you and, in some instances, provide us with information about your activities on those websites. We recommend that you consult the privacy statements of all third-party websites you visit by clicking on the \"privacy\" link typically located at the bottom of the webpage you are visiting."
+        ]
+      },
+      {
+        "type": "prose",
+        "title": "5. How you can access your information",
+        "paragraphs": [
+          "5.1. If you have an online account with us, you have the ability to review and update your personal information online by logging into your account. You can also review and update your personal information by contacting us. Information on how to contact us is provided below. Note that certain changes (such as affiliates and certifications) may be subject to our review and approval.",
+          "5.2. You can also choose to have your account disabled by contacting service@wial.org. After you deactivate your account, you will not be able to access your account or personal information. However, you can open a new account at any time, subject to our review and approval. If you deactivate your account, we may still retain certain information associated with your account for analytical purposes and recordkeeping integrity, as well as to prevent fraud, collect any fees owed, enforce our terms of use and other policies, take actions we deem necessary to protect the integrity of our Services, or take other actions otherwise permitted by law. In addition, if certain information has already been provided to third parties as described in this Privacy Policy, retention of that information will be subject to those third parties' policies."
+        ]
+      },
+      {
+        "type": "prose",
+        "title": "6. Your choices about collection and use of your information",
+        "paragraphs": [
+          "6.1. You can choose not to provide us with certain information, but that may result in you being unable to use certain features of our Services because such information may be required in order for you to register as a member of our directory service, use our Services, purchase products or services, participate in a survey, ask a question, or perform other related transactions.",
+          "6.2. At any time, a user can choose to no longer receive commercial or promotional emails or newsletters from us by adjusting preferences within a User account or by opting out of receiving such messages in the future through the link provided in any commercial e-mail that we send to the User. It may take up to 10 days for us to process an opt-out request. We may send you other types of transactional and relationship e-mail communications, such as service announcements, administrative notices, and surveys, irrespective of a request to opt-out of marketing-related communications.",
+          "6.3. If you prefer not to have us share your postal mailing information with these selected providers of goods and services that may be of interest to you, you can notify us at any time by emailing us at service@wial.org."
+        ]
+      },
+      {
+        "type": "prose",
+        "title": "7. How we protect your personal information",
+        "paragraphs": [
+          "We only keep your personal data for as long as we actually need it to provide Services to you and for reasonable business or legal purposes as described herein. We take appropriate security measures (including physical, electronic and procedural measures) designed to help safeguard your personal information from unauthorized access and disclosure. For example, only authorized employees are permitted to access personal information, and they may do so only for permitted business functions.",
+          "We want you to feel confident using our website to transact business. However, no system can be completely secure. Therefore, although we take steps to secure your information, we do not promise, and you should not expect, that your personal information, searches, or other communications will always remain secure."
+        ]
+      },
+      {
+        "type": "prose",
+        "title": "8. Blogs, bulletin boards, reviews and chat rooms",
+        "paragraphs": [
+          "In the event we choose to provide areas on our Services where you can publicly post information about yourself and others and communicate with others, as well as post comments or upload content (e.g. pictures, etc.), such information will be governed by our Terms of Use. This information may appear on other websites or when searches are executed on the subject of your information. Also, whenever you voluntarily disclose personal information on publicly-viewable web pages, that information will be publicly available and can be collected and used by others. For example, if you post your email address, you may receive unsolicited messages. We cannot control who reads your posting or what others may do with information that you voluntarily post, so we encourage you to exercise discretion and caution with respect to your personal information. Once you have posted information, you may not be able to edit or delete such information."
+        ]
+      },
+      {
+        "type": "prose",
+        "title": "9. Children’s privacy",
+        "paragraphs": [
+          "Our website is a general audience site, and we do not knowingly collect personal information from children under the age of 13. If you believe that a person under the age of 13 has provided us with his or her personal information, please let us know at service@wial.org."
+        ]
+      },
+      {
+        "type": "prose",
+        "title": "11. No rights of third parties",
+        "paragraphs": [
+          "This Privacy Policy does not create rights enforceable by third parties or require disclosure of any personal information relating to users of the website."
+        ]
+      },
+      {
+        "type": "prose",
+        "title": "12. Effective date, and changes to this Privacy Policy",
+        "paragraphs": [
+          "The Effective Date of this policy is January 15, 2020. We will occasionally update this Privacy Policy to reflect changes in our practices and Services. We recommend that you check our website from time to time to inform yourself of any changes in this Privacy Policy or any of our other policies."
+        ]
+      },
+      {
+        "type": "prose",
+        "title": "13. How to contact us",
+        "paragraphs": [
+          "If you have any questions about this Privacy Policy or our information-handling practices, or if you would like to request information about our disclosure of personal information to third parties for their direct marketing purposes, please contact us by e-mail at service@wial.org or by postal mail to: P.O. Box 7601 #83791, Washington, DC 20044."
+        ]
+      },
+      {
+        "type": "prose",
+        "title": "14. Country-specific disclosures",
+        "paragraphs": [
+          "14.1. For Canadian Users. Please note that your rights under applicable law to access your personal information are not absolute and we may deny access when required by law, when granting you access would have an unreasonable impact on other people's privacy, to protect our rights and property, or where the request is frivolous or vexatious. If we deny your request for access to or refuse a request to correct personal information, we will explain why. We may provide information in a standardized format that is not specific to you. The designated email address for these requests is service@wial.org.",
+          "14.2. For European Users. European Union, European Economic Area and Switzerland residents (collectively \"EU Users\") can exercise legal rights pertaining to personal information by submitting a written request to us at service@wial.org at any time. Please mark your email \"Data Subject Request\" and indicate which of the following right(s) you are requesting: (i) identification of the personal information we have about you; (ii) prevent your personal information being used for marketing purposes; (iii) have inaccurate personal information corrected, blocked or erased; (iv) object to decisions being made about you by automated means or to your personal information being used for profiling purposes; (v) object to our using your personal information in ways that are likely to cause you damage or distress; (vi) restrict our use of your personal information; (vii) have your personal information deleted, or (viii) receive a copy of the personal information that we retain about you. After we verify your identity, any such requests will be processed as required by law subject to any applicable exceptions or other considerations permitted by law."
+        ]
+      },
+      {
+        "type": "prose",
+        "title": "15. More information about cookies and web beacons (pixels)",
+        "paragraphs": [
+          "15.1. Cookies: A cookie is a small text file that is stored on a user's computer for record-keeping purposes. Cookies can be either session cookies or persistent cookies. A session cookie expires when you close your browser and is used to make it easier for you to navigate our website. A persistent cookie remains on your hard drive for an extended period of time.",
+          "For example, when you sign in to our website, we will record your user or member ID and the name on your user or member account in the cookie file on your computer. We also may record your password in this cookie file, if you indicated that you would like your password saved for automatic sign-in. For security purposes, we will encrypt any usernames, passwords, and other user or member account-related data that we store in such cookies. In the case of sites and services that do not use a user or member ID, the cookie will contain a unique identifier. We may allow our authorized service providers to serve cookies from our website to allow them to assist us in various activities, such as doing analysis and research on the effectiveness of our site, content, and advertising.",
+          "You may delete or decline cookies by changing your browser settings. (Click \"Help\" in the toolbar of most browsers for instructions.) If you do so, some of the features and services of our website may not function properly.",
+          "We may allow third parties, including advertising companies and ad networks, to display advertisements on our site. These companies may use tracking technologies, such as cookies, to collect information about users who view or interact with their advertisements. Our website does not provide any personal information to these third parties, but they may collect information about where you, or others who are using your computer, saw and/or clicked on the advertisements they deliver, and possibly associate this information with your subsequent visits to the advertised websites. They also may combine this information with personal information they collect from you. The collection and use of that information are subject to the third party's privacy policy. This information allows them to deliver targeted advertisements and gauge their effectiveness. Some of these third-party advertising companies may be advertising networks that are members of the Network Advertising Initiative, which offers a single location to opt-out of ad targeting from member companies (networkadvertising.org).",
+          "15.2. Web Beacons: Web beacons (also known as clear gifs, pixels, tags or web bugs) are small pieces of computer code running on a webpage with a unique identifier that can be used along or in conjunction with cookies to track the online movements of web users. Unlike cookies which are stored on the user's computer hard drive, web beacons are embedded on the web pages (or in email). Web beacons may be used to deliver or communicate with cookies, to count users who have visited certain pages and to understand usage patterns. We also may receive an anonymous identification number if you visit our Services from an online advertisement displayed on a third-party website."
+        ]
+      }
+    ]
+  },
+  "seo": {
+    "description": "WIAL's privacy policy: what personal information we collect from coaches, affiliates, and visitors, how it's used and shared, and how to contact us about it.",
+    "sourceUrl": "https://wial.org/privacy-policy/",
+    "sourceStatus": "migrated-from-wial",
+    "sourceNotes": "Migrated verbatim (aside from light punctuation normalization) from wial.org/privacy-policy/ as 19 prose sections following the source's own numbered headings; sections were split around bulleted lists so list order matches the source. Two source defects were corrected without changing wording: a run-on in the 'With whom we share' list that concatenated the Service providers and Business partners bullets was split in two, and '.2.' was corrected to '5.2.' in the 'How you can access your information' section. The source also skips from section 9 to section 11 (no section 10 exists on wial.org) and states an Effective Date of January 15, 2020 despite the page being last modified 2026-03-05 on wial.org; both are kept as-is. Legacy references to cookies, web beacons, third-party ad networks, and the Network Advertising Initiative opt-out are retained verbatim though unverified against this platform's actual tracking (none of our integrations — Stripe, Supabase, OpenRouter, Resend, Credly — are named in the source text). The body repeatedly lists service@wial.org as the privacy contact, which differs from the footer's info@wial.org; both addresses are kept as published. See the GitHub issue #122 comment for the full flag list; this content needs legal review before being treated as WIAL's authoritative policy."
+  }
+},
+{
+  "id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaa0024",
+  "chapterId": null,
+  "slug": "better-world/ifrc-partnership",
+  "title": "WIAL and the International Federation of Red Cross",
+  "published": true,
+  "bodyRichtext": {
+    "heroIntro": "Michael Marquardt, WIAL co-founder and Chair of the WIAL Advisory Board, sits down with Giorgio Ferrario of the International Federation of Red Cross and Samantha Dickson of the Grenada Red Cross to talk about what the WIAL-IFRC Action Learning partnership has delivered.",
+    "metrics": [
+      {
+        "label": "Published",
+        "value": "Oct 2021"
+      },
+      {
+        "label": "Organization",
+        "value": "International Federation of Red Cross (IFRC)"
+      },
+      {
+        "label": "Country",
+        "value": "Global"
+      }
+    ],
+    "sections": [
+      {
+        "type": "media_prose",
+        "title": "Stories, successes, and future hopes",
+        "image": "/better-world/stories/ifrc-partnership.jpg",
+        "imageAlt": "Michael Marquardt, Giorgio Ferrario, and Samantha Dickson pictured for a WIAL Gives Back video conversation about the WIAL-IFRC partnership",
+        "paragraphs": [
+          "Michael Marquardt, co-founder of WIAL and Chair of the WIAL Advisory Board, interviewed Giorgio Ferrario, Manager of National Society Development at IFRC, and Samantha Dickson, President of the Grenada Red Cross, about the partnership between the World Institute for Action Learning and the International Federation of Red Cross.",
+          "The conversation covered the stories, successes, and future hopes for the partnership, and how WIAL Action Learning has helped Red Cross national societies deliver a powerful impact and positive social outcomes for the communities they serve."
+        ]
+      },
+      {
+        "type": "cta",
+        "title": "Support more stories like this",
+        "body": "The Better World Fund keeps this kind of partnership going — donate or nominate an organization for support.",
+        "href": "/better-world",
+        "label": "Back to the Better World Fund"
+      }
+    ]
+  },
+  "seo": {
+    "description": "How the World Institute for Action Learning and the International Federation of Red Cross put Action Learning to work for Red Cross national societies.",
+    "sourceUrl": "https://wial.org/projects/partnership-world-institute-action-learning-international-federation-red-cross/",
+    "sourceStatus": "migrated-from-wial",
+    "sourceNotes": "Migrated from wial.org's Better World Stories (projects). The source page centered on an embedded video interview; the interview is summarized in text rather than embedded since it is hosted on wial.org's YouTube channel and not vendored. The WIAL Gives Back branded still frame naming the three participants is vendored as the hero image."
+  }
+},
+{
+  "id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaa0025",
+  "chapterId": null,
+  "slug": "better-world/thailand-hospital-administration",
+  "title": "WIAL Gives Back to the Thailand Hospital Administration Association",
+  "published": true,
+  "bodyRichtext": {
+    "heroIntro": "Key administrators in charge of hospitals across Thailand share how they experienced WIAL Action Learning as a powerful way to solve complex problems — and to learn as an organization at the same time.",
+    "metrics": [
+      {
+        "label": "Published",
+        "value": "Mar 2021"
+      },
+      {
+        "label": "Organization",
+        "value": "Thailand Hospital Administration Association"
+      },
+      {
+        "label": "Country",
+        "value": "Thailand"
+      }
+    ],
+    "sections": [
+      {
+        "type": "media_prose",
+        "title": "Solving real problems together",
+        "image": "/better-world/stories/thailand-hospital-administration.jpg",
+        "imageAlt": "A Thai hospital administrator speaking on camera about a real problem his team worked through with Action Learning, for a WIAL Gives Back video testimonial",
+        "paragraphs": [
+          "Hospital administrators from across Thailand recorded video testimonials about their experience with WIAL Action Learning as part of the WIAL Gives Back initiative, describing it as a powerful way to solve complex problems in healthcare management while learning as an organization at the same time."
+        ]
+      },
+      {
+        "type": "cta",
+        "title": "Support more stories like this",
+        "body": "The Better World Fund keeps this kind of partnership going — donate or nominate an organization for support.",
+        "href": "/better-world",
+        "label": "Back to the Better World Fund"
+      }
+    ]
+  },
+  "seo": {
+    "description": "Thai hospital administrators on how WIAL Action Learning helped them solve complex healthcare management problems.",
+    "sourceUrl": "https://wial.org/projects/wial-gives-back-thailand-hospital-administration-association/",
+    "sourceStatus": "migrated-from-wial",
+    "sourceNotes": "Migrated from wial.org's Better World Stories (projects). The source page centered on embedded video testimonials, summarized here in text since the videos are hosted on wial.org's YouTube channel and not vendored. The WIAL Gives Back branded still frame is vendored as the hero image."
+  }
+},
+{
+  "id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaa0026",
+  "chapterId": null,
+  "slug": "better-world/thailand-entrepreneurship-club",
+  "title": "WIAL Gives Back Supports the Thailand Entrepreneurship Club",
+  "published": true,
+  "bodyRichtext": {
+    "heroIntro": "Nearly 40 young entrepreneurs in Thailand discovered WIAL Action Learning through the WIAL Gives Back initiative — and how the method helps solve complex problems while building leadership and team collaboration skills.",
+    "metrics": [
+      {
+        "label": "Published",
+        "value": "Sep 2019"
+      },
+      {
+        "label": "Organization",
+        "value": "Thailand Entrepreneurship Club"
+      },
+      {
+        "label": "Country",
+        "value": "Thailand"
+      }
+    ],
+    "sections": [
+      {
+        "type": "media_prose",
+        "title": "Nearly 40 entrepreneurs, one method",
+        "image": "/better-world/stories/thailand-entrepreneurship-club.jpg",
+        "imageAlt": "A group of young Thai entrepreneurs posing together at a Thailand Entrepreneurship Club event supported by WIAL Gives Back",
+        "paragraphs": [
+          "As part of the WIAL Gives Back initiative, nearly 40 young entrepreneurs in Thailand discovered WIAL Action Learning and how the method helps solve complex problems while developing leadership skills and team collaboration at the same time.",
+          "The Thailand Entrepreneurship Club and WIAL's pro bono coaches made the program possible."
+        ]
+      },
+      {
+        "type": "cta",
+        "title": "Support more stories like this",
+        "body": "The Better World Fund keeps this kind of partnership going — donate or nominate an organization for support.",
+        "href": "/better-world",
+        "label": "Back to the Better World Fund"
+      }
+    ]
+  },
+  "seo": {
+    "description": "How nearly 40 young Thai entrepreneurs discovered Action Learning through WIAL Gives Back and the Thailand Entrepreneurship Club.",
+    "sourceUrl": "https://wial.org/projects/wial-gives-back-supports-thailand-entrepreneurship-club/",
+    "sourceStatus": "migrated-from-wial",
+    "sourceNotes": "Migrated from wial.org's Better World Stories (projects). Text is a light copy edit of the source paragraph; the group photo is vendored as the hero image."
+  }
+},
+{
+  "id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaa0027",
+  "chapterId": null,
+  "slug": "better-world/grenada-red-cross",
+  "title": "Grenada Red Cross Discovers the Power of WIAL Action Learning",
+  "published": true,
+  "bodyRichtext": {
+    "heroIntro": "The WIAL Gives Back initiative helped several International Federation of Red Cross entities solve complex problems through Action Learning — including the team from Grenada.",
+    "metrics": [
+      {
+        "label": "Published",
+        "value": "Mar 2021"
+      },
+      {
+        "label": "Organization",
+        "value": "Grenada Red Cross"
+      },
+      {
+        "label": "Country",
+        "value": "Grenada"
+      }
+    ],
+    "sections": [
+      {
+        "type": "media_prose",
+        "title": "Breakthrough solutions, built together",
+        "image": "/better-world/stories/grenada-red-cross.jpg",
+        "imageAlt": "A Grenada Red Cross volunteer and a partner handing off relief supplies at an airfield, from a WIAL Gives Back video testimonial",
+        "paragraphs": [
+          "The WIAL Gives Back initiative helped several International Federation of Red Cross national societies solve complex problems through Action Learning. The team from the Grenada Red Cross shared their experience with the process, and how it allowed them to create breakthrough solutions while developing individuals and the team at the same time."
+        ]
+      },
+      {
+        "type": "cta",
+        "title": "Support more stories like this",
+        "body": "The Better World Fund keeps this kind of partnership going — donate or nominate an organization for support.",
+        "href": "/better-world",
+        "label": "Back to the Better World Fund"
+      }
+    ]
+  },
+  "seo": {
+    "description": "How the Grenada Red Cross used WIAL Action Learning to create breakthrough solutions through the WIAL Gives Back initiative.",
+    "sourceUrl": "https://wial.org/projects/grenada-red-cross-discovers-power-wial-action-learning/",
+    "sourceStatus": "migrated-from-wial",
+    "sourceNotes": "Migrated from wial.org's Better World Stories (projects). The source page centered on an embedded video testimonial, summarized here in text since the video is hosted on wial.org's YouTube channel and not vendored. The WIAL Gives Back branded still frame is vendored as the hero image."
+  }
+},
+{
+  "id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaa0028",
+  "chapterId": null,
+  "slug": "better-world/malaysia-we-the-protector",
+  "title": "WIAL Gives Back — We The Protector",
+  "published": true,
+  "bodyRichtext": {
+    "heroIntro": "Be My Protector Malaysia joined the WIAL Gives Back initiative to explore how Action Learning solves complex problems and develops leaders and teams at the same time.",
+    "metrics": [
+      {
+        "label": "Published",
+        "value": "Feb 2021"
+      },
+      {
+        "label": "Organization",
+        "value": "Be My Protector Malaysia"
+      },
+      {
+        "label": "Country",
+        "value": "Malaysia"
+      }
+    ],
+    "sections": [
+      {
+        "type": "media_prose",
+        "title": "Empowering Malaysians to speak up",
+        "image": "/better-world/stories/malaysia-we-the-protector.jpg",
+        "imageAlt": "A Be My Protector Malaysia volunteer in a red shirt receiving a delivery from a uniformed officer beside a cargo aircraft",
+        "paragraphs": [
+          "Be My Protector Malaysia joined the WIAL Gives Back initiative to find out how WIAL Action Learning solves complex problems and develops leaders and teams at the same time. Be My Protector empowers the public to speak up for the oppressed, giving every Malaysian the opportunity to report human trafficking, labor violations, and child exploitation.",
+          "The Be My Protector team was supported by WIAL Gives Back coaches William Teo and Jessica Low. The team discovered the power of questions and how to develop a learning attitude rather than jumping straight to quick solutions, learning to focus on smaller short-term goals while keeping their stretch vision in mind."
+        ]
+      },
+      {
+        "type": "cta",
+        "title": "Support more stories like this",
+        "body": "The Better World Fund keeps this kind of partnership going — donate or nominate an organization for support.",
+        "href": "/better-world",
+        "label": "Back to the Better World Fund"
+      }
+    ]
+  },
+  "seo": {
+    "description": "How Be My Protector Malaysia used WIAL Action Learning to develop its leaders and team through the WIAL Gives Back initiative.",
+    "sourceUrl": "https://wial.org/projects/wial-gives-back-protector/",
+    "sourceStatus": "migrated-from-wial",
+    "sourceNotes": "Migrated from wial.org's Better World Stories (projects). Text is a light copy edit of the source's three paragraphs, condensed to two; ALL-CAPS 'WIAL GIVES BACK' normalized to sentence case. The source photo is vendored as the hero image."
+  }
+},
+{
+  "id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaa0029",
+  "chapterId": null,
+  "slug": "better-world/singapore-centre-for-non-profit-leadership",
+  "title": "WIAL Gives Back Supports Singapore's Centre for Non-Profit Leadership",
+  "published": true,
+  "bodyRichtext": {
+    "heroIntro": "Certified WIAL coaches supported nine Singapore nonprofits and more than 50 team members pro bono through a collaboration between WIAL and the Centre for Non-Profit Leadership.",
+    "metrics": [
+      {
+        "label": "Published",
+        "value": "Sep 2020"
+      },
+      {
+        "label": "Organization",
+        "value": "Centre for Non-Profit Leadership (CNPL)"
+      },
+      {
+        "label": "Country",
+        "value": "Singapore"
+      }
+    ],
+    "sections": [
+      {
+        "type": "media_prose",
+        "title": "Nine nonprofits, one safe space to ask hard questions",
+        "image": "/better-world/stories/singapore-centre-for-non-profit-leadership.jpg",
+        "imageAlt": "Phoon Kok Hwa of WIAL Gives Back and Kitson Leonard Lee of the Centre for Non-Profit Leadership in a video call",
+        "paragraphs": [
+          "The collaboration between WIAL and the Centre for Non-Profit Leadership (CNPL) was a great success, supporting a total of nine nonprofit organizations in improving their board effectiveness — involving more than 50 team members and around ten WIAL-certified pro bono coaches.",
+          "CNPL's Kitson Leonard Lee especially appreciated how Action Learning creates a safe space to ask the powerful questions that help a team move forward."
+        ]
+      },
+      {
+        "type": "cta",
+        "title": "Support more stories like this",
+        "body": "The Better World Fund keeps this kind of partnership going — donate or nominate an organization for support.",
+        "href": "/better-world",
+        "label": "Back to the Better World Fund"
+      }
+    ]
+  },
+  "seo": {
+    "description": "How WIAL and Singapore's Centre for Non-Profit Leadership supported nine nonprofits with pro bono Action Learning coaching.",
+    "sourceUrl": "https://wial.org/projects/wial-gives-back-supports-singapores-centre-non-profit-leadership/",
+    "sourceStatus": "migrated-from-wial",
+    "sourceNotes": "Migrated from wial.org's Better World Stories (projects). Text is a light copy edit of the source paragraph; the video-call still frame is vendored as the hero image."
+  }
+},
+{
+  "id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaa0030",
+  "chapterId": null,
+  "slug": "better-world/singapore-book-council",
+  "title": "Singapore Book Council Team Benefited from Learning About WIAL's Process",
+  "published": true,
+  "bodyRichtext": {
+    "heroIntro": "When COVID-19 put charities' revenue at risk, the Singapore Book Council's senior management team turned to Action Learning to find new ways to diversify funding — and came away with a new way of asking questions.",
+    "metrics": [
+      {
+        "label": "Published",
+        "value": "Sep 2020"
+      },
+      {
+        "label": "Organization",
+        "value": "Singapore Book Council"
+      },
+      {
+        "label": "Country",
+        "value": "Singapore"
+      }
+    ],
+    "sections": [
+      {
+        "type": "media_prose",
+        "title": "About the Singapore Book Council",
+        "image": "/better-world/stories/singapore-book-council-1.jpg",
+        "imageAlt": "The Singapore Book Council panel discussion at the Asian Festival of Children's Content, pictured for the WIAL Gives Back collaboration",
+        "paragraphs": [
+          "The Singapore Book Council (SBC) is an independent charity with IPC status. Established in 1968 to support Singapore literature, SBC aims to \"build our imagine-nation\" by developing creativity, imagination, original thought, and empathy through programmes in creative writing, reading, illustration, translation, and storytelling.",
+          "SBC's vision is international recognition for quality, diverse Singapore literature, and its mission is to develop, support, and advocate for a multicultural literary arts sector. The Book Council cultivates Singapore's literary arts scene through festivals like the Asian Festival of Children's Content, awards like the Singapore Literature Prize, the #BuySingLit movement, and its Academy training programmes."
+        ]
+      },
+      {
+        "type": "prose",
+        "title": "The Action Learning experience",
+        "paragraphs": [
+          "SBC's senior management team joined the CNPL–WIAL Gives Back programme while figuring out how to respond to the COVID-19 crisis and generate ideas and strategic plans. Charities and nonprofits are especially vulnerable during a crisis because they rely on donations and grants, so the team needed to plan for both the short and long term. They arrived at the problem statement: \"How to diversify and increase revenue sources for SBC.\"",
+          "A team of four joined the programme — the Executive Director, the Head of Capability Development, the Senior Manager of Marketing, and the Senior Manager of Admin and Finance — without really knowing what to expect. Their coach was Grace Tan, joined by external guest Teresa for a total of three sessions.",
+          "It took a fair bit of time to get the process going, especially in the first two sessions. The team was not used to asking questions and only making statements in response to questions, and did not yet know how to ask the right, pertinent questions to get to the core of the problem — leading to a lot of pauses and silences that made the process feel awkward. Grace was patient in guiding the team and probing different members to respond.",
+          "By the end of the second session the team had gotten the hang of asking questions and listening actively, generating more ideas. By the third and final session, the discussion was more active and participatory, generating more ideas and solutions.",
+          "It was a good experience overall — a completely new one for the team, with a fair bit of difficulty finding their way in at first, but guided by their coach they got the hang of asking questions to probe and arrive at solutions."
+        ]
+      },
+      {
+        "type": "quote",
+        "quote": "The process taught us how to listen actively, ask the right questions to probe, and look at things from different perspectives. We were not able to go very deep over the three sessions, but we benefited from learning about the process which we could then apply to our organisation's management.",
+        "attribution": "William Phuan, Executive Director, Singapore Book Council"
+      },
+      {
+        "type": "cta",
+        "title": "Support more stories like this",
+        "body": "The Better World Fund keeps this kind of partnership going — donate or nominate an organization for support.",
+        "href": "/better-world",
+        "label": "Back to the Better World Fund"
+      }
+    ]
+  },
+  "seo": {
+    "description": "How the Singapore Book Council's senior management team used Action Learning to tackle a COVID-era funding challenge.",
+    "sourceUrl": "https://wial.org/projects/singapore-book-council-team-benefited-learning-wials-process/",
+    "sourceStatus": "migrated-from-wial",
+    "sourceNotes": "Migrated from wial.org's Better World Stories (projects). Text is verbatim with light copy edits (British spellings like 'organisation' kept as published, hashtag-style ALL-CAPS normalized). Two source photos are vendored: the WIAL Gives Back branded panel-discussion still as the hero image, and a storytelling event photo alongside the Action Learning narrative; a 2018 Singapore Literature Prize award photo was also on the source page but dropped to keep the two-image layout focused."
+  }
+},
+{
+  "id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaa0031",
+  "chapterId": null,
+  "slug": "better-world/singapore-association-for-the-deaf",
+  "title": "WIAL Provides Action Learning Coaching for the Singapore Association for the Deaf",
+  "published": true,
+  "bodyRichtext": {
+    "heroIntro": "A team of three deaf and two hearing members from the Singapore Association for the Deaf used Action Learning to find funding for a Deaf Linguist role — and discovered the power of questions along the way.",
+    "metrics": [
+      {
+        "label": "Published",
+        "value": "Aug 2020"
+      },
+      {
+        "label": "Organization",
+        "value": "Singapore Association for the Deaf (SADeaf)"
+      },
+      {
+        "label": "Country",
+        "value": "Singapore"
+      }
+    ],
+    "sections": [
+      {
+        "type": "media_prose",
+        "title": "About the Singapore Association for the Deaf",
+        "image": "/better-world/stories/singapore-association-for-the-deaf.jpg",
+        "imageAlt": "A WIAL coach demonstrating sign language alongside a participant at a Singapore Sign Language and Deaf Awareness Week event",
+        "paragraphs": [
+          "Founded in 1955, the Singapore Association for the Deaf (SADeaf) is today a Social Service Agency funded by the Ministry of Social and Family Development, the National Council of Social Service, and the Ministry of Education. Its mission is to be the leading organization advocating equal opportunity, in every respect, for the Deaf, and to support the Deaf in reaching their full potential."
+        ]
+      },
+      {
+        "type": "prose",
+        "title": "The Action Learning sessions",
+        "paragraphs": [
+          "SADeaf's management team took part in three Action Learning sessions under the WIAL Gives Back global initiative, a collaboration between WIAL and Singapore's Centre for Non-Profit Leadership for local nonprofits. The team comprised three deaf members and two hearing members; Michelle Ow, a volunteer WIAL Action Learning Coach, provided the coaching, supported by an interpreter and a note taker. The process was confusing at first as the team adjusted to taking turns asking and answering questions, but everyone became more fluent in the process by the second and third sessions.",
+          "The team made significant progress on their identified problem — securing funding to hire a Deaf Linguist. They identified an available source of funding and drafted the job advertisement to be publicized. On the learning side, the team came away with a deeper understanding of the power of questions to explore more possibilities and empower team members to think more critically."
+        ]
+      },
+      {
+        "type": "quote",
+        "quote": "We learnt to harness the power of questioning in solving problems, as well as using questions to clarify doubts, ensure all team members are on the same page, and headed towards a common goal.",
+        "attribution": "Alvan, Deputy Director, Singapore Association for the Deaf"
+      },
+      {
+        "type": "quote",
+        "quote": "Using different attitudes makes it possible to work together as a team.",
+        "attribution": "James, Manager, Singapore Association for the Deaf"
+      },
+      {
+        "type": "cta",
+        "title": "Support more stories like this",
+        "body": "The Better World Fund keeps this kind of partnership going — donate or nominate an organization for support.",
+        "href": "/better-world",
+        "label": "Back to the Better World Fund"
+      }
+    ]
+  },
+  "seo": {
+    "description": "How the Singapore Association for the Deaf used Action Learning coaching to secure funding for a Deaf Linguist role.",
+    "sourceUrl": "https://wial.org/projects/wial-provides-action-learning-coaching-singapore-association-deaf/",
+    "sourceStatus": "migrated-from-wial",
+    "sourceNotes": "Migrated from wial.org's Better World Stories (projects). Text is verbatim with light copy edits. A source thumbnail unrelated to the story (a 'Singapore Votes 2020' election-results graphic, likely leftover related-post filler) was dropped; the Singapore Sign Language and Deaf Awareness Week event photo is vendored as the hero image."
   }
 }
 ]

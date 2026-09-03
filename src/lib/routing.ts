@@ -33,6 +33,35 @@ const aliasMap = new Map<string, string>([
   ["better-world-fund-2", "/better-world"],
   ["wial-gives-back", "/better-world"],
   ["projects", "/better-world"],
+  [
+    "projects/partnership-world-institute-action-learning-international-federation-red-cross",
+    "/better-world/ifrc-partnership",
+  ],
+  [
+    "projects/wial-gives-back-thailand-hospital-administration-association",
+    "/better-world/thailand-hospital-administration",
+  ],
+  [
+    "projects/wial-gives-back-supports-thailand-entrepreneurship-club",
+    "/better-world/thailand-entrepreneurship-club",
+  ],
+  [
+    "projects/grenada-red-cross-discovers-power-wial-action-learning",
+    "/better-world/grenada-red-cross",
+  ],
+  ["projects/wial-gives-back-protector", "/better-world/malaysia-we-the-protector"],
+  [
+    "projects/wial-gives-back-supports-singapores-centre-non-profit-leadership",
+    "/better-world/singapore-centre-for-non-profit-leadership",
+  ],
+  [
+    "projects/singapore-book-council-team-benefited-learning-wials-process",
+    "/better-world/singapore-book-council",
+  ],
+  [
+    "projects/wial-provides-action-learning-coaching-singapore-association-deaf",
+    "/better-world/singapore-association-for-the-deaf",
+  ],
   ["share-your-better-world-story", "/contact"],
   ["about-us", "/about"],
   ["about-us/leadership", "/about"],
@@ -40,6 +69,8 @@ const aliasMap = new Map<string, string>([
   ["executive-committee", "/about"],
   ["directors-emeritus", "/about"],
   ["advisory-board", "/about"],
+  ["wials-team", "/about"],
+  ["become-a-partner", "/partners"],
   ["award-nomination", "/awards/nomination"],
   ["previous-wial-award-winners", "/awards"],
   ["affiliates", "/coaches"],
@@ -48,6 +79,7 @@ const aliasMap = new Map<string, string>([
   ["our-clients", "/clients"],
   ["client-testimonials", "/clients"],
   ["share-your-success-story", "/clients/success-story"],
+  ["privacy-policy", "/privacy"],
 ]);
 
 const canonicalMap = new Map<string, CanonicalPageSlug>([
@@ -65,6 +97,7 @@ const canonicalMap = new Map<string, CanonicalPageSlug>([
   ["conferences", "conferences"],
   ["become-an-affiliate", "become-an-affiliate"],
   ["resources", "resources"],
+  ["privacy", "privacy"],
 ]);
 
 export const reservedSubdomains = new Set([
