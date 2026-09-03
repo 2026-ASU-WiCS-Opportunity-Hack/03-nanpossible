@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Link from "next/link";
 import { ContactForm } from "./ContactForm";
 
 export const metadata: Metadata = {
@@ -13,6 +14,13 @@ export default function ContactPage() {
       <p className="text-gray-600 mb-8">
         Have questions about WIAL, Action Learning, or our certification programs? 
         Fill out the form below and we will get back to you promptly.
+      </p>
+      <p className="text-gray-600 mb-8">
+        Thinking about bringing WIAL to your country?{" "}
+        <Link className="font-semibold text-teal" href="/become-an-affiliate">
+          Learn how to become a WIAL affiliate
+        </Link>
+        .
       </p>
       <ContactForm />
     </div>
