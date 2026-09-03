@@ -166,6 +166,58 @@ describe("normalizeSegments", () => {
     });
   });
 
+  it("redirects legacy Better World story paths (multi-segment) to their /better-world articles", () => {
+    expect(
+      normalizeSegments([
+        "projects",
+        "partnership-world-institute-action-learning-international-federation-red-cross",
+      ]),
+    ).toEqual({
+      slug: null,
+      redirectTo: "/better-world/ifrc-partnership",
+    });
+    expect(
+      normalizeSegments(["projects", "wial-gives-back-thailand-hospital-administration-association"]),
+    ).toEqual({
+      slug: null,
+      redirectTo: "/better-world/thailand-hospital-administration",
+    });
+    expect(
+      normalizeSegments(["projects", "wial-gives-back-supports-thailand-entrepreneurship-club"]),
+    ).toEqual({
+      slug: null,
+      redirectTo: "/better-world/thailand-entrepreneurship-club",
+    });
+    expect(
+      normalizeSegments(["projects", "grenada-red-cross-discovers-power-wial-action-learning"]),
+    ).toEqual({
+      slug: null,
+      redirectTo: "/better-world/grenada-red-cross",
+    });
+    expect(normalizeSegments(["projects", "wial-gives-back-protector"])).toEqual({
+      slug: null,
+      redirectTo: "/better-world/malaysia-we-the-protector",
+    });
+    expect(
+      normalizeSegments(["projects", "wial-gives-back-supports-singapores-centre-non-profit-leadership"]),
+    ).toEqual({
+      slug: null,
+      redirectTo: "/better-world/singapore-centre-for-non-profit-leadership",
+    });
+    expect(
+      normalizeSegments(["projects", "singapore-book-council-team-benefited-learning-wials-process"]),
+    ).toEqual({
+      slug: null,
+      redirectTo: "/better-world/singapore-book-council",
+    });
+    expect(
+      normalizeSegments(["projects", "wial-provides-action-learning-coaching-singapore-association-deaf"]),
+    ).toEqual({
+      slug: null,
+      redirectTo: "/better-world/singapore-association-for-the-deaf",
+    });
+  });
+
   it("resolves the awards page slug and redirects legacy award paths", () => {
     expect(normalizeSegments(["awards"])).toEqual({
       slug: "awards",

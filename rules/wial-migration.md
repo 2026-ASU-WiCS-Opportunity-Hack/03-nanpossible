@@ -52,7 +52,7 @@ wial.org data is unreliable. Judgment calls that are now precedent:
 
 Migrate wial.org forms using the `/contact` pattern (see `src/app/(marketing)/awards/nomination/` for the fullest example): a route dir in `(marketing)` with `page.tsx`, a `'use server'` action validating and inserting via `createClient()` from `@/lib/supabase/server`, a client form component matching the contact form's styling, and a migration creating the table with RLS: insert for `anon, authenticated`, select for `authenticated` only. File-upload fields on the legacy forms become optional "link to supporting materials" URL fields unless upload is truly required. A static route like `/awards/nomination` coexists fine with the `[[...slug]]` catch-all.
 
-Still intentionally external (candidates for this pattern later): the Better World Fund donation and application forms.
+Still intentionally external (candidates for this pattern later): the Better World Fund donation form (`/pay` supports only fixed-price Stripe Prices today; a donation needs a donor-entered amount — tracked in #127). The Better World Fund application form is migrated (`/better-world/nominate`, #123).
 
 ## Redirects and verification
 
@@ -72,10 +72,10 @@ Rows and links that are neither redirected, live, nor mapped to an issue report 
 
 ## Remaining migration targets
 
-All tracked as GitHub issues (filed 2026-08-30 from the website crawler spreadsheet). Shipped 2026-09-02: #117 (`/become-a-partner` form → `/partners` + `/partners/apply`), #118 (`/become-an-affiliate`), #119 (`/wials-team` → `/about`), #120 (`/resources`), #121 (WIAL Blog → `/resources/<slug>`), #122 (`/privacy` + footer link).
+All tracked as GitHub issues (filed 2026-08-30 from the website crawler spreadsheet). Shipped 2026-09-02: #117 (`/become-a-partner` form → `/partners` + `/partners/apply`), #118 (`/become-an-affiliate`), #119 (`/wials-team` → `/about`), #120 (`/resources`), #121 (WIAL Blog → `/resources/<slug>`), #122 (`/privacy` + footer link), #123 (Better World application form → `/better-world/nominate`; `/projects/...` stories → `/better-world/<slug>`; donation form split out to #127).
 
 | wial.org page(s) | Target | Issue |
 | --- | --- | --- |
 | `/certification/*` sub-pages, `/programs/`, `/become-a-coach/` | `/certification` | #100 |
-| Better World forms + `/projects/...` stories | `/better-world` | #123 |
+| Better World Fund donation form | `/better-world` Donate CTA (still external) | #127 |
 | Homepage content | `/` | #9 |

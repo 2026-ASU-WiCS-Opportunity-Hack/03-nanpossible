@@ -819,14 +819,14 @@
         "type": "feature_grid",
         "title": "Better World stories",
         "items": [
-          { "eyebrow": "Global", "title": "International Federation of Red Cross", "body": "WIAL and IFRC leaders share the stories, successes, and future hopes of their Action Learning partnership.", "href": "https://wial.org/projects/partnership-world-institute-action-learning-international-federation-red-cross/", "label": "Read the story" },
-          { "eyebrow": "Thailand", "title": "Hospital Administration Association", "body": "Hospital administrators used Action Learning to address complex problems in healthcare management.", "href": "https://wial.org/projects/wial-gives-back-thailand-hospital-administration-association/", "label": "Read the story" },
-          { "eyebrow": "Thailand", "title": "Entrepreneurship Club", "body": "Nearly 40 Thai entrepreneurs discovered Action Learning for problem-solving and leadership development.", "href": "https://wial.org/projects/wial-gives-back-supports-thailand-entrepreneurship-club/", "label": "Read the story" },
-          { "eyebrow": "Grenada", "title": "Grenada Red Cross", "body": "Red Cross teams created breakthrough solutions to complex problems through Action Learning.", "href": "https://wial.org/projects/grenada-red-cross-discovers-power-wial-action-learning/", "label": "Read the story" },
-          { "eyebrow": "Malaysia", "title": "We The Protector", "body": "Be My Protector Malaysia joined WIAL Gives Back to explore Action Learning on its toughest challenges.", "href": "https://wial.org/projects/wial-gives-back-protector/", "label": "Read the story" },
-          { "eyebrow": "Singapore", "title": "Centre for Non-Profit Leadership", "body": "Certified coaches supported nine nonprofits and more than 50 team members pro bono.", "href": "https://wial.org/projects/wial-gives-back-supports-singapores-centre-non-profit-leadership/", "label": "Read the story" },
-          { "eyebrow": "Singapore", "title": "Singapore Book Council", "body": "The independent literary arts charity's team benefited from learning WIAL's Action Learning process.", "href": "https://wial.org/projects/singapore-book-council-team-benefited-learning-wials-process/", "label": "Read the story" },
-          { "eyebrow": "Singapore", "title": "Singapore Association for the Deaf", "body": "Pro bono Action Learning coaching for the agency advocating equal opportunity for the deaf community.", "href": "https://wial.org/projects/wial-provides-action-learning-coaching-singapore-association-deaf/", "label": "Read the story" }
+          { "eyebrow": "Global", "title": "International Federation of Red Cross", "body": "WIAL and IFRC leaders share the stories, successes, and future hopes of their Action Learning partnership.", "href": "/better-world/ifrc-partnership", "label": "Read the story" },
+          { "eyebrow": "Thailand", "title": "Hospital Administration Association", "body": "Hospital administrators used Action Learning to address complex problems in healthcare management.", "href": "/better-world/thailand-hospital-administration", "label": "Read the story" },
+          { "eyebrow": "Thailand", "title": "Entrepreneurship Club", "body": "Nearly 40 Thai entrepreneurs discovered Action Learning for problem-solving and leadership development.", "href": "/better-world/thailand-entrepreneurship-club", "label": "Read the story" },
+          { "eyebrow": "Grenada", "title": "Grenada Red Cross", "body": "Red Cross teams created breakthrough solutions to complex problems through Action Learning.", "href": "/better-world/grenada-red-cross", "label": "Read the story" },
+          { "eyebrow": "Malaysia", "title": "We The Protector", "body": "Be My Protector Malaysia joined WIAL Gives Back to explore Action Learning on its toughest challenges.", "href": "/better-world/malaysia-we-the-protector", "label": "Read the story" },
+          { "eyebrow": "Singapore", "title": "Centre for Non-Profit Leadership", "body": "Certified coaches supported nine nonprofits and more than 50 team members pro bono.", "href": "/better-world/singapore-centre-for-non-profit-leadership", "label": "Read the story" },
+          { "eyebrow": "Singapore", "title": "Singapore Book Council", "body": "The independent literary arts charity's team benefited from learning WIAL's Action Learning process.", "href": "/better-world/singapore-book-council", "label": "Read the story" },
+          { "eyebrow": "Singapore", "title": "Singapore Association for the Deaf", "body": "Pro bono Action Learning coaching for the agency advocating equal opportunity for the deaf community.", "href": "/better-world/singapore-association-for-the-deaf", "label": "Read the story" }
         ]
       },
       {
@@ -839,8 +839,8 @@
       {
         "type": "cta",
         "title": "Nominate an organization",
-        "body": "Know a community organization that could benefit from Action Learning? Nominate it for Better World Fund support.",
-        "href": "https://wial.org/wial-better-world-fund-application/",
+        "body": "Know a community organization that could benefit from Action Learning? Apply for Better World Fund support.",
+        "href": "/better-world/nominate",
         "label": "Nominate"
       },
       {
@@ -856,7 +856,7 @@
     "description": "The WIAL Better World Fund provides Action Learning coaching and grant support to community-based organizations around the world.",
     "sourceUrl": "https://wial.org/better-world-fund/",
     "sourceStatus": "migrated-from-wial",
-    "sourceNotes": "Consolidated from wial.org better-world-fund, wial-gives-back, and projects (story summaries) per the crawler sheet's 'links on the About page' instruction. Donate and Nominate CTAs intentionally still point to the live wial.org forms; individual story pages are not migrated and link to the originals."
+    "sourceNotes": "Consolidated from wial.org better-world-fund, wial-gives-back, and projects (story summaries) per the crawler sheet's 'links on the About page' instruction. The Nominate CTA and all eight Better World story cards are now internal (#123): the application form is rebuilt at /better-world/nominate (better_world_applications table), and each story is its own content page at better-world/<slug> with photos vendored to public/better-world/stories/. The Donate CTA still points to the live wial.org donation form intentionally — a Stripe donation flow needs a variable, donor-entered amount that /pay's fixed-price cards don't support yet; tracked as a follow-up in issue #127."
   }
 },
 {
@@ -2919,6 +2919,429 @@
     "sourceUrl": "https://wial.org/privacy-policy/",
     "sourceStatus": "migrated-from-wial",
     "sourceNotes": "Migrated verbatim (aside from light punctuation normalization) from wial.org/privacy-policy/ as 19 prose sections following the source's own numbered headings; sections were split around bulleted lists so list order matches the source. Two source defects were corrected without changing wording: a run-on in the 'With whom we share' list that concatenated the Service providers and Business partners bullets was split in two, and '.2.' was corrected to '5.2.' in the 'How you can access your information' section. The source also skips from section 9 to section 11 (no section 10 exists on wial.org) and states an Effective Date of January 15, 2020 despite the page being last modified 2026-03-05 on wial.org; both are kept as-is. Legacy references to cookies, web beacons, third-party ad networks, and the Network Advertising Initiative opt-out are retained verbatim though unverified against this platform's actual tracking (none of our integrations — Stripe, Supabase, OpenRouter, Resend, Credly — are named in the source text). The body repeatedly lists service@wial.org as the privacy contact, which differs from the footer's info@wial.org; both addresses are kept as published. See the GitHub issue #122 comment for the full flag list; this content needs legal review before being treated as WIAL's authoritative policy."
+  }
+},
+{
+  "id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaa0024",
+  "chapterId": null,
+  "slug": "better-world/ifrc-partnership",
+  "title": "WIAL and the International Federation of Red Cross",
+  "published": true,
+  "bodyRichtext": {
+    "heroIntro": "Michael Marquardt, WIAL co-founder and Chair of the WIAL Advisory Board, sits down with Giorgio Ferrario of the International Federation of Red Cross and Samantha Dickson of the Grenada Red Cross to talk about what the WIAL-IFRC Action Learning partnership has delivered.",
+    "metrics": [
+      {
+        "label": "Published",
+        "value": "Oct 2021"
+      },
+      {
+        "label": "Organization",
+        "value": "International Federation of Red Cross (IFRC)"
+      },
+      {
+        "label": "Country",
+        "value": "Global"
+      }
+    ],
+    "sections": [
+      {
+        "type": "media_prose",
+        "title": "Stories, successes, and future hopes",
+        "image": "/better-world/stories/ifrc-partnership.jpg",
+        "imageAlt": "Michael Marquardt, Giorgio Ferrario, and Samantha Dickson pictured for a WIAL Gives Back video conversation about the WIAL-IFRC partnership",
+        "paragraphs": [
+          "Michael Marquardt, co-founder of WIAL and Chair of the WIAL Advisory Board, interviewed Giorgio Ferrario, Manager of National Society Development at IFRC, and Samantha Dickson, President of the Grenada Red Cross, about the partnership between the World Institute for Action Learning and the International Federation of Red Cross.",
+          "The conversation covered the stories, successes, and future hopes for the partnership, and how WIAL Action Learning has helped Red Cross national societies deliver a powerful impact and positive social outcomes for the communities they serve."
+        ]
+      },
+      {
+        "type": "cta",
+        "title": "Support more stories like this",
+        "body": "The Better World Fund keeps this kind of partnership going — donate or nominate an organization for support.",
+        "href": "/better-world",
+        "label": "Back to the Better World Fund"
+      }
+    ]
+  },
+  "seo": {
+    "description": "How the World Institute for Action Learning and the International Federation of Red Cross put Action Learning to work for Red Cross national societies.",
+    "sourceUrl": "https://wial.org/projects/partnership-world-institute-action-learning-international-federation-red-cross/",
+    "sourceStatus": "migrated-from-wial",
+    "sourceNotes": "Migrated from wial.org's Better World Stories (projects). The source page centered on an embedded video interview; the interview is summarized in text rather than embedded since it is hosted on wial.org's YouTube channel and not vendored. The WIAL Gives Back branded still frame naming the three participants is vendored as the hero image."
+  }
+},
+{
+  "id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaa0025",
+  "chapterId": null,
+  "slug": "better-world/thailand-hospital-administration",
+  "title": "WIAL Gives Back to the Thailand Hospital Administration Association",
+  "published": true,
+  "bodyRichtext": {
+    "heroIntro": "Key administrators in charge of hospitals across Thailand share how they experienced WIAL Action Learning as a powerful way to solve complex problems — and to learn as an organization at the same time.",
+    "metrics": [
+      {
+        "label": "Published",
+        "value": "Mar 2021"
+      },
+      {
+        "label": "Organization",
+        "value": "Thailand Hospital Administration Association"
+      },
+      {
+        "label": "Country",
+        "value": "Thailand"
+      }
+    ],
+    "sections": [
+      {
+        "type": "media_prose",
+        "title": "Solving real problems together",
+        "image": "/better-world/stories/thailand-hospital-administration.jpg",
+        "imageAlt": "A Thai hospital administrator speaking on camera about a real problem his team worked through with Action Learning, for a WIAL Gives Back video testimonial",
+        "paragraphs": [
+          "Hospital administrators from across Thailand recorded video testimonials about their experience with WIAL Action Learning as part of the WIAL Gives Back initiative, describing it as a powerful way to solve complex problems in healthcare management while learning as an organization at the same time."
+        ]
+      },
+      {
+        "type": "cta",
+        "title": "Support more stories like this",
+        "body": "The Better World Fund keeps this kind of partnership going — donate or nominate an organization for support.",
+        "href": "/better-world",
+        "label": "Back to the Better World Fund"
+      }
+    ]
+  },
+  "seo": {
+    "description": "Thai hospital administrators on how WIAL Action Learning helped them solve complex healthcare management problems.",
+    "sourceUrl": "https://wial.org/projects/wial-gives-back-thailand-hospital-administration-association/",
+    "sourceStatus": "migrated-from-wial",
+    "sourceNotes": "Migrated from wial.org's Better World Stories (projects). The source page centered on embedded video testimonials, summarized here in text since the videos are hosted on wial.org's YouTube channel and not vendored. The WIAL Gives Back branded still frame is vendored as the hero image."
+  }
+},
+{
+  "id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaa0026",
+  "chapterId": null,
+  "slug": "better-world/thailand-entrepreneurship-club",
+  "title": "WIAL Gives Back Supports the Thailand Entrepreneurship Club",
+  "published": true,
+  "bodyRichtext": {
+    "heroIntro": "Nearly 40 young entrepreneurs in Thailand discovered WIAL Action Learning through the WIAL Gives Back initiative — and how the method helps solve complex problems while building leadership and team collaboration skills.",
+    "metrics": [
+      {
+        "label": "Published",
+        "value": "Sep 2019"
+      },
+      {
+        "label": "Organization",
+        "value": "Thailand Entrepreneurship Club"
+      },
+      {
+        "label": "Country",
+        "value": "Thailand"
+      }
+    ],
+    "sections": [
+      {
+        "type": "media_prose",
+        "title": "Nearly 40 entrepreneurs, one method",
+        "image": "/better-world/stories/thailand-entrepreneurship-club.jpg",
+        "imageAlt": "A group of young Thai entrepreneurs posing together at a Thailand Entrepreneurship Club event supported by WIAL Gives Back",
+        "paragraphs": [
+          "As part of the WIAL Gives Back initiative, nearly 40 young entrepreneurs in Thailand discovered WIAL Action Learning and how the method helps solve complex problems while developing leadership skills and team collaboration at the same time.",
+          "The Thailand Entrepreneurship Club and WIAL's pro bono coaches made the program possible."
+        ]
+      },
+      {
+        "type": "cta",
+        "title": "Support more stories like this",
+        "body": "The Better World Fund keeps this kind of partnership going — donate or nominate an organization for support.",
+        "href": "/better-world",
+        "label": "Back to the Better World Fund"
+      }
+    ]
+  },
+  "seo": {
+    "description": "How nearly 40 young Thai entrepreneurs discovered Action Learning through WIAL Gives Back and the Thailand Entrepreneurship Club.",
+    "sourceUrl": "https://wial.org/projects/wial-gives-back-supports-thailand-entrepreneurship-club/",
+    "sourceStatus": "migrated-from-wial",
+    "sourceNotes": "Migrated from wial.org's Better World Stories (projects). Text is a light copy edit of the source paragraph; the group photo is vendored as the hero image."
+  }
+},
+{
+  "id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaa0027",
+  "chapterId": null,
+  "slug": "better-world/grenada-red-cross",
+  "title": "Grenada Red Cross Discovers the Power of WIAL Action Learning",
+  "published": true,
+  "bodyRichtext": {
+    "heroIntro": "The WIAL Gives Back initiative helped several International Federation of Red Cross entities solve complex problems through Action Learning — including the team from Grenada.",
+    "metrics": [
+      {
+        "label": "Published",
+        "value": "Mar 2021"
+      },
+      {
+        "label": "Organization",
+        "value": "Grenada Red Cross"
+      },
+      {
+        "label": "Country",
+        "value": "Grenada"
+      }
+    ],
+    "sections": [
+      {
+        "type": "media_prose",
+        "title": "Breakthrough solutions, built together",
+        "image": "/better-world/stories/grenada-red-cross.jpg",
+        "imageAlt": "A Grenada Red Cross volunteer and a partner handing off relief supplies at an airfield, from a WIAL Gives Back video testimonial",
+        "paragraphs": [
+          "The WIAL Gives Back initiative helped several International Federation of Red Cross national societies solve complex problems through Action Learning. The team from the Grenada Red Cross shared their experience with the process, and how it allowed them to create breakthrough solutions while developing individuals and the team at the same time."
+        ]
+      },
+      {
+        "type": "cta",
+        "title": "Support more stories like this",
+        "body": "The Better World Fund keeps this kind of partnership going — donate or nominate an organization for support.",
+        "href": "/better-world",
+        "label": "Back to the Better World Fund"
+      }
+    ]
+  },
+  "seo": {
+    "description": "How the Grenada Red Cross used WIAL Action Learning to create breakthrough solutions through the WIAL Gives Back initiative.",
+    "sourceUrl": "https://wial.org/projects/grenada-red-cross-discovers-power-wial-action-learning/",
+    "sourceStatus": "migrated-from-wial",
+    "sourceNotes": "Migrated from wial.org's Better World Stories (projects). The source page centered on an embedded video testimonial, summarized here in text since the video is hosted on wial.org's YouTube channel and not vendored. The WIAL Gives Back branded still frame is vendored as the hero image."
+  }
+},
+{
+  "id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaa0028",
+  "chapterId": null,
+  "slug": "better-world/malaysia-we-the-protector",
+  "title": "WIAL Gives Back — We The Protector",
+  "published": true,
+  "bodyRichtext": {
+    "heroIntro": "Be My Protector Malaysia joined the WIAL Gives Back initiative to explore how Action Learning solves complex problems and develops leaders and teams at the same time.",
+    "metrics": [
+      {
+        "label": "Published",
+        "value": "Feb 2021"
+      },
+      {
+        "label": "Organization",
+        "value": "Be My Protector Malaysia"
+      },
+      {
+        "label": "Country",
+        "value": "Malaysia"
+      }
+    ],
+    "sections": [
+      {
+        "type": "media_prose",
+        "title": "Empowering Malaysians to speak up",
+        "image": "/better-world/stories/malaysia-we-the-protector.jpg",
+        "imageAlt": "A Be My Protector Malaysia volunteer in a red shirt receiving a delivery from a uniformed officer beside a cargo aircraft",
+        "paragraphs": [
+          "Be My Protector Malaysia joined the WIAL Gives Back initiative to find out how WIAL Action Learning solves complex problems and develops leaders and teams at the same time. Be My Protector empowers the public to speak up for the oppressed, giving every Malaysian the opportunity to report human trafficking, labor violations, and child exploitation.",
+          "The Be My Protector team was supported by WIAL Gives Back coaches William Teo and Jessica Low. The team discovered the power of questions and how to develop a learning attitude rather than jumping straight to quick solutions, learning to focus on smaller short-term goals while keeping their stretch vision in mind."
+        ]
+      },
+      {
+        "type": "cta",
+        "title": "Support more stories like this",
+        "body": "The Better World Fund keeps this kind of partnership going — donate or nominate an organization for support.",
+        "href": "/better-world",
+        "label": "Back to the Better World Fund"
+      }
+    ]
+  },
+  "seo": {
+    "description": "How Be My Protector Malaysia used WIAL Action Learning to develop its leaders and team through the WIAL Gives Back initiative.",
+    "sourceUrl": "https://wial.org/projects/wial-gives-back-protector/",
+    "sourceStatus": "migrated-from-wial",
+    "sourceNotes": "Migrated from wial.org's Better World Stories (projects). Text is a light copy edit of the source's three paragraphs, condensed to two; ALL-CAPS 'WIAL GIVES BACK' normalized to sentence case. The source photo is vendored as the hero image."
+  }
+},
+{
+  "id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaa0029",
+  "chapterId": null,
+  "slug": "better-world/singapore-centre-for-non-profit-leadership",
+  "title": "WIAL Gives Back Supports Singapore's Centre for Non-Profit Leadership",
+  "published": true,
+  "bodyRichtext": {
+    "heroIntro": "Certified WIAL coaches supported nine Singapore nonprofits and more than 50 team members pro bono through a collaboration between WIAL and the Centre for Non-Profit Leadership.",
+    "metrics": [
+      {
+        "label": "Published",
+        "value": "Sep 2020"
+      },
+      {
+        "label": "Organization",
+        "value": "Centre for Non-Profit Leadership (CNPL)"
+      },
+      {
+        "label": "Country",
+        "value": "Singapore"
+      }
+    ],
+    "sections": [
+      {
+        "type": "media_prose",
+        "title": "Nine nonprofits, one safe space to ask hard questions",
+        "image": "/better-world/stories/singapore-centre-for-non-profit-leadership.jpg",
+        "imageAlt": "Phoon Kok Hwa of WIAL Gives Back and Kitson Leonard Lee of the Centre for Non-Profit Leadership in a video call",
+        "paragraphs": [
+          "The collaboration between WIAL and the Centre for Non-Profit Leadership (CNPL) was a great success, supporting a total of nine nonprofit organizations in improving their board effectiveness — involving more than 50 team members and around ten WIAL-certified pro bono coaches.",
+          "CNPL's Kitson Leonard Lee especially appreciated how Action Learning creates a safe space to ask the powerful questions that help a team move forward."
+        ]
+      },
+      {
+        "type": "cta",
+        "title": "Support more stories like this",
+        "body": "The Better World Fund keeps this kind of partnership going — donate or nominate an organization for support.",
+        "href": "/better-world",
+        "label": "Back to the Better World Fund"
+      }
+    ]
+  },
+  "seo": {
+    "description": "How WIAL and Singapore's Centre for Non-Profit Leadership supported nine nonprofits with pro bono Action Learning coaching.",
+    "sourceUrl": "https://wial.org/projects/wial-gives-back-supports-singapores-centre-non-profit-leadership/",
+    "sourceStatus": "migrated-from-wial",
+    "sourceNotes": "Migrated from wial.org's Better World Stories (projects). Text is a light copy edit of the source paragraph; the video-call still frame is vendored as the hero image."
+  }
+},
+{
+  "id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaa0030",
+  "chapterId": null,
+  "slug": "better-world/singapore-book-council",
+  "title": "Singapore Book Council Team Benefited from Learning About WIAL's Process",
+  "published": true,
+  "bodyRichtext": {
+    "heroIntro": "When COVID-19 put charities' revenue at risk, the Singapore Book Council's senior management team turned to Action Learning to find new ways to diversify funding — and came away with a new way of asking questions.",
+    "metrics": [
+      {
+        "label": "Published",
+        "value": "Sep 2020"
+      },
+      {
+        "label": "Organization",
+        "value": "Singapore Book Council"
+      },
+      {
+        "label": "Country",
+        "value": "Singapore"
+      }
+    ],
+    "sections": [
+      {
+        "type": "media_prose",
+        "title": "About the Singapore Book Council",
+        "image": "/better-world/stories/singapore-book-council-1.jpg",
+        "imageAlt": "The Singapore Book Council panel discussion at the Asian Festival of Children's Content, pictured for the WIAL Gives Back collaboration",
+        "paragraphs": [
+          "The Singapore Book Council (SBC) is an independent charity with IPC status. Established in 1968 to support Singapore literature, SBC aims to \"build our imagine-nation\" by developing creativity, imagination, original thought, and empathy through programmes in creative writing, reading, illustration, translation, and storytelling.",
+          "SBC's vision is international recognition for quality, diverse Singapore literature, and its mission is to develop, support, and advocate for a multicultural literary arts sector. The Book Council cultivates Singapore's literary arts scene through festivals like the Asian Festival of Children's Content, awards like the Singapore Literature Prize, the #BuySingLit movement, and its Academy training programmes."
+        ]
+      },
+      {
+        "type": "prose",
+        "title": "The Action Learning experience",
+        "paragraphs": [
+          "SBC's senior management team joined the CNPL–WIAL Gives Back programme while figuring out how to respond to the COVID-19 crisis and generate ideas and strategic plans. Charities and nonprofits are especially vulnerable during a crisis because they rely on donations and grants, so the team needed to plan for both the short and long term. They arrived at the problem statement: \"How to diversify and increase revenue sources for SBC.\"",
+          "A team of four joined the programme — the Executive Director, the Head of Capability Development, the Senior Manager of Marketing, and the Senior Manager of Admin and Finance — without really knowing what to expect. Their coach was Grace Tan, joined by external guest Teresa for a total of three sessions.",
+          "It took a fair bit of time to get the process going, especially in the first two sessions. The team was not used to asking questions and only making statements in response to questions, and did not yet know how to ask the right, pertinent questions to get to the core of the problem — leading to a lot of pauses and silences that made the process feel awkward. Grace was patient in guiding the team and probing different members to respond.",
+          "By the end of the second session the team had gotten the hang of asking questions and listening actively, generating more ideas. By the third and final session, the discussion was more active and participatory, generating more ideas and solutions.",
+          "It was a good experience overall — a completely new one for the team, with a fair bit of difficulty finding their way in at first, but guided by their coach they got the hang of asking questions to probe and arrive at solutions."
+        ]
+      },
+      {
+        "type": "quote",
+        "quote": "The process taught us how to listen actively, ask the right questions to probe, and look at things from different perspectives. We were not able to go very deep over the three sessions, but we benefited from learning about the process which we could then apply to our organisation's management.",
+        "attribution": "William Phuan, Executive Director, Singapore Book Council"
+      },
+      {
+        "type": "cta",
+        "title": "Support more stories like this",
+        "body": "The Better World Fund keeps this kind of partnership going — donate or nominate an organization for support.",
+        "href": "/better-world",
+        "label": "Back to the Better World Fund"
+      }
+    ]
+  },
+  "seo": {
+    "description": "How the Singapore Book Council's senior management team used Action Learning to tackle a COVID-era funding challenge.",
+    "sourceUrl": "https://wial.org/projects/singapore-book-council-team-benefited-learning-wials-process/",
+    "sourceStatus": "migrated-from-wial",
+    "sourceNotes": "Migrated from wial.org's Better World Stories (projects). Text is verbatim with light copy edits (British spellings like 'organisation' kept as published, hashtag-style ALL-CAPS normalized). Two source photos are vendored: the WIAL Gives Back branded panel-discussion still as the hero image, and a storytelling event photo alongside the Action Learning narrative; a 2018 Singapore Literature Prize award photo was also on the source page but dropped to keep the two-image layout focused."
+  }
+},
+{
+  "id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaa0031",
+  "chapterId": null,
+  "slug": "better-world/singapore-association-for-the-deaf",
+  "title": "WIAL Provides Action Learning Coaching for the Singapore Association for the Deaf",
+  "published": true,
+  "bodyRichtext": {
+    "heroIntro": "A team of three deaf and two hearing members from the Singapore Association for the Deaf used Action Learning to find funding for a Deaf Linguist role — and discovered the power of questions along the way.",
+    "metrics": [
+      {
+        "label": "Published",
+        "value": "Aug 2020"
+      },
+      {
+        "label": "Organization",
+        "value": "Singapore Association for the Deaf (SADeaf)"
+      },
+      {
+        "label": "Country",
+        "value": "Singapore"
+      }
+    ],
+    "sections": [
+      {
+        "type": "media_prose",
+        "title": "About the Singapore Association for the Deaf",
+        "image": "/better-world/stories/singapore-association-for-the-deaf.jpg",
+        "imageAlt": "A WIAL coach demonstrating sign language alongside a participant at a Singapore Sign Language and Deaf Awareness Week event",
+        "paragraphs": [
+          "Founded in 1955, the Singapore Association for the Deaf (SADeaf) is today a Social Service Agency funded by the Ministry of Social and Family Development, the National Council of Social Service, and the Ministry of Education. Its mission is to be the leading organization advocating equal opportunity, in every respect, for the Deaf, and to support the Deaf in reaching their full potential."
+        ]
+      },
+      {
+        "type": "prose",
+        "title": "The Action Learning sessions",
+        "paragraphs": [
+          "SADeaf's management team took part in three Action Learning sessions under the WIAL Gives Back global initiative, a collaboration between WIAL and Singapore's Centre for Non-Profit Leadership for local nonprofits. The team comprised three deaf members and two hearing members; Michelle Ow, a volunteer WIAL Action Learning Coach, provided the coaching, supported by an interpreter and a note taker. The process was confusing at first as the team adjusted to taking turns asking and answering questions, but everyone became more fluent in the process by the second and third sessions.",
+          "The team made significant progress on their identified problem — securing funding to hire a Deaf Linguist. They identified an available source of funding and drafted the job advertisement to be publicized. On the learning side, the team came away with a deeper understanding of the power of questions to explore more possibilities and empower team members to think more critically."
+        ]
+      },
+      {
+        "type": "quote",
+        "quote": "We learnt to harness the power of questioning in solving problems, as well as using questions to clarify doubts, ensure all team members are on the same page, and headed towards a common goal.",
+        "attribution": "Alvan, Deputy Director, Singapore Association for the Deaf"
+      },
+      {
+        "type": "quote",
+        "quote": "Using different attitudes makes it possible to work together as a team.",
+        "attribution": "James, Manager, Singapore Association for the Deaf"
+      },
+      {
+        "type": "cta",
+        "title": "Support more stories like this",
+        "body": "The Better World Fund keeps this kind of partnership going — donate or nominate an organization for support.",
+        "href": "/better-world",
+        "label": "Back to the Better World Fund"
+      }
+    ]
+  },
+  "seo": {
+    "description": "How the Singapore Association for the Deaf used Action Learning coaching to secure funding for a Deaf Linguist role.",
+    "sourceUrl": "https://wial.org/projects/wial-provides-action-learning-coaching-singapore-association-deaf/",
+    "sourceStatus": "migrated-from-wial",
+    "sourceNotes": "Migrated from wial.org's Better World Stories (projects). Text is verbatim with light copy edits. A source thumbnail unrelated to the story (a 'Singapore Votes 2020' election-results graphic, likely leftover related-post filler) was dropped; the Singapore Sign Language and Deaf Awareness Week event photo is vendored as the hero image."
   }
 }
 ]
