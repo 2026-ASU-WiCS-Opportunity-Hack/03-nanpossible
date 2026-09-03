@@ -584,7 +584,33 @@
           { "eyebrow": "Network", "title": "Global professional network", "body": "Expand your professional networks and outreach to every corner of the globe." },
           { "eyebrow": "Support", "title": "Priority support", "body": "Get priority assistance applying the WIAL Action Learning methodology to your programs." },
           { "eyebrow": "Research", "title": "Research and best practices", "body": "Access WIAL publications, newsletters, and cutting-edge Action Learning research." },
+          { "eyebrow": "Collaboration", "title": "Global collaboration", "body": "Collaborate with WIAL leaders, coaches, partners, and clients around the world." },
           { "eyebrow": "Pricing", "title": "Reduced program fees", "body": "Get reduced fees for WIAL programs and conferences, plus co-branding opportunities." }
+        ]
+      },
+      {
+        "type": "prose",
+        "title": "Not-for-profit pricing",
+        "paragraphs": [
+          "Annual partner fees for not-for-profit organizations are set by employee count:"
+        ],
+        "bullets": [
+          "Fewer than 50 employees — $250 a year",
+          "50–500 employees — $500 a year",
+          "More than 500 employees — $1,000 a year"
+        ]
+      },
+      {
+        "type": "prose",
+        "title": "For-profit pricing",
+        "paragraphs": [
+          "Annual partner fees for for-profit organizations are set by employee count:"
+        ],
+        "bullets": [
+          "1–9 employees — $500 a year",
+          "10–99 employees — $1,000 a year",
+          "100–499 employees — $2,000 a year",
+          "More than 500 employees — $3,000 a year"
         ]
       },
       {
@@ -605,7 +631,7 @@
         "type": "cta",
         "title": "Become a partner",
         "body": "Join WIAL's global network of partners and help advance Action Learning.",
-        "href": "https://wial.org/become-a-partner/",
+        "href": "/partners/apply",
         "label": "Apply now"
       }
     ]
@@ -614,7 +640,7 @@
     "description": "WIAL's global network of partners advancing Action Learning worldwide.",
     "sourceUrl": "https://wial.org/become-a-partner/",
     "sourceStatus": "migrated-from-wial",
-    "sourceNotes": "Rewritten from the live Become a Partner page. Corrected the Become a Partner link, which pointed to a non-existent directory.wial.org path in the previous draft."
+    "sourceNotes": "Rewritten from the live Become a Partner page (issue #117). Added the missing 8th-reason card (global collaboration) and two pricing sections (not-for-profit and for-profit tiers, matching the \"Partner tiers: 2\" / \"Pricing bands: 7\" metrics, which the previous draft did not actually show). Dropped four decorative stock photos (a client-header banner, a reasons-recap infographic whose text duplicates the feature grid, a Zoom-call photo, and a handshake CTA photo) — none showed partner-specific content. The legacy inline inquiry form and its dead link to an archived, richer \"WIAL Partner Application\" (business/contact name, address, org description, Action Learning experience, WIAL connections) were merged into one form at /partners/apply, dropping the WPForms honeypot and mailing-address fields. \"Browse partners\" intentionally still points to the live directory.wial.org/partners — a separate site we do not migrate."
   }
 },
 {

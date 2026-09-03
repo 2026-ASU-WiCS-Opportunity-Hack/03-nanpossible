@@ -40,6 +40,7 @@ const aliasMap = new Map<string, string>([
   ["executive-committee", "/about"],
   ["directors-emeritus", "/about"],
   ["advisory-board", "/about"],
+  ["become-a-partner", "/partners"],
   ["award-nomination", "/awards/nomination"],
   ["previous-wial-award-winners", "/awards"],
   ["affiliates", "/coaches"],

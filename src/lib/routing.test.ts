@@ -93,6 +93,17 @@ describe("normalizeSegments", () => {
     });
   });
 
+  it("resolves the partners page slug and redirects the legacy become-a-partner path", () => {
+    expect(normalizeSegments(["partners"])).toEqual({
+      slug: "partners",
+      redirectTo: null,
+    });
+    expect(normalizeSegments(["become-a-partner"])).toEqual({
+      slug: null,
+      redirectTo: "/partners",
+    });
+  });
+
   it("resolves the privacy page slug and redirects the legacy privacy-policy path", () => {
     expect(normalizeSegments(["privacy"])).toEqual({
       slug: "privacy",
