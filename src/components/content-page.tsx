@@ -1,9 +1,12 @@
 import Link from "next/link";
+import type { ReactNode } from "react";
 import type { ContentPageRecord, ContentSection, SiteContext } from "@/lib/types";
 
 type ContentPageProps = {
   page: ContentPageRecord;
   siteContext: SiteContext;
+  /** Rendered after the content sections — for route-specific UI such as forms. */
+  children?: ReactNode;
 };
 
 export function renderSection(section: ContentSection) {
@@ -34,7 +37,17 @@ export function renderSection(section: ContentSection) {
           <h2 className="section-title text-teal-deep">{section.title}</h2>
           <div className="feature-grid">
             {section.items.map((item) => (
-              <article className="feature-card rounded-[1.5rem]" key={item.title}>
+              <article className="feature-card flex flex-col rounded-[1.5rem]" key={item.title}>
+                {item.image ? (
+                  <div className="mb-4 overflow-hidden rounded-[1rem] border border-line bg-white/70">
+                    <img
+                      alt={item.imageAlt ?? ""}
+                      className="h-48 w-full object-contain p-3"
+                      loading="lazy"
+                      src={item.image}
+                    />
+                  </div>
+                ) : null}
                 {item.eyebrow ? (
                   <p className="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-green">
                     {item.eyebrow}
@@ -43,9 +56,20 @@ export function renderSection(section: ContentSection) {
                 <h3>{item.title}</h3>
                 <p className="mt-3">{item.body}</p>
                 {item.href && item.label ? (
-                  <Link className="mt-5 inline-flex font-semibold text-teal" href={item.href}>
-                    {item.label}
-                  </Link>
+                  /^(https?:|mailto:)/.test(item.href) ? (
+                    <a
+                      className="mt-auto inline-flex pt-5 font-semibold text-teal"
+                      href={item.href}
+                      rel="noreferrer"
+                      target={item.href.startsWith("mailto:") ? undefined : "_blank"}
+                    >
+                      {item.label}
+                    </a>
+                  ) : (
+                    <Link className="mt-auto inline-flex pt-5 font-semibold text-teal" href={item.href}>
+                      {item.label}
+                    </Link>
+                  )
                 ) : null}
               </article>
             ))}
@@ -374,7 +398,7 @@ export function renderSection(section: ContentSection) {
   }
 }
 
-export function ContentPage({ page, siteContext }: ContentPageProps) {
+export function ContentPage({ page, siteContext, children }: ContentPageProps) {
   const body = page.bodyRichtext;
 
   return (
@@ -430,6 +454,7 @@ export function ContentPage({ page, siteContext }: ContentPageProps) {
 
         <div className="mt-6 grid gap-5">
           {body.sections.map((section) => renderSection(section))}
+          {children}
         </div>
       </div>
     </div>

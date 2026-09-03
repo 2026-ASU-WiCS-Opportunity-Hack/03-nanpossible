@@ -1,0 +1,2682 @@
+[
+  {
+    "slug": "scenario-action-refusal",
+    "title": "Action Refusal",
+    "prompt": "A participant is asked to take an action and declines because they know they do not have time to complete it.",
+    "firstPostedOn": "2016-01-18",
+    "lastPostedOn": "2026-08-31",
+    "timesPosted": 4
+  },
+  {
+    "slug": "scenario-confidentiality",
+    "title": "Confidentiality",
+    "prompt": "Two teams during a leadership development program agree to complete confidentiality. During the break they chat with members of the other team about the problem they are working on.",
+    "firstPostedOn": "2022-01-24",
+    "lastPostedOn": "2026-08-24",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-trust",
+    "title": "Trust",
+    "prompt": "A team member is sharing during an intervention and says – Wow, I can’t believe I just shared that, I can’t believe how comfortable I’ve become with this team.",
+    "firstPostedOn": "2022-01-17",
+    "lastPostedOn": "2026-08-17",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-take-charge-5",
+    "title": "Take charge",
+    "prompt": "During the session someone jumps up to the easels and starts capturing the important things that are said.",
+    "firstPostedOn": "2022-01-10",
+    "lastPostedOn": "2026-08-10",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-expert",
+    "title": "Expert",
+    "prompt": "As the problem progresses you realize you have a poignant piece of information that could be tremendously useful to the team, as the problem they are discussing is in your field of expertise.",
+    "firstPostedOn": "2022-01-03",
+    "lastPostedOn": "2026-08-03",
+    "timesPosted": 3
+  },
+  {
+    "slug": "scenario-unavailable-member-3",
+    "title": "Unavailable Member",
+    "prompt": "Just prior to the beginning of the meeting, the group is informed that a member has been asked by her boss to handle an emergency, and will not be able to join the group for the first 2 hours of the session.",
+    "firstPostedOn": "2016-05-02",
+    "lastPostedOn": "2026-07-27",
+    "timesPosted": 3
+  },
+  {
+    "slug": "scenario-multifaceted",
+    "title": "Multifaceted",
+    "prompt": "The team is working hard to come up with a single well defined problem statement. They’ve realized the problem is multifaceted and are struggling coming up with a single problem statement that covers all the aspects of the situation.",
+    "firstPostedOn": "2021-12-20",
+    "lastPostedOn": "2026-07-20",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-guess-2",
+    "title": "Guess",
+    "prompt": "The problem presenter decides this is a game where the team members have to guess what s/he is thinking the real problem is. Consequently, they keep their answer as short as possible, to the point of being evasive.",
+    "firstPostedOn": "2021-12-13",
+    "lastPostedOn": "2026-07-13",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-speed-racer",
+    "title": "Speed racer",
+    "prompt": "The team has clear actions and a solution before the allotted time for the session has expired. You are uncomfortable that they have missed something.",
+    "firstPostedOn": "2021-12-06",
+    "lastPostedOn": "2026-07-06",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-multiple-responses-3",
+    "title": "Multiple Responses",
+    "prompt": "Many statements are made in response to a question that was posed to everyone.",
+    "firstPostedOn": "2021-11-29",
+    "lastPostedOn": "2026-06-29",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-ignored-norms",
+    "title": "Ignored Norms",
+    "prompt": "Team members are not adhering to the norms they agreed to.",
+    "firstPostedOn": "2021-11-22",
+    "lastPostedOn": "2026-06-22",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-limited-choice-2",
+    "title": "Limited Choice",
+    "prompt": "Someone asks a great open question, then follows it with a couple choices for the response. For example- What is it that bother you most about this situation? Is it A or is it B?",
+    "firstPostedOn": "2021-11-15",
+    "lastPostedOn": "2026-06-15",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-outlier2026",
+    "title": "Outlier",
+    "prompt": "After asking – how are we doing on a scale of 1  10? most of the participants say 6 or 7, one says 2.",
+    "firstPostedOn": "2026-06-08",
+    "lastPostedOn": "2026-06-08",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-group-question-3",
+    "title": "Group Question",
+    "prompt": "One of the participants asks a question of the entire team, after a single answer another question is asked and the team moves on to the next question.",
+    "firstPostedOn": "2021-11-01",
+    "lastPostedOn": "2026-06-01",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-silent-observer-3",
+    "title": "Silent Observer",
+    "prompt": "The team is working on a problem for a single session. One of the members tells you that they already have it figured out – both the problem and the solution- so they will not disrupt the process and sit quietly until everyone else figures it out.",
+    "firstPostedOn": "2021-10-25",
+    "lastPostedOn": "2026-06-01",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-no-no-norm",
+    "title": "No no norm",
+    "prompt": "A norm that the team set is not working for them. For instance, they decide they must check with each team member if they want to respond to a question before moving to the next question. They discover this is slowing the process to a painful pace.",
+    "firstPostedOn": "2021-10-11",
+    "lastPostedOn": "2026-05-11",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-wiped-out",
+    "title": "Wiped Out",
+    "prompt": "The team has been working diligently for hours. They decide together it’s time for a break and choose to take and hour, all agreeing that the action for this stretch of time will be to let their minds rest, but as additional questions come to mind they’ll keep note of it.",
+    "firstPostedOn": "2021-10-04",
+    "lastPostedOn": "2026-05-04",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-relocating",
+    "title": "Relocating",
+    "prompt": "The team decides it is too beautiful inside to stay indoors and opts to move outside to a picnic table.",
+    "firstPostedOn": "2015-05-18",
+    "lastPostedOn": "2026-04-27",
+    "timesPosted": 4
+  },
+  {
+    "slug": "scenario-great-example2026",
+    "title": "Great example",
+    "prompt": "You have a great example of a single participants leadership skill and simpler examples for the other participants. As you ask the team to give examples they have examples for everyone. You opt not to share the simpler examples. How do you handle the great example?",
+    "firstPostedOn": "2026-04-20",
+    "lastPostedOn": "2026-04-20",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-forgotten-norms",
+    "title": "Forgotten norms",
+    "prompt": "The team does not recall what norms they have set.",
+    "firstPostedOn": "2021-09-13",
+    "lastPostedOn": "2026-04-13",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-may-i2026",
+    "title": "May I?",
+    "prompt": "You say may I do a check-in? and a team member says NO",
+    "firstPostedOn": "2026-04-06",
+    "lastPostedOn": "2026-04-06",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-questions-answers-2",
+    "title": "Questions / Answers",
+    "prompt": "During an intervention you ask “How are we doing taping all the knowledge in the room?” A participant says “We are asking questions and (s)he (the problem presenter) is answering them – isn’t that the rule?”",
+    "firstPostedOn": "2012-10-29",
+    "lastPostedOn": "2026-03-30",
+    "timesPosted": 3
+  },
+  {
+    "slug": "scenario-favorite-tool",
+    "title": "Favorite Tool",
+    "prompt": "Your favorite tool for diagraming a problem is a mind map. You know doing this would help the team see this problem much more clearly.",
+    "firstPostedOn": "2014-12-08",
+    "lastPostedOn": "2026-03-23",
+    "timesPosted": 4
+  },
+  {
+    "slug": "scenario-tmi2026",
+    "title": "TMI",
+    "prompt": "A participant asks if it would be ok to share their view on a question that was asked of someone else. The questioner says no, theyve gotten the information they were looking for.",
+    "firstPostedOn": "2026-03-16",
+    "lastPostedOn": "2026-03-16",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-too-hot-5",
+    "title": "Too Hot",
+    "prompt": "Someone from the team gets up and turns the a/c on without checking with the other team members.",
+    "firstPostedOn": "2021-08-09",
+    "lastPostedOn": "2026-03-09",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-done",
+    "title": "Done",
+    "prompt": "The team has gone as far as they can defining a solution and there is still time left in the session. What they have identified is not well defined – but is as clear as they can get at the moment.",
+    "firstPostedOn": "2021-08-02",
+    "lastPostedOn": "2026-03-02",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-ring-ring-2026",
+    "title": "Ring Ring",
+    "prompt": "Team members are coming and going as they please -either walking out to go to the toilet, or making phone calls. The rest of the members continue with the process. When you check in after each occurrence the team members indicate its ok.",
+    "firstPostedOn": "2026-02-23",
+    "lastPostedOn": "2026-02-23",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-poignant-question-5",
+    "title": "Poignant Question",
+    "prompt": "A particularly poignant question is asked. This is followed by a long silence.",
+    "firstPostedOn": "2016-06-06",
+    "lastPostedOn": "2026-02-16",
+    "timesPosted": 3
+  },
+  {
+    "slug": "scenario-multiple-views",
+    "title": "Multiple views",
+    "prompt": "The team is working for a single session on the problem of the day. As they each read out their view of the real problem it’s clear they are coming at it from multiple perspectives. Consequently, they are having trouble reaching consensus on the real problem.",
+    "firstPostedOn": "2021-07-12",
+    "lastPostedOn": "2026-02-09",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-self-question-7",
+    "title": "Self Question",
+    "prompt": "A member of the team asks you – is it ok if I ask myself a question?",
+    "firstPostedOn": "2016-07-11",
+    "lastPostedOn": "2026-02-02",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-takeover",
+    "title": "Takeover",
+    "prompt": "In the midst of a corporate problem that deals with developing a business development strategy for an organization with declining business, the company is purchased by a large conglomerate",
+    "firstPostedOn": "2014-09-08",
+    "lastPostedOn": "2026-01-26",
+    "timesPosted": 4
+  },
+  {
+    "slug": "scenario-time-check",
+    "title": "Time Check",
+    "prompt": "A member uses their phone to check the time.",
+    "firstPostedOn": "2015-05-04",
+    "lastPostedOn": "2026-01-19",
+    "timesPosted": 4
+  },
+  {
+    "slug": "scenario-nothing",
+    "title": "Nothing",
+    "prompt": "The problem presenter says they were not helped at the end of the session.",
+    "firstPostedOn": "2021-06-14",
+    "lastPostedOn": "2026-01-12",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-two-owners-5",
+    "title": "Two Owners",
+    "prompt": "You have two problem owners for your project. You assume that the problem owners have coordinated the presentation of the problem for the kickoff session. As soon as one starts to present the problem the other interrupts with a very different view of the problem.",
+    "firstPostedOn": "2016-06-20",
+    "lastPostedOn": "2026-01-05",
+    "timesPosted": 3
+  },
+  {
+    "slug": "scenario-the-boss-5",
+    "title": "The boss",
+    "prompt": "The team consists of a vice president and four of his reports. One of the reports asks a question and the vice president asks – “Why did you ask that?”, The Vice president than asks a question that a team member than asks – “Why did YOU ask that?” – their tone makes it clear that they are retaliating for the boss having questioned someone’s question.",
+    "firstPostedOn": "2021-05-31",
+    "lastPostedOn": "2025-12-29",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-silo-ed-participants-3",
+    "title": "Silo-ed Participants",
+    "prompt": "Each member of the team is focused on their own line of questioning. This becomes particularly clear when participants start asking questions they have asked multiple times.",
+    "firstPostedOn": "2021-05-24",
+    "lastPostedOn": "2025-12-22",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-extended-break2025",
+    "title": "Extended break",
+    "prompt": "The team agreed to a 15 minute break, its 30 minutes before you get everyone back in the room and ready to restart.",
+    "firstPostedOn": "2025-12-15",
+    "lastPostedOn": "2025-12-15",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-wow",
+    "title": "Wow",
+    "prompt": "At the end of the session when you ask the team members what they will take back with them, one of the participants says – we are already seeing a shift in how we work together. It’s amazing – people are making sure they understand the problem before jumping to solutions, they are asking powerful curious questions, and they are taking time to really listen to each other.",
+    "firstPostedOn": "2021-05-10",
+    "lastPostedOn": "2025-12-08",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-idiot",
+    "title": "Idiot",
+    "prompt": "A member of the team asks another in an angry voice – How can you be such an idiot?",
+    "firstPostedOn": "2015-01-12",
+    "lastPostedOn": "2025-12-01",
+    "timesPosted": 3
+  },
+  {
+    "slug": "scenario-no-offense",
+    "title": "No Offense",
+    "prompt": "A team member says something very offensive – followed by “no offense”",
+    "firstPostedOn": "2014-12-15",
+    "lastPostedOn": "2025-11-24",
+    "timesPosted": 3
+  },
+  {
+    "slug": "scenario-firing-line2025",
+    "title": "Firing Line",
+    "prompt": "All of the questions are directed at the problem presenter. During the first check-in the problem presenter says  I feel like I am on a firing line.",
+    "firstPostedOn": "2025-11-17",
+    "lastPostedOn": "2025-11-17",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-new-tool-3",
+    "title": "New tool",
+    "prompt": "You recently attended training and learned a new way of doing root cause analysis. You know if you share this with the team they will be able to identify the real problem much quicker.",
+    "firstPostedOn": "2021-04-12",
+    "lastPostedOn": "2025-11-10",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-empty-toolbox",
+    "title": "Empty toolbox",
+    "prompt": "The team is not utilizing any tools for problem solving other than Action Learning.",
+    "firstPostedOn": "2021-04-05",
+    "lastPostedOn": "2025-11-03",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-laundry-list",
+    "title": "Laundry List",
+    "prompt": "The team starts brainstorming some great solutions; stopping short of actually developing a fully and clearly implementable plan.",
+    "firstPostedOn": "2016-03-07",
+    "lastPostedOn": "2025-10-27",
+    "timesPosted": 4
+  },
+  {
+    "slug": "scenario-nerve-hit",
+    "title": "Nerve Hit",
+    "prompt": "An extraordinarily deep question is asked. The responder sits quietly for a minute than begins to weep.",
+    "firstPostedOn": "2015-02-23",
+    "lastPostedOn": "2025-10-20",
+    "timesPosted": 4
+  },
+  {
+    "slug": "scenario-changing-roles",
+    "title": "Changing Roles",
+    "prompt": "You have changed roles from participant to coach. One of the team members asks you a problem related question.",
+    "firstPostedOn": "2015-01-19",
+    "lastPostedOn": "2025-10-13",
+    "timesPosted": 4
+  },
+  {
+    "slug": "scenario-locked-to-the-table",
+    "title": "Locked to the table",
+    "prompt": "None of the participants have moved from their seats since the start of the session.",
+    "firstPostedOn": "2021-03-08",
+    "lastPostedOn": "2025-10-06",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-deliberate-distraction2025",
+    "title": "Deliberate Distraction",
+    "prompt": "A team member asks a question which is obviously in no way related to the problem presented? For example – the team is working on an organizational culture problem and the next question is Does anyone in the group have a preference for where we have lunch?",
+    "firstPostedOn": "2025-09-29",
+    "lastPostedOn": "2025-09-29",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-not-asked",
+    "title": "Not Asked",
+    "prompt": "You ask the team – “What are we doing well?”, and get a response “We are asking all closed questions.”",
+    "firstPostedOn": "2012-04-23",
+    "lastPostedOn": "2025-09-22",
+    "timesPosted": 3
+  },
+  {
+    "slug": "scenario-executive-coaching",
+    "title": "Executive Coaching",
+    "prompt": "A team member is an executive coach and decides to use this skill to investigate what is really going on for the problem presenter. They ask a series of questions in a row. They have shifted it to a one on one session to the point that they have turned their back to the rest of the team to have this poignant conversation with the problem presenter.",
+    "firstPostedOn": "2021-02-15",
+    "lastPostedOn": "2025-09-15",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-assumed-rule",
+    "title": "Assumed Rule",
+    "prompt": "A participant says – “Wait. My question hasn’t been answered. The rule is that you have to answer the question”",
+    "firstPostedOn": "2012-10-22",
+    "lastPostedOn": "2025-09-08",
+    "timesPosted": 3
+  },
+  {
+    "slug": "scenario-facilitator-3",
+    "title": "Facilitator",
+    "prompt": "Someone from the team steps up and starts facilitating the session. For example, standing up, grabbing a marker and saying we should do a force field analysis – what are the things supporting this activity? What are those against it?",
+    "firstPostedOn": "2021-02-01",
+    "lastPostedOn": "2025-09-01",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-presenting-problem",
+    "title": "Presenting Problem",
+    "prompt": "Someone asks the problem presenter – How does this present itself as a problem for you?",
+    "firstPostedOn": "2015-06-15",
+    "lastPostedOn": "2025-08-25",
+    "timesPosted": 3
+  },
+  {
+    "slug": "eager-team-member",
+    "title": "Eager team member",
+    "prompt": "A member of the team you are coaching insists on answering questions that are being directed to the Problem Presenter",
+    "firstPostedOn": "2012-09-17",
+    "lastPostedOn": "2025-08-18",
+    "timesPosted": 5
+  },
+  {
+    "slug": "scenario-multiple-behaviors-2",
+    "title": "Multiple Behaviors",
+    "prompt": "Each participant identifies a leadership skill to work on for the session. These skills are captured on the white board. By the end of the session it’s apparent that all the team members have actually practice their own skill and several of the skills that were captured on the white board.",
+    "firstPostedOn": "2021-01-11",
+    "lastPostedOn": "2025-08-11",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-insufficient-time-3",
+    "title": "Insufficient Time",
+    "prompt": "The team realizes the problem presented is much bigger than the time allotted.",
+    "firstPostedOn": "2021-01-04",
+    "lastPostedOn": "2025-08-04",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-passing-notes",
+    "title": "Passing Notes",
+    "prompt": "Someone walks in the room where the team is working and passes a note to one of the participants.",
+    "firstPostedOn": "2013-08-19",
+    "lastPostedOn": "2025-07-28",
+    "timesPosted": 4
+  },
+  {
+    "slug": "scenario-arrogant-employee2025",
+    "title": "Arrogant Employee",
+    "prompt": "The teams has been working on fleshing out a breakthrough solution to a problem that has been haunting the organization for years. A long term employee stands in the door, looks at what they’ve fleshed out and says – it wont work.",
+    "firstPostedOn": "2025-07-21",
+    "lastPostedOn": "2025-07-21",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-obvious-question-2",
+    "title": "Obvious Question",
+    "prompt": "Listening to the team you realize an obvious question they are missing. If they would just ask “blah blah blah” the true nature of the problem would become clear to everyone.",
+    "firstPostedOn": "2016-05-09",
+    "lastPostedOn": "2025-07-14",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-exhaustion",
+    "title": "Exhaustion",
+    "prompt": "You’ve been working many hours and the team is clearly exhausted.",
+    "firstPostedOn": "2014-11-10",
+    "lastPostedOn": "2025-07-07",
+    "timesPosted": 3
+  },
+  {
+    "slug": "scenario-missing-action-6",
+    "title": "Missing Action",
+    "prompt": "A team member did not complete the tasks that she had agreed to do at the session held last month.",
+    "firstPostedOn": "2016-06-13",
+    "lastPostedOn": "2025-06-30",
+    "timesPosted": 3
+  },
+  {
+    "slug": "scenario-opposite-behavior-2",
+    "title": "Opposite Behavior",
+    "prompt": "A participant does something in direct contradiction to their chosen skill.",
+    "firstPostedOn": "2019-01-28",
+    "lastPostedOn": "2025-06-23",
+    "timesPosted": 3
+  },
+  {
+    "slug": "scenario-presenter-questions-2",
+    "title": "Presenter Questions",
+    "prompt": "All of the questions are directed at the problem presenter.",
+    "firstPostedOn": "2020-11-16",
+    "lastPostedOn": "2025-06-16",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-repeat-behavior-3",
+    "title": "Repeat Behavior",
+    "prompt": "The team decides they should be asking each other more questions instead of just asking questions of the problem presenter. However they continue directing all of the questions to the problem presenter.",
+    "firstPostedOn": "2020-11-09",
+    "lastPostedOn": "2025-06-09",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-fire",
+    "title": "Fire",
+    "prompt": "The fire alarm sounds.",
+    "firstPostedOn": "2015-02-02",
+    "lastPostedOn": "2025-06-02",
+    "timesPosted": 4
+  },
+  {
+    "slug": "scenario-catching-up2025",
+    "title": "Catching Up",
+    "prompt": "A team member isnt participating. During the check-in they say that were lost and confused by the discussion and they were trying to figure out what was going on.",
+    "firstPostedOn": "2025-05-26",
+    "lastPostedOn": "2025-05-26",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-one-bite-at-a-time",
+    "title": "One bite at a time",
+    "prompt": "After the team members each read out their version of the problem, you realizes there are many aspects to it. When you ask them if they have agreement on the problem they all say close. You disagree.",
+    "firstPostedOn": "2020-10-19",
+    "lastPostedOn": "2025-05-19",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-oops-4",
+    "title": "Oops",
+    "prompt": "At the start of the session you ask everyone “if they are ok with the rules” instead of “if they understand the rules” – someone says “no”.",
+    "firstPostedOn": "2016-09-26",
+    "lastPostedOn": "2025-05-12",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-random-ratings2025",
+    "title": "Random Ratings",
+    "prompt": "You ask the team members how we are doing on a scale of 1  10. The responses range from 2 to 8 with no strong grouping of numbers.",
+    "firstPostedOn": "2025-05-05",
+    "lastPostedOn": "2025-05-05",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-distrusting-culture-3",
+    "title": "Distrusting Culture",
+    "prompt": "A year earlier the organization was a acquired by another company. All fun activities were cut from the budget (picnics, team outings, etc.) and were replaced with ridged procedures. This team is tasked with making the workplace fun again. The top HR person on the team is convinced it will never happen and says so with every idea.",
+    "firstPostedOn": "2020-09-28",
+    "lastPostedOn": "2025-04-28",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-different-opinion",
+    "title": "Different Opinion",
+    "prompt": "You ask the team members how we are doing on a scale of 1 – 10. Most of the members say 7 or 8. One says 2.",
+    "firstPostedOn": "2013-09-16",
+    "lastPostedOn": "2025-04-21",
+    "timesPosted": 3
+  },
+  {
+    "slug": "scenario-out-of-control2025",
+    "title": "Out of Control",
+    "prompt": "The team only has one session to complete this problem. It becomes clear to you that the problem presented is outside the control or influence of the problem presenter and the team. For instance: A consultant presents about an organization he does not consult for  Organization A has a culture of fear.",
+    "firstPostedOn": "2025-04-14",
+    "lastPostedOn": "2025-04-14",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-backfire",
+    "title": "Backfire",
+    "prompt": "A team member attempts to do a process check for you, but handles it abruptly. For instance – instead of checking without judgement, they turn to another team member and say – “I’ve observed significant tension from you, what’s the impact of that on the team?” The other team member gets angry and says – “I wasn’t tense! Now I am!”",
+    "firstPostedOn": "2019-06-17",
+    "lastPostedOn": "2025-04-07",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-missing-sponsor",
+    "title": "Missing Sponsor",
+    "prompt": "Your action learning group has met several times, asking questions to better clarify the nature of the problem as presented by the problem owner’s delegate in the initial session. It became clear after the second session that the delegate could not answer most of the questions the group was posing. The group agreed the problem owner should be invited to the next session. The problem owner agreed to 45 minutes at the next session due to his tight schedule. The sessions was rescheduled three times over the next month. The delegate was running into scheduling roadblocks with the problem owner – despite the problem owner’s initial pledge that he was fully supportive of the effort. The delegate was becoming concerned that she was loosing credibility with team members and that they were losing motivation to participate.",
+    "firstPostedOn": "2020-08-31",
+    "lastPostedOn": "2025-03-31",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-quick-response",
+    "title": "Quick Response",
+    "prompt": "Someone from the team mentions it hot in here, someone else gets up to turn the air conditioner on.",
+    "firstPostedOn": "2012-04-30",
+    "lastPostedOn": "2025-03-24",
+    "timesPosted": 4
+  },
+  {
+    "slug": "scenario-conflicting-priorities",
+    "title": "Conflicting Priorities",
+    "prompt": "Part way through the session, one of the members mentioned a meeting they have that will require them to leave early. Several other participants mention they need to go to the same meeting, leaving only 2 participants for the session.",
+    "firstPostedOn": "2015-09-14",
+    "lastPostedOn": "2025-03-17",
+    "timesPosted": 4
+  },
+  {
+    "slug": "scenario-nay-sayer",
+    "title": "Nay Sayer",
+    "prompt": "All of the team members agree on the problem and a possible solution, but the problem owner insists it won’t work.",
+    "firstPostedOn": "2015-01-26",
+    "lastPostedOn": "2025-03-10",
+    "timesPosted": 3
+  },
+  {
+    "slug": "missing-participant",
+    "title": "Missing Participant",
+    "prompt": "The team you are coaching is working on a critical corporate problem in a leadership development program. The leadership program and work on the project is scheduled to be completed over six months. Two of the eight people in the group do not show up routinely.",
+    "firstPostedOn": "2014-09-01",
+    "lastPostedOn": "2025-03-03",
+    "timesPosted": 4
+  },
+  {
+    "slug": "scenario-emotional-moment",
+    "title": "Emotional moment",
+    "prompt": "In attempting to respond to a question the participant starts to cry.",
+    "firstPostedOn": "2020-07-27",
+    "lastPostedOn": "2025-02-24",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-prioritized-problems",
+    "title": "Prioritized Problems",
+    "prompt": "The organization has prioritized multiple problems for multiple teams to work on. The teams are arguing that they all need to work on the top priority problem.",
+    "firstPostedOn": "2015-11-30",
+    "lastPostedOn": "2025-02-17",
+    "timesPosted": 4
+  },
+  {
+    "slug": "scenario-broken-trust-6",
+    "title": "Broken Trust",
+    "prompt": "You are doing a leadership development program with 8 peers in a consulting firm. One of the participants reports that her boss brought an issue to her yesterday that she had discussed in the action learning group a week ago. She is very upset. (The problem centered around not being given the responsibility that her boss had promised her when she was hired a year ago.) As it turns out one of the other team members decided she could help by going to talk to the boss. The team had agreed to keep what was said during the Action Learning confidential. Consequently, the trust has been shattered for this team member.",
+    "firstPostedOn": "2020-07-13",
+    "lastPostedOn": "2025-02-10",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-meyers-brigg",
+    "title": "Meyers Brigg",
+    "prompt": "As you are watching the team you realize there are 5 strong extraverts and one introvert on the team. The introvert does not appear to be participating. When you ask – How is the balance of participation? The introvert says I am participating it just takes me longer to process and I keep missing the opportunity.",
+    "firstPostedOn": "2020-07-06",
+    "lastPostedOn": "2025-02-03",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-pre-existing-condition-5",
+    "title": "Pre-existing Condition",
+    "prompt": "Two team members were arguing in the hall before the session started. As soon as one says something, the other rolls their eyes and mumbles something under their breath.",
+    "firstPostedOn": "2020-06-29",
+    "lastPostedOn": "2025-01-27",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-learning-styles",
+    "title": "Learning Styles",
+    "prompt": "As you are watching the team you realize the team is only talking to each other, they are not taking into account the learning styles of all participants. For instance – visual learners",
+    "firstPostedOn": "2020-06-22",
+    "lastPostedOn": "2025-01-20",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-finish-up",
+    "title": "Finish Up",
+    "prompt": "The team wants the last 15 minutes to finish up the problem instead of doing the final reflection.",
+    "firstPostedOn": "2014-12-22",
+    "lastPostedOn": "2025-01-13",
+    "timesPosted": 4
+  },
+  {
+    "slug": "scenario-negative-feedback2025",
+    "title": "Negative Feedback",
+    "prompt": "When asking the team when they observed someone doing their leadership skill – one of the team member says  they did it  to the point of being annoying and distracting and consequently we did not get done what we needed to.",
+    "firstPostedOn": "2025-01-06",
+    "lastPostedOn": "2025-01-06",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-process-question-4",
+    "title": "Process Question",
+    "prompt": "A team member asks a process question. (more specifically they steal the job of the coach).",
+    "firstPostedOn": "2020-06-01",
+    "lastPostedOn": "2024-12-30",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenariomy-time",
+    "title": "My Time",
+    "prompt": "Well answering the question “What could be better?” the team slips back into problem solving even though you have not concluded the check in.",
+    "firstPostedOn": "2019-07-29",
+    "lastPostedOn": "2024-12-23",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-taking-notes-4",
+    "title": "Taking Notes",
+    "prompt": "During the session you realize no one is taking notes.",
+    "firstPostedOn": "2016-10-31",
+    "lastPostedOn": "2024-12-16",
+    "timesPosted": 3
+  },
+  {
+    "slug": "scenario-yes-or-no",
+    "title": "Yes or No",
+    "prompt": "A member responds to a closed question with an open answer.",
+    "firstPostedOn": "2015-03-09",
+    "lastPostedOn": "2024-12-09",
+    "timesPosted": 4
+  },
+  {
+    "slug": "scenario-new-information-3",
+    "title": "New information",
+    "prompt": "The team decides to capture some of the information they are discussing on a white board. The person that moves to the white board flips the leadership skills out of view.",
+    "firstPostedOn": "2020-05-04",
+    "lastPostedOn": "2024-12-02",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-enough-is-enough-2",
+    "title": "Enough is enough",
+    "prompt": "A member of the team bangs their hands on the table and stands angrily.",
+    "firstPostedOn": "2020-04-27",
+    "lastPostedOn": "2024-11-25",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-phone-rings2024",
+    "title": "Phone rings",
+    "prompt": "During the session a team members phone rings and they leave the group to answer it.",
+    "firstPostedOn": "2024-11-18",
+    "lastPostedOn": "2024-11-18",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-agreement-3",
+    "title": "Agreement",
+    "prompt": "The team has agreed they are at consensus as to the true nature of the problem. When you ask who has the next question they continue to question the nature of the problem versus moving towards solutions.",
+    "firstPostedOn": "2020-04-13",
+    "lastPostedOn": "2024-11-11",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-overly-focused-6",
+    "title": "Overly Focused",
+    "prompt": "The team has generated a number of alternative perceptions, ideas, opinions, facts, etc. as to the true nature of the problem. Then the team starts focusing in on one (e.g., debating the merits or validity of the specific component) and omits other items from explicit consideration.",
+    "firstPostedOn": "2020-04-06",
+    "lastPostedOn": "2024-11-04",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-finally-2",
+    "title": "Finally",
+    "prompt": "A team member finally asks the question that you knew would bring the whole situation to light. The rest of the team responds but is confident that is not where the real problem lies.",
+    "firstPostedOn": "2020-03-30",
+    "lastPostedOn": "2024-10-28",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-side-conversations2024",
+    "title": "Side conversations",
+    "prompt": "As you are opening the session and reinforcing the ground rules, two participants start chatting with each other (theyve been in many session and already know the rules).",
+    "firstPostedOn": "2024-10-21",
+    "lastPostedOn": "2024-10-21",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-eye-lock-3",
+    "title": "Eye lock",
+    "prompt": "The problem presenter locks eyes with you when presenting the problem and appears to be just talking to you.",
+    "firstPostedOn": "2020-03-16",
+    "lastPostedOn": "2024-10-14",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-closed-question-5",
+    "title": "Closed Question",
+    "prompt": "You are working with a team new to Action Learning. The first questions is a closed question.",
+    "firstPostedOn": "2020-03-09",
+    "lastPostedOn": "2024-10-07",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-problem-shift",
+    "title": "Problem Shift",
+    "prompt": "The team is shifting in their understanding of the true nature of the problem. For instance the original problem is presented as “How should we restructure the organization for efficiency?” and they are shifting to “The communication between team members has eroded to the point that we work against each other instead of helping each other.”",
+    "firstPostedOn": "2013-10-21",
+    "lastPostedOn": "2024-09-30",
+    "timesPosted": 3
+  },
+  {
+    "slug": "long-problem-statement",
+    "title": "Long problem statement",
+    "prompt": "You ask the problem presenter to briefly state the problem but the person continues on for an inordinate period of time not only stating the problem but also describing contextual details related to the problem.",
+    "firstPostedOn": "2012-09-17",
+    "lastPostedOn": "2024-09-23",
+    "timesPosted": 5
+  },
+  {
+    "slug": "scenario-process",
+    "title": "Process",
+    "prompt": "The team is having trouble coming to consensus. You’ve asked what would help them come to consensus – they say ask more questions and immediately start asking questions before you have closed out the learning.",
+    "firstPostedOn": "2020-02-17",
+    "lastPostedOn": "2024-09-16",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-windows",
+    "title": "Windows",
+    "prompt": "The team is working on a porch with windows around three sides. As the session starts two participants stand up at the same time. One walks to one side of the room and closes a window, the other walks to the other and opens a window.",
+    "firstPostedOn": "2016-04-11",
+    "lastPostedOn": "2024-09-09",
+    "timesPosted": 4
+  },
+  {
+    "slug": "scenario-shifting-solution",
+    "title": "Shifting Solution",
+    "prompt": "The team has reach consensus on the problem and the goal but is having trouble transitioning to the solution phase.",
+    "firstPostedOn": "2016-04-25",
+    "lastPostedOn": "2024-09-02",
+    "timesPosted": 4
+  },
+  {
+    "slug": "scenario-one-on-one",
+    "title": "One on One",
+    "prompt": "A single team member is asking all the questions of the problem presenter, the remainder sitting back observing.",
+    "firstPostedOn": "2015-08-03",
+    "lastPostedOn": "2024-08-26",
+    "timesPosted": 4
+  },
+  {
+    "slug": "scenario-unanswered-questions",
+    "title": "Unanswered questions",
+    "prompt": "Participants are asking question upon question and no one is answering.",
+    "firstPostedOn": "2020-01-20",
+    "lastPostedOn": "2024-08-19",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-electronics",
+    "title": "Electronics",
+    "prompt": "The team decides it ‘s okay to use their electronics during a session",
+    "firstPostedOn": "2020-01-13",
+    "lastPostedOn": "2024-08-12",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-left-out",
+    "title": "Left out",
+    "prompt": "A participant offers to collect information/agreements on a white board. All members are in agreement with this. After a short while the scribe is no longer being included in the conversation.",
+    "firstPostedOn": "2020-01-06",
+    "lastPostedOn": "2024-08-05",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-problematic-problem-presenter-6",
+    "title": "Problematic Problem Presenter",
+    "prompt": "The problem presenter schedules a half hour meeting immediately before the Action Learning session. During this meeting the problem presenter presents their solution to the problem about to be discussed in the Action Learning session.",
+    "firstPostedOn": "2019-12-30",
+    "lastPostedOn": "2024-07-29",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-low-energy-4",
+    "title": "Low Energy",
+    "prompt": "The team took a break less than 15 minutes ago, since returning the energy in the group is very low.",
+    "firstPostedOn": "2016-05-23",
+    "lastPostedOn": "2024-07-22",
+    "timesPosted": 3
+  },
+  {
+    "slug": "scenario-deep-learning",
+    "title": "Deep Learning",
+    "prompt": "When checking in with the team they have a particularly deep learning around something they identified. You still have one more thing on your list of potential learnings.",
+    "firstPostedOn": "2016-02-08",
+    "lastPostedOn": "2024-07-15",
+    "timesPosted": 3
+  },
+  {
+    "slug": "scenario-coffee-break-3",
+    "title": "Coffee Break",
+    "prompt": "A participant gets up from the group to fill a cup of coffee continuing to stay engaged with the problem solving.",
+    "firstPostedOn": "2019-12-09",
+    "lastPostedOn": "2024-07-08",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-curious-questions",
+    "title": "Curious Questions",
+    "prompt": "The participants are asking extraordinarily curious questions.",
+    "firstPostedOn": "2015-10-05",
+    "lastPostedOn": "2024-07-01",
+    "timesPosted": 4
+  },
+  {
+    "slug": "scenario-body-language",
+    "title": "Body Language",
+    "prompt": "Several team members are sitting with their arms folded across their chest.",
+    "firstPostedOn": "2015-07-27",
+    "lastPostedOn": "2024-06-24",
+    "timesPosted": 4
+  },
+  {
+    "slug": "scenario-important-people",
+    "title": "Important People",
+    "prompt": "You are working with a team of really important people. Their phones are ringing continually. Members are moving in and out of the sessions to respond to emergency situations that cannot wait until after the meeting. Your inclination is to try to get them to put the devices away. They refuse and come up with a team norm for how they will handle decision making with whoever is in the room.",
+    "firstPostedOn": "2019-11-18",
+    "lastPostedOn": "2024-06-17",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-inspiration",
+    "title": "Inspiration",
+    "prompt": "A participant responds to a question with – What inspired that question?",
+    "firstPostedOn": "2015-04-20",
+    "lastPostedOn": "2024-06-10",
+    "timesPosted": 3
+  },
+  {
+    "slug": "scenario-self-conversation-2024",
+    "title": "Self Conversation",
+    "prompt": "A team member asks a powerful open question of all the team members. Before giving anyone a chance to answer they say – “Because I think ..” filling in their own response to the question.",
+    "firstPostedOn": "2024-06-03",
+    "lastPostedOn": "2024-06-03",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-brainstorming-4",
+    "title": "Brainstorming",
+    "prompt": "The team feels they are at a point that it would be useful to brainstorm.",
+    "firstPostedOn": "2016-11-14",
+    "lastPostedOn": "2024-05-27",
+    "timesPosted": 3
+  },
+  {
+    "slug": "scenario-power-of-the-pen",
+    "title": "Power of the Pen",
+    "prompt": "Someone starts capturing the important notes on the white board. They are doing the filtering of what is important without checking with the rest of the team. In other words they are only capturing what sounds important to them.",
+    "firstPostedOn": "2019-10-21",
+    "lastPostedOn": "2024-05-20",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-spinning",
+    "title": "Spinning",
+    "prompt": "The team members address various perspectives of the problem. Clearly seeing multiple views as to the true nature of the problem. They ask questions that cause them to bounce from one perspective to another to another to another and back to the first. They continually repeat the cycle without settling on which aspect of the challenge to address.",
+    "firstPostedOn": "2021-10-18",
+    "lastPostedOn": "2024-05-18",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-missing-action-5",
+    "title": "Missing Action",
+    "prompt": "A participant shows up for a session and has not completed the promised action.",
+    "firstPostedOn": "2016-01-11",
+    "lastPostedOn": "2024-05-13",
+    "timesPosted": 4
+  },
+  {
+    "slug": "scenario-self-monitoring",
+    "title": "Self Monitoring",
+    "prompt": "A team member does a process check.",
+    "firstPostedOn": "2019-06-10",
+    "lastPostedOn": "2024-05-06",
+    "timesPosted": 3
+  },
+  {
+    "slug": "scenario-other-problem",
+    "title": "Other Problem",
+    "prompt": "The team is focusing on a problem in another division that they have no influence over.",
+    "firstPostedOn": "2015-10-26",
+    "lastPostedOn": "2024-04-29",
+    "timesPosted": 4
+  },
+  {
+    "slug": "scenario-unkind-gesture-5",
+    "title": "Unkind Gesture",
+    "prompt": "A member arrives to a three hour session one hour late. You conduct coaching inquiries and he is smoothly integrated into the team. 15 minutes later he is exchanging friendly but sarcastic comments with a team member that end with him using a hand gesture toward that member that would cause most folks to take offense.",
+    "firstPostedOn": "2019-09-23",
+    "lastPostedOn": "2024-04-22",
+    "timesPosted": 2
+  },
+  {
+    "slug": "pulling-rank",
+    "title": "Pulling Rank",
+    "prompt": "A higher ranking participant of the team decides to pull rank and asks another team member – “Do you want to stay employed?”",
+    "firstPostedOn": "2014-12-01",
+    "lastPostedOn": "2024-04-15",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-consensus-3",
+    "title": "Consensus",
+    "prompt": "The team is having trouble coming to consensus.",
+    "firstPostedOn": "2015-08-24",
+    "lastPostedOn": "2024-04-08",
+    "timesPosted": 4
+  },
+  {
+    "slug": "scenario-non-responsive-3",
+    "title": "Non-responsive",
+    "prompt": "The members were enthusiastic to help the problem presenter. They asked many good questions. However, the problem presenter responded it’s confidential information and would not answer some of the questions. Members felt they were not able to help the problem presenter if their questions were not answered. Consequently, they could not see the value of action learning in this instance. But the problem presenter felt the session was useful to him in addressing his problem.",
+    "firstPostedOn": "2019-09-02",
+    "lastPostedOn": "2024-04-01",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-clear-actions",
+    "title": "Clear Actions",
+    "prompt": "The team starts to identify actions before the end of the session.",
+    "firstPostedOn": "2019-01-14",
+    "lastPostedOn": "2024-03-25",
+    "timesPosted": 3
+  },
+  {
+    "slug": "scenario-confirming-thought-2",
+    "title": "Confirming Thought",
+    "prompt": "A participant makes a statement followed by – “do you agree?”",
+    "firstPostedOn": "2014-08-11",
+    "lastPostedOn": "2024-03-18",
+    "timesPosted": 3
+  },
+  {
+    "slug": "scenario-smack",
+    "title": "Smack",
+    "prompt": "A participant ‘playfully’ hits another member on the back of the head.",
+    "firstPostedOn": "2015-05-25",
+    "lastPostedOn": "2024-03-11",
+    "timesPosted": 3
+  },
+  {
+    "slug": "scenario-powerful-question",
+    "title": "Powerful Question",
+    "prompt": "Someone asks a question that changes the depth and understanding of the true nature of the problem.",
+    "firstPostedOn": "2013-10-07",
+    "lastPostedOn": "2024-03-04",
+    "timesPosted": 4
+  },
+  {
+    "slug": "scenario-coach-useless2024",
+    "title": "Coach Useless",
+    "prompt": "A participant says – Why do we need a coach that doesnt understand our work to ask us questions?",
+    "firstPostedOn": "2024-02-26",
+    "lastPostedOn": "2024-02-26",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-outta-here2024",
+    "title": "Outta Here",
+    "prompt": "Someone decides they don’t like having to follow the rules and threatens to leave.",
+    "firstPostedOn": "2024-02-19",
+    "lastPostedOn": "2024-02-19",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-too-slow-4",
+    "title": "Too Slow",
+    "prompt": "You are coaching a leadership development program with a group of senior engineers…One of them is a Six Sigma Black Belt with years of experience in problem solving methods. During the middle of your second meeting to frame the problem, the Black Belt notes that it is taking way too long to come to agreement on the problem. Some of the Type A members of the group nod their heads in agreement. What do you do?",
+    "firstPostedOn": "2014-10-06",
+    "lastPostedOn": "2023-05-15",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-coaches-advice-3",
+    "title": "Coaches Advice",
+    "prompt": "A team member asks if you have any suggestions on how to solve the problem.",
+    "firstPostedOn": "2016-05-16",
+    "lastPostedOn": "2023-05-08",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-last-call-2",
+    "title": "Last call",
+    "prompt": "You’ve been randomly calling for participants to read their problem. The problem presenter consistently waves you off – waiting until lasts to read their version of the problem.",
+    "firstPostedOn": "2023-05-01",
+    "lastPostedOn": "2023-05-01",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-pp-question",
+    "title": "PP Question",
+    "prompt": "The problem presenter asks a question.",
+    "firstPostedOn": "2015-03-30",
+    "lastPostedOn": "2023-04-24",
+    "timesPosted": 3
+  },
+  {
+    "slug": "scenario-rabbit-hole-3",
+    "title": "Rabbit Hole",
+    "prompt": "The team members have gotten off track with their questions and are now investigating an unrelated issue.",
+    "firstPostedOn": "2023-04-17",
+    "lastPostedOn": "2023-04-17",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-clowning-around-3",
+    "title": "Clowning Around",
+    "prompt": "The group looses concentration and focus on the problem they are suppose to be working on …. They are primarily focused on clowning with each other!",
+    "firstPostedOn": "2023-04-03",
+    "lastPostedOn": "2023-04-03",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-learning-organization",
+    "title": "Learning Organization",
+    "prompt": "You’ve been working with several teams in the same organization for months. As you are walking to one of your sessions you hear an employee say – Hey we could really use a pizza man for this discussion.",
+    "firstPostedOn": "2023-03-27",
+    "lastPostedOn": "2023-03-27",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-door",
+    "title": "Door",
+    "prompt": "At the start of the session a participant gets up and closes a door.",
+    "firstPostedOn": "2016-04-18",
+    "lastPostedOn": "2023-03-20",
+    "timesPosted": 3
+  },
+  {
+    "slug": "scenario-sit-still",
+    "title": "Sit still",
+    "prompt": "The teams members are locked to the table. They are adhering to the two grounds rules but not making use of any other resources.",
+    "firstPostedOn": "2014-11-24",
+    "lastPostedOn": "2023-03-13",
+    "timesPosted": 3
+  },
+  {
+    "slug": "scenario-promises",
+    "title": "Promises",
+    "prompt": "At the start of a check in you promise the team member that had just started to ask a question that you will return to them for the first question when you are done.",
+    "firstPostedOn": "2023-03-06",
+    "lastPostedOn": "2023-03-06",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-explaining",
+    "title": "Explaining",
+    "prompt": "A participant explains what they believe the problem is rather than just reading what they have written.",
+    "firstPostedOn": "2019-07-08",
+    "lastPostedOn": "2023-02-27",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-multiple-problems-3",
+    "title": "Multiple Problems",
+    "prompt": "The team has come to the realization that the problem presented has many aspects to it and they only have a limited amount of time to work on it.",
+    "firstPostedOn": "2023-02-20",
+    "lastPostedOn": "2023-02-20",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-all-together",
+    "title": "All together",
+    "prompt": "A participant asks everyone a question. Gets an answer from everyone and one of the participants ask the person who initially asked the question – “what are your thoughts?”",
+    "firstPostedOn": "2023-02-13",
+    "lastPostedOn": "2023-02-13",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-stump-stump",
+    "title": "Stump stump",
+    "prompt": "A team member leaves the room angrily.",
+    "firstPostedOn": "2023-02-06",
+    "lastPostedOn": "2023-02-06",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-run-for-it",
+    "title": "Run for it",
+    "prompt": "The team decides they need something from another building, they all get into one car and continuing the session as they go to the other building for the information.",
+    "firstPostedOn": "2023-01-30",
+    "lastPostedOn": "2023-01-30",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-wrap-it-up-3",
+    "title": "Wrap it up",
+    "prompt": "You schedule 90 minutes for an Action Learning session. By 60 minutes the team has a clear solution.",
+    "firstPostedOn": "2023-01-23",
+    "lastPostedOn": "2023-01-23",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-skill-transference",
+    "title": "Skill transference",
+    "prompt": "When checking in with the team at the beginning of the session about their learnings between sessions, one of the participants says that he has taken to writing a skill up on his white board in his office every day and it’s been amazing for helping him make changes in how he leads.",
+    "firstPostedOn": "2023-01-09",
+    "lastPostedOn": "2023-01-09",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-identical-actions",
+    "title": "Identical Actions",
+    "prompt": "During a Single Problem Action Learning that will last for multiple sessions, the coach reminds all team members a few times that they have to think about the actions they will commit to at the end of the session, in preparation for the follow up session. When the coach asks for the actions at the end of the session, several people have listed the same or nearly identical action.",
+    "firstPostedOn": "2022-12-26",
+    "lastPostedOn": "2022-12-26",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-location-location",
+    "title": "Location Location",
+    "prompt": "The seats have shifted such that the problem presenter is on one side of the table and the other team members are on the other side.",
+    "firstPostedOn": "2022-12-19",
+    "lastPostedOn": "2022-12-19",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-consensus-7",
+    "title": "Consensus?",
+    "prompt": "The team says they are at consensus on the real problem but you disagree.",
+    "firstPostedOn": "2022-12-05",
+    "lastPostedOn": "2022-12-05",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-my-view-2",
+    "title": "My View",
+    "prompt": "Hearing the initial statement of the problem you are clear what the real problem is. The team heads down a different path with it.",
+    "firstPostedOn": "2022-11-21",
+    "lastPostedOn": "2022-11-21",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-mind-mapping",
+    "title": "Mind Mapping",
+    "prompt": "One of the team members is familiar with mind mapping and suggests to the team that they create a mind map for the problem. Everyone on the team encourages the person to take the lead and walk them through it.",
+    "firstPostedOn": "2022-11-14",
+    "lastPostedOn": "2022-11-14",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-close",
+    "title": "Close",
+    "prompt": "A team member says they feel closer to the members of their Action Learning team they have been working with the last couple days than people they have worked with for 30 years.",
+    "firstPostedOn": "2022-11-07",
+    "lastPostedOn": "2022-11-07",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-day-2",
+    "title": "Day 2",
+    "prompt": "Your team is working for 2 half days on a project. They have done an amazing job the first afternoon. As they are gathering the next morning a new participant joins the group.",
+    "firstPostedOn": "2022-10-31",
+    "lastPostedOn": "2022-10-31",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-true-leader",
+    "title": "True Leader",
+    "prompt": "One of the participants does something that strongly supports their leadership skill.",
+    "firstPostedOn": "2013-09-23",
+    "lastPostedOn": "2022-10-24",
+    "timesPosted": 3
+  },
+  {
+    "slug": "scenario-visuals",
+    "title": "Visuals",
+    "prompt": "One of the participants suggests that each team member draw a picture of what they see the problem is. Everyone is enthusiastic to give it a try.",
+    "firstPostedOn": "2022-10-03",
+    "lastPostedOn": "2022-10-03",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-tmi",
+    "title": "TMI",
+    "prompt": "A participant responds to the question they were asked and continues on with additional information that is no longer answering the original question.",
+    "firstPostedOn": "2015-03-23",
+    "lastPostedOn": "2022-09-26",
+    "timesPosted": 3
+  },
+  {
+    "slug": "scenario-verbose",
+    "title": "Verbose",
+    "prompt": "Several participants are answering the questions extensively, including repetition, history, minute details and ancillary information.",
+    "firstPostedOn": "2022-09-19",
+    "lastPostedOn": "2022-09-19",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-rapid-fire-3",
+    "title": "Rapid Fire",
+    "prompt": "Someone asks a series of questions without waiting for an answer.",
+    "firstPostedOn": "2014-08-04",
+    "lastPostedOn": "2022-09-12",
+    "timesPosted": 3
+  },
+  {
+    "slug": "scenario-tick-tock",
+    "title": "Tick tock",
+    "prompt": "The team is running out of time and does not have clear next steps.",
+    "firstPostedOn": "2022-09-05",
+    "lastPostedOn": "2022-09-05",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-butting-in",
+    "title": "Butting In",
+    "prompt": "Someone answers a question that was asked of someone else.",
+    "firstPostedOn": "2012-04-09",
+    "lastPostedOn": "2022-08-29",
+    "timesPosted": 3
+  },
+  {
+    "slug": "scenario-coach-question",
+    "title": "Coach Question",
+    "prompt": "Some of the group members direct questions to you since they were aware you had knowledge of the situation; despite you repeatedly stating your role as coach.",
+    "firstPostedOn": "2016-12-26",
+    "lastPostedOn": "2022-08-15",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-leg-stretch-2",
+    "title": "Leg Stretch",
+    "prompt": "A member stands during a session continuing to stay engaged with the problem solving.",
+    "firstPostedOn": "2022-08-08",
+    "lastPostedOn": "2022-08-08",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-bathroom-break",
+    "title": "Bathroom Break",
+    "prompt": "The session has been going for a long stretch and participants start stepping out to use the bathroom.",
+    "firstPostedOn": "2016-04-04",
+    "lastPostedOn": "2022-08-01",
+    "timesPosted": 3
+  },
+  {
+    "slug": "scenario-too-much-information",
+    "title": "Too Much Information",
+    "prompt": "The team in a single problem action learning set asks questions to the sponsor (the boss). In addition to answering the question, the sponsor talks about the context, history, options, ideas for solutions, etc., etc. As coach, you’ve asked the boss – “what question are you answering?” The boss indignantly says that one. You ask what was it? He says – “I don’t know.” This happens with each question regardless of whether it is closed or open. The team members are uncomfortably aware of this high power distance (respect for authority) and say it’s ok.",
+    "firstPostedOn": "2022-07-25",
+    "lastPostedOn": "2022-07-25",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-action-assistance-4",
+    "title": "Action Assistance",
+    "prompt": "This poses an interesting problem. This shows me that the group’s suggested actions were not clear enough, and the group needs to come back together again to further refine and clarify the actions. I would call a quick session for the group to do this — maybe 45 minutes. We would start with the actions that we finished the last session with, and show that the new problem is that the problem presenter does not feel they can take these actions on their own. This would hopefully lead to teamwork and delegation, or it would lead to a simplification of the actions.",
+    "firstPostedOn": "2022-07-18",
+    "lastPostedOn": "2022-07-18",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-building-questions-4",
+    "title": "Building Questions",
+    "prompt": "This shows me the group is working really well together. I would let them work for a few minutes longer, and then intervene, asking them what they think the group is doing well and what the group can work on. This would allow them to focus on their building questions, followed by a clear look at what everyone thinks the problem is. Hopefully the build of questions is getting everyone on the same page about the problem and this intervention will help them see that.",
+    "firstPostedOn": "2022-07-18",
+    "lastPostedOn": "2022-07-18",
+    "timesPosted": 1
+  },
+  {
+    "slug": "refusal-to-participate",
+    "title": "Refusal to Participate",
+    "prompt": "A member of the team does not want to participate.",
+    "firstPostedOn": "2012-05-21",
+    "lastPostedOn": "2022-07-18",
+    "timesPosted": 3
+  },
+  {
+    "slug": "scenario-refusal-participate-2",
+    "title": "Refusal to Participate",
+    "prompt": "One of the keys to Action Learning is the diversity of thought that the group brings to problem-solving. If one person does not want to participate, I would first try to talk to this person individually and find out why, and see if, as a coach, I can find a way to help this person see the value in their participation. If this does not work, I would look at the size of my group — if the group is big enough to move ahead without this person, I would do so, and ask this person to stay and observe so that they might better understand Action Learning and hopefully participate in a different session. If we do not have enough people to go ahead, I would have to cancel and find another willing participant.",
+    "firstPostedOn": "2022-07-18",
+    "lastPostedOn": "2022-07-18",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-repetitive-questions-3",
+    "title": "Repetitive Questions",
+    "prompt": "Time for an intervention! If the team is going around in circles, the questions they have been asking aren’t getting answered to anyone’s satisfaction. I would ask the team what they think they are doing well and what needs improvement, and I would myself answer the latter (after they have had a chance) by saying I think they are asking the same questions over and over. I would note these questions and ask the group why they think no one has been able to answer these completely as yet, prompting them to think about these questions from a new perspective. Then I would ask them to see if they have agreement on the problem, and we would move on to the next segment.",
+    "firstPostedOn": "2022-07-18",
+    "lastPostedOn": "2022-07-18",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-the-race-is-on-4",
+    "title": "The Race is On",
+    "prompt": "I would ask the problem presenter if they agree that what the team is saying is actually the problem. I would then ask that the group focus during the next segment on asking questions related to that problem. I would give them a decent amount of time so that they don’t rush, and by asking questions I think they will uncover underlying issues.",
+    "firstPostedOn": "2022-07-18",
+    "lastPostedOn": "2022-07-18",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-building-questions-3",
+    "title": "Building Questions",
+    "prompt": "The participants have asked some very powerful questions and are clearly building on each others questions.",
+    "firstPostedOn": "2022-07-11",
+    "lastPostedOn": "2022-07-11",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-action-assistance",
+    "title": "Action Assistance",
+    "prompt": "After the actions are defined the problem presenter asks for help implementing them.",
+    "firstPostedOn": "2016-01-25",
+    "lastPostedOn": "2022-07-04",
+    "timesPosted": 3
+  },
+  {
+    "slug": "scenario-leading-questions-2",
+    "title": "Leading Questions",
+    "prompt": "A participant is convinced of the true nature of the problem and repeats the same questions over and over in an effort to persuade the others, even after others have made it clear that they do not believe that is the real problem is. They believe that what this particular participant is advocating is just another symptom.",
+    "firstPostedOn": "2022-06-27",
+    "lastPostedOn": "2022-06-27",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-repetitive-questions-2",
+    "title": "Repetitive Questions",
+    "prompt": "The team members are starting to ask the same questions over and over again.",
+    "firstPostedOn": "2022-06-20",
+    "lastPostedOn": "2022-06-20",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-own-world-5",
+    "title": "Own World",
+    "prompt": "A team new to Action Learning is working on a problem for a single session. Each member has a clear idea of what the solution is and thus only asks questions related to the solution they believe is the right one.",
+    "firstPostedOn": "2022-06-13",
+    "lastPostedOn": "2022-06-13",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-question-question-question",
+    "title": "Question Question Question",
+    "prompt": "A member asks a particularly energizing question, several members follow this with additional questions before there is time for a response.",
+    "firstPostedOn": "2013-09-02",
+    "lastPostedOn": "2022-06-06",
+    "timesPosted": 3
+  },
+  {
+    "slug": "scenario-the-race-is-on-3",
+    "title": "The Race is On",
+    "prompt": "You are working with a team that values being the fastest at everything – including reaching consensus on the problem. Instead of writing the problem in their own words they mimic the words said by the Problem Presenter. They happily agree they are at consensus since the words they say match.",
+    "firstPostedOn": "2022-05-30",
+    "lastPostedOn": "2022-05-30",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-testing-team-3",
+    "title": "Testing Team",
+    "prompt": "You’ve agreed to do a demo for an organization and ask your contact to be the problem presenter. Your contact decides to test the team and the process by giving mis-information. In other words lying when they respond to questions. By the time this becomes apparent, many of the team members are upset and have made the decision that the process is stupid.",
+    "firstPostedOn": "2022-05-23",
+    "lastPostedOn": "2022-05-23",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-tools",
+    "title": "Tools",
+    "prompt": "You ask the team how they want to process based on how they said they could come to consensus. One of the participant shouts out an idea and jumps up to get it started before any other team members have had a chance to respond.",
+    "firstPostedOn": "2022-05-16",
+    "lastPostedOn": "2022-05-16",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-team-work-2",
+    "title": "Team Work",
+    "prompt": "The team is working extremely well. Exploring deeper and deeper avenues as to what the problem is.",
+    "firstPostedOn": "2015-09-28",
+    "lastPostedOn": "2022-05-02",
+    "timesPosted": 4
+  },
+  {
+    "slug": "scenario-deeply-moved",
+    "title": "Deeply moved",
+    "prompt": "A team member who is neither the responder nor the questioner, becomes withdrawn after listening to the exchange that has just taken place.",
+    "firstPostedOn": "2022-04-25",
+    "lastPostedOn": "2022-04-25",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-chit-chat-5",
+    "title": "Chit Chat",
+    "prompt": "Two vocal members chit chatted with each instead of engaging in the problem solving. Their behavior repeated despite the intervention with team consensus to have one conversation at a time.",
+    "firstPostedOn": "2022-04-11",
+    "lastPostedOn": "2022-04-11",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-us-vs-them",
+    "title": "Us vs Them",
+    "prompt": "As team members come in and sit down all the participants in leadership roles sit on one side of the table; everyone else on the other.",
+    "firstPostedOn": "2022-04-04",
+    "lastPostedOn": "2022-04-04",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-back-tracking",
+    "title": "Back tracking",
+    "prompt": "The team has decided they should capture the themes that they are hearing on the white board. As they begin someone asks another question that leads them back to investigating the problem.",
+    "firstPostedOn": "2022-03-28",
+    "lastPostedOn": "2022-03-28",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-authority-rules",
+    "title": "Authority Rules?",
+    "prompt": "As an Action Learning coach, how would you manage a situation whereby during the session, the Problem Presenter, the one with the highest authority within the team continuously prompts other team members to ask questions because he is impatient?",
+    "firstPostedOn": "2022-03-17",
+    "lastPostedOn": "2022-03-17",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-bad-experiences",
+    "title": "Bad Experiences",
+    "prompt": "As an Action Learning coach, how would manage a session whereby team members have had bad experiences with each other previously, hence placing the psychological safety of the session in jeopardy? Team members were selected by the sponsor.",
+    "firstPostedOn": "2022-03-17",
+    "lastPostedOn": "2022-03-17",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-laughter",
+    "title": "Laughter",
+    "prompt": "As an Action Learning coach, how would you manage a situation whereby team members are having lots of fun and laughter, cracking jokes with each other and disrupting the session that results in no outcome?",
+    "firstPostedOn": "2022-03-17",
+    "lastPostedOn": "2022-03-17",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-translation",
+    "title": "Translation",
+    "prompt": "As an Action Learning coach, how would you manage a session whereby team members are from diversed backgrounds and they are fluent in their own languages? As the coach, you have the ability to provide translation, both for the questions put forth and statements of respond, but the concern is that the essence of the session would be lost.",
+    "firstPostedOn": "2022-03-17",
+    "lastPostedOn": "2022-03-17",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-distrust",
+    "title": "Distrust",
+    "prompt": "As an action learning coach, how would you manage the following situation: Team members are introduced to each other before the session starts. The Problem Presenter clearly expresses his distrust towards other team members, stating that they are not experts in the field related to his problem.",
+    "firstPostedOn": "2022-03-14",
+    "lastPostedOn": "2022-03-14",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-intervention-timing-4",
+    "title": "Intervention timing",
+    "prompt": "The group has been processing particularly well, but it has been more than 30 minutes since the last intervention.",
+    "firstPostedOn": "2016-06-27",
+    "lastPostedOn": "2022-03-14",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-problem-or-puzzle-2",
+    "title": "Problem or Puzzle",
+    "prompt": "You are presenting an Introduction to Action Learning. You ask for someone to volunteer a problem. The problem presented is “I need to upgrade the operating system on my computer.”",
+    "firstPostedOn": "2022-03-07",
+    "lastPostedOn": "2022-03-07",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-please-explain-3",
+    "title": "Please explain",
+    "prompt": "A participant asks another participant to explain what the intent behind their question was. For example, saying – “It feels like a there is a question behind your question. I’m curious what that question is?",
+    "firstPostedOn": "2022-02-28",
+    "lastPostedOn": "2022-02-28",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-multiple-variables-6",
+    "title": "Multiple variables",
+    "prompt": "The team has been working on this problem for several sessions. This will be their last session to develop a complete, implementable solution. The team is attempting to analyze the problem in a search to identify the one key variable that they can influence change to create movement in the direction of their established goal or end result. They are debating the relevance of only a few factors and seem to be ignoring the probability that the problem situation was caused or is perpetuated by multiple factors.",
+    "firstPostedOn": "2021-05-03",
+    "lastPostedOn": "2021-05-03",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-learnings-3",
+    "title": "Learnings",
+    "prompt": "During the learning check-in the team has identified all of the learning opportunities you had noted both in terms of what went well and what could be better.",
+    "firstPostedOn": "2021-04-26",
+    "lastPostedOn": "2021-04-26",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-multiple-levels-6",
+    "title": "Multiple Levels",
+    "prompt": "The team will only be working on this problem for one session. It’s extremely urgent that they find a solution to the problem, as lives are literally at risk. Every time the team seems close to getting to consensus a question is asked that takes them someplace else. You realize there are two levels that are being looked at – some participants are focused at a single group level (How do I address this with my group?), others at a corporate level (How do I address this with all groups?).",
+    "firstPostedOn": "2021-04-19",
+    "lastPostedOn": "2021-04-19",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-guess",
+    "title": "Guess",
+    "prompt": "The problem presenter decides this is a game where the team members have to guess what they are thinking the real problem is. Consequently, they keep their answer as short as possible, not giving any more information than s absolutely required to answer the question.",
+    "firstPostedOn": "2019-07-24",
+    "lastPostedOn": "2019-07-24",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-last-call",
+    "title": "Last Call",
+    "prompt": "The problem presenter consistently waits until lasts to read their version of the problem.",
+    "firstPostedOn": "2019-07-01",
+    "lastPostedOn": "2019-07-01",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-finally",
+    "title": "Finally",
+    "prompt": "A team member finally asks the question that you knew would bring the whole situation to light. The rest of the team responds but is confident that’s not where the real problem lies.",
+    "firstPostedOn": "2019-06-24",
+    "lastPostedOn": "2019-06-24",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-going-through-the-motions",
+    "title": "Going Through the Motions",
+    "prompt": "The participants have been directed to participate in the Action Learning session but believe it’s a waste of time.",
+    "firstPostedOn": "2016-03-28",
+    "lastPostedOn": "2019-05-06",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-distrusting-culture",
+    "title": "Distrusting Culture",
+    "prompt": "A year earlier there was a merger in the organization. All fun elements had been stopped – picnics, team outings and were replaced with ridged procedures. The team was tasked with determining was to bring back fun in the work place. The top HR person on the team is convinced it can’t happen and derails every idea.",
+    "firstPostedOn": "2016-03-21",
+    "lastPostedOn": "2019-04-29",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-arrogant-employee",
+    "title": "Arrogant Employee",
+    "prompt": "The teams has been working on fleshing out a breakthrough solution to a problem that has been haunting the organization for years. A long term employee stops by just long enough to tell them it won’t work.",
+    "firstPostedOn": "2016-03-14",
+    "lastPostedOn": "2019-04-22",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-agreement",
+    "title": "Agreement",
+    "prompt": "The team seems to be at consensus but continues to question the nature of the real problem.",
+    "firstPostedOn": "2016-02-29",
+    "lastPostedOn": "2019-04-08",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-leading-question",
+    "title": "Leading Question",
+    "prompt": "A participant is convinced of the true nature of the problem and repeats the same questions over and over in an effort to persuade the others, even after others have made it clear that they don’t believe that is where the real problem is, that what this particular participant is advocating is just another symptom.",
+    "firstPostedOn": "2019-04-01",
+    "lastPostedOn": "2019-04-01",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-repetitive-questions",
+    "title": "Repetitive Questions",
+    "prompt": "The team is starting to ask the same questions over and over again.",
+    "firstPostedOn": "2016-02-15",
+    "lastPostedOn": "2019-03-25",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-learnings",
+    "title": "Learnings",
+    "prompt": "During the learning checkin the team has identified all of the learning opportunities you had noted both in terms of what went well and what could be better.",
+    "firstPostedOn": "2016-02-01",
+    "lastPostedOn": "2019-03-11",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-multiple-behaviors",
+    "title": "Multiple Behaviors",
+    "prompt": "At the end of the session, several participants have practiced many of the leadership skills that were written up.",
+    "firstPostedOn": "2016-01-04",
+    "lastPostedOn": "2019-02-11",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-missed-behavior",
+    "title": "Missed Behavior",
+    "prompt": "At the end of the session, a participant hasn’t practiced their leadership skill.",
+    "firstPostedOn": "2015-12-28",
+    "lastPostedOn": "2019-02-04",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-leadership-behaviors",
+    "title": "Leadership Behaviors",
+    "prompt": "A participant does something that strongly exemplifies their leadership skills.",
+    "firstPostedOn": "2015-12-14",
+    "lastPostedOn": "2019-01-21",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-multiple-problems-2",
+    "title": "Multiple Problems",
+    "prompt": "The problem presented has a multitude of aspects to it.",
+    "firstPostedOn": "2019-01-07",
+    "lastPostedOn": "2019-01-07",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-insufficient-time",
+    "title": "Insufficient Time",
+    "prompt": "The problem presented is much bigger than the time allotted.",
+    "firstPostedOn": "2015-11-16",
+    "lastPostedOn": "2018-12-31",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-puzzle",
+    "title": "Puzzle",
+    "prompt": "The presented problem is how do I update the operating system on my laptop.",
+    "firstPostedOn": "2015-11-09",
+    "lastPostedOn": "2018-12-24",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-too-deep",
+    "title": "Too Deep",
+    "prompt": "In exploring deeper roots as to what the real problem is the team gets to the point that the real problem is “world hunger”.",
+    "firstPostedOn": "2015-10-19",
+    "lastPostedOn": "2018-12-13",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-building-questions",
+    "title": "Building Questions",
+    "prompt": "The participants have asked some really powerful questions and are clearly building on each other’s questions.",
+    "firstPostedOn": "2015-09-21",
+    "lastPostedOn": "2018-11-29",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-the-race-is-on",
+    "title": "The Race is On",
+    "prompt": "The team races to consensus on the problem. They are saying the same words but have not really talked about what the words mean.",
+    "firstPostedOn": "2015-09-07",
+    "lastPostedOn": "2018-10-22",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-new-tool",
+    "title": "New Tool",
+    "prompt": "You recently attending training and learned a new way of doing root cause analysis. You know if you share this with the team they will be able to identify the real problem much quicker.",
+    "firstPostedOn": "2015-08-31",
+    "lastPostedOn": "2018-10-15",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenariomy-view",
+    "title": "My View",
+    "prompt": "Hearing the initial statement of the problem you (as coach) are clear what the real problem is. The team heads down a different path with it.",
+    "firstPostedOn": "2015-08-17",
+    "lastPostedOn": "2018-10-01",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-rabbit-hole",
+    "title": "Rabbit Hole",
+    "prompt": "The team has gotten off track with their questions and is now investigating an unrelated issue.",
+    "firstPostedOn": "2015-08-10",
+    "lastPostedOn": "2018-09-24",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-process-question",
+    "title": "Process Question",
+    "prompt": "A team member asks a process question. For instance – I’ve noticed we have all the managers on one side of the table and everyone else on the other. Did anyone else notice this? What’s the impact of that on how we are working together? What do we want to do about it?",
+    "firstPostedOn": "2015-07-20",
+    "lastPostedOn": "2018-08-27",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-repeat-behavior",
+    "title": "Repeat behavior",
+    "prompt": "The team decides they should be asking each other more questions instead of just asking questions of the problem presenter. However they continue directing all of the problems to the problem presenter.",
+    "firstPostedOn": "2015-07-13",
+    "lastPostedOn": "2018-08-20",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-coffee-break-2",
+    "title": "Coffee Break",
+    "prompt": "A participant gets up from the group to fill a cup of coffee.",
+    "firstPostedOn": "2018-08-13",
+    "lastPostedOn": "2018-08-13",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-catching-up-2",
+    "title": "Catching Up",
+    "prompt": "A team member isn’t participating. During the checkin they say that were lost and confused by the discussion and they were trying to figure out what was going on.",
+    "firstPostedOn": "2018-08-06",
+    "lastPostedOn": "2018-08-06",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-facilitator",
+    "title": "Facilitator",
+    "prompt": "Someone decides they should start capturing what the team is saying on a flip chart and moves to the front of the room to do so.",
+    "firstPostedOn": "2015-06-22",
+    "lastPostedOn": "2018-07-30",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-why",
+    "title": "Why",
+    "prompt": "A participant asks another participant “why they asked a question”. The first participant is visibly disturbed. Your instinct is that they are reacting to the word “why” in that they feel the value of their question is being questioned.",
+    "firstPostedOn": "2015-06-08",
+    "lastPostedOn": "2018-07-16",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-please-explain",
+    "title": "Please explain",
+    "prompt": "A participant asks another participant to explain what the intent behind their question was.",
+    "firstPostedOn": "2015-06-01",
+    "lastPostedOn": "2018-07-09",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-leg-stretch",
+    "title": "Leg Stretch",
+    "prompt": "A member stands during a session.",
+    "firstPostedOn": "2015-05-11",
+    "lastPostedOn": "2018-06-18",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-new-information",
+    "title": "New Information",
+    "prompt": "The team decides to capture some of the information they are discussing on a flip chart. The person that moves to the flip chart flips the leadership skills out of view.",
+    "firstPostedOn": "2015-04-27",
+    "lastPostedOn": "2018-05-14",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-moving-on",
+    "title": "Moving On",
+    "prompt": "A participant asks a question of everyone and after a single answer another question is asked and the team moves on.",
+    "firstPostedOn": "2015-04-13",
+    "lastPostedOn": "2018-04-30",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-multiple-responses",
+    "title": "Multiple Responses",
+    "prompt": "Lots of statements are made in response to a question that was posed to everyone.",
+    "firstPostedOn": "2015-04-06",
+    "lastPostedOn": "2018-04-23",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-closed-question-2",
+    "title": "Closed Question",
+    "prompt": "Early in the process a participant asks a closed question.",
+    "firstPostedOn": "2015-03-16",
+    "lastPostedOn": "2018-04-02",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-old-school",
+    "title": "Old School",
+    "prompt": "A member makes a particularly prejudicial remark. For instance – women don’t belong in the work force.",
+    "firstPostedOn": "2015-03-02",
+    "lastPostedOn": "2018-03-12",
+    "timesPosted": 2
+  },
+  {
+    "slug": "bad-news",
+    "title": "Bad News",
+    "prompt": "A member checks their voice mail during break and receives disturbing news. For instance – they are an emergency room nurse and one of their patients from the night before didn’t make it.",
+    "firstPostedOn": "2015-02-16",
+    "lastPostedOn": "2018-02-26",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-enough-is-enough",
+    "title": "Enough is Enough",
+    "prompt": "A member bangs their hands on the table and stands angrily.",
+    "firstPostedOn": "2015-02-09",
+    "lastPostedOn": "2018-02-19",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-wrap-it-up",
+    "title": "Wrap It Up",
+    "prompt": "You schedule 90 minutes for an Action Learning session. 60 minutes in the team has a clear solution.",
+    "firstPostedOn": "2015-01-05",
+    "lastPostedOn": "2018-01-15",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-random-ratings",
+    "title": "Random Ratings",
+    "prompt": "Most of the members rate the team at a 5 or 6 for how they are doing as a team. One member rates a 2 another a 9 on a scale of 1 – 10.",
+    "firstPostedOn": "2014-12-29",
+    "lastPostedOn": "2018-01-08",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-pulling-rank",
+    "title": "Pulling Rank",
+    "prompt": "A higher ranking participant of the team decides to pull rank and asks another team member – “Do you want to stay employeed?”",
+    "firstPostedOn": "2017-12-11",
+    "lastPostedOn": "2017-12-11",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-may-i-2",
+    "title": "May I",
+    "prompt": "You say “may I do a checkin?” amd a team member says “NO”",
+    "firstPostedOn": "2017-11-27",
+    "lastPostedOn": "2017-11-27",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-silent-observer-2",
+    "title": "Silent Observer",
+    "prompt": "A member if the team decides they know the problem and the solution, so they will sit quietly until everyone else figures it out.",
+    "firstPostedOn": "2017-11-13",
+    "lastPostedOn": "2017-11-13",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-individual-issue-2",
+    "title": "Individual Issue",
+    "prompt": "A member if the team doesn’t understand the process and decides “EVERYONE” doesn’t understand.",
+    "firstPostedOn": "2017-11-06",
+    "lastPostedOn": "2017-11-06",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-sponsorless",
+    "title": "Sponsorless",
+    "prompt": "Your action learning group has met several times, asking questions to better clarify the nature of the problem as presented by the problem owner’s delegate in the initial session. It became clear after the second session however that the delegate could not answer most of the questions the group was posing, so the group agreed the problem owner should be invited to the next session. The problem owner came to the next session for about 45 minutes due to his tight schedule, and cancelled two meetings with the group over the next month. The delegate was running into scheduling roadblocks with the problem owner, despite his initial pledge that he was fully supportive of the effort. The delegate was becoming concerned that she was loosing credibility with team members and that they were losing motivation to participate.",
+    "firstPostedOn": "2017-10-30",
+    "lastPostedOn": "2017-10-30",
+    "timesPosted": 1
+  },
+  {
+    "slug": "everybody-takes-the-same-action",
+    "title": "Everybody takes the same action …",
+    "prompt": "During the Single Problem Action Learning session, the coach reminds all team members a few times that they have to think about the actions they will commit to at the end of the session, in preparation for the follow up session. When the coach asks for the actions at the end of the session, several people have listed the same or nearly identical action. How would you react as coach ?",
+    "firstPostedOn": "2014-01-17",
+    "lastPostedOn": "2017-10-23",
+    "timesPosted": 2
+  },
+  {
+    "slug": "sponsor-answers-questions-and-doesnt-stop-talking",
+    "title": "Sponsor answers questions … and doesn’t stop talking !",
+    "prompt": "The team in a single problem action learning set asks questions to the sponsor (the boss), and in addition to just answering the question, the sponsor talks about the context, history, options, ideas for solutions … and this even when the question asked was a closed one … Even if the team members become aware of this, they struggle – in particular in a high power distance (respect for authority) – to do anything about it. How would you as a coach intervene ?",
+    "firstPostedOn": "2014-01-12",
+    "lastPostedOn": "2017-10-16",
+    "timesPosted": 2
+  },
+  {
+    "slug": "deliberate-distraction",
+    "title": "Deliberate Distraction",
+    "prompt": "What do you do as a coach when a team member asks a question which is obviously in no way related to the problem presented? I.e. the team is working on an organisational culture problem and the next question is “Does anyone in the group have a preference for where we have lunch?”",
+    "firstPostedOn": "2014-01-12",
+    "lastPostedOn": "2017-10-09",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-out-of-control",
+    "title": "Out of Control",
+    "prompt": "The problem presented is outside the control or influence of the problem presenter and the team. For instance: A consultants presents about an organization he does not consult for – Organization A has a culture of fear.",
+    "firstPostedOn": "2013-10-28",
+    "lastPostedOn": "2017-10-02",
+    "timesPosted": 3
+  },
+  {
+    "slug": "scenario-uninvited-guest",
+    "title": "Uninvited Guest",
+    "prompt": "An animal – bird, monkey, or other – enters the room through an open window.",
+    "firstPostedOn": "2013-10-14",
+    "lastPostedOn": "2017-09-11",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-testing-team-2",
+    "title": "Testing team",
+    "prompt": "The problem presenter decides to test the team but giving mis-information to the team. By the time this becomes apparent, many of the team members are upset to varying degrees.",
+    "firstPostedOn": "2017-07-24",
+    "lastPostedOn": "2017-08-29",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-group-question",
+    "title": "Group Question",
+    "prompt": "One of the participants asks a question of the entire team, after a single answer the team moves on to the next question.",
+    "firstPostedOn": "2013-08-26",
+    "lastPostedOn": "2017-07-10",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-presenter-questions",
+    "title": "Presenter Questions",
+    "prompt": "All of the questions are directed at the problem presenter. After asking the standard 3 questions no one has mentioned this.",
+    "firstPostedOn": "2013-08-12",
+    "lastPostedOn": "2017-06-26",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-firing-line",
+    "title": "Firing Line",
+    "prompt": "All of the questions are directed at the problem presenter. During the check-in the problem presenter says – “I feel like I am on a firing line.”",
+    "firstPostedOn": "2013-08-05",
+    "lastPostedOn": "2017-06-19",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-closed-question-3",
+    "title": "Closed Question",
+    "prompt": "During the last check-in the team agreed that they need to use more open question; yet they continue to ask mostly close questioned. Even with the closed questions, the responses are open. You’ve tried asking “What question are you answering?” they say that one. You add “What was that question?” They recognize it was a closed question and then give a closed answer. The next closed question the behavior repeats.",
+    "firstPostedOn": "2017-06-12",
+    "lastPostedOn": "2017-06-12",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-over-the-top-2",
+    "title": "Over the top",
+    "prompt": "You are coaching a team inside a company. The problem presenter is the owner of that company. The problem person is very verbose and rambles on even after he has answered the question. You’ve asked him: “What question are you answering?” several times. He responds ‘that one’ and continues to add additional information.",
+    "firstPostedOn": "2017-06-05",
+    "lastPostedOn": "2017-06-05",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-side-conversation-2",
+    "title": "Side Conversation",
+    "prompt": "As you are opening the session and you start by reinforcing the ground rules. While you are speaking two participants start chatting (they’ve been in many session and already know the rules).",
+    "firstPostedOn": "2017-05-29",
+    "lastPostedOn": "2017-05-29",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-solution-statements",
+    "title": "Solution Statements",
+    "prompt": "When members of the team read their problem statement, what they read is clearly a solution. For instance – “Joe needs to hire me to do a team building activity with his team.”",
+    "firstPostedOn": "2013-07-01",
+    "lastPostedOn": "2017-05-22",
+    "timesPosted": 4
+  },
+  {
+    "slug": "scenario-silo-ed-participants",
+    "title": "Silo-ed Participants",
+    "prompt": "Each member of the team is focused on their own line of questioning. This becomes particularly clear when participants start asking questions that have been asked by multiple participants.",
+    "firstPostedOn": "2013-05-13",
+    "lastPostedOn": "2017-05-08",
+    "timesPosted": 2
+  },
+  {
+    "slug": "eye-lock",
+    "title": "Eye Lock",
+    "prompt": "The problem presenter locks eyes with you when presenting the problem.",
+    "firstPostedOn": "2012-05-14",
+    "lastPostedOn": "2017-04-03",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-consensus",
+    "title": "Consensus",
+    "prompt": "The team is having trouble reaching consensus on what the real problem is.",
+    "firstPostedOn": "2012-05-07",
+    "lastPostedOn": "2017-03-20",
+    "timesPosted": 2
+  },
+  {
+    "slug": "open-answer",
+    "title": "Open Answer",
+    "prompt": "You ask the team – “how are we doing on a scale of 1 – 10”, and get a response “I think we could be blah blah blah …”",
+    "firstPostedOn": "2012-04-16",
+    "lastPostedOn": "2017-03-06",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-self-conversation",
+    "title": "Self Conversation",
+    "prompt": "Someone answers their own question, without waiting for a response from anyone else.",
+    "firstPostedOn": "2013-02-25",
+    "lastPostedOn": "2017-02-20",
+    "timesPosted": 3
+  },
+  {
+    "slug": "scenario-limiting-choice",
+    "title": "Limiting Choice",
+    "prompt": "Someone asks an open question, then follows it with a couple choices for the response.",
+    "firstPostedOn": "2012-03-26",
+    "lastPostedOn": "2017-02-13",
+    "timesPosted": 3
+  },
+  {
+    "slug": "scenario-non-leaders-3",
+    "title": "Non-leaders",
+    "prompt": "Some members don’t see the need to practice a leadership skill since they are not leaders.",
+    "firstPostedOn": "2014-07-28",
+    "lastPostedOn": "2017-01-02",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-the-boss-4",
+    "title": "The Boss",
+    "prompt": "One of the managers questioned the members about their questions. One member got irritated by him and challenged him back.",
+    "firstPostedOn": "2016-12-19",
+    "lastPostedOn": "2016-12-19",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-chit-chat-4",
+    "title": "Chit Chat",
+    "prompt": "Two vocal members chit chatted more often with each other. Behavior repeated despite the intervention with team consensus to have one conversation at a time.",
+    "firstPostedOn": "2016-12-12",
+    "lastPostedOn": "2016-12-12",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-own-world-4",
+    "title": "Own World",
+    "prompt": "Each member is focused on their own line of questioning.",
+    "firstPostedOn": "2016-12-05",
+    "lastPostedOn": "2016-12-05",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-out-there-4",
+    "title": "Out there",
+    "prompt": "Several members are asking questions unrelated to the problem at hand.",
+    "firstPostedOn": "2016-11-28",
+    "lastPostedOn": "2016-11-28",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-too-hot-4",
+    "title": "Too Hot",
+    "prompt": "Someone from the team gets up and turns the a/c without checking with the other team members.",
+    "firstPostedOn": "2016-11-21",
+    "lastPostedOn": "2016-11-21",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-take-charge-4",
+    "title": "Take charge",
+    "prompt": "During the session someone jumps up to the easels and starts capturing what is said.",
+    "firstPostedOn": "2016-11-07",
+    "lastPostedOn": "2016-11-07",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-phone-rings-4",
+    "title": "Phone Rings",
+    "prompt": "During the session a team member’s phone rings and they leave the table to answer it.",
+    "firstPostedOn": "2016-10-24",
+    "lastPostedOn": "2016-10-24",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-non-responsive-2",
+    "title": "Non-responsive",
+    "prompt": "The members were enthusiastic to help the problem presenter. They asked many good questions. However, the problem presenter commented its confidential info and would not answer some of the questions. Members felt they were not able to help the problem presenter much if their questions were not answered and they could not see the value of action learning in this instance. But the problem presenter felt the session was useful to him in addressing his problem.",
+    "firstPostedOn": "2016-10-17",
+    "lastPostedOn": "2016-10-17",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-unsolicited-advice",
+    "title": "Unsolicited Advice",
+    "prompt": "You ask a member of the team how they did with their leadership skill. Another member pipes up – I’d like to tell you a technique so you can accomplish that skill. All you have to do is …",
+    "firstPostedOn": "2016-09-19",
+    "lastPostedOn": "2016-09-19",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-story-time",
+    "title": "Story time",
+    "prompt": "The problem presenter asks the team to suggest some solutions. The team members start telling stories of their experience. These stories aren’t answering the question – What are some potential solutions.",
+    "firstPostedOn": "2016-09-12",
+    "lastPostedOn": "2016-09-12",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-unkind-gesture-4",
+    "title": "Unkind Gesture",
+    "prompt": "A member arrives to a three hour session one hour late. You conduct coaching inquiries and he is smoothly integrated into the team. 15 minutes later he is exchanging friendly but sarcastic comments with a team member that end with him using a hand gesture that would cause most folks to take offense to a fellow team member.",
+    "firstPostedOn": "2016-09-05",
+    "lastPostedOn": "2016-09-05",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-too-slow-5",
+    "title": "Too Slow",
+    "prompt": "You are coaching a leadership development program with a group of senior engineers…One of them is a Six Sigma Black Belt with years of experience in problem solving methods. During the middle of your second meeting to frame the problem, the Black Belt notes that it is taking way too long to come to agreement on the problem. Some of the Type A members of the group nod their heads in agreement.",
+    "firstPostedOn": "2016-08-29",
+    "lastPostedOn": "2016-08-29",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-multiple-variables-4",
+    "title": "Multiple Variables",
+    "prompt": "The team is attempting to analyze the problem situation in a search to identify the one key variable that they can influence or change to create movement in the direction of their established goal or end result. They are debating the relevance of only a few factors and seem to be ignoring the probability that the problem situation was caused or is perpetuated by multiple factors.",
+    "firstPostedOn": "2014-09-29",
+    "lastPostedOn": "2016-08-22",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-multiple-levels-4",
+    "title": "Multiple Levels",
+    "prompt": "Every time the team seems close to getting to consensus a question is asked that takes them someplace else. You realize there are two levels that are being looked at – some participants are focused at a single group level (How do I address this with my group?), others at a corporate level (How do I address this with all groups?).",
+    "firstPostedOn": "2014-09-26",
+    "lastPostedOn": "2016-08-15",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-parody",
+    "title": "Parody",
+    "prompt": "From Tom Janiak As an Action Learning Coach how would you handle: In the first session, there is a lot of humor in the team. Participants joke about the the 1st ground rule and answer in a parody manner, e.g. “Dear John, in reply to your question I would venture to say…”. Whenever you ask a serious question, like “what are we doing well?”, first comes a joke and only then a genuine answer.",
+    "firstPostedOn": "2016-08-10",
+    "lastPostedOn": "2016-08-10",
+    "timesPosted": 1
+  },
+  {
+    "slug": "guest-authors-welcome",
+    "title": "Guest Authors Welcome",
+    "prompt": "After you have a response post to this blog your status is changed to author. At that point you are free to post your own scenarios. If you are having trouble posting let me know and I’ll make sure your status is Author. Happy Coaching Bea",
+    "firstPostedOn": "2016-08-09",
+    "lastPostedOn": "2016-08-09",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-overly-focused-4",
+    "title": "Overly Focused",
+    "prompt": "The team is involved in generating a number of alternative perceptions, ideas, opinions, facts, etc. The team focuses on only one (e.g., debating their merits or validity) and omits other items from explicit consideration.",
+    "firstPostedOn": "2014-09-22",
+    "lastPostedOn": "2016-08-08",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-problematic-problem-presenter-4",
+    "title": "Problematic Problem Presenter",
+    "prompt": "The problem presenter schedules a half hour meeting immediately before the Action Learning session. During this meeting they present their solution to the problem about to be discussed in the Action Learning session.",
+    "firstPostedOn": "2014-09-15",
+    "lastPostedOn": "2016-08-01",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-broken-trust-5",
+    "title": "Broken Trust",
+    "prompt": "You are doing a leadership development program with 8 peers in a consulting firm. One of the participants reports that her boss brought an issue with her yesterday that she had discussed in the action learning group a week ago. She is very upset. (The problem centered around not being given the responsibility that her boss had promised her when she was hired a year ago.) Additionally, the team had agreed to keep what was said during the Action Learning sessions in the sessions.",
+    "firstPostedOn": "2016-07-04",
+    "lastPostedOn": "2016-07-04",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-pre-existing-condition-4",
+    "title": "Pre-existing Condition",
+    "prompt": "Two team members were arguing in the hall before the set started. As soon as one says something, the other rolls their eyes and mumbles something under their breath.",
+    "firstPostedOn": "2016-05-30",
+    "lastPostedOn": "2016-05-30",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-leading-questions",
+    "title": "Leading Questions",
+    "prompt": "A participant is convinced of the true nature of the problem and repeats the same questions over and over in an effort to persuade the others, even after others have made it clear that they don’t agree. Others are seeing what this person is advocating as another symptom – not the real problem.",
+    "firstPostedOn": "2016-02-22",
+    "lastPostedOn": "2016-02-22",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-opposite-behavior",
+    "title": "Opposite Behavior",
+    "prompt": "A participant does something in direct contradiction to their chosen leadership skill.",
+    "firstPostedOn": "2015-12-21",
+    "lastPostedOn": "2015-12-21",
+    "timesPosted": 1
+  },
+  {
+    "slug": "3306-2",
+    "title": "Clear Actions",
+    "prompt": "The team has clearly reached consensus on the problem and clearly identified the actions that need to be taken. There is still another 45 minutes in the time they allotted for the session.",
+    "firstPostedOn": "2015-12-07",
+    "lastPostedOn": "2015-12-07",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-multiple-problems",
+    "title": "Multiple Problems",
+    "prompt": "The problem presented has a multitude of aspects to it. For instance many sub problems within the main problem.",
+    "firstPostedOn": "2015-11-23",
+    "lastPostedOn": "2015-11-23",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-coffee-break",
+    "title": "Coffee Break",
+    "prompt": "A participant gets up from the group to fill a cup of coffee. Well filling their cup it is clear they are fully engaged in the discussion.",
+    "firstPostedOn": "2015-07-06",
+    "lastPostedOn": "2015-07-06",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-catching-up",
+    "title": "Catching Up",
+    "prompt": "A team member isn’t participating. During the checkin they say that they were lost and confused by the discussion and they were trying to figure out what was going on.",
+    "firstPostedOn": "2015-06-29",
+    "lastPostedOn": "2015-06-29",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-may-i",
+    "title": "May I?",
+    "prompt": "You say “may I do a checkin?” and a team member says “NO”",
+    "firstPostedOn": "2014-11-17",
+    "lastPostedOn": "2014-11-17",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-silent-observer",
+    "title": "Silent Observer",
+    "prompt": "A member of the team decides they know the problem and the solution, so they will sit quietly until everyone else figures it out.",
+    "firstPostedOn": "2014-11-03",
+    "lastPostedOn": "2014-11-03",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-individual-issue",
+    "title": "Individual Issue",
+    "prompt": "A member of the team doesn’t understand the process and decides “EVERYONE” doesn’t understand.",
+    "firstPostedOn": "2014-10-27",
+    "lastPostedOn": "2014-10-27",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-extended-break",
+    "title": "Extended Break",
+    "prompt": "The team agreed to a 15 minute break, it’s 30 minutes before you get everyone back in the room and ready to restart.",
+    "firstPostedOn": "2013-07-08",
+    "lastPostedOn": "2014-10-20",
+    "timesPosted": 2
+  },
+  {
+    "slug": "2996-2",
+    "title": "A set with 9 or more members",
+    "prompt": "Has anyone encountered a situation with more than 8 people (say 10), all active in an AL set… If yes, it would be interesting to know what happened, any lessons learned…",
+    "firstPostedOn": "2014-06-08",
+    "lastPostedOn": "2014-06-08",
+    "timesPosted": 1
+  },
+  {
+    "slug": "2991-2",
+    "title": "Question asked in response to a question",
+    "prompt": "I have encountered this in a session yesterday and I wonder if any one has some creative ideas.. As an Action Learning Coach how would you handle the following situation: During the session PP./TM posed a question to the group and the first response was a question back to her. The question to her was partially related to her question and partially a follow up on the questions that PP was answering just before she posed the question to the group.",
+    "firstPostedOn": "2014-05-31",
+    "lastPostedOn": "2014-05-31",
+    "timesPosted": 1
+  },
+  {
+    "slug": "clowning-around",
+    "title": "Clowning Around",
+    "prompt": "One team member begins to make fun of one point the group is discussing. Initially, this is creative and brings happiness to the group. Then this joking is repeated sequentially among team members … a competition emerges to come up with the most creative joke. The group looses concentration and focus on the problem they are suppose to be working on …. They are primarily focused on clowning with each other!",
+    "firstPostedOn": "2014-03-24",
+    "lastPostedOn": "2014-03-24",
+    "timesPosted": 1
+  },
+  {
+    "slug": "outlining-the-problem-in-a-spal",
+    "title": "Outlining the problem in a SPAL",
+    "prompt": "When working with a client on a business problem through action learning, I ask the sponsor or problem owner to answer a number of questions, in writing, before the first session starts. I have created a one page form with the following questions: Describe the problem … describing context, history and some basic data, key people and departments involved. Why is solving this important ? What has been tried in the past, and was this partly successful or not successful at all ? What do you expect of the team, in terms of recommendations only, or recommendations and actual implementation ? What would be your definition of ‘success’ of the team addressing this challenge ? What is your experience with asking the sponsor to describe his/her problem ahead of the first meeting ? Do you use any other questions ?",
+    "firstPostedOn": "2014-01-17",
+    "lastPostedOn": "2014-01-17",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-problem-or-puzzle",
+    "title": "Problem or Puzzle",
+    "prompt": "The problem presented is – I need to upgrade the operating system on my computers",
+    "firstPostedOn": "2013-11-04",
+    "lastPostedOn": "2013-11-04",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-forgot-skill",
+    "title": "Forgot Skill",
+    "prompt": "The end of the session comes and someone has not demonstrated their leadership skill.",
+    "firstPostedOn": "2013-09-30",
+    "lastPostedOn": "2013-09-30",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-testing-team",
+    "title": "Testing Team",
+    "prompt": "The problem presenter decides to test the team by giving mis-information to the team. By the time this becomes apparent, many of the team members are upset to varying degrees.",
+    "firstPostedOn": "2013-09-09",
+    "lastPostedOn": "2013-09-09",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-closed-question",
+    "title": "Closed Question",
+    "prompt": "During the last check-in the team agreed that, they need to use more open question, yet they continue to ask mostly close questioned. Even with the closed questions, the responses are open. You’ve tried asking “what question are you answering?” they say that one, you add “what was that question?”, recognizing it was a closed question they give a closed answer and go right back to the behavior of closed question followed by an open answer. ;",
+    "firstPostedOn": "2013-07-29",
+    "lastPostedOn": "2013-07-29",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-over-the-top",
+    "title": "Over the top",
+    "prompt": "The problem presenter is the owner of the business you are coaching a team for. Every question he is asked he gives much more information than was asked for. You’ve asked him what question he is answering several times and he says ‘that one’ and continues to add additional information.",
+    "firstPostedOn": "2013-07-22",
+    "lastPostedOn": "2013-07-22",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-side-conversation",
+    "title": "Side Conversation",
+    "prompt": "As you are opening the session and reinforcing the ground rules, two participants start chatting (they’ve been in many session and already know the rules).",
+    "firstPostedOn": "2013-07-15",
+    "lastPostedOn": "2013-07-15",
+    "timesPosted": 1
+  },
+  {
+    "slug": "rambling-context-before-a-question-is-asked",
+    "title": "Rambling “context” before a question is asked",
+    "prompt": "As an action learning coach, how would you respond to the following situation: A group member provides quite a bit of context before asking the actual question. As a coach you have intervened and asked “I might have missed it, but what was the question you are responding to?” the person then responds with “I’m getting to the question shortly but I needed to provide some context first”….",
+    "firstPostedOn": "2012-11-17",
+    "lastPostedOn": "2012-11-17",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-problem-presenter-reiterates-exactly-the-same-problem",
+    "title": "Problem Presenter Reiterates Exactly the Same Problem",
+    "prompt": "What do you do as coach if the problem presenter brings along a pre-typed problem statement to use at the beginning of the session, and then reads this out again when asked during the first intervention to write down what they think the problem is now?",
+    "firstPostedOn": "2012-06-18",
+    "lastPostedOn": "2012-06-18",
+    "timesPosted": 1
+  },
+  {
+    "slug": "who-is-the-leader",
+    "title": "Who is the Leader?",
+    "prompt": "The group was trying hard to identify a leader to “tell” the group what is the problem statement so that they can start finding solutions. They were hoping that the problem presenter or the AL coach would play the ‘leader’ role. The group looks clueless and feeling insecure.",
+    "firstPostedOn": "2012-05-24",
+    "lastPostedOn": "2012-05-24",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-confirm-thought",
+    "title": "Confirm Thought",
+    "prompt": "Some makes a statement followed by – “do you agree?”",
+    "firstPostedOn": "2012-03-19",
+    "lastPostedOn": "2012-03-19",
+    "timesPosted": 1
+  },
+  {
+    "slug": "a-sub-group-pre-preparing-before-a-session",
+    "title": "A Sub Group Pre-preparing Before a Session",
+    "prompt": "Does anyone have any suggestions as to what to do with a sub group who really do not want to be a part of an Action Learning process, and who pre-prepare an agenda and leadership skills prior to the AL session?",
+    "firstPostedOn": "2012-02-28",
+    "lastPostedOn": "2012-02-28",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-ring-rin",
+    "title": "Ring Ring",
+    "prompt": "Team members are coming and going as they please -either walking out to go to the toilet, or making phone calls. The rest of the members continue with the process. When you check in after each occurrence the team members indicate its ok.",
+    "firstPostedOn": "2012-01-30",
+    "lastPostedOn": "2012-01-30",
+    "timesPosted": 1
+  },
+  {
+    "slug": "a-tired-team-lead",
+    "title": "A Tired Team Lead",
+    "prompt": "An Action Learning Team has met for several full-day sessions over several months working on a problem that is critical and highly visible in the organization. After the most recent full-day meeting, the Team Lead (the organization assigned a Team Lead) shared with the coach that she is feeling very fatigued. Although there was excellent processing and learning at the end of the meeting, the team stormed and got off track quite a bit in the afternoon segment. She likes the AL approach and sees the benefits, but for certain activities, such as brainstorming, wishes there could be someone in a facilitator role.",
+    "firstPostedOn": "2012-01-23",
+    "lastPostedOn": "2012-01-23",
+    "timesPosted": 1
+  },
+  {
+    "slug": "final-action-learning-session",
+    "title": "Final Action Learning Session",
+    "prompt": "I have just run a final action learning session (after 5 sessions) and experienced the Final Action Learning Session script to run like a series of focus group questions I found myself slipping into facilitation mode and lost the benefits of the AL questioning. I was wondering if anyone has any tips how to run a final session to maintain integrity as coach, yet still ask the many useful reflective questions to close.",
+    "firstPostedOn": "2011-12-29",
+    "lastPostedOn": "2011-12-29",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-phone-rings",
+    "title": "Phone rings",
+    "prompt": "During the session a team members phone rings and they leave the table to answer it.",
+    "firstPostedOn": "2011-11-28",
+    "lastPostedOn": "2011-11-28",
+    "timesPosted": 1
+  },
+  {
+    "slug": "agreement-on-the-problem",
+    "title": "Agreement on the problem",
+    "prompt": "I’m new to this and still in training, but am wondering what happens when after the early stage of the first session there is no real agreement on the problem. My initial response would be to ask the group if they wish to gain agreement before continuing. If it’s the first in a series of planned encounters, I would probably suggest to the stakeholders that if the problem is complex and not well understood, that a whole session be dedicated to defining the problem. This would mean that the issue presented is lack of clarity and agreement on the problem itself…but then I’m a researcher and have been trained to think that there needs to be clarity on the problem before you can go out and solve it, ie. you need to know what you’re solving. I would be interested in other views.",
+    "firstPostedOn": "2011-11-02",
+    "lastPostedOn": "2011-11-02",
+    "timesPosted": 1
+  },
+  {
+    "slug": "%e6%9d%a5%e8%87%aa%e4%b8%ad%e5%9b%bd%e5%8c%97%e4%ba%ac%e7%9a%84%e9%97%ae%e5%80%99",
+    "title": "来自中国北京的问候",
+    "prompt": "WIAL亚太区行动学习论坛即将于2011年11月20日在北京召开，感谢Skip博士ChoonSeng教练的大力支持，也感谢各位关注WIAL—Beijing成长的各位老师和朋友，希望本次论坛能够取得圆满成功。",
+    "firstPostedOn": "2011-10-21",
+    "lastPostedOn": "2011-10-21",
+    "timesPosted": 1
+  },
+  {
+    "slug": "disgruntled-team-member",
+    "title": "Disgruntled Team Member",
+    "prompt": "Over several sessions, one of the members has disappeared for long periods of time and/or is frequently on his blackberry. During a standard intervention (what are we doing well /what could we be doing better), he was vocal in stating that he wasn’t convinced about the AL approach. He said “We’re all professionals here and are used to solving problems. I’m aware of the deadline for our presentation and we could make more progress without this approach if we could just all freely state our thoughts.” Others in the group stated that they felt the approach was helping the team and that the organization had failed to solve this problem three times in the past. Other team members also thought the team could do better coming to consensus more quickly and they agreed on an approach to experiment with. However, the “disgruntled” team member’s behavior continues. After a recent session, just as she is leaving the room, the coach overhears a few members who have remained behind talking about how upset they are with this team member’s behavior.",
+    "firstPostedOn": "2011-10-10",
+    "lastPostedOn": "2011-10-10",
+    "timesPosted": 1
+  },
+  {
+    "slug": "problem-presenter-refused-to-answer-questions",
+    "title": "Problem Presenter Refused To Answer Questions",
+    "prompt": "The members were enthusiastic to help the problem presenter and asked many good questions. However, the problem presenter commented it’s confidential info. and would not answer some of the questions. Members felt they were not able to help the problem presenter much if their questions were not answered and they could not see the value of action learning in this instance. But the problem presenter felt the session was useful to him in addressing his problem. In this case, what should the coach do to help the team to move on…?",
+    "firstPostedOn": "2011-10-10",
+    "lastPostedOn": "2011-10-10",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-intervention-timing",
+    "title": "Intervention Timing",
+    "prompt": "As an Action Learning Team Coach how would you handle the following situation: The group has been processing particularly well, but it has been more than 30 minutes since the last intervention.",
+    "firstPostedOn": "2011-02-28",
+    "lastPostedOn": "2011-08-08",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-two-owners",
+    "title": "Two Owners",
+    "prompt": "As an Action Learning Team Coach how would you handle the following situation: You have two problem owners for your project. You assume that the problem owners have coordinated the presentation of the problem for the kickoff session. As soon as one starts to present the problem the other interrupts with a very different view of the problem.",
+    "firstPostedOn": "2011-02-21",
+    "lastPostedOn": "2011-08-02",
+    "timesPosted": 2
+  },
+  {
+    "slug": "scenario-coaches-advice",
+    "title": "Coaches Advice",
+    "prompt": "As an Action Learning Team Coach how would you handle the following situation: A team member asks if you have any suggestions on how to solve the problem.",
+    "firstPostedOn": "2011-06-28",
+    "lastPostedOn": "2011-06-28",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-obvious-question",
+    "title": "Obvious Question",
+    "prompt": "As an Action Learning Team Coach how would you handle the following situation: Listening to the team you realize an obvious question they are missing. If they would just ask “blah blah blah” the true nature of the problem would become clear to everyone.",
+    "firstPostedOn": "2011-06-20",
+    "lastPostedOn": "2011-06-20",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-questions-answers",
+    "title": "(Questions / Answers)",
+    "prompt": "As an Action Learning Team Coach how would you handle the following situation: During an intervention you ask “How are we doing taping all the knowledge in the room?” A participant says “We are asking questions and (s)he is answering them – isn’t that the rule?”",
+    "firstPostedOn": "2011-06-13",
+    "lastPostedOn": "2011-06-13",
+    "timesPosted": 1
+  },
+  {
+    "slug": "can-a-coach-make-too-many-interventions",
+    "title": "Can a coach make too many interventions?",
+    "prompt": "hi all I am wondering how you might determine if there is a point in a group, particularly a 1st time group, where the number, frequency or duration of interventions for learning opportunites become counter-productive to the groups performance? That is, the coach must decide to let some learning opportunities slide rather than pick them up straight away. I look forward to your insight or experiences. Ross",
+    "firstPostedOn": "2011-06-02",
+    "lastPostedOn": "2011-06-02",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-rambling-woman",
+    "title": "Rambling (Wo)Man",
+    "prompt": "As an Action Learning Team Coach how would you handle the following situation: A participant asks the problem presenter a question that starts “Do you ….” The response is “no blah blah blah blah blah blah blah ….”",
+    "firstPostedOn": "2011-05-30",
+    "lastPostedOn": "2011-05-30",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-oops",
+    "title": "Oops",
+    "prompt": "As an Action Learning Team Coach how would you handle the following situation: At the start of the session you ask everyone “if they are ok with the rules” instead of “if they understand the rules” – someone says “no”.",
+    "firstPostedOn": "2011-05-23",
+    "lastPostedOn": "2011-05-23",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-unavailable-member",
+    "title": "Unavailable Member",
+    "prompt": "As an Action Learning Team Coach how would you handle the following situation: Just prior to the beginning of the meeting, the group is informed that a member has been asked by her boss to handle an emergency, and will not be able to join the group for the first 2 hours of the session.",
+    "firstPostedOn": "2011-05-09",
+    "lastPostedOn": "2011-05-09",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-multiple-variables",
+    "title": "Multiple Variables",
+    "prompt": "As an Action Learning Team Coach how would you handle the following situation: The team is attempting to analyze the problem situation in a search to identify the one key variable that they can influence or change to create movement in the direction of their established goal or end result. They are debating the relevance of only a few factors and seem to be ignoring the probability that the problem situation was caused or is perpetuated by multiple factors.",
+    "firstPostedOn": "2011-04-18",
+    "lastPostedOn": "2011-04-18",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-multiple-levels",
+    "title": "Multiple Levels",
+    "prompt": "As an Action Learning Team Coach how would you handle the following situation: Every time the team seems close to getting to consensus a question is asked that takes them someplace else. You realize there are two levels that are being looked at – some participants are focused at a single group level (How do I address this with my group?), others at a corporate level (How do I address this with all groups?).",
+    "firstPostedOn": "2011-04-11",
+    "lastPostedOn": "2011-04-11",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-overly-focused",
+    "title": "Overly Focused",
+    "prompt": "As an Action Learning Team Coach how would you handle the following situation: The team is involved in generating a number of alternative perceptions, ideas, opinions, facts, etc. The team focuses on only one (e.g., debating their merits or validity) and omits other items from explicit consideration.",
+    "firstPostedOn": "2011-04-04",
+    "lastPostedOn": "2011-04-04",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-problematic-problem-presenter",
+    "title": "Problematic Problem Presenter",
+    "prompt": "As an Action Learning Team Coach how would you handle the following situation: The problem presenter schedules a half hour meeting immediately before the Action Learning session. During this meeting they present their solution to the problem about to be discussed in the Action Learning session.",
+    "firstPostedOn": "2011-03-28",
+    "lastPostedOn": "2011-03-28",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-self-question",
+    "title": "Self Question",
+    "prompt": "As an Action Learning Team Coach how would you handle the following situation: A member of the team asks you – is it ok if I ask myself a question?",
+    "firstPostedOn": "2011-03-14",
+    "lastPostedOn": "2011-03-14",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-broken-trust",
+    "title": "Broken Trust",
+    "prompt": "As an Action Learning Team Coach how would you handle the following situation: You are doing a leadership development program with 8 peers in a consulting firm. One of the participants reports that her boss brought an issue with her yesterday that she had discussed in the action learning group a week ago. She is very upset. (The problem centered around not being given the responsibility that her boss had promised her when she was hired a year ago.) Additionally, the team had agreed to keep what was said during the Action Learning sessions in the sessions.",
+    "firstPostedOn": "2011-03-07",
+    "lastPostedOn": "2011-03-07",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-missing-action",
+    "title": "Missing Action",
+    "prompt": "As an Action Learning Team Coach how would you handle the following situation: A team member did not complete the tasks that she had agreed to do at the session held last month.",
+    "firstPostedOn": "2011-02-14",
+    "lastPostedOn": "2011-02-14",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-poignant-question",
+    "title": "Poignant Question",
+    "prompt": "As an Action Learning Team Coach how would you handle the following situation: A particularly poignant question is asked. This is followed by a long silence.",
+    "firstPostedOn": "2011-02-04",
+    "lastPostedOn": "2011-02-04",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-pre-existing-condition",
+    "title": "Pre-existing condition",
+    "prompt": "As an Action Learning Team Coach how would you handle the following situation: Two team members were arguing in the hall before the set started. As soon as one says something, the other rolls their eyes and mumbles something under their breath.",
+    "firstPostedOn": "2011-01-25",
+    "lastPostedOn": "2011-01-25",
+    "timesPosted": 1
+  },
+  {
+    "slug": "scenario-low-energy",
+    "title": "Low Energy",
+    "prompt": "As an Action Learning Team Coach how would you handle the following situation: The team took a break less than 15 minutes ago, since returning the energy in the group is very low. Happy Coaching Dr. Bea",
+    "firstPostedOn": "2011-01-18",
+    "lastPostedOn": "2011-01-18",
+    "timesPosted": 1
+  }
+]

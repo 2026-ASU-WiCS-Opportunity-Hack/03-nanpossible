@@ -26,6 +26,8 @@ Conventions for the migration SQL: global pages use `chapter_id = null`, ids fol
 
 Compose pages from the `ContentSection` types (`src/lib/types.ts`, rendered in `src/components/content-page.tsx`): `prose` (with optional bullets), `feature_grid`, `timeline`, `quote`, `resource_list`, `contact_cards`, `logo_grid` (grayscale org logos), `media_prose` (photo + text, optional bullets), `cta`, `people_grid` (avatar cards: name/role/eyebrow — built for leadership), `gallery_grid` (contain-fit image cards with title/subtitle — built for award winners; items without an image render as text-only cards).
 
+When the source is a large catalog rather than a page (the Library: 200+ items with files), don't put it in pages.json: crawl it to a table + `src/content` fixture, re-host the files to a storage bucket, and render it with a route-level client component next to the JSON sections (`ContentPage` takes `children`, and `renderSection` is exported) — see `/resources` and `scripts/crawl-wial-library.ts` / `scripts/import-library.ts`. Blog-style posts become their own content pages under a prefixed slug (`resources/<slug>`) served by a `[slug]` route with SEO metadata.
+
 Add a new section type only when no existing one fits the content's shape — then add it to the `ContentSection` union, the renderer switch, and use it from the page entry. Don't force photos into `people_grid`'s circular crop (logos and slides need `gallery_grid`'s contain-fit) and don't put people in `logo_grid` (grayscale filter).
 
 ## Assets: vendor everything
@@ -58,12 +60,25 @@ Still intentionally external (candidates for this pattern later): the Better Wor
 - Verify before calling it done: `npm run typecheck`; `npx vitest run` on Node 22; apply the migration to local Supabase (`docker exec -i supabase_db_03-nanpossible psql -U postgres -d postgres -v ON_ERROR_STOP=1 < migration.sql` — the local stack intermittently strips table grants; if PostgREST 403s, re-grant to `anon, authenticated, service_role`); curl the new route and every redirect; eyeball the rendered page (screenshots) — layout bugs don't show up in grep.
 - Record provenance in the page's `seo` block: `sourceUrl`, `sourceStatus: "migrated-from-wial"`, and `sourceNotes` explaining consolidation decisions, dropped/transformed data, and any intentionally-external links. Add a one-bullet summary of the page's conventions to `CLAUDE.md`.
 
+## Checking migration status
+
+`npm run check:migration` (or `python3 scripts/check-wial-migration.py`) prints a markdown status report and exits non-zero if anything is untracked. It cross-references:
+
+1. **The website crawler spreadsheet** (Google Sheet `18feQ3-v9ZropFo19fgT7WVbJ-dBM6EuE`, the inventory of every wial.org page). The script downloads it as **xlsx, not csv** because the cell background colors are data: each color marks a group of legacy pages that merge into one chapterstack page (e.g. the leadership pages are one color → all merged into `/about`). Pass `--sheet <file.xlsx>` to use a local copy; requires `openpyxl`.
+2. **`src/lib/routing.ts`** — every sheet URL is checked against `aliasMap` (redirected = migrated) and `canonicalMap` (live page).
+3. **`src/content/pages.json`** — every `wial.org` URL still embedded in content. URLs inside a page's `seo` block are provenance and fine; anywhere else is a visitor-clickable outbound link that must map to a tracking issue.
+
+Rows and links that are neither redirected, live, nor mapped to an issue report as UNTRACKED. When issues are filed or pages ship, update `ISSUE_MAP`/`OUTBOUND_HINTS` in the script and the table below. If `gh` is authenticated the report annotates each issue OPEN/CLOSED.
+
 ## Remaining migration targets
 
-External links still in the content, in rough priority order:
+All tracked as GitHub issues (filed 2026-08-30 from the website crawler spreadsheet). Shipped 2026-09-02: #118 (`/become-an-affiliate`), #120 (`/resources`), #121 (WIAL Blog → `/resources/<slug>`).
 
-| wial.org page | Linked from | Notes |
+| wial.org page(s) | Target | Issue |
 | --- | --- | --- |
-| `/become-a-partner/` | `/partners` (twice) | likely a form → contact-form pattern |
-| Better World donation + application forms | `/better-world` CTAs | intentionally live for now; migrate like `/awards/nomination` |
-| `/projects/...` story pages | `/better-world` story cards | long-tail; migrate as content pages or keep external deliberately |
+| `/certification/*` sub-pages, `/programs/`, `/become-a-coach/` | `/certification` | #100 |
+| `/become-a-partner/` (form) | `/partners` | #117 |
+| `/wials-team/` | `/about` | #119 |
+| `/privacy-policy/` | new `/privacy` + footer link | #122 |
+| Better World forms + `/projects/...` stories | `/better-world` | #123 |
+| Homepage content | `/` | #9 |

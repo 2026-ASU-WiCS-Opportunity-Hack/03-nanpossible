@@ -5,6 +5,7 @@ export const navigationItems: NavigationItem[] = [
   { href: "/certification", label: "Certification" },
   { href: "/clients", label: "Clients" },
   { href: "/coaches", label: "Coaches" },
+  { href: "/resources", label: "Resources" },
   { href: "/partners", label: "Partners" },
   { href: "/contact", label: "Contact Us" },
 ];
@@ -12,7 +13,21 @@ export const navigationItems: NavigationItem[] = [
 const aliasMap = new Map<string, string>([
   ["about-wial", "/about"],
   ["contact-us", "/contact"],
-  ["library", "/clients"],
+  ["library", "/resources"],
+  ["wial-talk", "/resources"],
+  ["action-learning/library", "/resources"],
+  ["action-learning/library/books", "/resources"],
+  ["action-learning/library/video-and-podcasts", "/resources"],
+  ["action-learning/library/posters-infographics", "/resources"],
+  ["action-learning/library/articles", "/resources"],
+  ["wial-endorsed-products", "/resources"],
+  ["category/wial-blog", "/resources"],
+  ["category/blog", "/resources"],
+  ["action-learning-personal-leadership-2", "/resources/action-learning-and-personal-leadership"],
+  ["fresh-look-ground-rule-1-call-apply-strictly-coach", "/resources/action-learning-ground-rule-1"],
+  ["culture-change-not-without-action-learning", "/resources/culture-change-not-without-action-learning"],
+  ["rikkyo-university-receives-wial-global-award-academic-sector", "/resources/rikkyo-university-wial-global-award"],
+  ["future-action-learning-2", "/resources/the-future-is-action-learning"],
   ["action-learning/benefits", "/benefits"],
   ["better-world-fund", "/better-world"],
   ["better-world-fund-2", "/better-world"],
@@ -30,6 +45,7 @@ const aliasMap = new Map<string, string>([
   ["affiliates", "/coaches"],
   ["past-conferences", "/conferences"],
   ["2024-wial-global-conference", "/conferences"],
+  ["our-clients", "/clients"],
   ["client-testimonials", "/clients"],
   ["share-your-success-story", "/clients/success-story"],
 ]);
@@ -47,6 +63,8 @@ const canonicalMap = new Map<string, CanonicalPageSlug>([
   ["awards", "awards"],
   ["our-services", "our-services"],
   ["conferences", "conferences"],
+  ["become-an-affiliate", "become-an-affiliate"],
+  ["resources", "resources"],
 ]);
 
 export const reservedSubdomains = new Set([

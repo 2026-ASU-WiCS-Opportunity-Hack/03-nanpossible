@@ -22,10 +22,6 @@ describe("normalizeSegments", () => {
       slug: null,
       redirectTo: "/contact",
     });
-    expect(normalizeSegments(["library"])).toEqual({
-      slug: null,
-      redirectTo: "/clients",
-    });
     expect(normalizeSegments(["affiliates"])).toEqual({
       slug: null,
       redirectTo: "/coaches",
@@ -46,9 +42,54 @@ describe("normalizeSegments", () => {
       slug: null,
       redirectTo: "/clients",
     });
+    expect(normalizeSegments(["our-clients"])).toEqual({
+      slug: null,
+      redirectTo: "/clients",
+    });
     expect(normalizeSegments(["share-your-success-story"])).toEqual({
       slug: null,
       redirectTo: "/clients/success-story",
+    });
+  });
+
+  it("redirects the legacy library, WIAL Talk, endorsed-products, and blog paths to /resources", () => {
+    for (const path of [
+      "library",
+      "wial-talk",
+      "action-learning/library",
+      "action-learning/library/articles",
+      "wial-endorsed-products",
+      "category/wial-blog",
+    ]) {
+      expect(normalizeSegments(path.split("/"))).toEqual({
+        slug: null,
+        redirectTo: "/resources",
+      });
+    }
+  });
+
+  it("redirects legacy wial.org blog post URLs to their /resources articles", () => {
+    expect(normalizeSegments(["future-action-learning-2"])).toEqual({
+      slug: null,
+      redirectTo: "/resources/the-future-is-action-learning",
+    });
+    expect(normalizeSegments(["fresh-look-ground-rule-1-call-apply-strictly-coach"])).toEqual({
+      slug: null,
+      redirectTo: "/resources/action-learning-ground-rule-1",
+    });
+  });
+
+  it("resolves the resources page slug", () => {
+    expect(normalizeSegments(["resources"])).toEqual({
+      slug: "resources",
+      redirectTo: null,
+    });
+  });
+
+  it("resolves the become-an-affiliate page slug", () => {
+    expect(normalizeSegments(["become-an-affiliate"])).toEqual({
+      slug: "become-an-affiliate",
+      redirectTo: null,
     });
   });
 
