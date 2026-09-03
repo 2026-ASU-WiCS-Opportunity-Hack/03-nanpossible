@@ -93,6 +93,17 @@ describe("normalizeSegments", () => {
     });
   });
 
+  it("resolves the privacy page slug and redirects the legacy privacy-policy path", () => {
+    expect(normalizeSegments(["privacy"])).toEqual({
+      slug: "privacy",
+      redirectTo: null,
+    });
+    expect(normalizeSegments(["privacy-policy"])).toEqual({
+      slug: null,
+      redirectTo: "/privacy",
+    });
+  });
+
   it("resolves the conferences page slug", () => {
     expect(normalizeSegments(["conferences"])).toEqual({
       slug: "conferences",

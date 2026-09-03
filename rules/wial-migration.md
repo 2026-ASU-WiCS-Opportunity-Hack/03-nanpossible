@@ -72,13 +72,12 @@ Rows and links that are neither redirected, live, nor mapped to an issue report 
 
 ## Remaining migration targets
 
-All tracked as GitHub issues (filed 2026-08-30 from the website crawler spreadsheet). Shipped 2026-09-02: #118 (`/become-an-affiliate`), #120 (`/resources`), #121 (WIAL Blog → `/resources/<slug>`).
+All tracked as GitHub issues (filed 2026-08-30 from the website crawler spreadsheet). Shipped 2026-09-02: #118 (`/become-an-affiliate`), #120 (`/resources`), #121 (WIAL Blog → `/resources/<slug>`), #122 (`/privacy` + footer link).
 
 | wial.org page(s) | Target | Issue |
 | --- | --- | --- |
 | `/certification/*` sub-pages, `/programs/`, `/become-a-coach/` | `/certification` | #100 |
 | `/become-a-partner/` (form) | `/partners` | #117 |
 | `/wials-team/` | `/about` | #119 |
-| `/privacy-policy/` | new `/privacy` + footer link | #122 |
 | Better World forms + `/projects/...` stories | `/better-world` | #123 |
 | Homepage content | `/` | #9 |

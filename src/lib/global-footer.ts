@@ -39,6 +39,7 @@ export const defaultGlobalFooterContent: GlobalFooterContent = {
     { id: "resources", label: "Resources", href: "/resources" },
     { id: "pay", label: "Make a payment", href: "/pay" },
     { id: "contact", label: "Contact", href: "/contact" },
+    { id: "privacy", label: "Privacy", href: "/privacy" },
   ],
   leftLegal: "© World Institute for Action Learning. All rights reserved.",
   rightLegal:
