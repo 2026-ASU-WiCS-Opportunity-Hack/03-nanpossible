@@ -33,6 +33,8 @@ export default async function PaySuccessPage({ searchParams }: PaySuccessPagePro
     failed = true;
   }
 
+  const isDonation = payment?.source === "better-world-donation";
+
   return (
     <div className="page-frame">
       <div className="site-shell">
@@ -42,7 +44,7 @@ export default async function PaySuccessPage({ searchParams }: PaySuccessPagePro
             {payment ? (
               <>
                 <h1 className="max-w-4xl font-display text-3xl leading-none tracking-[-0.05em] text-teal-deep md:text-5xl">
-                  Thank you, your payment was received
+                  {isDonation ? "Thank you for your donation" : "Thank you, your payment was received"}
                 </h1>
                 <dl className="grid max-w-2xl gap-4 text-base leading-7 text-foreground/82 md:grid-cols-2">
                   <div>
@@ -93,9 +95,15 @@ export default async function PaySuccessPage({ searchParams }: PaySuccessPagePro
               </>
             )}
             <div className="flex flex-wrap gap-3">
-              <Link className="button-link primary" href="/pay">
-                Make another payment
-              </Link>
+              {isDonation ? (
+                <Link className="button-link primary" href="/better-world">
+                  Back to the Better World Fund
+                </Link>
+              ) : (
+                <Link className="button-link primary" href="/pay">
+                  Make another payment
+                </Link>
+              )}
               {viewer ? (
                 <Link className="button-link secondary" href="/account/profile">
                   Go to your account

@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
 import { SiteFooterContent } from "@/components/site-footer-content";
 import {
+  hasGlobalFooterContent,
   parseGlobalFooterContent,
   type GlobalFooterContent,
   type GlobalFooterState,
@@ -294,10 +295,17 @@ export function GlobalFooterEditor({
             </p>
           </div>
           <div className="site-shell !max-w-none !px-0">
-            <SiteFooterContent
-              content={normalizedDraft}
-              siteContext={previewContext}
-            />
+            {hasGlobalFooterContent(normalizedDraft) ? (
+              <SiteFooterContent
+                content={normalizedDraft}
+                siteContext={previewContext}
+              />
+            ) : (
+              <p className="text-sm text-foreground/55">
+                Nothing to show — the footer is hidden when every field is
+                empty.
+              </p>
+            )}
           </div>
         </section>
       </div>

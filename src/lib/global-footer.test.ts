@@ -1,9 +1,11 @@
 import { describe, expect, it } from "vitest";
 import {
   defaultGlobalFooterContent,
+  hasGlobalFooterContent,
   parseGlobalFooterState,
   publishGlobalFooterDraft,
   saveGlobalFooterDraft,
+  visibleFooterLinks,
 } from "@/lib/global-footer";
 
 describe("global footer draft and publish behavior", () => {
@@ -52,5 +54,62 @@ describe("global footer draft and publish behavior", () => {
     });
 
     expect(state.published).toBeNull();
+  });
+});
+
+describe("hasGlobalFooterContent", () => {
+  it("is true for the default footer content", () => {
+    expect(hasGlobalFooterContent(defaultGlobalFooterContent)).toBe(true);
+  });
+
+  it("is false when every field and link is blank", () => {
+    const empty = {
+      ...defaultGlobalFooterContent,
+      eyebrow: "",
+      heading: "",
+      description: "",
+      contactHeading: "",
+      address: "",
+      email: "",
+      linksHeading: "",
+      links: [{ id: "home", label: "  ", href: "/" }],
+      leftLegal: "",
+      rightLegal: "",
+    };
+
+    expect(hasGlobalFooterContent(empty)).toBe(false);
+  });
+
+  it("is true when only a resolved (tenant) email is present", () => {
+    const empty = {
+      ...defaultGlobalFooterContent,
+      eyebrow: "",
+      heading: "",
+      description: "",
+      contactHeading: "",
+      address: "",
+      email: "",
+      linksHeading: "",
+      links: [],
+      leftLegal: "",
+      rightLegal: "",
+    };
+
+    expect(hasGlobalFooterContent(empty, "chapter@example.org")).toBe(true);
+  });
+});
+
+describe("visibleFooterLinks", () => {
+  it("drops links whose trimmed label is empty", () => {
+    const links = [
+      { id: "home", label: "Home", href: "/" },
+      { id: "blank", label: "   ", href: "/blank" },
+      { id: "contact", label: "Contact", href: "/contact" },
+    ];
+
+    expect(visibleFooterLinks(links).map((link) => link.id)).toEqual([
+      "home",
+      "contact",
+    ]);
   });
 });

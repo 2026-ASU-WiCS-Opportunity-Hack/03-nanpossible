@@ -63,7 +63,6 @@ ISSUE_MAP = {
 # Substring of an outbound wial.org URL in content -> issue tracking its removal.
 OUTBOUND_HINTS = {
     "become-a-partner": 117,
-    "wial-better-world-fund-donation": 127,
 }
 
 

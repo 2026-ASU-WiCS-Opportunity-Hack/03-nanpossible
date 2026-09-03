@@ -426,6 +426,8 @@ export type PaymentRecord = {
   userId: string | null;
   status: string;
   paidAt: string | null;
+  /** Checkout session metadata.source, e.g. "better-world-donation"; only set fresh from Stripe. */
+  source: string | null;
 };
 
 export type StripeConfigStatus = {
