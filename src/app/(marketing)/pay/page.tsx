@@ -159,6 +159,16 @@ export default async function PayPage({ searchParams }: PayPageProps) {
                   </article>
                 ))}
               </div>
+              <section className="site-panel rounded-[2rem] p-6 md:p-8">
+                <h2 className="section-title text-teal-deep">Supporting the Better World Fund?</h2>
+                <p className="mt-3 max-w-2xl text-base leading-7 text-foreground/75">
+                  Choose your own amount and give directly to the fund that
+                  brings Action Learning to community organizations.
+                </p>
+                <Link className="button-link secondary mt-5 inline-flex" href="/better-world/donate">
+                  Donate any amount
+                </Link>
+              </section>
             </section>
           )}
         </div>

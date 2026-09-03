@@ -49,6 +49,33 @@ export function toMinorUnits(input: string, currency: string): number | null {
   return minor > 0 ? minor : null;
 }
 
+/** Preset donation amounts in minor units (cents): $10, $25, $50, $75, $100, $200. */
+export const DONATION_PRESETS_MINOR = [1000, 2500, 5000, 7500, 10000, 20000];
+export const DONATION_MIN_MINOR = 100;
+export const DONATION_MAX_MINOR = 5_000_000;
+export const DONATION_COMMENT_MAX = 500;
+
+/**
+ * Resolve a donor-chosen amount into minor units. `preset` is either one of
+ * `DONATION_PRESETS_MINOR` (as a string) or `"other"`, in which case `custom`
+ * is parsed as a free-entry USD amount. Returns null when the selection is
+ * missing, unparsable, or outside the donation bounds.
+ */
+export function parseDonationAmount(preset: string, custom: string): number | null {
+  const presetMinor = DONATION_PRESETS_MINOR.find((minor) => String(minor) === preset);
+  if (presetMinor !== undefined) {
+    return presetMinor;
+  }
+  if (preset !== "other") {
+    return null;
+  }
+  const minor = toMinorUnits(custom, "usd");
+  if (minor === null || minor < DONATION_MIN_MINOR || minor > DONATION_MAX_MINOR) {
+    return null;
+  }
+  return minor;
+}
+
 /** Validate the shape of a Stripe secret/restricted key without revealing it. */
 export function describeStripeKey(key: string | null | undefined): {
   valid: boolean;

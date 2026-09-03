@@ -833,7 +833,7 @@
         "type": "cta",
         "title": "Donate to the Better World Fund",
         "body": "Every contribution is multiplied through pro bono coaching and in-kind support — and goes directly to bringing Action Learning to community organizations.",
-        "href": "https://wial.org/wial-better-world-fund-donation/",
+        "href": "/better-world/donate",
         "label": "Donate"
       },
       {
@@ -856,7 +856,7 @@
     "description": "The WIAL Better World Fund provides Action Learning coaching and grant support to community-based organizations around the world.",
     "sourceUrl": "https://wial.org/better-world-fund/",
     "sourceStatus": "migrated-from-wial",
-    "sourceNotes": "Consolidated from wial.org better-world-fund, wial-gives-back, and projects (story summaries) per the crawler sheet's 'links on the About page' instruction. The Nominate CTA and all eight Better World story cards are now internal (#123): the application form is rebuilt at /better-world/nominate (better_world_applications table), and each story is its own content page at better-world/<slug> with photos vendored to public/better-world/stories/. The Donate CTA still points to the live wial.org donation form intentionally — a Stripe donation flow needs a variable, donor-entered amount that /pay's fixed-price cards don't support yet; tracked as a follow-up in issue #127."
+    "sourceNotes": "Consolidated from wial.org better-world-fund, wial-gives-back, and projects (story summaries) per the crawler sheet's 'links on the About page' instruction. The Nominate CTA and all eight Better World story cards are now internal (#123): the application form is rebuilt at /better-world/nominate (better_world_applications table), and each story is its own content page at better-world/<slug> with photos vendored to public/better-world/stories/. The Donate CTA now opens /better-world/donate (#127): the donor picks a preset or enters a custom amount, and the server creates a Stripe Checkout Session with an inline price for that exact amount."
   }
 },
 {

@@ -1,5 +1,9 @@
 import Stripe from "stripe";
-import { describeStripeKey } from "@/lib/payments-format";
+import {
+  DONATION_MAX_MINOR,
+  DONATION_MIN_MINOR,
+  describeStripeKey,
+} from "@/lib/payments-format";
 import { createServiceRoleSupabaseClient } from "@/lib/supabase-admin";
 import type {
   PaymentRecord,
@@ -21,6 +25,10 @@ import type {
 
 const STRIPE_SECRET_NAME = "stripe_secret_key";
 const KEY_CACHE_TTL_MS = 60_000;
+
+/** Marks the Stripe Product used for donor-chosen-amount Better World Fund donations. */
+const DONATION_PURPOSE = "better-world-donation";
+const DONATION_PRODUCT_CACHE_TTL_MS = 5 * 60_000;
 
 type ResolvedKey = {
   value: string | null;
@@ -154,6 +162,11 @@ export async function listPaymentTypes(): Promise<PaymentType[]> {
       if (!product || price.unit_amount === null) {
         return [];
       }
+      // Donation prices are created inline per-checkout (see
+      // createDonationCheckoutSession) and shouldn't appear as payment cards.
+      if (product.metadata?.wial_purpose === DONATION_PURPOSE) {
+        return [];
+      }
       return [
         {
           priceId: price.id,
@@ -230,6 +243,92 @@ export async function createCheckoutSession(input: {
   return session.url;
 }
 
+let cachedDonationProductId: { id: string; expires: number } | null = null;
+
+/** The Stripe Product backing donor-chosen-amount donations, cached for 5 minutes. */
+async function getDonationProduct(stripe: Stripe): Promise<string> {
+  if (cachedDonationProductId && cachedDonationProductId.expires > Date.now()) {
+    return cachedDonationProductId.id;
+  }
+  const products = await stripe.products.list({ active: true, limit: 100 });
+  const existing = products.data.find(
+    (product) => product.metadata?.wial_purpose === DONATION_PURPOSE,
+  );
+  const product =
+    existing ??
+    (await stripe.products.create({
+      name: "WIAL Better World Fund donation",
+      description:
+        "Donation to the WIAL Better World Fund, bringing Action Learning to community organizations.",
+      metadata: { managed_by: "wial-platform", wial_purpose: DONATION_PURPOSE },
+    }));
+  cachedDonationProductId = {
+    id: product.id,
+    expires: Date.now() + DONATION_PRODUCT_CACHE_TTL_MS,
+  };
+  return product.id;
+}
+
+/**
+ * Start a Checkout Session for a donor-chosen donation amount. Unlike
+ * createCheckoutSession (which sells a fixed Price), this builds the Price
+ * inline for the exact amount the donor entered, under the shared donation
+ * Product from getDonationProduct.
+ */
+export async function createDonationCheckoutSession(input: {
+  amount: number;
+  comment: string | null;
+  appUrl: string;
+  user: UserProfile | null;
+}): Promise<string> {
+  const stripe = await getStripeClient();
+  if (!stripe) {
+    throw new PaymentsError("stripe-not-configured");
+  }
+  if (
+    !Number.isFinite(input.amount) ||
+    input.amount < DONATION_MIN_MINOR ||
+    input.amount > DONATION_MAX_MINOR
+  ) {
+    throw new PaymentsError("invalid-amount");
+  }
+  const productId = await getDonationProduct(stripe);
+  const session = await stripe.checkout.sessions
+    .create({
+      mode: "payment",
+      submit_type: "donate",
+      line_items: [
+        {
+          price_data: {
+            currency: "usd",
+            unit_amount: input.amount,
+            product: productId,
+          },
+          quantity: 1,
+        },
+      ],
+      customer_email: input.user?.email || undefined,
+      billing_address_collection: "required",
+      success_url: `${input.appUrl}/pay/success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${input.appUrl}/better-world/donate?cancelled=1`,
+      metadata: {
+        source: DONATION_PURPOSE,
+        comment: input.comment ?? "",
+        userId: input.user?.id ?? "",
+        userName: input.user?.name ?? "",
+        chapterId: input.user?.chapterId ?? "",
+      },
+    })
+    .catch((error: unknown) => {
+      console.error("Could not create the donation checkout session:", error);
+      return null;
+    });
+  if (!session?.url) {
+    throw new PaymentsError("checkout-failed");
+  }
+  return session.url;
+}
+
 type StripePaymentRow = {
   id: string;
   stripe_session_id: string;
@@ -255,6 +354,9 @@ function mapPaymentRow(row: StripePaymentRow): PaymentRecord {
     userId: row.user_id,
     status: row.status,
     paidAt: row.paid_at,
+    // Not selected from `stripe_payments` here — only populated fresh from
+    // Stripe by recordCheckoutSession, right after checkout.
+    source: null,
   };
 }
 
@@ -292,6 +394,7 @@ export async function recordCheckoutSession(sessionId: string): Promise<PaymentR
     userId: session.metadata?.userId || null,
     status: "paid",
     paidAt: new Date(session.created * 1000).toISOString(),
+    source: session.metadata?.source ?? null,
   };
 
   const client = createServiceRoleSupabaseClient();

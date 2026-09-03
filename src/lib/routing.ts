@@ -63,6 +63,7 @@ const aliasMap = new Map<string, string>([
     "/better-world/singapore-association-for-the-deaf",
   ],
   ["share-your-better-world-story", "/contact"],
+  ["wial-better-world-fund-donation", "/better-world/donate"],
   ["about-us", "/about"],
   ["about-us/leadership", "/about"],
   ["board-of-directors", "/about"],

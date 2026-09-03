@@ -1,5 +1,10 @@
 import { describe, expect, it } from "vitest";
-import { describeStripeKey, formatMinorAmount, toMinorUnits } from "./payments-format";
+import {
+  describeStripeKey,
+  formatMinorAmount,
+  parseDonationAmount,
+  toMinorUnits,
+} from "./payments-format";
 
 describe("formatMinorAmount", () => {
   it("formats two-decimal currencies from minor units", () => {
@@ -50,5 +55,29 @@ describe("describeStripeKey", () => {
     expect(describeStripeKey("sk_test_short").valid).toBe(false);
     expect(describeStripeKey("").valid).toBe(false);
     expect(describeStripeKey(null).valid).toBe(false);
+  });
+});
+
+describe("parseDonationAmount", () => {
+  it("accepts a preset amount", () => {
+    expect(parseDonationAmount("2500", "")).toBe(2500);
+    expect(parseDonationAmount("20000", "")).toBe(20000);
+  });
+
+  it("parses a valid 'other' amount", () => {
+    expect(parseDonationAmount("other", "25")).toBe(2500);
+    expect(parseDonationAmount("other", "25.50")).toBe(2550);
+    expect(parseDonationAmount("other", "$1,000")).toBe(100000);
+  });
+
+  it("rejects a missing or unparsable amount", () => {
+    expect(parseDonationAmount("", "25")).toBeNull();
+    expect(parseDonationAmount("other", "abc")).toBeNull();
+    expect(parseDonationAmount("other", "")).toBeNull();
+  });
+
+  it("rejects amounts outside the donation bounds", () => {
+    expect(parseDonationAmount("other", "0.50")).toBeNull();
+    expect(parseDonationAmount("other", "60000")).toBeNull();
   });
 });
