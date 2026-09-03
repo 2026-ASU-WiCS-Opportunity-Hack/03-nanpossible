@@ -158,6 +158,13 @@
           ]
         },
         {
+          "type": "prose",
+          "title": "Our Global Team",
+          "paragraphs": [
+            "WIAL is a global organization with members across six continents and dozens of countries. Our team spans every age, culture, nationality, language, and occupation, brought together by a shared passion for Action Learning — a diversity of perspective that makes the work better for everyone WIAL serves."
+          ]
+        },
+        {
           "type": "people_grid",
           "title": "Board of Directors",
           "description": "WIAL is governed by a volunteer Board of Directors drawn from the global Action Learning community. The President, Vice President, and Treasurer together form the Executive Committee, and the board is supported by WIAL's Executive Director.",
@@ -228,6 +235,27 @@
           "body": "Recognizing excellence in Action Learning",
           "href": "/awards",
           "label": "See Awards"
+        },
+        {
+          "type": "cta",
+          "title": "Certification",
+          "body": "Become a certified Action Learning coach",
+          "href": "/certification",
+          "label": "Get Certified"
+        },
+        {
+          "type": "cta",
+          "title": "Become an Affiliate",
+          "body": "Bring Action Learning to your region as a WIAL affiliate",
+          "href": "/become-an-affiliate",
+          "label": "Learn More"
+        },
+        {
+          "type": "cta",
+          "title": "Partners",
+          "body": "Join WIAL's global network of organizational partners",
+          "href": "/partners",
+          "label": "View Partners"
         }
       ]
     },
@@ -235,7 +263,7 @@
       "description": "Learn about the World Institute for Action Learning (WIAL) - the world's leading certifying body for Action Learning, our mission, vision, history, and global impact.",
       "sourceUrl": "https://wial.org/about-us/",
       "sourceStatus": "migrated-from-wial",
-      "sourceNotes": "Full content migrated from wial.org/about-us/ with Better World Fund, Conferences, and Awards links added (Awards now internal at /awards). Leadership consolidated from wial.org board-of-directors, executive-committee (subset of the board, flagged inline), directors-emeritus, and advisory-board pages; photos vendored under public/leadership/ (no hotlinking). Purpose section text extracted from the Purpose-Vision-Mission one-pager image; the Marquardt quote graphic (Quote2.jpg) is rendered as a native quote block; session photos (IMG_3408 banner thumb, IMG_5388) vendored under public/about/."
+      "sourceNotes": "Full content migrated from wial.org/about-us/ with Better World Fund, Conferences, and Awards links added (Awards now internal at /awards). Leadership consolidated from wial.org board-of-directors, executive-committee (subset of the board, flagged inline), directors-emeritus, and advisory-board pages; photos vendored under public/leadership/ (no hotlinking). Purpose section text extracted from the Purpose-Vision-Mission one-pager image; the Marquardt quote graphic (Quote2.jpg) is rendered as a native quote block; session photos (IMG_3408 banner thumb, IMG_5388) vendored under public/about/. wial.org/wials-team/ folded in (issue #119): as of its March 2026 revision that page no longer lists individual staff — it is a \"join our team\" recruiting page (banner + directory pointer + Become a Coach/Affiliate/Partner cards), so there was no staff roster to add to a people_grid. Its diversity intro paragraph became the \"Our Global Team\" prose section above the Board of Directors, and its three recruiting cards became internal CTAs (Certification, Become an Affiliate, Partners) rather than a people_grid — no photo/bio content existed to migrate. The page's banner image and the three Elementor grid thumbnails were generic stock/clip-art filler and were dropped, not vendored."
     }
   },
   {

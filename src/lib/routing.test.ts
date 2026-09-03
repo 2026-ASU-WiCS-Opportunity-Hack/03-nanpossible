@@ -196,6 +196,7 @@ describe("normalizeSegments", () => {
       ["executive-committee"],
       ["directors-emeritus"],
       ["advisory-board"],
+      ["wials-team"],
     ]) {
       expect(normalizeSegments(path)).toEqual({
         slug: null,
