@@ -81,7 +81,39 @@ export function buildSiteAssistantContext() {
     `Resources page summary: ${resources?.bodyRichtext.heroIntro ?? ""}`,
     `Contact page summary: ${contact?.bodyRichtext.heroIntro ?? ""}`,
     "Direct contact: info@wial.org | P.O. Box 7601 #83791, Washington, DC 20044",
-    "Certification hub anchors: /certification#calc, #palc, #salc, #malc, #progression, #badges",
+    "Certification hub anchors: /certification#calc, #palc, #salc, #malc, #progression, #why, #become-a-coach, #programs, #foundations, #calc-courses, #in-house, #badges",
+    [
+      `Who gets certified: ${certification.becomeACoach.intro.join(" ")}`,
+      `Industries: ${certification.becomeACoach.industries.join(" | ")}`,
+      certification.becomeACoach.joinNote,
+      `Solution Spheres: ${certification.becomeACoach.servicesHref}`,
+      "Become a coach: /certification#become-a-coach or /contact",
+    ].join("\n"),
+    [
+      `Programs: ${certification.programs.intro.join(" ")}`,
+      certification.programs.items
+        .map((item) => `${item.title}: ${item.body}`)
+        .join(" | "),
+      "Programs details: /certification#programs",
+    ].join("\n"),
+    [
+      `Foundations of Action Learning: ${certification.foundations.intro.join(" ")}`,
+      `Foundations is for: ${certification.foundations.forWho.join(" | ")}`,
+      `In-house Foundations: ${certification.foundations.inHouse.paragraphs.join(" ")}`,
+      "Foundations details: /certification#foundations",
+    ].join("\n"),
+    [
+      `CALC courses: ${certification.calcCourses.intro.join(" ")}`,
+      `Prerequisite: ${certification.calcCourses.prerequisite.body}`,
+      `CALC 1: ${certification.calcCourses.modules[0].summary} ${certification.calcCourses.modules[0].bullets.join(" | ")}`,
+      `CALC 2: ${certification.calcCourses.modules[1].summary} ${certification.calcCourses.modules[1].bullets.join(" | ")}`,
+      "CALC courses details: /certification#calc-courses",
+    ].join("\n"),
+    [
+      `In-house programs: ${certification.inHouse.intro.join(" ")}`,
+      `In-house quote: "${certification.inHouse.quote.quote}" — ${certification.inHouse.quote.attribution}`,
+      "In-house details: /certification#in-house or /contact",
+    ].join("\n"),
     [
       `Digital badges: ${certification.badging.intro.beforeCredly}${certification.badging.intro.credlyLabel} (${certification.badging.credlyUrl})${certification.badging.intro.afterCredly}`,
       `A badge shows: ${certification.badging.shows.join(" | ")}`,
@@ -105,6 +137,59 @@ export function buildFallbackAssistantReply(query: string) {
     return [
       "For certification help, contact WIAL at `info@wial.org`.",
       "You can also use `/contact` for the shared WIAL contact route.",
+    ].join("\n\n");
+  }
+
+  if (normalized.includes("foundation")) {
+    const foundations = certification.foundations;
+    return [
+      foundations.intro.join(" "),
+      `${foundations.forTitle}: ${foundations.forWho.join(", ")}.`,
+      `${foundations.inHouse.title}: ${foundations.inHouse.paragraphs[0]}`,
+      "Learn more at `/certification#foundations`. The six components and two ground rules are on `/action-learning`.",
+    ].join("\n\n");
+  }
+
+  if (
+    normalized.includes("in-house") ||
+    normalized.includes("in house") ||
+    normalized.includes("inhouse")
+  ) {
+    const inHouse = certification.inHouse;
+    return [
+      inHouse.intro[0],
+      inHouse.intro[2],
+      `Learn more at \`/certification#in-house\`, or contact WIAL at \`/contact\`.`,
+    ].join("\n\n");
+  }
+
+  if (
+    normalized.includes("become a coach") ||
+    normalized.includes("who gets") ||
+    normalized.includes("who gets certified")
+  ) {
+    const becomeACoach = certification.becomeACoach;
+    return [
+      becomeACoach.intro.join(" "),
+      `${becomeACoach.industriesLead} ${becomeACoach.industries.join(", ")}, ${becomeACoach.industriesMore}.`,
+      becomeACoach.joinNote,
+      `Solution Spheres are on \`/our-services\`. To get started, see \`/certification#become-a-coach\` or \`/contact\`.`,
+    ].join("\n\n");
+  }
+
+  if (
+    normalized.includes("calc course") ||
+    normalized.includes("calc 1") ||
+    normalized.includes("calc 2") ||
+    normalized.includes("calc workshop")
+  ) {
+    const courses = certification.calcCourses;
+    return [
+      courses.intro[0],
+      `${courses.prerequisite.label}: ${courses.prerequisite.body}.`,
+      `${courses.modules[0].title}: ${courses.modules[0].summary}`,
+      `${courses.modules[1].title}: ${courses.modules[1].summary}`,
+      "Learn more at `/certification#calc-courses`.",
     ].join("\n\n");
   }
 

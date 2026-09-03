@@ -52,6 +52,29 @@ describe("normalizeSegments", () => {
     });
   });
 
+  it("redirects legacy certification subpages to the certification hub", () => {
+    expect(normalizeSegments(["certification", "foundations"])).toEqual({
+      slug: null,
+      redirectTo: "/certification",
+    });
+    expect(normalizeSegments(["certification", "calc-courses"])).toEqual({
+      slug: null,
+      redirectTo: "/certification",
+    });
+    expect(normalizeSegments(["certification", "in-house-programs"])).toEqual({
+      slug: null,
+      redirectTo: "/certification",
+    });
+    expect(normalizeSegments(["programs"])).toEqual({
+      slug: null,
+      redirectTo: "/certification",
+    });
+    expect(normalizeSegments(["become-a-coach"])).toEqual({
+      slug: null,
+      redirectTo: "/certification",
+    });
+  });
+
   it("resolves the conferences page slug", () => {
     expect(normalizeSegments(["conferences"])).toEqual({
       slug: "conferences",

@@ -32,6 +32,11 @@ const aliasMap = new Map<string, string>([
   ["2024-wial-global-conference", "/conferences"],
   ["client-testimonials", "/clients"],
   ["share-your-success-story", "/clients/success-story"],
+  ["certification/foundations", "/certification"],
+  ["certification/calc-courses", "/certification"],
+  ["certification/in-house-programs", "/certification"],
+  ["programs", "/certification"],
+  ["become-a-coach", "/certification"],
 ]);
 
 const canonicalMap = new Map<string, CanonicalPageSlug>([

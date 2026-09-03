@@ -1,9 +1,15 @@
 import {
   certificationBadging,
+  certificationBecomeACoach,
+  certificationCalcCourses,
+  certificationFoundations,
   certificationHero,
+  certificationInHouse,
+  certificationPrograms,
   certificationProgression,
   certificationRecertificationRules,
   certificationTracks,
+  certificationWhy,
 } from "@/content/certification-hub";
 import type {
   CertificationLevel,
@@ -24,6 +30,12 @@ const levelKeyMap: Record<CertificationLevel, CertificationTrackKey> = {
 export function getCertificationHubContent() {
   return {
     hero: certificationHero,
+    why: certificationWhy,
+    becomeACoach: certificationBecomeACoach,
+    programs: certificationPrograms,
+    foundations: certificationFoundations,
+    calcCourses: certificationCalcCourses,
+    inHouse: certificationInHouse,
     badging: certificationBadging,
     progression: certificationProgression,
     tracks: certificationTracks,
