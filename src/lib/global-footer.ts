@@ -100,6 +100,30 @@ export function parseGlobalFooterContent(
   };
 }
 
+export function visibleFooterLinks(
+  links: GlobalFooterLink[],
+): GlobalFooterLink[] {
+  return links.filter((link) => link.label.trim().length > 0);
+}
+
+export function hasGlobalFooterContent(
+  content: GlobalFooterContent,
+  resolvedEmail: string = content.email,
+): boolean {
+  return (
+    content.eyebrow.trim().length > 0 ||
+    content.heading.trim().length > 0 ||
+    content.description.trim().length > 0 ||
+    content.contactHeading.trim().length > 0 ||
+    content.address.trim().length > 0 ||
+    resolvedEmail.trim().length > 0 ||
+    content.linksHeading.trim().length > 0 ||
+    visibleFooterLinks(content.links).length > 0 ||
+    content.leftLegal.trim().length > 0 ||
+    content.rightLegal.trim().length > 0
+  );
+}
+
 export function parseGlobalFooterState(value: unknown): GlobalFooterState {
   const record =
     value && typeof value === "object" && !Array.isArray(value)

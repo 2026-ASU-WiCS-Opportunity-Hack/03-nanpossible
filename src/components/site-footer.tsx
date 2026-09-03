@@ -3,6 +3,7 @@ import { SiteFooterContent } from "@/components/site-footer-content";
 import { getContentPage } from "@/lib/content";
 import {
   defaultGlobalFooterContent,
+  hasGlobalFooterContent,
   parseGlobalFooterState,
 } from "@/lib/global-footer";
 import type { SiteContext } from "@/lib/types";
@@ -21,6 +22,11 @@ export async function SiteFooter({ siteContext }: SiteFooterProps) {
   });
   const footerState = parseGlobalFooterState(footerPage?.bodyJson);
   const content = footerState.published ?? defaultGlobalFooterContent;
+  const resolvedEmail = siteContext.tenant?.contactEmail ?? content.email;
+
+  if (!hasGlobalFooterContent(content, resolvedEmail)) {
+    return null;
+  }
 
   return (
     <footer className="pb-8">
