@@ -22,10 +22,6 @@ describe("normalizeSegments", () => {
       slug: null,
       redirectTo: "/contact",
     });
-    expect(normalizeSegments(["library"])).toEqual({
-      slug: null,
-      redirectTo: "/clients",
-    });
     expect(normalizeSegments(["affiliates"])).toEqual({
       slug: null,
       redirectTo: "/coaches",
@@ -46,32 +42,76 @@ describe("normalizeSegments", () => {
       slug: null,
       redirectTo: "/clients",
     });
+    expect(normalizeSegments(["our-clients"])).toEqual({
+      slug: null,
+      redirectTo: "/clients",
+    });
     expect(normalizeSegments(["share-your-success-story"])).toEqual({
       slug: null,
       redirectTo: "/clients/success-story",
     });
   });
 
-  it("redirects legacy certification subpages to the certification hub", () => {
-    expect(normalizeSegments(["certification", "foundations"])).toEqual({
+  it("redirects the legacy library, WIAL Talk, endorsed-products, and blog paths to /resources", () => {
+    for (const path of [
+      "library",
+      "wial-talk",
+      "action-learning/library",
+      "action-learning/library/articles",
+      "wial-endorsed-products",
+      "category/wial-blog",
+    ]) {
+      expect(normalizeSegments(path.split("/"))).toEqual({
+        slug: null,
+        redirectTo: "/resources",
+      });
+    }
+  });
+
+  it("redirects legacy wial.org blog post URLs to their /resources articles", () => {
+    expect(normalizeSegments(["future-action-learning-2"])).toEqual({
       slug: null,
-      redirectTo: "/certification",
+      redirectTo: "/resources/the-future-is-action-learning",
     });
-    expect(normalizeSegments(["certification", "calc-courses"])).toEqual({
+    expect(normalizeSegments(["fresh-look-ground-rule-1-call-apply-strictly-coach"])).toEqual({
       slug: null,
-      redirectTo: "/certification",
+      redirectTo: "/resources/action-learning-ground-rule-1",
     });
-    expect(normalizeSegments(["certification", "in-house-programs"])).toEqual({
-      slug: null,
-      redirectTo: "/certification",
+  });
+
+  it("resolves the resources page slug", () => {
+    expect(normalizeSegments(["resources"])).toEqual({
+      slug: "resources",
+      redirectTo: null,
     });
-    expect(normalizeSegments(["programs"])).toEqual({
-      slug: null,
-      redirectTo: "/certification",
+  });
+
+  it("resolves the become-an-affiliate page slug", () => {
+    expect(normalizeSegments(["become-an-affiliate"])).toEqual({
+      slug: "become-an-affiliate",
+      redirectTo: null,
     });
-    expect(normalizeSegments(["become-a-coach"])).toEqual({
+  });
+
+  it("resolves the partners page slug and redirects the legacy become-a-partner path", () => {
+    expect(normalizeSegments(["partners"])).toEqual({
+      slug: "partners",
+      redirectTo: null,
+    });
+    expect(normalizeSegments(["become-a-partner"])).toEqual({
       slug: null,
-      redirectTo: "/certification",
+      redirectTo: "/partners",
+    });
+  });
+
+  it("resolves the privacy page slug and redirects the legacy privacy-policy path", () => {
+    expect(normalizeSegments(["privacy"])).toEqual({
+      slug: "privacy",
+      redirectTo: null,
+    });
+    expect(normalizeSegments(["privacy-policy"])).toEqual({
+      slug: null,
+      redirectTo: "/privacy",
     });
   });
 
@@ -126,6 +166,58 @@ describe("normalizeSegments", () => {
     });
   });
 
+  it("redirects legacy Better World story paths (multi-segment) to their /better-world articles", () => {
+    expect(
+      normalizeSegments([
+        "projects",
+        "partnership-world-institute-action-learning-international-federation-red-cross",
+      ]),
+    ).toEqual({
+      slug: null,
+      redirectTo: "/better-world/ifrc-partnership",
+    });
+    expect(
+      normalizeSegments(["projects", "wial-gives-back-thailand-hospital-administration-association"]),
+    ).toEqual({
+      slug: null,
+      redirectTo: "/better-world/thailand-hospital-administration",
+    });
+    expect(
+      normalizeSegments(["projects", "wial-gives-back-supports-thailand-entrepreneurship-club"]),
+    ).toEqual({
+      slug: null,
+      redirectTo: "/better-world/thailand-entrepreneurship-club",
+    });
+    expect(
+      normalizeSegments(["projects", "grenada-red-cross-discovers-power-wial-action-learning"]),
+    ).toEqual({
+      slug: null,
+      redirectTo: "/better-world/grenada-red-cross",
+    });
+    expect(normalizeSegments(["projects", "wial-gives-back-protector"])).toEqual({
+      slug: null,
+      redirectTo: "/better-world/malaysia-we-the-protector",
+    });
+    expect(
+      normalizeSegments(["projects", "wial-gives-back-supports-singapores-centre-non-profit-leadership"]),
+    ).toEqual({
+      slug: null,
+      redirectTo: "/better-world/singapore-centre-for-non-profit-leadership",
+    });
+    expect(
+      normalizeSegments(["projects", "singapore-book-council-team-benefited-learning-wials-process"]),
+    ).toEqual({
+      slug: null,
+      redirectTo: "/better-world/singapore-book-council",
+    });
+    expect(
+      normalizeSegments(["projects", "wial-provides-action-learning-coaching-singapore-association-deaf"]),
+    ).toEqual({
+      slug: null,
+      redirectTo: "/better-world/singapore-association-for-the-deaf",
+    });
+  });
+
   it("resolves the awards page slug and redirects legacy award paths", () => {
     expect(normalizeSegments(["awards"])).toEqual({
       slug: "awards",
@@ -156,6 +248,7 @@ describe("normalizeSegments", () => {
       ["executive-committee"],
       ["directors-emeritus"],
       ["advisory-board"],
+      ["wials-team"],
     ]) {
       expect(normalizeSegments(path)).toEqual({
         slug: null,

@@ -1,15 +1,9 @@
 import { getCurrentUser } from "@/lib/auth";
 import { NextResponse } from "next/server";
-import Stripe from "stripe";
+import { getStripeClient } from "@/lib/payments";
 import { readFile, writeFile } from "fs/promises";
 import { join } from "path";
 import { randomUUID } from "crypto";
-
-function getStripe() {
-  const key = process.env.STRIPE_SECRET_KEY;
-  if (!key) throw new Error("STRIPE_SECRET_KEY is not configured");
-  return new Stripe(key);
-}
 
 type PaymentRecord = {
   id: string;
@@ -27,6 +21,12 @@ type PaymentRecord = {
   paidAt: string;
 };
 
+async function requireStripe() {
+  const stripe = await getStripeClient();
+  if (!stripe) throw new Error("Stripe is not configured");
+  return stripe;
+}
+
 export async function GET(req: Request) {
   const user = await getCurrentUser();
 
@@ -42,7 +42,7 @@ export async function GET(req: Request) {
   }
 
   try {
-    const session = await getStripe().checkout.sessions.retrieve(sessionId);
+    const session = await (await requireStripe()).checkout.sessions.retrieve(sessionId);
 
     if (session.payment_status !== "paid") {
       return NextResponse.redirect(new URL("/account/dues?error=payment-failed", req.url));

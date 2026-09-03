@@ -128,8 +128,8 @@ export default async function CoachesDirectoryPage() {
               </p>
             </div>
             <div className="flex flex-wrap items-center gap-3">
-              <Link className="button-link primary" href="/contact">
-                Contact us
+              <Link className="button-link primary" href="/become-an-affiliate">
+                Start an affiliate
               </Link>
               <Link className="button-link ghost" href="/certification">
                 Learn about certification

@@ -44,10 +44,15 @@ export async function generateMetadata({
 
   if (!page) return {};
 
+  const title = siteContext.tenant
+    ? `${page.title} — ${siteContext.tenant.name}`
+    : page.title;
+  const description = page.seo?.description || page.bodyRichtext.heroIntro || undefined;
+
   return {
-    title: siteContext.tenant
-      ? `${page.title} — ${siteContext.tenant.name}`
-      : page.title,
+    title,
+    description,
+    openGraph: { title, description, type: "website" },
   };
 }
 

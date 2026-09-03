@@ -36,7 +36,10 @@ export const defaultGlobalFooterContent: GlobalFooterContent = {
     { id: "about", label: "About WIAL", href: "/about" },
     { id: "certification", label: "Certification", href: "/certification" },
     { id: "clients", label: "Clients", href: "/clients" },
+    { id: "resources", label: "Resources", href: "/resources" },
+    { id: "pay", label: "Make a payment", href: "/pay" },
     { id: "contact", label: "Contact", href: "/contact" },
+    { id: "privacy", label: "Privacy", href: "/privacy" },
   ],
   leftLegal: "© World Institute for Action Learning. All rights reserved.",
   rightLegal:

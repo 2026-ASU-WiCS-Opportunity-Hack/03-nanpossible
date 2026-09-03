@@ -10,7 +10,10 @@ export type CanonicalPageSlug =
   | "action-learning"
   | "awards"
   | "our-services"
-  | "conferences";
+  | "conferences"
+  | "become-an-affiliate"
+  | "resources"
+  | "privacy";
 
 export type AppRole =
   | "platform_admin"
@@ -365,6 +368,72 @@ export type ContentSection =
         videoTitle?: string;
       }[];
     };
+
+export type LibraryKind =
+  | "article"
+  | "book"
+  | "video"
+  | "podcast"
+  | "poster"
+  | "infographic";
+
+/** One entry of the migrated wial.org Library (`library_items` / `src/content/library.json`). */
+export type LibraryItem = {
+  slug: string;
+  kind: LibraryKind;
+  title: string;
+  summary: string | null;
+  publishedOn: string;
+  sourceUrl: string;
+  /** Amazon / YouTube page for books and videos. */
+  externalUrl: string | null;
+  /** Object path inside the public `resource-files` bucket (PDF, MP3, poster image). */
+  filePath: string | null;
+  fileType: string | null;
+  thumbnailPath: string | null;
+};
+
+/** A deduplicated WIAL Talk coaching scenario (`src/content/wial-talk-scenarios.json`). */
+export type WialTalkScenario = {
+  slug: string;
+  title: string;
+  prompt: string;
+  firstPostedOn: string;
+  lastPostedOn: string;
+  timesPosted: number;
+};
+
+/** A purchasable item on /pay: an active one-time Stripe Price with its Product. */
+export type PaymentType = {
+  priceId: string;
+  productId: string;
+  name: string;
+  nickname: string | null;
+  description: string | null;
+  /** Minor units (cents) as Stripe stores them. */
+  amount: number;
+  currency: string;
+};
+
+export type PaymentRecord = {
+  id: string | null;
+  stripeSessionId: string;
+  productName: string;
+  amount: number;
+  currency: string;
+  payerEmail: string | null;
+  payerName: string | null;
+  userId: string | null;
+  status: string;
+  paidAt: string | null;
+};
+
+export type StripeConfigStatus = {
+  configured: boolean;
+  source: "vault" | "env" | "none";
+  mode: "test" | "live" | null;
+  lastFour: string | null;
+};
 
 export type ContentBody = {
   heroIntro: string;

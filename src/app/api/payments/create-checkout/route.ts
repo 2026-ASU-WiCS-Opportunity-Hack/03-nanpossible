@@ -1,12 +1,12 @@
 import { getCurrentUser } from "@/lib/auth";
 import { buildAbsoluteUrl } from "@/lib/auth";
 import { NextResponse } from "next/server";
-import Stripe from "stripe";
+import { getStripeClient } from "@/lib/payments";
 
-function getStripe() {
-  const key = process.env.STRIPE_SECRET_KEY;
-  if (!key) throw new Error("STRIPE_SECRET_KEY is not configured");
-  return new Stripe(key);
+async function requireStripe() {
+  const stripe = await getStripeClient();
+  if (!stripe) throw new Error("Stripe is not configured");
+  return stripe;
 }
 
 export async function POST(req: Request) {
@@ -26,7 +26,7 @@ export async function POST(req: Request) {
 
     const appUrl = await buildAbsoluteUrl("");
 
-    const session = await getStripe().checkout.sessions.create({
+    const session = await (await requireStripe()).checkout.sessions.create({
       mode: "payment",
       payment_method_types: ["card"],
       line_items: [
