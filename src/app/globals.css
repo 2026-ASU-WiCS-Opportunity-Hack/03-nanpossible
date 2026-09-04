@@ -1236,29 +1236,8 @@ html.cursor-large * {
     opacity var(--duration-fast) var(--ease-standard);
 }
 
-.coach-map-marker.is-dimmed .coach-map-dot {
-  opacity: 0.28;
-}
-
-.coach-map-marker.is-active .coach-map-dot,
 .coach-map-marker:hover .coach-map-dot {
   fill: var(--teal-deep);
-}
-
-.coach-map-marker.is-dimmed:hover .coach-map-dot {
-  opacity: 1;
-}
-
-.coach-map-dot-label {
-  fill: #ffffff;
-  font-size: 11px;
-  font-weight: 700;
-  dominant-baseline: central;
-  pointer-events: none;
-}
-
-.coach-map-marker.is-dimmed .coach-map-dot-label {
-  opacity: 0.28;
 }
 
 .coach-map-tooltip {
@@ -1297,19 +1276,12 @@ html.cursor-large * {
   font-size: 0.78rem;
 }
 
-.coach-map-footer {
+.coach-map-legend {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem;
+  gap: 0.55rem 1.1rem;
   margin-top: 0.75rem;
-}
-
-.coach-map-legend {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
   color: var(--neutral);
   font-size: 0.78rem;
 }
@@ -1317,32 +1289,7 @@ html.cursor-large * {
 .coach-map-legend-item {
   display: inline-flex;
   align-items: center;
-  gap: 0.25rem;
-}
-
-.coach-map-legend-caption {
-  margin-left: 0.2rem;
-}
-
-.coach-map-hint {
-  color: var(--neutral);
-  font-size: 0.78rem;
-}
-
-.coach-map-clear {
-  border: 1px solid rgba(209, 0, 52, 0.25);
-  border-radius: 999px;
-  background: rgba(209, 0, 52, 0.08);
-  padding: 0.4rem 0.85rem;
-  color: var(--teal-deep);
-  font-size: 0.78rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: background var(--duration-fast) var(--ease-standard);
-}
-
-.coach-map-clear:hover {
-  background: rgba(209, 0, 52, 0.16);
+  gap: 0.35rem;
 }
 
 .coach-map-affiliate-ring {
@@ -1354,17 +1301,8 @@ html.cursor-large * {
     opacity var(--duration-fast) var(--ease-standard);
 }
 
-.coach-map-marker.is-dimmed .coach-map-affiliate-ring {
-  opacity: 0.28;
-}
-
-.coach-map-marker.is-active .coach-map-affiliate-ring,
 .coach-map-marker:hover .coach-map-affiliate-ring {
   stroke: var(--teal-deep);
-}
-
-.coach-map-marker.is-dimmed:hover .coach-map-affiliate-ring {
-  opacity: 1;
 }
 
 .coach-map-tooltip-affiliate {

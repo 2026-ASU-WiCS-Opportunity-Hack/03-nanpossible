@@ -2,7 +2,8 @@ import { cache } from "react";
 import { headers } from "next/headers";
 import type { Metadata } from "next";
 import { notFound, redirect } from "next/navigation";
-import { ContentPage } from "@/components/content-page";
+import { ContentPage, renderSection } from "@/components/content-page";
+import { GlobalNetworkSection } from "@/components/global-network-section";
 import { getContentPage } from "@/lib/content";
 import { getGlobalSiteContext, getLayoutSiteContext } from "@/lib/site-context";
 import { normalizeSegments } from "@/lib/routing";
@@ -76,6 +77,20 @@ export default async function MarketingPage({ params }: MarketingPageProps) {
 
   if (!page) {
     notFound();
+  }
+
+  // The global landing page leads with the world map of WIAL coaches and
+  // affiliates, ahead of the page's JSON sections. (A sibling page.tsx is not
+  // allowed next to an optional catch-all, so home is special-cased here.)
+  if (route.slug === "home" && siteContext.isGlobal) {
+    const body = page.bodyRichtext;
+    const heroPage = { ...page, bodyRichtext: { ...body, sections: [] } };
+    return (
+      <ContentPage page={heroPage} siteContext={siteContext}>
+        <GlobalNetworkSection />
+        {body.sections.map((section) => renderSection(section))}
+      </ContentPage>
+    );
   }
 
   return <ContentPage page={page} siteContext={siteContext} />;

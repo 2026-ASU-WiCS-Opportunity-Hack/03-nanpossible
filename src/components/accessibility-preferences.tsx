@@ -39,6 +39,7 @@ import {
   type AccessibilityLineHeight,
   type AccessibilityPreferences,
 } from "@/lib/accessibility-preferences";
+import { isExternalHref } from "@/lib/routing";
 
 type AccessibilityPreferencesProps = {
   navigationRoutes: AssistiveNavigationRoute[];
@@ -781,7 +782,11 @@ export function AccessibilityPreferencesWidget({
       case "navigate":
         setIsOpen(false);
         announce(`Voice navigation opened ${action.label}.`);
-        router.push(action.href);
+        if (isExternalHref(action.href)) {
+          window.location.assign(action.href);
+        } else {
+          router.push(action.href);
+        }
         return;
       case "scroll": {
         const behavior: ScrollBehavior =

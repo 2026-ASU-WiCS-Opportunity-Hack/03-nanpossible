@@ -1,10 +1,16 @@
 import type { CanonicalPageSlug, NavigationItem } from "@/lib/types";
 
+/**
+ * The public coach directory lives on WIAL's Brilliant Directories site; this
+ * platform no longer maintains the full coach roster for browsing.
+ */
+export const COACH_DIRECTORY_URL = "https://directory.wial.org/coaches";
+
 export const navigationItems: NavigationItem[] = [
   { href: "/about", label: "About WIAL" },
   { href: "/certification", label: "Certification" },
   { href: "/clients", label: "Clients" },
-  { href: "/coaches", label: "Coaches" },
+  { href: COACH_DIRECTORY_URL, label: "Coaches" },
   { href: "/resources", label: "Resources" },
   { href: "/partners", label: "Partners" },
   { href: "/contact", label: "Contact Us" },
@@ -105,6 +111,11 @@ const canonicalMap = new Map<string, CanonicalPageSlug>([
   ["resources", "resources"],
   ["privacy", "privacy"],
 ]);
+
+/** True for absolute http(s) URLs — nav items pointing off-site open in a new tab. */
+export function isExternalHref(href: string) {
+  return /^https?:\/\//i.test(href);
+}
 
 export const reservedSubdomains = new Set([
   "www",

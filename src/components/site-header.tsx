@@ -3,8 +3,11 @@ import { AccessibilityPreferencesWidget } from "@/components/accessibility-prefe
 import { MobileNav } from "@/components/mobile-nav";
 import { WialLogo } from "@/components/wial-logo";
 import { getAccountNavItems } from "@/lib/account";
-import { navigationItems } from "@/lib/routing";
+import { isExternalHref, navigationItems } from "@/lib/routing";
 import type { SiteContext, UserProfile } from "@/lib/types";
+
+const navLinkClassName =
+  "whitespace-nowrap rounded-full px-2 py-1 text-[11px] font-medium text-teal-deep transition hover:bg-accent-soft lg:px-2.5";
 
 type SiteHeaderProps = {
   siteContext: SiteContext;
@@ -34,17 +37,25 @@ export function SiteHeader({ siteContext, viewer }: SiteHeaderProps) {
             <WialLogo chapterLabel={chapterLabel} />
           </div>
 
-         <nav className="hidden flex-1 items-center justify-end gap-0 lg:flex">
-  {navigationItems.map((item) => (
-    <Link
-      className="whitespace-nowrap rounded-full px-2 py-1 text-[11px] font-medium text-teal-deep transition hover:bg-accent-soft lg:px-2.5"
-      href={item.href}
-      key={item.href}
-    >
-      {item.label}
-    </Link>
-  ))}
-</nav>
+          <nav className="hidden flex-1 items-center justify-end gap-0 lg:flex">
+            {navigationItems.map((item) =>
+              isExternalHref(item.href) ? (
+                <a
+                  className={navLinkClassName}
+                  href={item.href}
+                  key={item.href}
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  {item.label}
+                </a>
+              ) : (
+                <Link className={navLinkClassName} href={item.href} key={item.href}>
+                  {item.label}
+                </Link>
+              ),
+            )}
+          </nav>
 
           <div className="ml-auto flex shrink-0 items-center gap-2 sm:gap-3">
             {viewer ? (

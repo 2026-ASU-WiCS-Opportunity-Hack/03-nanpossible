@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
   buildCoachMapMarkers,
   coachCountryKey,
-  markerRadius,
+  MARKER_RADIUS,
   projectToWorldMap,
   WORLD_MAP,
 } from "./world-map";
@@ -52,15 +52,6 @@ describe("coachCountryKey", () => {
   });
 });
 
-describe("markerRadius", () => {
-  it("clamps between 6 and 26 and grows with count", () => {
-    expect(markerRadius(1)).toBeCloseTo(6.2, 1);
-    expect(markerRadius(86)).toBeCloseTo(24.4, 1);
-    expect(markerRadius(500)).toBe(26);
-    expect(markerRadius(0)).toBe(6);
-  });
-});
-
 describe("buildCoachMapMarkers", () => {
   it("aggregates a country into one marker regardless of distance", () => {
     const nyc = projectToWorldMap(40.71, -74.01);
@@ -70,8 +61,7 @@ describe("buildCoachMapMarkers", () => {
       point({ country: "United States", city: "San Francisco", lat: 37.77, lng: -122.42, count: 10 }),
     ]);
     expect(markers).toHaveLength(1);
-    expect(markers[0].count).toBe(40);
-    expect(markers[0].cityCount).toBe(2);
+    expect(markers[0].hasCoaches).toBe(true);
     expect(markers[0].countryCode).toBe("us");
     // Count-weighted centroid sits between the cities, closer to the larger crowd.
     expect(markers[0].x).toBeGreaterThan(sf.x);
@@ -102,7 +92,7 @@ describe("buildCoachMapMarkers", () => {
       point({ country: "Thailand", city: "Bangkok", lat: 13.76, lng: 100.5, count: 22 }),
     ]);
     expect(markers[0].label).toBe("Thailand");
-    expect(markers[0].cityCount).toBe(1);
+    expect(markers[0]).not.toHaveProperty("count");
   });
 
   it("drops points without a country", () => {
@@ -121,20 +111,19 @@ describe("buildCoachMapMarkers", () => {
       point({ country: "Singapore", city: "Singapore", lat: 1.35, lng: 103.82, count: 5 }),
       point({ country: "Malaysia", city: "Kuala Lumpur", lat: 3.14, lng: 101.69, count: 54 }),
     ]);
-    const [big, small] = markers;
-    const distance = Math.hypot(big.x - small.x, big.y - small.y);
-    expect(distance).toBeGreaterThanOrEqual(big.r + small.r + 2 - 0.01);
-    expect(Math.hypot(small.x - sg.x, small.y - sg.y)).toBeLessThanOrEqual(30.01);
-    expect(Math.hypot(big.x - kl.x, big.y - kl.y)).toBeLessThanOrEqual(30.01);
+    const [first, second] = markers;
+    const distance = Math.hypot(first.x - second.x, first.y - second.y);
+    expect(distance).toBeGreaterThanOrEqual(2 * MARKER_RADIUS + 2 - 0.01);
+    expect(Math.hypot(first.x - sg.x, first.y - sg.y)).toBeLessThanOrEqual(30.01);
+    expect(Math.hypot(second.x - kl.x, second.y - kl.y)).toBeLessThanOrEqual(30.01);
   });
 
-  it("paints large markers before small ones", () => {
+  it("keeps input order for coach markers regardless of coach counts", () => {
     const markers = buildCoachMapMarkers([
       point({ country: "Japan", city: "Tokyo", lat: 35.7, lng: 139.7, count: 1 }),
       point({ country: "China", lat: 35, lng: 103, count: 62 }),
     ]);
-    expect(markers[0].count).toBe(62);
-    expect(markers[1].count).toBe(1);
+    expect(markers.map((marker) => marker.country)).toEqual(["Japan", "China"]);
   });
 
   it("attaches an affiliate to its country's coach marker", () => {
@@ -144,7 +133,7 @@ describe("buildCoachMapMarkers", () => {
     );
     expect(markers).toHaveLength(1);
     expect(markers[0].affiliate).toEqual({ name: "WIAL Vietnam" });
-    expect(markers[0].count).toBe(12);
+    expect(markers[0].hasCoaches).toBe(true);
   });
 
   it("leaves affiliate null on countries without one", () => {
@@ -155,14 +144,13 @@ describe("buildCoachMapMarkers", () => {
     expect(markers[0].affiliate).toBeNull();
   });
 
-  it("adds a zero-count marker for an affiliate country with no coaches", () => {
+  it("adds a marker for an affiliate country with no coaches", () => {
     const markers = buildCoachMapMarkers(
       [],
       [{ name: "WIAL Singapore", country: "Singapore", href: "https://www.wial.sg/" }],
     );
     expect(markers).toHaveLength(1);
-    expect(markers[0].count).toBe(0);
-    expect(markers[0].cityCount).toBe(0);
+    expect(markers[0].hasCoaches).toBe(false);
     expect(markers[0].country).toBe("Singapore");
     expect(markers[0].countryCode).toBe("sg");
     expect(markers[0].affiliate).toEqual({ name: "WIAL Singapore" });
@@ -170,7 +158,6 @@ describe("buildCoachMapMarkers", () => {
     const anchor = projectToWorldMap(1.37, 103.82);
     expect(markers[0].x).toBeCloseTo(anchor.x, 0);
     expect(markers[0].y).toBeCloseTo(anchor.y, 0);
-    expect(markers[0].r).toBe(markerRadius(0));
   });
 
   it("skips map markers for affiliates whose country has no ISO code", () => {
@@ -181,11 +168,11 @@ describe("buildCoachMapMarkers", () => {
     expect(markers).toHaveLength(0);
   });
 
-  it("sorts affiliate-only markers after coach markers so they paint on top", () => {
+  it("lists affiliate-only markers after coach markers", () => {
     const markers = buildCoachMapMarkers(
       [point({ country: "Malaysia", city: "Kuala Lumpur", lat: 3.14, lng: 101.69, count: 20 })],
       [{ name: "WIAL Singapore", country: "Singapore", href: "https://www.wial.sg/" }],
     );
-    expect(markers.map((marker) => marker.count)).toEqual([20, 0]);
+    expect(markers.map((marker) => marker.hasCoaches)).toEqual([true, false]);
   });
 });
