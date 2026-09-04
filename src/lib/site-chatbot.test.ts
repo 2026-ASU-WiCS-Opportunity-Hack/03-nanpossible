@@ -37,4 +37,45 @@ describe("site chatbot fallback", () => {
     expect(reply).toContain("wialportal.org");
     expect(reply).toContain("LMS");
   });
+
+  it("returns Foundations guidance without sending the visitor to the LMS", () => {
+    const reply = buildFallbackAssistantReply(
+      "Tell me about the Foundations of Action Learning program",
+    );
+
+    expect(reply).toContain("two-day");
+    expect(reply).toContain("/certification#foundations");
+    expect(reply).toContain("/action-learning");
+    expect(reply).not.toContain("wialportal.org");
+  });
+
+  it("returns CALC course guidance for CALC 1 and workshop questions", () => {
+    const reply = buildFallbackAssistantReply("What is the CALC 1 workshop?");
+
+    expect(reply).toContain("CALC 1");
+    expect(reply).toContain("CALC 2");
+    expect(reply).toContain("/certification#calc-courses");
+    expect(reply).toContain("Foundations of Action Learning");
+  });
+
+  it("returns in-house program guidance without sending the visitor to the LMS", () => {
+    const reply = buildFallbackAssistantReply(
+      "Can WIAL run an in-house certification program?",
+    );
+
+    expect(reply).toContain("six days");
+    expect(reply).toContain("/certification#in-house");
+    expect(reply).toContain("/contact");
+    expect(reply).not.toContain("wialportal.org");
+  });
+
+  it("returns become-a-coach guidance from the merged certification hub", () => {
+    const reply = buildFallbackAssistantReply("How do I become a coach?");
+
+    expect(reply).toContain("six continents");
+    expect(reply).toContain("Marketing");
+    expect(reply).toContain("/our-services");
+    expect(reply).toContain("/certification#become-a-coach");
+    expect(reply).toContain("/contact");
+  });
 });

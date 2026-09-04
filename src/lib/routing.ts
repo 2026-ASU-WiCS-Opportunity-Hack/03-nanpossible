@@ -80,6 +80,11 @@ const aliasMap = new Map<string, string>([
   ["our-clients", "/clients"],
   ["client-testimonials", "/clients"],
   ["share-your-success-story", "/clients/success-story"],
+  ["certification/foundations", "/certification"],
+  ["certification/calc-courses", "/certification"],
+  ["certification/in-house-programs", "/certification"],
+  ["programs", "/certification"],
+  ["become-a-coach", "/certification"],
   ["privacy-policy", "/privacy"],
 ]);
 
