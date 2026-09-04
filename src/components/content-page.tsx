@@ -175,6 +175,23 @@ export function renderSection(section: ContentSection) {
       );
     case "pricing_tiers":
       return <PartnerPricing key={section.title} section={section} />;
+    case "statements":
+      return (
+        <section
+          aria-label={section.items.map((item) => item.label).join(", ")}
+          className="site-panel hero-panel-warm statements rounded-[2rem] p-7 md:p-10"
+          key={section.items.map((item) => item.label).join("-")}
+        >
+          <div className="statements-grid">
+            {section.items.map((item) => (
+              <article className="statement" key={item.label}>
+                <h2 className="statement-label">{item.label}</h2>
+                <p className="statement-body">{item.body}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+      );
     case "logo_grid":
       return (
         <section className="section-stack" key={section.title}>
