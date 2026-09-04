@@ -29,6 +29,7 @@ describe("account navigation", () => {
       "Coaches",
       "Users & roles",
       "Payments",
+      "Partners",
       "Coach approvals",
       "Platform guide",
       "Update account details",

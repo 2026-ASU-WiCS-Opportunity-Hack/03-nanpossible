@@ -1420,6 +1420,239 @@ html.cursor-large * {
   object-fit: cover;
 }
 
+/* logo_grid item without an image */
+.logo-grid-name {
+  display: block;
+  text-align: center;
+  font-family: var(--font-fraunces), serif;
+  font-size: clamp(0.85rem, 1.1vw, 1rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  color: var(--teal-deep);
+  text-wrap: balance;
+}
+
+/* Partner fee ladders (`pricing_tiers` section) */
+.pricing-finder {
+  display: grid;
+  gap: 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface-strong);
+  padding: 1.25rem 1.4rem;
+}
+
+.pricing-finder-label {
+  font-weight: 700;
+  color: var(--foreground);
+}
+
+.pricing-finder-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.pricing-finder-input {
+  max-width: 11rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.pricing-quick {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.pricing-chip {
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: transparent;
+  padding: 0.35rem 0.8rem;
+  color: var(--teal-deep);
+  font-size: 0.82rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
+  transition: background var(--duration-fast) var(--ease-standard),
+    border-color var(--duration-fast) var(--ease-standard);
+}
+
+.pricing-chip:hover,
+.pricing-chip.is-active {
+  border-color: rgba(209, 0, 52, 0.4);
+  background: rgba(209, 0, 52, 0.08);
+}
+
+.pricing-chip:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 2px;
+}
+
+.pricing-finder-result {
+  min-height: 1.5rem;
+  color: var(--neutral);
+  font-size: 0.95rem;
+}
+
+.pricing-plans {
+  display: grid;
+  gap: 1.25rem;
+  align-items: start;
+}
+
+@media (min-width: 768px) {
+  .pricing-plans {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.pricing-plan {
+  --plan-tone: var(--teal);
+  --plan-tone-soft: rgba(209, 0, 52, 0.08);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface-strong);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.pricing-plan.tone-accent {
+  --plan-tone: #7a6d00;
+  --plan-tone-soft: rgba(181, 163, 0, 0.14);
+}
+
+.pricing-plan-head {
+  display: grid;
+  gap: 0.35rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.pricing-plan-name {
+  font-family: var(--font-fraunces), serif;
+  font-size: 1.35rem;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--plan-tone);
+}
+
+.pricing-plan-desc {
+  color: var(--neutral);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.pricing-ladder {
+  position: relative;
+  display: grid;
+  margin: 0;
+  padding: 0.35rem 0 0;
+  list-style: none;
+}
+
+/* the rail every rung hangs from */
+.pricing-ladder::before {
+  content: "";
+  position: absolute;
+  top: 1.35rem;
+  bottom: 1.35rem;
+  left: calc(0.55rem - 1px);
+  width: 2px;
+  border-radius: 999px;
+  background: var(--line-strong);
+}
+
+.pricing-rung {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.4rem minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.9rem 0.75rem 0.9rem 0;
+  border-radius: var(--radius-sm);
+  transition: background var(--duration-fast) var(--ease-standard),
+    opacity var(--duration-fast) var(--ease-standard);
+}
+
+.pricing-rung-marker {
+  position: relative;
+  z-index: 1;
+  width: 0.8rem;
+  height: 0.8rem;
+  margin-left: 0.15rem;
+  border: 2px solid var(--line-strong);
+  border-radius: 999px;
+  background: var(--surface-strong);
+  transition: border-color var(--duration-fast) var(--ease-standard),
+    background var(--duration-fast) var(--ease-standard),
+    box-shadow var(--duration-fast) var(--ease-standard);
+}
+
+.pricing-rung-band {
+  color: var(--foreground);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.pricing-rung-price {
+  display: grid;
+  justify-items: end;
+  line-height: 1;
+}
+
+.pricing-rung-price strong {
+  font-family: var(--font-fraunces), serif;
+  font-size: 1.35rem;
+  letter-spacing: -0.02em;
+  color: var(--foreground);
+  font-variant-numeric: tabular-nums;
+}
+
+.pricing-rung-price small {
+  margin-top: 0.3rem;
+  color: var(--neutral);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.pricing-rung.is-match {
+  background: var(--plan-tone-soft);
+}
+
+.pricing-rung.is-match .pricing-rung-marker {
+  border-color: var(--plan-tone);
+  background: var(--plan-tone);
+  box-shadow: 0 0 0 4px var(--plan-tone-soft);
+}
+
+.pricing-rung.is-match .pricing-rung-price strong {
+  color: var(--plan-tone);
+}
+
+.pricing-rung.is-dim {
+  opacity: 0.55;
+}
+
+.pricing-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.pricing-footnote {
+  max-width: 42rem;
+  color: var(--neutral);
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
 .coach-result-chip {
   display: inline-flex;
   align-items: center;

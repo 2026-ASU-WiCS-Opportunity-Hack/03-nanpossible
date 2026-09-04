@@ -693,36 +693,72 @@
         ]
       },
       {
-        "type": "prose",
-        "title": "Not-for-profit pricing",
-        "paragraphs": [
-          "Annual partner fees for not-for-profit organizations are set by employee count:"
+        "type": "pricing_tiers",
+        "title": "Annual partner fees",
+        "intro": "Fees scale with the size of your organization, so a three-person consultancy and a global company each pay a fair share. Find your headcount to see yours.",
+        "plans": [
+          {
+            "name": "Not-for-profit",
+            "description": "Charities, universities, government agencies, and NGOs.",
+            "tone": "accent",
+            "bands": [
+              {
+                "label": "Fewer than 50 employees",
+                "price": "$250",
+                "min": 1,
+                "max": 49
+              },
+              {
+                "label": "50–500 employees",
+                "price": "$500",
+                "min": 50,
+                "max": 500
+              },
+              {
+                "label": "More than 500 employees",
+                "price": "$1,000",
+                "min": 501,
+                "max": null
+              }
+            ]
+          },
+          {
+            "name": "For-profit",
+            "description": "Consultancies, training providers, and companies of any size.",
+            "tone": "primary",
+            "bands": [
+              {
+                "label": "1–9 employees",
+                "price": "$500",
+                "min": 1,
+                "max": 9
+              },
+              {
+                "label": "10–99 employees",
+                "price": "$1,000",
+                "min": 10,
+                "max": 99
+              },
+              {
+                "label": "100–499 employees",
+                "price": "$2,000",
+                "min": 100,
+                "max": 499
+              },
+              {
+                "label": "500 or more employees",
+                "price": "$3,000",
+                "min": 500,
+                "max": null
+              }
+            ]
+          }
         ],
-        "bullets": [
-          "Fewer than 50 employees — $250 a year",
-          "50–500 employees — $500 a year",
-          "More than 500 employees — $1,000 a year"
-        ]
-      },
-      {
-        "type": "prose",
-        "title": "For-profit pricing",
-        "paragraphs": [
-          "Annual partner fees for for-profit organizations are set by employee count:"
-        ],
-        "bullets": [
-          "1–9 employees — $500 a year",
-          "10–99 employees — $1,000 a year",
-          "100–499 employees — $2,000 a year",
-          "More than 500 employees — $3,000 a year"
-        ]
-      },
-      {
-        "type": "prose",
-        "title": "Partner directory",
-        "paragraphs": [
-          "Browse the full WIAL partner directory to see current organizations partnering with WIAL worldwide."
-        ]
+        "footnote": "Fees are per year, in US dollars, and set by your organization's headcount. WIAL confirms your tier when it reviews your application.",
+        "cta": {
+          "label": "Apply to partner",
+          "href": "/partners/apply"
+        }
       },
       {
         "type": "cta",
