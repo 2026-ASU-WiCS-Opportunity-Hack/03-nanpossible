@@ -42,7 +42,7 @@ function byNewest(a: LibraryItem, b: LibraryItem) {
 
 /** Public URL of an object in the `resource-files` bucket (null when Supabase is not configured). */
 export function libraryFileUrl(objectPath: string | null): string | null {
-  const base = process.env.NEXT_PUBLIC_SUPABASE_URL?.replace(/\/$/, "");
+  const base = process.env.NEXT_PUBLIC_SUPABASE_URL?.trim().replace(/\/$/, "");
   if (!objectPath || !base) {
     return null;
   }
