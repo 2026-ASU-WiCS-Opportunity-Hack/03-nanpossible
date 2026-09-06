@@ -20,7 +20,7 @@ WIAL Platform — a multi-tenant SaaS for the World Institute for Action Learnin
 - `npm run crawl:affiliates` — crawl directory.wial.org/affiliates into `data/affiliates-directory.json`
 - `npm run import:affiliates` — upsert crawled affiliates into `chapters` (same `--emit-sql` option; logos re-hosted to the `affiliate-logos` bucket either way)
 - `npm run crawl:library` — crawl the wial.org Library + WIAL Talk via the WordPress REST API into `data/library-directory.json` and `src/content/wial-talk-scenarios.json`
-- `npm run import:library` — re-host library PDFs/MP3s/posters + thumbnails to the `resource-files` bucket, upsert `library_items`, and regenerate the `src/content/library.json` fixture (`--emit-sql out.sql`, `--skip-files`)
+- `npm run import:library` — re-host library PDFs/MP3s/posters + thumbnails to the `resource-files` bucket, upsert `library_items`, and regenerate the `src/content/library.json` fixture (`--emit-sql out.sql`, `--skip-files`, `--only slug-a,slug-b` to redo specific items without pruning the rest, `--concurrency N`; downloads retry on 429/5xx at 3-wide by default because wial.org rate-limits bursts; a file that cannot be hosted — source 404, or over the hosted project's 50 MB upload cap like the 56 MB Marquardt podcast MP3 — keeps its item listed with a link to the wial.org post). Run it against each environment; production was first populated on 2026-09-06
 - `npm run check:migration` — wial.org migration status report (crawler sheet × routing aliases × outbound links in pages.json; exits 1 if anything is untracked; see `rules/wial-migration.md`)
 - `npm run manage:roles` — CLI for role management
 

@@ -19,6 +19,16 @@
  *     # reuse the object paths already recorded in src/content/library.json
  *   npx tsx scripts/import-library.ts --thumbs-only
  *     # keep the main files, re-generate only the thumbnails
+ *   npx tsx scripts/import-library.ts --only slug-a,slug-b
+ *     # re-host just those items (e.g. after wial.org rate-limited a full run);
+ *     # every other item is carried over from src/content/library.json and no
+ *     # existing thumbnails are pruned
+ *   npx tsx scripts/import-library.ts --concurrency 2
+ *     # parallel downloads (default 3 — wial.org answers 429 above that)
+ *
+ * Downloads retry with backoff on 429/5xx. A main file that still cannot be
+ * re-hosted (source gone, or larger than the project's upload limit) keeps
+ * the item listed with a link to its wial.org post instead of dropping it.
  *
  * Thumbnails are resized with sharp to ≤480px wide WebP (~20–40 KB each) so a
  * /resources visit costs kilobytes of storage egress, not megabytes; the
@@ -36,7 +46,9 @@ const FIXTURE_PATH = path.join(process.cwd(), "src", "content", "library.json");
 const BUCKET = "resource-files";
 const FILE_PREFIX = "library";
 const THUMB_PREFIX = "library/thumbs";
-const CONCURRENCY = 6;
+const DEFAULT_CONCURRENCY = 3;
+const DOWNLOAD_ATTEMPTS = 5;
+let concurrency = DEFAULT_CONCURRENCY;
 const THUMB_MAX_WIDTH = 480;
 const THUMB_WEBP_QUALITY = 75;
 
@@ -99,17 +111,43 @@ async function ensurePublicBucket(supabase: SupabaseClient): Promise<void> {
   }
 }
 
-async function download(sourceUrl: string): Promise<{ body: Buffer; contentType: string | null }> {
-  const response = await fetch(sourceUrl, {
-    headers: { "user-agent": "WIAL-Platform importer (contact: greg@ohack.org)" },
-  });
-  if (!response.ok) {
-    throw new Error(`HTTP ${response.status}`);
+const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
+function backoffMs(attempt: number, retryAfter: string | null): number {
+  const hinted = retryAfter ? Number.parseFloat(retryAfter) * 1000 : Number.NaN;
+  if (Number.isFinite(hinted) && hinted > 0) {
+    return Math.min(60_000, hinted);
   }
-  return {
-    body: Buffer.from(await response.arrayBuffer()),
-    contentType: response.headers.get("content-type"),
-  };
+  return Math.min(30_000, 1500 * 2 ** (attempt - 1)) + Math.random() * 500;
+}
+
+/** Fetch with retries: wial.org rate-limits bursts (429) and its CDN hiccups (5xx). */
+async function download(sourceUrl: string): Promise<{ body: Buffer; contentType: string | null }> {
+  for (let attempt = 1; ; attempt += 1) {
+    let response: Response;
+    try {
+      response = await fetch(sourceUrl, {
+        headers: { "user-agent": "WIAL-Platform importer (contact: greg@ohack.org)" },
+      });
+    } catch (error) {
+      if (attempt >= DOWNLOAD_ATTEMPTS) {
+        throw error;
+      }
+      await sleep(backoffMs(attempt, null));
+      continue;
+    }
+    if (response.ok) {
+      return {
+        body: Buffer.from(await response.arrayBuffer()),
+        contentType: response.headers.get("content-type"),
+      };
+    }
+    const retryable = response.status === 429 || response.status >= 500;
+    if (!retryable || attempt >= DOWNLOAD_ATTEMPTS) {
+      throw new Error(`HTTP ${response.status}`);
+    }
+    await sleep(backoffMs(attempt, response.headers.get("retry-after")));
+  }
 }
 
 async function upload(
@@ -179,7 +217,7 @@ async function mapWithConcurrency<T, R>(
   const results: R[] = new Array(items.length);
   let next = 0;
   await Promise.all(
-    Array.from({ length: Math.min(CONCURRENCY, items.length) }, async () => {
+    Array.from({ length: Math.min(concurrency, items.length) }, async () => {
       while (next < items.length) {
         const index = next++;
         results[index] = await worker(items[index]);
@@ -193,11 +231,18 @@ type FileMode = "all" | "thumbs-only" | "none";
 
 async function buildFixture(
   supabase: SupabaseClient,
-  items: DirectoryLibraryItem[],
+  allItems: DirectoryLibraryItem[],
   mode: FileMode,
+  only: Set<string>,
 ): Promise<FixtureItem[]> {
+  const items = only.size ? allItems.filter((item) => only.has(item.slug)) : allItems;
+  for (const slug of only) {
+    if (!allItems.some((item) => item.slug === slug)) {
+      console.warn(`--only: no library item with slug ${slug}`);
+    }
+  }
   const previous = new Map<string, FixtureItem>();
-  if (mode !== "all") {
+  if (mode !== "all" || only.size > 0) {
     const existing: FixtureItem[] = JSON.parse(
       await readFile(FIXTURE_PATH, "utf8").catch(() => "[]"),
     );
@@ -207,7 +252,9 @@ async function buildFixture(
   }
   if (mode !== "none") {
     await ensurePublicBucket(supabase);
-    await pruneAll(supabase, THUMB_PREFIX);
+    if (only.size === 0) {
+      await pruneAll(supabase, THUMB_PREFIX);
+    }
     console.log(
       mode === "all"
         ? `Re-hosting files + thumbnails for ${items.length} items into ${BUCKET}/${FILE_PREFIX}/…`
@@ -241,6 +288,13 @@ async function buildFixture(
       }
     }
 
+    let externalUrl = item.externalUrl;
+    if (!filePath && !externalUrl && item.fileUrl) {
+      // Source file gone or too large to host here: keep the item, link to its post.
+      externalUrl = item.sourceUrl;
+      console.warn(`linking ${item.slug} to its wial.org post instead of a hosted file`);
+    }
+
     return {
       slug: item.slug,
       kind: item.kind,
@@ -248,7 +302,7 @@ async function buildFixture(
       summary: item.summary,
       publishedOn: item.publishedOn,
       sourceUrl: item.sourceUrl,
-      externalUrl: item.externalUrl,
+      externalUrl,
       filePath,
       fileType,
       thumbnailPath,
@@ -256,10 +310,24 @@ async function buildFixture(
   });
 
   if (failures > 0) {
-    console.warn(`${failures} file(s) could not be re-hosted; those items keep file_path = null`);
+    console.warn(`${failures} file(s) could not be re-hosted; those items link out instead`);
   }
+
+  // A partial run carries every untouched item over from the existing fixture.
+  const merged = new Map<string, FixtureItem>(previous);
+  for (const item of fixture) {
+    merged.set(item.slug, item);
+  }
+  const ordered = allItems
+    .map((item) => merged.get(item.slug))
+    .filter((item): item is FixtureItem => Boolean(item));
   // Drop items that ended up with nothing to open.
-  return fixture.filter((item) => item.filePath || item.externalUrl);
+  return ordered.filter((item) => item.filePath || item.externalUrl);
+}
+
+function argValue(flag: string): string | null {
+  const index = process.argv.indexOf(flag);
+  return index >= 0 ? (process.argv[index + 1] ?? null) : null;
 }
 
 function toRow(item: FixtureItem): LibraryRow {
@@ -338,7 +406,14 @@ async function main(): Promise<void> {
     : process.argv.includes("--thumbs-only")
       ? "thumbs-only"
       : "all";
-  const fixture = await buildFixture(supabase, items, mode);
+  const only = new Set(
+    (argValue("--only") ?? "")
+      .split(",")
+      .map((slug) => slug.trim())
+      .filter(Boolean),
+  );
+  concurrency = Number.parseInt(argValue("--concurrency") ?? "", 10) || DEFAULT_CONCURRENCY;
+  const fixture = await buildFixture(supabase, items, mode, only);
   await writeFile(FIXTURE_PATH, `${JSON.stringify(fixture, null, 2)}\n`);
   console.log(`Wrote ${fixture.length} items to ${FIXTURE_PATH}`);
 
