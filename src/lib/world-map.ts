@@ -25,24 +25,23 @@ export function projectToWorldMap(lat: number, lng: number) {
 export type CoachMapMarker = {
   x: number;
   y: number;
-  r: number;
-  /** Coaches mapped in the country — 0 for affiliate-only markers. */
-  count: number;
-  /** Most common stored country string in the group — feeds the ilike filter. */
+  /** Whether at least one approved coach is geocoded in the country. */
+  hasCoaches: boolean;
+  /** Most common stored country string in the group. */
   country: string;
   /** ISO alpha-2 code when the country name resolves, for flag lookup. */
   countryCode: string | null;
-  /** Distinct cities aggregated into this marker. */
-  cityCount: number;
   /** Human label, e.g. "Thailand". */
   label: string;
   /** Local WIAL affiliate headquartered in this country, when one exists. */
   affiliate: { name: string } | null;
 };
 
-export function markerRadius(count: number): number {
-  return Math.min(26, Math.max(6, 4 + 2.2 * Math.sqrt(count)));
-}
+/**
+ * Every country marker is the same size — the map shows where WIAL is present,
+ * not how many coaches are listed (the full roster lives on directory.wial.org).
+ */
+export const MARKER_RADIUS = 7;
 
 /**
  * Canonical grouping key for a stored country string: ISO code when the name
@@ -64,12 +63,12 @@ const COUNTRY_ANCHOR_OVERRIDES: Record<string, { lat: number; lng: number }> = {
 
 /**
  * Aggregate city-level points into one marker per country, positioned at the
- * count-weighted centroid of that country's cities. Points without a country
- * are dropped — they cannot drive the country filter. Affiliates annotate
- * their country's marker; an affiliate country with no mapped coaches gets a
- * zero-count marker at the vendored country anchor (skipped when the country
- * name resolves to no ISO code). Returned markers are sorted large-first so
- * small dots paint on top.
+ * count-weighted centroid of that country's cities so the dot sits where the
+ * coaches actually are. Points without a country are dropped. Affiliates
+ * annotate their country's marker; an affiliate country with no mapped coaches
+ * gets its own marker at the vendored country anchor (skipped when the country
+ * name resolves to no ISO code). Coach markers come first, affiliate-only
+ * markers after, each group in input order.
  */
 export function buildCoachMapMarkers(
   points: CoachMapPoint[],
@@ -79,7 +78,6 @@ export function buildCoachMapMarkers(
     x: number;
     y: number;
     count: number;
-    cities: Set<string>;
     variants: Map<string, number>;
   };
   const groups = new Map<string, Group>();
@@ -95,7 +93,6 @@ export function buildCoachMapMarkers(
       x: 0,
       y: 0,
       count: 0,
-      cities: new Set<string>(),
       variants: new Map<string, number>(),
     };
 
@@ -104,9 +101,6 @@ export function buildCoachMapMarkers(
     group.x = (group.x * group.count + x * point.count) / total;
     group.y = (group.y * group.count + y * point.count) / total;
     group.count = total;
-    if (point.city) {
-      group.cities.add(point.city);
-    }
     group.variants.set(
       point.country,
       (group.variants.get(point.country) ?? 0) + point.count,
@@ -132,11 +126,9 @@ export function buildCoachMapMarkers(
     return {
       x: anchor.x,
       y: anchor.y,
-      r: markerRadius(group.count),
-      count: group.count,
+      hasCoaches: true,
       country,
       countryCode,
-      cityCount: group.cities.size,
       label: country,
       affiliate: affiliate ? { name: affiliate.name } : null,
     };
@@ -158,17 +150,14 @@ export function buildCoachMapMarkers(
     markers.push({
       x: anchor.x,
       y: anchor.y,
-      r: markerRadius(0),
-      count: 0,
+      hasCoaches: false,
       country: affiliate.country,
       countryCode,
-      cityCount: 0,
       label: affiliate.country,
       affiliate: { name: affiliate.name },
     });
   }
 
-  markers.sort((a, b) => b.count - a.count);
   relaxMarkerCollisions(markers);
 
   return markers;
@@ -176,11 +165,12 @@ export function buildCoachMapMarkers(
 
 /**
  * Nudge overlapping country markers apart (dense regions like Southeast Asia
- * and western Europe), keeping every count label and hover target legible.
+ * and western Europe), keeping every dot and hover target legible.
  * Displacement is capped so dots stay honest to their geography.
  */
-function relaxMarkerCollisions(markers: { x: number; y: number; r: number }[]): void {
+function relaxMarkerCollisions(markers: { x: number; y: number }[]): void {
   const MAX_SHIFT = 30;
+  const minDistance = 2 * MARKER_RADIUS + 2;
   const origin = markers.map((marker) => ({ x: marker.x, y: marker.y }));
 
   for (let iteration = 0; iteration < 40; iteration += 1) {
@@ -192,7 +182,6 @@ function relaxMarkerCollisions(markers: { x: number; y: number; r: number }[]): 
         const dx = second.x - first.x;
         const dy = second.y - first.y;
         const distance = Math.hypot(dx, dy) || 0.001;
-        const minDistance = first.r + second.r + 2;
         if (distance >= minDistance) {
           continue;
         }

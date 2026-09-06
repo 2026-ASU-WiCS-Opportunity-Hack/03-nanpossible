@@ -2,14 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { CoachSearch } from "./CoachSearch";
 import { affiliateSiteUrl } from "@/lib/affiliates";
-import {
-  getCoachFacetOptions,
-  listApprovedCoaches,
-  listCoachMapPoints,
-} from "@/lib/coaches";
+import { getCoachFacetOptions, listApprovedCoaches } from "@/lib/coaches";
 import { getCurrentViewer } from "@/lib/auth";
 import { listAffiliateDirectory } from "@/lib/tenant";
-import type { AffiliateMapEntry, CoachAffiliateLink } from "@/lib/types";
+import type { CoachAffiliateLink } from "@/lib/types";
 
 export const metadata: Metadata = {
   title: "Find a WIAL Certified Coach",
@@ -20,14 +16,12 @@ export const metadata: Metadata = {
 export const revalidate = 300;
 
 export default async function CoachesDirectoryPage() {
-  const [initialCoaches, facets, mapPoints, affiliates, viewer] =
-    await Promise.all([
-      listApprovedCoaches({ limit: 20 }),
-      getCoachFacetOptions(),
-      listCoachMapPoints(),
-      listAffiliateDirectory(),
-      getCurrentViewer(),
-    ]);
+  const [initialCoaches, facets, affiliates, viewer] = await Promise.all([
+    listApprovedCoaches({ limit: 20 }),
+    getCoachFacetOptions(),
+    listAffiliateDirectory(),
+    getCurrentViewer(),
+  ]);
 
   const siteDomain = process.env.NEXT_PUBLIC_SITE_DOMAIN ?? "localhost:3000";
   const affiliateLinks: Record<string, CoachAffiliateLink> = Object.fromEntries(
@@ -36,14 +30,6 @@ export default async function CoachesDirectoryPage() {
       { name: chapter.name, href: affiliateSiteUrl(chapter, siteDomain) },
     ]),
   );
-
-  const affiliateEntries: AffiliateMapEntry[] = affiliates
-    .filter((chapter) => chapter.country)
-    .map((chapter) => ({
-      name: chapter.name,
-      country: chapter.country as string,
-      href: affiliateSiteUrl(chapter, siteDomain),
-    }));
 
   const directoryIsEmpty =
     initialCoaches.length === 0 &&
@@ -107,10 +93,8 @@ export default async function CoachesDirectoryPage() {
         ) : (
           <CoachSearch
             affiliateLinks={affiliateLinks}
-            affiliates={affiliateEntries}
             facets={facets}
             initialCoaches={initialCoaches}
-            mapPoints={mapPoints}
           />
         )}
 

@@ -1,9 +1,26 @@
 import { describe, expect, it } from "vitest";
 import {
+  COACH_DIRECTORY_URL,
   getTenantCandidate,
+  isExternalHref,
+  navigationItems,
   normalizeSegments,
   shouldBypassTenantRewrite,
 } from "./routing";
+
+describe("navigationItems", () => {
+  it("sends the Coaches nav item to the external WIAL directory", () => {
+    const coaches = navigationItems.find((item) => item.label === "Coaches");
+    expect(coaches?.href).toBe(COACH_DIRECTORY_URL);
+    expect(isExternalHref(COACH_DIRECTORY_URL)).toBe(true);
+  });
+
+  it("treats only absolute http(s) URLs as external", () => {
+    expect(isExternalHref("/coaches")).toBe(false);
+    expect(isExternalHref("mailto:info@wial.org")).toBe(false);
+    expect(isExternalHref("HTTP://example.org")).toBe(true);
+  });
+});
 
 describe("normalizeSegments", () => {
   it("maps empty segments to the home slug", () => {

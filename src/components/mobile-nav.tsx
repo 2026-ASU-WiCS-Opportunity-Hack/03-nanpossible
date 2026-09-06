@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { getAccountNavItems, getRoleLabel } from "@/lib/account";
+import { isExternalHref } from "@/lib/routing";
 import type { NavigationItem, UserProfile } from "@/lib/types";
 
 type MobileNavProps = {
@@ -43,6 +44,20 @@ function DrawerLink({
       <span className="truncate">{label}</span>
     </>
   );
+
+  if (isExternalHref(href)) {
+    return (
+      <a
+        className="account-sidebar-link"
+        href={href}
+        onClick={onClick}
+        rel="noreferrer"
+        target="_blank"
+      >
+        {linkContent}
+      </a>
+    );
+  }
 
   return (
     <Link className="account-sidebar-link" href={href} onClick={onClick}>
