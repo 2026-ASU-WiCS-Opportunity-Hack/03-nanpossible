@@ -1589,6 +1589,8 @@ html.cursor-large * {
   color: var(--neutral);
   font-size: 0.88rem;
   line-height: 1.55;
+}
+
 /* Purpose / vision / mission statements (`statements` section) */
 .statements-grid {
   position: relative;
