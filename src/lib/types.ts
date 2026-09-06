@@ -321,6 +321,9 @@ export type ContentSection =
         bands: { label: string; price: string; min: number; max: number | null }[];
       }[];
       cta?: { label: string; href: string };
+      /** Short organizational statements (purpose / vision / mission) side by side. */
+      type: "statements";
+      items: { label: string; body: string }[];
     }
   | {
       type: "logo_grid";

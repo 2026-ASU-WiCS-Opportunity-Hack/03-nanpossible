@@ -14,6 +14,23 @@
     ],
     "sections": [
       {
+        "type": "statements",
+        "items": [
+          {
+            "label": "Purpose",
+            "body": "We transform ambitious organizations into places of continuous learning, making them capable of solving today’s challenges and embracing the opportunities of tomorrow through the promotion and practice of action learning."
+          },
+          {
+            "label": "Vision",
+            "body": "We believe that ambitious organizations need new ways of thinking, doing business, and collaborating to solve their complex problems and achieve their desired results."
+          },
+          {
+            "label": "Mission",
+            "body": "WIAL coaches elevate team performance through action learning. They support teams in identifying breakthrough solutions to real problems, while accelerating individual, team and organizational development. WIAL’s team coaching leads to more effective organizations, positive business impact and a learning culture."
+          }
+        ]
+      },
+      {
         "type": "feature_grid",
         "title": "What WIAL offers",
         "items": [
