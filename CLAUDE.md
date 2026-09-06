@@ -51,7 +51,7 @@ Roles: `platform_admin`, `chapter_admin`, `content_creator`, `coach`, `public_vi
 - `createBrowserSupabaseClient()` — client-side
 
 ### Database
-PostgreSQL via Supabase with pgvector extension. Migrations in `supabase/migrations/`. Falls back to JSON fixtures in `src/content/` if DB is unavailable.
+PostgreSQL via Supabase with pgvector extension. Migrations in `supabase/migrations/`. Falls back to JSON fixtures in `src/content/` if DB is unavailable. The Supabase GitHub integration applies pending migrations to the hosted project on every push to `main` (it reports as the "Supabase Preview" check on the main commit; on PRs that check is usually cancelled/skipped by the preview-branch limit and can be ignored). The version is the filename's timestamp prefix and must be unique — two files sharing `20260902000000` aborted every production push from #129 until #135 renamed one (`ls supabase/migrations | cut -d_ -f1 | sort | uniq -d` must print nothing); `npx supabase migration list --linked` shows what production has applied.
 
 ### Integrations
 OpenRouter (LLM gateway), Stripe (payments), Credly (badges), Resend (email).
