@@ -308,10 +308,26 @@ export type ContentSection =
       items: FeatureItem[];
     }
   | {
+      type: "pricing_tiers";
+      title: string;
+      intro?: string;
+      footnote?: string;
+      plans: {
+        name: string;
+        description?: string;
+        /** Color family for the plan card: WIAL red (default) or the olive accent. */
+        tone?: "primary" | "accent";
+        /** Ascending headcount bands; `max` null = open-ended. */
+        bands: { label: string; price: string; min: number; max: number | null }[];
+      }[];
+      cta?: { label: string; href: string };
+    }
+  | {
       type: "logo_grid";
       title: string;
       compact?: boolean;
-      items: { name: string; logo: string; href?: string }[];
+      /** Items without a logo render as a name tile. */
+      items: { name: string; logo?: string; href?: string }[];
     }
   | {
       type: "media_prose";
@@ -378,6 +394,24 @@ export type LibraryKind =
   | "infographic";
 
 /** One entry of the migrated wial.org Library (`library_items` / `src/content/library.json`). */
+export type Partner = {
+  id: string;
+  slug: string;
+  name: string;
+  websiteUrl: string | null;
+  description: string | null;
+  city: string | null;
+  stateProvince: string | null;
+  country: string | null;
+  countryCode: string | null;
+  /** Site-relative path (vendored logo) or absolute URL (admin upload / paste). */
+  logoUrl: string | null;
+  /** Profile URL on the official directory.wial.org listing, when imported from it. */
+  directoryUrl: string | null;
+  sortOrder: number;
+  active: boolean;
+};
+
 export type LibraryItem = {
   slug: string;
   kind: LibraryKind;

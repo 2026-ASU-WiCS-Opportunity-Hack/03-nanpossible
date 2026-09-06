@@ -21,6 +21,7 @@
     "crawl:affiliates": "tsx scripts/crawl-wial-affiliates.ts",
     "import:affiliates": "tsx scripts/import-directory-affiliates.ts",
     "crawl:library": "tsx scripts/crawl-wial-library.ts",
+    "crawl:partners": "tsx scripts/crawl-wial-partners.ts",
     "import:library": "tsx scripts/import-library.ts",
     "check:migration": "python3 scripts/check-wial-migration.py",
     "backfill:credly": "tsx scripts/backfill-credly-badges.ts",

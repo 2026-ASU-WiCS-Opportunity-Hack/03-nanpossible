@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { PartnerPricing } from "@/components/partner-pricing";
 import type { ContentPageRecord, ContentSection, SiteContext } from "@/lib/types";
 
 type ContentPageProps = {
@@ -172,6 +173,8 @@ export function renderSection(section: ContentSection) {
           </div>
         </section>
       );
+    case "pricing_tiers":
+      return <PartnerPricing key={section.title} section={section} />;
     case "logo_grid":
       return (
         <section className="section-stack" key={section.title}>
@@ -187,12 +190,14 @@ export function renderSection(section: ContentSection) {
               const tileClassName = section.compact
                 ? "feature-card flex aspect-[3/2] items-center justify-center rounded-[1rem] p-4 transition-transform duration-200 hover:scale-[1.03]"
                 : "feature-card flex aspect-[4/3] items-center justify-center rounded-[1.5rem] p-8 transition-transform duration-200 hover:scale-[1.03]";
-              const logo = (
+              const logo = item.logo ? (
                 <img
                   alt={`${item.name} logo`}
                   className="max-h-full max-w-full object-contain filter grayscale hover:grayscale-0 transition-all"
                   src={item.logo}
                 />
+              ) : (
+                <span className="logo-grid-name">{item.name}</span>
               );
 
               return item.href ? (
