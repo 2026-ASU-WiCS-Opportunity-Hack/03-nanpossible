@@ -276,6 +276,10 @@ async function buildFixture(
         fileType = uploaded.ext;
       } catch (error) {
         failures += 1;
+        // Never keep a path carried over from another environment's run: the
+        // object may not exist in this bucket (e.g. a file over its size cap).
+        filePath = null;
+        fileType = null;
         console.warn(`file failed for ${item.slug}: ${String(error)}`);
       }
     }
