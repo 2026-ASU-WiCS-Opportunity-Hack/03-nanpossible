@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useTransition } from "react";
 import { CoachGrid } from "./CoachGrid";
+import { trackEvent } from "@/lib/analytics";
 import type {
   CoachAffiliateLink,
   CoachFacetOptions,
@@ -121,6 +122,18 @@ export function CoachSearch({
           setTotal(payload.total);
           setNextOffset(payload.nextOffset);
           setResults(payload.coaches);
+          trackEvent({
+            name: "search",
+            params: {
+              search_type: "coach",
+              search_term: query.trim() || undefined,
+              result_count: payload.total,
+              search_mode: payload.mode,
+              cert_level: filters.certLevel ?? undefined,
+              country: filters.country ?? undefined,
+              language: filters.language ?? undefined,
+            },
+          });
         } catch (caughtError) {
           setError(
             caughtError instanceof Error
@@ -260,6 +273,10 @@ export function CoachSearch({
             disabled={isPending}
             onClick={() =>
               startTransition(async () => {
+                trackEvent({
+                  name: "load_more",
+                  params: { list_name: "coach", shown_count: displayResults.length },
+                });
                 try {
                   setError(null);
                   const payload = await requestCoachSearch(

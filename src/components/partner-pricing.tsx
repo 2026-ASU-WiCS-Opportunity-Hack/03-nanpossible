@@ -1,7 +1,8 @@
 "use client";
 
-import Link from "next/link";
-import { useId, useState } from "react";
+import { useEffect, useId, useState } from "react";
+import { TrackedLink } from "@/components/analytics/tracked-link";
+import { trackEvent } from "@/lib/analytics";
 import type { ContentSection } from "@/lib/types";
 
 export type PricingTiersSection = Extract<ContentSection, { type: "pricing_tiers" }>;
@@ -42,6 +43,28 @@ export function PartnerPricing({ section }: { section: PricingTiersSection }) {
     plan,
     band: headcount === null ? null : bandFor(plan, headcount),
   }));
+
+  // Report which fee band a visitor looked up once they pause typing.
+  const matchedBands = matches
+    .filter((match) => match.band)
+    .map((match) => `${match.plan.name}: ${match.band!.label}`)
+    .join(" | ");
+  useEffect(() => {
+    if (headcount === null) {
+      return;
+    }
+    const timer = window.setTimeout(() => {
+      trackEvent({
+        name: "select_content",
+        params: {
+          content_type: "partner_pricing_band",
+          content_id: matchedBands || "no match",
+          item_kind: String(headcount),
+        },
+      });
+    }, 800);
+    return () => window.clearTimeout(timer);
+  }, [headcount, matchedBands]);
 
   const summary =
     headcount === null
@@ -129,9 +152,20 @@ export function PartnerPricing({ section }: { section: PricingTiersSection }) {
         <footer className="pricing-foot">
           {section.footnote ? <p className="pricing-footnote">{section.footnote}</p> : null}
           {section.cta ? (
-            <Link className="button-link primary" href={section.cta.href}>
+            <TrackedLink
+              className="button-link primary"
+              event={{
+                name: "cta_click",
+                params: {
+                  cta_label: section.cta.label,
+                  cta_location: "partner_pricing",
+                  cta_destination: section.cta.href,
+                },
+              }}
+              href={section.cta.href}
+            >
               {section.cta.label}
-            </Link>
+            </TrackedLink>
           ) : null}
         </footer>
       ) : null}

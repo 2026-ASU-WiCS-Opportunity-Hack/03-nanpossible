@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import { trackEvent } from "@/lib/analytics";
 
 type Message = {
   role: "assistant" | "user";
@@ -62,7 +63,7 @@ export function SiteChatbot() {
     viewportRef.current.scrollTop = viewportRef.current.scrollHeight;
   }, [messages, isLoading, open]);
 
-  async function sendMessage(content: string) {
+  async function sendMessage(content: string, promptSource: "starter" | "typed" = "typed") {
     const question = content.trim();
 
     if (!question || isLoading) {
@@ -74,6 +75,12 @@ export function SiteChatbot() {
     setInput("");
     setIsLoading(true);
     setError(null);
+
+    // Only starter chips carry their label — typed questions may include personal details.
+    const analyticsParams = {
+      prompt_source: promptSource,
+      prompt_label: promptSource === "starter" ? question : undefined,
+    };
 
     try {
       const response = await fetch("/api/chatbot", {
@@ -106,12 +113,20 @@ export function SiteChatbot() {
           content: reply,
         },
       ]);
+      trackEvent({
+        name: "chatbot_message",
+        params: { ...analyticsParams, response_status: "ok" },
+      });
     } catch (sendError) {
       setError(
         sendError instanceof Error
           ? sendError.message
           : "The assistant could not answer right now.",
       );
+      trackEvent({
+        name: "chatbot_message",
+        params: { ...analyticsParams, response_status: "error" },
+      });
     } finally {
       setIsLoading(false);
     }
@@ -149,7 +164,7 @@ export function SiteChatbot() {
               <button
                 className="site-chatbot-chip"
                 key={prompt}
-                onClick={() => void sendMessage(prompt)}
+                onClick={() => void sendMessage(prompt, "starter")}
                 type="button"
               >
                 {prompt}
@@ -218,7 +233,12 @@ export function SiteChatbot() {
       <button
         aria-expanded={open}
         className="site-chatbot-trigger"
-        onClick={() => setOpen((value) => !value)}
+        onClick={() => {
+          if (!open) {
+            trackEvent({ name: "chatbot_open", params: {} });
+          }
+          setOpen((value) => !value);
+        }}
         type="button"
       >
         <span className="site-chatbot-trigger-dot" aria-hidden="true" />

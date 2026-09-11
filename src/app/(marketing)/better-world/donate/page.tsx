@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { TrackEvent } from "@/components/analytics/track-event";
+import { TrackedLink } from "@/components/analytics/tracked-link";
 import { getCurrentViewer } from "@/lib/auth";
 import { getStripeClient } from "@/lib/payments";
 import { DonationForm } from "./DonationForm";
@@ -69,11 +71,24 @@ export default async function BetterWorldDonatePage({ searchParams }: DonatePage
 
         <div className="mt-6 grid gap-5">
           {query.cancelled ? (
-            <div className="account-flash">
-              Your donation was cancelled. Nothing was charged.
-            </div>
+            <>
+              <TrackEvent event={{ name: "checkout_cancel", params: { checkout_type: "donation" } }} />
+              <div className="account-flash">
+                Your donation was cancelled. Nothing was charged.
+              </div>
+            </>
           ) : null}
-          {errorMessage ? <div className="account-flash is-error">{errorMessage}</div> : null}
+          {errorMessage ? (
+            <>
+              <TrackEvent
+                event={{
+                  name: "checkout_error",
+                  params: { checkout_type: "donation", error_code: query.error ?? "unknown" },
+                }}
+              />
+              <div className="account-flash is-error">{errorMessage}</div>
+            </>
+          ) : null}
 
           {!stripe ? (
             <section className="site-panel rounded-[2rem] p-6 md:p-8">
@@ -89,14 +104,21 @@ export default async function BetterWorldDonatePage({ searchParams }: DonatePage
                 <Link className="button-link primary" href="/contact">
                   Contact WIAL
                 </Link>
-                <a
+                <TrackedLink
                   className="button-link secondary"
+                  event={{
+                    name: "cta_click",
+                    params: {
+                      cta_label: "Donate on wial.org for now",
+                      cta_location: "donate",
+                      cta_destination: LEGACY_DONATION_URL,
+                      outbound: true,
+                    },
+                  }}
                   href={LEGACY_DONATION_URL}
-                  rel="noreferrer"
-                  target="_blank"
                 >
                   Donate on wial.org for now
-                </a>
+                </TrackedLink>
               </div>
             </section>
           ) : (

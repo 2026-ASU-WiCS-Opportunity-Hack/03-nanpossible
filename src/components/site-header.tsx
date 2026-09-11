@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { AccessibilityPreferencesWidget } from "@/components/accessibility-preferences";
+import { TrackedLink } from "@/components/analytics/tracked-link";
 import { MobileNav } from "@/components/mobile-nav";
 import { WialLogo } from "@/components/wial-logo";
 import { getAccountNavItems } from "@/lib/account";
@@ -38,23 +38,24 @@ export function SiteHeader({ siteContext, viewer }: SiteHeaderProps) {
           </div>
 
           <nav className="hidden flex-1 items-center justify-end gap-0 lg:flex">
-            {navigationItems.map((item) =>
-              isExternalHref(item.href) ? (
-                <a
-                  className={navLinkClassName}
-                  href={item.href}
-                  key={item.href}
-                  rel="noreferrer"
-                  target="_blank"
-                >
-                  {item.label}
-                </a>
-              ) : (
-                <Link className={navLinkClassName} href={item.href} key={item.href}>
-                  {item.label}
-                </Link>
-              ),
-            )}
+            {navigationItems.map((item) => (
+              <TrackedLink
+                className={navLinkClassName}
+                event={{
+                  name: "nav_click",
+                  params: {
+                    nav_label: item.label,
+                    nav_location: "header",
+                    nav_destination: item.href,
+                    outbound: isExternalHref(item.href),
+                  },
+                }}
+                href={item.href}
+                key={item.href}
+              >
+                {item.label}
+              </TrackedLink>
+            ))}
           </nav>
 
           <div className="ml-auto flex shrink-0 items-center gap-2 sm:gap-3">
@@ -73,18 +74,34 @@ export function SiteHeader({ siteContext, viewer }: SiteHeaderProps) {
               </form>
             ) : (
               <>
-                <Link
-                  href="/login"
+                <TrackedLink
                   className="hidden whitespace-nowrap text-sm font-semibold text-teal-deep/78 transition hover:text-teal-deep sm:inline-flex"
+                  event={{
+                    name: "cta_click",
+                    params: {
+                      cta_label: "Sign in",
+                      cta_location: "header",
+                      cta_destination: "/login",
+                    },
+                  }}
+                  href="/login"
                 >
                   Sign in
-                </Link>
-                <Link
-                  href="/register"
+                </TrackedLink>
+                <TrackedLink
                   className="button-link primary hidden px-4 py-2.5 text-sm sm:inline-flex"
+                  event={{
+                    name: "cta_click",
+                    params: {
+                      cta_label: "Register",
+                      cta_location: "header",
+                      cta_destination: "/register",
+                    },
+                  }}
+                  href="/register"
                 >
                   Register
-                </Link>
+                </TrackedLink>
               </>
             )}
             <AccessibilityPreferencesWidget

@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { TrackEvent } from "@/components/analytics/track-event";
+import { TrackedLink } from "@/components/analytics/tracked-link";
 import { getCurrentViewer } from "@/lib/auth";
 import { listPaymentTypes } from "@/lib/payments";
 import { formatMinorAmount } from "@/lib/payments-format";
 import type { PaymentType } from "@/lib/types";
 import { startCheckoutAction } from "./actions";
+import { PayButton } from "./PayButton";
 
 export const metadata: Metadata = {
   title: "Make a payment",
@@ -101,9 +104,22 @@ export default async function PayPage({ searchParams }: PayPageProps) {
 
         <div className="mt-6 grid gap-5">
           {query.cancelled ? (
-            <div className="account-flash">Your payment was cancelled. Nothing was charged.</div>
+            <>
+              <TrackEvent event={{ name: "checkout_cancel", params: { checkout_type: "payment" } }} />
+              <div className="account-flash">Your payment was cancelled. Nothing was charged.</div>
+            </>
           ) : null}
-          {errorMessage ? <div className="account-flash is-error">{errorMessage}</div> : null}
+          {errorMessage ? (
+            <>
+              <TrackEvent
+                event={{
+                  name: "checkout_error",
+                  params: { checkout_type: "payment", error_code: query.error ?? "unknown" },
+                }}
+              />
+              <div className="account-flash is-error">{errorMessage}</div>
+            </>
+          ) : null}
 
           {unavailable || paymentTypes.length === 0 ? (
             <section className="site-panel rounded-[2rem] p-6 md:p-8">
@@ -152,9 +168,7 @@ export default async function PayPage({ searchParams }: PayPageProps) {
                     </p>
                     <form action={startCheckoutAction} className="mt-auto pt-5">
                       <input name="priceId" type="hidden" value={paymentType.priceId} />
-                      <button className="button-link primary" type="submit">
-                        Pay {formatMinorAmount(paymentType.amount, paymentType.currency)}
-                      </button>
+                      <PayButton paymentType={paymentType} />
                     </form>
                   </article>
                 ))}
@@ -165,9 +179,20 @@ export default async function PayPage({ searchParams }: PayPageProps) {
                   Choose your own amount and give directly to the fund that
                   brings Action Learning to community organizations.
                 </p>
-                <Link className="button-link secondary mt-5 inline-flex" href="/better-world/donate">
+                <TrackedLink
+                  className="button-link secondary mt-5 inline-flex"
+                  event={{
+                    name: "cta_click",
+                    params: {
+                      cta_label: "Donate any amount",
+                      cta_location: "pay",
+                      cta_destination: "/better-world/donate",
+                    },
+                  }}
+                  href="/better-world/donate"
+                >
                   Donate any amount
-                </Link>
+                </TrackedLink>
               </section>
             </section>
           )}

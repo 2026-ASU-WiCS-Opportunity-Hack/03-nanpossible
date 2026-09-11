@@ -2,6 +2,8 @@
 
 import { Fragment, useState } from "react";
 import Link from "next/link";
+import { TrackedLink } from "@/components/analytics/tracked-link";
+import { trackEvent } from "@/lib/analytics";
 import {
   certificationBadging,
   certificationBecomeACoach,
@@ -180,12 +182,20 @@ function BecomeACoachSection() {
           {certificationBecomeACoach.servicesAfter}
         </p>
       </div>
-      <Link
-        href={certificationBecomeACoach.contactHref}
+      <TrackedLink
         className="button-link secondary mt-4"
+        event={{
+          name: "cta_click",
+          params: {
+            cta_label: certificationBecomeACoach.contactLabel,
+            cta_location: "certification",
+            cta_destination: certificationBecomeACoach.contactHref,
+          },
+        }}
+        href={certificationBecomeACoach.contactHref}
       >
         {certificationBecomeACoach.contactLabel}
-      </Link>
+      </TrackedLink>
     </div>
   );
 }
@@ -233,12 +243,20 @@ function InHouseSection() {
           {certificationInHouse.quote.attribution}
         </span>
       </blockquote>
-      <Link
-        href={certificationInHouse.contactHref}
+      <TrackedLink
         className="button-link secondary mt-4"
+        event={{
+          name: "cta_click",
+          params: {
+            cta_label: certificationInHouse.contactLabel,
+            cta_location: "certification",
+            cta_destination: certificationInHouse.contactHref,
+          },
+        }}
+        href={certificationInHouse.contactHref}
       >
         {certificationInHouse.contactLabel}
-      </Link>
+      </TrackedLink>
     </div>
   );
 }
@@ -338,7 +356,14 @@ function PathwaySection() {
   );
 
   const handleToggle = (key: CertificationTrackKey) => {
-    setActiveTrack(activeTrack === key ? null : key);
+    const opening = activeTrack !== key;
+    if (opening) {
+      trackEvent({
+        name: "select_content",
+        params: { content_type: "certification_level", content_id: key },
+      });
+    }
+    setActiveTrack(opening ? key : null);
   };
 
   const active = certificationTracks.find((track) => track.key === activeTrack);
@@ -411,14 +436,21 @@ function BadgesSection() {
       <h2 className="text-2xl font-bold">{certificationBadging.title}</h2>
       <p className="mt-1 max-w-3xl text-sm text-foreground/70">
         {certificationBadging.intro.beforeCredly}
-        <a
-          href={certificationBadging.credlyUrl}
-          target="_blank"
-          rel="noreferrer"
+        <TrackedLink
           className={linkClass}
+          event={{
+            name: "cta_click",
+            params: {
+              cta_label: certificationBadging.intro.credlyLabel,
+              cta_location: "certification",
+              cta_destination: certificationBadging.credlyUrl,
+              outbound: true,
+            },
+          }}
+          href={certificationBadging.credlyUrl}
         >
           {certificationBadging.intro.credlyLabel}
-        </a>
+        </TrackedLink>
         {certificationBadging.intro.afterCredly}
       </p>
       <div className="site-panel mt-4 rounded-lg px-6 py-5">
@@ -509,9 +541,20 @@ export function CertificationHubSections() {
           Contact us to start certification, ask about becoming a coach, or
           bring a program in-house.
         </p>
-        <Link href="/contact" className="button-link primary mt-4">
+        <TrackedLink
+          className="button-link primary mt-4"
+          event={{
+            name: "cta_click",
+            params: {
+              cta_label: "Contact Us",
+              cta_location: "certification",
+              cta_destination: "/contact",
+            },
+          }}
+          href="/contact"
+        >
           Contact Us
-        </Link>
+        </TrackedLink>
       </div>
     </div>
   );

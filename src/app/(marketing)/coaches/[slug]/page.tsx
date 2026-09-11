@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound, permanentRedirect } from "next/navigation";
 import { cache } from "react";
 import { parsePhoneNumber } from "libphonenumber-js";
+import { TrackedLink } from "@/components/analytics/tracked-link";
 import {
   formatCoachLocation,
   getApprovedCoachById,
@@ -142,6 +143,7 @@ export default async function CoachDetailPage({ params }: CoachDetailPageProps) 
   const showCredlyBadgeImage = Boolean(
     credlyBadgeImage?.match(/^https:\/\/(images\.credly\.com|wial\.org|www\.wial\.org)\//i),
   );
+  const coachSlug = coach.slug ?? coach.id;
 
   return (
     <div className="page-frame">
@@ -277,46 +279,78 @@ export default async function CoachDetailPage({ params }: CoachDetailPageProps) 
                 </p>
                 <div className="mt-4 grid gap-3 text-sm leading-7 text-foreground/78">
                   {coach.email ? (
-                    <a href={`mailto:${coach.email}`}>{coach.email}</a>
+                    <TrackedLink
+                      event={{
+                        name: "coach_contact_click",
+                        params: { contact_method: "email", coach_slug: coachSlug },
+                      }}
+                      href={`mailto:${coach.email}`}
+                    >
+                      {coach.email}
+                    </TrackedLink>
                   ) : null}
                   {coach.phone ? (
-                    <a href={`tel:${coach.phone}`}>{formatPhone(coach.phone)}</a>
+                    <TrackedLink
+                      event={{
+                        name: "coach_contact_click",
+                        params: { contact_method: "phone", coach_slug: coachSlug },
+                      }}
+                      href={`tel:${coach.phone}`}
+                    >
+                      {formatPhone(coach.phone)}
+                    </TrackedLink>
                   ) : null}
                   {coach.website ? (
-                    <a href={coach.website} rel="noreferrer" target="_blank">
+                    <TrackedLink
+                      event={{
+                        name: "coach_contact_click",
+                        params: { contact_method: "website", coach_slug: coachSlug },
+                      }}
+                      href={coach.website}
+                    >
                       Website
-                    </a>
+                    </TrackedLink>
                   ) : null}
                   {coach.linkedin ? (
-                    <a href={coach.linkedin} rel="noreferrer" target="_blank">
+                    <TrackedLink
+                      event={{
+                        name: "coach_contact_click",
+                        params: { contact_method: "linkedin", coach_slug: coachSlug },
+                      }}
+                      href={coach.linkedin}
+                    >
                       LinkedIn
-                    </a>
+                    </TrackedLink>
                   ) : null}
                 </div>
                 {socialLinks.length ? (
                   <div className="mt-4 flex flex-wrap gap-x-3 gap-y-1 border-t border-line/60 pt-4 text-sm leading-6">
                     {socialLinks.map((link) => (
-                      <a
+                      <TrackedLink
                         className="text-teal transition hover:text-accent"
+                        event={{
+                          name: "coach_contact_click",
+                          params: { contact_method: "social", coach_slug: coachSlug },
+                        }}
                         href={link.href}
                         key={link.label}
-                        rel="noreferrer"
-                        target="_blank"
                       >
                         {link.label}
-                      </a>
+                      </TrackedLink>
                     ))}
                   </div>
                 ) : null}
                 {coach.cvUrl ? (
-                  <a
+                  <TrackedLink
                     className="button-link secondary mt-4"
+                    event={{
+                      name: "coach_contact_click",
+                      params: { contact_method: "cv", coach_slug: coachSlug },
+                    }}
                     href={coach.cvUrl}
-                    rel="noreferrer"
-                    target="_blank"
                   >
                     Download CV
-                  </a>
+                  </TrackedLink>
                 ) : null}
               </section>
 
@@ -353,14 +387,16 @@ export default async function CoachDetailPage({ params }: CoachDetailPageProps) 
                     />
                   ) : null}
                   {coach.credlyBadgeUrl ? (
-                    <a
+                    <TrackedLink
                       className="button-link secondary"
+                      event={{
+                        name: "coach_contact_click",
+                        params: { contact_method: "credly", coach_slug: coachSlug },
+                      }}
                       href={coach.credlyBadgeUrl}
-                      rel="noreferrer"
-                      target="_blank"
                     >
                       View Credly badge
-                    </a>
+                    </TrackedLink>
                   ) : null}
                 </div>
               </section>
@@ -382,14 +418,16 @@ export default async function CoachDetailPage({ params }: CoachDetailPageProps) 
                   </p>
                 </div>
                 {affiliate ? (
-                  <a
+                  <TrackedLink
                     className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-teal transition hover:text-accent"
+                    event={{
+                      name: "coach_contact_click",
+                      params: { contact_method: "affiliate", coach_slug: coachSlug },
+                    }}
                     href={affiliateSiteUrl(affiliate, siteDomain)}
-                    rel="noreferrer"
-                    target="_blank"
                   >
                     {affiliate.name} <span aria-hidden="true">↗</span>
-                  </a>
+                  </TrackedLink>
                 ) : null}
               </section>
             </aside>

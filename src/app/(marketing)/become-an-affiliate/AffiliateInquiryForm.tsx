@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { formOutcomeEvent, trackEvent } from "@/lib/analytics";
 import { submitAffiliateInquiry, type AffiliateInquiryResult } from "./actions";
 
 export function AffiliateInquiryForm() {
@@ -14,6 +15,7 @@ export function AffiliateInquiryForm() {
     try {
       const response = await submitAffiliateInquiry(formData);
       setResult(response);
+      trackEvent(formOutcomeEvent("affiliate_inquiry", response));
 
       if (response.success) {
         const form = document.getElementById("affiliate-inquiry-form");
@@ -21,6 +23,7 @@ export function AffiliateInquiryForm() {
       }
     } catch {
       setResult({ error: "Something went wrong. Please try again." });
+      trackEvent(formOutcomeEvent("affiliate_inquiry", null));
     } finally {
       setIsSubmitting(false);
     }

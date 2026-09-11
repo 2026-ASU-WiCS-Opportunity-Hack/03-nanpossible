@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { CoachSearch } from "./CoachSearch";
+import { TrackedLink } from "@/components/analytics/tracked-link";
 import { affiliateSiteUrl } from "@/lib/affiliates";
 import { getCoachFacetOptions, listApprovedCoaches } from "@/lib/coaches";
 import { getCurrentViewer } from "@/lib/auth";
@@ -82,12 +82,34 @@ export default async function CoachesDirectoryPage() {
               profile to be part of the launch roster.
             </p>
             <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
-              <Link className="button-link primary" href={registrationHref}>
+              <TrackedLink
+                className="button-link primary"
+                event={{
+                  name: "cta_click",
+                  params: {
+                    cta_label: registrationLabel,
+                    cta_location: "coaches_band",
+                    cta_destination: registrationHref,
+                  },
+                }}
+                href={registrationHref}
+              >
                 {registrationLabel}
-              </Link>
-              <Link className="button-link ghost" href="/certification">
+              </TrackedLink>
+              <TrackedLink
+                className="button-link ghost"
+                event={{
+                  name: "cta_click",
+                  params: {
+                    cta_label: "Learn about certification",
+                    cta_location: "coaches_band",
+                    cta_destination: "/certification",
+                  },
+                }}
+                href="/certification"
+              >
                 Learn about certification
-              </Link>
+              </TrackedLink>
             </div>
           </section>
         ) : (
@@ -112,12 +134,34 @@ export default async function CoachesDirectoryPage() {
               </p>
             </div>
             <div className="flex flex-wrap items-center gap-3">
-              <Link className="button-link primary" href="/become-an-affiliate">
+              <TrackedLink
+                className="button-link primary"
+                event={{
+                  name: "cta_click",
+                  params: {
+                    cta_label: "Start an affiliate",
+                    cta_location: "coaches_band",
+                    cta_destination: "/become-an-affiliate",
+                  },
+                }}
+                href="/become-an-affiliate"
+              >
                 Start an affiliate
-              </Link>
-              <Link className="button-link ghost" href="/certification">
+              </TrackedLink>
+              <TrackedLink
+                className="button-link ghost"
+                event={{
+                  name: "cta_click",
+                  params: {
+                    cta_label: "Learn about certification",
+                    cta_location: "coaches_band",
+                    cta_destination: "/certification",
+                  },
+                }}
+                href="/certification"
+              >
                 Learn about certification
-              </Link>
+              </TrackedLink>
             </div>
           </div>
         </section>

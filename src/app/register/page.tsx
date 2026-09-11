@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import { TrackEvent } from "@/components/analytics/track-event";
 import { getCurrentViewer, resolvePostAuthPath } from "@/lib/auth";
 import { getDefaultAccountHref } from "@/lib/account";
 import { hasSupabaseAuthConfig } from "@/lib/supabase-auth";
@@ -97,7 +98,15 @@ export default async function RegisterPage({
               </p>
 
               {error ? (
-                <div className="account-flash is-error mt-5">{error}</div>
+                <>
+                  <TrackEvent
+                    event={{
+                      name: "sign_up_error",
+                      params: { error_code: params.error ?? "unknown" },
+                    }}
+                  />
+                  <div className="account-flash is-error mt-5">{error}</div>
+                </>
               ) : null}
 
               <form action={registerPublicVisitorAction} className="mt-6 space-y-5">

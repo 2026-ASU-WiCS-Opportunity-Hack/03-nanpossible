@@ -1,6 +1,7 @@
-import Link from "next/link";
 import type { ReactNode } from "react";
+import { TrackedLink } from "@/components/analytics/tracked-link";
 import { PartnerPricing } from "@/components/partner-pricing";
+import { isOutboundHref } from "@/lib/analytics";
 import type { ContentPageRecord, ContentSection, SiteContext } from "@/lib/types";
 
 type ContentPageProps = {
@@ -57,20 +58,21 @@ export function renderSection(section: ContentSection) {
                 <h3>{item.title}</h3>
                 <p className="mt-3">{item.body}</p>
                 {item.href && item.label ? (
-                  /^(https?:|mailto:)/.test(item.href) ? (
-                    <a
-                      className="mt-auto inline-flex pt-5 font-semibold text-teal"
-                      href={item.href}
-                      rel="noreferrer"
-                      target={item.href.startsWith("mailto:") ? undefined : "_blank"}
-                    >
-                      {item.label}
-                    </a>
-                  ) : (
-                    <Link className="mt-auto inline-flex pt-5 font-semibold text-teal" href={item.href}>
-                      {item.label}
-                    </Link>
-                  )
+                  <TrackedLink
+                    className="mt-auto inline-flex pt-5 font-semibold text-teal"
+                    event={{
+                      name: "cta_click",
+                      params: {
+                        cta_label: item.label,
+                        cta_location: "feature_grid",
+                        cta_destination: item.href,
+                        outbound: isOutboundHref(item.href),
+                      },
+                    }}
+                    href={item.href}
+                  >
+                    {item.label}
+                  </TrackedLink>
                 ) : null}
               </article>
             ))}
@@ -125,14 +127,23 @@ export function renderSection(section: ContentSection) {
                 </p>
                 <h3 className="mt-3">{item.title}</h3>
                 <p className="mt-3">{item.body}</p>
-                <Link
+                <TrackedLink
                   className="mt-5 inline-flex font-semibold text-teal"
+                  event={{
+                    name: "cta_click",
+                    params: {
+                      cta_label: item.label,
+                      cta_location: "resource_list",
+                      cta_destination: item.href,
+                      outbound: isOutboundHref(item.href),
+                    },
+                  }}
                   href={item.href}
                   rel="noreferrer"
                   target="_blank"
                 >
                   {item.label}
-                </Link>
+                </TrackedLink>
               </article>
             ))}
           </div>
@@ -160,13 +171,21 @@ export function renderSection(section: ContentSection) {
                 <h3 className="mt-3">{item.title}</h3>
                 <p className="mt-3 whitespace-pre-line">{item.body}</p>
                 {item.href && item.label ? (
-                  <Link
+                  <TrackedLink
                     className="mt-5 inline-flex font-semibold text-teal"
+                    event={{
+                      name: "cta_click",
+                      params: {
+                        cta_label: item.label,
+                        cta_location: "contact_cards",
+                        cta_destination: item.href.startsWith("mailto:") ? "mailto" : item.href,
+                        outbound: isOutboundHref(item.href),
+                      },
+                    }}
                     href={item.href}
-                    {...(item.href.startsWith("http") ? { rel: "noreferrer", target: "_blank" } : {})}
                   >
                     {item.label}
-                  </Link>
+                  </TrackedLink>
                 ) : null}
               </article>
             ))}
@@ -218,16 +237,22 @@ export function renderSection(section: ContentSection) {
               );
 
               return item.href ? (
-                <a
+                <TrackedLink
                   className={tileClassName}
+                  event={{
+                    name: "select_content",
+                    params: {
+                      content_type: "partner_logo",
+                      content_id: item.name,
+                      outbound: isOutboundHref(item.href),
+                    },
+                  }}
                   href={item.href}
                   key={item.name}
-                  rel="noreferrer"
-                  target="_blank"
                   title={`Visit ${item.name}`}
                 >
                   {logo}
-                </a>
+                </TrackedLink>
               ) : (
                 <article className={tileClassName} key={item.name}>
                   {logo}
@@ -411,9 +436,21 @@ export function renderSection(section: ContentSection) {
               <h2 className="section-title text-teal-deep">{section.title}</h2>
               <p className="text-base leading-7 text-foreground/78">{section.body}</p>
             </div>
-            <Link className="button-link primary" href={section.href}>
+            <TrackedLink
+              className="button-link primary"
+              event={{
+                name: "cta_click",
+                params: {
+                  cta_label: section.label,
+                  cta_location: "cta_section",
+                  cta_destination: section.href,
+                  outbound: isOutboundHref(section.href),
+                },
+              }}
+              href={section.href}
+            >
               {section.label}
-            </Link>
+            </TrackedLink>
           </div>
         </section>
       );
@@ -444,14 +481,36 @@ export function ContentPage({ page, siteContext, children }: ContentPageProps) {
               </div>
               <div className="flex flex-wrap gap-3">
                 {page.slug !== "contact" ? (
-                  <Link className="button-link primary" href="/contact">
+                  <TrackedLink
+                    className="button-link primary"
+                    event={{
+                      name: "cta_click",
+                      params: {
+                        cta_label: "Contact WIAL",
+                        cta_location: "hero",
+                        cta_destination: "/contact",
+                      },
+                    }}
+                    href="/contact"
+                  >
                     Contact WIAL
-                  </Link>
+                  </TrackedLink>
                 ) : null}
                 {page.slug !== "clients" ? (
-                  <Link className="button-link secondary" href="/clients">
+                  <TrackedLink
+                    className="button-link secondary"
+                    event={{
+                      name: "cta_click",
+                      params: {
+                        cta_label: "View our clients",
+                        cta_location: "hero",
+                        cta_destination: "/clients",
+                      },
+                    }}
+                    href="/clients"
+                  >
                     View our clients
-                  </Link>
+                  </TrackedLink>
                 ) : null}
               </div>
             </div>

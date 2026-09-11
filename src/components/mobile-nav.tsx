@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { getAccountNavItems, getRoleLabel } from "@/lib/account";
+import { trackEvent } from "@/lib/analytics";
 import { isExternalHref } from "@/lib/routing";
 import type { NavigationItem, UserProfile } from "@/lib/types";
 
@@ -44,13 +45,26 @@ function DrawerLink({
       <span className="truncate">{label}</span>
     </>
   );
+  const external = isExternalHref(href);
+  const handleClick = () => {
+    trackEvent({
+      name: "nav_click",
+      params: {
+        nav_label: label,
+        nav_location: "mobile_drawer",
+        nav_destination: href,
+        outbound: external,
+      },
+    });
+    onClick();
+  };
 
-  if (isExternalHref(href)) {
+  if (external) {
     return (
       <a
         className="account-sidebar-link"
         href={href}
-        onClick={onClick}
+        onClick={handleClick}
         rel="noreferrer"
         target="_blank"
       >
@@ -60,7 +74,7 @@ function DrawerLink({
   }
 
   return (
-    <Link className="account-sidebar-link" href={href} onClick={onClick}>
+    <Link className="account-sidebar-link" href={href} onClick={handleClick}>
       {linkContent}
     </Link>
   );
@@ -184,7 +198,17 @@ export function MobileNav({
                         <Link
                           className="account-sidebar-signout"
                           href="/login"
-                          onClick={closeDrawer}
+                          onClick={() => {
+                            trackEvent({
+                              name: "cta_click",
+                              params: {
+                                cta_label: "Sign in",
+                                cta_location: "mobile_drawer",
+                                cta_destination: "/login",
+                              },
+                            });
+                            closeDrawer();
+                          }}
                         >
                           Sign in
                         </Link>
@@ -192,7 +216,17 @@ export function MobileNav({
                         <Link
                           className="account-sidebar-signout"
                           href="/register"
-                          onClick={closeDrawer}
+                          onClick={() => {
+                            trackEvent({
+                              name: "cta_click",
+                              params: {
+                                cta_label: "Register",
+                                cta_location: "mobile_drawer",
+                                cta_destination: "/register",
+                              },
+                            });
+                            closeDrawer();
+                          }}
                         >
                           Register
                         </Link>

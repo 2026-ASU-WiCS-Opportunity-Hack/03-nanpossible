@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { formOutcomeEvent, trackEvent } from "@/lib/analytics";
 import { submitPartnerApplication, type PartnerApplicationResult } from "./actions";
 
 export function PartnerApplicationForm() {
@@ -11,9 +12,14 @@ export function PartnerApplicationForm() {
     setIsSubmitting(true);
     setResult(null);
 
+    const organizationType = String(formData.get("organizationType") ?? "");
+
     try {
       const response = await submitPartnerApplication(formData);
       setResult(response);
+      trackEvent(
+        formOutcomeEvent("partner_application", response, { form_variant: organizationType }),
+      );
 
       if (response.success) {
         const form = document.getElementById("partner-application-form");
@@ -21,6 +27,7 @@ export function PartnerApplicationForm() {
       }
     } catch {
       setResult({ error: "Something went wrong. Please try again." });
+      trackEvent(formOutcomeEvent("partner_application", null, { form_variant: organizationType }));
     } finally {
       setIsSubmitting(false);
     }
