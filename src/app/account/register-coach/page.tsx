@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { AccountPageShell } from "@/components/account-page-shell";
+import { TrackEvent } from "@/components/analytics/track-event";
 import { requireAccountViewer } from "@/lib/auth";
 import { getCoachByUserId } from "@/lib/coaches";
 import { listChapters } from "@/lib/tenant";
@@ -79,7 +80,20 @@ export default async function RegisterCoachPage({
         eyebrow="Coach profile"
         title="You're already on the coach roster"
       >
-        {notice ? <div className="account-flash is-success">{notice}</div> : null}
+        {notice ? (
+          <>
+            <TrackEvent
+              dedupeKey={`coach-registration:${params.notice}`}
+              event={{
+                name: "coach_registration",
+                params: {
+                  status: params.notice === "profile-linked" ? "profile_linked" : "submitted",
+                },
+              }}
+            />
+            <div className="account-flash is-success">{notice}</div>
+          </>
+        ) : null}
 
         <section className="site-panel rounded-[2rem] p-6 md:p-8">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">
@@ -121,7 +135,17 @@ export default async function RegisterCoachPage({
       title="Register as a coach"
     >
       {notice ? <div className="account-flash is-success">{notice}</div> : null}
-      {error ? <div className="account-flash is-error">{error}</div> : null}
+      {error ? (
+        <>
+          <TrackEvent
+            event={{
+              name: "coach_registration",
+              params: { status: "error", error_code: params.error ?? "unknown" },
+            }}
+          />
+          <div className="account-flash is-error">{error}</div>
+        </>
+      ) : null}
 
       <form action={registerCoachProfileAction} className="space-y-5">
         <section className="site-panel rounded-[2rem] p-6 md:p-8">

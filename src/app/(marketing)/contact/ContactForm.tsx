@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { formOutcomeEvent, trackEvent } from '@/lib/analytics';
 import { submitContactForm } from './actions';
 
 export function ContactForm() {
@@ -11,16 +12,20 @@ export function ContactForm() {
     setIsSubmitting(true);
     setResult(null);
 
+    const topic = String(formData.get('about') ?? '');
+
     try {
       const response = await submitContactForm(formData);
       setResult(response);
+      trackEvent(formOutcomeEvent('contact', response, { form_topic: topic }));
 
       if (response.success) {
         const form = document.getElementById('contact-form') as HTMLFormElement;
         if (form) form.reset();
       }
-    } catch (error) {
+    } catch {
       setResult({ error: 'Something went wrong. Please try again.' });
+      trackEvent(formOutcomeEvent('contact', null, { form_topic: topic }));
     } finally {
       setIsSubmitting(false);
     }

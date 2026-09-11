@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { TrackedLink } from "@/components/analytics/tracked-link";
 import { ChapterHero } from "@/components/chapter/ChapterHero";
 import { FeaturedCoaches } from "@/components/chapter/FeaturedCoaches";
 import { UpcomingEvents } from "@/components/chapter/UpcomingEvents";
@@ -68,14 +69,21 @@ export default async function TenantHomePage({ params }: TenantHomePageProps) {
                   </span>
                   .
                 </p>
-                <a
+                <TrackedLink
                   className="button-link primary"
+                  event={{
+                    name: "cta_click",
+                    params: {
+                      cta_label: "Visit the official website",
+                      cta_location: "tenant_home",
+                      cta_destination: chapter.websiteUrl,
+                      outbound: true,
+                    },
+                  }}
                   href={chapter.websiteUrl}
-                  target="_blank"
-                  rel="noreferrer"
                 >
                   Visit the official website
-                </a>
+                </TrackedLink>
               </section>
             ) : null}
 

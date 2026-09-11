@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { formOutcomeEvent, trackEvent } from '@/lib/analytics';
 import { submitSuccessStory } from './actions';
 
 const inputClassName =
@@ -27,9 +28,12 @@ export function SuccessStoryForm() {
     setIsSubmitting(true);
     setResult(null);
 
+    const industry = String(formData.get('industry') ?? '');
+
     try {
       const response = await submitSuccessStory(formData);
       setResult(response);
+      trackEvent(formOutcomeEvent('success_story', response, { form_topic: industry }));
 
       if (response.success) {
         const form = document.getElementById('success-story-form') as HTMLFormElement;
@@ -37,6 +41,7 @@ export function SuccessStoryForm() {
       }
     } catch {
       setResult({ error: 'Something went wrong. Please try again.' });
+      trackEvent(formOutcomeEvent('success_story', null, { form_topic: industry }));
     } finally {
       setIsSubmitting(false);
     }

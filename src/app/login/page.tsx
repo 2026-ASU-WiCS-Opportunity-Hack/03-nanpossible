@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import { TrackEvent } from "@/components/analytics/track-event";
+import type { AnalyticsEvent } from "@/lib/analytics";
 import { getCurrentViewer, resolvePostAuthPath } from "@/lib/auth";
 import { getDefaultAccountHref } from "@/lib/account";
 import { hasSupabaseAuthConfig } from "@/lib/supabase-auth";
@@ -29,6 +31,19 @@ function getNoticeMessage(notice?: string) {
   }
 }
 
+/** Outcome events for the notices this page lands on after a redirect. */
+function getNoticeEvent(notice?: string): AnalyticsEvent | null {
+  switch (notice) {
+    case "registration-success":
+    case "confirm-email":
+      return { name: "sign_up", params: { method: "password" } };
+    case "signed-out":
+      return { name: "logout", params: {} };
+    default:
+      return null;
+  }
+}
+
 function getErrorMessage(error?: string) {
   switch (error) {
     case "username-required":
@@ -53,12 +68,21 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
 
   const nextPath = resolvePostAuthPath(params.next);
   const notice = getNoticeMessage(params.notice);
+  const noticeEvent = getNoticeEvent(params.notice);
   const error = getErrorMessage(params.error);
   const authReady = hasSupabaseAuthConfig();
   const registerHref = `/register?next=${encodeURIComponent(nextPath)}`;
 
   return (
     <div className="page-frame">
+      {noticeEvent ? (
+        <TrackEvent dedupeKey={`login-notice:${params.notice}`} event={noticeEvent} />
+      ) : null}
+      {error ? (
+        <TrackEvent
+          event={{ name: "login_error", params: { error_code: params.error ?? "unknown" } }}
+        />
+      ) : null}
       <div className="site-shell">
         <div className="auth-grid">
           <section className="auth-panel-dark p-7 md:p-10">

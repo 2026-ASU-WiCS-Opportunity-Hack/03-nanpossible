@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { headers } from "next/headers";
 import { Ubuntu } from "next/font/google";
 import "./globals.css";
+import { GoogleAnalytics } from "@/components/analytics/google-analytics";
 import { SiteChromeFrame } from "@/components/site-chrome-frame";
 
 const ubuntu = Ubuntu({
@@ -11,6 +12,7 @@ const ubuntu = Ubuntu({
   display: "swap",
 });
 import { getAccessibilityBootScript } from "@/lib/accessibility-preferences";
+import { resolveAnalyticsConfig } from "@/lib/analytics";
 import { getCurrentViewer } from "@/lib/auth";
 import { getLayoutSiteContext } from "@/lib/site-context";
 
@@ -46,6 +48,7 @@ export default async function RootLayout({
     getLayoutSiteContext(headerStore),
     getCurrentViewer(),
   ]);
+  const analytics = resolveAnalyticsConfig(process.env);
 
   return (
     <html
@@ -60,6 +63,7 @@ export default async function RootLayout({
             __html: getAccessibilityBootScript(),
           }}
         />
+        <GoogleAnalytics config={analytics} siteContext={siteContext} viewer={viewer} />
       </head>
       <body className="min-h-full bg-background text-foreground">
         <SiteChromeFrame siteContext={siteContext} viewer={viewer}>

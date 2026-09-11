@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import { TrackedLink } from "@/components/analytics/tracked-link";
 import {
   formatCoachLocation,
   getCertificationBadgeTone,
@@ -39,6 +39,7 @@ export function CoachCard({ coach, affiliate }: CoachCardProps) {
   const showCredlyBadgeImage = Boolean(
     credlyBadgeImage?.match(/^https:\/\/(images\.credly\.com|wial\.org|www\.wial\.org)\//i),
   );
+  const coachSlug = coach.slug ?? coach.id;
 
   return (
     <article className="site-panel group relative overflow-hidden rounded-[2rem] p-5 transition-transform duration-200 hover:-translate-y-1">
@@ -115,11 +116,13 @@ export function CoachCard({ coach, affiliate }: CoachCardProps) {
       <div className="mt-5 flex items-center justify-between gap-3 border-t border-line pt-4">
         <div className="flex min-w-0 items-center gap-3">
           {showCredlyBadgeImage && credlyBadgeImage ? (
-            <a
+            <TrackedLink
               className="relative z-10 overflow-hidden rounded-[0.9rem] border border-line bg-white/80 p-1 transition hover:border-accent"
+              event={{
+                name: "coach_contact_click",
+                params: { contact_method: "credly", coach_slug: coachSlug },
+              }}
               href={coach.credlyBadgeUrl ?? credlyBadgeImage}
-              rel="noreferrer"
-              target="_blank"
             >
               <Image
                 alt={coach.credlyBadgeTitle ?? `${coach.name} Credly badge`}
@@ -129,21 +132,23 @@ export function CoachCard({ coach, affiliate }: CoachCardProps) {
                 src={credlyBadgeImage}
                 width={40}
               />
-            </a>
+            </TrackedLink>
           ) : null}
           {coach.similarity != null ? (
             <span className="text-sm font-semibold text-foreground/58">
               Similarity {(coach.similarity * 100).toFixed(0)}%
             </span>
           ) : affiliate ? (
-            <a
+            <TrackedLink
               className="relative z-10 min-w-0 truncate text-sm font-semibold text-teal transition hover:text-accent"
+              event={{
+                name: "coach_contact_click",
+                params: { contact_method: "affiliate", coach_slug: coachSlug },
+              }}
               href={affiliate.href}
-              rel="noreferrer"
-              target="_blank"
             >
               {affiliate.name} <span aria-hidden="true">↗</span>
-            </a>
+            </TrackedLink>
           ) : (
             <span className="text-sm font-semibold text-foreground/58">
               {showCredlyBadgeImage ? "Credly badge linked" : "Approved WIAL coach"}
@@ -151,13 +156,17 @@ export function CoachCard({ coach, affiliate }: CoachCardProps) {
           )}
         </div>
         {/* stretched link: the whole card navigates to the profile */}
-        <Link
+        <TrackedLink
           className="inline-flex items-center gap-2 text-sm font-semibold text-teal transition group-hover:text-accent after:absolute after:inset-0 after:content-['']"
-          href={`/coaches/${encodeURIComponent(coach.slug ?? coach.id)}`}
+          event={{
+            name: "select_content",
+            params: { content_type: "coach_profile", content_id: coachSlug },
+          }}
+          href={`/coaches/${encodeURIComponent(coachSlug)}`}
         >
           View profile
           <span aria-hidden="true">→</span>
-        </Link>
+        </TrackedLink>
       </div>
     </article>
   );

@@ -1,6 +1,7 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { trackEvent } from "@/lib/analytics";
 import type { WialTalkScenario } from "@/lib/types";
 
 const PAGE_SIZE = 9;
@@ -30,6 +31,24 @@ export function ScenarioArchive({ scenarios }: ScenarioArchiveProps) {
   }, [query, scenarios]);
 
   const shown = filtered.slice(0, visible);
+
+  // Report a search once the visitor pauses typing (filtering is client-side).
+  const resultCount = useRef(filtered.length);
+  resultCount.current = filtered.length;
+  useEffect(() => {
+    const term = query.trim();
+    if (!term) {
+      return;
+    }
+    const timer = window.setTimeout(() => {
+      trackEvent({
+        name: "search",
+        params: { search_type: "wial_talk", search_term: term, result_count: resultCount.current },
+      });
+    }, 800);
+    return () => window.clearTimeout(timer);
+  }, [query]);
+
   const firstYear = scenarios.reduce(
     (earliest, scenario) => (scenario.firstPostedOn < earliest ? scenario.firstPostedOn : earliest),
     scenarios[0]?.firstPostedOn ?? "",
@@ -94,7 +113,13 @@ export function ScenarioArchive({ scenarios }: ScenarioArchiveProps) {
         <div>
           <button
             className="button-link secondary"
-            onClick={() => setVisible((count) => count + PAGE_SIZE * 2)}
+            onClick={() => {
+              trackEvent({
+                name: "load_more",
+                params: { list_name: "wial_talk", shown_count: shown.length },
+              });
+              setVisible((count) => count + PAGE_SIZE * 2);
+            }}
             type="button"
           >
             Show more ({filtered.length - shown.length} remaining)

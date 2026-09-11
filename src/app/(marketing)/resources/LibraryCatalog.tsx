@@ -1,6 +1,8 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { TrackedLink } from "@/components/analytics/tracked-link";
+import { trackEvent } from "@/lib/analytics";
 import type { LibraryKind } from "@/lib/types";
 
 export type LibraryCard = {
@@ -55,7 +57,35 @@ export function LibraryCatalog({ items }: LibraryCatalogProps) {
 
   const shown = filtered.slice(0, visible);
 
+  // Report a search once the visitor pauses typing (filtering is client-side).
+  const latest = useRef({ count: filtered.length, filter });
+  latest.current = { count: filtered.length, filter };
+  useEffect(() => {
+    const term = query.trim();
+    if (!term) {
+      return;
+    }
+    const timer = window.setTimeout(() => {
+      trackEvent({
+        name: "search",
+        params: {
+          search_type: "library",
+          search_term: term,
+          result_count: latest.current.count,
+          library_filter: latest.current.filter,
+        },
+      });
+    }, 800);
+    return () => window.clearTimeout(timer);
+  }, [query]);
+
   function changeFilter(next: FilterKey) {
+    if (next !== filter) {
+      trackEvent({
+        name: "select_content",
+        params: { content_type: "library_filter", content_id: next },
+      });
+    }
     setFilter(next);
     setVisible(PAGE_SIZE);
   }
@@ -142,14 +172,23 @@ export function LibraryCatalog({ items }: LibraryCatalogProps) {
               {item.summary ? (
                 <p className="mt-3 line-clamp-4 text-sm">{item.summary}</p>
               ) : null}
-              <a
+              <TrackedLink
                 className="mt-auto inline-flex pt-5 font-semibold text-teal"
+                event={{
+                  name: "select_content",
+                  params: {
+                    content_type: "library_item",
+                    content_id: item.slug,
+                    item_kind: item.kind,
+                    outbound: true,
+                  },
+                }}
                 href={item.href}
                 rel="noreferrer"
                 target="_blank"
               >
                 {item.actionLabel}
-              </a>
+              </TrackedLink>
             </article>
           ))}
         </div>
@@ -159,7 +198,13 @@ export function LibraryCatalog({ items }: LibraryCatalogProps) {
         <div>
           <button
             className="button-link secondary"
-            onClick={() => setVisible((count) => count + PAGE_SIZE)}
+            onClick={() => {
+              trackEvent({
+                name: "load_more",
+                params: { list_name: "library", shown_count: shown.length },
+              });
+              setVisible((count) => count + PAGE_SIZE);
+            }}
             type="button"
           >
             Show more ({filtered.length - shown.length} remaining)

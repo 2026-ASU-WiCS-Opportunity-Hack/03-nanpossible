@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import { TrackEvent } from "@/components/analytics/track-event";
+import { purchaseEvent } from "@/lib/analytics";
 import { getCurrentViewer } from "@/lib/auth";
 import { recordCheckoutSession } from "@/lib/payments";
 import { formatMinorAmount } from "@/lib/payments-format";
@@ -43,6 +45,10 @@ export default async function PaySuccessPage({ searchParams }: PaySuccessPagePro
             <span className="eyebrow">Global WIAL</span>
             {payment ? (
               <>
+                <TrackEvent
+                  dedupeKey={`purchase:${payment.stripeSessionId}`}
+                  event={purchaseEvent(payment)}
+                />
                 <h1 className="max-w-4xl font-display text-3xl leading-none tracking-[-0.05em] text-teal-deep md:text-5xl">
                   {isDonation ? "Thank you for your donation" : "Thank you, your payment was received"}
                 </h1>

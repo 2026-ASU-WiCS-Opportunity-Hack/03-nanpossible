@@ -1,4 +1,5 @@
-import Link from "next/link";
+import { TrackedLink } from "@/components/analytics/tracked-link";
+import { isOutboundHref } from "@/lib/analytics";
 import {
   visibleFooterLinks,
   type GlobalFooterContent,
@@ -73,12 +74,20 @@ export function SiteFooterContent({
                 </p>
               )}
               {email && (
-                <Link
+                <TrackedLink
                   className="font-semibold text-accent"
+                  event={{
+                    name: "cta_click",
+                    params: {
+                      cta_label: "Email",
+                      cta_location: "footer",
+                      cta_destination: "mailto",
+                    },
+                  }}
                   href={`mailto:${email}`}
                 >
                   {email}
-                </Link>
+                </TrackedLink>
               )}
             </div>
           )}
@@ -96,13 +105,22 @@ export function SiteFooterContent({
           )}
           <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
             {links.map((link) => (
-              <Link
+              <TrackedLink
                 className="text-sm font-semibold text-teal-deep"
+                event={{
+                  name: "nav_click",
+                  params: {
+                    nav_label: link.label,
+                    nav_location: "footer",
+                    nav_destination: link.href,
+                    outbound: isOutboundHref(link.href),
+                  },
+                }}
                 href={link.href}
                 key={link.id}
               >
                 {link.label}
-              </Link>
+              </TrackedLink>
             ))}
           </div>
         </div>

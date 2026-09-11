@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { formOutcomeEvent, trackEvent } from '@/lib/analytics';
 import { submitBetterWorldApplication } from './actions';
 
 const inputClassName =
@@ -16,9 +17,15 @@ export function BetterWorldApplicationForm() {
     setIsSubmitting(true);
     setResult(null);
 
+    const extras = {
+      form_topic: String(formData.get('organizationType') ?? ''),
+      form_variant: String(formData.get('affiliateType') ?? ''),
+    };
+
     try {
       const response = await submitBetterWorldApplication(formData);
       setResult(response);
+      trackEvent(formOutcomeEvent('better_world_application', response, extras));
 
       if (response.success) {
         const form = document.getElementById('better-world-application-form') as HTMLFormElement;
@@ -26,6 +33,7 @@ export function BetterWorldApplicationForm() {
       }
     } catch {
       setResult({ error: 'Something went wrong. Please try again.' });
+      trackEvent(formOutcomeEvent('better_world_application', null, extras));
     } finally {
       setIsSubmitting(false);
     }

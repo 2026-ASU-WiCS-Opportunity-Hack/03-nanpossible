@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { formOutcomeEvent, trackEvent } from '@/lib/analytics';
 import { submitAwardNomination } from './actions';
 import { AWARD_CATEGORIES } from './categories';
 
@@ -18,9 +19,15 @@ export function NominationForm() {
     setIsSubmitting(true);
     setResult(null);
 
+    const extras = {
+      form_topic: String(formData.get('awardCategory') ?? ''),
+      form_variant: String(formData.get('nominationType') ?? ''),
+    };
+
     try {
       const response = await submitAwardNomination(formData);
       setResult(response);
+      trackEvent(formOutcomeEvent('award_nomination', response, extras));
 
       if (response.success) {
         const form = document.getElementById('nomination-form') as HTMLFormElement;
@@ -29,6 +36,7 @@ export function NominationForm() {
       }
     } catch {
       setResult({ error: 'Something went wrong. Please try again.' });
+      trackEvent(formOutcomeEvent('award_nomination', null, extras));
     } finally {
       setIsSubmitting(false);
     }

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useFormStatus } from "react-dom";
+import { beginDonationEvent, trackEvent } from "@/lib/analytics";
 import {
   DONATION_COMMENT_MAX,
   DONATION_PRESETS_MINOR,
@@ -28,7 +29,15 @@ export function DonationForm() {
   const total = amount !== null ? formatMinorAmount(amount, "usd") : null;
 
   return (
-    <form action={startDonationAction} className="site-panel rounded-[2rem] p-6 md:p-8">
+    <form
+      action={startDonationAction}
+      className="site-panel rounded-[2rem] p-6 md:p-8"
+      onSubmit={() => {
+        if (amount !== null) {
+          trackEvent(beginDonationEvent(amount));
+        }
+      }}
+    >
       <h2 className="section-title text-teal-deep">Choose an amount</h2>
       <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3">
         {DONATION_PRESETS_MINOR.map((minor) => (

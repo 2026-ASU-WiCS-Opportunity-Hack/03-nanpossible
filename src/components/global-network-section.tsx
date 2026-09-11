@@ -1,3 +1,4 @@
+import { TrackedLink } from "@/components/analytics/tracked-link";
 import { NetworkMap } from "@/components/network-map";
 import { affiliateSiteUrl } from "@/lib/affiliates";
 import { listCoachMapPoints } from "@/lib/coaches";
@@ -16,12 +17,18 @@ function AffiliateStrip({ affiliates }: { affiliates: AffiliateMapEntry[] }) {
       {affiliates.map((affiliate) => {
         const flagSrc = countryFlagSrc(affiliate.country);
         return (
-          <a
+          <TrackedLink
             className="coach-affiliate-chip"
+            event={{
+              name: "select_content",
+              params: {
+                content_type: "affiliate_site",
+                content_id: affiliate.name,
+                outbound: true,
+              },
+            }}
             href={affiliate.href}
             key={affiliate.href}
-            rel="noreferrer"
-            target="_blank"
           >
             {flagSrc ? (
               // eslint-disable-next-line @next/next/no-img-element
@@ -29,7 +36,7 @@ function AffiliateStrip({ affiliates }: { affiliates: AffiliateMapEntry[] }) {
             ) : null}
             {affiliate.name}
             <span aria-hidden="true">↗</span>
-          </a>
+          </TrackedLink>
         );
       })}
     </div>
@@ -79,14 +86,21 @@ export async function GlobalNetworkSection() {
             worldwide. Browse the coach directory to find one near you.
           </p>
         </div>
-        <a
+        <TrackedLink
           className="button-link secondary"
+          event={{
+            name: "cta_click",
+            params: {
+              cta_label: "Find a coach",
+              cta_location: "network_map",
+              cta_destination: COACH_DIRECTORY_URL,
+              outbound: true,
+            },
+          }}
           href={COACH_DIRECTORY_URL}
-          rel="noreferrer"
-          target="_blank"
         >
           Find a coach ↗
-        </a>
+        </TrackedLink>
       </div>
       {markers.length > 0 ? <NetworkMap markers={markers} /> : null}
       {affiliateEntries.length > 0 ? <AffiliateStrip affiliates={affiliateEntries} /> : null}
