@@ -17,7 +17,9 @@
 --   directory_slug, else by subdomain, else by name, and is inserted only
 --   when nothing matches. Directory-owned columns follow the directory;
 --   admin-curated ones (country, region, description) are filled only when
---   empty; website_url is taken from the directory when it had one.
+--   empty; website_url is taken from the directory when it had one —
+--   except WIAL Vietnam, whose listed sites are all offline: its link is
+--   its Facebook page (https://www.facebook.com/wialvietnam) for now.
 --   logo_url is left untouched — logos are re-hosted per environment by
 --   `npm run import:affiliates`, which now applies the same roster.
 --
@@ -412,7 +414,7 @@ update public.chapters set
   linkedin_url = null,
   youtube_url = null,
   blog_url = null,
-  website_url = coalesce('http://www.actionlearningcoach.org/', website_url),
+  website_url = coalesce('https://www.facebook.com/wialvietnam', website_url),
   logo_url = coalesce(null, logo_url),
   country = coalesce(country, 'Vietnam'),
   region = coalesce(region, 'Asia Pacific'),
@@ -420,7 +422,7 @@ update public.chapters set
   updated_at = timezone('utc', now())
 where directory_slug = 'wial-vietnam' or (directory_slug is null and (subdomain = 'vietnam' or lower(name) = lower('WIAL Vietnam')));
 insert into public.chapters (name, subdomain, locale, language, status, contact_email, theme_json, config, tagline, region, country, description, website_url, logo_url, directory_slug, contact_name, address_line1, address_line2, city, state_province, postal_code, facebook_url, linkedin_url, youtube_url, blog_url)
-select 'WIAL Vietnam', 'vietnam', 'en', 'en', 'active', 'wialvietnam@gmail.com', '{}'::jsonb, '{}'::jsonb, 'Action Learning programs, events, and coach certification in Vietnam.', 'Asia Pacific', 'Vietnam', 'Action Learning programs, events, and coach certification in Vietnam.', 'http://www.actionlearningcoach.org/', null, 'wial-vietnam', 'Mr Nguyen Duy Minh (John)', 'Floor 7, Melinh Point Tower', '2 Ngo Duc Ke, Dist 1', 'Ho Chi Minh City', 'Hồ Chí Minh', null, 'https://www.facebook.com/wialvietnam', null, null, null
+select 'WIAL Vietnam', 'vietnam', 'en', 'en', 'active', 'wialvietnam@gmail.com', '{}'::jsonb, '{}'::jsonb, 'Action Learning programs, events, and coach certification in Vietnam.', 'Asia Pacific', 'Vietnam', 'Action Learning programs, events, and coach certification in Vietnam.', 'https://www.facebook.com/wialvietnam', null, 'wial-vietnam', 'Mr Nguyen Duy Minh (John)', 'Floor 7, Melinh Point Tower', '2 Ngo Duc Ke, Dist 1', 'Ho Chi Minh City', 'Hồ Chí Minh', null, 'https://www.facebook.com/wialvietnam', null, null, null
 where not exists (select 1 from public.chapters where directory_slug = 'wial-vietnam' or (directory_slug is null and (subdomain = 'vietnam' or lower(name) = lower('WIAL Vietnam'))));
 -- Retired: still listed on the directory or seeded earlier, but not on WIAL's affiliate roster.
 update public.chapters set

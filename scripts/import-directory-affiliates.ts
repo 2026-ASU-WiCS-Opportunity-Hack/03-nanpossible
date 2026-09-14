@@ -115,6 +115,14 @@ const regionByCountry = new Map<string, string>([
 // directory's US placeholder, so the country would come through wrong.
 const countryOverrides = new Map<string, string>([["wial-italy", "Italy"]]);
 
+// Affiliate links that must not follow the directory. WIAL Vietnam's listed
+// site (actionlearningcoach.org, and the older wialvietnam.com → wial.vn) went
+// offline in 2026; the Facebook page is its only live presence, so WIAL asked
+// for it to be the affiliate link until they have a website again (2026-09-13).
+const websiteOverrides = new Map<string, string>([
+  ["wial-vietnam", "https://www.facebook.com/wialvietnam"],
+]);
+
 function cleanText(value: string | null): string | null {
   const trimmed = value?.replace(/\s+/g, " ").trim();
   return trimmed ? trimmed : null;
@@ -230,7 +238,7 @@ function toRow(affiliate: DirectoryAffiliate, logoUrl: string | null): Affiliate
     postal_code: countryOverrides.has(affiliate.slug)
       ? null
       : cleanText(affiliate.zipCode),
-    website_url: cleanWebsite(affiliate.website),
+    website_url: websiteOverrides.get(affiliate.slug) ?? cleanWebsite(affiliate.website),
     facebook_url: cleanLink(affiliate.facebook),
     linkedin_url: cleanLink(affiliate.linkedin),
     youtube_url: cleanLink(affiliate.youtube),
