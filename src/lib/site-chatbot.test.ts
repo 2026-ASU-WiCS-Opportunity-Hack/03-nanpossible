@@ -27,7 +27,8 @@ describe("site chatbot fallback", () => {
     const reply = buildFallbackAssistantReply("How do I get my digital badge?");
 
     expect(reply).toContain("Credly");
-    expect(reply).toContain("/certification#badges");
+    expect(reply).toContain("/contact");
+    expect(reply).not.toContain("#badges");
     expect(reply).toContain("/coaches");
   });
 
@@ -49,11 +50,13 @@ describe("site chatbot fallback", () => {
     expect(reply).not.toContain("wialportal.org");
   });
 
-  it("returns CALC course guidance for CALC 1 and workshop questions", () => {
+  it("answers CALC 1 / CALC 2 questions with the single CALC certification course", () => {
     const reply = buildFallbackAssistantReply("What is the CALC 1 workshop?");
 
-    expect(reply).toContain("CALC 1");
-    expect(reply).toContain("CALC 2");
+    expect(reply).toContain("single CALC certification course");
+    expect(reply).toContain("no longer offered separately");
+    expect(reply).toContain("Advanced coaching methods");
+    expect(reply).toContain("Running a successful Action Learning program");
     expect(reply).toContain("/certification#calc-courses");
     expect(reply).toContain("Foundations of Action Learning");
   });
@@ -64,7 +67,7 @@ describe("site chatbot fallback", () => {
     );
 
     expect(reply).toContain("six days");
-    expect(reply).toContain("/certification#in-house");
+    expect(reply).toContain("/certification/in-house-programs");
     expect(reply).toContain("/contact");
     expect(reply).not.toContain("wialportal.org");
   });

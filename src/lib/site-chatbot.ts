@@ -81,7 +81,7 @@ export function buildSiteAssistantContext() {
     `Resources page summary: ${resources?.bodyRichtext.heroIntro ?? ""}`,
     `Contact page summary: ${contact?.bodyRichtext.heroIntro ?? ""}`,
     "Direct contact: info@wial.org | P.O. Box 7601 #83791, Washington, DC 20044",
-    "Certification hub anchors: /certification#calc, #palc, #salc, #malc, #progression, #why, #become-a-coach, #programs, #foundations, #calc-courses, #in-house, #badges",
+    "Certification hub anchors: /certification#calc, #palc, #salc, #malc, #progression, #why, #become-a-coach, #programs, #foundations, #calc-courses, #in-house (teaser; full page at /certification/in-house-programs)",
     [
       `Who gets certified: ${certification.becomeACoach.intro.join(" ")}`,
       `Industries: ${certification.becomeACoach.industries.join(" | ")}`,
@@ -103,22 +103,24 @@ export function buildSiteAssistantContext() {
       "Foundations details: /certification#foundations",
     ].join("\n"),
     [
-      `CALC courses: ${certification.calcCourses.intro.join(" ")}`,
+      `CALC certification course: ${certification.calcCourses.intro.join(" ")}`,
       `Prerequisite: ${certification.calcCourses.prerequisite.body}`,
-      `CALC 1: ${certification.calcCourses.modules[0].summary} ${certification.calcCourses.modules[0].bullets.join(" | ")}`,
-      `CALC 2: ${certification.calcCourses.modules[1].summary} ${certification.calcCourses.modules[1].bullets.join(" | ")}`,
-      "CALC courses details: /certification#calc-courses",
+      "WIAL runs one CALC certification course; the former CALC 1 and CALC 2 workshops are no longer offered separately.",
+      ...certification.calcCourses.focusAreas.map(
+        (area) => `${area.title}: ${area.summary} ${area.bullets.join(" | ")}`,
+      ),
+      "CALC certification details: /certification#calc-courses",
     ].join("\n"),
     [
       `In-house programs: ${certification.inHouse.intro.join(" ")}`,
       `In-house quote: "${certification.inHouse.quote.quote}" — ${certification.inHouse.quote.attribution}`,
-      "In-house details: /certification#in-house or /contact",
+      "In-house details: /certification/in-house-programs or /contact",
     ].join("\n"),
     [
       `Digital badges: ${certification.badging.intro.beforeCredly}${certification.badging.intro.credlyLabel} (${certification.badging.credlyUrl})${certification.badging.intro.afterCredly}`,
       `A badge shows: ${certification.badging.shows.join(" | ")}`,
       certification.badging.claimNote,
-      "Badge details: /certification#badges",
+      "Badges are not described on the public site; for badge questions point visitors to /contact.",
     ].join("\n"),
     trackSummaries,
   ].join("\n\n");
@@ -159,7 +161,7 @@ export function buildFallbackAssistantReply(query: string) {
     return [
       inHouse.intro[0],
       inHouse.intro[2],
-      `Learn more at \`/certification#in-house\`, or contact WIAL at \`/contact\`.`,
+      `Learn more at \`/certification/in-house-programs\`, or contact WIAL at \`/contact\`.`,
     ].join("\n\n");
   }
 
@@ -185,10 +187,10 @@ export function buildFallbackAssistantReply(query: string) {
   ) {
     const courses = certification.calcCourses;
     return [
+      "WIAL now offers a single CALC certification course — the former CALC 1 and CALC 2 workshops are no longer offered separately.",
       courses.intro[0],
       `${courses.prerequisite.label}: ${courses.prerequisite.body}.`,
-      `${courses.modules[0].title}: ${courses.modules[0].summary}`,
-      `${courses.modules[1].title}: ${courses.modules[1].summary}`,
+      ...courses.focusAreas.map((area) => `${area.title}: ${area.summary}`),
       "Learn more at `/certification#calc-courses`.",
     ].join("\n\n");
   }
@@ -278,7 +280,7 @@ export function buildFallbackAssistantReply(query: string) {
     return [
       `${badging.intro.beforeCredly}${badging.intro.credlyLabel}${badging.intro.afterCredly}`,
       badging.claimNote,
-      "Learn more at `/certification#badges`. Coaches who add their public Credly badge link also get the badge displayed on their profile in the coach directory at `/coaches`.",
+      "For help claiming a badge, contact WIAL at `/contact`. Coaches who add their public Credly badge link also get the badge displayed on their profile in the coach directory at `/coaches`.",
     ].join("\n\n");
   }
 
