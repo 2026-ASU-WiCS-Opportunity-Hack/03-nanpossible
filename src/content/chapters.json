@@ -22,7 +22,7 @@
     "contactEmail": "usa@wial.org",
     "region": "North America",
     "country": "United States",
-    "websiteUrl": "https://wial-usa.org/",
+    "websiteUrl": "http://www.wial-usa.org/",
     "themeJson": {
       "accent": "#205c59",
       "surface": "#fffaf2",
@@ -39,7 +39,7 @@
     "contactEmail": "info@wial.org",
     "region": "Asia Pacific",
     "country": "Singapore",
-    "websiteUrl": "https://www.wial.sg/",
+    "websiteUrl": "http://www.wial.sg/",
     "tagline": "Action Learning programs, events, and coach certification in Singapore."
   },
   {
@@ -51,7 +51,7 @@
     "contactEmail": "info@wial.org",
     "region": "Europe",
     "country": "Netherlands",
-    "websiteUrl": "https://wial.nl/",
+    "websiteUrl": "http://www.wialnl.nl/",
     "tagline": "Action Learning programs, events, and coach certification in the Netherlands."
   },
   {
@@ -63,7 +63,7 @@
     "contactEmail": "info@wial.org",
     "region": "Asia Pacific",
     "country": "Malaysia",
-    "websiteUrl": "https://wialmalaysia.com/",
+    "websiteUrl": "http://www.wialmalaysia.com/",
     "tagline": "Action Learning programs, events, and coach certification in Malaysia."
   },
   {
@@ -75,7 +75,7 @@
     "contactEmail": "info@wial.org",
     "region": "Asia Pacific",
     "country": "Vietnam",
-    "websiteUrl": "http://www.wialvietnam.com/",
+    "websiteUrl": "http://www.actionlearningcoach.org/",
     "tagline": "Action Learning programs, events, and coach certification in Vietnam."
   },
   {
@@ -87,20 +87,8 @@
     "contactEmail": "info@wial.org",
     "region": "Europe",
     "country": "Poland",
-    "websiteUrl": "https://wialpoland.org/",
+    "websiteUrl": "http://wialpoland.org/",
     "tagline": "Action Learning programs, events, and coach certification in Poland."
-  },
-  {
-    "id": "44444444-4444-4444-8444-444444444406",
-    "name": "WIAL Russia",
-    "subdomain": "russia",
-    "locale": "en",
-    "status": "active",
-    "contactEmail": "info@wial.org",
-    "region": "Europe",
-    "country": "Russia",
-    "websiteUrl": "https://denissanko.com/",
-    "tagline": "Action Learning programs, events, and coach certification in Russia."
   },
   {
     "id": "44444444-4444-4444-8444-444444444407",
@@ -113,5 +101,120 @@
     "country": "Taiwan",
     "websiteUrl": "http://www.wial.org.tw/",
     "tagline": "Action Learning programs, events, and coach certification in Taiwan."
+  },
+  {
+    "id": "44444444-4444-4444-8444-444444444408",
+    "name": "WIAL Brazil",
+    "subdomain": "brazil",
+    "locale": "en",
+    "status": "active",
+    "contactEmail": "info@wial.org",
+    "region": "South America",
+    "country": "Brazil",
+    "websiteUrl": "http://www.wial.org.br/",
+    "tagline": "Action Learning programs, events, and coach certification in Brazil."
+  },
+  {
+    "id": "44444444-4444-4444-8444-444444444409",
+    "name": "WIAL Cambodia",
+    "subdomain": "cambodia",
+    "locale": "en",
+    "status": "active",
+    "contactEmail": "info@wial.org",
+    "region": "Asia Pacific",
+    "country": "Cambodia",
+    "websiteUrl": "http://wialcambodia.com/",
+    "tagline": "Action Learning programs, events, and coach certification in Cambodia."
+  },
+  {
+    "id": "44444444-4444-4444-8444-444444444410",
+    "name": "WIAL Canada",
+    "subdomain": "canada",
+    "locale": "en",
+    "status": "active",
+    "contactEmail": "info@wial.org",
+    "region": "North America",
+    "country": "Canada",
+    "tagline": "Action Learning programs, events, and coach certification in Canada."
+  },
+  {
+    "id": "44444444-4444-4444-8444-444444444411",
+    "name": "WIAL China",
+    "subdomain": "china",
+    "locale": "en",
+    "status": "active",
+    "contactEmail": "info@wial.org",
+    "region": "Asia Pacific",
+    "country": "China",
+    "websiteUrl": "http://www.wial-china.org/",
+    "tagline": "Action Learning programs, events, and coach certification in China."
+  },
+  {
+    "id": "44444444-4444-4444-8444-444444444412",
+    "name": "WIAL France",
+    "subdomain": "france",
+    "locale": "en",
+    "status": "active",
+    "contactEmail": "info@wial.org",
+    "region": "Europe",
+    "country": "France",
+    "websiteUrl": "http://www.wial.fr/",
+    "tagline": "Action Learning programs, events, and coach certification in France."
+  },
+  {
+    "id": "44444444-4444-4444-8444-444444444413",
+    "name": "WIAL Italy",
+    "subdomain": "italy",
+    "locale": "en",
+    "status": "active",
+    "contactEmail": "info@wial.org",
+    "region": "Europe",
+    "country": "Italy",
+    "tagline": "Action Learning programs, events, and coach certification in Italy."
+  },
+  {
+    "id": "44444444-4444-4444-8444-444444444414",
+    "name": "WIAL Japan",
+    "subdomain": "japan",
+    "locale": "en",
+    "status": "active",
+    "contactEmail": "info@wial.org",
+    "region": "Asia Pacific",
+    "country": "Japan",
+    "tagline": "Action Learning programs, events, and coach certification in Japan."
+  },
+  {
+    "id": "44444444-4444-4444-8444-444444444415",
+    "name": "WIAL Nigeria",
+    "subdomain": "nigeria",
+    "locale": "en",
+    "status": "active",
+    "contactEmail": "info@wial.org",
+    "region": "Africa",
+    "country": "Nigeria",
+    "tagline": "Action Learning programs, events, and coach certification in Nigeria."
+  },
+  {
+    "id": "44444444-4444-4444-8444-444444444416",
+    "name": "WIAL Philippines",
+    "subdomain": "philippines",
+    "locale": "en",
+    "status": "active",
+    "contactEmail": "info@wial.org",
+    "region": "Asia Pacific",
+    "country": "Philippines",
+    "tagline": "Action Learning programs, events, and coach certification in Philippines."
+  },
+  {
+    "id": "44444444-4444-4444-8444-444444444417",
+    "name": "WIAL Thailand",
+    "subdomain": "thailand",
+    "locale": "en",
+    "status": "active",
+    "contactEmail": "info@wial.org",
+    "region": "Asia Pacific",
+    "country": "Thailand",
+    "websiteUrl": "http://www.wialthailand.com/",
+    "tagline": "Action Learning programs, events, and coach certification in Thailand."
   }
 ]
