@@ -328,17 +328,17 @@
             {
               "eyebrow": "PALC",
               "title": "Professional Action Learning Coach",
-              "body": "PALCs have proven their ability as coaches and have accumulated meaningful WIAL Action Learning experience."
+              "body": "PALCs have 100+ hours of coaching experience and can lead multiple Action Learning problems."
             },
             {
               "eyebrow": "SALC",
               "title": "Senior Action Learning Coach",
-              "body": "SALCs are cleared to lead all WIAL programs and represent a higher level of experience and readiness."
+              "body": "SALCs can lead a single, complex Action Learning organizational problem over an extended period."
             },
             {
               "eyebrow": "MALC",
               "title": "Master Action Learning Coach",
-              "body": "MALCs are thought leaders in the Action Learning community and represent the highest level in the WIAL hierarchy."
+              "body": "MALCs are thought leaders who have published and contributed significantly to the Action Learning field."
             }
           ]
         },
@@ -351,12 +351,14 @@
               "body": "An intensive two-day session covering the six components and two ground rules, with practice as both a participant and a coach."
             },
             {
-              "title": "CALC courses",
-              "body": "The certification program for Action Learning coaches: e-learning, a live workshop, and independently led sessions."
+              "title": "CALC certification",
+              "body": "The certification course for Action Learning coaches: e-learning, a live workshop, and independently led sessions."
             },
             {
               "title": "In-house programs",
-              "body": "Customized in-house certification and staffing for organizations in the United States and internationally."
+              "body": "Customized in-house certification and staffing for organizations in the United States and internationally.",
+              "href": "/certification/in-house-programs",
+              "label": "Explore in-house programs"
             }
           ]
         },
@@ -381,8 +383,8 @@
             "Prerequisite: Foundations of Action Learning workshop. The program is for professionals who want to become certified coaches inside their organization, and for independent coaches and consultants."
           ],
           "bullets": [
-            "CALC 1 focuses on advanced coaching methods: complete problem statements, questions aligned with the problem-solving stage, and typical group-dynamics issues.",
-            "CALC 2 focuses on organizational issues: contracting, program design, forming teams, senior-management support, and fostering a culture of Action Learning.",
+            "The course covers advanced coaching methods: complete problem statements, questions aligned with the problem-solving stage, and typical group-dynamics issues.",
+            "It also covers the organizational issues behind a successful Action Learning program: contracting, program design, forming teams, senior-management support, and fostering a culture of Action Learning.",
             "Certified coaches are qualified to coach Action Learning teams, manage programs, and use the WIAL brand in marketing materials."
           ]
         },
@@ -417,10 +419,10 @@
       ]
     },
     "seo": {
-      "description": "WIAL certification programs — CALC, PALC, SALC, and MALC — plus Foundations of Action Learning, CALC courses, in-house programs, and how to become a coach.",
+      "description": "WIAL certification programs — CALC, PALC, SALC, and MALC — plus Foundations of Action Learning, the CALC certification course, in-house programs, and how to become a coach.",
       "sourceUrl": "https://wial.org/certification/",
       "sourceStatus": "migrated-from-wial",
-      "sourceNotes": "Consolidates wial.org/certification, /certification/foundations, /certification/calc-courses, /certification/in-house-programs, /programs, and /become-a-coach onto the bespoke /certification hub (this fixture stays in sync for DB fallback and the admin editor; the static route is what the public page renders). Four-level pathway remains the expandable hub UI; Foundations, CALC 1/2, in-house programs, Programs, and who-gets-certified copy are native sections with anchors #foundations, #calc-courses, #in-house, #programs, and #become-a-coach. /programs was a Coming soon stub — the hub lists the actual programs instead of republishing the placeholder. The become-a-coach Gravity Form was simplified to the internal /contact CTA (crawler-sheet note: simplify while merging); Solution Spheres link to /our-services. The Microsoft in-house quote is a native quote block. Six components/two ground rules link to /action-learning rather than being duplicated. Digital badges stay native (Credly strip vendored under public/certification/; FAQ PDF and learn-it infographic already extracted). Recertification is still not rendered publicly. Legacy paths /certification/foundations, /certification/calc-courses, /certification/in-house-programs, /programs, and /become-a-coach redirect here."
+      "sourceNotes": "Consolidates wial.org/certification, /certification/foundations, /certification/calc-courses, /certification/in-house-programs, /programs, and /become-a-coach onto the bespoke /certification hub (this fixture stays in sync for DB fallback and the admin editor; the static route is what the public page renders). Four-level pathway remains the expandable hub UI; Foundations, the CALC certification course, Programs, and who-gets-certified copy are native sections with anchors #foundations, #calc-courses, #programs, and #become-a-coach; #in-house is a teaser and the full in-house programs copy has its own page at /certification/in-house-programs (#143). /programs was a Coming soon stub — the hub lists the actual programs instead of republishing the placeholder. The become-a-coach Gravity Form was simplified to the internal /contact CTA (crawler-sheet note: simplify while merging); Solution Spheres link to /our-services. The Microsoft in-house quote is a native quote block. Six components/two ground rules link to /action-learning rather than being duplicated. Per #143 the digital-badge (Credly) section was removed from the page (copy kept in certification-hub.ts for the chatbot only), CALC 1 / CALC 2 are described as one CALC certification course because WIAL no longer splits them, the four levels under Why get certified use Mark's one-line descriptions as plain subheadings, and the non-clickable industry and skills lists lost their card styling. Real WIAL photos from wial.org/become-a-coach (a certified cohort with certificates, a CALC certificate presentation) are vendored under public/certification/; the source pages' stock photos were deliberately not. Recertification is still not rendered publicly. Legacy paths /certification/foundations, /certification/calc-courses, /programs, and /become-a-coach redirect here; /certification/in-house-programs serves its own page."
     }
   },
   
@@ -431,7 +433,7 @@
   "title": "Our Clients",
   "published": true,
   "bodyRichtext": {
-    "heroIntro": "These are just some of the organizations that have worked with or continue to work with WIAL to advance the use of Action Learning in the corporate world. Want to see your business on this list? Contact us to find out how you can get involved in the Action Learning community.",
+    "heroIntro": "These are just some of the organizations that have worked with or continue to work with WIAL to advance the use of Action Learning. Want to see your business on this list? Contact us to find out how you can get involved in the Action Learning community.",
     "metrics": [
       { "label": "Client organizations", "value": "35+" },
       { "label": "Industries served", "value": "10+" },
@@ -851,6 +853,13 @@
         ]
       },
       {
+        "type": "cta",
+        "title": "See how Action Learning changes communities",
+        "body": "Compare the traditional approach with WIAL Action Learning, watch the community impact video, and meet the organizations WIAL Gives Back has supported.",
+        "href": "/community-impact",
+        "label": "Explore community impact"
+      },
+      {
         "type": "prose",
         "title": "Challenging the status quo",
         "paragraphs": [
@@ -892,7 +901,7 @@
     "description": "How Action Learning benefits individuals, teams, and organizations — problem solving, learning organizations, high-performing teams, leadership development, and community impact.",
     "sourceUrl": "https://wial.org/action-learning/benefits/",
     "sourceStatus": "migrated-from-wial",
-    "sourceNotes": "Rewritten from the live wial.org Action Learning Benefits page (breakthrough problem solving, learning organization, high-performing teams, leadership development, community impact, challenging the status quo). External wial.org CTAs replaced with internal /certification, /coaches, and /contact routes."
+    "sourceNotes": "Rewritten from the live wial.org Action Learning Benefits page (breakthrough problem solving, learning organization, high-performing teams, leadership development, community impact, challenging the status quo). External wial.org CTAs replaced with internal /certification, /coaches, and /contact routes. The Community impact section links to /community-impact (#144), which took over the source's infographic and video utility pages."
   }
 },
 {
@@ -3471,6 +3480,146 @@
     "sourceUrl": "https://wial.org/projects/wial-provides-action-learning-coaching-singapore-association-deaf/",
     "sourceStatus": "migrated-from-wial",
     "sourceNotes": "Migrated from wial.org's Better World Stories (projects). Text is verbatim with light copy edits. A source thumbnail unrelated to the story (a 'Singapore Votes 2020' election-results graphic, likely leftover related-post filler) was dropped; the Singapore Sign Language and Deaf Awareness Week event photo is vendored as the hero image."
+  }
+},
+{
+  "id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaa0032",
+  "chapterId": null,
+  "slug": "community-impact",
+  "title": "Community Impact",
+  "published": true,
+  "bodyRichtext": {
+    "heroIntro": "WIAL helps to create a better world by supporting organizations that make a positive social impact. Through the delivery of pro bono coaching and grant funding to nonprofits, social enterprises, and other purpose-driven organizations, we contribute to positive outcomes globally.",
+    "metrics": [
+      { "label": "Pro bono coaching", "value": "WIAL Gives Back" },
+      { "label": "Grant funding", "value": "Better World Fund" },
+      { "label": "Better World stories", "value": "8" }
+    ],
+    "sections": [
+      {
+        "type": "prose",
+        "title": "Action Learning as a tool for community partnership",
+        "paragraphs": [
+          "Action Learning is a powerful tool to create strong partnerships with community groups and is a great way to improve communities and lives globally.",
+          "When a nonprofit or community organization works on a real, urgent problem with a WIAL-certified coach, the team solves the problem and builds its own capacity at the same time. The questions-first process gives every member a voice, surfaces the root issue, and leaves the organization with leaders who can keep applying the method after the coach has gone."
+        ]
+      },
+      {
+        "type": "comparison",
+        "title": "Traditional approach vs. WIAL Action Learning",
+        "description": "How leadership development changes when community impact is the goal rather than a by-product.",
+        "columns": ["Traditional approach", "WIAL Action Learning"],
+        "rows": [
+          {
+            "label": "What is the purpose?",
+            "before": "Organizations focus on profit, being 'best in the world'.",
+            "after": "Organizations focus on being 'best for the world' – being socially responsible."
+          },
+          {
+            "label": "What is the focus of development?",
+            "before": "Focus on individual leadership skills narrowly applied to the organization they serve.",
+            "after": "Building the skills and behaviors that leaders need to support the wider society and community."
+          },
+          {
+            "label": "How is society impacted?",
+            "before": "Working in a silo and not in partnership with the wider society or community.",
+            "after": "Leaders become more aware of the role they play in society and the communities they serve."
+          },
+          {
+            "label": "What next?",
+            "before": "Corporate social responsibility is a 'tick box' exercise without making meaningful and sustainable change to the wider ecosystem.",
+            "after": "Working in partnership with the community and society on real challenges and finding sustainable solutions that make a real difference in the lives of others."
+          }
+        ]
+      },
+      {
+        "type": "video",
+        "title": "Watch: Action Learning and community impact",
+        "description": "WIAL's short video on how Action Learning creates community impact.",
+        "videoUrl": "https://www.youtube-nocookie.com/embed/gZFC1Vd8Bfo",
+        "videoTitle": "WIAL Action Learning Benefits: Community Impact",
+        "caption": "WIAL Action Learning Benefits: Community Impact, from WIAL's YouTube channel."
+      },
+      {
+        "type": "media_prose",
+        "title": "WIAL Gives Back in action",
+        "image": "/better-world/stories/malaysia-we-the-protector.jpg",
+        "imageAlt": "WIAL Gives Back coaches and Be My Protector Malaysia team members celebrating together at an event in Kuala Lumpur",
+        "imagePosition": "right",
+        "paragraphs": [
+          "Through WIAL Gives Back, certified coaches volunteer their time to run Action Learning sessions for nonprofits and community organizations — from hospital administrators and young entrepreneurs in Thailand to Red Cross societies, a deaf association in Singapore, and a human-rights platform in Malaysia.",
+          "The Better World Fund adds grant funding so that purpose-driven organizations can take part regardless of budget. Every project ends with a solution the team owns and a group of leaders who know how to keep asking the questions that matter."
+        ]
+      },
+      {
+        "type": "feature_grid",
+        "title": "How WIAL creates community impact",
+        "items": [
+          {
+            "eyebrow": "Pro bono coaching",
+            "title": "WIAL Gives Back",
+            "body": "Certified coaches donate Action Learning sessions to nonprofits, social enterprises, and community groups around the world.",
+            "href": "/better-world",
+            "label": "About the initiative"
+          },
+          {
+            "eyebrow": "Grant funding",
+            "title": "Better World Fund",
+            "body": "Donations fund Action Learning support for purpose-driven organizations that could not otherwise afford it.",
+            "href": "/better-world/donate",
+            "label": "Support the fund"
+          },
+          {
+            "eyebrow": "Real results",
+            "title": "Better World stories",
+            "body": "Read how organizations in Thailand, Singapore, Malaysia, Grenada, and beyond solved real problems with Action Learning.",
+            "href": "/better-world",
+            "label": "Read the stories"
+          },
+          {
+            "eyebrow": "Get involved",
+            "title": "Become a certified coach",
+            "body": "WIAL-certified coaches carry the method into their own organizations and communities.",
+            "href": "/certification",
+            "label": "Explore certification"
+          }
+        ]
+      },
+      {
+        "type": "resource_list",
+        "title": "Share the message",
+        "description": "Use WIAL's community impact materials in your own organization or network.",
+        "items": [
+          {
+            "kind": "Infographic",
+            "title": "Community Impact infographic",
+            "body": "The traditional-versus-Action-Learning comparison above as a one-page graphic you can print or share.",
+            "href": "/community-impact/community-impact-infographic.webp",
+            "label": "Open the infographic"
+          },
+          {
+            "kind": "Video",
+            "title": "Community Impact on YouTube",
+            "body": "Watch or share the WIAL Action Learning Benefits: Community Impact video from WIAL's channel.",
+            "href": "https://www.youtube.com/watch?v=gZFC1Vd8Bfo",
+            "label": "Open on YouTube"
+          }
+        ]
+      },
+      {
+        "type": "cta",
+        "title": "Know an organization that could use Action Learning?",
+        "body": "Nominate a nonprofit or community organization for Better World Fund support, or donate to help fund the next project.",
+        "href": "/better-world/nominate",
+        "label": "Nominate an organization"
+      }
+    ]
+  },
+  "seo": {
+    "description": "How WIAL creates community impact: pro bono Action Learning coaching and Better World Fund grants for nonprofits and social enterprises, and how that differs from a traditional leadership-development approach.",
+    "sourceUrl": "https://wial.org/community-impact-infographic/",
+    "sourceStatus": "migrated-from-wial",
+    "sourceNotes": "Consolidates two unlisted wial.org utility pages (#144): /community-impact-infographic/ (a single Elementor image) and /community-impact-video/ (a single YouTube embed), both linked from the source Benefits page. The infographic's text was transcribed into the hero intro, the prose section, and the native comparison section (its two-column traditional-vs-WIAL layout is what the comparison section type was added for) so it is readable, searchable, and on-brand; the graphic itself is vendored to public/community-impact/ as webp and offered as a download. The source's 'Organizations focus on profit, being best for the world' under Traditional approach is an obvious typo for 'best in the world' and was corrected. The video is embedded via youtube-nocookie from WIAL's own channel; the YouTube link under Share the message is intentionally external. The WIAL Gives Back photo is the vendored Be My Protector Malaysia image already used by /better-world/malaysia-we-the-protector. Both legacy paths alias-redirect here, /benefits links here from its Community impact section, and the page is deliberately not in the header nav."
   }
 }
 ]

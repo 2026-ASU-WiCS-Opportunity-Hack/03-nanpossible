@@ -72,7 +72,9 @@ Rows and links that are neither redirected, live, nor mapped to an issue report 
 
 ## Remaining migration targets
 
-All tracked as GitHub issues (filed 2026-08-30 from the website crawler spreadsheet). Shipped 2026-09-02: #117 (`/become-a-partner` form → `/partners` + `/partners/apply`), #118 (`/become-an-affiliate`), #119 (`/wials-team` → `/about`), #120 (`/resources`), #121 (WIAL Blog → `/resources/<slug>`), #122 (`/privacy` + footer link), #123 (Better World application form → `/better-world/nominate`; `/projects/...` stories → `/better-world/<slug>`; donation form split out to #127). Shipped 2026-09-03: #127 (Better World Fund donation form → `/better-world/donate`, Stripe Checkout with a donor-chosen amount).
+All tracked as GitHub issues (filed 2026-08-30 from the website crawler spreadsheet). Shipped 2026-09-02: #117 (`/become-a-partner` form → `/partners` + `/partners/apply`), #118 (`/become-an-affiliate`), #119 (`/wials-team` → `/about`), #120 (`/resources`), #121 (WIAL Blog → `/resources/<slug>`), #122 (`/privacy` + footer link), #123 (Better World application form → `/better-world/nominate`; `/projects/...` stories → `/better-world/<slug>`; donation form split out to #127). Shipped 2026-09-03: #127 (Better World Fund donation form → `/better-world/donate`, Stripe Checkout with a donor-chosen amount). Shipped 2026-09-14: #143 (Mark's v1 edits: site-wide noindex until cutover, `/clients` copy, `/certification` restructure incl. `/certification/in-house-programs` as its own page again) and #144 (`/community-impact` from the infographic + video utility pages; `/privacy-policy` and `/projects` were already covered by #122/#123).
+
+Section types added since the toolbox list above: `comparison` (two approaches contrasted row by row — built for the Community Impact infographic) and `video` (one youtube-nocookie embed with copy). Prefer transcribing an infographic into `comparison`/`prose` over embedding the image; vendor the graphic as a webp download instead.
 
 | wial.org page(s) | Target | Issue |
 | --- | --- | --- |

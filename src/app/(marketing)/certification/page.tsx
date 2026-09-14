@@ -2,9 +2,9 @@ import { Metadata } from "next";
 import { CertificationHubSections } from "@/components/certification-hub";
 
 export const metadata: Metadata = {
-  title: "Certification | WIAL",
+  title: "Certification",
   description:
-    "WIAL certification programs — CALC, PALC, SALC, and MALC — plus Foundations of Action Learning, CALC courses, in-house programs, and how to become a coach.",
+    "WIAL certification programs — CALC, PALC, SALC, and MALC — plus Foundations of Action Learning, the CALC certification course, in-house programs, and how to become a coach.",
 };
 
 export default async function CertificationHubPage() {
