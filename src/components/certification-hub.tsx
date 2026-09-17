@@ -74,7 +74,7 @@ function WhySection() {
       </div>
       <div className="mt-4 grid gap-3 sm:grid-cols-2">
         {certificationWhy.levels.map((level) => (
-          <article className="feature-card rounded-lg" key={level.level}>
+          <article className="feature-card feature-card--flat rounded-lg" key={level.level}>
             <div className="text-sm font-semibold text-teal-deep">{level.level}</div>
             <h3 className="mt-1 text-sm font-semibold">{level.title}</h3>
             <p className="mt-1 text-sm text-foreground/70">{level.body}</p>
@@ -162,13 +162,13 @@ function BecomeACoachSection() {
       <ul className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
         {certificationBecomeACoach.industries.map((industry) => (
           <li
-            className="feature-card rounded-lg text-sm text-foreground/80"
+            className="feature-card feature-card--flat rounded-lg text-sm text-foreground/80"
             key={industry}
           >
             {industry}
           </li>
         ))}
-        <li className="feature-card rounded-lg text-sm text-foreground/60">
+        <li className="feature-card feature-card--flat rounded-lg text-sm text-foreground/60">
           {certificationBecomeACoach.industriesMore}
         </li>
       </ul>
@@ -338,7 +338,7 @@ function CalcCoursesSection() {
         <ul className="mt-2 grid gap-2 sm:grid-cols-2">
           {certificationCalcCourses.skills.map((skill) => (
             <li
-              className="feature-card rounded-lg text-sm text-foreground/80"
+              className="feature-card feature-card--flat rounded-lg text-sm text-foreground/80"
               key={skill}
             >
               {skill}

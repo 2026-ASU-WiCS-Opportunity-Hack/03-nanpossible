@@ -93,7 +93,10 @@ export function ScenarioArchive({ scenarios }: ScenarioArchiveProps) {
       ) : (
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           {shown.map((scenario) => (
-            <article className="feature-card flex flex-col rounded-[1.5rem]" key={scenario.slug}>
+            <article
+              className="feature-card feature-card--flat flex flex-col rounded-[1.5rem]"
+              key={scenario.slug}
+            >
               <p className="text-xs font-semibold uppercase tracking-[0.16em] text-green">
                 Scenario · {year(scenario.lastPostedOn)}
               </p>
