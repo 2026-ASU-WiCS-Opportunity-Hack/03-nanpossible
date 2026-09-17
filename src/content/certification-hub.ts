@@ -308,7 +308,7 @@ export const certificationBecomeACoach = {
     alt: "Newly certified Action Learning coaches holding their WIAL certificates after a workshop",
   },
   intro: [
-    "Action Learning is a powerful tool for individuals, teams, and organizations. WIAL is an international organization offering services on six continents.",
+    "Action Learning is a powerful tool for individuals, teams, and organizations in any industry. WIAL is an international organization offering services on six continents.",
   ],
   industriesLead: "Members of the WIAL community come from many industries:",
   industries: [
