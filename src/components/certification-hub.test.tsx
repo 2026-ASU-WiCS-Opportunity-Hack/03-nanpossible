@@ -33,17 +33,18 @@ describe("CertificationHubSections", () => {
     expect(html).toContain("Foundations of Action Learning");
     expect(html).toContain("Potential coaches");
     expect(html).toContain("Organizational champions");
-    expect(html).toContain("In-house Foundations option");
     expect(html).toContain('href="/action-learning"');
-    expect(html).toContain("See in-house certification programs");
-    expect(html).toContain('href="/certification/in-house-programs"');
+    // The in-house Foundations callout was removed (#in-house below covers it).
+    expect(html).not.toContain("In-house Foundations option");
+    expect(html).not.toContain("See in-house certification programs");
 
     expect(html).toContain('id="become-a-coach"');
     expect(html).toContain("Who gets WIAL Action Learning certified?");
     expect(html).toContain("six continents");
-    expect(html).toContain("Marketing");
-    expect(html).toContain("Hospitality");
-    expect(html).toContain("Technology");
+    expect(html).toContain("in any industry");
+    // The industries list was removed to shorten the page.
+    expect(html).not.toContain("Marketing");
+    expect(html).not.toContain("Hospitality");
     expect(html).toContain("problem solving to idea generation");
     expect(html).toContain("Solution Spheres");
     expect(html).toContain('href="/our-services"');
@@ -66,8 +67,10 @@ describe("CertificationHubSections", () => {
     expect(html).toContain("Developing complete problem statements");
     expect(html).toContain("Fostering a culture of Action Learning");
     expect(html).toContain("/certification/calc-certificate-presentation.jpg");
-    expect(html).toContain("Top skills of tomorrow");
-    expect(html).toContain("World Economic Forum");
+    // Top skills of tomorrow was removed from the page to shorten it (kept in
+    // certification-hub.ts for the chatbot).
+    expect(html).not.toContain("Top skills of tomorrow");
+    expect(html).not.toContain("World Economic Forum");
 
     // In-house programs is a teaser on the hub; the copy lives on its own page.
     expect(html).toContain('id="in-house"');
@@ -86,8 +89,9 @@ describe("CertificationHubSections", () => {
 
   it("does not dress non-interactive lists up as cards", () => {
     const html = renderHub();
-    // Industries and the skills list are plain lists; only the pathway buttons
-    // and the Programs catalog (which link somewhere) keep the feature-card look.
+    // Plain lists (foundations/CALC-course bullets) don't get feature-card
+    // styling; only the pathway buttons and the Programs catalog (which link
+    // somewhere) keep the feature-card look.
     expect(html).not.toMatch(/<li class="feature-card/);
     expect(html).toMatch(/<button[^>]*class="feature-card/);
   });
@@ -107,7 +111,7 @@ describe("CertificationHubSections", () => {
     expect(titles).toContain("Foundations of Action Learning");
     expect(titles).toContain("Certification for Action Learning Coaches");
     expect(titles).toContain("In-house programs");
-    expect(titles).toContain("Top skills of tomorrow");
+    expect(titles).not.toContain("Top skills of tomorrow");
     expect(JSON.stringify(certificationPage?.bodyRichtext)).not.toMatch(/CALC [12]\b/);
 
     const microsoftQuote = certificationPage?.bodyRichtext.sections.find(

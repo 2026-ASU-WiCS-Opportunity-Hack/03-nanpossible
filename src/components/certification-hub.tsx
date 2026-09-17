@@ -134,30 +134,6 @@ function FoundationsSection() {
           </ul>
         </div>
       </div>
-      <div className="site-panel mt-4 rounded-lg px-6 py-5">
-        <h3 className="text-sm font-semibold">
-          {certificationFoundations.inHouse.title}
-        </h3>
-        <div className="mt-2 space-y-2 text-sm leading-relaxed text-foreground/70">
-          {certificationFoundations.inHouse.paragraphs.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
-          ))}
-        </div>
-        <TrackedLink
-          className="button-link secondary mt-4"
-          event={{
-            name: "cta_click",
-            params: {
-              cta_label: certificationFoundations.inHouse.moreLabel,
-              cta_location: "certification",
-              cta_destination: certificationFoundations.inHouse.moreHref,
-            },
-          }}
-          href={certificationFoundations.inHouse.moreHref}
-        >
-          {certificationFoundations.inHouse.moreLabel}
-        </TrackedLink>
-      </div>
     </div>
   );
 }
@@ -172,22 +148,7 @@ function BecomeACoachSection() {
             {certificationBecomeACoach.intro.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
-            <p>{certificationBecomeACoach.industriesLead}</p>
           </div>
-          {/* An inline list — the industries are labels, not links or filters. */}
-          <ul className="mt-3 flex flex-wrap gap-x-3 gap-y-1 text-sm font-medium text-foreground/80">
-            {certificationBecomeACoach.industries.map((industry) => (
-              <li
-                className="before:mr-3 before:text-foreground/30 before:content-['·'] first:before:hidden"
-                key={industry}
-              >
-                {industry}
-              </li>
-            ))}
-            <li className="font-normal text-foreground/60 before:mr-3 before:text-foreground/30 before:content-['·']">
-              {certificationBecomeACoach.industriesMore}
-            </li>
-          </ul>
           <div className="mt-4 max-w-3xl space-y-2 text-sm leading-relaxed text-foreground/70">
             <p>{certificationBecomeACoach.joinNote}</p>
             <p>
@@ -358,19 +319,6 @@ function CalcCoursesSection() {
             loading="lazy"
           />
         </figure>
-      </div>
-      <div className="mt-4">
-        <h3 className="text-sm font-semibold">
-          {certificationCalcCourses.skillsTitle}
-        </h3>
-        <p className="mt-1 text-sm text-foreground/60">
-          {certificationCalcCourses.skillsSource}
-        </p>
-        <ul className="mt-2 grid list-disc gap-x-8 gap-y-1 pl-5 text-sm text-foreground/80 sm:grid-cols-2">
-          {certificationCalcCourses.skills.map((skill) => (
-            <li key={skill}>{skill}</li>
-          ))}
-        </ul>
       </div>
     </div>
   );

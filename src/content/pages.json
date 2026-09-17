@@ -309,11 +309,8 @@
           "type": "prose",
           "title": "Who gets WIAL Action Learning certified?",
           "paragraphs": [
-            "Action Learning is a powerful tool for individuals, teams, and organizations. WIAL is an international organization offering services on six continents.",
+            "Action Learning is a powerful tool for individuals, teams, and organizations in any industry. WIAL is an international organization offering services on six continents.",
             "Join WIAL and notice improvements in your work, from problem solving to idea generation. Check out our Solution Spheres on the Action Learning Solutions page, or contact us to ask about becoming a coach."
-          ],
-          "bullets": [
-            "Members of the WIAL community come from many industries: marketing, education, manufacturing, banking, retail, hospitality, technology, and more."
           ]
         },
         {
@@ -371,8 +368,7 @@
           ],
           "bullets": [
             "This program is for potential coaches, organizational champions, and sponsors.",
-            "Participants earn a certificate of participation, join an Action Learning team, and observe the learning coach's role.",
-            "WIAL can also deliver Foundations in-house; the required two days can be arranged to match an organization's objectives."
+            "Participants earn a certificate of participation, join an Action Learning team, and observe the learning coach's role."
           ]
         },
         {
@@ -403,13 +399,6 @@
           "attribution": "Dan Grady, Premier Field Engineering Director, Microsoft"
         },
         {
-          "type": "prose",
-          "title": "Top skills of tomorrow",
-          "paragraphs": [
-            "The CALC program develops skills identified in the World Economic Forum Future of Jobs Report 2020: analytical thinking and innovation, active learning, complex problem-solving, critical thinking, creativity, leadership and social influence, resilience, and reasoning."
-          ]
-        },
-        {
           "type": "cta",
           "title": "Ready to get certified?",
           "body": "Contact us to start certification, ask about becoming a coach, or bring a program in-house.",
@@ -422,7 +411,7 @@
       "description": "WIAL certification programs — CALC, PALC, SALC, and MALC — plus Foundations of Action Learning, the CALC certification course, in-house programs, and how to become a coach.",
       "sourceUrl": "https://wial.org/certification/",
       "sourceStatus": "migrated-from-wial",
-      "sourceNotes": "Consolidates wial.org/certification, /certification/foundations, /certification/calc-courses, /certification/in-house-programs, /programs, and /become-a-coach onto the bespoke /certification hub (this fixture stays in sync for DB fallback and the admin editor; the static route is what the public page renders). Four-level pathway remains the expandable hub UI; Foundations, the CALC certification course, Programs, and who-gets-certified copy are native sections with anchors #foundations, #calc-courses, #programs, and #become-a-coach; #in-house is a teaser and the full in-house programs copy has its own page at /certification/in-house-programs (#143). /programs was a Coming soon stub — the hub lists the actual programs instead of republishing the placeholder. The become-a-coach Gravity Form was simplified to the internal /contact CTA (crawler-sheet note: simplify while merging); Solution Spheres link to /our-services. The Microsoft in-house quote is a native quote block. Six components/two ground rules link to /action-learning rather than being duplicated. Per #143 the digital-badge (Credly) section was removed from the page (copy kept in certification-hub.ts for the chatbot only), CALC 1 / CALC 2 are described as one CALC certification course because WIAL no longer splits them, the four levels under Why get certified use Mark's one-line descriptions as plain subheadings, and the non-clickable industry and skills lists lost their card styling. Real WIAL photos from wial.org/become-a-coach (a certified cohort with certificates, a CALC certificate presentation) are vendored under public/certification/; the source pages' stock photos were deliberately not. Recertification is still not rendered publicly. Legacy paths /certification/foundations, /certification/calc-courses, /programs, and /become-a-coach redirect here; /certification/in-house-programs serves its own page."
+      "sourceNotes": "Consolidates wial.org/certification, /certification/foundations, /certification/calc-courses, /certification/in-house-programs, /programs, and /become-a-coach onto the bespoke /certification hub (this fixture stays in sync for DB fallback and the admin editor; the static route is what the public page renders). Four-level pathway remains the expandable hub UI; Foundations, the CALC certification course, Programs, and who-gets-certified copy are native sections with anchors #foundations, #calc-courses, #programs, and #become-a-coach; #in-house is a teaser and the full in-house programs copy has its own page at /certification/in-house-programs (#143). /programs was a Coming soon stub — the hub lists the actual programs instead of republishing the placeholder. The become-a-coach Gravity Form was simplified to the internal /contact CTA (crawler-sheet note: simplify while merging); Solution Spheres link to /our-services. The Microsoft in-house quote is a native quote block. Six components/two ground rules link to /action-learning rather than being duplicated. Per #143 the digital-badge (Credly) section was removed from the page (copy kept in certification-hub.ts for the chatbot only), CALC 1 / CALC 2 are described as one CALC certification course because WIAL no longer splits them, the four levels under Why get certified use Mark's one-line descriptions as plain subheadings, and the non-clickable industry and skills lists lost their card styling. The industries list, the in-house Foundations callout (duplicated by the #in-house section below), and the Top skills of tomorrow section were later removed from the public page to shorten it; that copy stays in certification-hub.ts for the chatbot. Real WIAL photos from wial.org/become-a-coach (a certified cohort with certificates, a CALC certificate presentation) are vendored under public/certification/; the source pages' stock photos were deliberately not. Recertification is still not rendered publicly. Legacy paths /certification/foundations, /certification/calc-courses, /programs, and /become-a-coach redirect here; /certification/in-house-programs serves its own page."
     }
   },
   
