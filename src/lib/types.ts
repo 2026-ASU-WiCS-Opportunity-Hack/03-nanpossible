@@ -286,6 +286,8 @@ export type ContentSection =
       type: "feature_grid";
       title: string;
       items: FeatureItem[];
+      /** Plain cards: no hover lift/border and item eyebrows are ignored. */
+      flat?: boolean;
     }
   | {
       type: "timeline";

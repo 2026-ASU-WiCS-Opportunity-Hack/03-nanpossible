@@ -38,8 +38,13 @@ export function renderSection(section: ContentSection) {
         <section className="section-stack" key={section.title}>
           <h2 className="section-title text-teal-deep">{section.title}</h2>
           <div className="feature-grid">
-            {section.items.map((item) => (
-              <article className="feature-card flex flex-col rounded-[1.5rem]" key={item.title}>
+            {section.items.map((item) => {
+              const isLink = Boolean(item.href && item.label);
+              return (
+              <article
+                className={`feature-card flex flex-col rounded-[1.5rem]${isLink ? "" : " feature-card--flat"}`}
+                key={item.title}
+              >
                 {item.image ? (
                   <div className="mb-4 overflow-hidden rounded-[1rem] border border-line bg-white/70">
                     <img
@@ -50,7 +55,7 @@ export function renderSection(section: ContentSection) {
                     />
                   </div>
                 ) : null}
-                {item.eyebrow ? (
+                {item.eyebrow && !section.flat ? (
                   <p className="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-green">
                     {item.eyebrow}
                   </p>
@@ -75,7 +80,8 @@ export function renderSection(section: ContentSection) {
                   </TrackedLink>
                 ) : null}
               </article>
-            ))}
+              );
+            })}
           </div>
         </section>
       );
@@ -86,7 +92,7 @@ export function renderSection(section: ContentSection) {
           <div className="grid gap-4">
             {section.items.map((item) => (
               <article
-                className="feature-card rounded-[1.5rem] md:grid md:grid-cols-[120px_1fr] md:items-start md:gap-6"
+                className="feature-card feature-card--flat rounded-[1.5rem] md:grid md:grid-cols-[120px_1fr] md:items-start md:gap-6"
                 key={`${item.title}-${item.year ?? "present"}`}
               >
                 <p className="text-sm font-semibold uppercase tracking-[0.18em] text-green">
@@ -155,7 +161,10 @@ export function renderSection(section: ContentSection) {
           <h2 className="section-title text-teal-deep">{section.title}</h2>
           <div className="grid gap-4 md:grid-cols-3">
             {section.items.map((item) => (
-              <article className="feature-card rounded-[1.5rem]" key={item.title}>
+              <article
+                className={`feature-card rounded-[1.5rem]${item.href && item.label ? "" : " feature-card--flat"}`}
+                key={item.title}
+              >
                 <div className="flex items-center gap-3">
                   {item.image ? (
                     <img
@@ -223,13 +232,14 @@ export function renderSection(section: ContentSection) {
             }
           >
             {section.items.map((item) => {
+              const isLink = Boolean(item.href);
               const tileClassName = section.compact
-                ? "feature-card flex aspect-[3/2] items-center justify-center rounded-[1rem] p-4 transition-transform duration-200 hover:scale-[1.03]"
-                : "feature-card flex aspect-[4/3] items-center justify-center rounded-[1.5rem] p-8 transition-transform duration-200 hover:scale-[1.03]";
+                ? `feature-card flex aspect-[3/2] items-center justify-center rounded-[1rem] p-4${isLink ? " transition-transform duration-200 hover:scale-[1.03]" : " feature-card--flat"}`
+                : `feature-card flex aspect-[4/3] items-center justify-center rounded-[1.5rem] p-8${isLink ? " transition-transform duration-200 hover:scale-[1.03]" : " feature-card--flat"}`;
               const logo = item.logo ? (
                 <img
                   alt={`${item.name} logo`}
-                  className="max-h-full max-w-full object-contain filter grayscale hover:grayscale-0 transition-all"
+                  className={`max-h-full max-w-full object-contain filter grayscale transition-all${isLink ? " hover:grayscale-0" : ""}`}
                   src={item.logo}
                 />
               ) : (
@@ -312,7 +322,7 @@ export function renderSection(section: ContentSection) {
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {section.items.map((item, index) => (
               <article
-                className="feature-card flex flex-col rounded-[1.5rem]"
+                className="feature-card feature-card--flat flex flex-col rounded-[1.5rem]"
                 key={`${item.title}-${index}`}
               >
                 {item.image ? (
@@ -410,7 +420,7 @@ export function renderSection(section: ContentSection) {
           <div className="grid gap-4 md:grid-cols-2">
             {section.items.map((item, index) => (
               <article
-                className="feature-card flex flex-col gap-4 rounded-[1.5rem]"
+                className="feature-card feature-card--flat flex flex-col gap-4 rounded-[1.5rem]"
                 key={`${item.organization}-${index}`}
               >
                 {item.videoUrl ? (
@@ -467,7 +477,7 @@ export function renderSection(section: ContentSection) {
           </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {section.items.map((person) => (
-              <article className="feature-card rounded-[1.5rem]" key={person.name}>
+              <article className="feature-card feature-card--flat rounded-[1.5rem]" key={person.name}>
                 {person.image ? (
                   <img
                     alt={person.imageAlt ?? `Portrait of ${person.name}`}
@@ -522,11 +532,12 @@ export function renderSection(section: ContentSection) {
 
 export function ContentPage({ page, siteContext, children }: ContentPageProps) {
   const body = page.bodyRichtext;
+  const hasMetrics = body.metrics.length > 0;
 
   return (
     <div className="page-frame">
       <div className="site-shell">
-        <div className="hero-grid">
+        <div className={`hero-grid${hasMetrics ? "" : " hero-grid--single"}`}>
           <section className="site-panel hero-panel-warm rounded-[2rem] p-7 md:p-10">
             <div className="space-y-5">
               <span className="eyebrow">
@@ -579,21 +590,23 @@ export function ContentPage({ page, siteContext, children }: ContentPageProps) {
             </div>
           </section>
 
-          <aside className="site-panel rounded-[2rem] p-6">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-foreground/55">
-              At a glance
-            </p>
-            <div className="mt-4 grid gap-3">
-              {body.metrics.map((metric) => (
-                <article className="metric-card rounded-[1.35rem]" key={metric.label}>
-                  <p className="metric-value text-teal-deep">{metric.value}</p>
-                  <p className="mt-2 text-sm font-semibold uppercase tracking-[0.14em] text-foreground/60">
-                    {metric.label}
-                  </p>
-                </article>
-              ))}
-            </div>
-          </aside>
+          {hasMetrics ? (
+            <aside className="site-panel rounded-[2rem] p-6">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-foreground/55">
+                At a glance
+              </p>
+              <div className="mt-4 grid gap-3">
+                {body.metrics.map((metric) => (
+                  <article className="metric-card rounded-[1.35rem]" key={metric.label}>
+                    <p className="metric-value text-teal-deep">{metric.value}</p>
+                    <p className="mt-2 text-sm font-semibold uppercase tracking-[0.14em] text-foreground/60">
+                      {metric.label}
+                    </p>
+                  </article>
+                ))}
+              </div>
+            </aside>
+          ) : null}
         </div>
 
         <div className="mt-6 grid gap-5">
