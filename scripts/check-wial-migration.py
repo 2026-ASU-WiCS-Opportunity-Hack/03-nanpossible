@@ -58,6 +58,13 @@ ISSUE_MAP = {
     "wp-content/uploads/2026/02/wial-action-learning-brochure-1.pdf": 120,
     "category/wial-blog": 121,
     "privacy-policy": 122,
+    "community-impact-infographic": 144,
+    "community-impact-video": 144,
+}
+
+# Bespoke static routes (not in canonicalMap) that serve a legacy path directly.
+LIVE_ROUTES = {
+    "certification/in-house-programs",  # own page again since #143
 }
 
 # Substring of an outbound wial.org URL in content -> issue tracking its removal.
@@ -145,7 +152,7 @@ def classify_path(path, alias, canonical, states):
     tracked = ISSUE_MAP.get(path)
     if path in alias:
         return f"redirects to `{alias[path]}`", True
-    if path in canonical:
+    if path in canonical or path in LIVE_ROUTES:
         target = f"/{path}" if path else "/"
         if tracked:
             return f"live at `{target}`, content tracked in {issue_label(tracked, states)}", True

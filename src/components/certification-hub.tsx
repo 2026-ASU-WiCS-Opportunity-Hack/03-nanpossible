@@ -5,7 +5,6 @@ import Link from "next/link";
 import { TrackedLink } from "@/components/analytics/tracked-link";
 import { trackEvent } from "@/lib/analytics";
 import {
-  certificationBadging,
   certificationBecomeACoach,
   certificationCalcCourses,
   certificationFoundations,
@@ -17,6 +16,9 @@ import {
   certificationWhy,
 } from "@/content/certification-hub";
 import type { CertificationTrack, CertificationTrackKey } from "@/lib/types";
+
+const linkClass =
+  "font-semibold text-teal-deep underline decoration-gold/60 underline-offset-4";
 
 function pathwaySummary(track: CertificationTrack) {
   return (
@@ -72,23 +74,29 @@ function WhySection() {
           <p key={paragraph}>{paragraph}</p>
         ))}
       </div>
-      <div className="mt-4 grid gap-3 sm:grid-cols-2">
+      {/* Plain subheadings, not cards: nothing here is clickable. */}
+      <dl className="mt-5 grid gap-x-8 gap-y-5 sm:grid-cols-2">
         {certificationWhy.levels.map((level) => (
-          <article className="feature-card feature-card--flat rounded-lg" key={level.level}>
-            <div className="text-sm font-semibold text-teal-deep">{level.level}</div>
-            <h3 className="mt-1 text-sm font-semibold">{level.title}</h3>
-            <p className="mt-1 text-sm text-foreground/70">{level.body}</p>
-          </article>
+          <div className="border-l-2 border-teal-deep/30 pl-4" key={level.level}>
+            <dt>
+              <h3 className="text-base font-semibold text-teal-deep">
+                {level.level}
+                <span className="ml-2 text-sm font-normal text-foreground/60">
+                  {level.title}
+                </span>
+              </h3>
+            </dt>
+            <dd className="mt-1 text-sm leading-relaxed text-foreground/75">
+              {level.body}
+            </dd>
+          </div>
         ))}
-      </div>
+      </dl>
     </div>
   );
 }
 
 function FoundationsSection() {
-  const linkClass =
-    "font-semibold text-teal-deep underline decoration-gold/60 underline-offset-4";
-
   return (
     <div id={certificationFoundations.id} className="scroll-mt-20">
       <h2 className="text-2xl font-bold">{certificationFoundations.title}</h2>
@@ -126,84 +134,61 @@ function FoundationsSection() {
           </ul>
         </div>
       </div>
-      <div className="site-panel mt-4 rounded-lg px-6 py-5">
-        <h3 className="text-sm font-semibold">
-          {certificationFoundations.inHouse.title}
-        </h3>
-        <div className="mt-2 space-y-2 text-sm leading-relaxed text-foreground/70">
-          {certificationFoundations.inHouse.paragraphs.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
-          ))}
-        </div>
-        <a
-          href={certificationFoundations.inHouse.moreHref}
-          className="button-link secondary mt-4"
-        >
-          {certificationFoundations.inHouse.moreLabel}
-        </a>
-      </div>
     </div>
   );
 }
 
 function BecomeACoachSection() {
-  const linkClass =
-    "font-semibold text-teal-deep underline decoration-gold/60 underline-offset-4";
-
   return (
     <div id={certificationBecomeACoach.id} className="scroll-mt-20">
       <h2 className="text-2xl font-bold">{certificationBecomeACoach.title}</h2>
-      <div className="mt-2 max-w-3xl space-y-2 text-sm leading-relaxed text-foreground/70">
-        {certificationBecomeACoach.intro.map((paragraph) => (
-          <p key={paragraph}>{paragraph}</p>
-        ))}
-        <p>{certificationBecomeACoach.industriesLead}</p>
-      </div>
-      <ul className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
-        {certificationBecomeACoach.industries.map((industry) => (
-          <li
-            className="feature-card feature-card--flat rounded-lg text-sm text-foreground/80"
-            key={industry}
+      <div className="mt-2 grid gap-6 md:grid-cols-[minmax(0,1fr)_320px] md:items-start">
+        <div>
+          <div className="max-w-3xl space-y-2 text-sm leading-relaxed text-foreground/70">
+            {certificationBecomeACoach.intro.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </div>
+          <div className="mt-4 max-w-3xl space-y-2 text-sm leading-relaxed text-foreground/70">
+            <p>{certificationBecomeACoach.joinNote}</p>
+            <p>
+              {certificationBecomeACoach.servicesBefore}
+              <Link href={certificationBecomeACoach.servicesHref} className={linkClass}>
+                {certificationBecomeACoach.servicesLabel}
+              </Link>
+              {certificationBecomeACoach.servicesAfter}
+            </p>
+          </div>
+          <TrackedLink
+            className="button-link secondary mt-4"
+            event={{
+              name: "cta_click",
+              params: {
+                cta_label: certificationBecomeACoach.contactLabel,
+                cta_location: "certification",
+                cta_destination: certificationBecomeACoach.contactHref,
+              },
+            }}
+            href={certificationBecomeACoach.contactHref}
           >
-            {industry}
-          </li>
-        ))}
-        <li className="feature-card feature-card--flat rounded-lg text-sm text-foreground/60">
-          {certificationBecomeACoach.industriesMore}
-        </li>
-      </ul>
-      <div className="mt-4 max-w-3xl space-y-2 text-sm leading-relaxed text-foreground/70">
-        <p>{certificationBecomeACoach.joinNote}</p>
-        <p>
-          {certificationBecomeACoach.servicesBefore}
-          <Link href={certificationBecomeACoach.servicesHref} className={linkClass}>
-            {certificationBecomeACoach.servicesLabel}
-          </Link>
-          {certificationBecomeACoach.servicesAfter}
-        </p>
+            {certificationBecomeACoach.contactLabel}
+          </TrackedLink>
+        </div>
+        <figure className="overflow-hidden rounded-lg border border-line">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={certificationBecomeACoach.image.src}
+            alt={certificationBecomeACoach.image.alt}
+            className="aspect-[5/4] w-full object-cover"
+            loading="lazy"
+          />
+        </figure>
       </div>
-      <TrackedLink
-        className="button-link secondary mt-4"
-        event={{
-          name: "cta_click",
-          params: {
-            cta_label: certificationBecomeACoach.contactLabel,
-            cta_location: "certification",
-            cta_destination: certificationBecomeACoach.contactHref,
-          },
-        }}
-        href={certificationBecomeACoach.contactHref}
-      >
-        {certificationBecomeACoach.contactLabel}
-      </TrackedLink>
     </div>
   );
 }
 
 function ProgramsSection() {
-  const linkClass =
-    "font-semibold text-teal-deep underline decoration-gold/60 underline-offset-4";
-
   return (
     <div id={certificationPrograms.id} className="scroll-mt-20">
       <h2 className="text-2xl font-bold">{certificationPrograms.title}</h2>
@@ -216,9 +201,15 @@ function ProgramsSection() {
         {certificationPrograms.items.map((item) => (
           <article className="feature-card rounded-lg" key={item.title}>
             <h3 className="text-sm font-semibold">
-              <a href={item.href} className={linkClass}>
-                {item.title}
-              </a>
+              {item.href.startsWith("#") ? (
+                <a href={item.href} className={linkClass}>
+                  {item.title}
+                </a>
+              ) : (
+                <Link href={item.href} className={linkClass}>
+                  {item.title}
+                </Link>
+              )}
             </h3>
             <p className="mt-1 text-sm text-foreground/70">{item.body}</p>
           </article>
@@ -229,42 +220,32 @@ function ProgramsSection() {
 }
 
 function InHouseSection() {
+  // Teaser only — the full in-house programs copy lives on its own page (#143).
   return (
     <div id={certificationInHouse.id} className="scroll-mt-20">
       <h2 className="text-2xl font-bold">{certificationInHouse.title}</h2>
-      <div className="mt-2 max-w-3xl space-y-2 text-sm leading-relaxed text-foreground/70">
-        {certificationInHouse.intro.map((paragraph) => (
-          <p key={paragraph}>{paragraph}</p>
-        ))}
-      </div>
-      <blockquote className="quote-block mt-4 rounded-lg">
-        <p>&quot;{certificationInHouse.quote.quote}&quot;</p>
-        <span className="mt-4 inline-block text-sm font-semibold uppercase tracking-[0.16em] text-teal">
-          {certificationInHouse.quote.attribution}
-        </span>
-      </blockquote>
+      <p className="mt-2 max-w-3xl text-sm leading-relaxed text-foreground/70">
+        {certificationInHouse.teaser}
+      </p>
       <TrackedLink
         className="button-link secondary mt-4"
         event={{
           name: "cta_click",
           params: {
-            cta_label: certificationInHouse.contactLabel,
+            cta_label: certificationInHouse.hrefLabel,
             cta_location: "certification",
-            cta_destination: certificationInHouse.contactHref,
+            cta_destination: certificationInHouse.href,
           },
         }}
-        href={certificationInHouse.contactHref}
+        href={certificationInHouse.href}
       >
-        {certificationInHouse.contactLabel}
+        {certificationInHouse.hrefLabel}
       </TrackedLink>
     </div>
   );
 }
 
 function CalcCoursesSection() {
-  const linkClass =
-    "font-semibold text-teal-deep underline decoration-gold/60 underline-offset-4";
-
   return (
     <div id={certificationCalcCourses.id} className="scroll-mt-20">
       <h2 className="text-2xl font-bold">{certificationCalcCourses.heading}</h2>
@@ -282,14 +263,14 @@ function CalcCoursesSection() {
         </p>
       </div>
       <div className="mt-4 grid gap-4 md:grid-cols-2">
-        {certificationCalcCourses.modules.map((module) => (
-          <article className="site-panel rounded-lg px-6 py-5" key={module.title}>
-            <h3 className="text-lg font-semibold">{module.title}</h3>
+        {certificationCalcCourses.focusAreas.map((area) => (
+          <article className="site-panel rounded-lg px-6 py-5" key={area.title}>
+            <h3 className="text-lg font-semibold">{area.title}</h3>
             <p className="mt-2 text-sm leading-relaxed text-foreground/70">
-              {module.summary}
+              {area.summary}
             </p>
             <ul className="mt-2 list-disc pl-5 text-sm text-foreground/70 space-y-0.5">
-              {module.bullets.map((item) => (
+              {area.bullets.map((item) => (
                 <li key={item}>{item}</li>
               ))}
             </ul>
@@ -318,33 +299,26 @@ function CalcCoursesSection() {
           </ul>
         </div>
       </div>
-      <div className="site-panel mt-4 rounded-lg px-6 py-5">
-        <h3 className="text-sm font-semibold">
-          {certificationCalcCourses.certifiedTitle}
-        </h3>
-        <ul className="mt-1 list-disc pl-5 text-sm text-foreground/70 space-y-0.5">
-          {certificationCalcCourses.certifiedWill.map((item) => (
-            <li key={item}>{item}</li>
-          ))}
-        </ul>
-      </div>
-      <div className="mt-4">
-        <h3 className="text-sm font-semibold">
-          {certificationCalcCourses.skillsTitle}
-        </h3>
-        <p className="mt-1 text-sm text-foreground/60">
-          {certificationCalcCourses.skillsSource}
-        </p>
-        <ul className="mt-2 grid gap-2 sm:grid-cols-2">
-          {certificationCalcCourses.skills.map((skill) => (
-            <li
-              className="feature-card feature-card--flat rounded-lg text-sm text-foreground/80"
-              key={skill}
-            >
-              {skill}
-            </li>
-          ))}
-        </ul>
+      <div className="mt-4 grid gap-4 md:grid-cols-[minmax(0,1fr)_260px] md:items-stretch">
+        <div className="site-panel rounded-lg px-6 py-5">
+          <h3 className="text-sm font-semibold">
+            {certificationCalcCourses.certifiedTitle}
+          </h3>
+          <ul className="mt-1 list-disc pl-5 text-sm text-foreground/70 space-y-0.5">
+            {certificationCalcCourses.certifiedWill.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </div>
+        <figure className="overflow-hidden rounded-lg border border-line">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={certificationCalcCourses.image.src}
+            alt={certificationCalcCourses.image.alt}
+            className="h-full min-h-56 w-full object-cover"
+            loading="lazy"
+          />
+        </figure>
       </div>
     </div>
   );
@@ -427,69 +401,6 @@ function PathwaySection() {
   );
 }
 
-function BadgesSection() {
-  const linkClass =
-    "font-semibold text-teal-deep underline decoration-gold/60 underline-offset-4";
-
-  return (
-    <div id="badges" className="scroll-mt-20">
-      <h2 className="text-2xl font-bold">{certificationBadging.title}</h2>
-      <p className="mt-1 max-w-3xl text-sm text-foreground/70">
-        {certificationBadging.intro.beforeCredly}
-        <TrackedLink
-          className={linkClass}
-          event={{
-            name: "cta_click",
-            params: {
-              cta_label: certificationBadging.intro.credlyLabel,
-              cta_location: "certification",
-              cta_destination: certificationBadging.credlyUrl,
-              outbound: true,
-            },
-          }}
-          href={certificationBadging.credlyUrl}
-        >
-          {certificationBadging.intro.credlyLabel}
-        </TrackedLink>
-        {certificationBadging.intro.afterCredly}
-      </p>
-      <div className="site-panel mt-4 rounded-lg px-6 py-5">
-        <div className="rounded-lg bg-white px-4 py-3">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={certificationBadging.image.src}
-            alt={certificationBadging.image.alt}
-            className="mx-auto w-full max-w-2xl"
-          />
-        </div>
-        <div className="mt-4 grid gap-4 md:grid-cols-2">
-          <div>
-            <h3 className="text-sm font-semibold">
-              {certificationBadging.showsTitle}
-            </h3>
-            <ul className="mt-1 list-disc pl-5 text-sm text-foreground/70 space-y-0.5">
-              {certificationBadging.shows.map((item, idx) => (
-                <li key={idx}>{item}</li>
-              ))}
-            </ul>
-          </div>
-          <div className="space-y-3 text-sm text-foreground/70">
-            <p>{certificationBadging.claimNote}</p>
-            <p>{certificationBadging.verificationNote}</p>
-            <p>
-              {certificationBadging.directoryNote}{" "}
-              <Link href="/coaches" className={linkClass}>
-                {certificationBadging.directoryLinkLabel}
-              </Link>
-              .
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 export function CertificationHubSections() {
   return (
     <div className="space-y-8">
@@ -530,9 +441,6 @@ export function CertificationHubSections() {
       <CalcCoursesSection />
 
       <InHouseSection />
-
-      {/* Digital badges */}
-      <BadgesSection />
 
       {/* Contact CTA */}
       <div className="site-panel mt-8 rounded-lg p-6 text-center">

@@ -26,7 +26,7 @@ describe("certification hub data", () => {
     expect(getTrackDocuments("malc").application).toBeNull();
   });
 
-  it("exposes digital badging content with the Credly link", () => {
+  it("keeps the digital badging copy (chatbot only — no longer rendered on /certification) with the Credly link", () => {
     const content = getCertificationHubContent();
 
     expect(content.badging.credlyUrl).toBe("https://www.credly.com");
@@ -62,13 +62,15 @@ describe("certification hub data", () => {
     expect(content.foundations.actionLearningHref).toBe("/action-learning");
     expect(content.foundations.contactHref).toBe("/contact");
     expect(content.foundations.inHouse.paragraphs.length).toBeGreaterThan(0);
-    expect(content.foundations.inHouse.moreHref).toBe("#in-house");
+    expect(content.foundations.inHouse.moreHref).toBe("/certification/in-house-programs");
 
     expect(content.calcCourses.id).toBe("calc-courses");
-    expect(content.calcCourses.modules.map((module) => module.title)).toEqual([
-      "CALC 1",
-      "CALC 2",
+    // One CALC certification course — the CALC 1 / CALC 2 split is gone (#143).
+    expect(content.calcCourses.focusAreas.map((area) => area.title)).toEqual([
+      "Advanced coaching methods",
+      "Running a successful Action Learning program",
     ]);
+    expect(JSON.stringify(content.calcCourses)).not.toMatch(/CALC [12]/);
     expect(content.calcCourses.prerequisite.href).toBe("#foundations");
     expect(content.calcCourses.skills).toContain("Complex problem-solving");
     expect(content.calcCourses.skillsSource).toContain("World Economic Forum");
@@ -91,7 +93,7 @@ describe("certification hub data", () => {
     expect(content.programs.title).toBe("Programs");
     expect(content.programs.items.map((item) => item.title)).toEqual([
       "Foundations of Action Learning",
-      "CALC courses",
+      "CALC certification",
       "In-house programs",
     ]);
     expect(content.programs.intro.join(" ")).not.toMatch(/coming soon/i);

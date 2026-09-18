@@ -88,10 +88,11 @@ const aliasMap = new Map<string, string>([
   ["share-your-success-story", "/clients/success-story"],
   ["certification/foundations", "/certification"],
   ["certification/calc-courses", "/certification"],
-  ["certification/in-house-programs", "/certification"],
   ["programs", "/certification"],
   ["become-a-coach", "/certification"],
   ["privacy-policy", "/privacy"],
+  ["community-impact-infographic", "/community-impact"],
+  ["community-impact-video", "/community-impact"],
 ]);
 
 const canonicalMap = new Map<string, CanonicalPageSlug>([
@@ -110,6 +111,7 @@ const canonicalMap = new Map<string, CanonicalPageSlug>([
   ["become-an-affiliate", "become-an-affiliate"],
   ["resources", "resources"],
   ["privacy", "privacy"],
+  ["community-impact", "community-impact"],
 ]);
 
 /** True for absolute http(s) URLs — nav items pointing off-site open in a new tab. */

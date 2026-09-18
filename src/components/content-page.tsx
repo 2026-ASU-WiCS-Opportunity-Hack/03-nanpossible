@@ -343,6 +343,69 @@ export function renderSection(section: ContentSection) {
           </div>
         </section>
       );
+    case "comparison":
+      return (
+        <section className="section-stack" key={section.title}>
+          <div className="space-y-4">
+            <h2 className="section-title text-teal-deep">{section.title}</h2>
+            {section.description ? (
+              <p className="max-w-3xl text-base leading-7 text-foreground/75">
+                {section.description}
+              </p>
+            ) : null}
+          </div>
+          <div className="grid gap-4">
+            {section.rows.map((row) => (
+              <article className="site-panel rounded-[1.5rem] p-6" key={row.label}>
+                <h3 className="font-display text-xl leading-tight tracking-[-0.02em] text-teal-deep">
+                  {row.label}
+                </h3>
+                <div className="mt-4 grid gap-4 md:grid-cols-2">
+                  <div className="rounded-[1rem] border border-line bg-white/60 p-4">
+                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-foreground/55">
+                      {section.columns[0]}
+                    </p>
+                    <p className="mt-2 leading-7 text-foreground/75">{row.before}</p>
+                  </div>
+                  <div className="rounded-[1rem] border border-green/30 bg-[rgba(138,143,0,0.06)] p-4">
+                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-green">
+                      {section.columns[1]}
+                    </p>
+                    <p className="mt-2 leading-7 text-foreground/85">{row.after}</p>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+      );
+    case "video":
+      return (
+        <section className="section-stack" key={section.title}>
+          <div className="space-y-4">
+            <h2 className="section-title text-teal-deep">{section.title}</h2>
+            {section.description ? (
+              <p className="max-w-3xl text-base leading-7 text-foreground/75">
+                {section.description}
+              </p>
+            ) : null}
+          </div>
+          <div className="overflow-hidden rounded-[1.5rem] border border-line bg-black shadow-shadow">
+            <iframe
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+              className="aspect-video w-full"
+              loading="lazy"
+              referrerPolicy="strict-origin-when-cross-origin"
+              src={section.videoUrl}
+              title={section.videoTitle}
+            />
+          </div>
+          {section.caption ? (
+            <p className="text-center text-sm italic text-foreground/60">{section.caption}</p>
+          ) : null}
+        </section>
+      );
     case "testimonial_grid":
       return (
         <section className="section-stack" key={section.title}>

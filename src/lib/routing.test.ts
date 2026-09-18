@@ -132,6 +132,31 @@ describe("normalizeSegments", () => {
     });
   });
 
+  it("serves /certification/in-house-programs as its own route instead of redirecting", () => {
+    // #143 moved in-house programs back onto a dedicated page; the static route
+    // wins over the catch-all, which must neither alias nor claim the path.
+    expect(normalizeSegments(["certification", "in-house-programs"])).toBeNull();
+    expect(normalizeSegments(["certification", "foundations"])).toEqual({
+      slug: null,
+      redirectTo: "/certification",
+    });
+  });
+
+  it("resolves the community-impact page slug and redirects the legacy infographic/video paths", () => {
+    expect(normalizeSegments(["community-impact"])).toEqual({
+      slug: "community-impact",
+      redirectTo: null,
+    });
+    expect(normalizeSegments(["community-impact-infographic"])).toEqual({
+      slug: null,
+      redirectTo: "/community-impact",
+    });
+    expect(normalizeSegments(["community-impact-video"])).toEqual({
+      slug: null,
+      redirectTo: "/community-impact",
+    });
+  });
+
   it("resolves the conferences page slug", () => {
     expect(normalizeSegments(["conferences"])).toEqual({
       slug: "conferences",
