@@ -35,6 +35,38 @@ const CV_PREFIX = "directory-cv";
 // Fixed namespace so ids stay stable across runs (uuid v5, RFC 4122).
 const SLUG_NAMESPACE = "8f0b0d0e-4b1a-4a5e-9d5b-2f6a1c3e7a90";
 
+/**
+ * Directory profiles whose country contradicts the rest of the profile (city,
+ * postcode, phone, bio). Applied on import so a re-run cannot restore the bad
+ * value; migration 20260930000400 made the same corrections to the live rows.
+ * (Averaging Montreal into Switzerland's map anchor put the Swiss dot in the
+ * middle of the Atlantic.)
+ */
+const LOCATION_OVERRIDES = new Map<
+  string,
+  Partial<
+    Pick<
+      CoachRow,
+      "location_city" | "location_state" | "location_country" | "location_lat" | "location_lng"
+    >
+  >
+>([
+  // Montreal postcode (H2R), +1 438 phone, "now living in Montreal" bio.
+  ["gil-vaillant", { location_state: "Quebec", location_country: "Canada" }],
+  // IFRC Antananarivo (Madagascar postcode 101, 032 mobile); the directory
+  // geocoded the profile at Switzerland's centroid, so use the city's.
+  [
+    "jean-eugene-injerona",
+    {
+      location_city: "Antananarivo",
+      location_state: null,
+      location_country: "Madagascar",
+      location_lat: -18.8792,
+      location_lng: 47.5079,
+    },
+  ],
+]);
+
 function uuidV5FromSlug(slug: string): string {
   const namespaceBytes = Buffer.from(SLUG_NAMESPACE.replace(/-/g, ""), "hex");
   const hash = createHash("sha1")
@@ -126,7 +158,7 @@ function toRow(
   const hasCoords =
     coach.lat !== null && coach.lng !== null && !(coach.lat === 0 && coach.lng === 0);
   const city = cleanText(coach.city);
-  return {
+  const row: CoachRow = {
     id: uuidV5FromSlug(coach.slug),
     slug: coach.slug,
     name: cleanText(coach.name) ?? coach.slug,
@@ -153,6 +185,7 @@ function toRow(
     cv_url: cvUrl,
     affiliate: cleanText(coach.affiliate),
   };
+  return { ...row, ...LOCATION_OVERRIDES.get(coach.slug) };
 }
 
 async function ensurePublicBucket(

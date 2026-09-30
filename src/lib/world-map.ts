@@ -62,9 +62,41 @@ export function coachCountryKey(country: string | null): string | null {
 const COUNTRY_ANCHOR_OVERRIDES: Record<string, { lat: number; lng: number }> = {};
 
 /**
+ * Directory profiles sometimes contradict themselves — a coach tagged
+ * Switzerland with Montreal coordinates, Philippine coaches geocoded in North
+ * Carolina. Averaging such a point into its country's anchor drags the dot into
+ * open water (the Swiss marker sat mid-Atlantic). A point farther than this
+ * from the country's vendored label point is treated as mis-geocoded and left
+ * out of the anchor. The farthest legitimate domestic point in the roster is
+ * ~2,500 km (Canada); the nearest bogus one ~6,000 km. Far corners of huge
+ * countries (Vladivostok, Anchorage, Honolulu) are skipped too, which only
+ * nudges that country's dot toward its main crowd.
+ */
+export const MAX_ANCHOR_DISTANCE_KM = 4000;
+
+const EARTH_RADIUS_KM = 6371;
+
+/** Great-circle distance in km between two coordinates (haversine). */
+export function distanceKm(
+  a: { lat: number; lng: number },
+  b: { lat: number; lng: number },
+): number {
+  const toRad = (deg: number) => (deg * Math.PI) / 180;
+  const dLat = toRad(b.lat - a.lat);
+  const dLng = toRad(b.lng - a.lng);
+  const h =
+    Math.sin(dLat / 2) ** 2 +
+    Math.cos(toRad(a.lat)) * Math.cos(toRad(b.lat)) * Math.sin(dLng / 2) ** 2;
+  return 2 * EARTH_RADIUS_KM * Math.asin(Math.sqrt(h));
+}
+
+/**
  * Aggregate city-level points into one marker per country, positioned at the
  * count-weighted centroid of that country's cities so the dot sits where the
- * coaches actually are. Points without a country are dropped. Affiliates
+ * coaches actually are. Points without a country are dropped; a point
+ * implausibly far from its country (MAX_ANCHOR_DISTANCE_KM) still registers
+ * presence but is left out of the anchor, and a country with no plausible
+ * point anchors at its vendored label point. Affiliates
  * annotate their country's marker; an affiliate country with no mapped coaches
  * gets its own marker at the vendored country anchor (skipped when the country
  * name resolves to no ISO code). Coach markers come first, affiliate-only
@@ -77,7 +109,8 @@ export function buildCoachMapMarkers(
   type Group = {
     x: number;
     y: number;
-    count: number;
+    /** Total count of the plausible points folded into x/y (0 = none). */
+    weight: number;
     variants: Map<string, number>;
   };
   const groups = new Map<string, Group>();
@@ -88,24 +121,31 @@ export function buildCoachMapMarkers(
       continue;
     }
 
-    const { x, y } = projectToWorldMap(point.lat, point.lng);
     const group = groups.get(key) ?? {
       x: 0,
       y: 0,
-      count: 0,
+      weight: 0,
       variants: new Map<string, number>(),
     };
-
-    // Weighted centroid keeps the marker anchored to the coach crowd.
-    const total = group.count + point.count;
-    group.x = (group.x * group.count + x * point.count) / total;
-    group.y = (group.y * group.count + y * point.count) / total;
-    group.count = total;
     group.variants.set(
       point.country,
       (group.variants.get(point.country) ?? 0) + point.count,
     );
     groups.set(key, group);
+
+    // A point implausibly far from its country is a directory data error: it
+    // still counts as presence but must not drag the anchor into the ocean.
+    const home = COUNTRY_CENTROIDS[key];
+    if (home && distanceKm(point, home) > MAX_ANCHOR_DISTANCE_KM) {
+      continue;
+    }
+
+    // Weighted centroid keeps the marker anchored to the coach crowd.
+    const { x, y } = projectToWorldMap(point.lat, point.lng);
+    const total = group.weight + point.count;
+    group.x = (group.x * group.weight + x * point.count) / total;
+    group.y = (group.y * group.weight + y * point.count) / total;
+    group.weight = total;
   }
 
   const affiliateByKey = new Map<string, AffiliateMapEntry>();
@@ -120,7 +160,10 @@ export function buildCoachMapMarkers(
     const country = [...group.variants.entries()].sort((a, b) => b[1] - a[1])[0][0];
     const countryCode = countryCodeFor(country);
     const override = countryCode ? COUNTRY_ANCHOR_OVERRIDES[countryCode] : undefined;
-    const anchor = override ? projectToWorldMap(override.lat, override.lng) : group;
+    // No plausible point at all (every coach mis-geocoded) → vendored label point.
+    const home =
+      override ?? (group.weight === 0 && countryCode ? COUNTRY_CENTROIDS[countryCode] : undefined);
+    const anchor = home ? projectToWorldMap(home.lat, home.lng) : group;
     const affiliate = affiliateByKey.get(key) ?? null;
 
     return {
