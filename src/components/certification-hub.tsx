@@ -253,29 +253,6 @@ function CalcCoursesSection() {
         {certificationCalcCourses.intro.map((paragraph) => (
           <p key={paragraph}>{paragraph}</p>
         ))}
-        <p>
-          <span className="font-semibold text-foreground/80">
-            {certificationCalcCourses.prerequisite.label}:{" "}
-          </span>
-          <a href={certificationCalcCourses.prerequisite.href} className={linkClass}>
-            {certificationCalcCourses.prerequisite.body}
-          </a>
-        </p>
-      </div>
-      <div className="mt-4 grid gap-4 md:grid-cols-2">
-        {certificationCalcCourses.focusAreas.map((area) => (
-          <article className="site-panel rounded-lg px-6 py-5" key={area.title}>
-            <h3 className="text-lg font-semibold">{area.title}</h3>
-            <p className="mt-2 text-sm leading-relaxed text-foreground/70">
-              {area.summary}
-            </p>
-            <ul className="mt-2 list-disc pl-5 text-sm text-foreground/70 space-y-0.5">
-              {area.bullets.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </article>
-        ))}
       </div>
       <div className="mt-4 grid gap-4 md:grid-cols-2">
         <div className="site-panel rounded-lg px-6 py-5">

@@ -62,10 +62,8 @@ describe("site chatbot fallback", () => {
 
     expect(reply).toContain("single CALC certification course");
     expect(reply).toContain("no longer offered separately");
-    expect(reply).toContain("Advanced coaching methods");
-    expect(reply).toContain("Running a successful Action Learning program");
     expect(reply).toContain("/certification#calc-courses");
-    expect(reply).toContain("Foundations of Action Learning");
+    expect(reply).not.toContain("Prerequisite");
   });
 
   it("returns in-house program guidance without sending the visitor to the LMS", () => {

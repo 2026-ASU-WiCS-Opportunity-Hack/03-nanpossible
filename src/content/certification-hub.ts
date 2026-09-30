@@ -200,47 +200,13 @@ export const certificationCalcCourses = {
   },
   intro: [
     "Becoming a Certified Action Learning Coach builds professional skill, increases organizational value, and can lead to career advancement. This intensive program gives participants the skill and experience they need to coach Action Learning in a range of demanding situations.",
-    "Participants enroll in an asynchronous e-learning course, attend a live workshop, and independently lead several Action Learning sessions beyond the class experiences. The program uses the same mix of concepts and practice as Foundations of Action Learning. Workshops may include presenters from organizations that need real solutions.",
-    "Every participant coaches at least one session. A dedicated Master Action Learning Coach works with every team, so trainees get intensive feedback when they take the coaching role.",
+    "Participants enroll in an asynchronous e-learning course, attend a live workshop, and independently lead several Action Learning sessions beyond the class experiences. Workshops may include presenters from organizations that need real solutions.",
+    "Every participant coaches at least one session. A dedicated Action Learning Coach works with every team, so trainees get intensive feedback when they take the coaching role.",
   ],
-  prerequisite: {
-    label: "Prerequisite",
-    body: "Foundations of Action Learning workshop",
-    href: "#foundations",
-  },
   forTitle: "This program is for",
   forWho: [
     "Professionals who want to become certified Action Learning coaches inside their organization",
     "Independent coaches and consultants who want to become certified in Action Learning",
-  ],
-  // WIAL now runs a single CALC certification course; the former CALC 1 / CALC 2
-  // split is gone (#143), so these are the course's focus areas, not modules.
-  focusAreas: [
-    {
-      title: "Advanced coaching methods",
-      summary:
-        "Presentations and discussion cover the Action Learning team issues a coach must handle:",
-      bullets: [
-        "Developing complete problem statements, including root issues and solution goals",
-        "Aligning questions with the stage of the problem-solving process",
-        "Dealing with typical group-dynamics issues that face problem-solving teams",
-      ],
-    },
-    {
-      title: "Running a successful Action Learning program",
-      summary:
-        "The course also covers the organizational issues that must be addressed to run a successful Action Learning program:",
-      bullets: [
-        "Contracting issues",
-        "Putting together a program development team",
-        "Designing the program",
-        "Identifying problems for solution",
-        "Forming teams",
-        "Building and maintaining team morale and motivation",
-        "Maintaining senior management involvement and support",
-        "Fostering a culture of Action Learning in the organization",
-      ],
-    },
   ],
   learnTitle: "What participants learn",
   learn: [

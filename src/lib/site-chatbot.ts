@@ -108,11 +108,7 @@ export function buildSiteAssistantContext() {
     ].join("\n"),
     [
       `CALC certification course: ${certification.calcCourses.intro.join(" ")}`,
-      `Prerequisite: ${certification.calcCourses.prerequisite.body}`,
       "WIAL runs one CALC certification course; the former CALC 1 and CALC 2 workshops are no longer offered separately.",
-      ...certification.calcCourses.focusAreas.map(
-        (area) => `${area.title}: ${area.summary} ${area.bullets.join(" | ")}`,
-      ),
       "CALC certification details: /certification#calc-courses",
     ].join("\n"),
     [
@@ -200,8 +196,6 @@ export function buildFallbackAssistantReply(query: string) {
     return [
       "WIAL now offers a single CALC certification course — the former CALC 1 and CALC 2 workshops are no longer offered separately.",
       courses.intro[0],
-      `${courses.prerequisite.label}: ${courses.prerequisite.body}.`,
-      ...courses.focusAreas.map((area) => `${area.title}: ${area.summary}`),
       "Learn more at `/certification#calc-courses`.",
     ].join("\n\n");
   }
