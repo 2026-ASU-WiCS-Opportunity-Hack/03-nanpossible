@@ -2,10 +2,12 @@ import { describe, expect, it } from "vitest";
 import {
   buildCoachMapMarkers,
   coachCountryKey,
+  distanceKm,
   MARKER_RADIUS,
   projectToWorldMap,
   WORLD_MAP,
 } from "./world-map";
+import { COUNTRY_CENTROIDS } from "./country-centroids";
 import type { CoachMapPoint } from "./types";
 
 function point(overrides: Partial<CoachMapPoint>): CoachMapPoint {
@@ -174,5 +176,63 @@ describe("buildCoachMapMarkers", () => {
       [{ name: "WIAL Singapore", country: "Singapore", href: "https://www.wial.sg/" }],
     );
     expect(markers.map((marker) => marker.hasCoaches)).toEqual([true, false]);
+  });
+});
+
+describe("buildCoachMapMarkers anchor plausibility", () => {
+  it("leaves a point implausibly far from its country out of the anchor", () => {
+    // A directory profile tagged Switzerland but geocoded in Montreal used to
+    // pull the Swiss dot into the middle of the Atlantic.
+    const zurich = projectToWorldMap(47.38, 8.54);
+    const markers = buildCoachMapMarkers([
+      point({ country: "Switzerland", city: "Zürich", lat: 47.38, lng: 8.54 }),
+      point({ country: "Switzerland", city: "Montreal", lat: 45.5, lng: -73.57 }),
+    ]);
+    expect(markers).toHaveLength(1);
+    expect(markers[0].countryCode).toBe("ch");
+    expect(markers[0].hasCoaches).toBe(true);
+    expect(markers[0].x).toBeCloseTo(zurich.x, 5);
+    expect(markers[0].y).toBeCloseTo(zurich.y, 5);
+  });
+
+  it("anchors a country at its vendored label point when none of its points are plausible", () => {
+    const home = projectToWorldMap(COUNTRY_CENTROIDS.fi.lat, COUNTRY_CENTROIDS.fi.lng);
+    const markers = buildCoachMapMarkers([
+      // Tagged Finland, geocoded in Accra.
+      point({ country: "Finland", lat: 5.55, lng: -0.2 }),
+    ]);
+    expect(markers).toHaveLength(1);
+    expect(markers[0].hasCoaches).toBe(true);
+    expect(markers[0].countryCode).toBe("fi");
+    expect(markers[0].x).toBeCloseTo(home.x, 5);
+    expect(markers[0].y).toBeCloseTo(home.y, 5);
+  });
+
+  it("keeps far-apart domestic points and unknown countries on the weighted centroid", () => {
+    const usa = buildCoachMapMarkers([
+      point({ country: "United States", city: "New York", lat: 40.71, lng: -74.01 }),
+      point({ country: "United States", city: "San Francisco", lat: 37.77, lng: -122.42 }),
+    ]);
+    const usaMid = projectToWorldMap((40.71 + 37.77) / 2, (-74.01 - 122.42) / 2);
+    expect(usa[0].x).toBeCloseTo(usaMid.x, 5);
+    expect(usa[0].y).toBeCloseTo(usaMid.y, 5);
+
+    // No vendored label point to check against, so nothing is filtered.
+    const unknown = buildCoachMapMarkers([
+      point({ country: "Atlantis", lat: 10, lng: 10 }),
+      point({ country: "Atlantis", lat: -10, lng: -170 }),
+    ]);
+    const unknownMid = projectToWorldMap(0, -80);
+    expect(unknown[0].countryCode).toBeNull();
+    expect(unknown[0].x).toBeCloseTo(unknownMid.x, 5);
+    expect(unknown[0].y).toBeCloseTo(unknownMid.y, 5);
+  });
+});
+
+describe("distanceKm", () => {
+  it("measures great-circle distance", () => {
+    // Montreal → Switzerland's label point.
+    expect(distanceKm({ lat: 45.5, lng: -73.57 }, { lat: 46.72, lng: 7.46 })).toBeCloseTo(5954, -2);
+    expect(distanceKm({ lat: 0, lng: 0 }, { lat: 0, lng: 0 })).toBe(0);
   });
 });
