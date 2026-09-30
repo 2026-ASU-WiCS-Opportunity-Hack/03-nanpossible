@@ -62,10 +62,10 @@ describe("CertificationHubSections", () => {
     expect(html).toContain("Certification for Action Learning Coaches");
     // One CALC certification course now — no CALC 1 / CALC 2 (#143).
     expect(html).not.toMatch(/CALC [12]\b/);
-    expect(html).toContain("Advanced coaching methods");
-    expect(html).toContain("Running a successful Action Learning program");
-    expect(html).toContain("Developing complete problem statements");
-    expect(html).toContain("Fostering a culture of Action Learning");
+    // The course focus-area cards and prerequisite line were removed (WIAL markup, Sept 2026).
+    expect(html).not.toContain("Advanced coaching methods");
+    expect(html).not.toContain("Running a successful Action Learning program");
+    expect(html).not.toContain("Senior or Master");
     expect(html).toContain("/certification/calc-certificate-presentation.jpg");
     // Top skills of tomorrow was removed from the page to shorten it (kept in
     // certification-hub.ts for the chatbot).

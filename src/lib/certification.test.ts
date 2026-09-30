@@ -63,12 +63,8 @@ describe("certification hub data", () => {
 
     expect(content.calcCourses.id).toBe("calc-courses");
     // One CALC certification course — the CALC 1 / CALC 2 split is gone (#143).
-    expect(content.calcCourses.focusAreas.map((area) => area.title)).toEqual([
-      "Advanced coaching methods",
-      "Running a successful Action Learning program",
-    ]);
     expect(JSON.stringify(content.calcCourses)).not.toMatch(/CALC [12]/);
-    expect(content.calcCourses.prerequisite.href).toBe("#foundations");
+    expect(JSON.stringify(content.calcCourses)).not.toMatch(/Senior or Master|Prerequisite/);
     expect(content.calcCourses.skills).toContain("Complex problem-solving");
     expect(content.calcCourses.skillsSource).toContain("World Economic Forum");
 
