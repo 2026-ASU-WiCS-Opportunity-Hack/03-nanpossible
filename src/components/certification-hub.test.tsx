@@ -16,17 +16,17 @@ describe("CertificationHubSections", () => {
     expect(html).toContain('id="why"');
     expect(html).toContain("Why get certified?");
     expect(html).toContain("trained Action Learning coach");
-    // #143: the four levels are plain subheadings with Mark's one-line descriptions.
+    // #143: the three levels are plain subheadings with Mark's one-line descriptions.
     expect(html).toContain("CALCs can coach Action Learning sessions.");
     expect(html).toContain("100+ hours of coaching experience");
-    expect(html).toContain("single, complex Action Learning organizational problem");
     expect(html).toContain("published and contributed significantly");
 
     expect(html).toContain('id="progression"');
     expect(html).toContain("Certification pathway");
     expect(html).toContain("Certified Action Learning Coach");
     expect(html).toContain("Professional Action Learning Coach");
-    expect(html).toContain("Senior Action Learning Coach");
+    expect(html).not.toContain("Senior Action Learning Coach");
+    expect(html).not.toContain("SALC");
     expect(html).toContain("Master Action Learning Coach");
 
     expect(html).toContain('id="foundations"');

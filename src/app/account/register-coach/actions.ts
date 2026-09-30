@@ -13,7 +13,7 @@ import {
 } from "@/lib/supabase-auth";
 import type { CertificationLevel } from "@/lib/types";
 
-const CERT_LEVELS: CertificationLevel[] = ["CALC", "PALC", "SALC", "MALC"];
+const CERT_LEVELS: CertificationLevel[] = ["CALC", "PALC", "MALC"];
 
 function buildRegisterCoachPath(error: string) {
   const searchParams = new URLSearchParams({ error });

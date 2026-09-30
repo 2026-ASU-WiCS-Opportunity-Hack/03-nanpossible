@@ -231,7 +231,6 @@ export default async function RegisterCoachPage({
                 <option value="">Not yet certified</option>
                 <option value="CALC">CALC</option>
                 <option value="PALC">PALC</option>
-                <option value="SALC">SALC</option>
                 <option value="MALC">MALC</option>
               </select>
             </label>

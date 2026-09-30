@@ -20,7 +20,7 @@ Our solution: a multi-tenant, AI-enhanced platform that unifies WIAL's operation
 
 - **Multi-Tenant Chapter Microsites** — Each WIAL chapter gets its own branded subdomain (e.g., `usa.wial.org`, `emea.wial.org`) powered by a single codebase
 - **Searchable Coach Directory** — Postgres-native hybrid search combining full-text search, fuzzy matching, and LLM-powered query understanding to help organizations find the right certified coaches
-- **Certification Lifecycle Management** — Full tracking of CALC, PALC, SALC, and MALC certification levels with documents, LMS links, and Credly badge integration
+- **Certification Lifecycle Management** — Full tracking of CALC, PALC, and MALC certification levels (SALC is no longer offered; existing SALCs are kept as a legacy level) with documents, LMS links, and Credly badge integration
 - **AI Certification Chatbot** — Site-wide assistant answering WIAL certification and coaching methodology questions using GPT-4o-mini
 - **Coach Registration & Approval Workflow** — Coaches self-register, chapter/platform admins review and approve, and profiles become searchable immediately
 - **Payment Integration** — Stripe-powered dues collection and certification enrollment with payment history and webhook handling

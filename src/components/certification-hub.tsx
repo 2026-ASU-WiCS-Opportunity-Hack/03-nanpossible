@@ -346,7 +346,7 @@ function PathwaySection() {
     <div id="progression" className="scroll-mt-20">
       <h2 className="text-2xl font-bold">Certification pathway</h2>
       <p className="mt-1 text-sm text-foreground/70">
-        Four levels build step by step, from CALC through MALC. Select a level
+        Three levels build step by step, from CALC through MALC. Select a level
         to see its eligibility and requirements.
       </p>
       <div className="mt-4 flex flex-col gap-3 lg:flex-row lg:items-stretch">

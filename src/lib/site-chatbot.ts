@@ -21,6 +21,9 @@ function getGlobalPage(slug: string) {
   return contentPages.find((page) => page.chapterId === null && page.slug === slug) ?? null;
 }
 
+const SALC_RETIRED_NOTE =
+  "WIAL no longer offers the SALC (Senior Action Learning Coach) certification. Coaches who already hold SALC keep it.";
+
 function inferTrackKey(query: string): CertificationTrackKey | null {
   const normalized = query.toLowerCase();
 
@@ -80,8 +83,9 @@ export function buildSiteAssistantContext() {
     `About WIAL: ${about?.bodyRichtext.heroIntro ?? ""}`,
     `Resources page summary: ${resources?.bodyRichtext.heroIntro ?? ""}`,
     `Contact page summary: ${contact?.bodyRichtext.heroIntro ?? ""}`,
+    SALC_RETIRED_NOTE,
     "Direct contact: info@wial.org | P.O. Box 7601 #83791, Washington, DC 20044",
-    "Certification hub anchors: /certification#calc, #palc, #salc, #malc, #progression, #why, #become-a-coach, #programs, #foundations, #calc-courses, #in-house (teaser; full page at /certification/in-house-programs)",
+    "Certification hub anchors: /certification#calc, #palc, #malc, #progression, #why, #become-a-coach, #programs, #foundations, #calc-courses, #in-house (teaser; full page at /certification/in-house-programs)",
     [
       `Who gets certified: ${certification.becomeACoach.intro.join(" ")}`,
       `Industries: ${certification.becomeACoach.industries.join(" | ")}`,
@@ -132,7 +136,14 @@ export function buildFallbackAssistantReply(query: string) {
   const trackKey = inferTrackKey(normalized);
 
   if (!normalized) {
-    return "Ask me about CALC, PALC, SALC, MALC, renewal requirements, application forms, LMS access, or Credly badges.";
+    return "Ask me about CALC, PALC, MALC, renewal requirements, application forms, LMS access, or Credly badges.";
+  }
+
+  if (trackKey === "salc") {
+    return [
+      SALC_RETIRED_NOTE,
+      "The pathway is now CALC → PALC → MALC. See `/certification#progression`, or contact `info@wial.org` about an existing SALC certification.",
+    ].join("\n\n");
   }
 
   if (normalized.includes("contact") || normalized.includes("email")) {
@@ -292,7 +303,7 @@ export function buildFallbackAssistantReply(query: string) {
   }
 
   return [
-    "I can help with CALC, PALC, SALC, MALC, recertification, application forms, LMS links, Credly badges, and general WIAL certification questions.",
+    "I can help with CALC, PALC, MALC, recertification, application forms, LMS links, Credly badges, and general WIAL certification questions.",
     "Start with `/certification` for the full hub, or ask something specific like \"How do I renew PALC?\" or \"Where is the CALC application form?\"",
     "If you need direct help, contact `info@wial.org`.",
   ].join("\n\n");
