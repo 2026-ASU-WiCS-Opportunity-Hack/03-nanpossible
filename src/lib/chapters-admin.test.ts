@@ -198,6 +198,50 @@ describe("syncUserAccess", () => {
     });
   });
 
+  it("refuses to save an affiliate head without an affiliate", async () => {
+    const upsert = vi.fn().mockResolvedValue({ error: null });
+    const updateUserById = vi.fn().mockResolvedValue({ error: null });
+
+    mocks.createServiceRoleSupabaseClient.mockReturnValue({
+      from: vi.fn(() => ({ upsert })),
+      auth: { admin: { updateUserById } },
+    });
+
+    await expect(
+      syncUserAccess({
+        userId: "user-1",
+        email: "lead@wial.org",
+        role: "chapter_admin",
+        chapterId: "  ",
+        assignedChapters: [],
+      }),
+    ).rejects.toThrowError("chapter-required");
+    expect(upsert).not.toHaveBeenCalled();
+    expect(updateUserById).not.toHaveBeenCalled();
+  });
+
+  it("refuses to save a content creator without assigned affiliates", async () => {
+    const upsert = vi.fn().mockResolvedValue({ error: null });
+    const updateUserById = vi.fn().mockResolvedValue({ error: null });
+
+    mocks.createServiceRoleSupabaseClient.mockReturnValue({
+      from: vi.fn(() => ({ upsert })),
+      auth: { admin: { updateUserById } },
+    });
+
+    await expect(
+      syncUserAccess({
+        userId: "user-1",
+        email: "writer@wial.org",
+        role: "content_creator",
+        chapterId: null,
+        assignedChapters: [],
+      }),
+    ).rejects.toThrowError("assigned-chapters-required");
+    expect(upsert).not.toHaveBeenCalled();
+    expect(updateUserById).not.toHaveBeenCalled();
+  });
+
   it("normalizes invalid Supabase API key errors for admin data loads", async () => {
     const select = vi.fn().mockResolvedValue({
       data: null,

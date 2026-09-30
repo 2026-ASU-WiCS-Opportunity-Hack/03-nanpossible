@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { notFound } from "next/navigation";
 import { AccountPageShell } from "@/components/account-page-shell";
 import { ChapterPageEditor } from "@/components/admin/ChapterPageEditor";
 import { PageList } from "@/components/admin/PageList";
@@ -24,7 +23,7 @@ export default async function ChapterAdminPage({
   const chapter = await resolveWorkspaceChapter(viewer);
 
   if (!chapter) {
-    notFound();
+    return null;
   }
 
   const params = await searchParams;

@@ -36,7 +36,9 @@ import type { DirectoryAffiliate } from "./crawl-wial-affiliates";
 const DATA_PATH = path.join(process.cwd(), "data", "affiliates-directory.json");
 const LOGO_BUCKET = "affiliate-logos";
 const LOGO_PREFIX = "directory";
-const SKIPPED_SLUGS = new Set(["wial-global"]);
+// wial-global is HQ; the others are former affiliates (2026 roster review)
+// still listed on the directory — importing them would re-create them as active.
+const SKIPPED_SLUGS = new Set(["wial-global", "wial-france", "wial-indonesia"]);
 const FALLBACK_CONTACT_EMAIL = "info@wial.org";
 
 const regionByCountry = new Map<string, string>([
@@ -82,6 +84,15 @@ function cleanContactName(value: string | null): string | null {
 }
 
 /**
+ * Directory websites verified broken in the 2026 roster review: wial.sg shows
+ * a hosting "account suspended" page and wialthailand.com redirects to
+ * wial.org. Those affiliates fall back to their hosted site instead.
+ */
+const DEAD_WEBSITE_HOSTS = new Set(["wial.sg", "wialthailand.com"]);
+/** Directory websites that have moved; the directory still lists the old one. */
+const MOVED_WEBSITES = new Map<string, string>([["wialnl.nl", "https://wial.nl/"]]);
+
+/**
  * Websites pointing back at wial.org (e.g. the become-an-affiliate page on
  * placeholder profiles) are not the affiliate's own site.
  */
@@ -98,6 +109,14 @@ function cleanWebsite(value: string | null): string | null {
     const host = url.hostname.toLowerCase();
     if (host === "wial.org" || host.endsWith(".wial.org")) {
       return null;
+    }
+    const bareHost = host.replace(/^www\./, "");
+    if (DEAD_WEBSITE_HOSTS.has(bareHost)) {
+      return null;
+    }
+    const moved = MOVED_WEBSITES.get(bareHost);
+    if (moved) {
+      return moved;
     }
     return url.toString();
   } catch {
@@ -409,7 +428,7 @@ async function main(): Promise<void> {
   };
   const affiliates = crawl.affiliates.filter((affiliate) => {
     if (SKIPPED_SLUGS.has(affiliate.slug)) {
-      console.log(`skipping ${affiliate.slug} (WIAL headquarters, not an affiliate)`);
+      console.log(`skipping ${affiliate.slug} (not an active affiliate)`);
       return false;
     }
     return true;

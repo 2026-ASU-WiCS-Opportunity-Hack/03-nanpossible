@@ -312,4 +312,70 @@ select public.assert_true(
   'coach should be able to promote themselves to chapter admin for their assigned chapter'
 );
 
+-- Affiliate heads must be linked to an affiliate
+-- (trigger users_chapter_admin_requires_chapter, issue #41).
+reset role;
+set local session_replication_role = origin;
+
+do $$
+begin
+  begin
+    insert into public.users (id, email, role, chapter_id, name)
+    values (
+      '88888888-8888-4888-8888-888888888888',
+      'stranded@wial.org',
+      'chapter_admin',
+      null,
+      'Stranded Head'
+    );
+    raise exception 'inserting an affiliate head without an affiliate should fail';
+  exception
+    when check_violation then
+      null;
+  end;
+end;
+$$;
+
+do $$
+begin
+  begin
+    update public.users
+    set chapter_id = null
+    where id = '66666666-6666-4666-8666-666666666666';
+    raise exception 'removing the affiliate from an affiliate head should fail';
+  exception
+    when check_violation then
+      null;
+  end;
+end;
+$$;
+
+-- Rows stranded before the trigger existed keep saving unrelated edits and
+-- can be repaired by setting an affiliate.
+set local session_replication_role = replica;
+update public.users
+set chapter_id = null
+where id = '66666666-6666-4666-8666-666666666666';
+set local session_replication_role = origin;
+
+update public.users
+set phone = '555-0199'
+where id = '66666666-6666-4666-8666-666666666666';
+
+update public.users
+set chapter_id = '22222222-2222-4222-8222-222222222222'
+where id = '66666666-6666-4666-8666-666666666666';
+
+select public.assert_true(
+  exists(
+    select 1
+    from public.users
+    where id = '66666666-6666-4666-8666-666666666666'
+      and role = 'chapter_admin'
+      and chapter_id = '22222222-2222-4222-8222-222222222222'
+      and phone = '555-0199'
+  ),
+  'an already-stranded affiliate head should keep saving edits and be repairable'
+);
+
 rollback;

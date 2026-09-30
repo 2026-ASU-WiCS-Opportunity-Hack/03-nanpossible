@@ -2,6 +2,9 @@
 
 import { useMemo, useState } from "react";
 import type { AdminUserRecord, AppRole, ChapterRecord } from "@/lib/types";
+import { describeWorkspaceGap } from "@/lib/workspace-gap";
+
+type AccessFilter = "all" | "global" | "chapter" | "assigned" | "needs-affiliate";
 
 type UserRoleManagerProps = {
   action: (formData: FormData) => void | Promise<void>;
@@ -63,6 +66,10 @@ function formatAccessSummary(options: {
     }
   }
 
+  if (options.role === "chapter_admin") {
+    return "Primary affiliate: none";
+  }
+
   return "Global access only";
 }
 
@@ -79,7 +86,7 @@ export function UserRoleManager({
   users,
 }: UserRoleManagerProps) {
   const [roleFilter, setRoleFilter] = useState<"all" | AppRole>("all");
-  const [accessFilter, setAccessFilter] = useState<"all" | "global" | "chapter" | "assigned">("all");
+  const [accessFilter, setAccessFilter] = useState<AccessFilter>("all");
   const [searchTerm, setSearchTerm] = useState("");
 
   const filteredUsers = useMemo(() => {
@@ -92,11 +99,16 @@ export function UserRoleManager({
         user.email.toLowerCase().includes(normalizedSearch);
 
       const matchesRole = roleFilter === "all" || user.role === roleFilter;
-      const matchesAccess = accessFilter === "all" || getAccessType(user) === accessFilter;
+      const matchesAccess =
+        accessFilter === "all"
+          ? true
+          : accessFilter === "needs-affiliate"
+            ? Boolean(describeWorkspaceGap(user, chapters))
+            : getAccessType(user) === accessFilter;
 
       return matchesSearch && matchesRole && matchesAccess;
     });
-  }, [accessFilter, roleFilter, searchTerm, users]);
+  }, [accessFilter, chapters, roleFilter, searchTerm, users]);
 
   if (!users.length) {
     return (
@@ -148,7 +160,7 @@ export function UserRoleManager({
           className="rounded-xl border border-white/10 bg-white px-4 py-3 text-sm font-semibold text-foreground outline-none"
           id="access-filter"
           onChange={(event) => {
-            setAccessFilter(event.target.value as "all" | "global" | "chapter" | "assigned");
+            setAccessFilter(event.target.value as AccessFilter);
           }}
           value={accessFilter}
         >
@@ -156,6 +168,7 @@ export function UserRoleManager({
           <option value="global">Global access</option>
           <option value="chapter">Primary affiliate</option>
           <option value="assigned">Assigned affiliates</option>
+          <option value="needs-affiliate">Needs an affiliate</option>
         </select>
       </div>
 
@@ -204,6 +217,8 @@ function UserRoleRow({
   const isSelf = user.id === currentUserId;
   const needsPrimaryChapter = role === "chapter_admin" || role === "coach";
   const needsAssignedChapters = role === "content_creator";
+  // Judged on the saved record, not the in-progress edit.
+  const workspaceGap = describeWorkspaceGap(user, chapters);
 
   return (
     <form action={action}>
@@ -220,12 +235,19 @@ function UserRoleRow({
     {user.name}
   </p>
 </div>
-<p
-  className="truncate text-[0.68rem] leading-tight text-foreground/45"
-  title={formatAccessSummary({ assignedChapters, chapterId, chapters, role })}
->
-  {formatAccessSummary({ assignedChapters, chapterId, chapters, role })}
-</p>
+<div className="flex min-w-0 items-center gap-2">
+  <p
+    className="truncate text-[0.68rem] leading-tight text-foreground/45"
+    title={formatAccessSummary({ assignedChapters, chapterId, chapters, role })}
+  >
+    {formatAccessSummary({ assignedChapters, chapterId, chapters, role })}
+  </p>
+  {workspaceGap ? (
+    <span className="shrink-0 rounded-full bg-[rgba(200,100,47,0.12)] px-2 py-0.5 text-[0.62rem] font-semibold uppercase leading-tight tracking-[0.08em] text-[#7f3416]">
+      Needs an affiliate
+    </span>
+  ) : null}
+</div>
 </div>
 
         <p className="truncate text-sm text-foreground/70" title={user.email}>

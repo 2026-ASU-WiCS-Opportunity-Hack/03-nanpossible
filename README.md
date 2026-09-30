@@ -186,7 +186,7 @@ NEXT_PUBLIC_WIAL_LMS_URL=https://wialportal.org/
 | `npm run seed:coaches` | Seed sample coach data |
 | `npm run content:sync` | Sync content artifacts |
 | `npm run backfill:credly` | Sync Credly badge metadata |
-| `npm run manage:roles` | CLI for user role management |
+| `npm run manage:roles` | Interactive CLI for user role management (asks for the affiliate when the role needs one) |
 | `npm run dolt:setup` | Initialize Dolt migration tracking |
 
 ## Project Structure
