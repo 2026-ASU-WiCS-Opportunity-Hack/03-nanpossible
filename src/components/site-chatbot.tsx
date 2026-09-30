@@ -18,7 +18,7 @@ const starterPrompts = [
 const initialMessage: Message = {
   role: "assistant",
   content:
-    "Ask me about CALC, PALC, SALC, MALC, renewal rules, application forms, LMS links, or Credly badges.",
+    "Ask me about CALC, PALC, MALC, renewal rules, application forms, LMS links, or Credly badges.",
 };
 
 function renderMessageText(content: string) {

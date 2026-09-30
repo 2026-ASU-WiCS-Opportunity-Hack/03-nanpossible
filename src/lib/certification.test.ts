@@ -6,13 +6,12 @@ import {
 } from "@/lib/certification";
 
 describe("certification hub data", () => {
-  it("exposes all four certification tracks", () => {
+  it("exposes the three offered certification tracks (SALC is retired)", () => {
     const content = getCertificationHubContent();
 
     expect(content.tracks.map((track) => track.level)).toEqual([
       "CALC",
       "PALC",
-      "SALC",
       "MALC",
     ]);
   });
@@ -22,7 +21,6 @@ describe("certification hub data", () => {
     // The getTrackDocuments function returns null for all document fields.
     expect(getTrackDocuments("calc").application).toBeNull();
     expect(getTrackDocuments("palc").application).toBeNull();
-    expect(getTrackDocuments("salc").application).toBeNull();
     expect(getTrackDocuments("malc").application).toBeNull();
   });
 
@@ -48,7 +46,6 @@ describe("certification hub data", () => {
     expect(content.why.levels.map((level) => level.level)).toEqual([
       "CALC",
       "PALC",
-      "SALC",
       "MALC",
     ]);
 

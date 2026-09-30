@@ -169,7 +169,7 @@ export function CoachSearch({
             <input
               className="field-input"
               onChange={(event) => setQuery(event.target.value)}
-              placeholder="Search coaches in any language... e.g. 'team dynamics in manufacturing' or 'SALC near São Paulo'"
+              placeholder="Search coaches in any language... e.g. 'team dynamics in manufacturing' or 'PALC near São Paulo'"
               type="search"
               value={query}
             />
@@ -192,7 +192,6 @@ export function CoachSearch({
               <option value="">All</option>
               <option value="CALC">CALC</option>
               <option value="PALC">PALC</option>
-              <option value="SALC">SALC</option>
               <option value="MALC">MALC</option>
             </select>
           </label>

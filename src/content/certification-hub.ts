@@ -12,9 +12,9 @@ export const certificationHero = {
   eyebrow: "Global certification hub",
   title: "The WIAL certification pathway, from CALC to MALC.",
   intro:
-    "WIAL offers four levels of certification for Action Learning coaches. Each level represents increasing expertise, experience, and leadership in the Action Learning community. WIAL is an ICF-accredited training provider, and our CALC certification is an accredited ICF CCE program.",
+    "WIAL offers three levels of certification for Action Learning coaches. Each level represents increasing expertise, experience, and leadership in the Action Learning community. WIAL is an ICF-accredited training provider, and our CALC certification is an accredited ICF CCE program.",
   metrics: [
-    { label: "Certification levels", value: "4" },
+    { label: "Certification levels", value: "3" },
     { label: "ICF accredited", value: "CCE" },
     { label: "Global recognition", value: "Yes" },
   ],
@@ -82,7 +82,7 @@ export const certificationTracks: CertificationTrack[] = [
     title: "Professional Action Learning Coach",
     tagline: "For CALCs with documented practice and project depth.",
     summary:
-      "The Professional Action Learning Coach (PALC) certification recognizes CALCs who have built at least 100 hours of WIAL coaching experience and have led an Intro to Action Learning or Leading with Questions (LWQ) workshop observed by a SALC or MALC. PALCs have a stronger desire to coach Action Learning teams than to train other coaches.",
+      "The Professional Action Learning Coach (PALC) certification recognizes CALCs who have built at least 100 hours of WIAL coaching experience and have led an Intro to Action Learning or Leading with Questions (LWQ) workshop observed by a MALC. PALCs have a stronger desire to coach Action Learning teams than to train other coaches.",
     eligibility: [
       "Complete WIAL Foundations and/or the Foundations e-learning course, and the CALC Workshop.",
       "Document a minimum of 100 hours of Action Learning experience, at least 50 of which are coaching hours.",
@@ -96,33 +96,13 @@ export const certificationTracks: CertificationTrack[] = [
       "PALC is the bridge from coached participation to independently leading introductory Action Learning experiences.",
   },
   {
-    key: "salc",
-    level: "SALC",
-    anchor: "salc",
-    title: "Senior Action Learning Coach",
-    tagline: "For experienced coaches ready to lead core WIAL programs.",
-    summary:
-      "The Senior Action Learning Coach (SALC) certification is for CALCs or PALCs with at least 100 hours of WIAL coaching experience who have been cleared to teach all WIAL certification programs. SALCs frequently go on to develop an affiliate in their region. A PALC advancing to SALC does not need to complete a second long-term project.",
-    eligibility: [
-      "Complete WIAL Foundations and/or the Foundations e-learning course, and the CALC Workshop.",
-      "Document a minimum of 100 hours of Action Learning experience, at least 50 of which are coaching hours, including one long-term project of at least 4 sessions.",
-      "Lead a Leading with Questions or Introduction to Action Learning session.",
-    ],
-    requirements: [
-      "Lead a Foundations program.",
-      "Lead an Intensive CALC program.",
-    ],
-    progressionLabel:
-      "SALC clears a coach to lead core certification experiences and mentor developing coaches.",
-  },
-  {
     key: "malc",
     level: "MALC",
     anchor: "malc",
     title: "Master Action Learning Coach",
     tagline: "The highest WIAL certification level and thought-leadership track.",
     summary:
-      "The Master Action Learning Coach (MALC) is the highest level in the WIAL hierarchy, open to SALCs with at least 500 hours of coaching experience who are published, have presented at regional or higher-level WIAL and non-WIAL forums, and are regular contributors to WIAL social media or newsletters.",
+      "The Master Action Learning Coach (MALC) is the highest level in the WIAL hierarchy, open to PALCs with at least 500 hours of coaching experience who are published, have presented at regional or higher-level WIAL and non-WIAL forums, and are regular contributors to WIAL social media or newsletters.",
     eligibility: [
       "Complete WIAL Foundations and/or the Foundations e-learning course, and the CALC Workshop.",
       "Document a minimum of 500 hours of Action Learning experience.",
@@ -147,10 +127,6 @@ export const certificationProgression: CertificationProgressionStep[] = [
     body: "Add at least 100 hours of documented coaching experience, a long-term project, and observed delivery of an introductory WIAL learning experience.",
   },
   {
-    title: "SALC",
-    body: "Get cleared to teach all WIAL certification programs, lead Foundations and Intensive CALC sessions, and mentor developing coaches.",
-  },
-  {
     title: "MALC",
     body: "Combine 500+ hours of senior-level experience with publication, presenting, mentoring, and broad contribution to the WIAL method.",
   },
@@ -161,7 +137,7 @@ export const certificationWhy = {
   title: "Why get certified?",
   paragraphs: [
     "Research shows that a trained Action Learning coach is a key success factor for Action Learning programs. More organizations now want those programs led by a Certified Action Learning Coach (CALC).",
-    "A WIAL certification also strengthens a professional's career and their value to the organization. There are four levels, each with more education and practice behind it.",
+    "A WIAL certification also strengthens a professional's career and their value to the organization. There are three levels, each with more education and practice behind it.",
   ],
   levels: [
     {
@@ -173,11 +149,6 @@ export const certificationWhy = {
       level: "PALC",
       title: "Professional Action Learning Coach",
       body: "PALCs have 100+ hours of coaching experience and can lead multiple Action Learning problems.",
-    },
-    {
-      level: "SALC",
-      title: "Senior Action Learning Coach",
-      body: "SALCs can lead a single, complex Action Learning organizational problem over an extended period.",
     },
     {
       level: "MALC",
@@ -230,7 +201,7 @@ export const certificationCalcCourses = {
   intro: [
     "Becoming a Certified Action Learning Coach builds professional skill, increases organizational value, and can lead to career advancement. This intensive program gives participants the skill and experience they need to coach Action Learning in a range of demanding situations.",
     "Participants enroll in an asynchronous e-learning course, attend a live workshop, and independently lead several Action Learning sessions beyond the class experiences. The program uses the same mix of concepts and practice as Foundations of Action Learning. Workshops may include presenters from organizations that need real solutions.",
-    "Every participant coaches at least one session. A dedicated Senior or Master Action Learning Coach works with every team, so trainees get intensive feedback when they take the coaching role.",
+    "Every participant coaches at least one session. A dedicated Master Action Learning Coach works with every team, so trainees get intensive feedback when they take the coaching role.",
   ],
   prerequisite: {
     label: "Prerequisite",
@@ -427,6 +398,7 @@ export const certificationRecertificationRules: CertificationRecertificationRule
     ],
   },
   {
+    // SALC is no longer offered; renewal rules stay for existing SALCs (chatbot only).
     track: "salc",
     validity: "2 years",
     annualRequirements: [

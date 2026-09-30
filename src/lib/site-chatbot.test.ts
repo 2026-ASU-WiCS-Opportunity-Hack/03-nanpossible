@@ -13,6 +13,13 @@ describe("site chatbot fallback", () => {
     expect(reply).not.toContain("/downloads/certification/calc-application.doc");
   });
 
+  it("says SALC is no longer offered instead of describing it", () => {
+    const reply = buildFallbackAssistantReply("How do I apply for SALC?");
+
+    expect(reply).toContain("no longer offers the SALC");
+    expect(reply).toContain("CALC → PALC → MALC");
+  });
+
   it("returns renewal guidance for PALC renewal questions", () => {
     const reply = buildFallbackAssistantReply("How do I renew PALC?");
 
