@@ -14,6 +14,7 @@ const ubuntu = Ubuntu({
 import { getAccessibilityBootScript } from "@/lib/accessibility-preferences";
 import { resolveAnalyticsConfig } from "@/lib/analytics";
 import { getCurrentViewer } from "@/lib/auth";
+import { isSearchIndexingAllowed } from "@/lib/seo";
 import { getLayoutSiteContext } from "@/lib/site-context";
 
 export const metadata: Metadata = {
@@ -26,6 +27,12 @@ export const metadata: Metadata = {
   },
   description:
     "The World Institute for Action Learning (WIAL) certifies Action Learning coaches and supports a global network of affiliates helping organizations solve real problems while developing leaders and teams.",
+  // Staging copy of wial.org: keep every page out of search results until the
+  // cutover (NEXT_PUBLIC_ALLOW_SEARCH_INDEXING=true). Routes may still tighten
+  // this further (e.g. /pay/success), never loosen it.
+  robots: isSearchIndexingAllowed()
+    ? undefined
+    : { index: false, follow: false, googleBot: { index: false, follow: false } },
   icons: {
     icon: [
       { url: "/assets/logo.webp", sizes: "16x16", type: "image/webp" },

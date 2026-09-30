@@ -102,6 +102,25 @@ function renderSection(section) {
         ),
         "</div></section>",
       ].join("");
+    case "comparison":
+      return [
+        `<section><h2>${escapeHtml(section.title)}</h2>`,
+        section.description ? `<p>${escapeHtml(section.description)}</p>` : "",
+        `<table><thead><tr><th></th><th>${escapeHtml(section.columns[0])}</th><th>${escapeHtml(section.columns[1])}</th></tr></thead><tbody>`,
+        ...section.rows.map(
+          (row) =>
+            `<tr><th>${escapeHtml(row.label)}</th><td>${escapeHtml(row.before)}</td><td>${escapeHtml(row.after)}</td></tr>`,
+        ),
+        "</tbody></table></section>",
+      ].join("");
+    case "video":
+      return [
+        `<section><h2>${escapeHtml(section.title)}</h2>`,
+        section.description ? `<p>${escapeHtml(section.description)}</p>` : "",
+        `<p><a href="${section.videoUrl}">${escapeHtml(section.videoTitle)}</a></p>`,
+        section.caption ? `<p>${escapeHtml(section.caption)}</p>` : "",
+        "</section>",
+      ].join("");
     default:
       return "";
   }

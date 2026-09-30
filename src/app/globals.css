@@ -420,6 +420,12 @@ html.cursor-large * {
   box-shadow: var(--shadow-hover);
 }
 
+.feature-card--flat:hover {
+  transform: none;
+  border-color: var(--line);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45);
+}
+
 .feature-card h3 {
   font-family: var(--font-fraunces), serif;
   font-size: 1.15rem;
@@ -646,6 +652,10 @@ html.cursor-large * {
   .hero-grid {
     grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
     align-items: start;
+  }
+
+  .hero-grid.hero-grid--single {
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .feature-grid {
@@ -1372,69 +1382,6 @@ html.cursor-large * {
 }
 
 /* Partner fee ladders (`pricing_tiers` section) */
-.pricing-finder {
-  display: grid;
-  gap: 0.75rem;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background: var(--surface-strong);
-  padding: 1.25rem 1.4rem;
-}
-
-.pricing-finder-label {
-  font-weight: 700;
-  color: var(--foreground);
-}
-
-.pricing-finder-row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.pricing-finder-input {
-  max-width: 11rem;
-  font-variant-numeric: tabular-nums;
-}
-
-.pricing-quick {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-}
-
-.pricing-chip {
-  border: 1px solid var(--line-strong);
-  border-radius: 999px;
-  background: transparent;
-  padding: 0.35rem 0.8rem;
-  color: var(--teal-deep);
-  font-size: 0.82rem;
-  font-weight: 600;
-  font-variant-numeric: tabular-nums;
-  cursor: pointer;
-  transition: background var(--duration-fast) var(--ease-standard),
-    border-color var(--duration-fast) var(--ease-standard);
-}
-
-.pricing-chip:hover,
-.pricing-chip.is-active {
-  border-color: rgba(209, 0, 52, 0.4);
-  background: rgba(209, 0, 52, 0.08);
-}
-
-.pricing-chip:focus-visible {
-  outline: 2px solid var(--teal);
-  outline-offset: 2px;
-}
-
-.pricing-finder-result {
-  min-height: 1.5rem;
-  color: var(--neutral);
-  font-size: 0.95rem;
-}
-
 .pricing-plans {
   display: grid;
   gap: 1.25rem;
@@ -1556,24 +1503,6 @@ html.cursor-large * {
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-}
-
-.pricing-rung.is-match {
-  background: var(--plan-tone-soft);
-}
-
-.pricing-rung.is-match .pricing-rung-marker {
-  border-color: var(--plan-tone);
-  background: var(--plan-tone);
-  box-shadow: 0 0 0 4px var(--plan-tone-soft);
-}
-
-.pricing-rung.is-match .pricing-rung-price strong {
-  color: var(--plan-tone);
-}
-
-.pricing-rung.is-dim {
-  opacity: 0.55;
 }
 
 .pricing-foot {

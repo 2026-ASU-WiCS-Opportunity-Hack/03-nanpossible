@@ -37,6 +37,23 @@ const nextConfig: NextConfig = {
         : []),
     ],
   },
+  async headers() {
+    // Mirrors src/lib/seo.ts (next.config cannot use the @/ alias): keep the
+    // staging deployment out of search engines, including static files that
+    // never render the <meta name="robots"> tag.
+    const allowIndexing = ["true", "1", "yes"].includes(
+      (process.env.NEXT_PUBLIC_ALLOW_SEARCH_INDEXING ?? "").trim().toLowerCase(),
+    );
+    if (allowIndexing) {
+      return [];
+    }
+    return [
+      {
+        source: "/:path*",
+        headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
+      },
+    ];
+  },
   async redirects() {
     return [
       {

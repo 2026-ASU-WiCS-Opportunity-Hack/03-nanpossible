@@ -24,8 +24,11 @@ export const certificationHero = {
   },
 } as const;
 
+/**
+ * Digital-badge copy. No longer rendered on /certification (removed per #143);
+ * kept so the site chatbot can still answer Credly questions.
+ */
 export const certificationBadging = {
-  id: "badges",
   title: "Share your certification with a digital badge",
   intro: {
     beforeCredly:
@@ -35,10 +38,6 @@ export const certificationBadging = {
       ", so you can share your achievement on LinkedIn, in your email signature, or on your website in a way anyone can verify in real time.",
   },
   credlyUrl: "https://www.credly.com",
-  image: {
-    src: "/certification/digital-badges.jpg",
-    alt: "The four WIAL digital badges: CALC, PALC, SALC, and MALC",
-  },
   showsTitle: "What your badge shows",
   shows: [
     "The date your certification was awarded and when it expires.",
@@ -173,17 +172,17 @@ export const certificationWhy = {
     {
       level: "PALC",
       title: "Professional Action Learning Coach",
-      body: "PALCs have proven their ability as coaches.",
+      body: "PALCs have 100+ hours of coaching experience and can lead multiple Action Learning problems.",
     },
     {
       level: "SALC",
       title: "Senior Action Learning Coach",
-      body: "SALCs are cleared to lead all WIAL programs.",
+      body: "SALCs can lead a single, complex Action Learning organizational problem over an extended period.",
     },
     {
       level: "MALC",
       title: "Master Action Learning Coach",
-      body: "MALCs are thought leaders in the Action Learning community.",
+      body: "MALCs are thought leaders who have published and contributed significantly to the Action Learning field.",
     },
   ],
 } as const;
@@ -213,7 +212,7 @@ export const certificationFoundations = {
       "WIAL can bring Foundations of Action Learning into your organization. The required two days of training can be arranged in several configurations to match your objectives.",
       "It is an effective way to introduce potential Action Learning coaches to the six components used to solve organizational problems, build leaders, and develop learning organizations.",
     ],
-    moreHref: "#in-house",
+    moreHref: "/certification/in-house-programs",
     moreLabel: "See in-house certification programs",
   },
   contactHref: "/contact",
@@ -222,8 +221,12 @@ export const certificationFoundations = {
 
 export const certificationCalcCourses = {
   id: "calc-courses",
-  title: "CALC courses",
+  title: "CALC certification",
   heading: "Certification for Action Learning Coaches",
+  image: {
+    src: "/certification/calc-certificate-presentation.jpg",
+    alt: "A newly certified Action Learning coach receiving a CALC certificate from two WIAL coaches",
+  },
   intro: [
     "Becoming a Certified Action Learning Coach builds professional skill, increases organizational value, and can lead to career advancement. This intensive program gives participants the skill and experience they need to coach Action Learning in a range of demanding situations.",
     "Participants enroll in an asynchronous e-learning course, attend a live workshop, and independently lead several Action Learning sessions beyond the class experiences. The program uses the same mix of concepts and practice as Foundations of Action Learning. Workshops may include presenters from organizations that need real solutions.",
@@ -239,11 +242,13 @@ export const certificationCalcCourses = {
     "Professionals who want to become certified Action Learning coaches inside their organization",
     "Independent coaches and consultants who want to become certified in Action Learning",
   ],
-  modules: [
+  // WIAL now runs a single CALC certification course; the former CALC 1 / CALC 2
+  // split is gone (#143), so these are the course's focus areas, not modules.
+  focusAreas: [
     {
-      title: "CALC 1",
+      title: "Advanced coaching methods",
       summary:
-        "CALC 1 focuses on advanced coaching methods. Presentations and discussion cover these Action Learning team issues:",
+        "Presentations and discussion cover the Action Learning team issues a coach must handle:",
       bullets: [
         "Developing complete problem statements, including root issues and solution goals",
         "Aligning questions with the stage of the problem-solving process",
@@ -251,9 +256,9 @@ export const certificationCalcCourses = {
       ],
     },
     {
-      title: "CALC 2",
+      title: "Running a successful Action Learning program",
       summary:
-        "CALC 2 focuses on the organizational issues that must be addressed to run a successful Action Learning program. Presentations and discussion cover:",
+        "The course also covers the organizational issues that must be addressed to run a successful Action Learning program:",
       bullets: [
         "Contracting issues",
         "Putting together a program development team",
@@ -298,8 +303,12 @@ export const certificationCalcCourses = {
 export const certificationBecomeACoach = {
   id: "become-a-coach",
   title: "Who gets WIAL Action Learning certified?",
+  image: {
+    src: "/certification/certified-coaches-cohort.jpg",
+    alt: "Newly certified Action Learning coaches holding their WIAL certificates after a workshop",
+  },
   intro: [
-    "Action Learning is a powerful tool for individuals, teams, and organizations. WIAL is an international organization offering services on six continents.",
+    "Action Learning is a powerful tool for individuals, teams, and organizations in any industry. WIAL is an international organization offering services on six continents.",
   ],
   industriesLead: "Members of the WIAL community come from many industries:",
   industries: [
@@ -326,7 +335,7 @@ export const certificationPrograms = {
   id: "programs",
   title: "Programs",
   intro: [
-    "WIAL's training programs for Action Learning coaches are listed here. Start with Foundations, continue into CALC courses, or bring certification in-house.",
+    "WIAL's training programs for Action Learning coaches are listed here. Start with Foundations, continue into the CALC certification course, or bring certification in-house.",
   ],
   items: [
     {
@@ -335,13 +344,13 @@ export const certificationPrograms = {
       body: "An intensive two-day session covering the six components and two ground rules, with practice as both a participant and a coach.",
     },
     {
-      title: "CALC courses",
+      title: "CALC certification",
       href: "#calc-courses",
-      body: "The certification program for Action Learning coaches: e-learning, a live workshop, and independently led sessions.",
+      body: "The certification course for Action Learning coaches: e-learning, a live workshop, and independently led sessions.",
     },
     {
       title: "In-house programs",
-      href: "#in-house",
+      href: "/certification/in-house-programs",
       body: "Customized in-house certification and staffing for organizations in the United States and internationally.",
     },
   ],
@@ -350,6 +359,39 @@ export const certificationPrograms = {
 export const certificationInHouse = {
   id: "in-house",
   title: "In-house programs",
+  href: "/certification/in-house-programs",
+  hrefLabel: "Explore in-house programs",
+  /** One-paragraph teaser shown on the /certification hub (#143 moved the full copy to its own page). */
+  teaser:
+    "WIAL runs customized in-house certification programs for Action Learning coaches in the United States and internationally, and can staff large leadership development programs with certified, experienced coaches.",
+  pageTitle: "In-house Action Learning coach certification programs",
+  metaDescription:
+    "Bring WIAL Action Learning coach certification in-house: a customized six-day program for your organization, plus experienced certified coaches to staff large leadership development programs.",
+  eyebrow: "In-house programs",
+  image: {
+    src: "/certification/certification-hero.jpg",
+    alt: "Coaches and program participants gathered in front of WIAL banners at an Action Learning session",
+  },
+  highlights: [
+    {
+      title: "Six days, arranged around you",
+      body: "The required six days of training can be arranged in several configurations to match your objectives and your calendar.",
+    },
+    {
+      title: "The same standard as public programs",
+      body: "In-house programs follow the same objectives as WIAL's public programs and are customized to your organization's specific requirements and challenges.",
+    },
+    {
+      title: "Coaches for large programs",
+      body: "WIAL provides certified, experienced Action Learning coaches to staff large leadership development programs.",
+    },
+  ],
+  foundationsNote:
+    "Want to start smaller? WIAL also delivers the two-day Foundations of Action Learning program in-house.",
+  foundationsHref: "/certification#foundations",
+  foundationsLabel: "About Foundations of Action Learning",
+  backHref: "/certification",
+  backLabel: "All certification programs",
   intro: [
     "WIAL offers customized in-house training in the United States and internationally. We will run an in-house certification program for Action Learning coaches at your organization. The required six days of training can be arranged in several configurations to match your objectives.",
     "In-house programs follow the same objectives as the public programs, and they can be customized to address specific requirements and challenges in your organization. This is an effective way to train coaches assigned to Action Learning teams and to develop employee programs.",

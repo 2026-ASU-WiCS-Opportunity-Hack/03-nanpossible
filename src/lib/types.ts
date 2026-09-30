@@ -13,7 +13,8 @@ export type CanonicalPageSlug =
   | "conferences"
   | "become-an-affiliate"
   | "resources"
-  | "privacy";
+  | "privacy"
+  | "community-impact";
 
 export type AppRole =
   | "platform_admin"
@@ -285,6 +286,8 @@ export type ContentSection =
       type: "feature_grid";
       title: string;
       items: FeatureItem[];
+      /** Plain cards: no hover lift/border and item eyebrows are ignored. */
+      flat?: boolean;
     }
   | {
       type: "timeline";
@@ -373,6 +376,24 @@ export type ContentSection =
         imageAlt?: string;
         eyebrow?: string;
       }[];
+    }
+  | {
+      /** Two approaches contrasted row by row (e.g. traditional vs. Action Learning). */
+      type: "comparison";
+      title: string;
+      description?: string;
+      /** Column headings: [the conventional approach, the WIAL approach]. */
+      columns: [string, string];
+      rows: { label: string; before: string; after: string }[];
+    }
+  | {
+      /** One embedded video (use a youtube-nocookie.com embed URL) with copy. */
+      type: "video";
+      title: string;
+      description?: string;
+      videoUrl: string;
+      videoTitle: string;
+      caption?: string;
     }
   | {
       type: "testimonial_grid";
