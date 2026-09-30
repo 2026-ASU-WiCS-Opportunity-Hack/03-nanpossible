@@ -20,11 +20,14 @@ export default async function ChapterCoachApprovalsPage({
     "chapter_admin",
   ]);
   const chapter = await resolveWorkspaceChapter(viewer);
+
+  if (!chapter) {
+    return null;
+  }
+
   const [params, coaches] = await Promise.all([
     searchParams,
-    listPendingCoaches({
-      chapterId: chapter?.id,
-    }),
+    listPendingCoaches({ chapterId: chapter.id }),
   ]);
 
   return (

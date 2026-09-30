@@ -44,8 +44,8 @@ const LOGO_PREFIX = "directory";
 const SKIPPED_SLUGS = new Set(["wial-global"]);
 
 /**
- * WIAL's affiliate roster (17), confirmed by WIAL on 2026-09-13 (France
- * confirmed separately — wial.fr is live). directory.wial.org itself went
+ * WIAL's affiliate roster (16): confirmed by WIAL on 2026-09-13, minus France,
+ * which the 2026 roster review (migration 20260930000000) retired. directory.wial.org itself went
  * offline in September 2026 (self-signed certificate, then 404), so the last
  * Wayback capture of its listing is the reference:
  * https://web.archive.org/web/20260228034924/http://directory.wial.org/affiliates
@@ -53,7 +53,7 @@ const SKIPPED_SLUGS = new Set(["wial-global"]);
  * (crawled 2026-09-05), which stays the source of profile details because the
  * archive never captured the profile pages.
  *
- * A crawled profile that is not on this roster (wial-indonesia) is retired:
+ * A crawled profile that is not on this roster (wial-france, wial-indonesia) is retired:
  * skipped from the upsert and its chapter set inactive — never deleted, so
  * coaches keep their chapter_id and an assigned affiliate head does not trip
  * users_chapter_admin_requires_chapter.
@@ -63,7 +63,6 @@ const AFFILIATE_ROSTER_SLUGS = new Set([
   "wial-cambodia",
   "wial-canada",
   "wial-china",
-  "wial-france",
   "wial-italy",
   "wial-japan",
   "wial-malaysia",
@@ -141,6 +140,15 @@ function cleanContactName(value: string | null): string | null {
 }
 
 /**
+ * Directory websites verified broken in the 2026 roster review: wial.sg shows
+ * a hosting "account suspended" page and wialthailand.com redirects to
+ * wial.org. Those affiliates fall back to their hosted site instead.
+ */
+const DEAD_WEBSITE_HOSTS = new Set(["wial.sg", "wialthailand.com"]);
+/** Directory websites that have moved; the directory still lists the old one. */
+const MOVED_WEBSITES = new Map<string, string>([["wialnl.nl", "https://wial.nl/"]]);
+
+/**
  * Websites pointing back at wial.org (e.g. the become-an-affiliate page on
  * placeholder profiles) are not the affiliate's own site.
  */
@@ -157,6 +165,14 @@ function cleanWebsite(value: string | null): string | null {
     const host = url.hostname.toLowerCase();
     if (host === "wial.org" || host.endsWith(".wial.org")) {
       return null;
+    }
+    const bareHost = host.replace(/^www\./, "");
+    if (DEAD_WEBSITE_HOSTS.has(bareHost)) {
+      return null;
+    }
+    const moved = MOVED_WEBSITES.get(bareHost);
+    if (moved) {
+      return moved;
     }
     return url.toString();
   } catch {
@@ -529,7 +545,7 @@ async function main(): Promise<void> {
   const retired: RetiredAffiliates = { directorySlugs: [], subdomains: [...RETIRED_SUBDOMAINS] };
   const affiliates = crawl.affiliates.filter((affiliate) => {
     if (SKIPPED_SLUGS.has(affiliate.slug)) {
-      console.log(`skipping ${affiliate.slug} (WIAL headquarters, not an affiliate)`);
+      console.log(`skipping ${affiliate.slug} (not an active affiliate)`);
       return false;
     }
     if (!AFFILIATE_ROSTER_SLUGS.has(affiliate.slug)) {

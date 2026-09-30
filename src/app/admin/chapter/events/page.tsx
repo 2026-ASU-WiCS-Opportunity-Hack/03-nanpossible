@@ -19,14 +19,12 @@ export default async function ChapterEventsPage({
     "content_creator",
   ]);
   const chapter = await resolveWorkspaceChapter(viewer);
-  const [params, events] = await Promise.all([
-    searchParams,
-    chapter ? listEventsForAdmin(chapter.id) : Promise.resolve([]),
-  ]);
 
   if (!chapter) {
     return null;
   }
+
+  const [params, events] = await Promise.all([searchParams, listEventsForAdmin(chapter.id)]);
 
   return (
     <AccountPageShell

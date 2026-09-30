@@ -351,6 +351,16 @@ export async function syncUserAccess(input: UserAccessInput) {
   }
 
   const assignedChapters = normalizeChapterIds(input.assignedChapters ?? []);
+
+  // Every role write funnels through here; keep the DB invariant in the app too.
+  if (input.role === "chapter_admin" && !normalizeNullableValue(input.chapterId)) {
+    throw new Error("chapter-required");
+  }
+
+  if (input.role === "content_creator" && !assignedChapters.length) {
+    throw new Error("assigned-chapters-required");
+  }
+
   const { error: upsertError } = await client.from("users").upsert({
     id: input.userId,
     email: input.email,

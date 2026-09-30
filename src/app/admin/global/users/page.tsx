@@ -4,6 +4,7 @@ import { requireAccountViewer } from "@/lib/auth";
 import { listAdminUsers } from "@/lib/chapters-admin";
 import { listChapters } from "@/lib/tenant";
 import type { AdminUserRecord } from "@/lib/types";
+import { describeWorkspaceGap } from "@/lib/workspace-gap";
 import { saveUserRoleAction } from "./actions";
 
 type GlobalUsersPageProps = {
@@ -77,6 +78,7 @@ export default async function GlobalUsersPage({
   const platformAdminCount = users.filter((user) => user.role === "platform_admin").length;
   const chapterAdminCount = users.filter((user) => user.role === "chapter_admin").length;
   const contentCreatorCount = users.filter((user) => user.role === "content_creator").length;
+  const needsAffiliateCount = users.filter((user) => describeWorkspaceGap(user, chapters)).length;
 
   return (
     <AccountPageShell
@@ -90,6 +92,14 @@ export default async function GlobalUsersPage({
       ) : null}
       {getError(loadError ?? params.error) ? (
         <div className="account-flash is-error">{getError(loadError ?? params.error)}</div>
+      ) : null}
+      {needsAffiliateCount ? (
+        <div className="account-flash is-error">
+          {needsAffiliateCount === 1
+            ? "1 account cannot use its affiliate workspace."
+            : `${needsAffiliateCount} accounts cannot use their affiliate workspace.`}{" "}
+          Use Edit on the rows marked &ldquo;Needs an affiliate&rdquo; to give each one an active affiliate.
+        </div>
       ) : null}
 
       <div className="grid gap-5 xl:grid-cols-[minmax(0,1fr)_255px]">
@@ -136,6 +146,12 @@ export default async function GlobalUsersPage({
                 Content creators
               </p>
               <p className="mt-3 font-display text-4xl text-teal-deep">{contentCreatorCount}</p>
+            </article>
+            <article className="feature-card rounded-[1.1rem] p-4">
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#7f3416]">
+                Needs an affiliate
+              </p>
+              <p className="mt-3 font-display text-4xl text-teal-deep">{needsAffiliateCount}</p>
             </article>
           </div>
 
