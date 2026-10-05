@@ -570,7 +570,7 @@ export function ContentPage({ page, siteContext, children }: ContentPageProps) {
                     Contact WIAL
                   </TrackedLink>
                 ) : null}
-                {page.slug !== "clients" ? (
+                {page.slug !== "clients" && page.slug !== "partners" ? (
                   <TrackedLink
                     className="button-link secondary"
                     event={{
