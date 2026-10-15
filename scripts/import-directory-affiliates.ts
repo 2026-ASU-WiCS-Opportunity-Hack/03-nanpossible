@@ -44,8 +44,9 @@ const LOGO_PREFIX = "directory";
 const SKIPPED_SLUGS = new Set(["wial-global"]);
 
 /**
- * WIAL's affiliate roster (16): confirmed by WIAL on 2026-09-13, minus France,
- * which the 2026 roster review (migration 20260930000000) retired. directory.wial.org itself went
+ * WIAL's affiliate roster (15): confirmed by WIAL on 2026-09-13, minus France,
+ * which the 2026 roster review (migration 20260930000000) retired, and minus
+ * China, retired 2026-10-14 (migration 20261014000000). directory.wial.org itself went
  * offline in September 2026 (self-signed certificate, then 404), so the last
  * Wayback capture of its listing is the reference:
  * https://web.archive.org/web/20260228034924/http://directory.wial.org/affiliates
@@ -53,7 +54,7 @@ const SKIPPED_SLUGS = new Set(["wial-global"]);
  * (crawled 2026-09-05), which stays the source of profile details because the
  * archive never captured the profile pages.
  *
- * A crawled profile that is not on this roster (wial-france, wial-indonesia) is retired:
+ * A crawled profile that is not on this roster (wial-china, wial-france, wial-indonesia) is retired:
  * skipped from the upsert and its chapter set inactive — never deleted, so
  * coaches keep their chapter_id and an assigned affiliate head does not trip
  * users_chapter_admin_requires_chapter.
@@ -62,7 +63,6 @@ const AFFILIATE_ROSTER_SLUGS = new Set([
   "wial-brazil",
   "wial-cambodia",
   "wial-canada",
-  "wial-china",
   "wial-italy",
   "wial-japan",
   "wial-malaysia",
