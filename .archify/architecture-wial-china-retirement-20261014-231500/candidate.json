@@ -1,0 +1,275 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Retiring WIAL China from the affiliate roster",
+    "locale": "en",
+    "output": ".archify/architecture-wial-china-retirement-20261014-231500/wial-china-retirement.html",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/2026-ASU-WiCS-Opportunity-Hack/03-nanpossible.git",
+      "provider": "github",
+      "link_mode": "web",
+      "revision": "6fb266346a3a574e2e33d0884295472e944355eb"
+    }
+  },
+  "components": [
+    {
+      "id": "merge-main",
+      "type": "external",
+      "label": "Merge to main",
+      "sublabel": "GitHub \u00b7 this PR",
+      "pos": [
+        40,
+        140
+      ],
+      "size": [
+        160,
+        64
+      ],
+      "sources": [
+        {
+          "path": "CLAUDE.md",
+          "line": 54,
+          "label": "Hosted migrations auto-apply on push to main"
+        }
+      ]
+    },
+    {
+      "id": "supabase-integration",
+      "type": "cloud",
+      "label": "Supabase integration",
+      "sublabel": "Applies migrations on push",
+      "pos": [
+        260,
+        140
+      ],
+      "size": [
+        200,
+        64
+      ],
+      "sources": [
+        {
+          "path": "CLAUDE.md",
+          "line": 54,
+          "label": "Supabase GitHub integration"
+        }
+      ]
+    },
+    {
+      "id": "chapters-db",
+      "type": "database",
+      "label": "chapters table",
+      "sublabel": "China row inactive, kept",
+      "pos": [
+        520,
+        140
+      ],
+      "size": [
+        200,
+        64
+      ],
+      "sources": [
+        {
+          "path": "supabase/migrations/20261014000000_retire_wial_china.sql",
+          "line": 1,
+          "end_line": 9,
+          "label": "Retirement migration"
+        }
+      ]
+    },
+    {
+      "id": "active-reads",
+      "type": "backend",
+      "label": "Active-only reads",
+      "sublabel": "tenant.ts status filter",
+      "pos": [
+        780,
+        140
+      ],
+      "size": [
+        190,
+        64
+      ],
+      "sources": [
+        {
+          "path": "src/lib/tenant.ts",
+          "line": 200,
+          "end_line": 225,
+          "label": "Tenant lookup filters active"
+        },
+        {
+          "path": "src/lib/tenant.ts",
+          "line": 297,
+          "end_line": 310,
+          "label": "Affiliate directory filters active"
+        }
+      ]
+    },
+    {
+      "id": "surfaces",
+      "type": "frontend",
+      "label": "chapterstack.org",
+      "sublabel": "Map \u00b7 coaches \u00b7 tenants",
+      "pos": [
+        1030,
+        140
+      ],
+      "size": [
+        190,
+        64
+      ],
+      "sources": [
+        {
+          "path": "src/components/global-network-section.tsx",
+          "line": 51,
+          "end_line": 66,
+          "label": "Home map + affiliate strip"
+        }
+      ]
+    },
+    {
+      "id": "migration-file",
+      "type": "backend",
+      "label": "Migration 20261014000000",
+      "sublabel": "retire_wial_china.sql",
+      "pos": [
+        260,
+        320
+      ],
+      "size": [
+        200,
+        64
+      ],
+      "sources": [
+        {
+          "path": "supabase/migrations/20261014000000_retire_wial_china.sql",
+          "line": 6,
+          "end_line": 9,
+          "label": "Sets china inactive"
+        }
+      ]
+    },
+    {
+      "id": "importer",
+      "type": "backend",
+      "label": "Affiliate importer",
+      "sublabel": "Roster: 15, no wial-china",
+      "pos": [
+        520,
+        320
+      ],
+      "size": [
+        200,
+        64
+      ],
+      "sources": [
+        {
+          "path": "scripts/import-directory-affiliates.ts",
+          "line": 47,
+          "end_line": 62,
+          "label": "Roster without wial-china"
+        }
+      ]
+    },
+    {
+      "id": "fixture",
+      "type": "database",
+      "label": "chapters.json fixture",
+      "sublabel": "Fallback \u00b7 China inactive",
+      "pos": [
+        780,
+        320
+      ],
+      "size": [
+        190,
+        64
+      ],
+      "sources": [
+        {
+          "path": "src/content/chapters.json",
+          "line": 142,
+          "end_line": 145,
+          "label": "Fixture mirrors the DB"
+        }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "merge-to-integration",
+      "from": "merge-main",
+      "to": "supabase-integration",
+      "variant": "emphasis"
+    },
+    {
+      "id": "integration-to-db",
+      "from": "supabase-integration",
+      "to": "chapters-db"
+    },
+    {
+      "id": "db-to-reads",
+      "from": "chapters-db",
+      "to": "active-reads"
+    },
+    {
+      "id": "reads-to-surfaces",
+      "from": "active-reads",
+      "to": "surfaces"
+    },
+    {
+      "id": "migration-applied",
+      "from": "migration-file",
+      "to": "supabase-integration",
+      "label": "applied on merge",
+      "fromSide": "top",
+      "toSide": "bottom"
+    },
+    {
+      "id": "importer-retires",
+      "from": "importer",
+      "to": "chapters-db",
+      "label": "re-import retires it",
+      "fromSide": "top",
+      "toSide": "bottom"
+    },
+    {
+      "id": "fixture-fallback",
+      "from": "fixture",
+      "to": "active-reads",
+      "label": "DB-down fallback",
+      "variant": "dashed",
+      "fromSide": "top",
+      "toSide": "bottom"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "rose",
+      "title": "What is removed",
+      "items": [
+        "Affiliate directory entry and the affiliate link on China coach cards and profiles",
+        "Home-page map affiliate ring and the chip linking out to wial-china.org",
+        "The china.chapterstack.org tenant site (verified locally: 404, while the USA tenant still returns 200)"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "What stays",
+      "items": [
+        "The chapter row itself, set inactive and never deleted, so coach and user history stays intact",
+        "China-based coaches and their profiles; China remains a coach country on the map, just without an affiliate ring",
+        "Historical mentions that are not the affiliate listing (client testimonials, award winners, the 2017 Shanghai conference)"
+      ]
+    },
+    {
+      "dot": "cyan",
+      "title": "Why it sticks",
+      "items": [
+        "The migration auto-applies to the hosted Supabase project when the PR merges to main",
+        "The importer roster drops from 16 to 15 without wial-china, so a re-import retires it instead of reviving it",
+        "The chapters.json fixture fallback mirrors the database, so both read paths agree"
+      ]
+    }
+  ]
+}
