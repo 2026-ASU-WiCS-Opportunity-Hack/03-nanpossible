@@ -6,6 +6,7 @@ import {
 } from "@/lib/builder-page";
 import { createServiceRoleSupabaseClient } from "@/lib/supabase-admin";
 import { createSupabaseContentClient } from "@/lib/supabase";
+import { extractTestimonialItems } from "@/lib/testimonials";
 import type { ContentBody, ContentPageRecord } from "@/lib/types";
 
 type StaticContentPageFixture = {
@@ -226,6 +227,12 @@ export async function getContentPage({
   }
 
   return getFixturePage(slug, chapterId);
+}
+
+/** The /clients testimonials (DB first, fixture fallback) — the one source for every highlight. */
+export async function getClientTestimonials() {
+  const page = await getContentPage({ slug: "clients", chapterId: null });
+  return extractTestimonialItems(page?.bodyRichtext);
 }
 
 export async function listChapterPages(
