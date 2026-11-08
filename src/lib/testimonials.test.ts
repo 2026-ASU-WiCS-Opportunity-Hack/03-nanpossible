@@ -1,6 +1,14 @@
 import { describe, expect, it } from "vitest";
 import pages from "@/content/pages.json";
 import {
+  applyAudienceTags,
+  audiencePatchFromItems,
+  clampTestimonialLimit,
+  isInternalHref,
+  isTestimonialHighlightsSupported,
+  testimonialKey,
+  testimonialKeys,
+  testimonialPathsToRevalidate,
   extractTestimonialItems,
   resolveTestimonials,
   type TestimonialItem,
@@ -102,5 +110,85 @@ describe("page fixtures", () => {
       const text = JSON.stringify(page.bodyRichtext);
       for (const q of quotes) expect(text.includes(q.slice(0, 40))).toBe(false);
     }
+  });
+});
+
+describe("admin helpers", () => {
+  it("clamps limits", () => {
+    expect(clampTestimonialLimit(undefined)).toBe(3);
+    expect(clampTestimonialLimit(Number.NaN)).toBe(3);
+    expect(clampTestimonialLimit(0)).toBe(1);
+    expect(clampTestimonialLimit(-2)).toBe(1);
+    expect(clampTestimonialLimit(2.9)).toBe(2);
+    expect(clampTestimonialLimit(99)).toBe(6);
+    expect(clampTestimonialLimit("4")).toBe(4);
+    expect(clampTestimonialLimit("")).toBe(3);
+  });
+
+  it("accepts only same-site hrefs", () => {
+    expect(isInternalHref("/clients")).toBe(true);
+    expect(isInternalHref("/a/b#c")).toBe(true);
+    for (const bad of ["//evil.com", "https://x", "javascript:x", "/a b", "", "/a\\b"]) {
+      expect(isInternalHref(bad)).toBe(false);
+    }
+  });
+
+  it("keys are case and whitespace insensitive, with collision suffixes", () => {
+    expect(testimonialKey({ organization: " Acme ", name: "BOB" })).toBe(
+      testimonialKey({ organization: "acme", name: "bob" }),
+    );
+    const keys = testimonialKeys([
+      { organization: "A", name: "x" },
+      { organization: "A", name: "x" },
+      { organization: "B", name: "x" },
+    ]);
+    expect(new Set(keys).size).toBe(3);
+    expect(keys[1]).toBe(`${keys[0]}#1`);
+  });
+
+  it("applyAudienceTags only changes audiences", () => {
+    const stored: TestimonialItem[] = [
+      { organization: "A", name: "Ann", quote: "Q", logo: "/l.png", audiences: ["home"] },
+      { organization: "B", name: "Bob", quote: "R", audiences: ["home"] },
+      { organization: "C", name: "Cy", quote: "S" },
+    ];
+    const out = applyAudienceTags(stored, {
+      [testimonialKey(stored[0])]: ["affiliate", "bogus", "home", "home"],
+      [testimonialKey(stored[1])]: [],
+      "nobody||nobody": ["home"],
+    });
+    expect(out).toHaveLength(3);
+    expect(out[0]).toEqual({ ...stored[0], audiences: ["home", "affiliate"] });
+    expect("audiences" in out[1]).toBe(false);
+    expect(out[1].quote).toBe("R");
+    expect(out[2]).toEqual(stored[2]);
+    expect(stored[1].audiences).toEqual(["home"]);
+  });
+
+  it("ignores non-array values", () => {
+    const stored: TestimonialItem[] = [
+      { organization: "A", name: "Ann", audiences: ["home"] },
+    ];
+    expect(applyAudienceTags(stored, { [testimonialKey(stored[0])]: "all" })).toEqual(stored);
+  });
+
+  it("audiencePatchFromItems never carries copy", () => {
+    const patch = audiencePatchFromItems([
+      { organization: "A", name: "Ann", quote: "HACKED", audiences: ["home"] },
+    ]);
+    expect(patch).toEqual({ "a||ann": ["home"] });
+    expect(audiencePatchFromItems("x")).toEqual({});
+  });
+
+  it("lists paths to revalidate", () => {
+    expect(testimonialPathsToRevalidate("clients")).toHaveLength(5);
+    expect(testimonialPathsToRevalidate("home")).toEqual(["/"]);
+    expect(testimonialPathsToRevalidate("our-services")).toEqual(["/our-services"]);
+  });
+
+  it("knows which pages cannot show highlights", () => {
+    expect(isTestimonialHighlightsSupported("home")).toBe(true);
+    expect(isTestimonialHighlightsSupported("clients")).toBe(false);
+    expect(isTestimonialHighlightsSupported("resources/some-post")).toBe(false);
   });
 });
