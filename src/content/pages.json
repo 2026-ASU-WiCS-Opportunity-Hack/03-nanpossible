@@ -72,6 +72,13 @@
         ]
       },
       {
+        "type": "testimonial_highlights",
+        "title": "What our clients say",
+        "description": "Leaders at organizations around the world share what Action Learning has done for their teams.",
+        "audience": "home",
+        "limit": 3
+      },
+      {
         "type": "cta",
         "title": "WIAL Better World Fund",
         "body": "Established in 2015 to bring Action Learning services to community-based organizations around the world.",
@@ -390,6 +397,13 @@
           "type": "quote",
           "quote": "Last week was one of the best leadership development experiences I've been a part of at Microsoft. You and the team should be proud of what you put together and the results!",
           "attribution": "Dan Grady, Premier Field Engineering Director, Microsoft"
+        },
+        {
+          "type": "testimonial_highlights",
+          "title": "What organizations say about Action Learning",
+          "description": "Hear from organizations whose people and coaches use Action Learning every day.",
+          "audience": "certification",
+          "limit": 3
         },
         {
           "type": "cta",
@@ -1919,6 +1933,13 @@
         ]
       },
       {
+        "type": "testimonial_highlights",
+        "title": "Results organizations have seen",
+        "description": "Organizations of every size use Action Learning to solve real problems while developing their people.",
+        "audience": "organizations",
+        "limit": 3
+      },
+      {
         "type": "cta",
         "title": "See the benefits in more depth",
         "body": "Explore how Action Learning supports problem solving, high-performing teams, leadership development, and learning organizations.",
@@ -2227,6 +2248,13 @@
           "Affiliates have a desire to actively develop the business of their members through mentoring and fostering a community. The strongest affiliates pair experienced coaches with newly certified ones, bring client work to their members, and give the region a regular place to practice and reflect together.",
           "Each affiliate serves a specific country or region. Before applying, browse the directory to see whether your country already has an affiliate you could join, or whether there is an opening for a new one."
         ]
+      },
+      {
+        "type": "testimonial_highlights",
+        "title": "Action Learning in practice",
+        "description": "See the difference WIAL Action Learning makes for organizations working with our community.",
+        "audience": "affiliate",
+        "limit": 3
       },
       {
         "type": "cta",

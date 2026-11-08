@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import pages from "@/content/pages.json";
 import {
   extractTestimonialItems,
   resolveTestimonials,
@@ -65,5 +66,41 @@ describe("extractTestimonialItems", () => {
     expect(extractTestimonialItems(body)).toHaveLength(items.length);
     expect(extractTestimonialItems(null)).toEqual([]);
     expect(extractTestimonialItems({ heroIntro: "", metrics: [], sections: [] })).toEqual([]);
+  });
+});
+
+type Fixture = { slug: string; chapterId: string | null; bodyRichtext: { sections: { type: string; audience?: string; limit?: number; items?: TestimonialItem[]; linkHref?: string }[] } };
+const fixtures = pages as unknown as Fixture[];
+const globalPage = (slug: string) => fixtures.find((p) => p.slug === slug && p.chapterId === null)!;
+
+describe("page fixtures", () => {
+  const source = extractTestimonialItems(globalPage("clients").bodyRichtext as never);
+
+  it("has every highlight audience covered by at least two quotes from the clients data", () => {
+    for (const audience of ["home", "certification", "organizations", "affiliate"] as const) {
+      expect(resolveTestimonials(source, { audience, limit: 3 }).length).toBeGreaterThanOrEqual(2);
+    }
+  });
+
+  it.each([
+    ["home", "home"],
+    ["certification", "certification"],
+    ["our-services", "organizations"],
+    ["become-an-affiliate", "affiliate"],
+  ])("%s carries one testimonial_highlights section for %s with selection rules only", (slug, audience) => {
+    const sections = globalPage(slug).bodyRichtext.sections.filter((s) => s.type === "testimonial_highlights");
+    expect(sections).toHaveLength(1);
+    expect(sections[0].audience).toBe(audience);
+    expect(sections[0].linkHref ?? "/clients").toBe("/clients");
+    expect(sections[0]).not.toHaveProperty("items");
+  });
+
+  it("never copies a client quote into another page", () => {
+    const quotes = source.map((i) => i.quote).filter(Boolean) as string[];
+    for (const page of fixtures) {
+      if (page.slug === "clients" && page.chapterId === null) continue;
+      const text = JSON.stringify(page.bodyRichtext);
+      for (const q of quotes) expect(text.includes(q.slice(0, 40))).toBe(false);
+    }
   });
 });
