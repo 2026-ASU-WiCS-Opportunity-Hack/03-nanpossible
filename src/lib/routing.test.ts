@@ -275,13 +275,6 @@ describe("normalizeSegments", () => {
     });
   });
 
-  it("redirects /for-organizations to the our-services page", () => {
-    expect(normalizeSegments(["for-organizations"])).toEqual({
-      slug: null,
-      redirectTo: "/our-services",
-    });
-  });
-
   it("resolves the our-services page slug", () => {
     expect(normalizeSegments(["our-services"])).toEqual({
       slug: "our-services",

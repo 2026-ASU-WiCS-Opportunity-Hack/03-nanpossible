@@ -17,7 +17,6 @@ export const navigationItems: NavigationItem[] = [
 ];
 
 const aliasMap = new Map<string, string>([
-  ["for-organizations", "/our-services"],
   ["about-wial", "/about"],
   ["contact-us", "/contact"],
   ["library", "/resources"],
