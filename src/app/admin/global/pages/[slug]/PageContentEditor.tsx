@@ -953,7 +953,9 @@ function TagsEditor({
       </div>
       <p className="text-sm text-foreground/60">
         Tick the pages each quote may appear on. Quotes appear in the order they are
-        listed on this page, and the order and wording can&apos;t be changed here.
+        listed on this page, and the order and wording can&apos;t be changed here. Changes
+        to where quotes appear go live when you save and are not copied back into the
+        site&apos;s starting content.
       </p>
       {section.items.map((item, itemIndex) => {
         const text = item.quote ?? "";
