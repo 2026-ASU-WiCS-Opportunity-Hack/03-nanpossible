@@ -57,6 +57,7 @@ export const TESTIMONIAL_AUDIENCES = [
 export const TESTIMONIAL_AUDIENCE_LABELS: Record<TestimonialAudience, string> = {
   home: "Home page",
   certification: "Certification page",
+  // TODO(#162): rename to "For organizations page" when organizations moves to /for-organizations.
   organizations: "Our services page",
   affiliate: "Become an affiliate page",
 };
@@ -175,7 +176,10 @@ export function audiencePatchFromItems(items: unknown): AudienceTagPatch {
   return patch;
 }
 
-/** Public paths to refresh after saving a page's content. */
+/**
+ * Public paths to refresh after saving a page's content.
+ * TODO(#162): swap "/our-services" for "/for-organizations" when the block moves.
+ */
 export function testimonialPathsToRevalidate(slug: string): string[] {
   const own = slug === "home" ? "/" : `/${slug}`;
   const paths =
