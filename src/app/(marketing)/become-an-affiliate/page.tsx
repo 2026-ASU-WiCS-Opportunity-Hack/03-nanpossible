@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ContentPage } from "@/components/content-page";
-import { getContentPage } from "@/lib/content";
+import { getClientTestimonials, getContentPage } from "@/lib/content";
 import { getGlobalSiteContext } from "@/lib/site-context";
 import { AffiliateInquiryForm } from "./AffiliateInquiryForm";
 
@@ -12,9 +12,10 @@ export const metadata: Metadata = {
 };
 
 export default async function BecomeAnAffiliatePage() {
-  const [siteContext, page] = await Promise.all([
+  const [siteContext, page, testimonials] = await Promise.all([
     getGlobalSiteContext(),
     getContentPage({ slug: "become-an-affiliate" }),
+    getClientTestimonials(),
   ]);
 
   if (!page) {
@@ -22,7 +23,7 @@ export default async function BecomeAnAffiliatePage() {
   }
 
   return (
-    <ContentPage page={page} siteContext={siteContext}>
+    <ContentPage page={page} siteContext={siteContext} testimonials={testimonials}>
       <section className="site-panel rounded-[2rem] p-6 md:p-8" id="apply">
         <div className="space-y-3">
           <span className="eyebrow">Apply</span>

@@ -2,16 +2,30 @@ import type { ReactNode } from "react";
 import { TrackedLink } from "@/components/analytics/tracked-link";
 import { PartnerPricing } from "@/components/partner-pricing";
 import { isOutboundHref } from "@/lib/analytics";
-import type { ContentPageRecord, ContentSection, SiteContext } from "@/lib/types";
+import { TestimonialCard } from "@/components/testimonial-card";
+import { resolveTestimonials } from "@/lib/testimonials";
+import type {
+  ContentPageRecord,
+  ContentSection,
+  SiteContext,
+  TestimonialItem,
+} from "@/lib/types";
 
 type ContentPageProps = {
   page: ContentPageRecord;
   siteContext: SiteContext;
   /** Rendered after the content sections — for route-specific UI such as forms. */
   children?: ReactNode;
+  /** Testimonials from /clients, for `testimonial_highlights` sections. */
+  testimonials?: TestimonialItem[];
 };
 
-export function renderSection(section: ContentSection) {
+export type RenderSectionContext = {
+  /** Testimonial items from the /clients page; feeds `testimonial_highlights`. */
+  testimonials?: TestimonialItem[];
+};
+
+export function renderSection(section: ContentSection, context: RenderSectionContext = {}) {
   switch (section.type) {
     case "prose":
       return (
@@ -419,51 +433,54 @@ export function renderSection(section: ContentSection) {
           </div>
           <div className="grid gap-4 md:grid-cols-2">
             {section.items.map((item, index) => (
-              <article
-                className="feature-card feature-card--flat flex flex-col gap-4 rounded-[1.5rem]"
-                key={`${item.organization}-${index}`}
-              >
-                {item.videoUrl ? (
-                  <div className="overflow-hidden rounded-[1rem] border border-line">
-                    <iframe
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                      allowFullScreen
-                      className="aspect-video w-full"
-                      loading="lazy"
-                      src={item.videoUrl}
-                      title={item.videoTitle ?? `${item.organization} video testimonial`}
-                    />
-                  </div>
-                ) : null}
-                {item.context ? (
-                  <p className="text-sm text-foreground/70">{item.context}</p>
-                ) : null}
-                {item.quote ? (
-                  <blockquote className="text-base leading-7 text-foreground/85">
-                    “{item.quote}”
-                  </blockquote>
-                ) : null}
-                <footer className="mt-auto flex items-center gap-3">
-                  {item.logo ? (
-                    <img
-                      alt={`${item.organization} logo`}
-                      className="h-8 w-auto max-w-[7rem] shrink-0 object-contain"
-                      src={item.logo}
-                    />
-                  ) : null}
-                  <div>
-                    <p className="text-sm font-semibold">{item.name}</p>
-                    <p className="text-xs text-foreground/60">
-                      {item.role ? `${item.role}, ` : ""}
-                      {item.organization}
-                    </p>
-                  </div>
-                </footer>
-              </article>
+              <TestimonialCard item={item} key={`${item.organization}-${index}`} />
             ))}
           </div>
         </section>
       );
+    case "testimonial_highlights": {
+      const quotes = resolveTestimonials(context.testimonials, {
+        audience: section.audience,
+        limit: section.limit,
+        includeVideo: section.includeVideo,
+      });
+      if (quotes.length === 0) return null;
+      const linkLabel = section.linkLabel ?? "See all client stories";
+      const linkHref = section.linkHref ?? "/clients";
+      return (
+        <section className="section-stack" key={`${section.type}-${section.audience}-${section.title}`}>
+          <div className="space-y-4">
+            <h2 className="section-title text-teal-deep">{section.title}</h2>
+            {section.description ? (
+              <p className="max-w-3xl text-base leading-7 text-foreground/75">
+                {section.description}
+              </p>
+            ) : null}
+          </div>
+          <div className={`grid gap-4 md:grid-cols-2${quotes.length > 2 ? " lg:grid-cols-3" : ""}`}>
+            {quotes.map((item, index) => (
+              <TestimonialCard item={item} key={`${item.organization}-${index}`} />
+            ))}
+          </div>
+          <div>
+            <TrackedLink
+              className="button-link secondary"
+              event={{
+                name: "cta_click",
+                params: {
+                  cta_label: linkLabel,
+                  cta_location: "testimonial_highlights",
+                  cta_destination: linkHref,
+                },
+              }}
+              href={linkHref}
+            >
+              {linkLabel}
+            </TrackedLink>
+          </div>
+        </section>
+      );
+    }
     case "people_grid":
       return (
         <section className="section-stack" key={section.title}>
@@ -530,7 +547,7 @@ export function renderSection(section: ContentSection) {
   }
 }
 
-export function ContentPage({ page, siteContext, children }: ContentPageProps) {
+export function ContentPage({ page, siteContext, children, testimonials }: ContentPageProps) {
   const body = page.bodyRichtext;
   const hasMetrics = body.metrics.length > 0;
 
@@ -610,7 +627,7 @@ export function ContentPage({ page, siteContext, children }: ContentPageProps) {
         </div>
 
         <div className="mt-6 grid gap-5">
-          {body.sections.map((section) => renderSection(section))}
+          {body.sections.map((section) => renderSection(section, { testimonials }))}
           {children}
         </div>
       </div>

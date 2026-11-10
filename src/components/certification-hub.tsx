@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, useState } from "react";
+import { Fragment, useState, type ReactNode } from "react";
 import Link from "next/link";
 import { TrackedLink } from "@/components/analytics/tracked-link";
 import { trackEvent } from "@/lib/analytics";
@@ -378,7 +378,7 @@ function PathwaySection() {
   );
 }
 
-export function CertificationHubSections() {
+export function CertificationHubSections({ beforeContact }: { beforeContact?: ReactNode } = {}) {
   return (
     <div className="space-y-8">
       {/* Hero Section */}
@@ -418,6 +418,8 @@ export function CertificationHubSections() {
       <CalcCoursesSection />
 
       <InHouseSection />
+
+      {beforeContact}
 
       {/* Contact CTA */}
       <div className="site-panel mt-8 rounded-lg p-6 text-center">
