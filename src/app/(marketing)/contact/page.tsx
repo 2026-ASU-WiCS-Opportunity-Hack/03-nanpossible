@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import { resolveContactAbout } from "@/lib/contact-about";
 import { ContactForm } from "./ContactForm";
 
 export const metadata: Metadata = {
@@ -7,7 +8,12 @@ export const metadata: Metadata = {
   description: "Contact WIAL for questions about Action Learning, certification programs, events, and more.",
 };
 
-export default function ContactPage() {
+export default async function ContactPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ about?: string | string[] }>;
+}) {
+  const { about } = await searchParams;
   return (
     <div className="container mx-auto px-4 py-12 max-w-4xl">
       <h1 className="text-3xl font-bold mb-4">Contact WIAL</h1>
@@ -22,7 +28,7 @@ export default function ContactPage() {
         </Link>
         .
       </p>
-      <ContactForm />
+      <ContactForm defaultAbout={resolveContactAbout(about)} />
     </div>
   );
 }
