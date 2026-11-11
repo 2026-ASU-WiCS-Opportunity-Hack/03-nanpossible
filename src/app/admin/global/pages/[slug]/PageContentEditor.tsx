@@ -201,7 +201,7 @@ function fromDraft(draft: SectionDraft): ContentSection {
 const DEFAULT_AUDIENCE_BY_SLUG: Record<string, TestimonialAudience> = {
   home: "home",
   certification: "certification",
-  "our-services": "organizations",
+  "for-organizations": "organizations",
   "become-an-affiliate": "affiliate",
 };
 
