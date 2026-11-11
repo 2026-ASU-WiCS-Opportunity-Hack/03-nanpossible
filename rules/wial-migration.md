@@ -81,3 +81,7 @@ Section types added since the toolbox list above: `comparison` (two approaches c
 | `/certification/*` sub-pages, `/programs/`, `/become-a-coach/` | `/certification` | #100 |
 | Better World Fund donation form | `/better-world/donate` (Stripe Checkout, donor-chosen amount) | #127 |
 | Homepage content | `/` | #9 |
+
+## /for-organizations (#162)
+
+`/our-services` and `/benefits` were consolidated into `/for-organizations` and now 308-redirect there via `permanentGlobalAliasMap` (global site only). Their `content_pages` rows are intentionally left in place for rollback.
