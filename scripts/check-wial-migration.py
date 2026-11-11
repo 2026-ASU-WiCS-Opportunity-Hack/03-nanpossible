@@ -125,6 +125,7 @@ def parse_routing():
         return re.findall(r'\["([^"]*)",\s*"([^"]+)"\]', block.group(1))
 
     alias = dict(entries("aliasMap"))
+    alias.update(entries("permanentGlobalAliasMap"))  # global-only 308s (#162)
     canonical = {k for k, _ in entries("canonicalMap")}
     return alias, canonical
 

@@ -1,10 +1,10 @@
 import { cache } from "react";
 import { headers } from "next/headers";
 import type { Metadata } from "next";
-import { notFound, redirect } from "next/navigation";
+import { notFound, permanentRedirect, redirect } from "next/navigation";
 import { ContentPage, renderSection } from "@/components/content-page";
 import { GlobalNetworkSection } from "@/components/global-network-section";
-import { getContentPage } from "@/lib/content";
+import { getClientTestimonials, getContentPage } from "@/lib/content";
 import { getGlobalSiteContext, getLayoutSiteContext } from "@/lib/site-context";
 import { normalizeSegments } from "@/lib/routing";
 
@@ -31,7 +31,11 @@ const loadMarketingPage = cache(async (slug: string) => {
     slug,
     chapterId: siteContext.tenant?.id ?? null,
   });
-  return { siteContext, page };
+  const needsTestimonials = Boolean(
+    page?.bodyRichtext.sections.some((section) => section.type === "testimonial_highlights"),
+  );
+  const testimonials = needsTestimonials ? await getClientTestimonials() : [];
+  return { siteContext, page, testimonials };
 });
 
 export async function generateMetadata({
@@ -66,6 +70,9 @@ export default async function MarketingPage({ params }: MarketingPageProps) {
   }
 
   if (route.redirectTo) {
+    if (route.permanent) {
+      permanentRedirect(route.redirectTo);
+    }
     redirect(route.redirectTo);
   }
 
@@ -73,7 +80,7 @@ export default async function MarketingPage({ params }: MarketingPageProps) {
     notFound();
   }
 
-  const { siteContext, page } = await loadMarketingPage(route.slug);
+  const { siteContext, page, testimonials } = await loadMarketingPage(route.slug);
 
   if (!page) {
     notFound();
@@ -86,12 +93,12 @@ export default async function MarketingPage({ params }: MarketingPageProps) {
     const body = page.bodyRichtext;
     const heroPage = { ...page, bodyRichtext: { ...body, sections: [] } };
     return (
-      <ContentPage page={heroPage} siteContext={siteContext}>
+      <ContentPage page={heroPage} siteContext={siteContext} testimonials={testimonials}>
         <GlobalNetworkSection />
-        {body.sections.map((section) => renderSection(section))}
+        {body.sections.map((section) => renderSection(section, { testimonials }))}
       </ContentPage>
     );
   }
 
-  return <ContentPage page={page} siteContext={siteContext} />;
+  return <ContentPage page={page} siteContext={siteContext} testimonials={testimonials} />;
 }

@@ -82,7 +82,7 @@ describe("site chatbot fallback", () => {
 
     expect(reply).toContain("six continents");
     expect(reply).toContain("Marketing");
-    expect(reply).toContain("/our-services");
+    expect(reply).toContain("/for-organizations");
     expect(reply).toContain("/certification#become-a-coach");
     expect(reply).toContain("/contact");
   });

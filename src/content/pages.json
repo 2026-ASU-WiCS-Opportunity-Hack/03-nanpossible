@@ -45,14 +45,14 @@
             "eyebrow": "Solution Spheres",
             "title": "Action Learning solutions for your business",
             "body": "WIAL offers Action Learning solutions that help individuals, teams, and organizations grow.",
-            "href": "/our-services",
+            "href": "/for-organizations",
             "label": "Read more"
           },
           {
             "eyebrow": "Benefits",
             "title": "Get more out of your business",
             "body": "See how Action Learning benefits individuals, teams, and organizations.",
-            "href": "/benefits",
+            "href": "/for-organizations",
             "label": "Read more"
           },
           {
@@ -70,6 +70,13 @@
             "label": "Read more"
           }
         ]
+      },
+      {
+        "type": "testimonial_highlights",
+        "title": "What our clients say",
+        "description": "Leaders at organizations around the world share what Action Learning has done for their teams.",
+        "audience": "home",
+        "limit": 3
       },
       {
         "type": "cta",
@@ -98,7 +105,7 @@
     "description": "Global WIAL homepage content migrated from the live wial.org homepage.",
     "sourceUrl": "https://wial.org/",
     "sourceStatus": "migrated-from-wial",
-    "sourceNotes": "Rewritten from the live wial.org homepage (Action Learning, Solution Spheres, Benefits, People/coach directory, Certification pillars, Better World Fund spotlight, newsletter signup). All five What WIAL offers cards link internally (/action-learning, /our-services, /benefits, /coaches, /certification)."
+    "sourceNotes": "Rewritten from the live wial.org homepage (Action Learning, Solution Spheres, Benefits, People/coach directory, Certification pillars, Better World Fund spotlight, newsletter signup). All five What WIAL offers cards link internally (/action-learning, /for-organizations, /coaches, /certification; /our-services and /benefits now redirect to /for-organizations)."
   }
 },
   {
@@ -392,6 +399,13 @@
           "attribution": "Dan Grady, Premier Field Engineering Director, Microsoft"
         },
         {
+          "type": "testimonial_highlights",
+          "title": "What organizations say about Action Learning",
+          "description": "Hear from organizations whose people and coaches use Action Learning every day.",
+          "audience": "certification",
+          "limit": 3
+        },
+        {
           "type": "cta",
           "title": "Ready to get certified?",
           "body": "Contact us to start certification, ask about becoming a coach, or bring a program in-house.",
@@ -404,7 +418,7 @@
       "description": "WIAL certification programs — CALC, PALC, and MALC — plus Foundations of Action Learning, the CALC certification course, in-house programs, and how to become a coach.",
       "sourceUrl": "https://wial.org/certification/",
       "sourceStatus": "migrated-from-wial",
-      "sourceNotes": "Consolidates wial.org/certification, /certification/foundations, /certification/calc-courses, /certification/in-house-programs, /programs, and /become-a-coach onto the bespoke /certification hub (this fixture stays in sync for DB fallback and the admin editor; the static route is what the public page renders). Three-level pathway (CALC → PALC → MALC; SALC is no longer offered) remains the expandable hub UI; Foundations, the CALC certification course, Programs, and who-gets-certified copy are native sections with anchors #foundations, #calc-courses, #programs, and #become-a-coach; #in-house is a teaser and the full in-house programs copy has its own page at /certification/in-house-programs (#143). /programs was a Coming soon stub — the hub lists the actual programs instead of republishing the placeholder. The become-a-coach Gravity Form was simplified to the internal /contact CTA (crawler-sheet note: simplify while merging); Solution Spheres link to /our-services. The Microsoft in-house quote is a native quote block. Six components/two ground rules link to /action-learning rather than being duplicated. Per #143 the digital-badge (Credly) section was removed from the page (copy kept in certification-hub.ts for the chatbot only), CALC 1 / CALC 2 are described as one CALC certification course because WIAL no longer splits them, the four levels under Why get certified use Mark's one-line descriptions as plain subheadings, and the non-clickable industry and skills lists lost their card styling. The industries list, the in-house Foundations callout (duplicated by the #in-house section below), and the Top skills of tomorrow section were later removed from the public page to shorten it; that copy stays in certification-hub.ts for the chatbot. The CALC course section's focus-area cards and Foundations prerequisite line were also removed per WIAL's Sept 2026 markup (migration 20260930000300). Real WIAL photos from wial.org/become-a-coach (a certified cohort with certificates, a CALC certificate presentation) are vendored under public/certification/; the source pages' stock photos were deliberately not. Recertification is still not rendered publicly. Legacy paths /certification/foundations, /certification/calc-courses, /programs, and /become-a-coach redirect here; /certification/in-house-programs serves its own page."
+      "sourceNotes": "Consolidates wial.org/certification, /certification/foundations, /certification/calc-courses, /certification/in-house-programs, /programs, and /become-a-coach onto the bespoke /certification hub (this fixture stays in sync for DB fallback and the admin editor; the static route is what the public page renders). Three-level pathway (CALC → PALC → MALC; SALC is no longer offered) remains the expandable hub UI; Foundations, the CALC certification course, Programs, and who-gets-certified copy are native sections with anchors #foundations, #calc-courses, #programs, and #become-a-coach; #in-house is a teaser and the full in-house programs copy has its own page at /certification/in-house-programs (#143). /programs was a Coming soon stub — the hub lists the actual programs instead of republishing the placeholder. The become-a-coach Gravity Form was simplified to the internal /contact CTA (crawler-sheet note: simplify while merging); Solution Spheres link to /for-organizations (formerly /our-services). The Microsoft in-house quote is a native quote block. Six components/two ground rules link to /action-learning rather than being duplicated. Per #143 the digital-badge (Credly) section was removed from the page (copy kept in certification-hub.ts for the chatbot only), CALC 1 / CALC 2 are described as one CALC certification course because WIAL no longer splits them, the four levels under Why get certified use Mark's one-line descriptions as plain subheadings, and the non-clickable industry and skills lists lost their card styling. The industries list, the in-house Foundations callout (duplicated by the #in-house section below), and the Top skills of tomorrow section were later removed from the public page to shorten it; that copy stays in certification-hub.ts for the chatbot. The CALC course section's focus-area cards and Foundations prerequisite line were also removed per WIAL's Sept 2026 markup (migration 20260930000300). Real WIAL photos from wial.org/become-a-coach (a certified cohort with certificates, a CALC certificate presentation) are vendored under public/certification/; the source pages' stock photos were deliberately not. Recertification is still not rendered publicly. Legacy paths /certification/foundations, /certification/calc-courses, /programs, and /become-a-coach redirect here; /certification/in-house-programs serves its own page."
     }
   },
   
@@ -429,6 +443,7 @@
         "items": [
           {
             "organization": "Lyreco Thailand",
+            "audiences": ["certification"],
             "name": "David Record",
             "role": "Managing Director",
             "context": "David Record talks about the power of Action Learning in transforming teams and organizations.",
@@ -448,6 +463,7 @@
           },
           {
             "organization": "Google",
+            "audiences": ["home"],
             "name": "Dr. Veronica Haight",
             "role": "People Operations",
             "quote": "WIAL Action Learning is attractive both in its structure and its results. Through the virtual session we experienced, we were able to bring Action Learning to our teams and integrate the methodology into our problem solving and decision making groups.",
@@ -455,6 +471,7 @@
           },
           {
             "organization": "U.S. Department of Justice",
+            "audiences": ["home", "certification"],
             "name": "Bill Thimmesh",
             "role": "Program Manager, Leadership and Executive Development",
             "quote": "Action Learning has become a key leadership development component of the Department of Justice's 'Leadership Excellence and Achievement Program' (LEAP) for high potentials.",
@@ -462,6 +479,7 @@
           },
           {
             "organization": "Takeda Thailand",
+            "audiences": ["home", "organizations"],
             "name": "Peter Streibl",
             "role": "Country Manager",
             "quote": "I was genuinely impressed with the impact the Action Learning approach had on our team dynamics.",
@@ -469,6 +487,7 @@
           },
           {
             "organization": "Thermo Fisher Scientific",
+            "audiences": ["certification"],
             "name": "David Loke",
             "role": "Regional Sales Training & Development Manager",
             "quote": "The Action Learning coaches created a safe environment for us to share about challenges and to learn. That leads to open and courageous communication among team members, and to both challenge and help others think through the issues they are facing.",
@@ -483,6 +502,7 @@
           },
           {
             "organization": "AirAsia",
+            "audiences": ["certification"],
             "name": "Faz Kamaruddin",
             "role": "Group Head, Talent",
             "quote": "Our internal Certified Action Learning coaches are excited to continue and expand Action Learning as the cornerstone of the top leadership development programs for Air Asia, from Kuala Lumpur to Manila to Bangkok and more.",
@@ -490,6 +510,7 @@
           },
           {
             "organization": "Auchan Retail Ukraine",
+            "audiences": ["home"],
             "name": "Frédéric Henin",
             "role": "Talent Development Director",
             "quote": "The WIAL Action Learning methodology is 100% in line with our goal which is to move to collaborative behaviors and helps people to be more open minded, creative and innovative.",
@@ -497,6 +518,7 @@
           },
           {
             "organization": "Thai Union Group",
+            "audiences": ["organizations"],
             "name": "David Giang",
             "role": "Head of Group Talent",
             "quote": "We found Action Learning effective, as it helped the leaders discover solutions through a group coaching format, simultaneously leveraging off each of their experiences as they come from different functions and regions.",
@@ -504,6 +526,7 @@
           },
           {
             "organization": "International Federation of Red Cross and Red Crescent Societies",
+            "audiences": ["affiliate"],
             "name": "Giorgio Ferrario",
             "role": "Manager, National Society Development",
             "context": "Many of the 192 Red Cross and Red Crescent National Societies have been facing complex organizational issues related to governance, sustainability, positioning and relationships with their national and local authorities.",
@@ -512,6 +535,7 @@
           },
           {
             "organization": "Grenada Red Cross",
+            "audiences": ["affiliate"],
             "name": "Samantha Dickson",
             "role": "President",
             "quote": "Our National Society was struggling to complete some core activities for 10 years. After engaging in the WIAL Action Learning process, we were able to literally celebrate for having resolved some of those problems in just about 2 months.",
@@ -519,6 +543,7 @@
           },
           {
             "organization": "Eastern Caribbean Central Bank",
+            "audiences": ["organizations"],
             "name": "Danny Caine",
             "role": "Chief of Security",
             "quote": "The Action Learning group segment was vital as it created accountability and heightened the importance of active listening, working collectively and giving and receiving feedback.",
@@ -526,6 +551,7 @@
           },
           {
             "organization": "MOH Holdings, Singapore",
+            "audiences": ["organizations"],
             "name": "Trevor Chua",
             "role": "Assistant Director",
             "context": "The Healthcare Leadership College under MOH Holdings used Action Learning as the foundation for its Activist for Change Programme.",
@@ -541,6 +567,7 @@
           },
           {
             "organization": "Robinsons Land Corporation",
+            "audiences": ["organizations"],
             "name": "Fatima Olaguer",
             "role": "Associate HR Director",
             "quote": "The General Manager was happily surprised at the outcome of the projects and in particular the really bright ideas she didn't expect.",
@@ -548,6 +575,7 @@
           },
           {
             "organization": "HR Friday",
+            "audiences": ["certification"],
             "name": "Charles Lu",
             "role": "Founder & CEO",
             "quote": "We made great progress in delivering courses and sharing sessions to Taiwan's HR community. Four years after the start of the Action Learning program, we keep on using Action Learning in our talent development program and in our management meetings.",
@@ -555,6 +583,7 @@
           },
           {
             "organization": "Aquaecology",
+            "audiences": ["affiliate"],
             "name": "Vladimir Plasvsky",
             "role": "Owner",
             "quote": "Our meetings are now held in the manner of Action Learning, without interruptions, focusing on what was said and not on who said it.",
@@ -562,6 +591,7 @@
           },
           {
             "organization": "Pathfinders Preschool, Mumbai",
+            "audiences": ["affiliate"],
             "name": "Ashwini Timblo Gupta",
             "role": "Owner",
             "quote": "I saw that when the accountability becomes ours, the collaboration just happens. We also made our environment very safe and very stimulating. I believe that Action Learning has created a new purpose for our organization to help others.",
@@ -1032,14 +1062,14 @@
         "type": "cta",
         "title": "Explore WIAL Solution Spheres",
         "body": "WIAL's Solution Spheres are how Action Learning creates results for individuals, teams, and organizations.",
-        "href": "/our-services",
+        "href": "/for-organizations",
         "label": "See our services"
       },
       {
         "type": "cta",
         "title": "See what Action Learning can do for you",
         "body": "Explore how Action Learning benefits individuals, teams, and organizations.",
-        "href": "/benefits",
+        "href": "/for-organizations",
         "label": "See the benefits"
       }
     ]
@@ -1048,7 +1078,7 @@
     "description": "Action Learning is a process where a small group works on real problems, takes action, and learns as individuals, a team, and an organization — built on six components and two ground rules.",
     "sourceUrl": "https://wial.org/action-learning/",
     "sourceStatus": "migrated-from-wial",
-    "sourceNotes": "Rewritten from the live wial.org Action Learning page (definition, six components, ground rules). External CTAs replaced with internal /certification, /coaches, /our-services, and /benefits routes."
+    "sourceNotes": "Rewritten from the live wial.org Action Learning page (definition, six components, ground rules). External CTAs replaced with internal /certification, /coaches, and /for-organizations routes (formerly /our-services and /benefits)."
   }
 },
   {
@@ -2211,6 +2241,13 @@
           "Affiliates have a desire to actively develop the business of their members through mentoring and fostering a community. The strongest affiliates pair experienced coaches with newly certified ones, bring client work to their members, and give the region a regular place to practice and reflect together.",
           "Each affiliate serves a specific country or region. Before applying, browse the directory to see whether your country already has an affiliate you could join, or whether there is an opening for a new one."
         ]
+      },
+      {
+        "type": "testimonial_highlights",
+        "title": "Action Learning in practice",
+        "description": "See the difference WIAL Action Learning makes for organizations working with our community.",
+        "audience": "affiliate",
+        "limit": 3
       },
       {
         "type": "cta",
@@ -3593,5 +3630,290 @@
     "sourceStatus": "migrated-from-wial",
     "sourceNotes": "Consolidates two unlisted wial.org utility pages (#144): /community-impact-infographic/ (a single Elementor image) and /community-impact-video/ (a single YouTube embed), both linked from the source Benefits page. The infographic's text was transcribed into the hero intro, the prose section, and the native comparison section (its two-column traditional-vs-WIAL layout is what the comparison section type was added for) so it is readable, searchable, and on-brand; the graphic itself is vendored to public/community-impact/ as webp and offered as a download. The source's 'Organizations focus on profit, being best for the world' under Traditional approach is an obvious typo for 'best in the world' and was corrected. The video is embedded via youtube-nocookie from WIAL's own channel; the YouTube link under Share the message is intentionally external. The WIAL Gives Back photo is the vendored Be My Protector Malaysia image already used by /better-world/malaysia-we-the-protector. Both legacy paths alias-redirect here, /benefits links here from its Community impact section, and the page is deliberately not in the header nav."
   }
-}
+},
+  {
+    "id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaa0033",
+    "chapterId": null,
+    "slug": "for-organizations",
+    "title": "Action Learning for Organizations",
+    "published": true,
+    "bodyRichtext": {
+      "heroIntro": "WIAL offers Action Learning solutions that help individuals, teams, and organizations solve real problems while developing people at the same time. Solution Spheres are how those results show up in your business.",
+      "metrics": [],
+      "sections": [
+        {
+          "type": "feature_grid",
+          "title": "Problems we solve",
+          "flat": true,
+          "items": [
+            {
+              "title": "Complex problems",
+              "body": "Get to the real issue behind a stalled decision and leave with strategies you can act on."
+            },
+            {
+              "title": "Leadership development",
+              "body": "Build the management skills leaders need for the 21st century, inside the programs you already run."
+            },
+            {
+              "title": "Team performance",
+              "body": "Teams get up to speed quickly and solve problems better with every session."
+            }
+          ]
+        },
+        {
+          "type": "prose",
+          "title": "WIAL Solution Spheres",
+          "paragraphs": [
+            "WIAL's Solution Spheres are the key to unlocking the full potential of Action Learning. Questions — not statements — are what make all four spheres possible in every session: they generate breakthrough ideas, build teams, practice leadership, and change how an organization learns."
+          ]
+        },
+        {
+          "type": "feature_grid",
+          "title": "Four ways Action Learning creates results",
+          "items": [
+            {
+              "eyebrow": "Sphere 1",
+              "title": "Solve urgent, complex problems",
+              "body": "Questions open thinking that statements cannot. Teams clarify the real issue, generate options they had not considered, and leave with strategies they can act on."
+            },
+            {
+              "eyebrow": "Sphere 2",
+              "title": "Build great teams",
+              "body": "Shared inquiry builds dialogue, respect, and cohesiveness. Groups become faster at solving problems together and more committed to the results they own."
+            },
+            {
+              "eyebrow": "Sphere 3",
+              "title": "Develop leadership skills",
+              "body": "The core leadership skill in Action Learning is asking questions. Every session gives people live practice — listening, reframing, and helping others find their voice."
+            },
+            {
+              "eyebrow": "Sphere 4",
+              "title": "Transform culture and capability",
+              "body": "The learning does not stay in the room. Teams carry new habits of inquiry, decision-making, and collaboration back into the wider organization."
+            }
+          ]
+        },
+        {
+          "type": "media_prose",
+          "title": "Action Learning helps individuals",
+          "image": "/our-services/individual.jpg",
+          "imageAlt": "An Action Learning participant reflecting during a session",
+          "imagePosition": "left",
+          "paragraphs": [
+            "Action Learning builds the personal skills people need to work, lead, and speak up with confidence."
+          ],
+          "bullets": [
+            "Enhance personal effectiveness and productivity",
+            "Reflect on and learn from individual experience",
+            "Enhance personal leadership and soft skills",
+            "Develop self-confidence and assertiveness",
+            "Improve awareness of how assumptions, beliefs, attitudes, and organizational interests influence thinking, decisions, and actions",
+            "Develop Emotional Intelligence (EI): self-awareness, awareness of others, and adaptability",
+            "Find the courage to speak up and encourage others to do the same"
+          ]
+        },
+        {
+          "type": "media_prose",
+          "title": "Action Learning helps teams",
+          "image": "/our-services/team.jpg",
+          "imageAlt": "A team working together in an Action Learning session",
+          "imagePosition": "right",
+          "paragraphs": [
+            "Action Learning turns groups of colleagues into high-performing teams that solve problems together."
+          ],
+          "bullets": [
+            "Dramatically enhance team performance",
+            "Develop positive, mutually respectful working relationships with co-workers at all organizational levels",
+            "Develop individual and team problem-solving and decision-making capability",
+            "Enhance capability to reflect on and learn from collective experience",
+            "Develop awareness in the context of multicultural, diverse teams",
+            "Continually monitor and enhance team functions"
+          ]
+        },
+        {
+          "type": "media_prose",
+          "title": "Action Learning helps organizations",
+          "image": "/our-services/organization.jpg",
+          "imageAlt": "Leaders collaborating on organizational challenges through Action Learning",
+          "imagePosition": "left",
+          "paragraphs": [
+            "Action Learning improves performance at every level — solving urgent challenges while building a culture of learning."
+          ],
+          "bullets": [
+            "Enhance business performance at all levels",
+            "Rapidly solve urgent and important business challenges",
+            "Achieve a substantial return on investment (ROI) on organization improvement projects",
+            "Develop a culture of staff engagement, involvement, and performance",
+            "Establish effective succession planning by developing highly qualified candidates for promotion to executive leadership positions",
+            "Become a learning organization",
+            "Become more strategic in goal setting"
+          ]
+        },
+        {
+          "type": "prose",
+          "title": "Breakthrough problem solving",
+          "paragraphs": [
+            "We help organizations boost business performance, achieve a substantial return on investment, and improve capability. Action Learning helps teams identify the core issue behind a problem, explore solutions they may not have considered, and move forward when decisions have stalled — so they arrive at the best possible resolution."
+          ]
+        },
+        {
+          "type": "prose",
+          "title": "Becoming a learning organization",
+          "paragraphs": [
+            "In a competitive environment, organizations must continually learn and improve. WIAL developed a Learning Organization model built on five interlocking systems — Learning, Organization, People, Knowledge, and Technology — along with an assessment instrument to measure where your organization stands.",
+            "The model has been successfully implemented at organizations including Boeing, Accenture, Samsung, Federal Express, and Alcoa."
+          ]
+        },
+        {
+          "type": "prose",
+          "title": "High-performing teams",
+          "paragraphs": [
+            "Action Learning develops powerful work teams that get up to speed quickly, with strong norms and cohesiveness. Teams improve their problem-solving capability with every session, build shared commitment to results, and encourage breakthrough thinking. Companies such as Microsoft, Samsung, and Siemens use Action Learning to build their teams."
+          ]
+        },
+        {
+          "type": "prose",
+          "title": "Leadership development",
+          "paragraphs": [
+            "WIAL integrates Action Learning into your existing leadership development programs with minimal restructuring. The process builds your team's capacity to resolve complex challenges while developing the management skills leaders need for the 21st century."
+          ]
+        },
+        {
+          "type": "prose",
+          "title": "Community impact",
+          "paragraphs": [
+            "WIAL helps create a better world by supporting organizations that make a positive social impact — providing pro-bono coaching and grant funding for nonprofits and social enterprises."
+          ]
+        },
+        {
+          "type": "prose",
+          "title": "Challenging the status quo",
+          "paragraphs": [
+            "Across all of these areas, the Action Learning process delivers:"
+          ],
+          "bullets": [
+            "Lasting behavior change",
+            "Essential leadership skills",
+            "High-performance teams",
+            "Capability development at every level of the organization",
+            "A closed gap between knowing and doing",
+            "Stronger learning and problem-solving skills"
+          ]
+        },
+        {
+          "type": "cta",
+          "title": "See how Action Learning changes communities",
+          "body": "Compare the traditional approach with WIAL Action Learning, watch the community impact video, and meet the organizations WIAL Gives Back has supported.",
+          "href": "/community-impact",
+          "label": "Explore community impact"
+        },
+        {
+          "type": "prose",
+          "title": "In-house programs",
+          "paragraphs": [
+            "WIAL runs customized in-house certification programs for Action Learning coaches in the United States and internationally, and can staff large leadership development programs with certified, experienced coaches."
+          ],
+          "bullets": [
+            "Six days, arranged around you. The required six days of training can be arranged in several configurations to match your objectives and your calendar.",
+            "The same standard as public programs. In-house programs follow the same objectives as WIAL's public programs and are customized to your organization's specific requirements and challenges.",
+            "Coaches for large programs. WIAL provides certified, experienced Action Learning coaches to staff large leadership development programs."
+          ]
+        },
+        {
+          "type": "cta",
+          "title": "Bring certified coaches in-house",
+          "body": "Customized certification programs and experienced coaches for large leadership development programs.",
+          "href": "/certification/in-house-programs",
+          "label": "Explore in-house programs"
+        },
+        {
+          "type": "testimonial_highlights",
+          "title": "Results organizations have seen",
+          "description": "Organizations of every size use Action Learning to solve real problems while developing their people.",
+          "audience": "organizations",
+          "limit": 3
+        },
+        {
+          "type": "logo_grid",
+          "title": "Organizations we've worked with",
+          "compact": true,
+          "items": [
+            {
+              "name": "Google",
+              "logo": "/clients/google.png",
+              "href": "https://www.google.com/"
+            },
+            {
+              "name": "Microsoft",
+              "logo": "/clients/microsoft.png",
+              "href": "https://www.microsoft.com/"
+            },
+            {
+              "name": "Boeing",
+              "logo": "/clients/boeing.png",
+              "href": "https://www.boeing.com/"
+            },
+            {
+              "name": "Samsung",
+              "logo": "/clients/samsung.png",
+              "href": "https://www.samsung.com/"
+            },
+            {
+              "name": "Siemens",
+              "logo": "/clients/siemens.png",
+              "href": "https://www.siemens.com/"
+            },
+            {
+              "name": "NASA",
+              "logo": "/clients/nasa.png",
+              "href": "https://www.nasa.gov/"
+            },
+            {
+              "name": "Toyota",
+              "logo": "/clients/toyota.png",
+              "href": "https://global.toyota/"
+            },
+            {
+              "name": "US Department of Justice",
+              "logo": "/clients/us-department-of-justice.png",
+              "href": "https://www.justice.gov/"
+            },
+            {
+              "name": "Takeda",
+              "logo": "/clients/takeda.jpg",
+              "href": "https://www.takeda.com/"
+            },
+            {
+              "name": "Caterpillar",
+              "logo": "/clients/caterpillar.png",
+              "href": "https://www.caterpillar.com/"
+            },
+            {
+              "name": "DuPont",
+              "logo": "/clients/dupont.png",
+              "href": "https://www.dupont.com/"
+            },
+            {
+              "name": "BNP Paribas",
+              "logo": "/clients/bnp-paribas.jpg",
+              "href": "https://group.bnpparibas/"
+            }
+          ]
+        },
+        {
+          "type": "cta",
+          "title": "Request a conversation",
+          "body": "Contact us to plan a tailored Action Learning program for your team or organization.",
+          "href": "/contact?about=Programs",
+          "label": "Request a conversation"
+        }
+      ]
+    },
+    "seo": {
+      "description": "Action Learning for organizations: solve complex problems, develop leaders, and build high-performing teams at the same time, with WIAL Solution Spheres, in-house programs, and certified coaches.",
+      "sourceStatus": "migrated-from-wial",
+      "sourceUrl": "https://wial.org/our-services/",
+      "sourceNotes": "Consolidates /our-services and /benefits (#162), both of which now redirect here, plus a teaser of the in-house programs copy (certificationInHouse in src/content/certification-hub.ts; keep in sync) and a client logo strip copied from /clients. Copy is reused verbatim from those pages, nothing new. Client quotes come from the /clients testimonial_grid through the testimonial_highlights section (audience organizations). The primary CTA opens /contact with the About topic preselected to Programs."
+    }
+  }
 ]
