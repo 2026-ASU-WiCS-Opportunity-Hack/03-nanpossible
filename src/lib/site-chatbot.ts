@@ -182,7 +182,7 @@ export function buildFallbackAssistantReply(query: string) {
       becomeACoach.intro.join(" "),
       `${becomeACoach.industriesLead} ${becomeACoach.industries.join(", ")}, ${becomeACoach.industriesMore}.`,
       becomeACoach.joinNote,
-      `Solution Spheres are on \`/our-services\`. To get started, see \`/certification#become-a-coach\` or \`/contact\`.`,
+      `Solution Spheres are on \`/for-organizations\`. To get started, see \`/certification#become-a-coach\` or \`/contact\`.`,
     ].join("\n\n");
   }
 
