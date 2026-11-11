@@ -1,7 +1,7 @@
 import { cache } from "react";
 import { headers } from "next/headers";
 import type { Metadata } from "next";
-import { notFound, redirect } from "next/navigation";
+import { notFound, permanentRedirect, redirect } from "next/navigation";
 import { ContentPage, renderSection } from "@/components/content-page";
 import { GlobalNetworkSection } from "@/components/global-network-section";
 import { getClientTestimonials, getContentPage } from "@/lib/content";
@@ -70,6 +70,9 @@ export default async function MarketingPage({ params }: MarketingPageProps) {
   }
 
   if (route.redirectTo) {
+    if (route.permanent) {
+      permanentRedirect(route.redirectTo);
+    }
     redirect(route.redirectTo);
   }
 

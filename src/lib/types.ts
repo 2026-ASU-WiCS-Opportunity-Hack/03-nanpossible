@@ -10,6 +10,7 @@ export type CanonicalPageSlug =
   | "action-learning"
   | "awards"
   | "our-services"
+  | "for-organizations"
   | "conferences"
   | "become-an-affiliate"
   | "resources"

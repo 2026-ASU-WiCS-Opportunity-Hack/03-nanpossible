@@ -9,6 +9,7 @@ export const COACH_DIRECTORY_URL = "https://directory.wial.org/coaches";
 export const navigationItems: NavigationItem[] = [
   { href: "/about", label: "About WIAL" },
   { href: "/certification", label: "Certification" },
+  { href: "/for-organizations", label: "For Organizations" },
   { href: "/clients", label: "Clients" },
   { href: COACH_DIRECTORY_URL, label: "Coaches" },
   { href: "/resources", label: "Resources" },
@@ -34,7 +35,7 @@ const aliasMap = new Map<string, string>([
   ["culture-change-not-without-action-learning", "/resources/culture-change-not-without-action-learning"],
   ["rikkyo-university-receives-wial-global-award-academic-sector", "/resources/rikkyo-university-wial-global-award"],
   ["future-action-learning-2", "/resources/the-future-is-action-learning"],
-  ["action-learning/benefits", "/benefits"],
+  ["action-learning/benefits", "/for-organizations"],
   ["better-world-fund", "/better-world"],
   ["better-world-fund-2", "/better-world"],
   ["wial-gives-back", "/better-world"],
@@ -102,16 +103,25 @@ const canonicalMap = new Map<string, CanonicalPageSlug>([
   ["clients", "clients"],
   ["contact", "contact"],
   ["partners", "partners"],
-  ["benefits", "benefits"],
   ["better-world", "better-world"],
   ["action-learning", "action-learning"],
   ["awards", "awards"],
-  ["our-services", "our-services"],
+  ["for-organizations", "for-organizations"],
   ["conferences", "conferences"],
   ["become-an-affiliate", "become-an-affiliate"],
   ["resources", "resources"],
   ["privacy", "privacy"],
   ["community-impact", "community-impact"],
+]);
+
+/**
+ * Retired global pages that now live on /for-organizations (#162). Redirected
+ * permanently, and only on the global site: tenant subdomains keep the shared
+ * alias behaviour (`normalizeChapterSlug`), since they have no such page.
+ */
+const permanentGlobalAliasMap = new Map<string, string>([
+  ["our-services", "/for-organizations"],
+  ["benefits", "/for-organizations"],
 ]);
 
 /** True for absolute http(s) URLs — nav items pointing off-site open in a new tab. */
@@ -130,8 +140,22 @@ export const reservedSubdomains = new Set([
   "test",
 ]);
 
-export function normalizeSegments(segments?: string[]) {
+export type NormalizedRoute = {
+  slug: CanonicalPageSlug | null;
+  redirectTo: string | null;
+  permanent?: boolean;
+};
+
+export function normalizeSegments(segments?: string[]): NormalizedRoute | null {
   const joined = (segments ?? []).join("/").toLowerCase();
+
+  if (permanentGlobalAliasMap.has(joined)) {
+    return {
+      slug: null,
+      redirectTo: permanentGlobalAliasMap.get(joined) as string,
+      permanent: true,
+    };
+  }
 
   if (aliasMap.has(joined)) {
     return {
