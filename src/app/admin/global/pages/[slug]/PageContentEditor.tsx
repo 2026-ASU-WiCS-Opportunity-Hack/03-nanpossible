@@ -6,6 +6,7 @@ import { renderSection } from "@/components/content-page";
 import { getWorkbenchStatusCopy, type WorkbenchSaveState } from "@/lib/workbench";
 import type { ContentBody, ContentSection, MetricItem } from "@/lib/types";
 import { saveGlobalPageAction } from "./actions";
+import type { HeroCta } from "@/lib/types";
 
 type TimelineDraftItem = { year: string; title: string; body: string };
 
@@ -173,6 +174,8 @@ export function PageContentEditor({
 }: PageContentEditorProps) {
   const [title, setTitle] = useState(initialTitle);
   const [published, setPublished] = useState(initialPublished);
+  const [heroTitle, setHeroTitle] = useState(initialBody.heroTitle ?? "");
+  const [heroCtas, setHeroCtas] = useState<HeroCta[]>(initialBody.heroCtas ?? []);
   const [heroIntro, setHeroIntro] = useState(initialBody.heroIntro);
   const [metrics, setMetrics] = useState<MetricItem[]>(initialBody.metrics);
   const [sections, setSections] = useState<SectionDraft[]>(
@@ -224,7 +227,23 @@ export function PageContentEditor({
         slug,
         title,
         published,
-        body: { heroIntro, metrics, sections: previewSections },
+        body: {
+          ...(heroTitle.trim() ? { heroTitle: heroTitle.trim() } : {}),
+          ...(heroCtas.filter((cta) => cta.label.trim() && cta.href.trim()).length
+            ? {
+                heroCtas: heroCtas
+                  .map((cta) => ({
+                    label: cta.label.trim(),
+                    href: cta.href.trim(),
+                    variant: cta.variant,
+                  }))
+                  .filter((cta) => cta.label && cta.href),
+              }
+            : {}),
+          heroIntro,
+          metrics,
+          sections: previewSections,
+        },
       });
       if (result.ok) {
         setSaveState("saved");
@@ -264,6 +283,100 @@ export function PageContentEditor({
           />
           Visible on the public site
         </label>
+      </div>
+
+      <label className="field-shell">
+        <span className="field-label">
+          Hero headline (optional, shown instead of the page title)
+        </span>
+        <input
+          className="field-input"
+          onChange={(event) => {
+            setHeroTitle(event.target.value);
+            markDirty();
+          }}
+          value={heroTitle}
+        />
+      </label>
+
+      <div className="space-y-2">
+        <span className="field-label">
+          Hero buttons (optional, replace the default Contact / Clients buttons)
+        </span>
+        {heroCtas.map((cta, index) => (
+          <div className="flex flex-wrap items-center gap-2" key={index}>
+            <input
+              className="field-input min-w-[160px] flex-1"
+              onChange={(event) => {
+                setHeroCtas((current) =>
+                  current.map((entry, i) =>
+                    i === index ? { ...entry, label: event.target.value } : entry,
+                  ),
+                );
+                markDirty();
+              }}
+              placeholder="Button label"
+              value={cta.label}
+            />
+            <input
+              className="field-input min-w-[160px] flex-1"
+              onChange={(event) => {
+                setHeroCtas((current) =>
+                  current.map((entry, i) =>
+                    i === index ? { ...entry, href: event.target.value } : entry,
+                  ),
+                );
+                markDirty();
+              }}
+              placeholder="Link (e.g. /contact)"
+              value={cta.href}
+            />
+            <select
+              className="field-input"
+              onChange={(event) => {
+                setHeroCtas((current) =>
+                  current.map((entry, i) =>
+                    i === index
+                      ? {
+                          ...entry,
+                          variant:
+                            event.target.value === "primary" ? "primary" : "secondary",
+                        }
+                      : entry,
+                  ),
+                );
+                markDirty();
+              }}
+              value={cta.variant}
+            >
+              <option value="primary">Primary</option>
+              <option value="secondary">Secondary</option>
+            </select>
+            <button
+              className="button-link ghost"
+              onClick={() => {
+                setHeroCtas((current) => current.filter((_, i) => i !== index));
+                markDirty();
+              }}
+              type="button"
+            >
+              Remove
+            </button>
+          </div>
+        ))}
+        <button
+          className="button-link secondary"
+          onClick={() => {
+            setHeroCtas((current) => [
+              ...current,
+              { label: "", href: "", variant: "secondary" },
+            ]);
+            markDirty();
+          }}
+          type="button"
+        >
+          Add a hero button
+        </button>
       </div>
 
       <label className="field-shell">
@@ -648,6 +761,11 @@ export function PageContentEditor({
 
   const previewPane = (
     <div className="space-y-8">
+      {heroTitle.trim() ? (
+        <h1 className="font-display text-3xl leading-none tracking-[-0.05em] text-teal-deep">
+          {heroTitle}
+        </h1>
+      ) : null}
       {heroIntro ? (
         <p className="max-w-3xl text-lg leading-8 text-foreground/75">{heroIntro}</p>
       ) : null}

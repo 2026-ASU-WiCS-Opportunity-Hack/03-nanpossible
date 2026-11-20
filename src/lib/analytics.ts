@@ -134,6 +134,7 @@ export type CtaLocation =
   | "hero"
   | "cta_section"
   | "feature_grid"
+  | "journey_cards"
   | "contact_cards"
   | "resource_list"
   | "header"

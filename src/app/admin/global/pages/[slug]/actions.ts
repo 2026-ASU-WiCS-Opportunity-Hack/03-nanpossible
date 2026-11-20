@@ -4,7 +4,7 @@ import { revalidatePath } from "next/cache";
 import { requireAccountViewer } from "@/lib/auth";
 import { getGlobalPageBySlugForAdmin } from "@/lib/content";
 import { createServiceRoleSupabaseClient } from "@/lib/supabase-admin";
-import type { ContentBody, ContentSection } from "@/lib/types";
+import type { ContentBody, ContentSection, HeroCta } from "@/lib/types";
 
 export type SaveGlobalPagePayload = {
   slug: string;
@@ -156,6 +156,14 @@ export async function saveGlobalPageAction(
   }
 
   const heroIntro = String(payload.body?.heroIntro ?? "").trim();
+  const heroTitle = String(payload.body?.heroTitle ?? "").trim();
+  const heroCtas: HeroCta[] = (Array.isArray(payload.body?.heroCtas) ? payload.body.heroCtas : [])
+    .map((cta): HeroCta => ({
+      label: String(cta?.label ?? "").trim(),
+      href: String(cta?.href ?? "").trim(),
+      variant: cta?.variant === "primary" ? "primary" : "secondary",
+    }))
+    .filter((cta) => cta.label && cta.href);
   const metrics = (Array.isArray(payload.body?.metrics) ? payload.body.metrics : [])
     .map((metric) => ({
       label: String(metric?.label ?? "").trim(),
@@ -172,7 +180,13 @@ export async function saveGlobalPageAction(
     sections.push(result.section);
   }
 
-  const body: ContentBody = { heroIntro, metrics, sections };
+  const body: ContentBody = {
+    ...(heroTitle ? { heroTitle } : {}),
+    ...(heroCtas.length ? { heroCtas } : {}),
+    heroIntro,
+    metrics,
+    sections,
+  };
   const now = new Date().toISOString();
 
   const { data: updated, error: updateError } = await client

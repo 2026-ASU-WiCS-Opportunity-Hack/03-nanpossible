@@ -379,6 +379,46 @@ export function renderSection(section: ContentSection) {
           </div>
         </section>
       );
+    case "journey_cards":
+      return (
+        <section className="section-stack" key={section.title}>
+          <h2 className="section-title text-teal-deep">{section.title}</h2>
+          <div className="feature-grid">
+            {section.items.map((item) => (
+              <article
+                className="feature-card flex flex-col rounded-[1.5rem]"
+                key={item.title}
+              >
+                <p className="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-green">
+                  {item.audience}
+                </p>
+                <h3>{item.title}</h3>
+                <p className="mt-3">{item.question}</p>
+                <div className="mt-auto flex flex-wrap gap-2 pt-5">
+                  {item.links.map((link) => (
+                    <TrackedLink
+                      className={`button-link ${link.variant}`}
+                      event={{
+                        name: "cta_click",
+                        params: {
+                          cta_label: link.label,
+                          cta_location: "journey_cards",
+                          cta_destination: link.href,
+                          outbound: isOutboundHref(link.href),
+                        },
+                      }}
+                      href={link.href}
+                      key={link.label}
+                    >
+                      {link.label}
+                    </TrackedLink>
+                  ))}
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+      );
     case "video":
       return (
         <section className="section-stack" key={section.title}>
@@ -533,6 +573,8 @@ export function renderSection(section: ContentSection) {
 export function ContentPage({ page, siteContext, children }: ContentPageProps) {
   const body = page.bodyRichtext;
   const hasMetrics = body.metrics.length > 0;
+  const heroTitle = body.heroTitle?.trim() ? body.heroTitle : page.title;
+  const heroCtas = body.heroCtas?.filter((cta) => cta.label && cta.href) ?? [];
 
   return (
     <div className="page-frame">
@@ -545,7 +587,7 @@ export function ContentPage({ page, siteContext, children }: ContentPageProps) {
               </span>
               <div className="space-y-4">
                 <h1 className="max-w-4xl font-display text-3xl leading-none tracking-[-0.05em] text-teal-deep md:text-5xl">
-                  {page.title}
+                  {heroTitle}
                 </h1>
                 {body.heroIntro ? (
                   <p className="max-w-3xl whitespace-pre-line text-lg leading-8 text-foreground/82">
@@ -554,38 +596,61 @@ export function ContentPage({ page, siteContext, children }: ContentPageProps) {
                 ) : null}
               </div>
               <div className="flex flex-wrap gap-3">
-                {page.slug !== "contact" ? (
-                  <TrackedLink
-                    className="button-link primary"
-                    event={{
-                      name: "cta_click",
-                      params: {
-                        cta_label: "Contact WIAL",
-                        cta_location: "hero",
-                        cta_destination: "/contact",
-                      },
-                    }}
-                    href="/contact"
-                  >
-                    Contact WIAL
-                  </TrackedLink>
-                ) : null}
-                {page.slug !== "clients" && page.slug !== "partners" ? (
-                  <TrackedLink
-                    className="button-link secondary"
-                    event={{
-                      name: "cta_click",
-                      params: {
-                        cta_label: "View our clients",
-                        cta_location: "hero",
-                        cta_destination: "/clients",
-                      },
-                    }}
-                    href="/clients"
-                  >
-                    View our clients
-                  </TrackedLink>
-                ) : null}
+                {heroCtas.length ? (
+                  heroCtas.map((cta) => (
+                    <TrackedLink
+                      className={`button-link ${cta.variant}`}
+                      event={{
+                        name: "cta_click",
+                        params: {
+                          cta_label: cta.label,
+                          cta_location: "hero",
+                          cta_destination: cta.href,
+                          outbound: isOutboundHref(cta.href),
+                        },
+                      }}
+                      href={cta.href}
+                      key={cta.label}
+                    >
+                      {cta.label}
+                    </TrackedLink>
+                  ))
+                ) : (
+                  <>
+                    {page.slug !== "contact" ? (
+                      <TrackedLink
+                        className="button-link primary"
+                        event={{
+                          name: "cta_click",
+                          params: {
+                            cta_label: "Contact WIAL",
+                            cta_location: "hero",
+                            cta_destination: "/contact",
+                          },
+                        }}
+                        href="/contact"
+                      >
+                        Contact WIAL
+                      </TrackedLink>
+                    ) : null}
+                    {page.slug !== "clients" && page.slug !== "partners" ? (
+                      <TrackedLink
+                        className="button-link secondary"
+                        event={{
+                          name: "cta_click",
+                          params: {
+                            cta_label: "View our clients",
+                            cta_location: "hero",
+                            cta_destination: "/clients",
+                          },
+                        }}
+                        href="/clients"
+                      >
+                        View our clients
+                      </TrackedLink>
+                    ) : null}
+                  </>
+                )}
               </div>
             </div>
           </section>
