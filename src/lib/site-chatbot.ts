@@ -91,7 +91,7 @@ export function buildSiteAssistantContext() {
       `Industries: ${certification.becomeACoach.industries.join(" | ")}`,
       certification.becomeACoach.joinNote,
       `Solution Spheres: ${certification.becomeACoach.servicesHref}`,
-      "Become a coach: /certification#become-a-coach or /contact",
+      "Become a coach: interest form at /become-a-coach (WIAL connects you with the affiliate in your country); background at /certification#become-a-coach",
     ].join("\n"),
     [
       `Programs: ${certification.programs.intro.join(" ")}`,
@@ -182,7 +182,7 @@ export function buildFallbackAssistantReply(query: string) {
       becomeACoach.intro.join(" "),
       `${becomeACoach.industriesLead} ${becomeACoach.industries.join(", ")}, ${becomeACoach.industriesMore}.`,
       becomeACoach.joinNote,
-      `Solution Spheres are on \`/for-organizations\`. To get started, see \`/certification#become-a-coach\` or \`/contact\`.`,
+      `Solution Spheres are on \`/for-organizations\`. To get started, send the short form at \`/become-a-coach\` (see also \`/certification#become-a-coach\`) or use \`/contact\`.`,
     ].join("\n\n");
   }
 

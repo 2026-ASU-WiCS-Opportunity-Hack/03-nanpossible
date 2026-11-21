@@ -90,7 +90,6 @@ const aliasMap = new Map<string, string>([
   ["certification/foundations", "/certification"],
   ["certification/calc-courses", "/certification"],
   ["programs", "/certification"],
-  ["become-a-coach", "/certification"],
   ["privacy-policy", "/privacy"],
   ["community-impact-infographic", "/community-impact"],
   ["community-impact-video", "/community-impact"],

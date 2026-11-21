@@ -65,6 +65,7 @@ ISSUE_MAP = {
 # Bespoke static routes (not in canonicalMap) that serve a legacy path directly.
 LIVE_ROUTES = {
     "certification/in-house-programs",  # own page again since #143
+    "become-a-coach",  # own page with interest form again since #161
 }
 
 # Substring of an outbound wial.org URL in content -> issue tracking its removal.

@@ -143,6 +143,7 @@ export type CtaLocation =
   | "footer"
   | "coaches_band"
   | "certification"
+  | "become_a_coach"
   | "pay"
   | "pay_success"
   | "donate"
@@ -165,6 +166,7 @@ export type SearchType = "coach" | "library" | "wial_talk";
 export type FormName =
   | "contact"
   | "affiliate_inquiry"
+  | "coach_interest"
   | "partner_application"
   | "success_story"
   | "better_world_application"

@@ -78,7 +78,8 @@ Section types added since the toolbox list above: `comparison` (two approaches c
 
 | wial.org page(s) | Target | Issue |
 | --- | --- | --- |
-| `/certification/*` sub-pages, `/programs/`, `/become-a-coach/` | `/certification` | #100 |
+| `/certification/*` sub-pages, `/programs/` | `/certification` | #100 |
+| `/become-a-coach/` | `/become-a-coach` (own page + interest form) | #161 |
 | Better World Fund donation form | `/better-world/donate` (Stripe Checkout, donor-chosen amount) | #127 |
 | Homepage content | `/` | #9 |
 
