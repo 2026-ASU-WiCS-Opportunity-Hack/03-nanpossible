@@ -388,7 +388,10 @@ function sanitizePageDoc(value: unknown, fallbackTitle = "Untitled page"): Build
 function getDefaultNavigationItems(): NavigationItem[] {
   return [
     { href: "/", label: "Home" },
-    ...navigationItems.slice(0, MAX_NAV_ITEMS - 1),
+    // Top-level links only: affiliate site menus are flat.
+    ...navigationItems
+      .slice(0, MAX_NAV_ITEMS - 1)
+      .map(({ href, label }) => ({ href, label })),
   ];
 }
 

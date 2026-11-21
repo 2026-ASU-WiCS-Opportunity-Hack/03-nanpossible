@@ -74,6 +74,8 @@ export type LmsLinkConfig = {
 export type NavigationItem = {
   href: string;
   label: string;
+  /** Submenu links (header dropdown, nested in the mobile drawer). */
+  children?: NavigationItem[];
 };
 
 export type AccountNavItem = {

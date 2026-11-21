@@ -3,11 +3,17 @@ import { TrackedLink } from "@/components/analytics/tracked-link";
 import { MobileNav } from "@/components/mobile-nav";
 import { WialLogo } from "@/components/wial-logo";
 import { getAccountNavItems } from "@/lib/account";
-import { isExternalHref, navigationItems } from "@/lib/routing";
+import { NavDropdown } from "@/components/nav-dropdown";
+import {
+  affiliateCta,
+  flattenNavigationItems,
+  isExternalHref,
+  navigationItems,
+} from "@/lib/routing";
 import type { SiteContext, UserProfile } from "@/lib/types";
 
 const navLinkClassName =
-  "whitespace-nowrap rounded-full px-2 py-1 text-[11px] font-medium text-teal-deep transition hover:bg-accent-soft lg:px-2.5";
+  "whitespace-nowrap rounded-full px-3 py-1.5 text-[15px] font-semibold text-teal-deep transition hover:bg-accent-soft";
 
 type SiteHeaderProps = {
   siteContext: SiteContext;
@@ -19,7 +25,8 @@ export function SiteHeader({ siteContext, viewer }: SiteHeaderProps) {
 
   const voiceNavigationRoutes = [
     { href: "/", label: "Home" },
-    ...navigationItems,
+    ...flattenNavigationItems(),
+    affiliateCta,
     ...(viewer ? getAccountNavItems(viewer.role) : []),
     ...(!viewer
       ? [
@@ -32,94 +39,123 @@ export function SiteHeader({ siteContext, viewer }: SiteHeaderProps) {
   return (
     <header className="sticky top-0 z-40 border-b border-transparent bg-[var(--background)]/85 py-3 backdrop-blur-xl">
       <div className="site-shell">
-        <div className="site-panel flex items-center gap-3 px-4 py-3 sm:px-5 lg:gap-5 lg:px-6">
-          <div className="min-w-0 flex-1">
-            <WialLogo chapterLabel={chapterLabel} />
-          </div>
+        <div className="site-panel px-4 py-3 sm:px-5 lg:px-6">
+          <div className="flex items-center gap-3 lg:gap-5">
+            <div className="min-w-0 flex-1">
+              <WialLogo chapterLabel={chapterLabel} />
+            </div>
 
-          <nav className="hidden flex-1 items-center justify-end gap-0 lg:flex">
-            {navigationItems.map((item) => (
+            <div className="ml-auto flex shrink-0 items-center gap-2 sm:gap-3">
               <TrackedLink
-                className={navLinkClassName}
+                className="button-link affiliate hidden px-4 py-2.5 text-sm sm:inline-flex"
                 event={{
-                  name: "nav_click",
+                  name: "cta_click",
                   params: {
-                    nav_label: item.label,
-                    nav_location: "header",
-                    nav_destination: item.href,
-                    outbound: isExternalHref(item.href),
+                    cta_label: affiliateCta.label,
+                    cta_location: "header",
+                    cta_destination: affiliateCta.href,
                   },
                 }}
-                href={item.href}
-                key={item.href}
+                href={affiliateCta.href}
               >
-                {item.label}
+                {affiliateCta.label}
               </TrackedLink>
-            ))}
-          </nav>
-
-          <div className="ml-auto flex shrink-0 items-center gap-2 sm:gap-3">
-            {viewer ? (
-              <form
-                action="/auth/sign-out"
-                method="post"
-                className="hidden sm:block"
-              >
-                <button
-                  type="submit"
-                  className="button-link secondary px-4 py-2.5 text-sm"
+              {viewer ? (
+                <form
+                  action="/auth/sign-out"
+                  method="post"
+                  className="hidden sm:block"
                 >
-                  Logout
-                </button>
-              </form>
-            ) : (
-              <>
-                <TrackedLink
-                  className="hidden whitespace-nowrap text-sm font-semibold text-teal-deep/78 transition hover:text-teal-deep sm:inline-flex"
-                  event={{
-                    name: "cta_click",
-                    params: {
-                      cta_label: "Sign in",
-                      cta_location: "header",
-                      cta_destination: "/login",
-                    },
-                  }}
-                  href="/login"
-                >
-                  Sign in
-                </TrackedLink>
-                <TrackedLink
-                  className="button-link primary hidden px-4 py-2.5 text-sm sm:inline-flex"
-                  event={{
-                    name: "cta_click",
-                    params: {
-                      cta_label: "Register",
-                      cta_location: "header",
-                      cta_destination: "/register",
-                    },
-                  }}
-                  href="/register"
-                >
-                  Register
-                </TrackedLink>
-              </>
-            )}
-            <AccessibilityPreferencesWidget
-              navigationRoutes={voiceNavigationRoutes}
-              variant="desktop"
-            />
-            <div className="flex items-center gap-2 lg:hidden">
+                  <button
+                    type="submit"
+                    className="button-link secondary px-4 py-2.5 text-sm"
+                  >
+                    Logout
+                  </button>
+                </form>
+              ) : (
+                <>
+                  <TrackedLink
+                    className="hidden whitespace-nowrap text-sm font-semibold text-teal-deep/78 transition hover:text-teal-deep sm:inline-flex"
+                    event={{
+                      name: "cta_click",
+                      params: {
+                        cta_label: "Sign in",
+                        cta_location: "header",
+                        cta_destination: "/login",
+                      },
+                    }}
+                    href="/login"
+                  >
+                    Sign in
+                  </TrackedLink>
+                  <TrackedLink
+                    className="button-link secondary hidden px-4 py-2.5 text-sm sm:inline-flex"
+                    event={{
+                      name: "cta_click",
+                      params: {
+                        cta_label: "Register",
+                        cta_location: "header",
+                        cta_destination: "/register",
+                      },
+                    }}
+                    href="/register"
+                  >
+                    Register
+                  </TrackedLink>
+                </>
+              )}
               <AccessibilityPreferencesWidget
                 navigationRoutes={voiceNavigationRoutes}
-                variant="mobile"
+                variant="desktop"
               />
-              <MobileNav
-                chapterLabel={chapterLabel}
-                items={navigationItems}
-                viewer={viewer}
-              />
+              <div className="flex items-center gap-2 lg:hidden">
+                <AccessibilityPreferencesWidget
+                  navigationRoutes={voiceNavigationRoutes}
+                  variant="mobile"
+                />
+                <MobileNav
+                  affiliateCta={affiliateCta}
+                  chapterLabel={chapterLabel}
+                  items={navigationItems}
+                  viewer={viewer}
+                />
+              </div>
             </div>
           </div>
+
+          {/* Second row on desktop: the journey menu gets the full width (#156). */}
+          <nav
+            aria-label="Main"
+            className="mt-3 hidden items-center justify-between gap-1 border-t border-line pt-2 lg:flex"
+          >
+            {navigationItems.map((item) =>
+              item.children?.length ? (
+                <NavDropdown
+                  className={navLinkClassName}
+                  item={item}
+                  key={item.href}
+                />
+              ) : (
+                <TrackedLink
+                  className={navLinkClassName}
+                  event={{
+                    name: "nav_click",
+                    params: {
+                      nav_label: item.label,
+                      nav_location: "header",
+                      nav_destination: item.href,
+                      outbound: isExternalHref(item.href),
+                    },
+                  }}
+                  href={item.href}
+                  key={item.href}
+                >
+                  {item.label}
+                </TrackedLink>
+              ),
+            )}
+          </nav>
         </div>
       </div>
     </header>

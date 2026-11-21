@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { getAccountNavItems, getRoleLabel } from "@/lib/account";
 import { trackEvent } from "@/lib/analytics";
@@ -10,6 +10,7 @@ import type { NavigationItem, UserProfile } from "@/lib/types";
 
 type MobileNavProps = {
   items: NavigationItem[];
+  affiliateCta: NavigationItem;
   chapterLabel?: string | null;
   viewer: UserProfile | null;
 };
@@ -31,12 +32,15 @@ function CloseIcon() {
 function DrawerLink({
   href,
   label,
+  nested = false,
   onClick,
 }: {
   href: string;
   label: string;
+  nested?: boolean;
   onClick: () => void;
 }) {
+  const className = nested ? "account-sidebar-link is-nested" : "account-sidebar-link";
   const linkContent = (
     <>
       <span className="account-sidebar-icon">
@@ -62,7 +66,7 @@ function DrawerLink({
   if (external) {
     return (
       <a
-        className="account-sidebar-link"
+        className={className}
         href={href}
         onClick={handleClick}
         rel="noreferrer"
@@ -74,7 +78,7 @@ function DrawerLink({
   }
 
   return (
-    <Link className="account-sidebar-link" href={href} onClick={handleClick}>
+    <Link className={className} href={href} onClick={handleClick}>
       {linkContent}
     </Link>
   );
@@ -82,6 +86,7 @@ function DrawerLink({
 
 export function MobileNav({
   items,
+  affiliateCta,
   chapterLabel,
   viewer,
 }: MobileNavProps) {
@@ -159,14 +164,42 @@ export function MobileNav({
                       />
 
                       {items.map((item) => (
-                        <DrawerLink
-                          key={item.href}
-                          href={item.href}
-                          label={item.label}
-                          onClick={closeDrawer}
-                        />
+                        <Fragment key={item.href}>
+                          <DrawerLink
+                            href={item.href}
+                            label={item.label}
+                            onClick={closeDrawer}
+                          />
+                          {item.children?.map((child) => (
+                            <DrawerLink
+                              href={child.href}
+                              key={child.href}
+                              label={child.label}
+                              nested
+                              onClick={closeDrawer}
+                            />
+                          ))}
+                        </Fragment>
                       ))}
                     </nav>
+
+                    <Link
+                      className="button-link affiliate mt-4 w-full"
+                      href={affiliateCta.href}
+                      onClick={() => {
+                        trackEvent({
+                          name: "cta_click",
+                          params: {
+                            cta_label: affiliateCta.label,
+                            cta_location: "mobile_drawer",
+                            cta_destination: affiliateCta.href,
+                          },
+                        });
+                        closeDrawer();
+                      }}
+                    >
+                      {affiliateCta.label}
+                    </Link>
                   </section>
 
                   <div className="account-sidebar-divider" />
