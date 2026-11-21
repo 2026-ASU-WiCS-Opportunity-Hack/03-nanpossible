@@ -306,6 +306,44 @@ describe("normalizeSegments", () => {
     });
   });
 
+  it("redirects the later-migrated legacy Better World story paths to their articles", () => {
+    const moved: Array<[string, string]> = [
+      ["human-needs-project", "/better-world/kenya-human-needs-project"],
+      ["action-learning-drives-rebuilding-community-library", "/better-world/dominica-community-library"],
+      ["action-learning-helping-kyrgyzstan-ngo", "/better-world/kyrgyzstan-women-ngo"],
+      ["action-learning-helps-small-village-burkina-faso-discover-alternative-ideas-accessing-safe-water", "/better-world/burkina-faso-safe-water"],
+      ["action-learning-improves-cross-functional-communications-non-profit-taiwan", "/better-world/taiwan-zs-foundation"],
+      ["full-scale-project-non-profit-cenpec-magali-lopes", "/better-world/brazil-cenpec"],
+      ["pro-bono-program-transforms-lar-da-bencao-divina-brazilian-non-profit", "/better-world/brazil-lar-da-bencao-divina"],
+      ["supporting-karibu-centre-nairobi", "/better-world/kenya-karibu-centre"],
+      ["wial-action-learning-helps-improve-curricular-offerings", "/better-world/brazil-vida-jovem"],
+      ["wial-brazil-sets-new-bar-pro-bono-coaching", "/better-world/brazil-pro-bono-coaching"],
+      ["action-learning-lasting-impact-kenyan-pre-school", "/better-world/kenya-karibu-centre-lasting-impact"],
+      ["action-learning-way-forward-cru-leadership", "/better-world/cru-leadership"],
+      ["birthday-party-meaning", "/better-world/philippines-birthday-party"],
+      ["breakthrough-solution-reach-10000-children", "/better-world/us-first-tee-of-denver"],
+      ["cc-housing-trust-cru", "/better-world/cc-housing-trust-cru-certification"],
+      ["childrens-house-santo-amaro", "/better-world/brazil-childrens-house-santo-amaro"],
+      ["global-camps-africa", "/better-world/south-africa-global-camps-africa"],
+      ["servebetter", "/better-world/malaysia-servebetter"],
+      ["uwi-cave-hill-campus-harvard-national-model-united-nations-contingent", "/better-world/caribbean-uwi-model-un"],
+      ["solution-space-freelancers-solopreneurs", "/better-world/thailand-your-solution-space"],
+    ];
+    for (const [oldSlug, target] of moved) {
+      expect(normalizeSegments(["projects", oldSlug])).toEqual({
+        slug: null,
+        redirectTo: target,
+      });
+    }
+    // Announcement-style posts with no story fold into the Better World page.
+    for (const oldSlug of ["better-world-fund-global-impact", "wial-global-conference-scholarship-winners"]) {
+      expect(normalizeSegments(["projects", oldSlug])).toEqual({
+        slug: null,
+        redirectTo: "/better-world",
+      });
+    }
+  });
+
   it("resolves the awards page slug and redirects legacy award paths", () => {
     expect(normalizeSegments(["awards"])).toEqual({
       slug: "awards",

@@ -948,7 +948,27 @@
           { "eyebrow": "Malaysia", "title": "We The Protector", "body": "Be My Protector Malaysia joined WIAL Gives Back to explore Action Learning on its toughest challenges.", "href": "/better-world/malaysia-we-the-protector", "label": "Read the story" },
           { "eyebrow": "Singapore", "title": "Centre for Non-Profit Leadership", "body": "Certified coaches supported nine nonprofits and more than 50 team members pro bono.", "href": "/better-world/singapore-centre-for-non-profit-leadership", "label": "Read the story" },
           { "eyebrow": "Singapore", "title": "Singapore Book Council", "body": "The independent literary arts charity's team benefited from learning WIAL's Action Learning process.", "href": "/better-world/singapore-book-council", "label": "Read the story" },
-          { "eyebrow": "Singapore", "title": "Singapore Association for the Deaf", "body": "Pro bono Action Learning coaching for the agency advocating equal opportunity for the deaf community.", "href": "/better-world/singapore-association-for-the-deaf", "label": "Read the story" }
+          { "eyebrow": "Singapore", "title": "Singapore Association for the Deaf", "body": "Pro bono Action Learning coaching for the agency advocating equal opportunity for the deaf community.", "href": "/better-world/singapore-association-for-the-deaf", "label": "Read the story" },
+          { "eyebrow": "Kenya", "title": "Human Needs Project", "body": "A Better World Fund scholarship recipient used Action Learning to help the people of Kibera, Africa's largest urban slum.", "href": "/better-world/kenya-human-needs-project", "label": "Read the story" },
+          { "eyebrow": "Dominica", "title": "Portsmouth Community Library", "body": "After Hurricane Maria, stakeholder engagement through Action Learning helped rebuild a library that serves several villages.", "href": "/better-world/dominica-community-library", "label": "Read the story" },
+          { "eyebrow": "Kyrgyzstan", "title": "Grassroots Women's Organization", "body": "Open-question workshops helped a new non-profit for women grow in confidence and scope.", "href": "/better-world/kyrgyzstan-women-ngo", "label": "Read the story" },
+          { "eyebrow": "Burkina Faso", "title": "Safe Water for a Small Village", "body": "Tribal leaders used open questions to find new ways to get safe water for their community.", "href": "/better-world/burkina-faso-safe-water", "label": "Read the story" },
+          { "eyebrow": "Taiwan", "title": "ZS Foundation Taiwan", "body": "Fundraisers, marketers, and social workers learned to trust each other and communicate across departments.", "href": "/better-world/taiwan-zs-foundation", "label": "Read the story" },
+          { "eyebrow": "Brazil", "title": "CENPEC", "body": "Coaches trained a Brazilian education non-profit's executives and staff in Action Learning.", "href": "/better-world/brazil-cenpec", "label": "Read the story" },
+          { "eyebrow": "Brazil", "title": "Lar da Bencao Divina", "body": "A three-month pro bono program helped a Sao Paulo non-profit integrate its team and grow its community programs.", "href": "/better-world/brazil-lar-da-bencao-divina", "label": "Read the story" },
+          { "eyebrow": "Kenya", "title": "Karibu Centre", "body": "Pro bono coaching for a Nairobi pre-school that also employs parents through a social enterprise.", "href": "/better-world/kenya-karibu-centre", "label": "Read the story" },
+          { "eyebrow": "Brazil", "title": "Vida Jovem", "body": "Coaching helped a Brazilian NGO improve its curriculum for vulnerable young people.", "href": "/better-world/brazil-vida-jovem", "label": "Read the story" },
+          { "eyebrow": "Brazil", "title": "WIAL Brazil Pro Bono Coaching", "body": "From 80 volunteer hours in 2015 to a formal pro bono policy and a growing community of coaches.", "href": "/better-world/brazil-pro-bono-coaching", "label": "Read the story" },
+          { "eyebrow": "Kenya", "title": "Karibu Centre: Lasting Impact", "body": "A volunteer coach's leadership work with the Thika pre-school's staff has had effects that last.", "href": "/better-world/kenya-karibu-centre-lasting-impact", "label": "Read the story" },
+          { "eyebrow": "Global", "title": "Cru", "body": "A Better World Fund grant trained 20 Cru leaders as Action Learning coaches and changed how the organization works.", "href": "/better-world/cru-leadership", "label": "Read the story" },
+          { "eyebrow": "Philippines", "title": "A Birthday Party with Meaning", "body": "A 30th birthday became an Action Learning day for six Philippine organizations.", "href": "/better-world/philippines-birthday-party", "label": "Read the story" },
+          { "eyebrow": "United States", "title": "The First Tee of Denver", "body": "A free six-month Action Learning program pointed a youth golf program toward partnerships to reach 10,000 children.", "href": "/better-world/us-first-tee-of-denver", "label": "Read the story" },
+          { "eyebrow": "Better World Fund", "title": "C&C Housing Trust and Cru", "body": "Two grant recipients trained in-house Action Learning coaches in a five-day certification program.", "href": "/better-world/cc-housing-trust-cru-certification", "label": "Read the story" },
+          { "eyebrow": "Brazil", "title": "Casa da Criança de Santo Amaro", "body": "Ten Action Learning sessions helped a children's charity's staff, board and volunteers communicate and solve problems together.", "href": "/better-world/brazil-childrens-house-santo-amaro", "label": "Read the story" },
+          { "eyebrow": "South Africa", "title": "Global Camps Africa", "body": "WIAL coached the senior leadership team of an organization serving HIV-affected children.", "href": "/better-world/south-africa-global-camps-africa", "label": "Read the story" },
+          { "eyebrow": "Malaysia", "title": "Servebetter", "body": "Better World funding sent a social enterprise's leaders to Action Learning training so they could help more NGOs.", "href": "/better-world/malaysia-servebetter", "label": "Read the story" },
+          { "eyebrow": "Caribbean", "title": "UWI Cave Hill Model UN Team", "body": "Pro bono coaching helped a university Model UN contingent build leadership and teamwork.", "href": "/better-world/caribbean-uwi-model-un", "label": "Read the story" },
+          { "eyebrow": "Thailand", "title": "Your Solution Space", "body": "Free Action Learning-style workshops gave Chiang Mai's freelancers and digital nomads a community and a way to solve problems together.", "href": "/better-world/thailand-your-solution-space", "label": "Read the story" }
         ]
       },
       {
@@ -3545,6 +3565,1255 @@
   }
 },
 {
+  "id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaa0034",
+  "chapterId": null,
+  "slug": "better-world/kenya-human-needs-project",
+  "title": "Raising the Lives in the Slums of Nairobi",
+  "published": true,
+  "bodyRichtext": {
+    "heroIntro": "Peter Muthaura of the Human Needs Project, a 2019 WIAL Better World Fund Scholarship recipient, discusses how his organization has used Action Learning to create real impact in Kibera, Africa's largest urban slum.",
+    "metrics": [
+      {
+        "label": "Published",
+        "value": "Jun 2020"
+      },
+      {
+        "label": "Organization",
+        "value": "Human Needs Project"
+      },
+      {
+        "label": "Country",
+        "value": "Kenya"
+      }
+    ],
+    "sections": [
+      {
+        "type": "media_prose",
+        "title": "Helping the people of Kibera",
+        "image": "/better-world/stories/kenya-human-needs-project.jpg",
+        "imageAlt": "Peter Muthaura, Director of Training and Strategic Partnerships at the Human Needs Project in Nairobi, Kenya, pictured in a WIAL video interview",
+        "paragraphs": [
+          "Peter Muthaura, Director of Training and Strategic Partnerships for the Human Needs Project in Nairobi, Kenya, and a 2019 WIAL Better World Fund Scholarship recipient, discusses the work his organization is doing to help the people of Kibera, Africa's largest urban slum. The needs of a community of this size are many, but they have prioritized ways to help with a multi-pronged mission.",
+          "The primary goal is to provide essential daily services such as clean drinking water, modern toilets, proper showers, laundry facilities, and food services. They work with partners to provide newer, more environmentally sustainable products to improve these living conditions. They offer various types of education in life skills, hygiene, human rights, to skills related to working in a trade, as well as education that could bring about internships that may lead to paid employment.",
+          "In a video interview, Peter shares how his organization has used Action Learning to create a real impact with their work in the Kibera community."
+        ]
+      },
+      {
+        "type": "cta",
+        "title": "Support more stories like this",
+        "body": "The Better World Fund keeps this kind of partnership going — donate or nominate an organization for support.",
+        "href": "/better-world",
+        "label": "Back to the Better World Fund"
+      }
+    ]
+  },
+  "seo": {
+    "description": "How the Human Needs Project in Nairobi's Kibera community used Action Learning, shared by Better World Fund scholarship recipient Peter Muthaura.",
+    "sourceUrl": "https://wial.org/projects/human-needs-project/",
+    "sourceStatus": "migrated-from-wial",
+    "sourceNotes": "Migrated from wial.org's Better World Stories (projects). The source page centered on an embedded video interview, summarized here in text since the video is hosted on wial.org's YouTube channel and not vendored (the video-referencing sentence was reworded accordingly). The WIAL Gives Back branded interview still naming Peter Muthaura is vendored as the hero image. The published month is the month the story's featured image was uploaded to wial.org, since the source page shows no date."
+  }
+},
+{
+  "id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaa0035",
+  "chapterId": null,
+  "slug": "better-world/dominica-community-library",
+  "title": "Action Learning Drives Rebuilding of Community Library",
+  "published": true,
+  "bodyRichtext": {
+    "heroIntro": "After Hurricane Maria destroyed Dominica's libraries, the Chief Librarian of the Portsmouth community library brought the problem to an Action Learning group and rebuilt it with the support of her stakeholders.",
+    "metrics": [
+      {
+        "label": "Published",
+        "value": "Nov 2019"
+      },
+      {
+        "label": "Organization",
+        "value": "Portsmouth community library"
+      },
+      {
+        "label": "Country",
+        "value": "Dominica"
+      }
+    ],
+    "sections": [
+      {
+        "type": "media_prose",
+        "title": "Rebuilding the Portsmouth library",
+        "image": "/better-world/stories/dominica-community-library.jpg",
+        "imageAlt": "The rebuilt Portsmouth community library in Dominica, a white single-storey building with a teal roof",
+        "paragraphs": [
+          "Hurricane Maria devastated the Caribbean country of Dominica in 2017 and particularly destroyed all libraries. Of significance is the library in the Portsmouth community because it serves several villages, that even prior to the hurricane did not provide the best home settings for learning.",
+          "The Chief Librarian, Ms. Vernanda Raymond, brought the problem to an Action Learning group comprised of senior public officers from five other Caribbean countries. Working through five Action Learning sessions over a period of about three months, Ms. Raymond was able to reframe her problem towards improved stakeholder relations. Actively canvassing stakeholders to learn their needs and to gain support yielded gains that far surpassed her initial expectations. She was able to rebuild the community library with a new design that better serves the various categories of users and which is better able to withstand future storms. The library holdings and subscriptions have been increased. A voluntary committee was formed to safeguard the library in the event of future disasters, and this committee has also been actively involved in the interior design to meet the needs of different users."
+        ]
+      },
+      {
+        "type": "prose",
+        "title": "Ms. Raymond's account",
+        "paragraphs": [
+          "Ms. Raymond gives the following account.",
+          "The diversity of the probing question sessions provided the avenue to reflect more deeply on the real and critically complex problem of restoring library services at the Portsmouth library post-disaster. Being committed to learning and exploring the alternatives through the perspective of my fellow team members drove my rehabilitation efforts.",
+          "Stakeholder engagement is a major aspect of the rehabilitation of the Portsmouth Library. The main goal is to facilitate collaborative efforts for the development of sustained partnerships that can provide continued support to the library service."
+        ]
+      },
+      {
+        "type": "prose",
+        "title": "What stakeholder engagement achieved",
+        "paragraphs": [
+          "Through discussion with stakeholders the following actions were taken:"
+        ],
+        "bullets": [
+          "A safe concrete-covered space within the library",
+          "Re-design of separate computer sections for children and adult users",
+          "A children's reading corner",
+          "Introduction of shorter shelving to provide ease of access to materials",
+          "Establishment of pre and post-disaster teams made up of members of the community",
+          "Donation of books through regional and international book drives; donation of computer equipment",
+          "A financial contribution of 150,000.00 XCD dollars towards the restoration of the physical building, also secured through stakeholder engagement"
+        ]
+      },
+      {
+        "type": "quote",
+        "quote": "My Metaphor – A Swing – that provides the strength, support, and latitude for positive action.",
+        "attribution": "Vernanda Raymond, Chief Librarian, Portsmouth community library, Dominica"
+      },
+      {
+        "type": "cta",
+        "title": "Support more stories like this",
+        "body": "The Better World Fund keeps this kind of partnership going — donate or nominate an organization for support.",
+        "href": "/better-world",
+        "label": "Back to the Better World Fund"
+      }
+    ]
+  },
+  "seo": {
+    "description": "How a Dominican Chief Librarian used Action Learning and stakeholder engagement to rebuild a hurricane-destroyed community library.",
+    "sourceUrl": "https://wial.org/projects/action-learning-drives-rebuilding-community-library/",
+    "sourceStatus": "migrated-from-wial",
+    "sourceNotes": "Migrated from wial.org's Better World Stories (projects). Text is verbatim with light copy edits: Ms. Raymond's multi-paragraph account is presented without quotation marks under a lead-in line, her action list is rendered as bullets, and the separate sentence about the 150,000.00 XCD contribution became the last bullet. The source featured photo (the rebuilt library) is vendored as the hero image. The published month is the month the story's featured image was uploaded to wial.org, since the source page shows no date."
+  }
+},
+{
+  "id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaa0036",
+  "chapterId": null,
+  "slug": "better-world/kyrgyzstan-women-ngo",
+  "title": "Action Learning Helping a Kyrgyzstan NGO",
+  "published": true,
+  "bodyRichtext": {
+    "heroIntro": "WIAL Global Vice President Sudeep Mohandas shares his pro bono Action Learning work with a new grassroots organization for women in Kyrgyzstan.",
+    "metrics": [
+      {
+        "label": "Published",
+        "value": "Apr 2020"
+      },
+      {
+        "label": "Organization",
+        "value": "New grassroots organization for women"
+      },
+      {
+        "label": "Country",
+        "value": "Kyrgyzstan"
+      }
+    ],
+    "sections": [
+      {
+        "type": "media_prose",
+        "title": "Women building a new non-profit",
+        "image": "/better-world/stories/kyrgyzstan-women-ngo.jpg",
+        "imageAlt": "Dr. Sudeep Mohandas, Vice President of WIAL Global, pictured in a WIAL Better World video interview",
+        "paragraphs": [
+          "The goal of the WIAL Better World program is to help executive teams and upper management of non-profits grow professionally using pro-bono Action Learning coaching. Vice President of WIAL Global, Sudeep Mohandas, shares his experience working with a new, grassroots organization for women in Kyrgyzstan. These women had no previous professional organizational experience.",
+          "Through workshops using open questions around the management of their new non-profit, they learned they could empower themselves and the women they sought to assist. They were able to elevate and broaden their perspective through Action Learning and grow their non-profit for their generation and the ones to follow."
+        ]
+      },
+      {
+        "type": "cta",
+        "title": "Support more stories like this",
+        "body": "The Better World Fund keeps this kind of partnership going — donate or nominate an organization for support.",
+        "href": "/better-world",
+        "label": "Back to the Better World Fund"
+      }
+    ]
+  },
+  "seo": {
+    "description": "How a new women's grassroots NGO in Kyrgyzstan used pro bono Action Learning workshops to empower itself and the women it serves.",
+    "sourceUrl": "https://wial.org/projects/action-learning-helping-kyrgyzstan-ngo/",
+    "sourceStatus": "migrated-from-wial",
+    "sourceNotes": "Migrated from wial.org's Better World Stories (projects). The source page centered on an embedded video interview, summarized here in text since the video is hosted on wial.org's YouTube channel and not vendored. The organization is not named on the source page. The WIAL Better World interview still naming Dr. Sudeep Mohandas is vendored as the hero image. The published month is the month the story's featured image was uploaded to wial.org, since the source page shows no date."
+  }
+},
+{
+  "id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaa0037",
+  "chapterId": null,
+  "slug": "better-world/burkina-faso-safe-water",
+  "title": "Action Learning Helps a Small Village in Burkina Faso Discover Alternative Ideas for Accessing Safe Water",
+  "published": true,
+  "bodyRichtext": {
+    "heroIntro": "A Brazilian Action Learning coach and the NGO Cafi worked with Sambla tribal leaders in Burkina Faso, who used open questions to rethink how to get safe water for their community.",
+    "metrics": [
+      {
+        "label": "Published",
+        "value": "Apr 2020"
+      },
+      {
+        "label": "Organization",
+        "value": "Cafi (Brazilian NGO) and Sambla tribal leaders"
+      },
+      {
+        "label": "Country",
+        "value": "Burkina Faso"
+      }
+    ],
+    "sections": [
+      {
+        "type": "media_prose",
+        "title": "Searching for safe water in Burkina Faso",
+        "image": "/better-world/stories/burkina-faso-safe-water-1.jpg",
+        "imageAlt": "A group photo of Action Learning workshop participants and facilitators in Burkina Faso, some in Cafi shirts",
+        "paragraphs": [
+          "Burkina Faso, in West Africa, has one of the lowest levels of HDI (Human Development Index) in the world. It's comprised of thousands of villages all suffering from the chronic problems of high unemployment, extreme poverty, child labor, dangerous living conditions due to civil unrest, and limited access to safe water.",
+          "Senior Action Learning Coach Magali Lopes, from Eight Dialogues for Transformation in Brazil, collaborated with a Brazilian NGO Cafi (cafiafrica.org) to create a program to help develop the Cafi staff and some key Sambla tribal leaders. This program took place over ten days in January 2020. Ms. Lopes trained the Cafi staff; the staff then worked with the tribal members under her supervision."
+        ]
+      },
+      {
+        "type": "media_prose",
+        "title": "Open questions, new ideas",
+        "image": "/better-world/stories/burkina-faso-safe-water-2.jpg",
+        "imageAlt": "Tribal leaders and facilitators seated in a circle during an Action Learning session in Burkina Faso",
+        "paragraphs": [
+          "Hosting tribal leadership sessions in several locations allowed for a varied group with diverse viewpoints. Many problems were discussed, including personal ones. A top priority was the lack of safe water for the tribe. This wasn't a new problem but due to ongoing frustrations and impediments, the tribal members had given up. Using the open question method of Action Learning, the leaders developed new ideas. They decided to contact their neighboring tribes to understand what they were doing to obtain water.",
+          "Through Action Learning, the leaders experienced a mindset shift and wanted to expand its reach by including more members of their community. They gained a renewed sense to encourage their community not to give up and to seek collaborative approaches and assistance from outside resources to help them solve this problem, and others. The next big step, one they had tried before, was to reach out to public authorities, for assistance in obtaining safe water."
+        ]
+      },
+      {
+        "type": "media_prose",
+        "title": "What the leaders took away",
+        "image": "/better-world/stories/burkina-faso-safe-water-3.jpg",
+        "imageAlt": "A facilitator leading a discussion with tribal leaders during an Action Learning session in Burkina Faso",
+        "paragraphs": [
+          "Feedback from the program included: \"I'm gonna practice how to listen to someone, understand the problem by asking questions, and also know how to deal with a problem to find the solution. I believe it is a treasure … the current world is full of problems.\""
+        ]
+      },
+      {
+        "type": "quote",
+        "quote": "Providing this audience this opportunity to work together to solve problems was a very rewarding experience because it corresponds to helping the new generation of a country so in need to find creative solutions to their problems.",
+        "attribution": "Magali Lopes, Senior Action Learning Coach"
+      },
+      {
+        "type": "cta",
+        "title": "Support more stories like this",
+        "body": "The Better World Fund keeps this kind of partnership going — donate or nominate an organization for support.",
+        "href": "/better-world",
+        "label": "Back to the Better World Fund"
+      }
+    ]
+  },
+  "seo": {
+    "description": "How Sambla tribal leaders in Burkina Faso used Action Learning to find new ideas for getting safe water for their village.",
+    "sourceUrl": "https://wial.org/projects/action-learning-helps-small-village-burkina-faso-discover-alternative-ideas-accessing-safe-water/",
+    "sourceStatus": "migrated-from-wial",
+    "sourceNotes": "Migrated from wial.org's Better World Stories (projects). Text is verbatim with light copy edits. The first participant quote is unattributed on the source page, so it is introduced as program feedback rather than credited to a named person. All three source photos are vendored (the two session photos were only 300px thumbnails on the source page; the full-size originals are used). The published month is the month the story's featured image was uploaded to wial.org, since the source page shows no date."
+  }
+},
+{
+  "id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaa0038",
+  "chapterId": null,
+  "slug": "better-world/taiwan-zs-foundation",
+  "title": "Action Learning Improves Cross-functional Communications for a Non-Profit in Taiwan",
+  "published": true,
+  "bodyRichtext": {
+    "heroIntro": "A five-month Action Learning project helped fundraisers, marketers, and social workers at the ZS Foundation Taiwan build trust and communicate across departments.",
+    "metrics": [
+      {
+        "label": "Published",
+        "value": "Oct 2019"
+      },
+      {
+        "label": "Organization",
+        "value": "ZS Foundation Taiwan"
+      },
+      {
+        "label": "Country",
+        "value": "Taiwan"
+      }
+    ],
+    "sections": [
+      {
+        "type": "media_prose",
+        "title": "About the ZS Foundation Taiwan",
+        "image": "/better-world/stories/taiwan-zs-foundation.jpg",
+        "imageAlt": "Three people laughing together on a bed under a green mosquito net, the photo that headed the original wial.org story",
+        "paragraphs": [
+          "The ZS Foundation Taiwan is a non-profit that assists at-risk youth in Taiwan, Vietnam, Burma, and the Yun-nan province in China. The CEO of this organization attended an Action Learning workshop led by May Han (PALC) in the spring of 2018. The Foundation's CEO thought Action Learning would benefit the staff of his employees by introducing a separate workshop for them.",
+          "A five-month Action Learning project was initiated later that summer. The CEO wanted to create ways to raise funds for social welfare projects during an extended economic downturn. The main problem was poor communications across areas of the foundation. In order to complete future projects the teams from these departments needed to improve their communication, and learn to work more cohesively."
+        ]
+      },
+      {
+        "type": "prose",
+        "title": "The Action Learning experience",
+        "paragraphs": [
+          "Funds are generated from individuals, corporations, and government funds. The three departments involved in this initial effort included the corporate fundraisers, the marketing team and the social workers. There was mistrust between the departments and a hierarchy that was impeding productivity. Having had his own experience with Action Learning, the CEO chose a diverse group of candidates to participate. He included all levels of staff from the different departments and a mix of genders.",
+          "Though inexperienced with the diversity of their group, they learned to ask open questions, not to make judgments, to be intentional listeners and to trust the process and their cohort during these sessions. There were hurdles to overcome, but the teams were able to become more open-minded, improve their communication, even streamline it. They have become patient listeners. In building that trust they are able to work through issues by using their varied perspectives and they now see that as a positive, not a hindrance to solving issues. Their teamwork efficiency is greatly enhanced thanks to the processes used in the Action Learning model.",
+          "A department head and a problem presenter commented:"
+        ]
+      },
+      {
+        "type": "quote",
+        "quote": "In the past, as the department head of the fundraising team, I used to think from my own side. After I chose the leadership (card), whenever I asked questions, or listened to others, my self-awareness increased. After the second meeting, I even search for Youtube films to teach me how to think more logically. This change helps me draft plans with a more logical view. I will think from various angles first, then I'll collect team members' ideas and comments. It's a very different way from the way I made plans before. My thinking becomes more clear, diverse and logical now. The work becomes easier to communicate with other people.",
+        "attribution": "Head of the fundraising team, ZS Foundation Taiwan"
+      },
+      {
+        "type": "quote",
+        "quote": "Dealing with cross-functional conflict issues has always been hard for me in the past few years. This time, I decided to take a different approach – using a different meeting structure (meaning Action Learning) to organize you and force you all to work it out. I took the risk, and I am glad it works.",
+        "attribution": "CEO, ZS Foundation Taiwan"
+      },
+      {
+        "type": "cta",
+        "title": "Support more stories like this",
+        "body": "The Better World Fund keeps this kind of partnership going — donate or nominate an organization for support.",
+        "href": "/better-world",
+        "label": "Back to the Better World Fund"
+      }
+    ]
+  },
+  "seo": {
+    "description": "How the ZS Foundation Taiwan used a five-month Action Learning project to break down mistrust between departments and improve communication.",
+    "sourceUrl": "https://wial.org/projects/action-learning-improves-cross-functional-communications-non-profit-taiwan/",
+    "sourceStatus": "migrated-from-wial",
+    "sourceNotes": "Migrated from wial.org's Better World Stories (projects). Text is verbatim with light copy edits (the source's acute-accent apostrophes normalized). The two quotes are attributed from the source's own wording (the first speaker identifies as the fundraising team's department head). The source featured photo is vendored as the hero image; the source does not caption it, so its alt text describes only what is visible. The published month is the month the story's featured image was uploaded to wial.org, since the source page shows no date."
+  }
+},
+{
+  "id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaa0039",
+  "chapterId": null,
+  "slug": "better-world/brazil-cenpec",
+  "title": "Full-Scale Project for the Non-Profit CENPEC by Magali Lopes",
+  "published": true,
+  "bodyRichtext": {
+    "heroIntro": "Magali Lopes, a great ambassador for pro-bono Action Learning in Brazil, discusses a full-scale project she worked on for CENPEC, a non-profit working to improve education for Brazil's impoverished youth.",
+    "metrics": [
+      {
+        "label": "Published",
+        "value": "May 2020"
+      },
+      {
+        "label": "Organization",
+        "value": "CENPEC"
+      },
+      {
+        "label": "Country",
+        "value": "Brazil"
+      }
+    ],
+    "sections": [
+      {
+        "type": "media_prose",
+        "title": "A full-scale project for CENPEC",
+        "image": "/better-world/stories/brazil-cenpec.jpg",
+        "imageAlt": "Magali Lopes, labelled Brazil, pictured in a WIAL video interview",
+        "paragraphs": [
+          "Magali Lopes, a great ambassador for pro-bono Action Learning in Brazil, discusses a full-scale project she worked on for the non-profit CENPEC, the Center for the Study and Research in Education, Culture, and Community Action.",
+          "CENPEC has been around for over thirty years. Their mission is to improve the quality of education for Brazil's impoverished youth by training educators and lobbying for better outcomes in education. Together with the help of several other coaches, they were able to train the executives of CENPEC in Action Learning so they, in turn, were able to deliver the training to all of their staff, including volunteers. They identified two key departments and five urgent issues that needed attention. They were able to gain insights into each other and improve their collaboration to devise effective solutions."
+        ]
+      },
+      {
+        "type": "cta",
+        "title": "Support more stories like this",
+        "body": "The Better World Fund keeps this kind of partnership going — donate or nominate an organization for support.",
+        "href": "/better-world",
+        "label": "Back to the Better World Fund"
+      }
+    ]
+  },
+  "seo": {
+    "description": "How Action Learning coaches in Brazil trained CENPEC's executives and staff in Action Learning to improve collaboration between departments.",
+    "sourceUrl": "https://wial.org/projects/full-scale-project-non-profit-cenpec-magali-lopes/",
+    "sourceStatus": "migrated-from-wial",
+    "sourceNotes": "Migrated from wial.org's Better World Stories (projects). The source page centered on an embedded video interview, summarized here in text since the video is hosted on wial.org's YouTube channel and not vendored. Stray commas in the source ('CENPEC, has been around', 'by, training educators, and lobbying') were removed. The WIAL interview still naming Magali Lopes is vendored as the hero image. The published month is the month the story's featured image was uploaded to wial.org, since the source page shows no date."
+  }
+},
+{
+  "id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaa0040",
+  "chapterId": null,
+  "slug": "better-world/brazil-lar-da-bencao-divina",
+  "title": "Pro-bono Program Transforms Lar da Bencao Divina, a Brazilian Non-Profit",
+  "published": true,
+  "bodyRichtext": {
+    "heroIntro": "Three Action Learning coaches gave a three-month pro bono Action Learning program to the management staff of Lar da Bencao Divina, a sixty-two-year-old non-profit in Sao Paulo.",
+    "metrics": [
+      {
+        "label": "Published",
+        "value": "Sep 2019"
+      },
+      {
+        "label": "Organization",
+        "value": "Lar da Bencao Divina (LAR)"
+      },
+      {
+        "label": "Country",
+        "value": "Brazil"
+      }
+    ],
+    "sections": [
+      {
+        "type": "media_prose",
+        "title": "Better World in Brazil",
+        "image": "/better-world/stories/brazil-lar-da-bencao-divina-1.jpg",
+        "imageAlt": "Two young musicians playing violins in a music class",
+        "paragraphs": [
+          "In 2015, the World Institute for Action Learning (WIAL), created the Better World Program. The goal was to bring Action Learning to others in a socially responsible way, by encouraging Action Learning Coaches to share their skills pro-bono with non-profit organizations to help these organizations solve problems in a more creative way, to improve functionality and better serve their constituents. Better World is now a global program. One of the leading countries living the mission of Better World is WIAL Brazil.",
+          "In 2018, three Action Learning coaches, Simone Donadel, Debora Gaudencio, and Magali Lopes, with over fifty years combined coaching experience, were asked to assist a sixty-two-year-old NPO, the Lar da Bencao Divina (Home of Divine Blessing – LAR), in Sao Paulo. LAR supports the neighborhoods surrounding the Congonhas Airport in Sao Paulo. The organization began in 1956 providing food through its soup kitchen. By the 1980s, they were offering daycare, academic support with their Pedagogical Excellence Project, and most recently, music education through their Experimental Orchestra."
+        ]
+      },
+      {
+        "type": "media_prose",
+        "title": "The Action Learning program",
+        "image": "/better-world/stories/brazil-lar-da-bencao-divina-2.jpg",
+        "imageAlt": "Young children seated at small tables in a large hall, with staff attending",
+        "paragraphs": [
+          "LAR's President learned of the benefits surrounding Action Learning and created a three-month program for their management staff. The problems initially identified were: a lack of commitment by managers to their functions; delay in delivery of monthly reporting and financial processes; a limited bus driver pool creating a safety risk for children; lower than expected writing performance of the children, and a failure of instructors to provide in-depth reports about the children to their parents.",
+          "Various groups met bi-weekly with profound results, experiencing first-hand the many hallmarks of Action Learning. They were in a safe environment, removed hierarchical barriers, asked powerful questions, listened with intention, kept an open mind, and worked in collaboration. They began meeting with teachers as a group, clarifying roles and expectations. Timelines for employee professional assessments and development were put in place. Procedures were addressed. A bus driver retention plan was created. They continue to put into practice what they have been taught."
+        ]
+      },
+      {
+        "type": "media_prose",
+        "title": "Benefits for the community",
+        "image": "/better-world/stories/brazil-lar-da-bencao-divina-3.jpg",
+        "imageAlt": "Students playing flute and recorder in a room lined with shelves of books",
+        "paragraphs": [
+          "The staff's work benefitted LAR's immediate community in the form of two significant programs. The Pedagogical Excellence Project began with a remedial learning focus and a goal to keep children off the streets. The first cohort of 110 children, ages 6-16, received academic support, supplemental foreign language classes, and cultural as well as sports activities. The Experimental Orchestra, a second project, began as a recorder lesson workshop, under the direction of Conductor Amelia Motta Cruz Zini Antunes. It grew in over just 10 years to become a genuine youth orchestra performing all over Sao Paulo. Their stage performances include free public concerts, offering others in their own community, as well as the greater city of Sao Paulo, the opportunity to experience different types of music. This opportunity isn't immediately available to these impoverished groups of citizens.",
+          "This three-tier approach, with combined efforts of staff education and constituent program development, to the program's exposure for a larger community, is the truest form of Action Learning."
+        ]
+      },
+      {
+        "type": "quote",
+        "quote": "With Action Learning we have had very practical results to integrate the team. Now we're a homogenous group, the ideas flow, we've done away with power relations. We know that we're not alone and we can ask for help, we succeeded in getting closer to one another. In addition, a lot of actions generated from the meetings have been implemented.",
+        "attribution": "President of LAR"
+      },
+      {
+        "type": "quote",
+        "quote": "Today I've learned that the more we know the cause, the more strength we'll have to come up with ideas and propose solutions. So going deep into the very root of a problem is the flash of genius!",
+        "attribution": "LAR employee"
+      },
+      {
+        "type": "cta",
+        "title": "Support more stories like this",
+        "body": "The Better World Fund keeps this kind of partnership going — donate or nominate an organization for support.",
+        "href": "/better-world",
+        "label": "Back to the Better World Fund"
+      }
+    ]
+  },
+  "seo": {
+    "description": "How a three-month pro bono Action Learning program helped a Sao Paulo non-profit integrate its team and strengthen its community programs.",
+    "sourceUrl": "https://wial.org/projects/pro-bono-program-transforms-lar-da-bencao-divina-brazilian-non-profit/",
+    "sourceStatus": "migrated-from-wial",
+    "sourceNotes": "Migrated from wial.org's Better World Stories (projects). Text is verbatim with light copy edits: the source's 'Sao Paolo' misspelling was normalized to 'Sao Paulo' (the source uses both) and its acute-accent apostrophes were normalized. All three source photos are vendored (the second and third were only 300px thumbnails on the source page; the full-size originals are used). The photos are uncaptioned on the source, so alt text describes only what is visible. The published month is the month the story's featured image was uploaded to wial.org, since the source page shows no date."
+  }
+},
+{
+  "id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaa0041",
+  "chapterId": null,
+  "slug": "better-world/kenya-karibu-centre",
+  "title": "Supporting the Karibu Centre in Nairobi",
+  "published": true,
+  "bodyRichtext": {
+    "heroIntro": "WIAL Vice President Shannon Banks discusses volunteering with the Karibu Centre in Nairobi to help it grow its performance through Action Learning.",
+    "metrics": [
+      {
+        "label": "Published",
+        "value": "Jun 2020"
+      },
+      {
+        "label": "Organization",
+        "value": "Karibu Centre"
+      },
+      {
+        "label": "Country",
+        "value": "Kenya"
+      }
+    ],
+    "sections": [
+      {
+        "type": "media_prose",
+        "title": "Pro bono coaching in Nairobi",
+        "image": "/better-world/stories/kenya-karibu-centre.jpg",
+        "imageAlt": "Shannon Banks, Vice President of WIAL Global, pictured in a WIAL Better World video interview",
+        "paragraphs": [
+          "WIAL Better World promotes Action Learning through pro-bono coaching. WIAL is working with the Karibu Centre, located in a suburb of Nairobi, Kenya. They educate approximately 100 underprivileged pre-schoolers in Swahili and English, to assist them in obtaining placements in state-run Kindergarten. Without both languages, these youngsters are unlikely to start school. In addition to the education component, the Centre employs their parents by giving them work on the Karibu aloe vera farm and in creating soap products for their social enterprise Organic Savanna.",
+          "Shannon Banks, Vice-President of WIAL, and a proponent of corporate social responsibility, discusses her involvement in volunteering with this NGO to grow their performance through Action Learning."
+        ]
+      },
+      {
+        "type": "cta",
+        "title": "Support more stories like this",
+        "body": "The Better World Fund keeps this kind of partnership going — donate or nominate an organization for support.",
+        "href": "/better-world",
+        "label": "Back to the Better World Fund"
+      }
+    ]
+  },
+  "seo": {
+    "description": "How WIAL volunteers are using pro bono Action Learning coaching to support the Karibu Centre, a pre-school and social enterprise near Nairobi.",
+    "sourceUrl": "https://wial.org/projects/supporting-karibu-centre-nairobi/",
+    "sourceStatus": "migrated-from-wial",
+    "sourceNotes": "Migrated from wial.org's Better World Stories (projects). The source page centered on an embedded video interview, summarized here in text since the video is hosted on wial.org's YouTube channel and not vendored. The source's typo 'corporate social responsibly' was corrected to 'responsibility'. The WIAL interview still naming Shannon Banks is vendored as the hero image. The published month is the month the story's featured image was uploaded to wial.org, since the source page shows no date."
+  }
+},
+{
+  "id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaa0042",
+  "chapterId": null,
+  "slug": "better-world/brazil-vida-jovem",
+  "title": "WIAL Action Learning Helps to Improve Curricular Offerings",
+  "published": true,
+  "bodyRichtext": {
+    "heroIntro": "A volunteer WIAL coach in Brazil used Action Learning to help the staff of the NGO Vida Jovem improve its curricular offerings for vulnerable young people.",
+    "metrics": [
+      {
+        "label": "Published",
+        "value": "Apr 2020"
+      },
+      {
+        "label": "Organization",
+        "value": "Vida Jovem (Young Life)"
+      },
+      {
+        "label": "Country",
+        "value": "Brazil"
+      }
+    ],
+    "sections": [
+      {
+        "type": "media_prose",
+        "title": "Coaching Vida Jovem's staff",
+        "image": "/better-world/stories/brazil-vida-jovem.jpg",
+        "imageAlt": "Cristine Napoli, labelled Brazil, pictured in a WIAL video interview",
+        "paragraphs": [
+          "WIAL Better World is working with Vida Jovem (Young Life), a Brazilian NGO that provides professional training and other development opportunities for vulnerable young people ages 14 to 21, with the aim to help them find job placements.",
+          "Cristine Napoli, a volunteer WIAL Action Learning Coach in Brazil, has provided action learning coaching for the Vida Jovem staff – helping them improve their curricular offerings. Vida Jovem realized that the Action Learning is applicable for their students as well, and Cristine continues to work with them to extend the action learning methods and other collaborative learning techniques directly to the student population."
+        ]
+      },
+      {
+        "type": "cta",
+        "title": "Support more stories like this",
+        "body": "The Better World Fund keeps this kind of partnership going — donate or nominate an organization for support.",
+        "href": "/better-world",
+        "label": "Back to the Better World Fund"
+      }
+    ]
+  },
+  "seo": {
+    "description": "How a volunteer WIAL coach helped Vida Jovem, a Brazilian NGO for vulnerable young people, improve its curriculum with Action Learning.",
+    "sourceUrl": "https://wial.org/projects/wial-action-learning-helps-improve-curricular-offerings/",
+    "sourceStatus": "migrated-from-wial",
+    "sourceNotes": "Migrated from wial.org's Better World Stories (projects). The source page centered on an embedded video interview, summarized here in text since the video is hosted on wial.org's YouTube channel and not vendored (the closing 'Check out what Cristine Napoli has to say' line was dropped with it, as was the source's outbound link to the NGO's website). The WIAL interview still naming Cristine Napoli is vendored as the hero image. The published month is the month the story's featured image was uploaded to wial.org, since the source page shows no date."
+  }
+},
+{
+  "id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaa0043",
+  "chapterId": null,
+  "slug": "better-world/brazil-pro-bono-coaching",
+  "title": "WIAL-Brazil Sets a New Bar in Pro-Bono Coaching",
+  "published": true,
+  "bodyRichtext": {
+    "heroIntro": "WIAL Brazil started pro bono coaching in 2015, created a pro bono policy in 2018, and now engages a growing number of coaches in projects that have a positive impact on society.",
+    "metrics": [
+      {
+        "label": "Published",
+        "value": "Sep 2019"
+      },
+      {
+        "label": "Organization",
+        "value": "WIAL Brazil"
+      },
+      {
+        "label": "Country",
+        "value": "Brazil"
+      }
+    ],
+    "sections": [
+      {
+        "type": "media_prose",
+        "title": "Pro bono coaching in WIAL Brazil",
+        "image": "/better-world/stories/brazil-pro-bono-coaching.jpg",
+        "imageAlt": "A facilitator addressing a seated group in a room with CENPEC branding on the wall",
+        "paragraphs": [
+          "WIAL Brazil wanted to promote the action learning methodology while having a positive impact on society. So in 2015, they kicked off their pro-bono coaching efforts — starting out strong with 80 pro-bono hours from five dedicated coaches in the first year. After this strong start, they expanded their efforts to additional coaches and continued their work, with 30 hours completed by 8 coaches in 2017 and a further 46 hours by 8 coaches in 2018.",
+          "Seeing the need, they created a pro-bono policy in 2018, documenting what pro-bono means to the organization. At least 70% of the hours involved a project must be delivered free to be considered in the WIAL policy. The policy also clearly outlines the responsibilities for coaches and the organization, to reduce confusion and ensure strong contracting. For example, coaches have the responsibility to write down the learnings they gain from doing the coaching."
+        ]
+      },
+      {
+        "type": "prose",
+        "title": "Learning by doing",
+        "paragraphs": [
+          "WIAL Brazil invites all the attendees in their CALC program to participate in these projects. It's an opportunity for them to practice their new skills – while having a positive impact."
+        ]
+      },
+      {
+        "type": "quote",
+        "quote": "They use the work on the project to help complete their certification and write their report. Working with this type of NGO is amazing and they are grateful for the opportunity. And it's good for us because we can help improve society. We have a great opportunity to show the community the value of action learning as a method to create a better world or change a life.",
+        "attribution": "Magali Lopes, WIAL Brazil"
+      },
+      {
+        "type": "prose",
+        "title": "Coaches taking the lead",
+        "paragraphs": [
+          "Coaches are coordinating their own projects now – not just board members.",
+          "By 2019, WIAL Brazil was engaging 9 coaches in their work and by May had completed 30 hours of pro-bono coaching, with 40 more hours planned. They aren't far off the 100 hours they hope to achieve by the end of the year.",
+          "\"If coaches are volunteering to be coordinators it means they are very engaged in the project.\""
+        ]
+      },
+      {
+        "type": "quote",
+        "quote": "At WIAL-Brazil we have a strong culture of positive social impact. We have more coaches working in the projects – and a growing number of people focused on doing good.",
+        "attribution": "Magali Lopes, WIAL Brazil"
+      },
+      {
+        "type": "cta",
+        "title": "Support more stories like this",
+        "body": "The Better World Fund keeps this kind of partnership going — donate or nominate an organization for support.",
+        "href": "/better-world",
+        "label": "Back to the Better World Fund"
+      }
+    ]
+  },
+  "seo": {
+    "description": "How WIAL Brazil built a pro bono coaching practice, from 80 volunteer hours in 2015 to a formal policy and a growing coach community.",
+    "sourceUrl": "https://wial.org/projects/wial-brazil-sets-new-bar-pro-bono-coaching/",
+    "sourceStatus": "migrated-from-wial",
+    "sourceNotes": "Migrated from wial.org's Better World Stories (projects). Text is verbatim with light copy edits (grammar agreement fixed in 'WIAL Brazil invites' and 'WIAL Brazil was engaging'; source en-dashes normalized to em-dashes). The first Lopes quote is attributed from the source's 'Lopes says' tag; the unattributed 'If coaches are volunteering...' quote stays in prose. The source's featured photo (a session at CENPEC) is vendored as the hero image. The published month is the month the story's featured image was uploaded to wial.org, since the source page shows no date."
+  }
+},
+{
+  "id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaa0044",
+  "chapterId": null,
+  "slug": "better-world/kenya-karibu-centre-lasting-impact",
+  "title": "Action Learning has a Lasting Impact at a Kenyan Pre-School",
+  "published": true,
+  "bodyRichtext": {
+    "heroIntro": "A Master Action Learning Coach volunteered at the Karibu Centre in Thika, Kenya, working with its staff on leadership development, and the centre says the effects have lasted.",
+    "metrics": [
+      {
+        "label": "Published",
+        "value": "Sep 2019"
+      },
+      {
+        "label": "Organization",
+        "value": "Karibu Centre"
+      },
+      {
+        "label": "Country",
+        "value": "Kenya"
+      }
+    ],
+    "sections": [
+      {
+        "type": "media_prose",
+        "title": "Why the Karibu Centre matters",
+        "image": "/better-world/stories/kenya-karibu-centre-lasting-impact.jpg",
+        "imageAlt": "A teacher standing at a chalkboard beside a seated colleague, with a group of pre-school children sitting on the floor",
+        "paragraphs": [
+          "In Kenya, 40% of the population is under the age of 14, and getting into a state-run primary school is not guaranteed. Without skills in Swahili and English, Kenyan children can be turned away from the school system, setting them up for a life without basic education.",
+          "The Karibu Centre is a community program offering pre-school, after school programs, and job readiness training for underprivileged families in Thika, a community outside of Nairobi. At the Karibu Centre, children are given a progressive, broad education including reading and writing in Swahili and English, preparing them for primary-school education and giving them life opportunities they wouldn't otherwise have. The school is financially supported by a social enterprise also run from the site, Organic Savanna: Parents are hired to work at the Centre to cultivate and harvest indigenous Aloe Vera plants, providing employment to support their families. The aloe is then used to produce skincare products. 100% of profits from the sale of Organic Savanna products fund classrooms and educational projects."
+        ]
+      },
+      {
+        "type": "prose",
+        "title": "Leadership development through Action Learning",
+        "paragraphs": [
+          "Master Action Learning Coach Shannon Banks spent two weeks with her family volunteering at the Karibu Centre, on February 2018 and 2019. As the Centre encourages skills-based volunteering, Shannon spent her time in Thika working with the Centre's staff on leadership development. Part of this work was a Design Thinking project, which looked at challenges facing the Centre and culminated in action learning with a set of Fellows interning with the site.",
+          "Another part of the work was a \"learning circle\" for the management team, where each of the managers brought a challenge to a multi-problem action learning set and the managers coached each other to find solutions. While the team worked, they practiced Social Leadership skills they identified that would help to make the most effective. Through action learning, the staff not only addressed challenges they were each facing in their leadership, but they became closer as a team, learning to trust and support each other.",
+          "The work has had a lasting impact. According to Luke Kincaid, a Board Member at the Karibu Centre and Founder of Organic Savanna:"
+        ]
+      },
+      {
+        "type": "quote",
+        "quote": "Action Learning is helping our team to communicate more effectively and make decisions with one voice. The improvements we're seeing in our team translate to greater impact in our community.",
+        "attribution": "Luke Kincaid, Board Member, Karibu Centre, and Founder, Organic Savanna"
+      },
+      {
+        "type": "cta",
+        "title": "Support more stories like this",
+        "body": "The Better World Fund keeps this kind of partnership going — donate or nominate an organization for support.",
+        "href": "/better-world",
+        "label": "Back to the Better World Fund"
+      }
+    ]
+  },
+  "seo": {
+    "description": "How a volunteer Master Action Learning Coach's leadership development work left a lasting mark on Kenya's Karibu Centre pre-school.",
+    "sourceUrl": "https://wial.org/projects/action-learning-lasting-impact-kenyan-pre-school/",
+    "sourceStatus": "migrated-from-wial",
+    "sourceNotes": "Migrated from wial.org's Better World Stories (projects). Text is verbatim with light copy edits (source smart quotes and apostrophes normalized). This is a separate source page from the Karibu Centre video story (/better-world/kenya-karibu-centre), covering the same organization from the volunteer coach's side. The source's odd phrasing ('on February 2018 and 2019', 'to make the most effective') is kept as published. The source featured photo is vendored as the hero image. The published month is the month the story's featured image was uploaded to wial.org, since the source page shows no date."
+  }
+},
+{
+  "id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaa0045",
+  "chapterId": null,
+  "slug": "better-world/cru-leadership",
+  "title": "Action Learning: \"The Way Forward\" for Cru Leadership",
+  "published": true,
+  "bodyRichtext": {
+    "heroIntro": "In December 2016, Cru was chosen as a Better World Fund recipient, and 20 of its leaders trained as Action Learning coaches; more than a year later the method had become part of its culture.",
+    "metrics": [
+      {
+        "label": "Grant awarded",
+        "value": "Dec 2016"
+      },
+      {
+        "label": "Organization",
+        "value": "Cru"
+      },
+      {
+        "label": "Country",
+        "value": "Global"
+      }
+    ],
+    "sections": [
+      {
+        "type": "prose",
+        "title": "A Better World Fund grant for Cru",
+        "paragraphs": [
+          "In December 2016, two exceptional non-profit organizations were chosen as recipients of the WIAL Better World Fund. One of these, Cru, provides Christian ministry to college campus students globally. With the Better World Fund grant, 20 nominated leaders from Cru attended a five-day intensive training to become new Action Learning coaches.",
+          "Cru originally learned about Action Learning through Michael Marquardt's book, Optimizing the Power of Action Learning. Using the techniques from this book, emerging leaders were running some six-month action learning projects. After the certification program, Cru have stepped up their use of the technique across the organization. \"We can take any team and help them work through obstacles that would normally slow them down. This gives them momentum to move forward faster on the things that matter most,\" said DeeDee Rush, one of the organization's Global EQ Workshop Strategy Coordinators.",
+          "More than one year later, Cru has used action learning in a whole variety of ways to better the organization and solve complex challenges. From leadership team meetings, to high potential development programs, action learning has become integral to the organization's culture."
+        ]
+      },
+      {
+        "type": "quote",
+        "quote": "I believe Action Learning is THE WAY FORWARD to solve complex problems in Europe.",
+        "attribution": "Paul Duncan, Western Europe Leadership Development, Cru"
+      },
+      {
+        "type": "quote",
+        "quote": "What can I say? It works!! In New York our Leader Development group of six worked on \"How do we build a powerful leadership pipeline to increase the number and quality of Hispanic leaders in Cru.\" All were fully engaged and at the end of the session, the group helped a very shy Hispanic leader be the Presenter of the findings to the entire group!",
+        "attribution": "Barry Rush, Global EQ Workshop Strategy Coordinator, Cru"
+      },
+      {
+        "type": "quote",
+        "quote": "I love action learning! One of the great outcomes I've experienced from action learning is the way it makes the dynamics of a working group 'visible' to everyone so that the group can collectively address them and move forward. People love feeling successful and effective, and you can feel the collective energy rise as issues are surfaced and positively addressed.",
+        "attribution": "Shelly Gilmore, Western Europe Agape Leadership Development, Cru"
+      },
+      {
+        "type": "cta",
+        "title": "Support more stories like this",
+        "body": "The Better World Fund keeps this kind of partnership going — donate or nominate an organization for support.",
+        "href": "/better-world",
+        "label": "Back to the Better World Fund"
+      }
+    ]
+  },
+  "seo": {
+    "description": "How a Better World Fund grant trained 20 Cru leaders as Action Learning coaches and made the method part of the organization's culture.",
+    "sourceUrl": "https://wial.org/projects/action-learning-way-forward-cru-leadership/",
+    "sourceStatus": "migrated-from-wial",
+    "sourceNotes": "Migrated from wial.org's Better World Stories (projects). Text is verbatim with light copy edits (smart quotes normalized). One sentence was left out: the source runs a second, unattributed quote (\"Action learning has become an essential learning element in developing the future generation of leadership across Agape's work across Europe.\") straight into Barry Rush's quote with only his attribution at the end, so who said it cannot be told from the page. The source featured photo is a stock-style Athletes in Action Baseball graphic that is not mentioned anywhere in the story, so it was dropped and the page is text-only. The date metric is the December 2016 grant date stated in the text."
+  }
+},
+{
+  "id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaa0046",
+  "chapterId": null,
+  "slug": "better-world/philippines-birthday-party",
+  "title": "A Birthday Party with Meaning",
+  "published": true,
+  "bodyRichtext": {
+    "heroIntro": "For her 30th birthday, Yeye Agorilla brought six WIAL-certified coaches and six Philippine organizations together for a half-day of Action Learning.",
+    "metrics": [
+      {
+        "label": "Event date",
+        "value": "21 Oct 2017"
+      },
+      {
+        "label": "Organization",
+        "value": "Six Philippine organizations"
+      },
+      {
+        "label": "Country",
+        "value": "Philippines"
+      }
+    ],
+    "sections": [
+      {
+        "type": "media_prose",
+        "title": "A different way to celebrate",
+        "image": "/better-world/stories/philippines-birthday-party.jpg",
+        "imageAlt": "A room of participants seated at numbered tables while two facilitators stand at the front",
+        "paragraphs": [
+          "What do you do when you reach a life milestone like your 30th birthday? Splurge on the latest fashion craze? Feast on excessive foods and drinks? Yeye Agorilla decided to celebrate her 30th birthday in a different way. Fueled by events happening in her home country of the Philippines and inspired by Fr. Bienvenido Nebres's and DILG Usec Austere Panadero's call to help others at a conference she attended, Yeye decided to make her birthday celebration a meaningful one. Yeye leveraged her competencies and network to make a positive impact on some local government/non-government/non-profit organizations using WIAL Action Learning.",
+          "Yeye's first contact with Action Learning was through a workshop she attended. She immediately realized how useful and powerful a tool Action Learning is. Through listening and asking questions, participants in the workshop helped one another have a better understanding of their problems and think of new ways to solve them. She saw the value of Action Learning as an avenue to help some groups in need, so she reached out to her network of Action Learning coaches to garner their support for her birthday project."
+        ]
+      },
+      {
+        "type": "prose",
+        "title": "The coaches and the organizations",
+        "paragraphs": [
+          "Six WIAL-certified Action Learning Coaches answered the call to be part of this unique birthday bash: Benjie Leogardo, Maita Beltran, Dax Cobarrubias, Bel Pacheco, Joi Natividad and Goody Directo.",
+          "Yeye then persuaded and invited six organizations to be the beneficiaries of the event. Two representatives from each of these organizations came in to share their problems. These organizations were City of Malabon, Philippines (Human Resource and Planning Division); Town of Nagcarlan, Laguna, Philippines (through the Office of the Vice Mayor); He Cares Mission (street children NGO); Aleron (non-profit all male choir); Kaya Natin Movement (NGO on good governance); and Jesse Robredo Foundation (NGO on good governance). The problems brought up by these organizations were around the areas of talent acquisition and management, more effective mobilization of resources and volunteers, sustainability of programs and good governance."
+        ]
+      },
+      {
+        "type": "prose",
+        "title": "The party",
+        "paragraphs": [
+          "Now that Yeye had the key players for her birthday party on board, she then invited the usual birthday party participants: relatives, friends from school, ex-colleagues, teachers and artists. All would become team members to join as participants in the Action Learning sessions. A Facebook event page was also created to explain about the event and about Action Learning.",
+          "The birthday party was held on 21 October 2017. In that half-day session, participants and beneficiaries got to experience first hand what Action Learning is all about, and appreciate the power it has. It was an eye-opener for them. The Action Learning sessions allowed all participants to open up their minds to other perspectives and mindsets, bring meaningful insights into and appreciation for issues around the Philippines and … to make new friends.",
+          "It was a meaningful and well-spent afternoon for Yeye, her network of Action Learning coaches, her family and friends and the 6 organizations that participated. As the late United States President Ronald Reagan said, \"We can't help everyone, but everyone can help someone.\" Yeye was thankful that she could make a difference to these six organizations through Action Learning, thereby giving more meaning to her 30th birthday celebration."
+        ]
+      },
+      {
+        "type": "cta",
+        "title": "Support more stories like this",
+        "body": "The Better World Fund keeps this kind of partnership going — donate or nominate an organization for support.",
+        "href": "/better-world",
+        "label": "Back to the Better World Fund"
+      }
+    ]
+  },
+  "seo": {
+    "description": "How Yeye Agorilla turned her 30th birthday into an Action Learning day for six Philippine organizations.",
+    "sourceUrl": "https://wial.org/projects/birthday-party-meaning/",
+    "sourceStatus": "migrated-from-wial",
+    "sourceNotes": "Migrated from wial.org's Better World Stories (projects). Text is verbatim with light copy edits (smart quotes normalized; the source's ellipsis before 'to make new friends' kept). The source photo is uncaptioned, so its alt text describes only what is visible. The date metric is the event date stated in the text."
+  }
+},
+{
+  "id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaa0047",
+  "chapterId": null,
+  "slug": "better-world/us-first-tee-of-denver",
+  "title": "A Breakthrough Solution to Reach 10,000 Children",
+  "published": true,
+  "bodyRichtext": {
+    "heroIntro": "The First Tee of Denver wanted to grow from 6,500 to 10,000 children; a free six-month Action Learning program led the team to a partnership-based approach.",
+    "metrics": [
+      {
+        "label": "Organization",
+        "value": "The First Tee of Denver"
+      },
+      {
+        "label": "Country",
+        "value": "United States"
+      }
+    ],
+    "sections": [
+      {
+        "type": "media_prose",
+        "title": "Growing a youth golf program",
+        "image": "/better-world/stories/us-first-tee-of-denver.jpg",
+        "imageAlt": "Young children and three coaches sitting together on a grassy hillside",
+        "paragraphs": [
+          "The First Tee is a US-based organization whose mission is to impact the lives of young people by providing educational programs that build character, instill life-enhancing values and promote healthy choices through the game of golf. The Denver, Colorado chapter, The First Tee of Denver, currently works with 6,500 children, but has an ambitious goal to expand its reach. By 2020, they want to help 10,000 kids. Tiffany Maurycy, CALC, started to work with First Tee of Denver as a strategy and performance improvement consultant. But when she discovered Action Learning and became certified as an Action Learning coach, she threw out the agenda she had prepared for the first meeting with the team, and decided on using Action Learning instead. And this evolved into a 6-month Single Problem Action Learning program.",
+          "By using Action Learning to look at this challenge, the team realized that the solution they had in mind – growing by recruiting more and more staff – was not feasible. A new approach of building partnerships emerged as the most powerful way to move forward. Some of these partnerships will take time to implement. But some, in particular one focusing on disabled children, was successfully implemented within a few weeks to the great satisfaction of all involved.",
+          "Action Learning not only delivers breakthrough solutions but helps a team to connect and learn in a powerful way. Tiffany incorporated First Tee's core values as an integral part of the Action Learning sessions. This enhanced the atmosphere of mutual learning and the team's willingness to practice these values allowed the team members to work together in a powerful way. Tiffany offered her Action Learning sessions and follow up coaching sessions with the team leader free of charge, for a total of 34 pro-bono hours. This is a great example of how Action Learning can make a difference in the world."
+        ]
+      },
+      {
+        "type": "prose",
+        "title": "In the team's words",
+        "paragraphs": [
+          "The testimonials from the First Tee of Denver team members speak for themselves …"
+        ]
+      },
+      {
+        "type": "quote",
+        "quote": "I wish all meetings ran like this one. Everyone's voice was heard and the time factor motivated us to drive to consensus and action.",
+        "attribution": "Susie, Volunteer, The First Tee of Denver"
+      },
+      {
+        "type": "quote",
+        "quote": "I saw something new that I didn't see as an opportunity before coming into this meeting. I also experienced the power of coming to consensus on the opportunity. I realize that we (my team & I) jump to solutions without agreement as to the problem, goal, etc.",
+        "attribution": "Paula, CEO of the First Tee of Denver"
+      },
+      {
+        "type": "quote",
+        "quote": "I found writing down my idea of what I saw the opportunity [to be] as powerful. It helped me with the leadership skill I was working on which was really listening and being bold.",
+        "attribution": "Debbie, Volunteer, The First Tee of Denver"
+      },
+      {
+        "type": "cta",
+        "title": "Support more stories like this",
+        "body": "The Better World Fund keeps this kind of partnership going — donate or nominate an organization for support.",
+        "href": "/better-world",
+        "label": "Back to the Better World Fund"
+      }
+    ]
+  },
+  "seo": {
+    "description": "How a free six-month Action Learning program helped The First Tee of Denver find a partnership route to reach 10,000 children.",
+    "sourceUrl": "https://wial.org/projects/breakthrough-solution-reach-10000-children/",
+    "sourceStatus": "migrated-from-wial",
+    "sourceNotes": "Migrated from wial.org's Better World Stories (projects). Text is verbatim with light copy edits (smart quotes normalized). The three testimonials are attributed from the source's own wording (first names plus role). The source gives no date, so there is no date metric. The source featured photo is vendored as the hero image."
+  }
+},
+{
+  "id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaa0048",
+  "chapterId": null,
+  "slug": "better-world/cc-housing-trust-cru-certification",
+  "title": "WIAL Better World Fund Recipients Receive Certification Training",
+  "published": true,
+  "bodyRichtext": {
+    "heroIntro": "C&C Housing Trust and Cru sent leaders to a five-day Action Learning Coach Certification program funded by the Better World Fund.",
+    "metrics": [
+      {
+        "label": "Organizations",
+        "value": "C&C Housing Trust and Cru"
+      }
+    ],
+    "sections": [
+      {
+        "type": "media_prose",
+        "title": "C&C Housing Trust",
+        "image": "/better-world/stories/cc-housing-trust-cru-certification.jpg",
+        "imageAlt": "Participants seated around a table taking notes at a training session",
+        "paragraphs": [
+          "C&C Housing Trust nominated leaders to attend five-day immersive Action Learning Coach Certification program, with an aim to develop in-house certified coaches who can use the WIAL method to support their organizations. At C&C the leaders used action learning to make an internal \"storyboard\" process more meaningful.",
+          "In addition, C&C plans to run sessions with housing residents on Co-Production activities and to support Resident Scrutiny Panel projects."
+        ]
+      },
+      {
+        "type": "quote",
+        "quote": "We are looking for our staff/managers to become coaches, representing each area of the organization, in order to help turn these discussions into more action based learning and solutions- coaching each other to delve a bit deeper into problems, finding suitable solutions, within a framework of peer support.",
+        "attribution": "Sophie Bryan, Organizational Development Manager, C&C Housing Trust"
+      },
+      {
+        "type": "prose",
+        "title": "Cru",
+        "paragraphs": [
+          "Cru certified their internal coaches in action learning coaching with a five-day immersive Action Learning Coach Certification program."
+        ]
+      },
+      {
+        "type": "quote",
+        "quote": "Fantastic. Enjoyed every minute of it. I feel very equipped to use this within my organization as well as in my personal life. It is a very valuable skill and a great workshop.",
+        "attribution": "WIAL Better World Fund participant feedback"
+      },
+      {
+        "type": "cta",
+        "title": "Support more stories like this",
+        "body": "The Better World Fund keeps this kind of partnership going — donate or nominate an organization for support.",
+        "href": "/better-world",
+        "label": "Back to the Better World Fund"
+      }
+    ]
+  },
+  "seo": {
+    "description": "How two Better World Fund recipients, C&C Housing Trust and Cru, trained in-house Action Learning coaches.",
+    "sourceUrl": "https://wial.org/projects/cc-housing-trust-cru/",
+    "sourceStatus": "migrated-from-wial",
+    "sourceNotes": "Migrated from wial.org's Better World Stories (projects). Text is verbatim with light copy edits (smart quotes normalized). The source covers the two organizations under 'C&C Housing Trust:' and 'Cru:' headings; the C&C sentence about plans for housing residents, which the source placed after Sophie Bryan's quote, moved up into the C&C section so each organization's content stays together. The source page lists no country or date, so the metrics omit both. The source featured photo is vendored as the hero image; its alt text describes only what is visible."
+  }
+},
+{
+  "id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaa0049",
+  "chapterId": null,
+  "slug": "better-world/brazil-childrens-house-santo-amaro",
+  "title": "Action Learning Brings \"Real Change\" to Children's House of Santo Amaro",
+  "published": true,
+  "bodyRichtext": {
+    "heroIntro": "A series of ten two-hour Action Learning sessions brought employees, board members and volunteers of Casa da Criança de Santo Amaro together to tackle the problems they had been working around.",
+    "metrics": [
+      {
+        "label": "Sessions",
+        "value": "Apr–Jul 2017"
+      },
+      {
+        "label": "Organization",
+        "value": "Casa da Criança de Santo Amaro (CCSA)"
+      },
+      {
+        "label": "Country",
+        "value": "Brazil"
+      }
+    ],
+    "sections": [
+      {
+        "type": "media_prose",
+        "title": "About the Casa da Criança de Santo Amaro",
+        "image": "/better-world/stories/brazil-childrens-house-santo-amaro.jpg",
+        "imageAlt": "Four women seated in a bright room, taking notes and talking during a working session",
+        "paragraphs": [
+          "The Casa da Criança de Santo Amaro (CCSA) is a non-profit organization assisting children and adolescents in situations of social vulnerability. Its mission is to support the development and training of these small citizens through its three services: Institutional Reception of Children and Adolescents (SAICA), Home House and School Shift Period (CCA). The organization intends to offer a warm environment, based on respect and affection, that enables the integral development of the children and adolescents.",
+          "The CCSA is composed of multidisciplinary professional and volunteer teams. The management staff is formed of a President and 11 directors, all volunteers, who usually follow up the routine activities of the organization. CCSA's main challenge is to restructure activities, establish new responsibilities and competencies, integrate volunteers into administrative decisions, identify key processes and prepare for the succession process of the board. A process of professionalization of the house management began four years ago, reducing conflicts between the Board, Staff and Volunteers.",
+          "The resources are allocated to the day-to-day issues of the entity leaving in the background investment in solutions and management alternatives. The team decided to start the Action Learning program by the CCA. As a training opportunity for Action Learning Coaches, aligned with the WIAL mission, we agreed about a project with 10 Action Learning sessions. Each session was 2 hours and took place between April and July 2017. We put focus on the group diversity with representatives of the employees, members of the board and volunteers. Beatriz, who is the current president, director in charge of human resources and the coordinator of the service participated in all the meetings."
+        ]
+      },
+      {
+        "type": "prose",
+        "title": "Problems and actions",
+        "paragraphs": [
+          "We decided to work on the problems raised by the group in each session and the problem was chosen in a democratic and consensual way. Many problems were raised, such as lack of clarity in the processes, lack of transparent rules for hiring new employees, lack of clarity regarding the role and rules for volunteers' work, lack of information flow among the different groups of workers and staff, bad communication among staff, presidency, and volunteers. At each meeting, the problems were explored and another vision emerged, more comprehensive and involving everyone, that facilitated the generation of actions for respective solutions."
+        ]
+      },
+      {
+        "type": "prose",
+        "title": "Learnings",
+        "paragraphs": [
+          "Participants described the key learning: the importance of sharing problems, listening to each other with no judgment. Sometimes, a problem has a simple solution and looking at it from different perspectives is helpful to see the solution. Participants noted their progress throughout the process and realized that nowadays the problems are discussed more naturally. Everyone related with the problem is involved in a participative way. They know that there is still a long way to go, but they have been awakened and helped to think about their own problems."
+        ]
+      },
+      {
+        "type": "prose",
+        "title": "Beatriz's testimonial",
+        "paragraphs": [
+          "Beatriz is the President of CCSA.",
+          "Since mid-April, CCSA employees were awarded a collective coaching program called the WIAL Action Learning. A methodology for solving complex, important and urgent problems and developing leadership skills. The format is brilliant because it allows small groups to think about a real problem in a deep but objective way. From consensus on the problem or challenge, participants create a plan of action and act on what is necessary for its implementation. What fascinated me the most is the way that they approach the problems:"
+        ],
+        "bullets": [
+          "Always present a real problem.",
+          "The groups are composed by one or more members of each area (without established hierarchy).",
+          "Solutions emanate from the group and an action plan is established at each meeting.",
+          "Everyone can express themselves by creating an environment that is both free and respectful."
+        ]
+      },
+      {
+        "type": "quote",
+        "quote": "The CCSA staff experience is very productive and has brought a real change. These changes were perceived in the day-to-day life of the institution, such as when each one began to address their problems and most importantly the way in which people came to listen to the other. A genuine listening.",
+        "attribution": "Beatriz, President of CCSA"
+      },
+      {
+        "type": "cta",
+        "title": "Support more stories like this",
+        "body": "The Better World Fund keeps this kind of partnership going — donate or nominate an organization for support.",
+        "href": "/better-world",
+        "label": "Back to the Better World Fund"
+      }
+    ]
+  },
+  "seo": {
+    "description": "How ten Action Learning sessions helped a Brazilian children's charity's staff, board and volunteers communicate and solve problems together.",
+    "sourceUrl": "https://wial.org/projects/childrens-house-santo-amaro/",
+    "sourceStatus": "migrated-from-wial",
+    "sourceNotes": "Migrated from wial.org's Better World Stories (projects). Text is verbatim with light copy edits: the source runs its section headings into the paragraphs ('Problems and Actions We decided...', 'Learnings Participants described...', 'Beatriz's testimonial (President of CCSA) Since mid-April...'), so they were split out as headings; the testimonial's numbered 1-4 list became bullets; a stray space before a comma was removed; smart quotes were normalized. The sessions metric is the April to July 2017 span stated in the text. The source featured photo is vendored as the hero image; it is uncaptioned, so its alt text describes only what is visible."
+  }
+},
+{
+  "id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaa0050",
+  "chapterId": null,
+  "slug": "better-world/south-africa-global-camps-africa",
+  "title": "Leaders at Global Camps Africa Receive Coaching Support",
+  "published": true,
+  "bodyRichtext": {
+    "heroIntro": "Global Camps Africa, selected in 2015 for its work with HIV-affected children in South Africa, received coaching and support for its senior leadership team from WIAL.",
+    "metrics": [
+      {
+        "label": "Selected",
+        "value": "2015"
+      },
+      {
+        "label": "Organization",
+        "value": "Global Camps Africa"
+      },
+      {
+        "label": "Country",
+        "value": "South Africa"
+      }
+    ],
+    "sections": [
+      {
+        "type": "media_prose",
+        "title": "Supporting work with HIV-affected children",
+        "image": "/better-world/stories/south-africa-global-camps-africa.jpg",
+        "imageAlt": "Young people and adult leaders in yellow and blue shirts posing under a Camp Sizanani banner",
+        "paragraphs": [
+          "Global Camps Africa was selected in 2015 for their impactful work with HIV-affected children in South Africa. At Camp Sizanani and follow-up Youth Clubs, vulnerable young people learn about protecting themselves from HIV, and gain confidence in their ability to make choices to help them survive and thrive in the face of the world's most rampant AIDS epidemic. WIAL supported the work of Global Camps Africa by providing coaching and support to the organization's senior leadership team."
+        ]
+      },
+      {
+        "type": "cta",
+        "title": "Support more stories like this",
+        "body": "The Better World Fund keeps this kind of partnership going — donate or nominate an organization for support.",
+        "href": "/better-world",
+        "label": "Back to the Better World Fund"
+      }
+    ]
+  },
+  "seo": {
+    "description": "How WIAL supported the senior leadership team of Global Camps Africa, a South African organization working with HIV-affected children.",
+    "sourceUrl": "https://wial.org/projects/global-camps-africa/",
+    "sourceStatus": "migrated-from-wial",
+    "sourceNotes": "Migrated from wial.org's Better World Stories (projects). Text is verbatim with smart quotes normalized; the source page is a single paragraph with no quotes or outcomes. The source featured photo (Camp Sizanani) is vendored as the hero image. The date metric is the 2015 selection year stated in the text."
+  }
+},
+{
+  "id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaa0051",
+  "chapterId": null,
+  "slug": "better-world/malaysia-servebetter",
+  "title": "Servebetter \"Serves Better\" with Action Learning Training",
+  "published": true,
+  "bodyRichtext": {
+    "heroIntro": "Servebetter, a Malaysian social enterprise that trains and advises NGOs, used Better World funding in 2017 to send leaders to Action Learning training and receive coaching.",
+    "metrics": [
+      {
+        "label": "Funded",
+        "value": "2017"
+      },
+      {
+        "label": "Organization",
+        "value": "Servebetter"
+      },
+      {
+        "label": "Country",
+        "value": "Malaysia"
+      }
+    ],
+    "sections": [
+      {
+        "type": "media_prose",
+        "title": "A social enterprise for NGOs",
+        "image": "/better-world/stories/malaysia-servebetter.jpg",
+        "imageAlt": "A group of people posing for a photo beside a WIAL Malaysia banner",
+        "paragraphs": [
+          "Servebetter is a social enterprise based in Malaysia dedicated to providing guidance, training and consultancy to NGOs to achieve their social impact goals. In 2017, Servebetter received Better World Funding to send several of their leaders to Action Learning training as well as receive action learning coaching around challenges they faced as an organization. This helped them achieve their goal of assisting more NGOs in developing their capabilities."
+        ]
+      },
+      {
+        "type": "prose",
+        "title": "What NGO leaders said",
+        "paragraphs": [
+          "NGO leaders who have attended the WIAL courses have greatly benefitted from the workshop and are appreciative to WIAL FSG and WIAL Malaysia for giving them this opportunity."
+        ]
+      },
+      {
+        "type": "quote",
+        "quote": "The design of the Action Learning process for problem solving enables people in the NGOs to discuss issues and challenges in a structured way. NGOs have at last found a tool that not only generates acceptable solutions but also helps the team work together by creating great bonds.",
+        "attribution": "SP Nathan, Servebetter"
+      },
+      {
+        "type": "cta",
+        "title": "Support more stories like this",
+        "body": "The Better World Fund keeps this kind of partnership going — donate or nominate an organization for support.",
+        "href": "/better-world",
+        "label": "Back to the Better World Fund"
+      }
+    ]
+  },
+  "seo": {
+    "description": "How Better World funding sent Servebetter's leaders to Action Learning training so they could help more Malaysian NGOs.",
+    "sourceUrl": "https://wial.org/projects/servebetter/",
+    "sourceStatus": "migrated-from-wial",
+    "sourceNotes": "Migrated from wial.org's Better World Stories (projects). Text is verbatim with light copy edits. The source's first testimonial sentence has a stray closing quotation mark, no opening one and no attribution, so it is shown as plain text rather than credited to a person. The source photo is uncaptioned, so its alt text describes only what is visible. The date metric is the 2017 funding year stated in the text."
+  }
+},
+{
+  "id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaa0052",
+  "chapterId": null,
+  "slug": "better-world/caribbean-uwi-model-un",
+  "title": "Action Learning Prepares Model UN Students in the Caribbean",
+  "published": true,
+  "bodyRichtext": {
+    "heroIntro": "WIAL Caribbean used pro bono Action Learning coaching to help the University of the West Indies Cave Hill contingent for the Harvard National Model United Nations become a more effective team.",
+    "metrics": [
+      {
+        "label": "Organization",
+        "value": "UWI Cave Hill Campus Model UN contingent"
+      },
+      {
+        "label": "Region",
+        "value": "Caribbean"
+      }
+    ],
+    "sections": [
+      {
+        "type": "media_prose",
+        "title": "Coaching a Model UN team",
+        "image": "/better-world/stories/caribbean-uwi-model-un.jpg",
+        "imageAlt": "Six students and a facilitator posing in front of a WIAL Caribbean banner",
+        "paragraphs": [
+          "As part of its pro bono efforts, WIAL Caribbean assisted the contingent from the University of the West Indies Cave Hill Campus that is preparing to be on the team that will represent the university at the Harvard National Model United Nations in 2019. The group is seeking to develop leadership abilities in its members and to become a more effective team. WIAL Caribbean used Action Learning, first introducing the students to the process and then coaching Action Learning sessions with them as they worked on real-life problems they had identified earlier. The participants quickly grasped the essential elements of Action Learning and the problem presenter indicated that the session had shifted her perspectives on the problem and allowed her to see options that she had not previously considered."
+        ]
+      },
+      {
+        "type": "quote",
+        "quote": "The action learning experience was exceptional! The session involved a hands-on learning approach which was enjoyed by all the team members present. The facilitator, Mr Mourillon proved to be very knowledgeable on the method and guided the participants toward finding their own solution to the problem on the table. Action learning creates a holistic learning experience for all involved by discouraging group think and opening a space where all opinions and contributions are essential to finding a resolution.",
+        "attribution": "Annika Bellot, Coordinator and Vice President of the Students Guild, UWI Cave Hill"
+      },
+      {
+        "type": "cta",
+        "title": "Support more stories like this",
+        "body": "The Better World Fund keeps this kind of partnership going — donate or nominate an organization for support.",
+        "href": "/better-world",
+        "label": "Back to the Better World Fund"
+      }
+    ]
+  },
+  "seo": {
+    "description": "How WIAL Caribbean's pro bono Action Learning coaching helped a Harvard Model UN student team build leadership and teamwork.",
+    "sourceUrl": "https://wial.org/projects/uwi-cave-hill-campus-harvard-national-model-united-nations-contingent/",
+    "sourceStatus": "migrated-from-wial",
+    "sourceNotes": "Migrated from wial.org's Better World Stories (projects). Text is verbatim with light copy edits (the quote's attribution, which the source puts in the lead-in sentence, moved to the quote block). The source gives no country or date, so the metrics show the Caribbean region and no date. The source featured photo is vendored as the hero image; its alt text describes only what is visible."
+  }
+},
+{
+  "id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaa0053",
+  "chapterId": null,
+  "slug": "better-world/thailand-your-solution-space",
+  "title": "A Solution Space for Freelancers & Solopreneurs – Another Audience for Action Learning",
+  "published": true,
+  "bodyRichtext": {
+    "heroIntro": "Your Solution Space, a series of free Action Learning-style workshops for freelancers and solopreneurs in Chiang Mai, Thailand, reached 130 participants in 24 workshops in its first year.",
+    "metrics": [
+      {
+        "label": "Published",
+        "value": "Sep 2019"
+      },
+      {
+        "label": "Organization",
+        "value": "Your Solution Space"
+      },
+      {
+        "label": "Country",
+        "value": "Thailand"
+      }
+    ],
+    "sections": [
+      {
+        "type": "prose",
+        "title": "Another audience for Action Learning",
+        "paragraphs": [
+          "Traditionally, Action Learning takes place within large corporations. A new program, Your Solution Space, found a broader application of Action Learning that can benefit many more constituents than was initially thought after a successful trial in Chiang Mai, Thailand. Freelancers and solopreneurs enjoy more flexibility, and the freedom to work. There are many digital nomads in this part of the world, connected mainly through social media platforms. Their nomadic lifestyle can be an obstacle for creating meaningful connections within such a transient community. Action Learning can connect individuals with other individuals to build an alternative community for business owners.",
+          "Your Solution Space was created as a series of Action Learning-style workshops for freelancers and entrepreneurs associated with one of the co-working spaces catering to digital nomads in Chiang Mai, Thailand. The aim is to provide a cost-free platform, in a safe environment for individuals to attend, on a volunteer basis, meeting once per week prepared to help others, and receive help as well. Participants are encouraged to share personal, as well as work-related problems that require alternative perspectives."
+        ]
+      },
+      {
+        "type": "prose",
+        "title": "What the workshops offer",
+        "paragraphs": [
+          "Action Learning workshops for individuals complement the idea of co-working that those in a traditional corporate environment experience daily. This method provides a semi-formal platform to bring these transient individuals together, and facilitates life-changing conversations amongst another leadership practice cohort. Business strategy, sustainability of income, and time management are common challenges discussed in these forums. The most common issue for freelancers and solopreneurs is the blurred line between their personal lives and their work lives. The underlying struggles for this group in Chiang Mai, are focus, motivation and loneliness. When exploring the root cause of a problem, the group would inevitably drift from the work issues to the personal issues, and from the personal issues to the work issues. Having a safe, quieter space to connect with other business owners was a boon to creativity & problem-solving.",
+          "Participants are encouraged to pause and reflect, which in turn allows them to explore more than just the symptoms of a problem. Through deeper discussions, they realize they are creating deeper connections with each other. Discussions among these participants are intimate. The Action Learning process enables participants to establish a high level of trust among each other in the span of a single session. These workshops offer discussions to assist these individuals with their issues that can benefit the future of their businesses."
+        ]
+      },
+      {
+        "type": "prose",
+        "title": "Results in the first year",
+        "paragraphs": [
+          "In their first year, 130 participants have participated in 24 workshops. Graduates return often to help new participants, as they want to help others and inherently benefit from listening to new problems. Programs such as these have been cost-prohibitive to this group. Your Solution Space has created new opportunities for success for these single business owners and is contributing toward a Better World."
+        ]
+      },
+      {
+        "type": "prose",
+        "title": "What participants said",
+        "paragraphs": [
+          "\"This was my first encounter with Action Learning as a process for gaining fresh insight into the challenges and then understanding where the solutions lay. What I found most helpful was the different perspectives each person exposed through their asking empowering questions.\"",
+          "\"There is value in talking about personal things to perfect strangers. Everyone has something to offer.\"",
+          "\"No team, no gain.\""
+        ]
+      },
+      {
+        "type": "cta",
+        "title": "Support more stories like this",
+        "body": "The Better World Fund keeps this kind of partnership going — donate or nominate an organization for support.",
+        "href": "/better-world",
+        "label": "Back to the Better World Fund"
+      }
+    ]
+  },
+  "seo": {
+    "description": "How free Action Learning-style workshops gave freelancers and digital nomads in Chiang Mai a community and a way to solve problems together.",
+    "sourceUrl": "https://wial.org/projects/solution-space-freelancers-solopreneurs/",
+    "sourceStatus": "migrated-from-wial",
+    "sourceNotes": "Migrated from wial.org's Better World Stories (projects). Text is verbatim with light copy edits (source typos fixed: 'Feelancers' to 'Freelancers', 'compliment' to 'complement'). The source page has no photo, so the page is text-only. The three participant quotes are unattributed on the source, so they are shown as plain quoted lines rather than credited to a person. The published month is the source's sitemap date (23 Sep 2019), the only story with one."
+  }
+},
+{
   "id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaa0032",
   "chapterId": null,
   "slug": "community-impact",
@@ -3555,7 +4824,7 @@
     "metrics": [
       { "label": "Pro bono coaching", "value": "WIAL Gives Back" },
       { "label": "Grant funding", "value": "Better World Fund" },
-      { "label": "Better World stories", "value": "8" }
+      { "label": "Better World stories", "value": "28" }
     ],
     "sections": [
       {
