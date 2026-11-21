@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import { formOutcomeEvent, trackEvent } from "@/lib/analytics";
 import { submitAffiliateInquiry, type AffiliateInquiryResult } from "./actions";
@@ -17,16 +18,40 @@ export function AffiliateInquiryForm() {
       setResult(response);
       trackEvent(formOutcomeEvent("affiliate_inquiry", response));
 
-      if (response.success) {
-        const form = document.getElementById("affiliate-inquiry-form");
-        if (form instanceof HTMLFormElement) form.reset();
-      }
     } catch {
       setResult({ error: "Something went wrong. Please try again." });
       trackEvent(formOutcomeEvent("affiliate_inquiry", null));
     } finally {
       setIsSubmitting(false);
     }
+  }
+
+  if (result?.success) {
+    return (
+      <div aria-live="polite" className="mt-6 space-y-6" role="status">
+        <div className="account-flash is-success">
+          Thank you. Your inquiry was sent to the WIAL team.
+        </div>
+        <div>
+          <h3 className="text-lg font-semibold text-teal-deep">What happens next</h3>
+          <ol className="mt-3 list-decimal space-y-2 pl-5 text-base leading-7 text-foreground/80">
+            <li>We reply by email, usually within a few business days.</li>
+            <li>We set up a call to talk about your region and your goals.</li>
+            <li>If it is a good fit, WIAL shares the affiliate agreement and you plan your launch.</li>
+          </ol>
+        </div>
+        <p className="text-base text-foreground/80">
+          While you wait, explore the{" "}
+          <Link
+            className="font-semibold text-teal underline underline-offset-4"
+            href="/resources"
+          >
+            Action Learning library and WIAL Talk scenarios
+          </Link>
+          .
+        </p>
+      </div>
+    );
   }
 
   return (
@@ -72,11 +97,6 @@ export function AffiliateInquiryForm() {
         </p>
       </div>
 
-      {result?.success ? (
-        <div className="account-flash is-success">
-          Thank you. Your inquiry was sent and a member of the WIAL team will be in touch.
-        </div>
-      ) : null}
       {result?.error ? <div className="account-flash is-error">{result.error}</div> : null}
     </form>
   );
