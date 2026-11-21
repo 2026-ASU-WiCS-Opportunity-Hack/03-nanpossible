@@ -1,12 +1,13 @@
 import { Metadata } from "next";
+import { CertificationFindTraining } from "@/components/certification-find-training";
 import { CertificationHubSections } from "@/components/certification-hub";
 import { renderSection } from "@/components/content-page";
 import { getClientTestimonials, getContentPage } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "Certification",
+  title: "How to become a Certified Action Learning Coach",
   description:
-    "WIAL certification programs — CALC, PALC, and MALC — plus Foundations of Action Learning, the CALC certification course, in-house programs, and how to become a coach.",
+    "The WIAL certification journey step by step — Foundations, CALC, PALC, and MALC — with prerequisites, time commitment, renewal, what you get, and where to find training in your country.",
 };
 
 export default async function CertificationHubPage() {
@@ -23,6 +24,7 @@ export default async function CertificationHubPage() {
   return (
     <main className="container mx-auto px-4 py-8 max-w-5xl">
       <CertificationHubSections
+        findTraining={<CertificationFindTraining />}
         beforeContact={highlights?.map((section) => renderSection(section, { testimonials }))}
       />
     </main>

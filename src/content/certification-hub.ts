@@ -1,7 +1,20 @@
 import type {
   CertificationRecertificationRule,
   CertificationTrack,
+  CertificationTrackKey,
 } from "@/lib/types";
+
+export type CertificationJourneyStep = {
+  name: string;
+  title: string;
+  /** Opens this level's full requirements; absent for Foundations. */
+  trackKey?: CertificationTrackKey;
+  /** In-page link for steps without a track. */
+  href?: string;
+  prerequisites: string;
+  time: string;
+  validity: string;
+};
 
 type CertificationProgressionStep = {
   title: string;
@@ -10,7 +23,9 @@ type CertificationProgressionStep = {
 
 export const certificationHero = {
   eyebrow: "Global certification hub",
-  title: "The WIAL certification pathway, from CALC to MALC.",
+  primaryCta: { href: "/become-a-coach", label: "Become a coach" },
+  secondaryCta: { href: "#find-training", label: "Find training in your country" },
+  title: "How to become a Certified Action Learning Coach",
   intro:
     "WIAL offers three levels of certification for Action Learning coaches. Each level represents increasing expertise, experience, and leadership in the Action Learning community. WIAL is an ICF-accredited training provider, and our CALC certification is an accredited ICF CCE program.",
   metrics: [
@@ -131,6 +146,88 @@ export const certificationProgression: CertificationProgressionStep[] = [
     body: "Combine 500+ hours of senior-level experience with publication, presenting, mentoring, and broad contribution to the WIAL method.",
   },
 ];
+
+const VALIDITY = "Valid for 2 years";
+
+/**
+ * The numbered "how to become a coach" journey (#160). Steps 2-4 map to
+ * `certificationTracks` by `trackKey` (the card opens that level's full
+ * eligibility and requirements); step 1 links to the Foundations section.
+ * Hours and session counts repeat the track requirements above; validity and
+ * renewal repeat `certificationRecertificationRules` below — keep them in sync.
+ */
+export const certificationJourney: CertificationJourneyStep[] = [
+  {
+    name: "Foundations",
+    title: "Foundations of Action Learning",
+    href: "#foundations",
+    prerequisites: "None. Open to anyone considering Action Learning coaching.",
+    time: "2 days, as an intensive session.",
+    validity: "Certificate of participation. Nothing to renew.",
+  },
+  {
+    name: "CALC",
+    title: "Certified Action Learning Coach",
+    trackKey: "calc",
+    prerequisites: "Foundations, in person or as e-learning.",
+    time: "E-learning, a live CALC workshop, 5 WIAL Talk scenarios, and two 90-minute coached sessions.",
+    validity: `${VALIDITY}. Renew with coaching hours and one WIAL activity.`,
+  },
+  {
+    name: "PALC",
+    title: "Professional Action Learning Coach",
+    trackKey: "palc",
+    prerequisites: "A current CALC certification.",
+    time: "100+ hours of Action Learning experience (50+ coaching) and one long-term project.",
+    validity: `${VALIDITY}. Renew with coaching hours, two WIAL activities, and leading one program.`,
+  },
+  {
+    name: "MALC",
+    title: "Master Action Learning Coach",
+    trackKey: "malc",
+    prerequisites: "A current PALC certification.",
+    time: "500+ hours of experience, plus publishing and presenting on Action Learning.",
+    validity: `${VALIDITY}. Renew with coaching hours, four WIAL activities, mentoring, and publishing.`,
+  },
+];
+
+export const certificationWhatYouGet = {
+  id: "what-you-get",
+  title: "What you get",
+  items: [
+    {
+      title: "ICF-accredited training",
+      body: "WIAL is an ICF-accredited training provider, and the CALC certification is an accredited ICF Continuing Coach Education (CCE) program.",
+    },
+    {
+      title: "A place in the coach directory",
+      body: "Certified coaches are listed in WIAL's public coach directory, where organizations look for an Action Learning coach.",
+      linkLabel: "See the coach directory",
+    },
+    {
+      title: "Global recognition",
+      body: "Your certification is recognized by WIAL affiliates and the organizations they serve on six continents.",
+    },
+    {
+      title: "After you are certified",
+      body: "You are authorized to coach Action Learning on behalf of WIAL, you join a worldwide community of coaches, and you can keep building toward PALC and MALC.",
+    },
+  ],
+} as const;
+
+export const certificationFindTraining = {
+  id: "find-training",
+  title: "Find training in your country",
+  intro:
+    "Certification courses are run by WIAL affiliates. Choose your country to see the local affiliate and its upcoming courses.",
+  missingCountry: "Don't see your country?",
+  coachHref: "/become-a-coach",
+  coachLabel: "Tell us where you are",
+  coachAfter: " and WIAL will connect you with the nearest affiliate.",
+  affiliatePrompt: "Want to bring WIAL to your country?",
+  affiliateHref: "/become-an-affiliate",
+  affiliateLabel: "Become an affiliate",
+} as const;
 
 export const certificationWhy = {
   id: "why",
