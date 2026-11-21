@@ -331,20 +331,17 @@ html.cursor-large * {
   gap: 2.5rem;
 }
 
+/* A plain text label, deliberately not a pill: with a border and fill it
+   read as a button, and it is never clickable (#180). */
 .eyebrow {
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
-  border: 1px solid rgba(23, 53, 51, 0.14);
-  border-radius: 999px;
-  background: rgba(255, 250, 242, 0.78);
-  padding: 0.45rem 0.85rem;
   color: var(--teal);
   font-size: 0.82rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  border-color: rgba(139, 113, 112, 0.2);
 }
 
 .eyebrow::before {
@@ -2201,6 +2198,11 @@ html:is(.contrast-dark, .contrast-high) .account-sidebar-link.is-active::before 
 html:is(.contrast-dark, .contrast-high) .site-chatbot-message.is-assistant {
   background: #ffffff !important;
   border: 1px solid #000000 !important;
+}
+
+/* The contrast themes give the label a white fill; keep the text off its edge. */
+html:is(.contrast-dark, .contrast-high) .eyebrow {
+  padding: 0.15rem 0.45rem;
 }
 
 html:is(.contrast-dark, .contrast-high) .site-chatbot-message.is-user {
