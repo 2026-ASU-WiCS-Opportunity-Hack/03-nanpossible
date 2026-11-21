@@ -4,6 +4,7 @@ import {
   getTenantCandidate,
   isExternalHref,
   navigationItems,
+  normalizeChapterSlug,
   normalizeSegments,
   shouldBypassTenantRewrite,
 } from "./routing";
@@ -45,7 +46,7 @@ describe("normalizeSegments", () => {
     });
     expect(normalizeSegments(["action-learning", "benefits"])).toEqual({
       slug: null,
-      redirectTo: "/benefits",
+      redirectTo: "/for-organizations",
     });
     expect(normalizeSegments(["past-conferences"])).toEqual({
       slug: null,
@@ -164,10 +165,11 @@ describe("normalizeSegments", () => {
     });
   });
 
-  it("resolves the benefits page slug", () => {
+  it("permanently redirects the retired benefits page to /for-organizations", () => {
     expect(normalizeSegments(["benefits"])).toEqual({
-      slug: "benefits",
-      redirectTo: null,
+      slug: null,
+      redirectTo: "/for-organizations",
+      permanent: true,
     });
   });
 
@@ -275,11 +277,27 @@ describe("normalizeSegments", () => {
     });
   });
 
-  it("resolves the our-services page slug", () => {
+  it("permanently redirects the retired our-services page to /for-organizations", () => {
     expect(normalizeSegments(["our-services"])).toEqual({
-      slug: "our-services",
+      slug: null,
+      redirectTo: "/for-organizations",
+      permanent: true,
+    });
+  });
+
+  it("resolves the for-organizations page slug and lists it in the nav", () => {
+    expect(normalizeSegments(["for-organizations"])).toEqual({
+      slug: "for-organizations",
       redirectTo: null,
     });
+    expect(navigationItems).toContainEqual({ href: "/for-organizations", label: "For Organizations" });
+  });
+
+  it("keeps other legacy aliases temporary and leaves tenant routing unchanged", () => {
+    expect(normalizeSegments(["action-learning", "benefits"])).not.toHaveProperty("permanent");
+    expect(normalizeSegments(["about-wial"])).not.toHaveProperty("permanent");
+    expect(normalizeChapterSlug("benefits")).toEqual({ slug: "benefits", redirectTo: null });
+    expect(normalizeChapterSlug("our-services")).toEqual({ slug: "our-services", redirectTo: null });
   });
 
   it("redirects legacy leadership paths to the about page", () => {

@@ -2,9 +2,10 @@
 
 import { useState } from 'react';
 import { formOutcomeEvent, trackEvent } from '@/lib/analytics';
+import { CONTACT_ABOUT_OPTIONS } from '@/lib/contact-about';
 import { submitContactForm } from './actions';
 
-export function ContactForm() {
+export function ContactForm({ defaultAbout = '' }: { defaultAbout?: string }) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [result, setResult] = useState<{ success?: boolean; error?: string } | null>(null);
 
@@ -88,19 +89,17 @@ export function ContactForm() {
             id="about"
             name="about"
             required
-            defaultValue=""
+            defaultValue={defaultAbout}
             className="mt-1 block w-full rounded-md border border-gray-300 px-4 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
           >
             <option value="" disabled>
               Choose
             </option>
-            <option value="Action Learning">Action Learning</option>
-            <option value="Certification">Certification</option>
-            <option value="Programs">Programs</option>
-            <option value="Solution Spheres">Solution Spheres</option>
-            <option value="Events">Events</option>
-            <option value="WIAL">WIAL</option>
-            <option value="Other">Other</option>
+            {CONTACT_ABOUT_OPTIONS.map((option) => (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            ))}
           </select>
         </div>
 

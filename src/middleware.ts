@@ -17,6 +17,8 @@ function isGlobalOnlyPath(pathname: string) {
     pathname.startsWith("/coaches/") ||
     pathname === "/certification" ||
     pathname.startsWith("/certification/") ||
+    pathname === "/for-organizations" ||
+    pathname.startsWith("/for-organizations/") ||
     pathname === "/clients" ||
     pathname.startsWith("/clients/")
   );

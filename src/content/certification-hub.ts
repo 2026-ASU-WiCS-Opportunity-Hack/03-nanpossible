@@ -262,7 +262,7 @@ export const certificationBecomeACoach = {
     "Join WIAL and notice improvements in your work, from problem solving to idea generation.",
   servicesBefore: "Check out our ",
   servicesLabel: "Solution Spheres",
-  servicesHref: "/our-services",
+  servicesHref: "/for-organizations",
   servicesAfter: " and the services we offer.",
   contactHref: "/contact",
   contactLabel: "Ask about becoming a coach",

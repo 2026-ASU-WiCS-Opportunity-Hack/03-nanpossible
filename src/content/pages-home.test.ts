@@ -48,11 +48,12 @@ describe("global home fixture (#157, #158)", () => {
     expect(types).not.toContain("feature_grid");
   });
 
-  it("opens with the teaser video, then the journey cards, then the CTAs", () => {
+  it("opens with the teaser video, then the journey cards, client quotes, then the CTAs", () => {
     const sections = globalHome().bodyRichtext.sections;
     expect(sections.map((section) => section.type)).toEqual([
       "video",
       "journey_cards",
+      "testimonial_highlights",
       "cta",
       "cta",
       "cta",

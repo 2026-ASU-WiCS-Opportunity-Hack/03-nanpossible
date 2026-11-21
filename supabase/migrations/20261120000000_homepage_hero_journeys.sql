@@ -85,6 +85,13 @@ values (
                 )
             ),
             jsonb_build_object(
+                'type', 'testimonial_highlights',
+                'title', 'What our clients say',
+                'description', 'Leaders at organizations around the world share what Action Learning has done for their teams.',
+                'audience', 'home',
+                'limit', 3
+            ),
+            jsonb_build_object(
                 'type', 'cta',
                 'title', 'WIAL Better World Fund',
                 'body', 'Established in 2015 to bring Action Learning services to community-based organizations around the world.',

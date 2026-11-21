@@ -133,6 +133,7 @@ export function gtagScriptSrc(measurementId: string) {
 export type CtaLocation =
   | "hero"
   | "cta_section"
+  | "testimonial_highlights"
   | "feature_grid"
   | "journey_cards"
   | "contact_cards"

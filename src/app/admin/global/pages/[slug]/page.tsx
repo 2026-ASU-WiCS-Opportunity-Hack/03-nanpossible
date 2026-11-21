@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { AccountPageShell } from "@/components/account-page-shell";
 import { requireAccountViewer } from "@/lib/auth";
-import { getGlobalPageBySlugForAdmin } from "@/lib/content";
+import { getClientTestimonials, getGlobalPageBySlugForAdmin } from "@/lib/content";
 import { PageContentEditor } from "./PageContentEditor";
 
 type GlobalPageEditorPageProps = {
@@ -19,6 +19,8 @@ export default async function GlobalPageEditorPage({
     notFound();
   }
 
+  const testimonials = slug === "clients" ? [] : await getClientTestimonials();
+
   return (
     <AccountPageShell
       badge="Site pages"
@@ -31,6 +33,7 @@ export default async function GlobalPageEditorPage({
         initialPublished={page.published}
         initialTitle={page.title}
         slug={slug}
+        testimonials={testimonials}
       />
     </AccountPageShell>
   );
