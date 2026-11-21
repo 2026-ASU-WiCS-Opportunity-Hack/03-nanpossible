@@ -79,7 +79,7 @@ describe("certification hub data", () => {
       "Hospitality",
       "Technology",
     ]);
-    expect(content.becomeACoach.servicesHref).toBe("/our-services");
+    expect(content.becomeACoach.servicesHref).toBe("/for-organizations");
     expect(content.becomeACoach.contactHref).toBe("/contact");
 
     expect(content.programs.id).toBe("programs");

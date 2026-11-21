@@ -57,8 +57,7 @@ export const TESTIMONIAL_AUDIENCES = [
 export const TESTIMONIAL_AUDIENCE_LABELS: Record<TestimonialAudience, string> = {
   home: "Home page",
   certification: "Certification page",
-  // TODO(#162): rename to "For organizations page" when organizations moves to /for-organizations.
-  organizations: "Our services page",
+  organizations: "For organizations page",
   affiliate: "Become an affiliate page",
 };
 
@@ -72,6 +71,9 @@ export const TESTIMONIAL_HIGHLIGHTS_UNSUPPORTED_SLUGS: readonly string[] = [
   "clients",
   "resources",
   "partners",
+  // Retired pages that now redirect to /for-organizations (#162).
+  "our-services",
+  "benefits",
   // Dedicated routes that don't render content_pages sections.
   "contact",
   "certification/in-house-programs",
@@ -178,13 +180,12 @@ export function audiencePatchFromItems(items: unknown): AudienceTagPatch {
 
 /**
  * Public paths to refresh after saving a page's content.
- * TODO(#162): swap "/our-services" for "/for-organizations" when the block moves.
  */
 export function testimonialPathsToRevalidate(slug: string): string[] {
   const own = slug === "home" ? "/" : `/${slug}`;
   const paths =
     slug === "clients"
-      ? [own, "/", "/certification", "/our-services", "/become-an-affiliate"]
+      ? [own, "/", "/certification", "/for-organizations", "/become-an-affiliate"]
       : [own];
   return [...new Set(paths)];
 }

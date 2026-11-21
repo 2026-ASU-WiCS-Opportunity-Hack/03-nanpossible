@@ -93,7 +93,7 @@ describe("page fixtures", () => {
   it.each([
     ["home", "home"],
     ["certification", "certification"],
-    ["our-services", "organizations"],
+    ["for-organizations", "organizations"],
     ["become-an-affiliate", "affiliate"],
   ])("%s carries one testimonial_highlights section for %s with selection rules only", (slug, audience) => {
     const sections = globalPage(slug).bodyRichtext.sections.filter((s) => s.type === "testimonial_highlights");
@@ -183,7 +183,9 @@ describe("admin helpers", () => {
   it("lists paths to revalidate", () => {
     expect(testimonialPathsToRevalidate("clients")).toHaveLength(5);
     expect(testimonialPathsToRevalidate("home")).toEqual(["/"]);
-    expect(testimonialPathsToRevalidate("our-services")).toEqual(["/our-services"]);
+    expect(testimonialPathsToRevalidate("clients")).toContain("/for-organizations");
+    expect(testimonialPathsToRevalidate("clients")).not.toContain("/our-services");
+    expect(testimonialPathsToRevalidate("for-organizations")).toEqual(["/for-organizations"]);
   });
 
   it("knows which pages cannot show highlights", () => {
