@@ -553,6 +553,28 @@ html.cursor-large * {
   }
 }
 
+.newsletter-signup {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.newsletter-signup-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.newsletter-signup-row .field-input {
+  flex: 1 1 13rem;
+  min-width: 0;
+}
+
+.newsletter-signup-consent {
+  color: var(--neutral);
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
 .button-link.ghost {
   background: transparent;
   color: var(--foreground);

@@ -55,7 +55,7 @@ describe("global home fixture (#157, #158)", () => {
       "journey_cards",
       "testimonial_highlights",
       "cta",
-      "cta",
+      "newsletter_signup",
       "cta",
     ]);
   });

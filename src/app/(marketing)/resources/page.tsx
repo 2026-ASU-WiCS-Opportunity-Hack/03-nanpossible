@@ -1,3 +1,4 @@
+import { NEWSLETTER_HEADLINE, NEWSLETTER_PITCH } from "@/lib/newsletter-fields";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ContentPage, renderSection } from "@/components/content-page";
@@ -72,6 +73,12 @@ export default async function ResourcesPage() {
       <LibraryCatalog items={cards} />
       <ScenarioArchive scenarios={scenarios} />
       {body.sections.map((section) => renderSection(section))}
+      {renderSection({
+        type: "newsletter_signup",
+        title: NEWSLETTER_HEADLINE,
+        body: NEWSLETTER_PITCH,
+        source: "resources",
+      })}
     </ContentPage>
   );
 }

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { NewsletterSignupBlock } from "@/components/newsletter-signup";
 import { formOutcomeEvent, trackEvent } from "@/lib/analytics";
 import { countries } from "@/lib/countries";
 import { submitCoachInterest, type CoachInterestResult } from "./actions";
@@ -15,10 +16,12 @@ const RESOURCE_LINKS = [
 export function CoachInterestForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [result, setResult] = useState<CoachInterestResult | null>(null);
+  const [submittedEmail, setSubmittedEmail] = useState("");
 
   async function handleSubmit(formData: FormData) {
     setIsSubmitting(true);
     setResult(null);
+    setSubmittedEmail(String(formData.get("email") ?? "").trim());
 
     try {
       const response = await submitCoachInterest(formData);
@@ -82,6 +85,17 @@ export function CoachInterestForm() {
             ))}
           </ul>
         </div>
+        {result.subscribed ? (
+          <p className="text-sm text-foreground/70">
+            You are also on the list for WIAL news about events and certification dates.
+          </p>
+        ) : (
+          <NewsletterSignupBlock
+            defaultEmail={submittedEmail}
+            source="become_a_coach"
+            title="Stay in the loop"
+          />
+        )}
       </div>
     );
   }

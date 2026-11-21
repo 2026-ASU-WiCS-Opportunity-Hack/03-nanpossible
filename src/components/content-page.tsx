@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { NewsletterSignup } from "@/components/newsletter-signup";
 import { TrackedLink } from "@/components/analytics/tracked-link";
 import { PartnerPricing } from "@/components/partner-pricing";
 import { isOutboundHref } from "@/lib/analytics";
@@ -551,6 +552,23 @@ export function renderSection(section: ContentSection, context: RenderSectionCon
                 <p className="mt-1 text-sm text-foreground/70">{person.role}</p>
               </article>
             ))}
+          </div>
+        </section>
+      );
+    case "newsletter_signup":
+      return (
+        <section
+          className="rounded-[1.9rem] border border-line bg-[linear-gradient(135deg,rgba(209,0,52,0.05),rgba(138,143,0,0.04))] p-6 md:p-8"
+          id="newsletter"
+          key={section.title}
+        >
+          <div className="grid gap-5 md:grid-cols-2 md:items-center">
+            <div className="space-y-3">
+              <span className="eyebrow">Stay in touch</span>
+              <h2 className="section-title text-teal-deep">{section.title}</h2>
+              <p className="text-base leading-7 text-foreground/78">{section.body}</p>
+            </div>
+            <NewsletterSignup source={section.source ?? "home"} />
           </div>
         </section>
       );
