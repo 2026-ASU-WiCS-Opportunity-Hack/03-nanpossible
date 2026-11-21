@@ -12,11 +12,7 @@
       { "label": "Become a certified coach", "href": "/certification", "variant": "secondary" }
     ],
     "heroIntro": "WIAL Action Learning helps organizations turn real business challenges into opportunities for breakthrough solutions, stronger teams, and lasting leadership development.",
-    "metrics": [
-      { "label": "Certification levels", "value": "4" },
-      { "label": "Solution categories", "value": "4" },
-      { "label": "Global affiliates", "value": "8" }
-    ],
+    "metrics": [],
     "sections": [
       {
         "type": "video",
@@ -68,7 +64,7 @@
       {
         "type": "cta",
         "title": "WIAL Better World Fund",
-        "body": "Established in 2015 to bring Action Learning services to community-based organizations around the world.",
+        "body": "Established in 2015 to bring Action Learning services to community-based organizations around the world, so we can fulfill our vision of a world where every community has the power to solve its own toughest problems.",
         "href": "/better-world",
         "label": "Learn more"
       },

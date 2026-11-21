@@ -34,12 +34,8 @@ describe("global home fixture (#157, #158)", () => {
       { label: "Explore solutions", href: "/for-organizations", variant: "primary" },
       { label: "Become a certified coach", href: "/certification", variant: "secondary" },
     ]);
-    // At-a-glance metrics are untouched by the hero rewrite.
-    expect(home.bodyRichtext.metrics).toEqual([
-      { label: "Certification levels", value: "4" },
-      { label: "Solution categories", value: "4" },
-      { label: "Global affiliates", value: "8" },
-    ]);
+    // The "At a glance" box was removed (#175): its counts had gone stale.
+    expect(home.bodyRichtext.metrics).toEqual([]);
   });
 
   it("has no Purpose / Vision / Mission statements and no offers cards", () => {
