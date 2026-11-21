@@ -1,5 +1,8 @@
 'use server';
 
+import { coachLeadRecipients } from '@/lib/coach-interest';
+import { buildContactNotificationEmail } from '@/lib/contact-notification';
+import { sendResendEmail } from '@/lib/resend';
 import { createClient } from '@/lib/supabase/server';
 import { revalidatePath } from 'next/cache';
 
@@ -50,11 +53,36 @@ export async function submitContactForm(formData: FormData) {
       console.error('Supabase error:', error);
       return { error: 'Failed to send message. Please try again.' };
     }
-
-    revalidatePath('/contact');
-    return { success: true };
   } catch (error) {
     console.error('Contact form error:', error);
     return { error: 'An unexpected error occurred. Please try again.' };
   }
+
+  // The message is already stored, so a notification problem never fails the form.
+  try {
+    const to = coachLeadRecipients(process.env.COACH_LEAD_NOTIFY_EMAILS);
+    if (to.length === 0) {
+      console.warn('Contact form: COACH_LEAD_NOTIFY_EMAILS is not set; notification skipped.');
+    } else {
+      const result = await sendResendEmail({
+        to,
+        ...buildContactNotificationEmail({
+          name: name.trim(),
+          email: email.trim(),
+          country: country.trim(),
+          about: about.trim(),
+          message: message.trim(),
+          subscribedToNewsletter,
+        }),
+      });
+      if (!result.delivered) {
+        console.error('Contact form notification failed:', result.error);
+      }
+    }
+  } catch (error) {
+    console.error('Contact form notification failed:', error);
+  }
+
+  revalidatePath('/contact');
+  return { success: true };
 }
