@@ -1,4 +1,5 @@
 import { TrackedLink } from "@/components/analytics/tracked-link";
+import { NewsletterSignupBlock } from "@/components/newsletter-signup";
 import { isOutboundHref } from "@/lib/analytics";
 import {
   visibleFooterLinks,
@@ -40,6 +41,9 @@ export function SiteFooterContent({
   if (!hasTopRow && !hasLinks && !hasLegal) {
     return null;
   }
+
+  // WIAL's own newsletter: on the global site only, not on affiliate sites.
+  const showNewsletter = siteContext.isGlobal;
 
   return (
     <div className="site-panel rounded-[2rem] px-6 py-6 md:px-8">
@@ -126,7 +130,13 @@ export function SiteFooterContent({
         </div>
       )}
 
-      {(hasTopRow || hasLinks) && hasLegal && (
+      {showNewsletter && (
+        <div className={`max-w-xl ${hasTopRow || hasLinks ? "mt-6" : ""}`}>
+          <NewsletterSignupBlock source="footer" title="Newsletter" />
+        </div>
+      )}
+
+      {(hasTopRow || hasLinks || showNewsletter) && hasLegal && (
         <div className="shell-divider my-5" />
       )}
 

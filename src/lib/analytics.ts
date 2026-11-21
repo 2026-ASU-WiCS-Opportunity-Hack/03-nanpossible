@@ -166,6 +166,7 @@ export type SearchType = "coach" | "library" | "wial_talk";
 export type FormName =
   | "contact"
   | "affiliate_inquiry"
+  | "newsletter"
   | "coach_interest"
   | "partner_application"
   | "success_story"

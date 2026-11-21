@@ -358,6 +358,14 @@ export type ContentSection =
       label: string;
     }
   | {
+      /** Inline newsletter email capture (#164). */
+      type: "newsletter_signup";
+      title: string;
+      body: string;
+      /** Where the signup is attributed; defaults to the home page. */
+      source?: "home" | "resources";
+    }
+  | {
       type: "gallery_grid";
       title: string;
       description?: string;

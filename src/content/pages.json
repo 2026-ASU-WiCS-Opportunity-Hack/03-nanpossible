@@ -73,11 +73,9 @@
         "label": "Learn more"
       },
       {
-        "type": "cta",
+        "type": "newsletter_signup",
         "title": "Join our newsletter",
-        "body": "Stay up to date on everything happening in Action Learning — never miss a beat.",
-        "href": "https://visitor.r20.constantcontact.com/d.jsp?llr=h87lpjrab&p=oi&m=1118083347303&sit=hbv7bh5ib&f=bd24fab6-ed5e-45b8-8360-2459192c640b",
-        "label": "Sign up"
+        "body": "Get Action Learning insights, events and certification dates."
       },
       {
         "type": "cta",

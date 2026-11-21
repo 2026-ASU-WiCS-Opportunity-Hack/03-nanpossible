@@ -2,6 +2,8 @@
 
 import { coachLeadRecipients } from '@/lib/coach-interest';
 import { buildContactNotificationEmail } from '@/lib/contact-notification';
+import { subscribeToNewsletter } from '@/lib/newsletter';
+import { normalizeNewsletterEmail } from '@/lib/newsletter-fields';
 import { sendResendEmail } from '@/lib/resend';
 import { createClient } from '@/lib/supabase/server';
 import { revalidatePath } from 'next/cache';
@@ -56,6 +58,12 @@ export async function submitContactForm(formData: FormData) {
   } catch (error) {
     console.error('Contact form error:', error);
     return { error: 'An unexpected error occurred. Please try again.' };
+  }
+
+  // The opt-in box signs them up for the newsletter; a failure never fails the form.
+  const newsletterEmail = subscribedToNewsletter ? normalizeNewsletterEmail(email) : null;
+  if (newsletterEmail) {
+    await subscribeToNewsletter(newsletterEmail, 'contact');
   }
 
   // The message is already stored, so a notification problem never fails the form.

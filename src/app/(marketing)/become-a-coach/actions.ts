@@ -7,6 +7,8 @@ import {
   parseCoachInterest,
   type CoachInterestAffiliate,
 } from "@/lib/coach-interest";
+import { subscribeToNewsletter } from "@/lib/newsletter";
+import { normalizeNewsletterEmail } from "@/lib/newsletter-fields";
 import { sendResendEmail } from "@/lib/resend";
 import { createClient } from "@/lib/supabase/server";
 import { listAffiliateDirectory } from "@/lib/tenant";
@@ -16,6 +18,8 @@ export type CoachInterestResult = {
   error?: string;
   country?: string;
   affiliate?: CoachInterestAffiliate | null;
+  /** True when the newsletter box was ticked and the signup went through. */
+  subscribed?: boolean;
 };
 
 async function findAffiliateForCountry(country: string): Promise<CoachInterestAffiliate | null> {
@@ -83,5 +87,12 @@ export async function submitCoachInterest(formData: FormData): Promise<CoachInte
     console.error("Coach interest notification failed:", error);
   }
 
-  return { success: true, country: lead.country, affiliate };
+  // The opt-in box signs them up straight away; a failure never fails the form.
+  let subscribed = false;
+  const newsletterEmail = lead.subscribedToNewsletter ? normalizeNewsletterEmail(lead.email) : null;
+  if (newsletterEmail) {
+    subscribed = (await subscribeToNewsletter(newsletterEmail, "become_a_coach")).ok;
+  }
+
+  return { success: true, country: lead.country, affiliate, subscribed };
 }
