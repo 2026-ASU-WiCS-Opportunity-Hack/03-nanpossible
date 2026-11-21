@@ -135,6 +135,7 @@ export type CtaLocation =
   | "cta_section"
   | "testimonial_highlights"
   | "feature_grid"
+  | "journey_cards"
   | "contact_cards"
   | "resource_list"
   | "header"

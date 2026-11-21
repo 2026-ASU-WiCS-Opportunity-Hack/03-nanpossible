@@ -36,4 +36,41 @@ describe("ContentPage hero", () => {
     );
     expect(html.includes("View our clients")).toBe(expected);
   });
+
+  // #157: a heroTitle overrides the page title; the page title stays the SEO title.
+  it("renders heroTitle instead of the page title when set", () => {
+    const page = pageWithSlug("home");
+    page.bodyRichtext.heroTitle = "Solve complex problems. Develop stronger leaders.";
+    const html = renderToStaticMarkup(
+      <ContentPage page={page} siteContext={siteContext} />,
+    );
+    expect(html).toContain("Solve complex problems. Develop stronger leaders.");
+    expect(html).not.toContain(">Test page<");
+  });
+
+  it("falls back to the page title when heroTitle is blank", () => {
+    const page = pageWithSlug("home");
+    page.bodyRichtext.heroTitle = "   ";
+    const html = renderToStaticMarkup(
+      <ContentPage page={page} siteContext={siteContext} />,
+    );
+    expect(html).toContain("Test page");
+  });
+
+  it("renders heroCtas instead of the default Contact / Clients buttons", () => {
+    const page = pageWithSlug("home");
+    page.bodyRichtext.heroCtas = [
+      { label: "Explore solutions", href: "/for-organizations", variant: "primary" },
+      { label: "Become a certified coach", href: "/certification", variant: "secondary" },
+    ];
+    const html = renderToStaticMarkup(
+      <ContentPage page={page} siteContext={siteContext} />,
+    );
+    expect(html).toContain("Explore solutions");
+    expect(html).toContain('href="/for-organizations"');
+    expect(html).toContain("Become a certified coach");
+    expect(html).toContain('href="/certification"');
+    expect(html).not.toContain("Contact WIAL");
+    expect(html).not.toContain("View our clients");
+  });
 });

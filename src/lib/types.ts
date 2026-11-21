@@ -397,6 +397,21 @@ export type ContentSection =
       caption?: string;
     }
   | {
+      /** Audience journey cards (#158): one card per visitor journey. */
+      type: "journey_cards";
+      title: string;
+      items: {
+        title: string;
+        audience: string;
+        question: string;
+        links: {
+          label: string;
+          href: string;
+          variant: "primary" | "secondary";
+        }[];
+      }[];
+    }
+  | {
       type: "testimonial_grid";
       title: string;
       description?: string;
@@ -523,7 +538,17 @@ export type StripeConfigStatus = {
   lastFour: string | null;
 };
 
+export type HeroCta = {
+  label: string;
+  href: string;
+  variant: "primary" | "secondary";
+};
+
 export type ContentBody = {
+  /** Headline shown in the hero instead of the page title (#157). */
+  heroTitle?: string;
+  /** Hero buttons; when set, they replace the default Contact / Clients CTAs. */
+  heroCtas?: HeroCta[];
   heroIntro: string;
   metrics: MetricItem[];
   sections: ContentSection[];
