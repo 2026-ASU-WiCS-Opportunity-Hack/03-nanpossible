@@ -399,17 +399,42 @@ export type ContentSection =
       type: "testimonial_grid";
       title: string;
       description?: string;
-      items: {
-        organization: string;
-        name: string;
-        role?: string;
-        quote?: string;
-        context?: string;
-        logo?: string;
-        videoUrl?: string;
-        videoTitle?: string;
-      }[];
+      items: TestimonialItem[];
+    }
+  | {
+      /**
+       * A few audience-matched quotes pulled from the /clients testimonial_grid
+       * (the single source of testimonial copy). Holds selection rules only —
+       * never quote text. See `src/lib/testimonials.ts`.
+       */
+      type: "testimonial_highlights";
+      title: string;
+      description?: string;
+      audience: TestimonialAudience;
+      /** Max quotes shown (default 3). */
+      limit?: number;
+      includeVideo?: boolean;
+      /** Link text (default "See all client stories"). */
+      linkLabel?: string;
+      /** Link target (default "/clients"). */
+      linkHref?: string;
     };
+
+/** Pages a testimonial can be highlighted on. */
+export type TestimonialAudience = "home" | "certification" | "organizations" | "affiliate";
+
+export type TestimonialItem = {
+  organization: string;
+  name: string;
+  role?: string;
+  quote?: string;
+  context?: string;
+  logo?: string;
+  videoUrl?: string;
+  videoTitle?: string;
+  /** Pages where this testimonial may be highlighted (selection tag, not copy). */
+  audiences?: TestimonialAudience[];
+};
 
 export type LibraryKind =
   | "article"

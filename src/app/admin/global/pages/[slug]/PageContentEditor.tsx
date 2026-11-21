@@ -1,9 +1,19 @@
 "use client";
 
+import Link from "next/link";
 import { useMemo, useState, useTransition } from "react";
 import { AdminWorkbench } from "@/components/admin/AdminWorkbench";
 import { renderSection } from "@/components/content-page";
 import { getWorkbenchStatusCopy, type WorkbenchSaveState } from "@/lib/workbench";
+import {
+  isTestimonialHighlightsSupported,
+  clampTestimonialLimit,
+  resolveTestimonials,
+  TESTIMONIAL_AUDIENCE_LABELS,
+  TESTIMONIAL_AUDIENCES,
+  type TestimonialAudience,
+  type TestimonialItem,
+} from "@/lib/testimonials";
 import type { ContentBody, ContentSection, MetricItem } from "@/lib/types";
 import { saveGlobalPageAction } from "./actions";
 
@@ -27,20 +37,39 @@ type SectionDraft =
     }
   | { kind: "timeline"; title: string; items: TimelineDraftItem[] }
   | { kind: "cta"; title: string; body: string; href: string; label: string }
+  | {
+      kind: "testimonial_highlights";
+      title: string;
+      description: string;
+      audience: TestimonialAudience;
+      limitText: string;
+      includeVideo: boolean;
+      linkLabel: string;
+      linkHref: string;
+    }
+  | {
+      kind: "testimonial_tags";
+      section: Extract<ContentSection, { type: "testimonial_grid" }>;
+    }
   | { kind: "locked"; section: ContentSection };
+
+type AddableKind = Exclude<SectionDraft["kind"], "locked" | "testimonial_tags">;
 
 type PageContentEditorProps = {
   slug: string;
   initialTitle: string;
   initialPublished: boolean;
   initialBody: ContentBody;
+  /** Quotes from /clients, for previewing "Client quotes" sections. */
+  testimonials?: TestimonialItem[];
 };
 
-const SECTION_LABELS: Record<Exclude<SectionDraft["kind"], "locked">, string> = {
+const SECTION_LABELS: Record<AddableKind, string> = {
   prose: "Text section",
   media_prose: "Text with photo",
   timeline: "Timeline",
   cta: "Call to action",
+  testimonial_highlights: "Client quotes",
 };
 
 function toDraft(section: ContentSection): SectionDraft {
@@ -81,6 +110,19 @@ function toDraft(section: ContentSection): SectionDraft {
         href: section.href,
         label: section.label,
       };
+    case "testimonial_highlights":
+      return {
+        kind: "testimonial_highlights",
+        title: section.title,
+        description: section.description ?? "",
+        audience: section.audience,
+        limitText: String(section.limit ?? 3),
+        includeVideo: section.includeVideo === true,
+        linkLabel: section.linkLabel ?? "",
+        linkHref: section.linkHref ?? "",
+      };
+    case "testimonial_grid":
+      return { kind: "testimonial_tags", section };
     default:
       return { kind: "locked", section };
   }
@@ -138,13 +180,44 @@ function fromDraft(draft: SectionDraft): ContentSection {
         href: draft.href,
         label: draft.label,
       };
+    case "testimonial_highlights":
+      return {
+        type: "testimonial_highlights",
+        title: draft.title,
+        description: draft.description || undefined,
+        audience: draft.audience,
+        limit: limitFromText(draft.limitText),
+        includeVideo: draft.includeVideo,
+        linkLabel: draft.linkLabel || undefined,
+        linkHref: draft.linkHref || undefined,
+      };
+    case "testimonial_tags":
+      return draft.section;
     case "locked":
       return draft.section;
   }
 }
 
-function emptyDraft(kind: Exclude<SectionDraft["kind"], "locked">): SectionDraft {
+const DEFAULT_AUDIENCE_BY_SLUG: Record<string, TestimonialAudience> = {
+  home: "home",
+  certification: "certification",
+  "our-services": "organizations",
+  "become-an-affiliate": "affiliate",
+};
+
+function emptyDraft(kind: AddableKind, slug = ""): SectionDraft {
   switch (kind) {
+    case "testimonial_highlights":
+      return {
+        kind,
+        title: "What our clients say",
+        description: "",
+        audience: DEFAULT_AUDIENCE_BY_SLUG[slug] ?? "home",
+        limitText: "3",
+        includeVideo: false,
+        linkLabel: "",
+        linkHref: "",
+      };
     case "prose":
       return { kind, title: "", paragraphsText: "", bulletsText: "" };
     case "media_prose":
@@ -170,6 +243,7 @@ export function PageContentEditor({
   initialTitle,
   initialPublished,
   initialBody,
+  testimonials = [],
 }: PageContentEditorProps) {
   const [title, setTitle] = useState(initialTitle);
   const [published, setPublished] = useState(initialPublished);
@@ -178,8 +252,11 @@ export function PageContentEditor({
   const [sections, setSections] = useState<SectionDraft[]>(
     initialBody.sections.map(toDraft),
   );
-  const [newSectionKind, setNewSectionKind] =
-    useState<Exclude<SectionDraft["kind"], "locked">>("prose");
+  const [newSectionKind, setNewSectionKind] = useState<AddableKind>("prose");
+  const addableKinds = (Object.keys(SECTION_LABELS) as AddableKind[]).filter(
+    (kind) =>
+      kind !== "testimonial_highlights" || isTestimonialHighlightsSupported(slug),
+  );
   const [saveState, setSaveState] = useState<WorkbenchSaveState>("idle");
   const [lastSavedAt, setLastSavedAt] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -341,8 +418,11 @@ export function PageContentEditor({
             <span className="text-xs font-bold uppercase tracking-[0.14em] text-foreground/55">
               {draft.kind === "locked"
                 ? "Managed section"
-                : SECTION_LABELS[draft.kind]}
+                : draft.kind === "testimonial_tags"
+                  ? "Client quote tags"
+                  : SECTION_LABELS[draft.kind]}
             </span>
+            {draft.kind === "testimonial_tags" ? null : (
             <span className="flex items-center gap-1">
               <button
                 aria-label="Move section up"
@@ -370,9 +450,15 @@ export function PageContentEditor({
                 Remove
               </button>
             </span>
+            )}
           </div>
 
-          {draft.kind === "locked" ? (
+          {draft.kind === "testimonial_tags" ? (
+            <TagsEditor
+              onChange={(next) => updateSection(index, { ...draft, section: next })}
+              section={draft.section}
+            />
+          ) : draft.kind === "locked" ? (
             <p className="mt-3 text-sm text-foreground/60">
               “{"title" in draft.section ? draft.section.title : draft.section.type}”
               can&apos;t be edited here yet. It stays on the page exactly as it
@@ -390,6 +476,14 @@ export function PageContentEditor({
                   value={draft.title}
                 />
               </label>
+
+              {draft.kind === "testimonial_highlights" ? (
+                <HighlightsFields
+                  draft={draft}
+                  onChange={(next) => updateSection(index, next)}
+                  testimonials={testimonials}
+                />
+              ) : null}
 
               {draft.kind === "prose" || draft.kind === "media_prose" ? (
                 <>
@@ -619,15 +713,13 @@ export function PageContentEditor({
           <select
             className="field-input"
             onChange={(event) =>
-              setNewSectionKind(
-                event.target.value as Exclude<SectionDraft["kind"], "locked">,
-              )
+              setNewSectionKind(event.target.value as AddableKind)
             }
             value={newSectionKind}
           >
-            {Object.entries(SECTION_LABELS).map(([kind, label]) => (
+            {addableKinds.map((kind) => (
               <option key={kind} value={kind}>
-                {label}
+                {SECTION_LABELS[kind]}
               </option>
             ))}
           </select>
@@ -635,7 +727,7 @@ export function PageContentEditor({
         <button
           className="button-link secondary"
           onClick={() => {
-            setSections((current) => [...current, emptyDraft(newSectionKind)]);
+            setSections((current) => [...current, emptyDraft(newSectionKind, slug)]);
             markDirty();
           }}
           type="button"
@@ -668,7 +760,7 @@ export function PageContentEditor({
             ))}
         </div>
       ) : null}
-      {previewSections.map((section) => renderSection(section))}
+      {previewSections.map((section) => renderSection(section, { testimonials }))}
     </div>
   );
 
@@ -694,5 +786,218 @@ export function PageContentEditor({
       stageTone={published ? "success" : "warning"}
       title={title || "Untitled page"}
     />
+  );
+}
+
+function limitIsValid(text: string): boolean {
+  const n = Number(text);
+  return text.trim() !== "" && Number.isInteger(n) && n >= 1 && n <= 6;
+}
+
+/** Empty or non-numeric input falls back to the form's default of 3; other values are clamped. */
+function limitFromText(text: string): number {
+  return text.trim() === "" ? 3 : clampTestimonialLimit(Number(text));
+}
+
+function HighlightsFields({
+  draft,
+  onChange,
+  testimonials,
+}: {
+  draft: Extract<SectionDraft, { kind: "testimonial_highlights" }>;
+  onChange: (next: SectionDraft) => void;
+  testimonials: TestimonialItem[];
+}) {
+  const picked = resolveTestimonials(testimonials, {
+    audience: draft.audience,
+    limit: limitFromText(draft.limitText),
+    includeVideo: draft.includeVideo,
+  });
+  return (
+    <div className="space-y-3">
+      <label className="field-shell">
+        <span className="field-label">Intro text (optional)</span>
+        <textarea
+          className="field-textarea min-h-[60px]"
+          onChange={(event) => onChange({ ...draft, description: event.target.value })}
+          value={draft.description}
+        />
+      </label>
+      <div className="grid gap-3 md:grid-cols-2">
+        <label className="field-shell">
+          <span className="field-label">Show quotes tagged for</span>
+          <select
+            className="field-input"
+            onChange={(event) =>
+              onChange({ ...draft, audience: event.target.value as TestimonialAudience })
+            }
+            value={draft.audience}
+          >
+            {TESTIMONIAL_AUDIENCES.map((audience) => (
+              <option key={audience} value={audience}>
+                {TESTIMONIAL_AUDIENCE_LABELS[audience]}
+              </option>
+            ))}
+          </select>
+        </label>
+        <label className="field-shell">
+          <span className="field-label">How many quotes (1 to 6)</span>
+          <input
+            className="field-input"
+            max={6}
+            min={1}
+            onChange={(event) => onChange({ ...draft, limitText: event.target.value })}
+            type="number"
+            value={draft.limitText}
+          />
+          {limitIsValid(draft.limitText) ? null : (
+            <span className="text-sm text-foreground/60">
+              Enter a whole number from 1 to 6. Until then, {limitFromText(draft.limitText)}{" "}
+              will be used.
+            </span>
+          )}
+        </label>
+        <label className="field-shell">
+          <span className="field-label">Link text</span>
+          <input
+            className="field-input"
+            onChange={(event) => onChange({ ...draft, linkLabel: event.target.value })}
+            placeholder="See all client stories"
+            value={draft.linkLabel}
+          />
+        </label>
+        <label className="field-shell">
+          <span className="field-label">Link to (a page on this site)</span>
+          <input
+            className="field-input"
+            onChange={(event) => onChange({ ...draft, linkHref: event.target.value })}
+            placeholder="/clients"
+            value={draft.linkHref}
+          />
+        </label>
+      </div>
+      <label className="coach-checkbox">
+        <input
+          checked={draft.includeVideo}
+          onChange={(event) => onChange({ ...draft, includeVideo: event.target.checked })}
+          type="checkbox"
+        />
+        Include video testimonials
+      </label>
+      <p className="text-sm text-foreground/60">
+        {picked.length
+          ? `${picked.length} ${picked.length === 1 ? "quote" : "quotes"} will show: ${picked
+              .map((item) => item.organization)
+              .join(", ")}.`
+          : "No quotes are tagged for this page yet, so this section will stay hidden."}{" "}
+        Based on the tags currently saved on the{" "}
+        <Link
+          className="underline"
+          href="/admin/global/pages/clients"
+          rel="noopener"
+          target="_blank"
+        >
+          Our Clients
+        </Link>{" "}
+        page.
+      </p>
+    </div>
+  );
+}
+
+function TagsEditor({
+  section,
+  onChange,
+}: {
+  section: Extract<ContentSection, { type: "testimonial_grid" }>;
+  onChange: (next: Extract<ContentSection, { type: "testimonial_grid" }>) => void;
+}) {
+  function toggle(itemIndex: number, audience: TestimonialAudience, on: boolean) {
+    onChange({
+      ...section,
+      items: section.items.map((item, i) => {
+        if (i !== itemIndex) return item;
+        const current = new Set(item.audiences ?? []);
+        if (on) current.add(audience);
+        else current.delete(audience);
+        return {
+          ...item,
+          audiences: TESTIMONIAL_AUDIENCES.filter((a) => current.has(a)),
+        };
+      }),
+    });
+  }
+
+  return (
+    <div className="mt-3 space-y-3">
+      <h3 className="font-semibold text-foreground">Where each client quote appears</h3>
+      <div className="flex flex-wrap gap-2">
+        {TESTIMONIAL_AUDIENCES.map((audience) => {
+          const count = section.items.filter((item) =>
+            item.audiences?.includes(audience),
+          ).length;
+          return (
+            <span
+              className={`rounded-full border px-3 py-1 text-xs font-semibold ${
+                count === 0
+                  ? "border-amber-400 bg-amber-50 text-amber-900"
+                  : "border-line bg-white/70 text-foreground/70"
+              }`}
+              key={audience}
+            >
+              {TESTIMONIAL_AUDIENCE_LABELS[audience]}:{" "}
+              {count === 0 ? "none yet" : `${count} ${count === 1 ? "quote" : "quotes"}`}
+            </span>
+          );
+        })}
+      </div>
+      <p className="text-sm text-foreground/60">
+        Tick the pages each quote may appear on. Quotes appear in the order they are
+        listed on this page, and the order and wording can&apos;t be changed here. Changes
+        to where quotes appear go live when you save and are not copied back into the
+        site&apos;s starting content.
+      </p>
+      {section.items.map((item, itemIndex) => {
+        const text = item.quote ?? "";
+        return (
+          <fieldset
+            className="rounded-[1rem] border border-line/60 p-3"
+            key={`${item.organization}-${item.name}-${itemIndex}`}
+          >
+            <legend className="sr-only">
+              Pages for {item.organization}
+              {item.name ? ` — ${item.name}` : ""}
+            </legend>
+            <p className="text-sm font-semibold">
+              {item.organization}
+              {item.name ? ` — ${item.name}` : ""}
+              {item.role ? `, ${item.role}` : ""}
+              {item.videoUrl && !item.quote ? (
+                <span className="ml-2 rounded-full bg-white/80 px-2 py-0.5 text-xs">
+                  Video
+                </span>
+              ) : null}
+            </p>
+            {text ? (
+              <p className="mt-1 text-sm text-foreground/65" title={text}>
+                {text.length > 140 ? `${text.slice(0, 140)}…` : text}
+              </p>
+            ) : null}
+            <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1">
+              {TESTIMONIAL_AUDIENCES.map((audience) => (
+                <label className="coach-checkbox" key={audience}>
+                  <input
+                    checked={item.audiences?.includes(audience) ?? false}
+                    onChange={(event) => toggle(itemIndex, audience, event.target.checked)}
+                    type="checkbox"
+                  />
+                  {TESTIMONIAL_AUDIENCE_LABELS[audience]}
+                </label>
+              ))}
+            </div>
+          </fieldset>
+        );
+      })}
+    </div>
   );
 }
