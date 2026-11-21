@@ -1,4 +1,4 @@
-import { addContactToNewsletterList, readConstantContactConfig } from "@/lib/constant-contact";
+import { addContactToNewsletterList, resolveConstantContactConfig } from "@/lib/constant-contact";
 import type { NewsletterSource } from "@/lib/newsletter-fields";
 import { createServiceRoleSupabaseClient } from "@/lib/supabase-admin";
 
@@ -7,9 +7,10 @@ export type NewsletterOutcome = { ok: boolean; stored: boolean; synced: boolean 
 /**
  * Records a newsletter signup (#164): keeps our own row in
  * `newsletter_subscribers` so no signup is lost, then adds the contact to the
- * Constant Contact list when that integration is configured. Succeeds when
- * either step worked; rows that did not reach the list keep `synced_at` null
- * and a `sync_error`. `email` must already be normalized. Never throws.
+ * Constant Contact list when that connection is set up
+ * (/admin/global/newsletter). Succeeds when either step worked; rows that did
+ * not reach the list keep `synced_at` null and a `sync_error`. `email` must
+ * already be normalized. Never throws.
  */
 export async function subscribeToNewsletter(
   email: string,
@@ -33,7 +34,7 @@ export async function subscribeToNewsletter(
     }
   }
 
-  const config = readConstantContactConfig();
+  const config = await resolveConstantContactConfig().catch(() => null);
   let synced = false;
   let syncError: string | null = "not-configured";
 
@@ -63,4 +64,66 @@ export async function subscribeToNewsletter(
   }
 
   return { ok: stored || synced, stored, synced };
+}
+
+export type NewsletterStats = { total: number; waiting: number };
+
+/** Signup counts for the admin page; null when the database is unavailable. */
+export async function getNewsletterStats(): Promise<NewsletterStats | null> {
+  const client = createServiceRoleSupabaseClient();
+  if (!client) return null;
+  try {
+    const [total, waiting] = await Promise.all([
+      client.from("newsletter_subscribers").select("id", { count: "exact", head: true }),
+      client
+        .from("newsletter_subscribers")
+        .select("id", { count: "exact", head: true })
+        .is("synced_at", null),
+    ]);
+    if (total.error || waiting.error) return null;
+    return { total: total.count ?? 0, waiting: waiting.count ?? 0 };
+  } catch {
+    return null;
+  }
+}
+
+const SYNC_BATCH_SIZE = 100;
+
+export type SyncWaitingResult = { attempted: number; sent: number } | "not-ready" | "unavailable";
+
+/** Sends signups collected before the connection existed (oldest first, one batch per call). */
+export async function syncWaitingSubscribers(): Promise<SyncWaitingResult> {
+  const client = createServiceRoleSupabaseClient();
+  if (!client) return "unavailable";
+  const config = await resolveConstantContactConfig().catch(() => null);
+  if (!config) return "not-ready";
+
+  const { data, error } = await client
+    .from("newsletter_subscribers")
+    .select("email")
+    .is("synced_at", null)
+    .order("created_at", { ascending: true })
+    .limit(SYNC_BATCH_SIZE);
+  if (error) return "unavailable";
+
+  let sent = 0;
+  for (const row of data ?? []) {
+    const result = await addContactToNewsletterList(row.email as string, config);
+    await client
+      .from("newsletter_subscribers")
+      .update(
+        result.ok
+          ? { synced_at: new Date().toISOString(), sync_error: null }
+          : { sync_error: result.error },
+      )
+      .eq("email", row.email as string);
+    if (result.ok) {
+      sent += 1;
+    } else if (result.error === "authorization-failed") {
+      // Every further call would fail the same way.
+      break;
+    }
+  }
+
+  return { attempted: data?.length ?? 0, sent };
 }
