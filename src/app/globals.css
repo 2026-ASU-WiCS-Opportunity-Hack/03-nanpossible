@@ -503,6 +503,56 @@ html.cursor-large * {
   border-color: var(--foreground);
 }
 
+/* Affiliate journey button (#156): gold, so it never reads as the red primary. */
+.button-link.affiliate {
+  background: var(--accent);
+  color: var(--foreground);
+  box-shadow: 0 6px 18px rgba(181, 163, 0, 0.26);
+}
+
+.button-link.affiliate:hover {
+  background: #c4b100;
+  box-shadow: 0 10px 24px rgba(181, 163, 0, 0.32);
+}
+
+.nav-dropdown-menu {
+  min-width: 13rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--surface-strong);
+  padding: 0.4rem;
+  box-shadow: var(--shadow);
+}
+
+.nav-dropdown-link {
+  display: block;
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  color: var(--teal-deep);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.nav-dropdown-link:hover,
+.nav-dropdown-link:focus-visible {
+  background: var(--accent-soft);
+}
+
+.account-sidebar-link.is-nested {
+  margin-left: 1.6rem;
+  padding-block: 0.55rem;
+  font-size: 0.92em;
+  font-weight: 600;
+}
+
+@media (min-width: 1024px) {
+  /* The desktop header is two rows tall; keep in-page anchors clear of it. */
+  html {
+    scroll-padding-top: 3.5rem;
+  }
+}
+
 .button-link.ghost {
   background: transparent;
   color: var(--foreground);

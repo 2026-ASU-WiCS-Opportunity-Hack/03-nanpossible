@@ -3,6 +3,8 @@ import {
   COACH_DIRECTORY_URL,
   getTenantCandidate,
   isExternalHref,
+  affiliateCta,
+  flattenNavigationItems,
   navigationItems,
   normalizeChapterSlug,
   normalizeSegments,
@@ -10,10 +12,52 @@ import {
 } from "./routing";
 
 describe("navigationItems", () => {
-  it("sends the Coaches nav item to the external WIAL directory", () => {
-    const coaches = navigationItems.find((item) => item.label === "Coaches");
+  it("sends the Find a Coach nav item to the external WIAL directory", () => {
+    const coaches = navigationItems.find((item) => item.label === "Find a Coach");
     expect(coaches?.href).toBe(COACH_DIRECTORY_URL);
     expect(isExternalHref(COACH_DIRECTORY_URL)).toBe(true);
+  });
+
+  it("orders the menu around visitor journeys (#156)", () => {
+    expect(navigationItems.map((item) => [item.label, item.href])).toEqual([
+      ["What is Action Learning?", "/action-learning"],
+      ["For Organizations", "/for-organizations"],
+      ["Get Certified", "/certification"],
+      ["Find a Coach", COACH_DIRECTORY_URL],
+      ["Resources", "/resources"],
+      ["About WIAL", "/about"],
+      ["Contact", "/contact"],
+    ]);
+  });
+
+  it("keeps Clients, Partners and the other WIAL pages under About WIAL", () => {
+    const about = navigationItems.find((item) => item.href === "/about");
+    expect(about?.children?.map((item) => item.href)).toEqual([
+      "/clients",
+      "/partners",
+      "/conferences",
+      "/awards",
+      "/better-world",
+    ]);
+    // Only one level of nesting, and every submenu target is a real route.
+    for (const child of about?.children ?? []) {
+      expect(child.children).toBeUndefined();
+      expect(normalizeSegments([child.href.slice(1)])?.slug).toBe(child.href.slice(1));
+    }
+  });
+
+  it("flattens the menu for voice navigation, parents before children", () => {
+    const flat = flattenNavigationItems();
+    expect(flat).toHaveLength(12);
+    expect(flat.every((item) => !("children" in item))).toBe(true);
+    const labels = flat.map((item) => item.label);
+    expect(labels.indexOf("About WIAL")).toBeLessThan(labels.indexOf("Clients"));
+    expect(new Set(flat.map((item) => item.href)).size).toBe(flat.length);
+  });
+
+  it("points the affiliate button at the affiliate page", () => {
+    expect(affiliateCta).toEqual({ href: "/become-an-affiliate", label: "Become an Affiliate" });
+    expect(normalizeSegments(["become-an-affiliate"])?.slug).toBe("become-an-affiliate");
   });
 
   it("treats only absolute http(s) URLs as external", () => {

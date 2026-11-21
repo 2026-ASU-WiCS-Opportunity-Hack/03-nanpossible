@@ -6,16 +6,44 @@ import type { CanonicalPageSlug, NavigationItem } from "@/lib/types";
  */
 export const COACH_DIRECTORY_URL = "https://directory.wial.org/coaches";
 
+/**
+ * Main navigation, ordered around visitor journeys (#156): learn what Action
+ * Learning is, see what it does for organizations, get certified, find a
+ * coach. Pages about WIAL itself sit in the "About WIAL" submenu.
+ */
 export const navigationItems: NavigationItem[] = [
-  { href: "/about", label: "About WIAL" },
-  { href: "/certification", label: "Certification" },
+  { href: "/action-learning", label: "What is Action Learning?" },
   { href: "/for-organizations", label: "For Organizations" },
-  { href: "/clients", label: "Clients" },
-  { href: COACH_DIRECTORY_URL, label: "Coaches" },
+  { href: "/certification", label: "Get Certified" },
+  { href: COACH_DIRECTORY_URL, label: "Find a Coach" },
   { href: "/resources", label: "Resources" },
-  { href: "/partners", label: "Partners" },
-  { href: "/contact", label: "Contact Us" },
+  {
+    href: "/about",
+    label: "About WIAL",
+    children: [
+      { href: "/clients", label: "Clients" },
+      { href: "/partners", label: "Partners" },
+      { href: "/conferences", label: "Conferences" },
+      { href: "/awards", label: "Awards" },
+      { href: "/better-world", label: "Better World Fund" },
+    ],
+  },
+  { href: "/contact", label: "Contact" },
 ];
+
+/** The affiliate journey gets its own button in the header and mobile menu. */
+export const affiliateCta: NavigationItem = {
+  href: "/become-an-affiliate",
+  label: "Become an Affiliate",
+};
+
+/** Every destination as a flat `{ href, label }` list: parents first, then their submenu links. */
+export function flattenNavigationItems(items: NavigationItem[] = navigationItems): NavigationItem[] {
+  return items.flatMap(({ href, label, children }) => [
+    { href, label },
+    ...(children ?? []).map((child) => ({ href: child.href, label: child.label })),
+  ]);
+}
 
 const aliasMap = new Map<string, string>([
   ["about-wial", "/about"],
