@@ -97,6 +97,47 @@ const aliasMap = new Map<string, string>([
     "projects/wial-provides-action-learning-coaching-singapore-association-deaf",
     "/better-world/singapore-association-for-the-deaf",
   ],
+  [
+    "projects/human-needs-project",
+    "/better-world/kenya-human-needs-project",
+  ],
+  [
+    "projects/action-learning-drives-rebuilding-community-library",
+    "/better-world/dominica-community-library",
+  ],
+  [
+    "projects/action-learning-helping-kyrgyzstan-ngo",
+    "/better-world/kyrgyzstan-women-ngo",
+  ],
+  [
+    "projects/action-learning-helps-small-village-burkina-faso-discover-alternative-ideas-accessing-safe-water",
+    "/better-world/burkina-faso-safe-water",
+  ],
+  [
+    "projects/action-learning-improves-cross-functional-communications-non-profit-taiwan",
+    "/better-world/taiwan-zs-foundation",
+  ],
+  [
+    "projects/full-scale-project-non-profit-cenpec-magali-lopes",
+    "/better-world/brazil-cenpec",
+  ],
+  [
+    "projects/pro-bono-program-transforms-lar-da-bencao-divina-brazilian-non-profit",
+    "/better-world/brazil-lar-da-bencao-divina",
+  ],
+  [
+    "projects/supporting-karibu-centre-nairobi",
+    "/better-world/kenya-karibu-centre",
+  ],
+  [
+    "projects/wial-action-learning-helps-improve-curricular-offerings",
+    "/better-world/brazil-vida-jovem",
+  ],
+  [
+    "projects/wial-brazil-sets-new-bar-pro-bono-coaching",
+    "/better-world/brazil-pro-bono-coaching",
+  ],
+  ["projects/better-world-fund-global-impact", "/better-world"],
   ["share-your-better-world-story", "/contact"],
   ["wial-better-world-fund-donation", "/better-world/donate"],
   ["about-us", "/about"],

@@ -306,6 +306,32 @@ describe("normalizeSegments", () => {
     });
   });
 
+  it("redirects the later-migrated legacy Better World story paths to their articles", () => {
+    const moved: Array<[string, string]> = [
+      ["human-needs-project", "/better-world/kenya-human-needs-project"],
+      ["action-learning-drives-rebuilding-community-library", "/better-world/dominica-community-library"],
+      ["action-learning-helping-kyrgyzstan-ngo", "/better-world/kyrgyzstan-women-ngo"],
+      ["action-learning-helps-small-village-burkina-faso-discover-alternative-ideas-accessing-safe-water", "/better-world/burkina-faso-safe-water"],
+      ["action-learning-improves-cross-functional-communications-non-profit-taiwan", "/better-world/taiwan-zs-foundation"],
+      ["full-scale-project-non-profit-cenpec-magali-lopes", "/better-world/brazil-cenpec"],
+      ["pro-bono-program-transforms-lar-da-bencao-divina-brazilian-non-profit", "/better-world/brazil-lar-da-bencao-divina"],
+      ["supporting-karibu-centre-nairobi", "/better-world/kenya-karibu-centre"],
+      ["wial-action-learning-helps-improve-curricular-offerings", "/better-world/brazil-vida-jovem"],
+      ["wial-brazil-sets-new-bar-pro-bono-coaching", "/better-world/brazil-pro-bono-coaching"],
+    ];
+    for (const [oldSlug, target] of moved) {
+      expect(normalizeSegments(["projects", oldSlug])).toEqual({
+        slug: null,
+        redirectTo: target,
+      });
+    }
+    // The fund-overview post is not a story; it folds into the Better World page.
+    expect(normalizeSegments(["projects", "better-world-fund-global-impact"])).toEqual({
+      slug: null,
+      redirectTo: "/better-world",
+    });
+  });
+
   it("resolves the awards page slug and redirects legacy award paths", () => {
     expect(normalizeSegments(["awards"])).toEqual({
       slug: "awards",
