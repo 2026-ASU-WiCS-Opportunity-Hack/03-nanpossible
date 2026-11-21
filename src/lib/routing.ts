@@ -137,6 +137,47 @@ const aliasMap = new Map<string, string>([
     "projects/wial-brazil-sets-new-bar-pro-bono-coaching",
     "/better-world/brazil-pro-bono-coaching",
   ],
+  [
+    "projects/action-learning-lasting-impact-kenyan-pre-school",
+    "/better-world/kenya-karibu-centre-lasting-impact",
+  ],
+  [
+    "projects/action-learning-way-forward-cru-leadership",
+    "/better-world/cru-leadership",
+  ],
+  [
+    "projects/birthday-party-meaning",
+    "/better-world/philippines-birthday-party",
+  ],
+  [
+    "projects/breakthrough-solution-reach-10000-children",
+    "/better-world/us-first-tee-of-denver",
+  ],
+  [
+    "projects/cc-housing-trust-cru",
+    "/better-world/cc-housing-trust-cru-certification",
+  ],
+  [
+    "projects/childrens-house-santo-amaro",
+    "/better-world/brazil-childrens-house-santo-amaro",
+  ],
+  [
+    "projects/global-camps-africa",
+    "/better-world/south-africa-global-camps-africa",
+  ],
+  [
+    "projects/servebetter",
+    "/better-world/malaysia-servebetter",
+  ],
+  [
+    "projects/uwi-cave-hill-campus-harvard-national-model-united-nations-contingent",
+    "/better-world/caribbean-uwi-model-un",
+  ],
+  [
+    "projects/solution-space-freelancers-solopreneurs",
+    "/better-world/thailand-your-solution-space",
+  ],
+  ["projects/wial-global-conference-scholarship-winners", "/better-world"],
   ["projects/better-world-fund-global-impact", "/better-world"],
   ["share-your-better-world-story", "/contact"],
   ["wial-better-world-fund-donation", "/better-world/donate"],

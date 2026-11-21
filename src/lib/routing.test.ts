@@ -318,6 +318,16 @@ describe("normalizeSegments", () => {
       ["supporting-karibu-centre-nairobi", "/better-world/kenya-karibu-centre"],
       ["wial-action-learning-helps-improve-curricular-offerings", "/better-world/brazil-vida-jovem"],
       ["wial-brazil-sets-new-bar-pro-bono-coaching", "/better-world/brazil-pro-bono-coaching"],
+      ["action-learning-lasting-impact-kenyan-pre-school", "/better-world/kenya-karibu-centre-lasting-impact"],
+      ["action-learning-way-forward-cru-leadership", "/better-world/cru-leadership"],
+      ["birthday-party-meaning", "/better-world/philippines-birthday-party"],
+      ["breakthrough-solution-reach-10000-children", "/better-world/us-first-tee-of-denver"],
+      ["cc-housing-trust-cru", "/better-world/cc-housing-trust-cru-certification"],
+      ["childrens-house-santo-amaro", "/better-world/brazil-childrens-house-santo-amaro"],
+      ["global-camps-africa", "/better-world/south-africa-global-camps-africa"],
+      ["servebetter", "/better-world/malaysia-servebetter"],
+      ["uwi-cave-hill-campus-harvard-national-model-united-nations-contingent", "/better-world/caribbean-uwi-model-un"],
+      ["solution-space-freelancers-solopreneurs", "/better-world/thailand-your-solution-space"],
     ];
     for (const [oldSlug, target] of moved) {
       expect(normalizeSegments(["projects", oldSlug])).toEqual({
@@ -325,11 +335,13 @@ describe("normalizeSegments", () => {
         redirectTo: target,
       });
     }
-    // The fund-overview post is not a story; it folds into the Better World page.
-    expect(normalizeSegments(["projects", "better-world-fund-global-impact"])).toEqual({
-      slug: null,
-      redirectTo: "/better-world",
-    });
+    // Announcement-style posts with no story fold into the Better World page.
+    for (const oldSlug of ["better-world-fund-global-impact", "wial-global-conference-scholarship-winners"]) {
+      expect(normalizeSegments(["projects", oldSlug])).toEqual({
+        slug: null,
+        redirectTo: "/better-world",
+      });
+    }
   });
 
   it("resolves the awards page slug and redirects legacy award paths", () => {
