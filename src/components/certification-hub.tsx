@@ -7,25 +7,22 @@ import { trackEvent } from "@/lib/analytics";
 import {
   certificationBecomeACoach,
   certificationCalcCourses,
+  certificationFindTraining,
   certificationFoundations,
   certificationHero,
   certificationInHouse,
   certificationPrograms,
-  certificationProgression,
+  certificationJourney,
   certificationTracks,
+  certificationWhatYouGet,
   certificationWhy,
+  type CertificationJourneyStep,
 } from "@/content/certification-hub";
+import { COACH_DIRECTORY_URL } from "@/lib/routing";
 import type { CertificationTrack, CertificationTrackKey } from "@/lib/types";
 
 const linkClass =
   "font-semibold text-teal-deep underline decoration-gold/60 underline-offset-4";
-
-function pathwaySummary(track: CertificationTrack) {
-  return (
-    certificationProgression.find((step) => step.title === track.level)?.body ??
-    track.tagline
-  );
-}
 
 function TrackDetail({ track }: { track: CertificationTrack }) {
   return (
@@ -301,6 +298,46 @@ function CalcCoursesSection() {
   );
 }
 
+function StepFacts({ step }: { step: CertificationJourneyStep }) {
+  const facts = [
+    { label: "Prerequisites", value: step.prerequisites },
+    { label: "Time commitment", value: step.time },
+    { label: "Validity and renewal", value: step.validity },
+  ];
+
+  // Spans, not a <dl>: these sit inside a <button>/<a>, which only allow phrasing content.
+  return (
+    <span className="mt-3 block space-y-2">
+      {facts.map((fact) => (
+        <span className="block" key={fact.label}>
+          <span className="block text-[0.7rem] font-semibold uppercase tracking-[0.12em] text-foreground/55">
+            {fact.label}
+          </span>
+          <span className="block text-sm leading-snug text-foreground/75">{fact.value}</span>
+        </span>
+      ))}
+    </span>
+  );
+}
+
+function StepHeading({ step, index }: { step: CertificationJourneyStep; index: number }) {
+  return (
+    <>
+      <span className="flex items-center gap-2 pr-6">
+        <span
+          aria-hidden="true"
+          className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-teal-deep text-sm font-bold text-white"
+        >
+          {index + 1}
+        </span>
+        <span className="sr-only">Step {index + 1}: </span>
+        <span className="text-base font-semibold text-teal-deep">{step.name}</span>
+      </span>
+      <span className="mt-1 block text-sm text-foreground/70">{step.title}</span>
+    </>
+  );
+}
+
 function PathwaySection() {
   const [activeTrack, setActiveTrack] = useState<CertificationTrackKey | null>(
     null
@@ -318,57 +355,57 @@ function PathwaySection() {
   };
 
   const active = certificationTracks.find((track) => track.key === activeTrack);
+  const cardClass = "feature-card relative flex h-full w-full scroll-mt-20 flex-col items-stretch justify-start rounded-lg text-left";
 
   return (
     <div id="progression" className="scroll-mt-20">
-      <h2 className="text-2xl font-bold">Certification pathway</h2>
-      <p className="mt-1 text-sm text-foreground/70">
-        Three levels build step by step, from CALC through MALC. Select a level
-        to see its eligibility and requirements.
+      <h2 className="text-2xl font-bold">Your path to certification</h2>
+      <p className="mt-1 max-w-3xl text-sm text-foreground/70">
+        Four steps, each building on the one before. Select a certification
+        level to see its full eligibility and requirements.
       </p>
-      <div className="mt-4 flex flex-col gap-3 lg:flex-row lg:items-stretch">
-        {certificationTracks.map((track, idx) => {
-          const isActive = activeTrack === track.key;
+      <ol className="mt-4 grid gap-3 md:grid-cols-2 lg:grid-cols-4">
+        {certificationJourney.map((step, index) => {
+          const track = certificationTracks.find((item) => item.key === step.trackKey);
+          const isActive = Boolean(track) && activeTrack === track?.key;
+
           return (
-            <Fragment key={track.key}>
-              <button
-                id={track.anchor}
-                onClick={() => handleToggle(track.key)}
-                aria-expanded={isActive}
-                className={`feature-card relative flex-1 scroll-mt-20 rounded-lg text-left ${
-                  isActive ? "border-teal-deep/50" : ""
-                }`}
-              >
-                <span
-                  aria-hidden="true"
-                  className="absolute right-4 top-4 text-xl leading-none text-teal-deep"
-                >
-                  {isActive ? "−" : "+"}
-                </span>
-                <div className="pr-6 text-sm font-semibold text-teal-deep">
-                  {track.level}
-                </div>
-                <p className="mt-1 text-sm text-foreground/70">
-                  {pathwaySummary(track)}
-                </p>
-              </button>
-              {isActive && (
-                <div className="lg:hidden">
+            <Fragment key={step.name}>
+              <li>
+                {track ? (
+                  <button
+                    aria-expanded={isActive}
+                    className={`${cardClass} ${isActive ? "border-teal-deep/50" : ""}`}
+                    id={track.anchor}
+                    onClick={() => handleToggle(track.key)}
+                    style={{ padding: "1.15rem" }}
+                    type="button"
+                  >
+                    <span
+                      aria-hidden="true"
+                      className="absolute right-4 top-4 text-xl leading-none text-teal-deep"
+                    >
+                      {isActive ? "−" : "+"}
+                    </span>
+                    <StepHeading index={index} step={step} />
+                    <StepFacts step={step} />
+                  </button>
+                ) : (
+                  <a className={cardClass} href={step.href} style={{ padding: "1.15rem" }}>
+                    <StepHeading index={index} step={step} />
+                    <StepFacts step={step} />
+                  </a>
+                )}
+              </li>
+              {track && isActive ? (
+                <li className="md:col-span-2 lg:hidden">
                   <TrackDetail track={track} />
-                </div>
-              )}
-              {idx < certificationTracks.length - 1 && (
-                <span
-                  aria-hidden="true"
-                  className="rotate-90 self-center text-2xl text-teal-deep/40 lg:rotate-0"
-                >
-                  →
-                </span>
-              )}
+                </li>
+              ) : null}
             </Fragment>
           );
         })}
-      </div>
+      </ol>
       {active && (
         <div className="mt-4 hidden lg:block">
           <TrackDetail track={active} />
@@ -378,7 +415,73 @@ function PathwaySection() {
   );
 }
 
-export function CertificationHubSections({ beforeContact }: { beforeContact?: ReactNode } = {}) {
+function WhatYouGetSection() {
+  // Plain subheadings, not cards: nothing here is a link target on its own.
+  return (
+    <div id={certificationWhatYouGet.id} className="scroll-mt-20">
+      <h2 className="text-2xl font-bold">{certificationWhatYouGet.title}</h2>
+      <dl className="mt-4 grid gap-x-8 gap-y-5 sm:grid-cols-2">
+        {certificationWhatYouGet.items.map((item) => (
+          <div className="border-l-2 border-teal-deep/30 pl-4" key={item.title}>
+            <dt className="text-base font-semibold text-teal-deep">{item.title}</dt>
+            <dd className="mt-1 text-sm leading-relaxed text-foreground/75">
+              {item.body}
+              {"linkLabel" in item ? (
+                <>
+                  {" "}
+                  <a
+                    className={linkClass}
+                    href={COACH_DIRECTORY_URL}
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    {item.linkLabel}
+                    <span aria-hidden="true"> ↗</span>
+                    <span className="sr-only"> (opens in a new tab)</span>
+                  </a>
+                </>
+              ) : null}
+            </dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  );
+}
+
+function HubCta({ href, label, variant }: { href: string; label: string; variant: string }) {
+  if (href.startsWith("#")) {
+    return (
+      <a className={`button-link ${variant}`} href={href}>
+        {label}
+      </a>
+    );
+  }
+
+  return (
+    <TrackedLink
+      className={`button-link ${variant}`}
+      event={{
+        name: "cta_click",
+        params: { cta_label: label, cta_location: "certification", cta_destination: href },
+      }}
+      href={href}
+    >
+      {label}
+    </TrackedLink>
+  );
+}
+
+type CertificationHubSectionsProps = {
+  /** Server-rendered "Find training in your country" block, slotted after "What you get". */
+  findTraining?: ReactNode;
+  beforeContact?: ReactNode;
+};
+
+export function CertificationHubSections({
+  findTraining,
+  beforeContact,
+}: CertificationHubSectionsProps = {}) {
   return (
     <div className="space-y-8">
       {/* Hero Section */}
@@ -396,6 +499,10 @@ export function CertificationHubSections({ beforeContact }: { beforeContact?: Re
             </div>
           ))}
         </div>
+        <div className="mt-4 flex flex-wrap gap-3">
+          <HubCta {...certificationHero.primaryCta} variant="primary" />
+          <HubCta {...certificationHero.secondaryCta} variant="secondary" />
+        </div>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={certificationHero.image.src}
@@ -404,12 +511,16 @@ export function CertificationHubSections({ beforeContact }: { beforeContact?: Re
         />
       </div>
 
+      {/* Numbered journey: Foundations → CALC → PALC → MALC */}
+      <PathwaySection />
+
+      <WhatYouGetSection />
+
+      {findTraining}
+
       <WhySection />
 
       <BecomeACoachSection />
-
-      {/* Pathway: progression cards with expandable level detail */}
-      <PathwaySection />
 
       <ProgramsSection />
 
@@ -421,27 +532,23 @@ export function CertificationHubSections({ beforeContact }: { beforeContact?: Re
 
       {beforeContact}
 
-      {/* Contact CTA */}
+      {/* Closing CTA */}
       <div className="site-panel mt-8 rounded-lg p-6 text-center">
-        <h3 className="text-lg font-semibold">Ready to Get Certified?</h3>
+        <h2 className="text-lg font-semibold">Ready to get certified?</h2>
         <p className="mt-1 text-sm text-foreground/70">
-          Contact us to start certification, ask about becoming a coach, or
-          bring a program in-house.
+          Tell us where you are and WIAL will connect you with the affiliate
+          that runs courses in your country.
         </p>
-        <TrackedLink
-          className="button-link primary mt-4"
-          event={{
-            name: "cta_click",
-            params: {
-              cta_label: "Contact Us",
-              cta_location: "certification",
-              cta_destination: "/contact",
-            },
-          }}
-          href="/contact"
-        >
-          Contact Us
-        </TrackedLink>
+        <div className="mt-4">
+          <HubCta {...certificationHero.primaryCta} variant="primary" />
+        </div>
+        <p className="mt-4 text-sm text-foreground/70">
+          {certificationFindTraining.affiliatePrompt}{" "}
+          <Link className={linkClass} href={certificationFindTraining.affiliateHref}>
+            {certificationFindTraining.affiliateLabel}
+          </Link>
+          .
+        </p>
       </div>
     </div>
   );

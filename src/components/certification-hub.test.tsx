@@ -1,6 +1,11 @@
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 import pages from "@/content/pages.json";
+import {
+  certificationJourney,
+  certificationRecertificationRules,
+} from "@/content/certification-hub";
+import { FindTrainingGrid } from "./certification-find-training";
 import { CertificationHubSections } from "./certification-hub";
 import { InHouseProgramsPage } from "./certification-in-house";
 import type { ContentPageRecord } from "@/lib/types";
@@ -22,7 +27,7 @@ describe("CertificationHubSections", () => {
     expect(html).toContain("published and contributed significantly");
 
     expect(html).toContain('id="progression"');
-    expect(html).toContain("Certification pathway");
+    expect(html).toContain("Your path to certification");
     expect(html).toContain("Certified Action Learning Coach");
     expect(html).toContain("Professional Action Learning Coach");
     expect(html).not.toContain("Senior Action Learning Coach");
@@ -48,7 +53,7 @@ describe("CertificationHubSections", () => {
     expect(html).toContain("problem solving to idea generation");
     expect(html).toContain("Solution Spheres");
     expect(html).toContain('href="/for-organizations"');
-    expect(html).toContain("Ask about becoming a coach");
+    expect(html).toContain('href="/become-a-coach"');
     expect(html).toContain("/certification/certified-coaches-cohort.jpg");
     expect(html).not.toContain("Please enable JavaScript");
 
@@ -83,7 +88,6 @@ describe("CertificationHubSections", () => {
     expect(html).not.toContain("Credly");
     expect(html).not.toContain("digital badge");
 
-    expect(html).toContain('href="/contact"');
     expect(html).not.toContain("wial.org/certification");
   });
 
@@ -123,6 +127,86 @@ describe("CertificationHubSections", () => {
     expect(
       microsoftQuote && "attribution" in microsoftQuote ? microsoftQuote.attribution : "",
     ).toContain("Dan Grady");
+  });
+});
+
+describe("certification coach journey (#160)", () => {
+  it("leads with the how-to headline and a Become a coach CTA", () => {
+    const html = renderHub();
+
+    expect(html).toMatch(/<h1[^>]*>How to become a Certified Action Learning Coach<\/h1>/);
+    expect(html).toContain('href="#find-training"');
+    // No generic "Contact Us" CTA any more.
+    expect(html).not.toContain("Contact Us");
+    expect(html).not.toContain('href="/contact"');
+    expect(html.match(/href="\/become-a-coach"/g)?.length).toBeGreaterThanOrEqual(3);
+    expect(html).toContain("Want to bring WIAL to your country?");
+    expect(html).toContain('href="/become-an-affiliate"');
+  });
+
+  it("numbers the four steps with prerequisites, time and renewal", () => {
+    const html = renderHub();
+    const steps = html.slice(html.indexOf('id="progression"'), html.indexOf('id="what-you-get"'));
+
+    expect(certificationJourney.map((step) => step.name)).toEqual([
+      "Foundations",
+      "CALC",
+      "PALC",
+      "MALC",
+    ]);
+    for (const [index, step] of certificationJourney.entries()) {
+      expect(steps).toContain(`Step ${index + 1}: `);
+      expect(steps).toContain(step.prerequisites);
+      expect(steps).toContain(step.time);
+      expect(steps).toContain(step.validity);
+    }
+    expect(steps).toContain("2 days");
+    expect(steps).toContain("100+ hours");
+    expect(steps).toContain("500+ hours");
+    expect(steps.match(/Validity and renewal/g)).toHaveLength(4);
+    // Level anchors used by the chatbot and old links still exist.
+    for (const anchor of ["calc", "palc", "malc"]) {
+      expect(steps).toContain(`id="${anchor}"`);
+    }
+    expect(steps).toContain('href="#foundations"');
+  });
+
+  it("keeps the published validity in step with the renewal rules", () => {
+    for (const step of certificationJourney) {
+      if (!step.trackKey) continue;
+      const rule = certificationRecertificationRules.find((item) => item.track === step.trackKey);
+      expect(step.validity).toContain(`Valid for ${rule?.validity}`);
+    }
+  });
+
+  it("explains what a coach gets", () => {
+    const html = renderHub();
+
+    expect(html).toContain('id="what-you-get"');
+    expect(html).toContain("ICF Continuing Coach Education (CCE)");
+    expect(html).toContain("coach directory");
+    expect(html).toContain("https://directory.wial.org/coaches");
+    expect(html).toContain("Global recognition");
+    expect(html).toContain("After you are certified");
+  });
+
+  it("lists a flag tile per affiliate country, sorted by country", () => {
+    const html = renderToStaticMarkup(
+      <FindTrainingGrid
+        affiliates={[
+          { name: "WIAL Poland", country: "Poland", href: "https://wial.pl" },
+          { name: "WIAL Brazil", country: "Brazil", href: "https://wial.com.br" },
+        ]}
+      />,
+    );
+
+    expect(html).toContain('id="find-training"');
+    expect(html).toContain("Find training in your country");
+    expect(html.indexOf("Brazil")).toBeLessThan(html.indexOf("Poland"));
+    expect(html).toContain('href="https://wial.pl"');
+    expect(html).toContain("/flags/pl.svg");
+    expect(html).toContain('href="/become-a-coach"');
+    expect(html).toContain('href="/become-an-affiliate"');
   });
 });
 

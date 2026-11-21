@@ -85,7 +85,7 @@ export function buildSiteAssistantContext() {
     `Contact page summary: ${contact?.bodyRichtext.heroIntro ?? ""}`,
     SALC_RETIRED_NOTE,
     "Direct contact: info@wial.org | P.O. Box 7601 #83791, Washington, DC 20044",
-    "Certification hub anchors: /certification#calc, #palc, #malc, #progression, #why, #become-a-coach, #programs, #foundations, #calc-courses, #in-house (teaser; full page at /certification/in-house-programs)",
+    "Certification hub anchors: /certification#calc, #palc, #malc, #progression (numbered steps), #what-you-get, #find-training (affiliates by country), #why, #become-a-coach, #programs, #foundations, #calc-courses, #in-house (teaser; full page at /certification/in-house-programs)",
     [
       `Who gets certified: ${certification.becomeACoach.intro.join(" ")}`,
       `Industries: ${certification.becomeACoach.industries.join(" | ")}`,
