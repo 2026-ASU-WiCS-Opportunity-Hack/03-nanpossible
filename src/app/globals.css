@@ -575,6 +575,21 @@ html.cursor-large * {
   line-height: 1.5;
 }
 
+/*
+ * Header buttons that only appear from tablet width up. Tailwind's `hidden`
+ * cannot do this: `.button-link` sets `display` outside any layer, which
+ * always beats a layered utility, so the button stayed visible on phones.
+ */
+.button-link.from-sm {
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .button-link.from-sm {
+    display: inline-flex;
+  }
+}
+
 .button-link.ghost {
   background: transparent;
   color: var(--foreground);
