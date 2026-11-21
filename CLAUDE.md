@@ -62,6 +62,7 @@ OpenRouter (LLM gateway), Stripe (payments), Credly (badges), Resend (email).
 - Admin editors (events, page content) share `AdminWorkbench`: compact toolbar (static — sticky positioning here has repeatedly caused overlap bugs), optional left rail, edit pane with preview stacked below
 - Admin/account pages render inside `account-grid` (320px sidebar + stage capped at ~830px) — avoid side-by-side multi-pane layouts in the stage
 - Shared UI classes live in `src/app/globals.css` (`site-panel`, `eyebrow`, `field-*`, `button-link`, `account-flash`, `coach-checkbox`) — reuse them instead of ad-hoc styles; editor save-state chips come from `getWorkbenchStatusCopy` in `src/lib/workbench.ts`
+- `.eyebrow` is a plain text label (dot + uppercase), deliberately not a pill — reviewers read the bordered pill as a button (#180); `cta` sections render no label above their heading
 - UI copy is user-facing: plain language, no component names or storage/dev jargon in visible text
 - Site font is Ubuntu (matches wial.org), loaded via `next/font/google` in `src/app/layout.tsx` as `--font-ubuntu`; font stacks are the root vars in `globals.css` (legacy names `--font-source-sans`/`--font-fraunces`)
 - Supabase auth emails (confirmation, recovery, magic link, invite, email change) use WIAL-branded HTML templates in `supabase/templates/`, wired via `[auth.email.template.*]` in `supabase/config.toml`; the hosted project only picks up changes via `supabase config push` (or pasting into Dashboard → Authentication → Email Templates)
