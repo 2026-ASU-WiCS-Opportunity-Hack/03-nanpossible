@@ -2183,6 +2183,10 @@
   "title": "Become a WIAL Affiliate",
   "published": true,
   "bodyRichtext": {
+    "heroCtas": [
+      { "label": "Apply to become an affiliate", "href": "#apply", "variant": "primary" },
+      { "label": "See where WIAL is active", "href": "/coaches", "variant": "secondary" }
+    ],
     "heroIntro": "A WIAL affiliate is an organization approved by WIAL to promote WIAL Action Learning in a specific geographic region. Affiliates grow WIAL in the country where they operate, advancing Action Learning and building a community of coaches.",
     "metrics": [
       {
@@ -2199,6 +2203,33 @@
       }
     ],
     "sections": [
+      {
+        "type": "feature_grid",
+        "title": "Why become an affiliate",
+        "flat": true,
+        "items": [
+          {
+            "title": "Your own country or region",
+            "body": "Each affiliate serves a specific country or region as WIAL's approved presence there, so your work builds one local community."
+          },
+          {
+            "title": "The WIAL name and materials",
+            "body": "Promote and deliver Action Learning under the WIAL brand, using WIAL's programs and course materials."
+          },
+          {
+            "title": "Foundations and CALC, delivered by you",
+            "body": "Run Foundations of Action Learning and CALC certification workshops locally, and develop the certified coaches in your region."
+          },
+          {
+            "title": "A global community",
+            "body": "Work alongside affiliates and coaches around the world, and take part in WIAL's global conferences and events."
+          },
+          {
+            "title": "Client work for your coaches",
+            "body": "Bring Action Learning work to the coaches in your area, including referrals when organizations in your region look for a coach."
+          }
+        ]
+      },
       {
         "type": "media_prose",
         "title": "What does a WIAL affiliate do?",
@@ -2230,6 +2261,20 @@
         ]
       },
       {
+        "type": "prose",
+        "title": "Who can apply",
+        "paragraphs": [
+          "A WIAL affiliate is an organization, not an individual coach. We look for applicants who can show the following. If you are not sure you qualify, send an inquiry anyway and we will talk it through."
+        ],
+        "bullets": [
+          "A country or region that does not already have a WIAL affiliate",
+          "Certified Action Learning coaches on the team, or a plan to get certified",
+          "Capacity to run Foundations workshops at least once a year and CALC workshops at least once every two years",
+          "Commitment to mentor local coaches and host a yearly forum for the regional community",
+          "A network and business contacts to promote Action Learning locally"
+        ]
+      },
+      {
         "type": "testimonial_highlights",
         "title": "Action Learning in practice",
         "description": "See the difference WIAL Action Learning makes for organizations working with our community.",
@@ -2242,6 +2287,32 @@
         "body": "The coach directory shows every current affiliate on the map alongside the certified coaches based there.",
         "href": "/coaches",
         "label": "Browse affiliates and coaches"
+      },
+      {
+        "type": "timeline",
+        "title": "How it works",
+        "items": [
+          {
+            "year": "Step 1",
+            "title": "Send an inquiry",
+            "body": "Use the form below to tell us your country or region and a little about your experience. We reply to every inquiry, usually within a few business days."
+          },
+          {
+            "year": "Step 2",
+            "title": "Talk with WIAL",
+            "body": "We set up a call to learn about your goals, your coaching community, and what a WIAL presence in your region could look like."
+          },
+          {
+            "year": "Step 3",
+            "title": "Sign the agreement",
+            "body": "If it is a good fit on both sides, WIAL shares the affiliate agreement and confirms the region you will serve."
+          },
+          {
+            "year": "Step 4",
+            "title": "Launch",
+            "body": "Your affiliate gets its own site and a place on the WIAL map. You schedule your first workshops and start building your local community of coaches."
+          }
+        ]
       }
     ]
   },
@@ -2249,7 +2320,7 @@
     "description": "Learn what a WIAL affiliate does and apply to bring WIAL Action Learning to your country or region.",
     "sourceUrl": "https://wial.org/become-an-affiliate/",
     "sourceStatus": "migrated-from-wial",
-    "sourceNotes": "Migrated from wial.org/become-an-affiliate/. The responsibilities list is verbatim apart from light copy edits; the 'community' paragraph and the country/region guidance were added so the page reads as a whole. The legacy 'Interested in becoming an affiliate?' form (name, contact number, email, country, message) is rebuilt with the contact-form pattern as /become-an-affiliate#apply -> affiliate_inquiries (an optional organization field was added). The directory.wial.org/affiliates link now points to /coaches, which hosts the merged affiliate directory. Two stock photos vendored to public/become-an-affiliate/; the decorative Affiliates_Header banner was dropped."
+    "sourceNotes": "Migrated from wial.org/become-an-affiliate/. The responsibilities list is verbatim apart from light copy edits; the 'community' paragraph and the country/region guidance were added so the page reads as a whole. The legacy 'Interested in becoming an affiliate?' form (name, contact number, email, country, message) is rebuilt with the contact-form pattern as /become-an-affiliate#apply -> affiliate_inquiries (an optional organization field was added). The directory.wial.org/affiliates link now points to /coaches, which hosts the merged affiliate directory. Two stock photos vendored to public/become-an-affiliate/; the decorative Affiliates_Header banner was dropped. #159 added the 'Why become an affiliate' benefits, 'Who can apply' and the four-step 'How it works' sections plus hero buttons; that copy was written for this site from the duties list above and WIAL marketing feedback, not migrated, and needs WIAL sign-off."
   }
 },
 {

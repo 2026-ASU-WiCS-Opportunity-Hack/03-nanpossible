@@ -37,6 +37,7 @@ export const defaultGlobalFooterContent: GlobalFooterContent = {
     { id: "certification", label: "Certification", href: "/certification" },
     { id: "clients", label: "Clients", href: "/clients" },
     { id: "resources", label: "Resources", href: "/resources" },
+    { id: "affiliate", label: "Become an affiliate", href: "/become-an-affiliate" },
     { id: "pay", label: "Make a payment", href: "/pay" },
     { id: "contact", label: "Contact", href: "/contact" },
     { id: "privacy", label: "Privacy", href: "/privacy" },
