@@ -264,8 +264,8 @@ export const certificationBecomeACoach = {
   servicesLabel: "Solution Spheres",
   servicesHref: "/for-organizations",
   servicesAfter: " and the services we offer.",
-  contactHref: "/contact",
-  contactLabel: "Ask about becoming a coach",
+  contactHref: "/become-a-coach",
+  contactLabel: "Become a coach",
 } as const;
 
 export const certificationPrograms = {

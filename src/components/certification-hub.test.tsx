@@ -48,7 +48,7 @@ describe("CertificationHubSections", () => {
     expect(html).toContain("problem solving to idea generation");
     expect(html).toContain("Solution Spheres");
     expect(html).toContain('href="/for-organizations"');
-    expect(html).toContain("Ask about becoming a coach");
+    expect(html).toContain('href="/become-a-coach"');
     expect(html).toContain("/certification/certified-coaches-cohort.jpg");
     expect(html).not.toContain("Please enable JavaScript");
 
