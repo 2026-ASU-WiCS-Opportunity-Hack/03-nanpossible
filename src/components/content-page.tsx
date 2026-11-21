@@ -580,7 +580,6 @@ export function renderSection(section: ContentSection, context: RenderSectionCon
         >
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div className="max-w-2xl space-y-3">
-              <span className="eyebrow">Next step</span>
               <h2 className="section-title text-teal-deep">{section.title}</h2>
               <p className="text-base leading-7 text-foreground/78">{section.body}</p>
             </div>

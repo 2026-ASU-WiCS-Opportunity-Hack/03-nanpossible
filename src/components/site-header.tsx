@@ -47,7 +47,7 @@ export function SiteHeader({ siteContext, viewer }: SiteHeaderProps) {
 
             <div className="ml-auto flex shrink-0 items-center gap-2 sm:gap-3">
               <TrackedLink
-                className="button-link affiliate hidden px-4 py-2.5 text-sm sm:inline-flex"
+                className="button-link affiliate from-sm px-4 py-2.5 text-sm"
                 event={{
                   name: "cta_click",
                   params: {
@@ -90,7 +90,7 @@ export function SiteHeader({ siteContext, viewer }: SiteHeaderProps) {
                     Sign in
                   </TrackedLink>
                   <TrackedLink
-                    className="button-link secondary hidden px-4 py-2.5 text-sm sm:inline-flex"
+                    className="button-link secondary from-sm px-4 py-2.5 text-sm"
                     event={{
                       name: "cta_click",
                       params: {
