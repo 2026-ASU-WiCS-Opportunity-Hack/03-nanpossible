@@ -898,12 +898,12 @@
   "title": "WIAL Better World Fund",
   "published": true,
   "bodyRichtext": {
-    "heroIntro": "WIAL helps to create a better world by supporting organizations that make a positive social impact. In 2015, WIAL established the Better World Fund to provide Action Learning services to community-based organizations around the world — together we can make a difference.",
-    "metrics": [
-      { "label": "Fund established", "value": "2015" },
-      { "label": "Donation impact", "value": "100x" },
-      { "label": "Community projects", "value": "10+" }
+    "heroIntro": "WIAL envisions a world where every community has the power to solve its own toughest problems. In 2015, WIAL established the Better World Fund to provide Action Learning grants to community-based organizations around the world.",
+    "heroCtas": [
+      { "label": "Nominate an organization", "href": "/better-world/nominate", "variant": "primary" },
+      { "label": "Donate to Better World Fund", "href": "/better-world/donate", "variant": "secondary" }
     ],
+    "metrics": [],
     "sections": [
       {
         "type": "prose",
