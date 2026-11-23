@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import { notFound, permanentRedirect } from "next/navigation";
 import { cache } from "react";
 import { parsePhoneNumber } from "libphonenumber-js";
@@ -16,6 +15,7 @@ import {
 } from "@/lib/coaches";
 import { affiliateSiteUrl } from "@/lib/affiliates";
 import { countryFlagSrc } from "@/lib/countries";
+import { COACH_DIRECTORY_URL } from "@/lib/routing";
 import { listAffiliateDirectory } from "@/lib/tenant";
 
 type CoachDetailPageProps = {
@@ -148,13 +148,13 @@ export default async function CoachDetailPage({ params }: CoachDetailPageProps) 
   return (
     <div className="page-frame">
       <div className="site-shell space-y-6">
-        <Link
+        <a
           className="inline-flex items-center gap-2 text-sm font-semibold text-teal transition hover:text-accent"
-          href="/coaches"
+          href={COACH_DIRECTORY_URL}
         >
           <span aria-hidden="true">←</span>
-          Back to directory
-        </Link>
+          WIAL coach directory
+        </a>
 
         <section className="site-panel overflow-hidden rounded-[2.4rem] p-6 md:p-10">
           <div className="grid gap-6 xl:grid-cols-[minmax(0,1.6fr)_340px]">

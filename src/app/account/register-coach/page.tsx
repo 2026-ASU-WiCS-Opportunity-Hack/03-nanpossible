@@ -106,7 +106,7 @@ export default async function RegisterCoachPage({
           </h2>
           <p className="mt-4 max-w-2xl text-base leading-7 text-foreground/72">
             {existingCoach.approved
-              ? "Your coach card is visible on the /coaches directory and your profile feeds the AI coach search."
+              ? "Your coach profile is published and feeds the AI coach search."
               : "You'll see this page flip to \u201CApproved\u201D once an affiliate admin reviews your submission. Keep editing your profile details from your account profile in the meantime."}
           </p>
 
@@ -114,9 +114,14 @@ export default async function RegisterCoachPage({
             <Link className="button-link primary" href="/account/profile">
               Edit account details
             </Link>
-            <Link className="button-link ghost" href="/coaches">
-              View coach directory
-            </Link>
+            {existingCoach.approved ? (
+              <Link
+                className="button-link ghost"
+                href={`/coaches/${encodeURIComponent(existingCoach.slug ?? existingCoach.id)}`}
+              >
+                View your public profile
+              </Link>
+            ) : null}
           </div>
         </section>
       </AccountPageShell>
@@ -130,7 +135,7 @@ export default async function RegisterCoachPage({
   return (
     <AccountPageShell
       badge="Coach registration"
-      description="Submit a full coach profile. Affiliate admins approve each new submission before it appears in the public /coaches directory."
+      description="Submit a full coach profile. Affiliate admins approve each new submission before it is published."
       eyebrow="Join the WIAL coach roster"
       title="Register as a coach"
     >

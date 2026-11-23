@@ -87,7 +87,7 @@ describe("normalizeSegments", () => {
     });
     expect(normalizeSegments(["affiliates"])).toEqual({
       slug: null,
-      redirectTo: "/coaches",
+      redirectTo: "https://directory.wial.org/affiliates",
     });
     expect(normalizeSegments(["action-learning", "benefits"])).toEqual({
       slug: null,

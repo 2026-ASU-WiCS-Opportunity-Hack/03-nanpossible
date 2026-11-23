@@ -5,6 +5,8 @@ import type { CanonicalPageSlug, NavigationItem } from "@/lib/types";
  * platform no longer maintains the full coach roster for browsing.
  */
 export const COACH_DIRECTORY_URL = "https://directory.wial.org/coaches";
+/** Affiliates are listed on the same official directory. */
+export const AFFILIATE_DIRECTORY_URL = "https://directory.wial.org/affiliates";
 
 /**
  * Main navigation, ordered around visitor journeys (#156): learn what Action
@@ -193,7 +195,7 @@ const aliasMap = new Map<string, string>([
   ["become-a-partner", "/partners"],
   ["award-nomination", "/awards/nomination"],
   ["previous-wial-award-winners", "/awards"],
-  ["affiliates", "/coaches"],
+  ["affiliates", AFFILIATE_DIRECTORY_URL],
   ["past-conferences", "/conferences"],
   ["2024-wial-global-conference", "/conferences"],
   ["our-clients", "/clients"],

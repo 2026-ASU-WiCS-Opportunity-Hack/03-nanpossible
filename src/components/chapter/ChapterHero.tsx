@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { COACH_DIRECTORY_URL } from "@/lib/routing";
 import type { ChapterRecord } from "@/lib/types";
 
 export function ChapterHero({ chapter }: { chapter: ChapterRecord }) {
@@ -15,9 +16,9 @@ export function ChapterHero({ chapter }: { chapter: ChapterRecord }) {
         </p>
       </div>
       <div className="mt-6 flex flex-wrap gap-3">
-        <Link className="button-link primary" href="/coaches">
+        <a className="button-link primary" href={COACH_DIRECTORY_URL} rel="noreferrer" target="_blank">
           Find a coach
-        </Link>
+        </a>
         <Link className="button-link secondary" href="/certification">
           Get certified
         </Link>

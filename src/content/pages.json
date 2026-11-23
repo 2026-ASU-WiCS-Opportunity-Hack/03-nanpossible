@@ -49,7 +49,7 @@
             "links": [
               { "label": "Open resources", "href": "/resources", "variant": "secondary" },
               { "label": "Find a coach", "href": "https://directory.wial.org/coaches", "variant": "secondary" },
-              { "label": "Find your affiliate", "href": "/coaches", "variant": "secondary" }
+              { "label": "Find your affiliate", "href": "https://directory.wial.org/affiliates", "variant": "secondary" }
             ]
           }
         ]
@@ -869,7 +869,7 @@
         "type": "cta",
         "title": "Hire an Action Learning Coach",
         "body": "Find a WIAL-certified coach to bring Action Learning to your organization.",
-        "href": "/coaches",
+        "href": "https://directory.wial.org/coaches",
         "label": "Find a coach"
       },
       {
@@ -1057,7 +1057,7 @@
         "type": "cta",
         "title": "Find an Action Learning coach",
         "body": "Search our directory of certified Action Learning coaches around the world.",
-        "href": "/coaches",
+        "href": "https://directory.wial.org/coaches",
         "label": "Find a coach"
       },
       {
@@ -1945,7 +1945,7 @@
         "type": "cta",
         "title": "Bring Action Learning to your organization",
         "body": "Find a WIAL-certified coach to work with your team, or talk with us about a tailored program.",
-        "href": "/coaches",
+        "href": "https://directory.wial.org/coaches",
         "label": "Find a coach"
       },
       {
@@ -2200,7 +2200,7 @@
   "bodyRichtext": {
     "heroCtas": [
       { "label": "Apply to become an affiliate", "href": "#apply", "variant": "primary" },
-      { "label": "See where WIAL is active", "href": "/coaches", "variant": "secondary" }
+      { "label": "See where WIAL is active", "href": "https://directory.wial.org/affiliates", "variant": "secondary" }
     ],
     "heroIntro": "A WIAL affiliate is an organization approved by WIAL to promote WIAL Action Learning in a specific geographic region. Affiliates grow WIAL in the country where they operate, advancing Action Learning and building a community of coaches.",
     "metrics": [
@@ -2299,9 +2299,9 @@
       {
         "type": "cta",
         "title": "See where WIAL is already active",
-        "body": "The coach directory shows every current affiliate on the map alongside the certified coaches based there.",
-        "href": "/coaches",
-        "label": "Browse affiliates and coaches"
+        "body": "The WIAL directory lists every current affiliate and the region it serves.",
+        "href": "https://directory.wial.org/affiliates",
+        "label": "Browse WIAL affiliates"
       },
       {
         "type": "timeline",

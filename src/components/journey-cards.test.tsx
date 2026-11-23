@@ -32,7 +32,7 @@ describe("journey_cards section", () => {
     expect(html).toContain('href="/become-an-affiliate"');
     expect(html).toContain('href="/resources"');
     expect(html).toContain('href="https://directory.wial.org/coaches"');
-    expect(html).toContain('href="/coaches"');
+    expect(html).toContain('href="https://directory.wial.org/affiliates"');
   });
 
   // #158 flags the affiliate path as super important: it is the only
