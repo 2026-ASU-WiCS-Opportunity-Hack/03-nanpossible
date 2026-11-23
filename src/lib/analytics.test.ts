@@ -1,4 +1,5 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
+import { getDonationFund } from "./payments-format";
 import {
   analyticsSiteTenant,
   analyticsTrafficType,
@@ -204,6 +205,30 @@ describe("commerce events", () => {
     const event = beginDonationEvent(2500);
     expect(event.name).toBe("begin_checkout");
     expect(event.params).toMatchObject({ checkout_type: "donation", currency: "USD", value: 25 });
+  });
+
+  it("tags donation events with the fund they are for", () => {
+    const fund = getDonationFund("marquardt-legacy");
+    expect(beginDonationEvent(2500, fund).params).toMatchObject({
+      items: [{ item_id: "marquardt-legacy-donation", item_name: "Marquardt Legacy Fund donation" }],
+    });
+    const purchase = purchaseEvent({
+      id: "2",
+      stripeSessionId: "cs_test_456",
+      productName: "WIAL Marquardt Legacy Fund donation",
+      amount: 2500,
+      currency: "usd",
+      payerEmail: null,
+      payerName: null,
+      userId: null,
+      status: "paid",
+      paidAt: null,
+      source: fund.source,
+    });
+    expect(purchase.params).toMatchObject({
+      checkout_type: "donation",
+      items: [{ item_id: "marquardt-legacy-donation", item_category: "Donation" }],
+    });
   });
 
   it("builds purchase with the Stripe session as transaction_id", () => {

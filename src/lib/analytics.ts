@@ -16,6 +16,7 @@
  * Never send personal data (names, emails, free-text messages) in params.
  */
 
+import { donationFundBySource, getDonationFund, type DonationFund } from "@/lib/payments-format";
 import type { AppRole, PaymentRecord, PaymentType, SiteContext } from "@/lib/types";
 
 export const DEFAULT_GA_MEASUREMENT_ID = "G-3W999NPQJY";
@@ -382,9 +383,11 @@ export function beginCheckoutEvent(paymentType: PaymentType): AnalyticsEvent {
   };
 }
 
-export const DONATION_ITEM_ID = "better-world-donation";
-
-export function beginDonationEvent(amountMinor: number, currency = "usd"): AnalyticsEvent {
+export function beginDonationEvent(
+  amountMinor: number,
+  fund: DonationFund = getDonationFund("better-world"),
+  currency = "usd",
+): AnalyticsEvent {
   const value = toAnalyticsValue(amountMinor, currency);
   return {
     name: "begin_checkout",
@@ -394,8 +397,8 @@ export function beginDonationEvent(amountMinor: number, currency = "usd"): Analy
       value,
       items: [
         {
-          item_id: DONATION_ITEM_ID,
-          item_name: "Better World Fund donation",
+          item_id: fund.source,
+          item_name: `${fund.name} donation`,
           item_category: "Donation",
           price: value,
           quantity: 1,
@@ -406,7 +409,8 @@ export function beginDonationEvent(amountMinor: number, currency = "usd"): Analy
 }
 
 export function purchaseEvent(payment: PaymentRecord): AnalyticsEvent {
-  const isDonation = payment.source === "better-world-donation";
+  const fund = donationFundBySource(payment.source);
+  const isDonation = fund !== null;
   const value = toAnalyticsValue(payment.amount, payment.currency);
   return {
     name: "purchase",
@@ -417,7 +421,7 @@ export function purchaseEvent(payment: PaymentRecord): AnalyticsEvent {
       value,
       items: [
         {
-          item_id: isDonation ? DONATION_ITEM_ID : payment.productName,
+          item_id: fund ? fund.source : payment.productName,
           item_name: payment.productName,
           item_category: isDonation ? "Donation" : "One-time payment",
           price: value,

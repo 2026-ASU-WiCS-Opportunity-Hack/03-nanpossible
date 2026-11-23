@@ -5,7 +5,7 @@ import { TrackEvent } from "@/components/analytics/track-event";
 import { purchaseEvent } from "@/lib/analytics";
 import { getCurrentViewer } from "@/lib/auth";
 import { recordCheckoutSession } from "@/lib/payments";
-import { formatMinorAmount } from "@/lib/payments-format";
+import { donationFundBySource, formatMinorAmount } from "@/lib/payments-format";
 import type { PaymentRecord } from "@/lib/types";
 
 export const metadata: Metadata = {
@@ -35,7 +35,8 @@ export default async function PaySuccessPage({ searchParams }: PaySuccessPagePro
     failed = true;
   }
 
-  const isDonation = payment?.source === "better-world-donation";
+  const donationFund = donationFundBySource(payment?.source);
+  const isDonation = donationFund !== null;
 
   return (
     <div className="page-frame">
@@ -101,9 +102,9 @@ export default async function PaySuccessPage({ searchParams }: PaySuccessPagePro
               </>
             )}
             <div className="flex flex-wrap gap-3">
-              {isDonation ? (
-                <Link className="button-link primary" href="/better-world">
-                  Back to the Better World Fund
+              {donationFund ? (
+                <Link className="button-link primary" href={donationFund.backHref}>
+                  {donationFund.backLabel}
                 </Link>
               ) : (
                 <Link className="button-link primary" href="/pay">

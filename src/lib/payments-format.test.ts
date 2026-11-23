@@ -1,6 +1,9 @@
 import { describe, expect, it } from "vitest";
 import {
+  DONATION_FUNDS,
   describeStripeKey,
+  donationFundBySource,
+  getDonationFund,
   formatMinorAmount,
   parseDonationAmount,
   toMinorUnits,
@@ -55,6 +58,33 @@ describe("describeStripeKey", () => {
     expect(describeStripeKey("sk_test_short").valid).toBe(false);
     expect(describeStripeKey("").valid).toBe(false);
     expect(describeStripeKey(null).valid).toBe(false);
+  });
+});
+
+describe("donation funds", () => {
+  it("offers the Better World Fund and the Marquardt Legacy Fund", () => {
+    expect(DONATION_FUNDS.map((fund) => fund.name)).toEqual([
+      "Better World Fund",
+      "Marquardt Legacy Fund",
+    ]);
+    // Sources and pages must be distinct so gifts are reported per fund.
+    expect(new Set(DONATION_FUNDS.map((fund) => fund.source)).size).toBe(DONATION_FUNDS.length);
+    expect(new Set(DONATION_FUNDS.map((fund) => fund.donatePath)).size).toBe(DONATION_FUNDS.length);
+  });
+
+  it("keeps the Better World Fund source stable for existing Stripe records", () => {
+    expect(getDonationFund("better-world").source).toBe("better-world-donation");
+  });
+
+  it("falls back to the Better World Fund for an unknown fund id", () => {
+    expect(getDonationFund("nope").id).toBe("better-world");
+    expect(getDonationFund(null).id).toBe("better-world");
+  });
+
+  it("resolves a recorded payment source to its fund", () => {
+    expect(donationFundBySource("marquardt-legacy-donation")?.id).toBe("marquardt-legacy");
+    expect(donationFundBySource("pay")).toBeNull();
+    expect(donationFundBySource(null)).toBeNull();
   });
 });
 
