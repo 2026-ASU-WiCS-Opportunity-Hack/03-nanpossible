@@ -4,7 +4,7 @@ import { TrackEvent } from "@/components/analytics/track-event";
 import { TrackedLink } from "@/components/analytics/tracked-link";
 import { getCurrentViewer } from "@/lib/auth";
 import { listPaymentsForUser, listPaymentTypes } from "@/lib/payments";
-import { formatMinorAmount } from "@/lib/payments-format";
+import { DONATION_FUNDS, formatMinorAmount } from "@/lib/payments-format";
 import type { PaymentRecord, PaymentType } from "@/lib/types";
 import { startCheckoutAction } from "./actions";
 import { PayButton } from "./PayButton";
@@ -191,29 +191,44 @@ export default async function PayPage({ searchParams }: PayPageProps) {
                   </article>
                 ))}
               </div>
-              <section className="site-panel rounded-[2rem] p-6 md:p-8">
-                <h2 className="section-title text-teal-deep">Supporting the Better World Fund?</h2>
-                <p className="mt-3 max-w-2xl text-base leading-7 text-foreground/75">
-                  Choose your own amount and give directly to the fund that
-                  brings Action Learning to community organizations.
-                </p>
-                <TrackedLink
-                  className="button-link secondary mt-5 inline-flex"
-                  event={{
-                    name: "cta_click",
-                    params: {
-                      cta_label: "Donate any amount",
-                      cta_location: "pay",
-                      cta_destination: "/better-world/donate",
-                    },
-                  }}
-                  href="/better-world/donate"
-                >
-                  Donate any amount
-                </TrackedLink>
-              </section>
             </section>
           )}
+
+          <section className="section-stack" id="donate">
+            <div className="space-y-3">
+              <h2 className="section-title text-teal-deep">Make a donation</h2>
+              <p className="max-w-3xl text-base leading-7 text-foreground/75">
+                Choose a fund and give any amount.
+              </p>
+            </div>
+            <div className="grid gap-4 md:grid-cols-2">
+              {DONATION_FUNDS.map((fund) => (
+                <article className="feature-card flex flex-col rounded-[1.5rem]" key={fund.id}>
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-green">
+                    Donation
+                  </p>
+                  <h3 className="mt-3">{fund.name}</h3>
+                  <p className="mt-3 text-sm">{fund.summary}</p>
+                  <div className="mt-auto pt-5">
+                    <TrackedLink
+                      className="button-link primary inline-flex"
+                      event={{
+                        name: "cta_click",
+                        params: {
+                          cta_label: `Donate to the ${fund.name}`,
+                          cta_location: "pay",
+                          cta_destination: fund.donatePath,
+                        },
+                      }}
+                      href={fund.donatePath}
+                    >
+                      Donate any amount
+                    </TrackedLink>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </section>
 
           {viewer ? (
             <section className="site-panel rounded-[2rem] p-6 md:p-8" id="your-payments">

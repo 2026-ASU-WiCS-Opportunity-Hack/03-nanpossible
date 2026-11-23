@@ -56,6 +56,68 @@ export const DONATION_MAX_MINOR = 5_000_000;
 export const DONATION_COMMENT_MAX = 500;
 
 /**
+ * The funds a donor can give a self-chosen amount to. `source` marks both the
+ * Stripe Product (`metadata.wial_purpose`) and the Checkout Session
+ * (`metadata.source`), so each fund's gifts can be reported separately.
+ */
+export type DonationFund = {
+  id: "better-world" | "marquardt-legacy";
+  source: string;
+  name: string;
+  /** Short line for the donation card on /pay. */
+  summary: string;
+  /** Intro under the heading on the fund's donate page. */
+  intro: string;
+  productName: string;
+  productDescription: string;
+  donatePath: string;
+  backHref: string;
+  backLabel: string;
+};
+
+export const DONATION_FUNDS: DonationFund[] = [
+  {
+    id: "better-world",
+    source: "better-world-donation",
+    name: "Better World Fund",
+    summary:
+      "Give directly to the fund that brings Action Learning to community organizations.",
+    intro:
+      "Every contribution is multiplied through pro bono coaching and in-kind support — and goes directly to bringing Action Learning to community organizations.",
+    productName: "WIAL Better World Fund donation",
+    productDescription:
+      "Donation to the WIAL Better World Fund, bringing Action Learning to community organizations.",
+    donatePath: "/better-world/donate",
+    backHref: "/better-world",
+    backLabel: "Back to the Better World Fund",
+  },
+  {
+    id: "marquardt-legacy",
+    source: "marquardt-legacy-donation",
+    name: "Marquardt Legacy Fund",
+    summary:
+      "Honor WIAL co-founder Michael Marquardt and the model of Action Learning he helped create.",
+    intro:
+      "In 1995, WIAL co-founder Michael Marquardt met Reg Revans, widely recognized as the father of Action Learning. Their dialogue led to the WIAL model of Action Learning and its six components and two ground rules. The Marquardt Legacy Fund honors that work.",
+    productName: "WIAL Marquardt Legacy Fund donation",
+    productDescription: "Donation to the WIAL Marquardt Legacy Fund.",
+    donatePath: "/pay/marquardt-legacy-fund",
+    backHref: "/pay",
+    backLabel: "Back to payments",
+  },
+];
+
+/** Look a fund up by id; anything unknown falls back to the Better World Fund. */
+export function getDonationFund(id: string | null | undefined): DonationFund {
+  return DONATION_FUNDS.find((fund) => fund.id === id) ?? DONATION_FUNDS[0];
+}
+
+/** The fund a recorded payment's `source` belongs to, or null for ordinary payments. */
+export function donationFundBySource(source: string | null | undefined): DonationFund | null {
+  return DONATION_FUNDS.find((fund) => fund.source === source) ?? null;
+}
+
+/**
  * Resolve a donor-chosen amount into minor units. `preset` is either one of
  * `DONATION_PRESETS_MINOR` (as a string) or `"other"`, in which case `custom`
  * is parsed as a free-entry USD amount. Returns null when the selection is

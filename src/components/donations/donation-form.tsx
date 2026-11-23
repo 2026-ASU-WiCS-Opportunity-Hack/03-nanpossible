@@ -7,7 +7,9 @@ import {
   DONATION_COMMENT_MAX,
   DONATION_PRESETS_MINOR,
   formatMinorAmount,
+  getDonationFund,
   parseDonationAmount,
+  type DonationFund,
 } from "@/lib/payments-format";
 import { startDonationAction } from "./actions";
 
@@ -20,7 +22,7 @@ function DonateButton({ label }: { label: string }) {
   );
 }
 
-export function DonationForm() {
+export function DonationForm({ fundId }: { fundId: DonationFund["id"] }) {
   const [preset, setPreset] = useState("");
   const [customAmount, setCustomAmount] = useState("");
   const [comment, setComment] = useState("");
@@ -34,10 +36,11 @@ export function DonationForm() {
       className="site-panel rounded-[2rem] p-6 md:p-8"
       onSubmit={() => {
         if (amount !== null) {
-          trackEvent(beginDonationEvent(amount));
+          trackEvent(beginDonationEvent(amount, getDonationFund(fundId)));
         }
       }}
     >
+      <input name="fund" type="hidden" value={fundId} />
       <h2 className="section-title text-teal-deep">Choose an amount</h2>
       <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3">
         {DONATION_PRESETS_MINOR.map((minor) => (

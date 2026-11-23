@@ -49,10 +49,10 @@ GA4 recommended events are used wherever one fits so the standard reports light 
 | `login_error` | Login page shows an error | `error_code` |
 | `logout` | `/login?notice=signed-out` | — |
 | `coach_registration` ★ | Coach profile submitted / linked / failed (`/account/register-coach`) | `status`, `error_code` |
-| `begin_checkout` ★ | Pay button (`/pay`) or Donate button clicked; visitor leaves for Stripe | `checkout_type`, `currency`, `value`, `items[]` |
+| `begin_checkout` ★ | Pay button (`/pay`) or Donate button clicked; visitor leaves for Stripe | `checkout_type`, `currency`, `value`, `items[]` (donations: `item_id` is the fund source, `better-world-donation` or `marquardt-legacy-donation`) |
 | `purchase` ★ | `/pay/success` verified the Stripe session (deduped per `transaction_id`) | `checkout_type`, `transaction_id`, `currency`, `value`, `items[]` |
 | `checkout_cancel` | Returned from Stripe via the cancel URL | `checkout_type` |
-| `checkout_error` | `/pay` or `/better-world/donate` shows an error banner | `checkout_type`, `error_code` |
+| `checkout_error` | `/pay` or a fund donate page (`/better-world/donate`, `/pay/marquardt-legacy-fund`) shows an error banner | `checkout_type`, `error_code` |
 | `search` | Coach search request completed; library / WIAL Talk search after typing pause | `search_type` (`coach`\|`library`\|`wial_talk`), `search_term`, `result_count`, `search_mode`, `cert_level`, `country`, `language`, `library_filter` |
 | `select_content` | Coach card → profile, library item opened, library type filter, certification level expanded, affiliate chip, partner logo, partner fee band looked up | `content_type`, `content_id`, `item_kind`, `outbound` |
 | `load_more` | "Load more"/"Show more" in a list | `list_name`, `shown_count` |

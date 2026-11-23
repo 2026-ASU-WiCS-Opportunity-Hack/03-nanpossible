@@ -3,6 +3,8 @@ import {
   DONATION_MAX_MINOR,
   DONATION_MIN_MINOR,
   describeStripeKey,
+  donationFundBySource,
+  type DonationFund,
 } from "@/lib/payments-format";
 import { createServiceRoleSupabaseClient } from "@/lib/supabase-admin";
 import type {
@@ -26,8 +28,6 @@ import type {
 const STRIPE_SECRET_NAME = "stripe_secret_key";
 const KEY_CACHE_TTL_MS = 60_000;
 
-/** Marks the Stripe Product used for donor-chosen-amount Better World Fund donations. */
-const DONATION_PURPOSE = "better-world-donation";
 const DONATION_PRODUCT_CACHE_TTL_MS = 5 * 60_000;
 
 type ResolvedKey = {
@@ -164,7 +164,7 @@ export async function listPaymentTypes(): Promise<PaymentType[]> {
       }
       // Donation prices are created inline per-checkout (see
       // createDonationCheckoutSession) and shouldn't appear as payment cards.
-      if (product.metadata?.wial_purpose === DONATION_PURPOSE) {
+      if (donationFundBySource(product.metadata?.wial_purpose)) {
         return [];
       }
       return [
@@ -243,39 +243,40 @@ export async function createCheckoutSession(input: {
   return session.url;
 }
 
-let cachedDonationProductId: { id: string; expires: number } | null = null;
+const cachedDonationProductIds = new Map<string, { id: string; expires: number }>();
 
-/** The Stripe Product backing donor-chosen-amount donations, cached for 5 minutes. */
-async function getDonationProduct(stripe: Stripe): Promise<string> {
-  if (cachedDonationProductId && cachedDonationProductId.expires > Date.now()) {
-    return cachedDonationProductId.id;
+/** The Stripe Product backing a fund's donor-chosen-amount donations, cached for 5 minutes. */
+async function getDonationProduct(stripe: Stripe, fund: DonationFund): Promise<string> {
+  const cached = cachedDonationProductIds.get(fund.source);
+  if (cached && cached.expires > Date.now()) {
+    return cached.id;
   }
   const products = await stripe.products.list({ active: true, limit: 100 });
   const existing = products.data.find(
-    (product) => product.metadata?.wial_purpose === DONATION_PURPOSE,
+    (product) => product.metadata?.wial_purpose === fund.source,
   );
   const product =
     existing ??
     (await stripe.products.create({
-      name: "WIAL Better World Fund donation",
-      description:
-        "Donation to the WIAL Better World Fund, bringing Action Learning to community organizations.",
-      metadata: { managed_by: "wial-platform", wial_purpose: DONATION_PURPOSE },
+      name: fund.productName,
+      description: fund.productDescription,
+      metadata: { managed_by: "wial-platform", wial_purpose: fund.source },
     }));
-  cachedDonationProductId = {
+  cachedDonationProductIds.set(fund.source, {
     id: product.id,
     expires: Date.now() + DONATION_PRODUCT_CACHE_TTL_MS,
-  };
+  });
   return product.id;
 }
 
 /**
  * Start a Checkout Session for a donor-chosen donation amount. Unlike
  * createCheckoutSession (which sells a fixed Price), this builds the Price
- * inline for the exact amount the donor entered, under the shared donation
+ * inline for the exact amount the donor entered, under the fund's donation
  * Product from getDonationProduct.
  */
 export async function createDonationCheckoutSession(input: {
+  fund: DonationFund;
   amount: number;
   comment: string | null;
   appUrl: string;
@@ -292,7 +293,7 @@ export async function createDonationCheckoutSession(input: {
   ) {
     throw new PaymentsError("invalid-amount");
   }
-  const productId = await getDonationProduct(stripe);
+  const productId = await getDonationProduct(stripe, input.fund);
   const session = await stripe.checkout.sessions
     .create({
       mode: "payment",
@@ -310,9 +311,9 @@ export async function createDonationCheckoutSession(input: {
       customer_email: input.user?.email || undefined,
       billing_address_collection: "required",
       success_url: `${input.appUrl}/pay/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${input.appUrl}/better-world/donate?cancelled=1`,
+      cancel_url: `${input.appUrl}${input.fund.donatePath}?cancelled=1`,
       metadata: {
-        source: DONATION_PURPOSE,
+        source: input.fund.source,
         comment: input.comment ?? "",
         userId: input.user?.id ?? "",
         userName: input.user?.name ?? "",
