@@ -448,3 +448,23 @@ export async function listRecentPayments(limit = 25): Promise<PaymentRecord[]> {
   }
   return (data as StripePaymentRow[]).map(mapPaymentRow);
 }
+
+/** Payments a signed-in payer made while logged in, newest first. */
+export async function listPaymentsForUser(userId: string, limit = 20): Promise<PaymentRecord[]> {
+  const client = createServiceRoleSupabaseClient();
+  if (!client || !userId) {
+    return [];
+  }
+  const { data, error } = await client
+    .from("stripe_payments")
+    .select(
+      "id, stripe_session_id, product_name, amount_total, currency, payer_email, payer_name, user_id, status, paid_at",
+    )
+    .eq("user_id", userId)
+    .order("created_at", { ascending: false })
+    .limit(limit);
+  if (error || !data) {
+    return [];
+  }
+  return (data as StripePaymentRow[]).map(mapPaymentRow);
+}
