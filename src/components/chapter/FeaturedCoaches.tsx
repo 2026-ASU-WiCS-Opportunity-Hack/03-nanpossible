@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { CoachCard } from "@/app/(marketing)/coaches/CoachCard";
+import { COACH_DIRECTORY_URL } from "@/lib/routing";
 import type { CoachRecord } from "@/lib/types";
 
 export function FeaturedCoaches({ coaches }: { coaches: CoachRecord[] }) {
@@ -12,9 +12,9 @@ export function FeaturedCoaches({ coaches }: { coaches: CoachRecord[] }) {
             Affiliate coach roster
           </h2>
         </div>
-        <Link className="button-link secondary" href="/coaches">
+        <a className="button-link secondary" href={COACH_DIRECTORY_URL} rel="noreferrer" target="_blank">
           View directory
-        </Link>
+        </a>
       </div>
 
       <div className="mt-6 grid gap-4 md:grid-cols-2">

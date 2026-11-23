@@ -84,7 +84,7 @@ describe("global home fixture (#157, #158)", () => {
     expect(hrefs).toEqual([
       ["/for-organizations", "/contact"],
       ["/certification", "/become-an-affiliate"],
-      ["/resources", "https://directory.wial.org/coaches", "/coaches"],
+      ["/resources", "https://directory.wial.org/coaches", "https://directory.wial.org/affiliates"],
     ]);
     // The affiliate link is the primary button in the coaches card.
     const coachesLinks = cards.items[1].links;

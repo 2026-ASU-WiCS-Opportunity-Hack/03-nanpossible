@@ -285,7 +285,7 @@ export function buildFallbackAssistantReply(query: string) {
     return [
       `${badging.intro.beforeCredly}${badging.intro.credlyLabel}${badging.intro.afterCredly}`,
       badging.claimNote,
-      "For help claiming a badge, contact WIAL at `/contact`. Coaches who add their public Credly badge link also get the badge displayed on their profile in the coach directory at `/coaches`.",
+      "For help claiming a badge, contact WIAL at `/contact`. Coaches who add their public Credly badge link also get the badge displayed on their coach profile. To find a coach, use the WIAL coach directory at https://directory.wial.org/coaches.",
     ].join("\n\n");
   }
 
