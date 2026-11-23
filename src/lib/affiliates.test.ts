@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { affiliateSiteUrl } from "./affiliates";
+import { affiliateSiteLink, affiliateSiteUrl } from "./affiliates";
 import type { ChapterRecord } from "./types";
 
 function makeAffiliate(overrides: Partial<ChapterRecord>): ChapterRecord {
@@ -38,5 +38,37 @@ describe("affiliateSiteUrl", () => {
     expect(affiliateSiteUrl(affiliate, "localhost:3000")).toBe(
       "http://nigeria.localhost:3000",
     );
+  });
+});
+
+describe("affiliateSiteLink", () => {
+  it("marks a configured website as external and exposes its bare host", () => {
+    const affiliate = makeAffiliate({ websiteUrl: "http://www.wial-usa.org/" });
+    expect(affiliateSiteLink(affiliate, "chapterstack.org")).toEqual({
+      href: "http://www.wial-usa.org/",
+      external: true,
+      host: "wial-usa.org",
+    });
+  });
+
+  it("treats a social page standing in for a website as external", () => {
+    const affiliate = makeAffiliate({ websiteUrl: "https://www.facebook.com/wialvietnam" });
+    expect(affiliateSiteLink(affiliate, "chapterstack.org").external).toBe(true);
+    expect(affiliateSiteLink(affiliate, "chapterstack.org").host).toBe("facebook.com");
+  });
+
+  it("marks the hosted subdomain site as staying on the platform", () => {
+    const affiliate = makeAffiliate({ subdomain: "nigeria" });
+    expect(affiliateSiteLink(affiliate, "chapterstack.org")).toEqual({
+      href: "https://nigeria.chapterstack.org",
+      external: false,
+      host: "nigeria.chapterstack.org",
+    });
+    expect(affiliateSiteLink(affiliate, "localhost:3000").external).toBe(false);
+  });
+
+  it("does not call a website on the platform's own domain external", () => {
+    const affiliate = makeAffiliate({ websiteUrl: "https://italy.chapterstack.org/" });
+    expect(affiliateSiteLink(affiliate, "chapterstack.org").external).toBe(false);
   });
 });
