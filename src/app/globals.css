@@ -1404,11 +1404,19 @@ html.cursor-large * {
   font-weight: 600;
 }
 
-.coach-affiliate-strip {
+.coach-affiliate-strip-row {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 0.5rem;
+}
+
+/* Legend for the ↗ chips: same voice as the map legend above it */
+.coach-affiliate-strip-note {
+  margin-top: 0.6rem;
+  color: var(--neutral);
+  font-size: 0.78rem;
+  line-height: 1.5;
 }
 
 .coach-map-figure + .coach-affiliate-strip {
@@ -1450,6 +1458,18 @@ html.cursor-large * {
   width: 17px;
   border-radius: 2px;
   object-fit: cover;
+}
+
+/* Only chips that leave WIAL carry the arrow; quiet until the chip is hovered */
+.coach-affiliate-chip-external {
+  font-size: 0.9em;
+  opacity: 0.7;
+  transition: opacity var(--duration-fast) var(--ease-standard);
+}
+
+.coach-affiliate-chip:hover .coach-affiliate-chip-external,
+.coach-affiliate-chip:focus-visible .coach-affiliate-chip-external {
+  opacity: 1;
 }
 
 /* logo_grid item without an image */

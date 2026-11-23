@@ -1,6 +1,6 @@
 import { TrackedLink } from "@/components/analytics/tracked-link";
 import { NetworkMap } from "@/components/network-map";
-import { affiliateSiteUrl } from "@/lib/affiliates";
+import { affiliateSiteLink, type AffiliateSiteLink } from "@/lib/affiliates";
 import { listCoachMapPoints } from "@/lib/coaches";
 import { countryFlagSrc } from "@/lib/countries";
 import { COACH_DIRECTORY_URL } from "@/lib/routing";
@@ -8,37 +8,90 @@ import { listAffiliateDirectory } from "@/lib/tenant";
 import { buildCoachMapMarkers } from "@/lib/world-map";
 import type { AffiliateMapEntry } from "@/lib/types";
 
-function AffiliateStrip({ affiliates }: { affiliates: AffiliateMapEntry[] }) {
+type AffiliateStripEntry = AffiliateMapEntry & Pick<AffiliateSiteLink, "external" | "host">;
+
+/**
+ * The "↗ + new tab" affordance is reserved for links that leave WIAL for an
+ * affiliate's own website, so its meaning stays intact. Microsites we host
+ * are part of this site and read as ordinary links that open in place.
+ */
+function AffiliateChip({ affiliate }: { affiliate: AffiliateStripEntry }) {
+  const flagSrc = countryFlagSrc(affiliate.country);
+  const flag = flagSrc ? (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img alt="" height={12} src={flagSrc} width={17} />
+  ) : null;
+
+  if (affiliate.external) {
+    return (
+      <TrackedLink
+        className="coach-affiliate-chip"
+        event={{
+          name: "select_content",
+          params: {
+            content_type: "affiliate_site",
+            content_id: affiliate.name,
+            outbound: true,
+          },
+        }}
+        href={affiliate.href}
+        title={`Opens ${affiliate.host} in a new tab`}
+      >
+        {flag}
+        {affiliate.name}
+        <span aria-hidden="true" className="coach-affiliate-chip-external">
+          ↗
+        </span>
+        <span className="sr-only">(own website, opens {affiliate.host} in a new tab)</span>
+      </TrackedLink>
+    );
+  }
+
+  return (
+    <TrackedLink
+      className="coach-affiliate-chip"
+      event={{
+        name: "select_content",
+        params: {
+          content_type: "affiliate_site",
+          content_id: affiliate.name,
+          outbound: false,
+        },
+      }}
+      href={affiliate.href}
+      // Hosted on our own subdomain: navigate in place like any internal link.
+      target="_self"
+    >
+      {flag}
+      {affiliate.name}
+    </TrackedLink>
+  );
+}
+
+function affiliateStripNote(affiliates: AffiliateStripEntry[]) {
+  const externalCount = affiliates.filter((affiliate) => affiliate.external).length;
+  if (externalCount === 0) {
+    return null;
+  }
+  if (externalCount === affiliates.length) {
+    return "Each link opens the affiliate's own website in a new tab.";
+  }
+  return "↗ marks affiliates with their own website, which opens in a new tab. The others stay on WIAL.";
+}
+
+function AffiliateStrip({ affiliates }: { affiliates: AffiliateStripEntry[] }) {
+  const note = affiliateStripNote(affiliates);
   return (
     <div className="coach-affiliate-strip">
-      <span className="coach-affiliate-strip-label">
-        WIAL affiliates — visit their local sites:
-      </span>
-      {affiliates.map((affiliate) => {
-        const flagSrc = countryFlagSrc(affiliate.country);
-        return (
-          <TrackedLink
-            className="coach-affiliate-chip"
-            event={{
-              name: "select_content",
-              params: {
-                content_type: "affiliate_site",
-                content_id: affiliate.name,
-                outbound: true,
-              },
-            }}
-            href={affiliate.href}
-            key={affiliate.href}
-          >
-            {flagSrc ? (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img alt="" height={12} src={flagSrc} width={17} />
-            ) : null}
-            {affiliate.name}
-            <span aria-hidden="true">↗</span>
-          </TrackedLink>
-        );
-      })}
+      <div className="coach-affiliate-strip-row">
+        <span className="coach-affiliate-strip-label">
+          WIAL affiliates — visit their local sites:
+        </span>
+        {affiliates.map((affiliate) => (
+          <AffiliateChip affiliate={affiliate} key={affiliate.href} />
+        ))}
+      </div>
+      {note ? <p className="coach-affiliate-strip-note">{note}</p> : null}
     </div>
   );
 }
@@ -55,12 +108,12 @@ export async function GlobalNetworkSection() {
   ]);
 
   const siteDomain = process.env.NEXT_PUBLIC_SITE_DOMAIN ?? "localhost:3000";
-  const affiliateEntries: AffiliateMapEntry[] = affiliates
+  const affiliateEntries: AffiliateStripEntry[] = affiliates
     .filter((chapter) => chapter.country)
     .map((chapter) => ({
       name: chapter.name,
       country: chapter.country as string,
-      href: affiliateSiteUrl(chapter, siteDomain),
+      ...affiliateSiteLink(chapter, siteDomain),
     }));
 
   const markers = buildCoachMapMarkers(points, affiliateEntries);

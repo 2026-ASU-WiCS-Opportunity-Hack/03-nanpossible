@@ -23,8 +23,12 @@ export function TrackedLink({ href, event, children, onClick, ...rest }: Tracked
   };
 
   if (isOutboundHref(href)) {
+    // Pass `target="_self"` for an absolute URL that is still our own site
+    // (a hosted affiliate subdomain): it then opens in place and keeps the referrer.
+    const { target = "_blank", rel = target === "_blank" ? "noreferrer" : undefined, ...anchorRest } =
+      rest;
     return (
-      <a href={href} onClick={handleClick} rel="noreferrer" target="_blank" {...rest}>
+      <a href={href} onClick={handleClick} rel={rel} target={target} {...anchorRest}>
         {children}
       </a>
     );
