@@ -27,6 +27,7 @@ describe("navigationItems", () => {
       ["Resources", "/resources"],
       ["About WIAL", "/about"],
       ["Contact", "/contact"],
+      ["Payments", "/pay"],
     ]);
   });
 
@@ -48,7 +49,7 @@ describe("navigationItems", () => {
 
   it("flattens the menu for voice navigation, parents before children", () => {
     const flat = flattenNavigationItems();
-    expect(flat).toHaveLength(12);
+    expect(flat).toHaveLength(13);
     expect(flat.every((item) => !("children" in item))).toBe(true);
     const labels = flat.map((item) => item.label);
     expect(labels.indexOf("About WIAL")).toBeLessThan(labels.indexOf("Clients"));

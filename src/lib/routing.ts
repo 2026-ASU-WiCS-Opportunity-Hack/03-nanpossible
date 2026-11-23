@@ -29,6 +29,8 @@ export const navigationItems: NavigationItem[] = [
     ],
   },
   { href: "/contact", label: "Contact" },
+  // Kept last: affiliate sites inherit only the first seven items by default.
+  { href: "/pay", label: "Payments" },
 ];
 
 /** The affiliate journey gets its own button in the header and mobile menu. */

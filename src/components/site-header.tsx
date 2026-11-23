@@ -13,7 +13,7 @@ import {
 import type { SiteContext, UserProfile } from "@/lib/types";
 
 const navLinkClassName =
-  "whitespace-nowrap rounded-full px-3 py-1.5 text-[15px] font-semibold text-teal-deep transition hover:bg-accent-soft";
+  "whitespace-nowrap rounded-full px-2 py-1.5 text-[14px] font-semibold text-teal-deep transition hover:bg-accent-soft xl:px-3 xl:text-[15px]";
 
 type SiteHeaderProps = {
   siteContext: SiteContext;

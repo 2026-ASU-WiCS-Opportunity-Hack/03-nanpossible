@@ -20,7 +20,9 @@ function isGlobalOnlyPath(pathname: string) {
     pathname === "/for-organizations" ||
     pathname.startsWith("/for-organizations/") ||
     pathname === "/clients" ||
-    pathname.startsWith("/clients/")
+    pathname.startsWith("/clients/") ||
+    pathname === "/pay" ||
+    pathname.startsWith("/pay/")
   );
 }
 import { getChapterBySubdomain } from "@/lib/tenant";

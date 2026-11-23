@@ -3,9 +3,9 @@ import Link from "next/link";
 import { TrackEvent } from "@/components/analytics/track-event";
 import { TrackedLink } from "@/components/analytics/tracked-link";
 import { getCurrentViewer } from "@/lib/auth";
-import { listPaymentTypes } from "@/lib/payments";
+import { listPaymentsForUser, listPaymentTypes } from "@/lib/payments";
 import { formatMinorAmount } from "@/lib/payments-format";
-import type { PaymentType } from "@/lib/types";
+import type { PaymentRecord, PaymentType } from "@/lib/types";
 import { startCheckoutAction } from "./actions";
 import { PayButton } from "./PayButton";
 
@@ -34,6 +34,18 @@ function getError(code?: string) {
   }
 }
 
+function formatPaidDate(value: string | null) {
+  if (!value) {
+    return "—";
+  }
+  return new Date(value).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    timeZone: "UTC",
+  });
+}
+
 export default async function PayPage({ searchParams }: PayPageProps) {
   const [query, viewer] = await Promise.all([searchParams, getCurrentViewer()]);
 
@@ -47,6 +59,7 @@ export default async function PayPage({ searchParams }: PayPageProps) {
   }
 
   const errorMessage = getError(query.error);
+  const pastPayments: PaymentRecord[] = viewer ? await listPaymentsForUser(viewer.id) : [];
 
   return (
     <div className="page-frame">
@@ -146,6 +159,11 @@ export default async function PayPage({ searchParams }: PayPageProps) {
                       <Link className="font-semibold text-teal" href="/login?next=%2Fpay">
                         Sign in
                       </Link>
+                      {" or "}
+                      <Link className="font-semibold text-teal" href="/register?next=%2Fpay">
+                        create an account
+                      </Link>
+                      .
                     </>
                   ) : null}
                 </p>
@@ -196,6 +214,42 @@ export default async function PayPage({ searchParams }: PayPageProps) {
               </section>
             </section>
           )}
+
+          {viewer ? (
+            <section className="site-panel rounded-[2rem] p-6 md:p-8" id="your-payments">
+              <h2 className="section-title text-teal-deep">Your payments</h2>
+              {pastPayments.length === 0 ? (
+                <p className="mt-3 max-w-2xl text-base leading-7 text-foreground/75">
+                  Payments you make while signed in will be listed here.
+                </p>
+              ) : (
+                <div className="mt-4 overflow-x-auto">
+                  <table className="w-full text-left text-sm">
+                    <thead>
+                      <tr className="text-xs font-semibold uppercase tracking-[0.16em] text-foreground/55">
+                        <th className="py-2 pr-4">Date</th>
+                        <th className="py-2 pr-4">Paid for</th>
+                        <th className="py-2 text-right">Amount</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {pastPayments.map((payment) => (
+                        <tr className="border-t border-line" key={payment.stripeSessionId}>
+                          <td className="py-3 pr-4 whitespace-nowrap">
+                            {formatPaidDate(payment.paidAt)}
+                          </td>
+                          <td className="py-3 pr-4">{payment.productName}</td>
+                          <td className="py-3 text-right font-semibold text-teal-deep">
+                            {formatMinorAmount(payment.amount, payment.currency)}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+            </section>
+          ) : null}
         </div>
       </div>
     </div>
