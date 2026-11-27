@@ -2,6 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { requireAccountViewer } from "@/lib/auth";
+import { CONFERENCE_SLUG_PREFIX } from "@/lib/conferences-fields";
 import { getGlobalPageBySlugForAdmin } from "@/lib/content";
 import { createServiceRoleSupabaseClient } from "@/lib/supabase-admin";
 import { sanitizeSections } from "@/lib/page-section-sanitize";
@@ -117,6 +118,12 @@ export async function saveGlobalPageAction(
 
   for (const path of testimonialPathsToRevalidate(payload.slug)) {
     revalidatePath(path);
+  }
+  if (payload.slug.startsWith(CONFERENCE_SLUG_PREFIX)) {
+    // A conference page's title, intro and visibility also show on the
+    // Conferences listing and in the conferences admin.
+    revalidatePath("/conferences");
+    revalidatePath("/admin/global/conferences");
   }
   revalidatePath("/admin/global/pages");
 

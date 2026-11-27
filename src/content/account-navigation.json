@@ -16,6 +16,7 @@
         { "href": "/admin/global/chapters", "label": "Affiliates" },
         { "href": "/admin/global/coaches", "label": "Coaches" },
         { "href": "/admin/global/events", "label": "Events" },
+        { "href": "/admin/global/conferences", "label": "Conferences" },
         { "href": "/admin/global/users", "label": "Users & roles" },
         { "href": "/admin/global/payments", "label": "Payments" },
         { "href": "/admin/global/newsletter", "label": "Newsletter" },

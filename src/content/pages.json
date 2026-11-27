@@ -2080,20 +2080,6 @@
     ],
     "sections": [
       {
-        "type": "prose",
-        "title": "Coming soon: WIAL Global Conference 2026 in Tokyo",
-        "paragraphs": [
-          "The next WIAL Global Conference takes place October 23–24, 2026 at Shibuya QWS in Tokyo, Japan — marking twenty years since Action Learning arrived in Japan. Under the theme “The Rise of Future-Making Teams,” practitioners and researchers from more than a dozen countries will ask what human teams are for in an era when AI can produce answers.",
-          "The conference runs in person and online, with simultaneous Japanese–English interpretation, hosted with the Japan Action Learning Association (WIAL Japan). Registration details will be published here soon."
-        ],
-        "bullets": [
-          "October 23–24, 2026 — Shibuya QWS, Tokyo, Japan",
-          "Theme: The Rise of Future-Making Teams",
-          "In person and online, with Japanese–English interpretation",
-          "Keynotes, case presentations, and live Action Learning sessions from a global speaker lineup"
-        ]
-      },
-      {
         "type": "media_prose",
         "title": "What happens at a global conference",
         "image": "/conferences/conference-discussion.jpg",
