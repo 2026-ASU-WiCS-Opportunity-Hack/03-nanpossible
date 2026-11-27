@@ -63,9 +63,9 @@ function heroMetrics(stored: MetricItem[], next: ConferenceRecord | undefined): 
 
 /**
  * /conferences: the `conferences` content page (hero, "what happens at a
- * conference", the hand-written timeline of older conferences) with the
- * conferences managed at /admin/global/conferences slotted in — upcoming ones
- * first, the archive just before the older timeline.
+ * conference", closing call to action) with the conferences managed at
+ * /admin/global/conferences slotted in — upcoming ones first, the archive
+ * just before the closing call to action.
  */
 export default async function ConferencesPage() {
   const [siteContext, page, conferences] = await Promise.all([
@@ -96,8 +96,12 @@ export default async function ConferencesPage() {
       }
     : null;
 
-  const timelineIndex = body.sections.findIndex((section) => section.type === "timeline");
-  const archiveAt = timelineIndex >= 0 ? timelineIndex : body.sections.length;
+  // The archive sits above a hand-written timeline if the page still has one,
+  // otherwise above the closing call to action.
+  const anchorIndex = ["timeline", "cta"]
+    .map((type) => body.sections.findIndex((section) => section.type === type))
+    .find((index) => index >= 0);
+  const archiveAt = anchorIndex ?? body.sections.length;
   const heroPage = {
     ...page,
     bodyRichtext: { ...body, metrics: heroMetrics(body.metrics, upcoming[0]), sections: [] },
