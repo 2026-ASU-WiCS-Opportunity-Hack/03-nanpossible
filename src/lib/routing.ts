@@ -26,6 +26,7 @@ export const navigationItems: NavigationItem[] = [
       { href: "/clients", label: "Clients" },
       { href: "/partners", label: "Partners" },
       { href: "/conferences", label: "Conferences" },
+      { href: "/events", label: "Events" },
       { href: "/awards", label: "Awards" },
       { href: "/better-world", label: "Better World Fund" },
     ],

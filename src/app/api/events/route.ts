@@ -5,9 +5,43 @@ import { getEventByIdForAdmin } from "@/lib/events";
 import { normalizeEventDraftForSave, type EventDraft } from "@/lib/events-workbench";
 import { createServiceRoleSupabaseClient } from "@/lib/supabase-admin";
 import { getChapterById } from "@/lib/tenant";
+import type { UserProfile } from "@/lib/types";
 
 function getTenantPaths(subdomain: string) {
   return [`/sites/${subdomain}`, `/sites/${subdomain}/events`];
+}
+
+/**
+ * An event with no affiliate is a WIAL-wide event: only platform admins may
+ * create, change or delete one. Affiliate events follow the affiliate's own
+ * editing rules.
+ */
+function canEditEvent(viewer: UserProfile, chapterId: string | null) {
+  return chapterId ? canEditChapter(viewer, chapterId) : viewer.role === "platform_admin";
+}
+
+/** Refresh every public page an event can appear on. */
+async function revalidateEventPages(chapterId: string | null) {
+  revalidatePath("/events");
+
+  const chapter = chapterId ? await getChapterById(chapterId) : null;
+
+  if (chapter) {
+    for (const path of getTenantPaths(chapter.subdomain)) {
+      revalidatePath(path);
+    }
+  }
+}
+
+function saveErrorMessage(code: "missing-fields" | "end-before-start" | "invalid-link") {
+  switch (code) {
+    case "end-before-start":
+      return "The end time must be after the start time.";
+    case "invalid-link":
+      return "The event link must be a web address, such as https://example.org/event.";
+    default:
+      return "Title and start date are required.";
+  }
 }
 
 export async function POST(request: Request) {
@@ -30,26 +64,28 @@ export async function POST(request: Request) {
   const normalized = normalizeEventDraftForSave(
     body ?? {
       id: null,
-      chapterId: "",
+      chapterId: null,
       title: "",
       startAt: "",
       endAt: "",
       location: "",
       description: "",
+      linkUrl: "",
       published: false,
     },
   );
 
   if (!normalized.ok) {
-    return NextResponse.json(
-      { error: "Title, affiliate, and start date are required." },
-      { status: 400 },
-    );
+    return NextResponse.json({ error: saveErrorMessage(normalized.error) }, { status: 400 });
   }
 
-  if (!canEditChapter(viewer, normalized.payload.chapterId)) {
+  if (!canEditEvent(viewer, normalized.payload.chapterId)) {
     return NextResponse.json(
-      { error: "This account cannot edit events for the active affiliate." },
+      {
+        error: normalized.payload.chapterId
+          ? "This account cannot edit events for the active affiliate."
+          : "Only WIAL platform admins can edit WIAL-wide events.",
+      },
       { status: 403 },
     );
   }
@@ -77,17 +113,19 @@ export async function POST(request: Request) {
     end_at: normalized.payload.endAt,
     location: normalized.payload.location,
     description: normalized.payload.description,
+    link_url: normalized.payload.linkUrl,
     published: normalized.payload.published,
   };
 
+  // Scoped to the owner as well as the id, so a mismatched pair can never
+  // touch another affiliate's (or a WIAL-wide) event.
+  const ownerId = normalized.payload.chapterId;
+  const scopedUpdate = (eventId: string) => {
+    const update = client.from("events").update(payload).eq("id", eventId);
+    return ownerId ? update.eq("chapter_id", ownerId) : update.is("chapter_id", null);
+  };
   const query = normalized.payload.eventId
-    ? client
-        .from("events")
-        .update(payload)
-        .eq("id", normalized.payload.eventId)
-        .eq("chapter_id", normalized.payload.chapterId)
-        .select("id")
-        .single()
+    ? scopedUpdate(normalized.payload.eventId).select("id").single()
     : client.from("events").insert(payload).select("id").single();
 
   const { data, error } = await query;
@@ -105,13 +143,7 @@ export async function POST(request: Request) {
     );
   }
 
-  const chapter = await getChapterById(savedEvent.chapterId);
-
-  if (chapter) {
-    for (const path of getTenantPaths(chapter.subdomain)) {
-      revalidatePath(path);
-    }
-  }
+  await revalidateEventPages(savedEvent.chapterId);
 
   return NextResponse.json({
     event: savedEvent,
@@ -137,23 +169,24 @@ export async function DELETE(request: Request) {
 
   const body = (await request.json().catch(() => null)) as
     | {
-        chapterId?: string;
+        chapterId?: string | null;
         eventId?: string;
       }
     | null;
-  const chapterId = String(body?.chapterId ?? "");
+  const chapterId = body?.chapterId ? String(body.chapterId) : null;
   const eventId = String(body?.eventId ?? "");
 
-  if (!chapterId || !eventId) {
-    return NextResponse.json(
-      { error: "Affiliate and event id are required." },
-      { status: 400 },
-    );
+  if (!eventId) {
+    return NextResponse.json({ error: "Choose an event to delete." }, { status: 400 });
   }
 
-  if (!canEditChapter(viewer, chapterId)) {
+  if (!canEditEvent(viewer, chapterId)) {
     return NextResponse.json(
-      { error: "This account cannot edit events for the active affiliate." },
+      {
+        error: chapterId
+          ? "This account cannot edit events for the active affiliate."
+          : "Only WIAL platform admins can edit WIAL-wide events.",
+      },
       { status: 403 },
     );
   }
@@ -172,23 +205,16 @@ export async function DELETE(request: Request) {
     );
   }
 
-  const { error } = await client
-    .from("events")
-    .delete()
-    .eq("id", eventId)
-    .eq("chapter_id", chapterId);
+  const removal = client.from("events").delete().eq("id", eventId);
+  const { error } = await (chapterId
+    ? removal.eq("chapter_id", chapterId)
+    : removal.is("chapter_id", null));
 
   if (error) {
     return NextResponse.json({ error: "WIAL could not delete this event." }, { status: 500 });
   }
 
-  const chapter = await getChapterById(chapterId);
-
-  if (chapter) {
-    for (const path of getTenantPaths(chapter.subdomain)) {
-      revalidatePath(path);
-    }
-  }
+  await revalidateEventPages(chapterId);
 
   return NextResponse.json({
     deletedEventId: eventId,

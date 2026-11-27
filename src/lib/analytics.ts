@@ -160,6 +160,8 @@ export type ContentType =
   | "certification_level"
   | "affiliate_site"
   | "partner_logo"
+  | "event"
+  | "event_filter"
   | "partner_pricing_band";
 
 export type SearchType = "coach" | "library" | "wial_talk";

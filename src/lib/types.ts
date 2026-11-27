@@ -778,12 +778,15 @@ export type ChapterContextValue = {
 
 export type EventRecord = {
   id: string;
-  chapterId: string;
+  /** `null` for a WIAL-wide event that belongs to no affiliate. */
+  chapterId: string | null;
   title: string;
   startAt: string;
   endAt: string | null;
   location: string | null;
   description: string | null;
+  /** Optional "more details / register" link. */
+  linkUrl: string | null;
   published: boolean;
   createdAt: string;
   updatedAt: string;

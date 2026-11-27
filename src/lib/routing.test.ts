@@ -37,19 +37,22 @@ describe("navigationItems", () => {
       "/clients",
       "/partners",
       "/conferences",
+      "/events",
       "/awards",
       "/better-world",
     ]);
     // Only one level of nesting, and every submenu target is a real route.
     for (const child of about?.children ?? []) {
       expect(child.children).toBeUndefined();
+      // /events is a data-driven route of its own (#184), not a content page.
+      if (child.href === "/events") continue;
       expect(normalizeSegments([child.href.slice(1)])?.slug).toBe(child.href.slice(1));
     }
   });
 
   it("flattens the menu for voice navigation, parents before children", () => {
     const flat = flattenNavigationItems();
-    expect(flat).toHaveLength(13);
+    expect(flat).toHaveLength(14);
     expect(flat.every((item) => !("children" in item))).toBe(true);
     const labels = flat.map((item) => item.label);
     expect(labels.indexOf("About WIAL")).toBeLessThan(labels.indexOf("Clients"));

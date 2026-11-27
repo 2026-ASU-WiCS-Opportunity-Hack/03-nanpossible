@@ -22,6 +22,18 @@ export function UpcomingEvents({ events }: { events: EventRecord[] }) {
                   {event.description}
                 </p>
               ) : null}
+              {event.linkUrl ? (
+                <p className="mt-3">
+                  <a
+                    className="text-sm font-semibold text-teal-deep underline underline-offset-4"
+                    href={event.linkUrl}
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    Event details ↗<span className="sr-only"> (opens in a new tab)</span>
+                  </a>
+                </p>
+              ) : null}
             </article>
           ))
         ) : (
