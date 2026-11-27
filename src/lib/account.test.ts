@@ -28,6 +28,7 @@ describe("account navigation", () => {
       "Affiliates",
       "Coaches",
       "Events",
+      "Conferences",
       "Users & roles",
       "Payments",
       "Newsletter",

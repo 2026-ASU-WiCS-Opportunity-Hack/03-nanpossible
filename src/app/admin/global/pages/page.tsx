@@ -1,11 +1,15 @@
 import Link from "next/link";
 import { AccountPageShell } from "@/components/account-page-shell";
 import { requireAccountViewer } from "@/lib/auth";
+import { CONFERENCE_SLUG_PREFIX } from "@/lib/conferences-fields";
 import { listGlobalPagesForAdmin } from "@/lib/content";
 
 export default async function GlobalPagesAdminPage() {
   await requireAccountViewer("/admin/global/pages", ["platform_admin"]);
-  const pages = await listGlobalPagesForAdmin();
+  // Conference pages have their own admin (dates, archive, create/delete).
+  const pages = (await listGlobalPagesForAdmin()).filter(
+    (page) => !page.slug.startsWith(CONFERENCE_SLUG_PREFIX),
+  );
 
   return (
     <AccountPageShell
