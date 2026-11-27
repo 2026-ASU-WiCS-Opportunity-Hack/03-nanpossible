@@ -2,14 +2,38 @@ import type { EventRecord } from "@/lib/types";
 
 export type EventDraft = {
   id: string | null;
-  chapterId: string;
+  /** `null` for a WIAL-wide event (platform admins only). */
+  chapterId: string | null;
   title: string;
   startAt: string;
   endAt: string;
   location: string;
   description: string;
+  linkUrl: string;
   published: boolean;
 };
+
+/**
+ * Accepts a pasted web address with or without `https://`. Returns `null`
+ * for an empty value and `false` for anything that is not an http(s) URL.
+ */
+export function normalizeEventLink(value: string): string | null | false {
+  const trimmed = value.trim();
+
+  if (!trimmed) {
+    return null;
+  }
+
+  const candidate = /^[a-z][a-z0-9+.-]*:/i.test(trimmed) ? trimmed : `https://${trimmed}`;
+
+  try {
+    const url = new URL(candidate);
+    const isWeb = url.protocol === "https:" || url.protocol === "http:";
+    return isWeb && url.hostname.includes(".") ? url.toString() : false;
+  } catch {
+    return false;
+  }
+}
 
 export function toDateTimeLocalValue(value?: string | null) {
   if (!value) {
@@ -31,7 +55,7 @@ export function toDateTimeLocalValue(value?: string | null) {
   return `${year}-${month}-${day}T${hours}:${minutes}`;
 }
 
-export function createEmptyEventDraft(chapterId: string): EventDraft {
+export function createEmptyEventDraft(chapterId: string | null): EventDraft {
   return {
     id: null,
     chapterId,
@@ -40,6 +64,7 @@ export function createEmptyEventDraft(chapterId: string): EventDraft {
     endAt: "",
     location: "",
     description: "",
+    linkUrl: "",
     published: false,
   };
 }
@@ -53,6 +78,7 @@ export function createEventDraft(event: EventRecord): EventDraft {
     endAt: toDateTimeLocalValue(event.endAt),
     location: event.location ?? "",
     description: event.description ?? "",
+    linkUrl: event.linkUrl ?? "",
     published: event.published,
   };
 }
@@ -64,7 +90,9 @@ export function normalizeEventDraftForSave(draft: EventDraft) {
   const location = draft.location.trim();
   const description = draft.description.trim();
 
-  if (!draft.chapterId || !title || !startAt) {
+  // `chapterId` may be null (a WIAL-wide event); who is allowed to save one is
+  // decided by the API route, not here.
+  if (!title || !startAt) {
     return {
       ok: false,
       error: "missing-fields",
@@ -89,16 +117,33 @@ export function normalizeEventDraftForSave(draft: EventDraft) {
     } as const;
   }
 
+  if (endAtDate && endAtDate.getTime() < startAtDate.getTime()) {
+    return {
+      ok: false,
+      error: "end-before-start",
+    } as const;
+  }
+
+  const linkUrl = normalizeEventLink(draft.linkUrl ?? "");
+
+  if (linkUrl === false) {
+    return {
+      ok: false,
+      error: "invalid-link",
+    } as const;
+  }
+
   return {
     ok: true,
     payload: {
       eventId: draft.id,
-      chapterId: draft.chapterId,
+      chapterId: draft.chapterId || null,
       title,
       startAt: startAtDate.toISOString(),
       endAt: endAtDate ? endAtDate.toISOString() : null,
       location: location || null,
       description: description || null,
+      linkUrl,
       published: draft.published,
     },
   } as const;
@@ -125,6 +170,7 @@ export function buildEventPreviewList(
     endAt: normalized.payload.endAt,
     location: normalized.payload.location,
     description: normalized.payload.description,
+    linkUrl: normalized.payload.linkUrl,
     published: draft.published,
     createdAt: "",
     updatedAt: "",

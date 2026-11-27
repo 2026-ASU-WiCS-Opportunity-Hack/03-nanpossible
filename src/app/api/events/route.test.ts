@@ -180,8 +180,74 @@ describe("/api/events route", () => {
     });
   });
 
+  describe("WIAL-wide events (no affiliate)", () => {
+    const globalDraft = {
+      id: null,
+      chapterId: null,
+      title: "Global conference",
+      startAt: "2026-10-23T09:00",
+      endAt: "",
+      location: "Tokyo",
+      description: "",
+      linkUrl: "wial.org/tokyo",
+      published: true,
+    };
+    const post = (body: unknown) =>
+      POST(new Request("http://localhost/api/events", { method: "POST", body: JSON.stringify(body) }));
+
+    it("refuses affiliate admins, without consulting affiliate permissions", async () => {
+      const supabase = buildSupabaseMock();
+      mocks.createServiceRoleSupabaseClient.mockReturnValue(supabase);
+      mocks.getCurrentUser.mockResolvedValue({ id: "viewer-1", role: "chapter_admin" });
+
+      const response = await post(globalDraft);
+
+      expect(response.status).toBe(403);
+      expect(mocks.canEditChapter).not.toHaveBeenCalled();
+      expect(supabase.insert).not.toHaveBeenCalled();
+    });
+
+    it("lets a platform admin create one and refreshes the calendar", async () => {
+      const supabase = buildSupabaseMock();
+      mocks.createServiceRoleSupabaseClient.mockReturnValue(supabase);
+      mocks.getCurrentUser.mockResolvedValue({ id: "viewer-1", role: "platform_admin" });
+      mocks.getEventByIdForAdmin.mockResolvedValue({ id: "event-1", chapterId: null });
+
+      const response = await post(globalDraft);
+
+      expect(response.status).toBe(200);
+      expect(supabase.insert).toHaveBeenCalledWith(
+        expect.objectContaining({ chapter_id: null, link_url: "https://wial.org/tokyo" }),
+      );
+      expect(mocks.revalidatePath).toHaveBeenCalledWith("/events");
+      expect(mocks.getChapterById).not.toHaveBeenCalled();
+    });
+
+    it("refuses to move an affiliate's event to WIAL-wide by omitting the affiliate", async () => {
+      const supabase = buildSupabaseMock();
+      mocks.createServiceRoleSupabaseClient.mockReturnValue(supabase);
+      mocks.getCurrentUser.mockResolvedValue({ id: "viewer-1", role: "platform_admin" });
+      mocks.getEventByIdForAdmin.mockResolvedValue({ id: "event-9", chapterId: "chapter-b" });
+
+      const response = await post({ ...globalDraft, id: "event-9" });
+
+      expect(response.status).toBe(403);
+      expect(supabase.update).not.toHaveBeenCalled();
+    });
+
+    it("rejects a link that is not a web address", async () => {
+      mocks.createServiceRoleSupabaseClient.mockReturnValue(buildSupabaseMock());
+      mocks.getCurrentUser.mockResolvedValue({ id: "viewer-1", role: "platform_admin" });
+
+      const response = await post({ ...globalDraft, linkUrl: "javascript:alert(1)" });
+
+      expect(response.status).toBe(400);
+      expect(((await response.json()) as { error: string }).error).toMatch(/web address/i);
+    });
+  });
+
   describe("DELETE", () => {
-    it("returns 400 with chapter/event-id message when fields are missing", async () => {
+    it("returns 400 when no event is named", async () => {
       mocks.createServiceRoleSupabaseClient.mockReturnValue(buildSupabaseMock());
       const response = await DELETE(
         new Request("http://localhost/api/events", {
@@ -191,7 +257,7 @@ describe("/api/events route", () => {
       );
       expect(response.status).toBe(400);
       const json = (await response.json()) as { error: string };
-      expect(json.error).toMatch(/affiliate and event id/i);
+      expect(json.error).toMatch(/choose an event/i);
     });
 
     it("returns 403 when the event belongs to a different chapter than the caller", async () => {

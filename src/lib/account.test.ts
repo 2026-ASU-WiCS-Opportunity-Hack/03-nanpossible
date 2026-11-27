@@ -27,6 +27,7 @@ describe("account navigation", () => {
       "Global admin",
       "Affiliates",
       "Coaches",
+      "Events",
       "Users & roles",
       "Payments",
       "Newsletter",

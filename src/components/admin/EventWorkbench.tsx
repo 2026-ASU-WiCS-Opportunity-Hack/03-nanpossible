@@ -3,6 +3,12 @@
 import { startTransition, useEffect, useMemo, useState } from "react";
 import { AdminWorkbench } from "@/components/admin/AdminWorkbench";
 import { UpcomingEvents } from "@/components/chapter/UpcomingEvents";
+import { EventsCalendar } from "@/components/events-calendar";
+import {
+  GLOBAL_HOST_LABEL,
+  buildCalendarEvents,
+  type CalendarHost,
+} from "@/lib/events-calendar";
 import {
   buildEventPreviewList,
   createEmptyEventDraft,
@@ -14,8 +20,15 @@ import { getWorkbenchStatusCopy, type WorkbenchSaveState } from "@/lib/workbench
 import type { EventRecord } from "@/lib/types";
 
 type EventWorkbenchProps = {
-  chapterId: string;
-  chapterSubdomain: string;
+  /** The affiliate whose events are being edited; `null` on the global admin page. */
+  chapterId: string | null;
+  chapterSubdomain?: string;
+  /**
+   * Passed on the global admin page only: every affiliate's host details.
+   * Its presence switches the workbench to "all events" mode — the list shows
+   * events from every affiliate plus WIAL-wide ones, and new events are WIAL-wide.
+   */
+  calendarHosts?: Record<string, CalendarHost>;
   initialEvents: EventRecord[];
   initialSelectedEventId?: string | null;
 };
@@ -43,18 +56,25 @@ function formatEventDate(value: string) {
 export function EventWorkbench({
   chapterId,
   chapterSubdomain,
+  calendarHosts,
   initialEvents,
   initialSelectedEventId = null,
 }: EventWorkbenchProps) {
+  const isGlobal = calendarHosts !== undefined;
+  const hostLabel = (eventChapterId: string | null) =>
+    (eventChapterId && calendarHosts?.[eventChapterId]?.name) || GLOBAL_HOST_LABEL;
+  // The global page opens on a blank WIAL-wide event rather than on whichever
+  // affiliate's event happens to be first.
+  const fallbackEvent = isGlobal ? null : (initialEvents[0] ?? null);
   const [events, setEvents] = useState(initialEvents);
   const [selectedEventId, setSelectedEventId] = useState<string | null>(
-    initialSelectedEventId ?? initialEvents[0]?.id ?? null,
+    initialEvents.find((event) => event.id === initialSelectedEventId)?.id ??
+      fallbackEvent?.id ??
+      null,
   );
   const [draft, setDraft] = useState<EventDraft>(() => {
     const selectedEvent =
-      initialEvents.find((event) => event.id === initialSelectedEventId) ??
-      initialEvents[0] ??
-      null;
+      initialEvents.find((event) => event.id === initialSelectedEventId) ?? fallbackEvent;
 
     return selectedEvent ? createEventDraft(selectedEvent) : createEmptyEventDraft(chapterId);
   });
@@ -90,6 +110,15 @@ export function EventWorkbench({
   }, [chapterId, events, selectedEventId]);
 
   const previewEvents = useMemo(() => buildEventPreviewList(draft, events), [draft, events]);
+  // The global preview shows just the event being edited, as its calendar entry.
+  const calendarPreview = useMemo(
+    () =>
+      buildCalendarEvents(
+        previewEvents.filter((event) => event.id === (draft.id ?? "draft-preview")),
+        calendarHosts ?? {},
+      ),
+    [calendarHosts, draft.id, previewEvents],
+  );
 
   const selectEvent = useEventCallback((eventId: string | null) => {
     if (eventId === selectedEventId) {
@@ -176,7 +205,7 @@ export function EventWorkbench({
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          chapterId,
+          chapterId: draft.chapterId,
           eventId: draft.id,
         }),
       });
@@ -251,7 +280,7 @@ export function EventWorkbench({
             </button>
           ) : null}
           <button className="button-link primary" onClick={() => void handleSave()} type="button">
-            {draft.id ? "Save changes" : "Create event"}
+            {draft.id ? "Save changes" : isGlobal ? "Create WIAL-wide event" : "Create event"}
           </button>
         </>
       }
@@ -262,6 +291,17 @@ export function EventWorkbench({
             <div className={`account-flash ${notice.tone === "success" ? "is-success" : "is-error"}`}>
               {notice.message}
             </div>
+          ) : null}
+
+          {isGlobal ? (
+            <p className="text-sm leading-6 text-foreground/70">
+              <span className="font-semibold text-teal-deep">
+                Organised by {hostLabel(draft.chapterId)}.
+              </span>{" "}
+              {draft.chapterId && calendarHosts?.[draft.chapterId]
+                ? "This event belongs to an affiliate and also appears on that affiliate's site."
+                : "This event is not tied to an affiliate and appears on the main events calendar."}
+            </p>
           ) : null}
 
           <div className="grid gap-4 md:grid-cols-2">
@@ -342,6 +382,26 @@ export function EventWorkbench({
             />
           </label>
 
+          <label className="field-shell">
+            <span className="field-label">Event link (optional)</span>
+            <input
+              className="field-input"
+              inputMode="url"
+              onChange={(event) =>
+                setDraft((currentDraft) => ({
+                  ...currentDraft,
+                  linkUrl: event.target.value,
+                }))
+              }
+              placeholder="https://"
+              type="text"
+              value={draft.linkUrl}
+            />
+            <span className="mt-1.5 block text-sm text-foreground/60">
+              A page where people can read more or register.
+            </span>
+          </label>
+
           <label className="coach-checkbox">
             <input
               checked={draft.published}
@@ -353,17 +413,35 @@ export function EventWorkbench({
               }
               type="checkbox"
             />
-            <span>Show this event on the public affiliate site</span>
+            <span>
+              {isGlobal
+                ? "Show this event on the public events calendar"
+                : "Show this event on the affiliate site and the WIAL events calendar"}
+            </span>
           </label>
         </div>
       }
-      liveHref={`/sites/${chapterSubdomain}`}
-      previewHint="Shown exactly as visitors will see it on the affiliate homepage."
-      previewLabel="Homepage preview"
+      liveHref={isGlobal || !chapterSubdomain ? "/events" : `/sites/${chapterSubdomain}`}
+      previewHint={
+        isGlobal
+          ? "How this event will look on the public events calendar once it is published."
+          : "Shown exactly as visitors will see it on the affiliate homepage."
+      }
+      previewLabel={isGlobal ? "Calendar preview" : "Homepage preview"}
       previewPane={
-        <div className="overflow-hidden rounded-[1.7rem] border border-line/70 bg-[rgba(255,252,248,0.88)]">
-          <UpcomingEvents events={previewEvents} />
-        </div>
+        isGlobal ? (
+          <div className="rounded-[1.7rem] border border-line/70 bg-[rgba(255,252,248,0.88)] p-4">
+            <EventsCalendar
+              emptyMessage="Add a title and a start time to see the event here."
+              events={calendarPreview}
+              showFilters={false}
+            />
+          </div>
+        ) : (
+          <div className="overflow-hidden rounded-[1.7rem] border border-line/70 bg-[rgba(255,252,248,0.88)]">
+            <UpcomingEvents events={previewEvents} />
+          </div>
+        )
       }
       rail={
         <div className="space-y-4 p-5 md:p-6">
@@ -403,13 +481,19 @@ export function EventWorkbench({
                 <p className="mt-1.5 text-sm text-foreground/58">
                   {formatEventDate(event.startAt)}
                 </p>
+                {isGlobal ? (
+                  <p className="mt-1 text-xs font-semibold uppercase tracking-[0.12em] text-foreground/50">
+                    {hostLabel(event.chapterId)}
+                  </p>
+                ) : null}
               </button>
             ))}
 
             {events.length === 0 ? (
               <div className="rounded-[1.25rem] border border-dashed border-line/75 bg-white/38 px-4 py-5 text-sm leading-7 text-foreground/64">
-                No events yet. Fill in the event details to create your first
-                one.
+                {isGlobal
+                  ? "No events yet. Fill in the event details to create the first WIAL-wide event."
+                  : "No events yet. Fill in the event details to create your first one."}
               </div>
             ) : null}
           </div>

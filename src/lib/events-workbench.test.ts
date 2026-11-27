@@ -3,6 +3,7 @@ import {
   buildEventPreviewList,
   createEmptyEventDraft,
   normalizeEventDraftForSave,
+  normalizeEventLink,
 } from "./events-workbench";
 import type { EventRecord } from "./types";
 
@@ -20,6 +21,7 @@ describe("normalizeEventDraftForSave", () => {
       endAt: "2026-05-01T12:00",
       location: " Chicago ",
       description: " Hands-on workshop ",
+      linkUrl: "",
       published: true,
     });
 
@@ -45,6 +47,7 @@ describe("buildEventPreviewList", () => {
         endAt: null,
         location: null,
         description: null,
+        linkUrl: null,
         published: true,
         createdAt: "",
         updatedAt: "",
@@ -60,6 +63,7 @@ describe("buildEventPreviewList", () => {
         endAt: "",
         location: "",
         description: "",
+        linkUrl: "",
         published: false,
       },
       events,
@@ -67,5 +71,47 @@ describe("buildEventPreviewList", () => {
 
     expect(previewEvents[0]?.title).toBe("Earlier draft");
     expect(previewEvents[1]?.title).toBe("Later event");
+  });
+});
+
+describe("WIAL-wide events and links", () => {
+  const base = {
+    id: null,
+    title: "Global conference",
+    startAt: "2026-10-23T09:00",
+    endAt: "",
+    location: "",
+    description: "",
+    linkUrl: "",
+    published: true,
+  };
+
+  it("accepts an event with no affiliate", () => {
+    const normalized = normalizeEventDraftForSave({ ...base, chapterId: null });
+    expect(normalized.ok).toBe(true);
+    if (normalized.ok) {
+      expect(normalized.payload.chapterId).toBeNull();
+      expect(normalized.payload.linkUrl).toBeNull();
+    }
+  });
+
+  it("rejects an end before the start", () => {
+    const normalized = normalizeEventDraftForSave({
+      ...base,
+      chapterId: null,
+      endAt: "2026-10-22T09:00",
+    });
+    expect(normalized).toEqual({ ok: false, error: "end-before-start" });
+  });
+
+  it("normalizes and validates the event link", () => {
+    expect(normalizeEventLink("  ")).toBeNull();
+    expect(normalizeEventLink("wial.org/tokyo")).toBe("https://wial.org/tokyo");
+    expect(normalizeEventLink("https://jial.or.jp/event")).toBe("https://jial.or.jp/event");
+    expect(normalizeEventLink("javascript:alert(1)")).toBe(false);
+    expect(normalizeEventLink("not a link")).toBe(false);
+    expect(
+      normalizeEventDraftForSave({ ...base, chapterId: "c1", linkUrl: "mailto:a@b.co" }),
+    ).toEqual({ ok: false, error: "invalid-link" });
   });
 });
